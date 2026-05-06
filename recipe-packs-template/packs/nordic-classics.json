@@ -1,0 +1,196 @@
+{
+  "id": "nordic-classics",
+  "name": "Nordic Classics",
+  "description": "Scandinavian comfort food built on whole grains, fish, root vegetables, and seasonal produce. Simple, nourishing, and deeply satisfying.",
+  "author": "YOUR_NAME",
+  "version": "1.0.0",
+  "tags": ["nordic", "scandinavian", "fish", "whole-grains", "comfort-food"],
+  "recipes": [
+    {
+      "id": "nor-1",
+      "title": "Havregrøt med bær / Oatmeal with Berries",
+      "category": "Breakfast",
+      "servings": 2,
+      "prepTime": 5,
+      "cookTime": 10,
+      "imageUrl": null,
+      "description": "Varm havregrøt kokt på melk og toppet med friske bær og honning. / Warm oatmeal cooked in milk, topped with fresh berries and honey.",
+      "tags": ["breakfast", "nordic", "high-fibre", "vegetarian"],
+      "kcal": 340,
+      "ingredients": [
+        { "quantity": 180, "unit": "g", "name": "grovhavreflak / coarse rolled oats" },
+        { "quantity": 500, "unit": "ml", "name": "melk / milk" },
+        { "quantity": 100, "unit": "ml", "name": "vann / water" },
+        { "quantity": 0.5, "unit": "tsp", "name": "salt" },
+        { "quantity": 150, "unit": "g", "name": "blandede bær / mixed berries" },
+        { "quantity": 2, "unit": "tbsp", "name": "honning / honey" },
+        { "quantity": 30, "unit": "g", "name": "valnøtter, hakket / walnuts, chopped" },
+        { "quantity": 1, "unit": "tbsp", "name": "linfrø / linseeds" }
+      ],
+      "steps": [
+        "Ha havregryn, melk, vann og salt i en kjele. / Combine oats, milk, water, and salt in a saucepan.",
+        "Kok opp under omrøring, senk varmen og la det småkoke i 5–7 minutter til grøten er tykk og kremet. / Bring to the boil, stirring, then reduce heat and simmer 5–7 minutes until thick and creamy.",
+        "Hell i boller. / Pour into bowls.",
+        "Topp med bær, honning, valnøtter og linfrø. / Top with berries, honey, walnuts, and linseeds."
+      ]
+    },
+    {
+      "id": "nor-2",
+      "title": "Rugbrød med avokado / Rye Bread with Avocado",
+      "category": "Breakfast",
+      "servings": 2,
+      "prepTime": 10,
+      "cookTime": 0,
+      "imageUrl": null,
+      "description": "Tykke skiver mørkt rugbrød med moset avokado, reddiker, og gressløk. / Thick slices of dark Danish rye topped with smashed avocado, radishes, and chives.",
+      "tags": ["breakfast", "lunch", "nordic", "vegan", "no-cook"],
+      "kcal": 310,
+      "ingredients": [
+        { "quantity": 4, "unit": "pcs", "name": "skiver rugbrød / slices of dark rye bread" },
+        { "quantity": 2, "unit": "pcs", "name": "modne avokado / ripe avocados" },
+        { "quantity": 1, "unit": "pcs", "name": "sitron, saft / lemon, juice only" },
+        { "quantity": 6, "unit": "pcs", "name": "reddiker, skåret tynt / radishes, thinly sliced" },
+        { "quantity": 0.5, "unit": "pcs", "name": "agurk, skåret tynt / cucumber, thinly sliced" },
+        { "quantity": 1, "unit": "tbsp", "name": "gressløk, finhakket / chives, finely chopped" },
+        { "quantity": 1, "unit": "tbsp", "name": "extra virgin olivenolje / olive oil" },
+        { "quantity": 0, "unit": "", "name": "flaksalt og sort pepper / flaky salt and black pepper" }
+      ],
+      "steps": [
+        "Skjær avokadoene i to, fjern steinene og skrap kjøttet over i en bolle. / Halve avocados, remove stones, scoop flesh into a bowl.",
+        "Tilsett sitronsaft og mos grovt med en gaffel. Smak til med salt og pepper. / Add lemon juice and mash roughly with a fork. Season with salt and pepper.",
+        "Smør avokadoen over rugbrødet. / Spread avocado over the rye bread.",
+        "Legg reddiker og agurk på toppen. / Top with radish and cucumber slices.",
+        "Drypp over olivenolje, dryss gressløk. / Drizzle with olive oil and scatter chives."
+      ]
+    },
+    {
+      "id": "nor-3",
+      "title": "Laksesuppe / Salmon Soup",
+      "category": "Dinner",
+      "servings": 4,
+      "prepTime": 15,
+      "cookTime": 25,
+      "imageUrl": null,
+      "description": "En klassisk norsk laksesuppe med laks, poteter, gulrøtter og fløte. / A classic Norwegian salmon soup: chunky salmon, potatoes, carrots, and a light cream broth.",
+      "tags": ["dinner", "nordic", "seafood", "omega-3", "comfort-food"],
+      "kcal": 430,
+      "ingredients": [
+        { "quantity": 600, "unit": "g", "name": "fersk laks, terninger / fresh salmon, diced" },
+        { "quantity": 500, "unit": "g", "name": "poteter, skrelt og terninger / potatoes, peeled and diced" },
+        { "quantity": 3, "unit": "pcs", "name": "gulrøtter, skåret / carrots, sliced" },
+        { "quantity": 2, "unit": "pcs", "name": "purre, ringer / leeks, sliced into rings" },
+        { "quantity": 1, "unit": "l", "name": "fiskekraft / fish stock" },
+        { "quantity": 200, "unit": "ml", "name": "fløte / single cream" },
+        { "quantity": 2, "unit": "tbsp", "name": "smør / butter" },
+        { "quantity": 2, "unit": "pcs", "name": "laurbærblader / bay leaves" },
+        { "quantity": 10, "unit": "g", "name": "fersk dill, hakket / fresh dill, chopped" },
+        { "quantity": 0, "unit": "", "name": "salt og hvit pepper / salt and white pepper" }
+      ],
+      "steps": [
+        "Smelt smøret og stek purre i 4 minutter. / Melt butter and cook leeks for 4 minutes.",
+        "Tilsett kraft, poteter, gulrøtter og laurbærblader. Småkok i 12 minutter. / Add stock, potatoes, carrots, and bay leaves. Simmer 12 minutes.",
+        "Rør inn fløten. / Stir in the cream.",
+        "Tilsett laks og la trekke i 5 minutter. / Add salmon and poach for 5 minutes.",
+        "Fjern laurbærblader. Smak til med salt og hvit pepper. / Remove bay leaves. Season.",
+        "Server med fersk dill og grovt brød. / Serve with fresh dill and crusty bread."
+      ]
+    },
+    {
+      "id": "nor-4",
+      "title": "Fiskekaker med rotgrønnsaker / Fish Cakes with Root Vegetables",
+      "category": "Dinner",
+      "servings": 4,
+      "prepTime": 20,
+      "cookTime": 30,
+      "imageUrl": null,
+      "description": "Hjemmelagde fiskekaker av torsk, stekt gyldne og servert med ovnsbakte rotgrønnsaker og rømmedip. / Homemade cod fish cakes, pan-fried golden and served with roasted root vegetables and a dill soured cream dip.",
+      "tags": ["dinner", "nordic", "seafood", "traditional"],
+      "kcal": 450,
+      "ingredients": [
+        { "quantity": 600, "unit": "g", "name": "hvit fisk (torsk/sei), finhakket / white fish, finely chopped" },
+        { "quantity": 2, "unit": "pcs", "name": "egg" },
+        { "quantity": 3, "unit": "tbsp", "name": "potetmel / potato flour" },
+        { "quantity": 100, "unit": "ml", "name": "melk / milk" },
+        { "quantity": 1, "unit": "pcs", "name": "løk, finhakket / onion, finely chopped" },
+        { "quantity": 0.5, "unit": "tsp", "name": "muskat / nutmeg" },
+        { "quantity": 0, "unit": "", "name": "salt og pepper" },
+        { "quantity": 3, "unit": "tbsp", "name": "smør til steking / butter for frying" },
+        { "quantity": 400, "unit": "g", "name": "gulrøtter, halvert / carrots, halved" },
+        { "quantity": 400, "unit": "g", "name": "pastinakk / parsnips" },
+        { "quantity": 300, "unit": "g", "name": "rødbeter, kvartet / beetroot, quartered" },
+        { "quantity": 2, "unit": "tbsp", "name": "olivenolje / olive oil" },
+        { "quantity": 200, "unit": "g", "name": "rømme / soured cream" },
+        { "quantity": 1, "unit": "tbsp", "name": "hakket dill / chopped dill" }
+      ],
+      "steps": [
+        "Forvarm ovnen til 200°C. Stek rotgrønnsaker med olje, salt og pepper i 25–30 minutter. / Preheat oven to 200°C. Roast vegetables with oil and seasoning for 25–30 minutes.",
+        "Bland fisk, egg, potetmel, melk, løk, muskat, salt og pepper. Form til 8 kaker. / Mix fish, eggs, flour, milk, onion, nutmeg, salt, and pepper. Shape into 8 cakes.",
+        "Stek fiskekakene i smør, 4–5 minutter per side til gylne. / Fry fish cakes in butter, 4–5 minutes per side until golden.",
+        "Bland rømme og dill til en dip. / Mix soured cream and dill for a dip.",
+        "Server fiskekaker med rotgrønnsaker og rømmesaus. / Serve with roasted vegetables and dill cream."
+      ]
+    },
+    {
+      "id": "nor-5",
+      "title": "Kyllingsuppe / Chicken Soup",
+      "category": "Dinner",
+      "servings": 6,
+      "prepTime": 20,
+      "cookTime": 60,
+      "imageUrl": null,
+      "description": "En god gammeldags norsk kyllingsuppe med rotgrønnsaker og perlebygg. / A classic Norwegian chicken soup made with a whole bird, root vegetables, and pearl barley.",
+      "tags": ["dinner", "nordic", "comfort-food", "high-protein"],
+      "kcal": 370,
+      "ingredients": [
+        { "quantity": 1, "unit": "pcs", "name": "hel kylling (ca. 1,5 kg) / whole chicken (approx. 1.5 kg)" },
+        { "quantity": 2, "unit": "l", "name": "vann / water" },
+        { "quantity": 3, "unit": "pcs", "name": "gulrøtter, skåret / carrots, sliced" },
+        { "quantity": 3, "unit": "pcs", "name": "selleristilker / celery stalks, sliced" },
+        { "quantity": 2, "unit": "pcs", "name": "pastinakk, terninger / parsnips, diced" },
+        { "quantity": 1, "unit": "pcs", "name": "stor løk, grovhakket / large onion, roughly chopped" },
+        { "quantity": 100, "unit": "g", "name": "perlebygg / pearl barley" },
+        { "quantity": 3, "unit": "pcs", "name": "laurbærblader / bay leaves" },
+        { "quantity": 0, "unit": "", "name": "salt" },
+        { "quantity": 10, "unit": "g", "name": "fersk persille / fresh parsley" }
+      ],
+      "steps": [
+        "Legg kyllingen i en stor gryte, dekk med vann. Tilsett løk, laurbærblader og pepperkorn. Kok opp, skum av, og la trekke 45 minutter. / Place chicken in a pot, cover with water. Add onion and bay leaves. Simmer 45 minutes.",
+        "Ta ut kyllingen og sil kraften. / Remove chicken and strain the broth.",
+        "Tilsett gulrøtter, selleri, pastinakk og perlebygg. Kok i 15 minutter. / Add carrots, celery, parsnips, and barley. Cook 15 minutes.",
+        "Plukk kyllingkjøttet i biter og ha det tilbake i suppen. / Shred chicken and return to soup.",
+        "Smak til med salt. Dryss over hakket persille. / Season with salt. Scatter with parsley."
+      ]
+    },
+    {
+      "id": "nor-6",
+      "title": "Blomkålsuppe / Cauliflower Soup",
+      "category": "Lunch",
+      "servings": 4,
+      "prepTime": 10,
+      "cookTime": 25,
+      "imageUrl": null,
+      "description": "En kremet blomkålsuppe toppet med ristede blomkålbuketter og gressløkolje. / A silky, fragrant cauliflower soup topped with roasted florets and a chive oil drizzle.",
+      "tags": ["lunch", "dinner", "nordic", "vegan", "creamy"],
+      "kcal": 220,
+      "ingredients": [
+        { "quantity": 1, "unit": "pcs", "name": "stor blomkål, buketter / large cauliflower, broken into florets" },
+        { "quantity": 1, "unit": "pcs", "name": "stor løk, hakket / large onion, chopped" },
+        { "quantity": 3, "unit": "pcs", "name": "hvitløksfedd / garlic cloves" },
+        { "quantity": 1, "unit": "l", "name": "grønnsakskraft / vegetable stock" },
+        { "quantity": 200, "unit": "ml", "name": "plantebasert melk / plant-based milk or light cream" },
+        { "quantity": 2, "unit": "tbsp", "name": "olivenolje / olive oil" },
+        { "quantity": 0.5, "unit": "tsp", "name": "muskat / nutmeg" },
+        { "quantity": 0, "unit": "", "name": "salt og hvit pepper / salt and white pepper" },
+        { "quantity": 1, "unit": "tbsp", "name": "gressløk, finhakket / chives, finely chopped" }
+      ],
+      "steps": [
+        "Forvarm ovnen til 200°C. Stek en håndfull blomkålbuketter med olje til gylne, ca. 20 minutter. / Preheat oven to 200°C. Roast a handful of florets with oil until golden, about 20 minutes.",
+        "Stek løk i olivenolje i 5 minutter. Tilsett hvitløk og stek 1 minutt til. / Cook onion in oil for 5 minutes. Add garlic and cook 1 more minute.",
+        "Tilsett resten av blomkålen og kraften. Småkok i 15 minutter. / Add remaining cauliflower and stock. Simmer 15 minutes.",
+        "Tilsett melk/fløte og muskat. Kjør helt glatt med stavmikser. / Add milk/cream and nutmeg. Blend until completely smooth.",
+        "Smak til med salt og hvit pepper. / Season with salt and white pepper.",
+        "Server toppet med ristede blomkålbuketter og gressløk. / Serve topped with roasted florets and chives."
+      ]
+    }
+  ]
+}

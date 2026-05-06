@@ -1,0 +1,4743 @@
+=== avocado-dressing ===
+TITLE: Avocado Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 6.178 kokt
+  1: 0  i små terninger
+  2: 0 8.254 i terninger
+  3: 0 6.114 i grove terninger
+  4: 0 5.42 i tynne skiver
+  5: 0  i skiver
+  6: 0 6.107 i tykke skiver
+  7: 0 6.555 finhakket
+  8: 0 6.195 varm
+  9: 0  kald
+  10: 0  kokende
+  11: 0 6.53 siktet
+  12: 0 6.531 silt
+  13: 0 6.62 most
+  14: 0 6.757 skrellet
+  15: 0 6.621 hakket
+  16: 0 6.529 grovhakket
+  17: 0 6.622 finhakket
+  18: 0 6.758 blanchert
+  19: 0 6.522 smeltet
+  20: 0 6.523 fast
+  21: 0 6.521 finmalt
+  22: 0 6.764 revet
+  23: 0 6.011 revet, smått
+  24: 0  revet, stort
+  25: 0 6.741 ristet
+  26: 0 6.098 strimlet
+  27: 0 6.014 smuldret
+  28: 0 6.012 lunkent
+  29: 0 6.524 uten stilk
+  30: 0 6.749 blader
+  31: 0 6.148 moden
+  32: 0 5.454 juiced
+  33: 0 5.455 bløtlagt
+  34: 0 5.211 brunoise
+  35: 0 5.211 halvert
+  36: 0  frossen
+  37: 0 12.018 valgfri
+  38: 0 10.133 stilken
+  39: 0 6.119 kvart
+  40: 0  fin
+  41: 0 6.525 uten stein
+  42: 0 5.002 kokende
+  43: 0  uskrellet
+  44: 0 5.001 plante
+  45: 0 5.447 revet/strimlede
+  46: 0 6.151 små buketter
+  47: 0 6.111 knust
+STEPS:
+  0: In a high speed blender or food processor add peeled and ripened avocado.
+  1: Add almond milk, lemon juice, garlic, salt and cayenne pepper.
+  2: Blend on medium speed until smooth.
+
+=== baba-ghanoush---aubergine-dip ===
+TITLE: Baba Ghanoush - Aubergine Dip
+CATEGORY: Spreads
+INGREDIENTS:
+  0: 4 small Eggplant, raw
+  1: 1 dl Soy milk
+  2: 1 dl Canola oil
+  3: 1 medium Onion, red, Norwegian, raw
+  4: 1 clove Garlic, raw
+  5: 0  Sea salt
+  6: 2 tbsp Tahini
+  7: 1 tsp Cumin powder
+  8: 1 tsp Coriander seeds
+STEPS:
+  0: Roast the eggplant; cut the eggplant i two. place them on baking paper with the flat side down. Poke holes in the skin with a fork. Have them in the oven at 190 celsisus for 45min. Then remove the peel.
+  1: Blend all ingredients (without the onion) together in a blender until smooth.
+  2: Mix it together with the onion.
+
+=== baked-roots ===
+TITLE: Baked Roots
+CATEGORY: Lunch
+INGREDIENTS:
+  0: 3 pcs Potato, raw
+  1: 2 pcs Red beet, raw
+  2: 2 pcs Parsnip, raw
+  3: 2 pcs Carrot, Norwegian, raw
+  4: 1.5 tbsp Olive oil
+  5: 1 tbsp Thyme, dried
+  6: 1 tbsp Garlic powder
+  7: 1 tbsp Rosemary, dried
+  8: 1 tsp Sea salt
+  9: 0.5 tsp Pepper, cayenne, red
+STEPS:
+  0: Peel and cut all the roots into vedges (boats).
+  1: Cover the root vedges with the oil and seasonings. Season the beet root by it self, so it doesn´t make all the roots pink.
+  2: Spread the seasoned roots in a single layer on a baking sheet. Still the beet roots by it self.
+  3: Bake on 180-190 celsius for 15min. Then turn them and continue baking them until they are baked through (soft on the inside) and golden brown on the outside.
+
+=== baked-sweet-potato ===
+TITLE: Baked Sweet Potato
+CATEGORY: Lunch
+INGREDIENTS:
+  0: 200 g Sweet potato, raw
+  1: 2 pinch Sea salt
+  2: 0.5 tsp Olive oil
+STEPS:
+  0: Peel the potatoes.
+  1: Cut them in wedges.
+  2: Rince the sweet potato in cold water and put them in in cold water for at least 30min. (removes starch -> gives more crunchy result) Then dry them completely with a paper or kitchen towel.
+  3: Sprinkle some olive oil and salt on, and mix it together to make sure it's even out.
+  4: Spread them out on a tray (important they don´t lay on top of each other) and bake on 220 celsius, for 25-35 min, until golden. Turn them once, after 15-20 min.
+
+=== fr-12 ===
+TITLE: Barley Cup Drink
+CATEGORY: Drinks
+INGREDIENTS:
+  0: 1 tbsp Barley coffee
+  1: 1 tbsp Sukrin
+  2: 0.07 tsp Sea salt
+  3: 2.4 dl Soy milk
+STEPS:
+  0: Mix the first three ingredients and then add the warm milk.
+
+=== bean-pate ===
+TITLE: Bean Pâté
+CATEGORY: Spreads
+INGREDIENTS:
+  0: 1 l Kidney beans, red, canned
+  1: 2 dl Oats, big
+  2: 1 dl Walnuts
+  3: 1 pcs Onion, yellow, Norwegian, raw
+  4: 2 clove Garlic, raw
+  5: 0.25 tsp Cloves, ground
+  6: 0.25 tsp Cinnamon, ground
+  7: 0.25 tsp Nutmeg, ground
+  8: 1 tbsp Nutritional yeast
+  9: 4 pcs Tomatoes, sun-dried, dry
+  10: 1 tsp Sea salt
+  11: 1 tsp Garlic powder
+  12: 1 tsp Vegetable bouillon, powder
+STEPS:
+  0: Sautéé the onion and garlic until soft. Add a little oil if desired.
+  1: Have all the ingredients in the food prosessor until smooth.
+
+=== bean-spread ===
+TITLE: Bean Spread
+CATEGORY: Spreads
+INGREDIENTS:
+  0: 2 dl White beans, dry
+  1: 0.5 dl Water, drinking water
+  2: 1 tbsp Tomato puree
+  3: 0.25 tsp Onion powder
+  4: 1 tbsp Lemon juice, bottled
+  5: 0.25 dl Olives, greens, pickles
+  6: 0.5 tsp Herb salt
+  7: 0.5 dl Peanut butter
+  8: 1 tbsp Nutritional yeast
+STEPS:
+  0: Mix all the ingredients in the blender except olives and blend it for 2 minutes until smooth.
+  1: Add the olives and blend for 30 seconds.
+
+=== berry-sauce ===
+TITLE: Berry Sauce
+CATEGORY: Jams
+INGREDIENTS:
+  0: 2 dl Strawberries, raw
+  1: 2 dl Blueberries, raw
+  2: 1 dl Raspberries, raw
+  3: 2 tbsp Water
+  4: 1 tbsp Cornstarch
+  5: 2.5 tbsp Sukrin
+STEPS:
+  0: Boil the berries with ½ dl water for 7 minutes. Meanwhile, mix in a cup the cornstarch, sukrin and cold water, then add it gradually to the berries. Stir it continually and cook for 3 more minutes, then turn the heat down. Let it cool down before serving.
+
+=== black-bean-stew ===
+TITLE: Black Bean Stew
+CATEGORY: Lunch
+INGREDIENTS:
+  0: 800 g Black beans
+  1: 1.5 medium Onion, yellow, Norwegian, raw
+  2: 3 clove Garlic, raw
+  3: 1 tbsp Olive oil
+  4: 1 medium Bell pepper, red, raw
+  5: 1 medium Carrot, Norwegian, raw
+  6: 1 tbsp Tomato puree, canned
+  7: 2 tsp Cumin powder
+  8: 2 tsp Smoked paprika powder
+  9: 1 medium Chili, red, raw
+  10: 1 tsp Oregano, dried
+  11: 1 tbsp Vegetable bouillon, powder
+  12: 0  Water
+  13: 1 tbsp Lime juice
+  14: 1 handful Coriander, raw
+STEPS:
+  0: Heat olive oil in a large pot over medium heat. Add the chopped onion and cook for about 3-5 minutes until softened and slightly golden. Add the garlic, bell pepper, and carrot, and cook for another 5-7 minutes until the vegetables are tender.
+  1: Add the tomato paste, cumin, paprika powder, chili and oregano. Stir well and let it cook for 1-2 minutes to allow the spices to release their flavors.
+  2: Add the black beans and water, and cook for another 10 minutes to heat the beans through and let the flavor penetrate the beans.
+  3: Taste the stew and adjust with more salt or spices as needed.
+  4: Squeeze the lime juice over the stew and stir. Top with chopped coriander.
+
+=== fr-17 ===
+TITLE: Blissful Sprout Medley
+CATEGORY: Salad
+INGREDIENTS:
+  0: 0.25 pcs Bell pepper, red, raw
+  1: 0.25 pcs Bell pepper, yellow/orange, raw
+  2: 0.25 pcs Bell pepper, green, raw
+  3: 1.2 dl Bean sprouts, mung bean sprouts, raw
+  4: 50 g Spinach, raw
+  5: 40 g Red beet, raw
+  6: 75 g Snow peas
+STEPS:
+  0: Prepare all the vegetables.
+  1: If the red beet is juicy, roughly dry with a paper towel. This will help stop it turning everything red.
+  2: In a bowl, combine all the ingredients.
+
+=== fr-18 ===
+TITLE: Blueberry Jam
+CATEGORY: Jams
+INGREDIENTS:
+  0: 5 dl Blueberries, raw
+  1: 50 ml Chia seeds, dried
+STEPS:
+  0: Defrost the berries, mash/blend them a bit with a hand blender, not smooth.
+  1: Add chia seeds and stir every now and then before storing.
+
+=== fr-19 ===
+TITLE: Bread Buns
+CATEGORY: Bread
+INGREDIENTS:
+  0: 13 g Yeast, dry yeast
+  1: 1 tsp Honey
+  2: 4.5 dl Water, drinking water
+  3: 150 g Whole wheat flour, course
+  4: 400 g Whole wheat flour, fine
+  5: 1 tbsp Olive oil
+  6: 1 tsp Sea salt
+STEPS:
+  0: Mix well the 3 first ingredients in the diamond mixer.
+  1: Add the remaining ingredients and knead for at least 10 minutes.
+  2: Roll buns that are 100 grams each, place them on baking trays lined with bakingpaper and let them raise for about an hour.
+  3: Preheat the oven to 175 °C.
+  4: Bake the rolls for about 20 minutes until golden brown.
+  5: Take out and cover them with a towel until cooled down.
+
+=== broccoli-salad ===
+TITLE: Broccoli Salad
+CATEGORY: Salad
+INGREDIENTS:
+  0: 900 g Broccoli, Norwegian, raw
+  1: 55 g Walnuts
+  2: 75 g Tomatoes, sun-dried, dry
+  3: 100 g Black beans
+  4: 0.5 pcs Onion, red, Norwegian, raw
+  5: 120 ml Soy mayonnaise
+  6: 15 ml Lemon juice, fresh
+  7: 0.25 tsp Sea salt
+STEPS:
+  0: Preeheet the oven on 170 degree celsius for 5 min.
+  1: Spread the walnuts on a baking tray in one layer.
+  2: Toast the walnuts in the oven for 7-10 min in 170 degree celsius.
+  3: Take out the walnuts right away, and let them cool down in room temperature.
+  4: When they have cooled, chopp them in smaller pieces (if they arn't already in small pieces in the package).
+  5: Bring a large pot of water to boil, and salt (taste it: it should be as salty as sea water).
+  6: Add the broccoli florets and cook (blanch) for about 60 seconds, until bright green in color.
+  7: Immediately drain and rinse with cold water for ~2 minutes to stop the cooking.
+  8: Dry the broccoli very well: place in a salad spinner, spin out the water, then dry further with kitchen towels to remove excess moisture.
+  9: In a large bowl combine the broccoli, toasted walnuts, sundired tomatoes, black beans, sliced red onion, soy mayonnaise (seperate recipe), lemon, and salt.
+  10: Put the salad in the cooler.
+  11: Serve it cold or room temperature.
+
+=== broccoli-soup ===
+TITLE: Broccoli Soup
+CATEGORY: Soup
+INGREDIENTS:
+  0: 2 dl Onion, yellow, Norwegian, raw
+  1: 2 clove Garlic, raw
+  2: 1 l Broccoli, Norwegian, raw
+  3: 4 tbsp Olive oil
+  4: 1 tsp Sea salt
+  5: 1 l Water
+  6: 4 tbsp Vegetable bouillon, powder
+  7: 2 dl Cashew, unsalted
+STEPS:
+  0: Finely dice the onions and mince the garlic.
+  1: Peel the broccoli stems (if there are any), cut them into small, even pieces and put them in a bowl. Cut the florets into small, even pieces and place into a separate bowl.
+  2: In a pot add the oil, onions and garlic along with a pinch of salt. Gently sweat until the onions are translucent, about 10 minutes. Add the broccoli stems and stir to coat with the fat. Continue to sweat for a few minutes until softened.
+  3: Mix the bouillon with half of the water (preferable warm) and add to the pot.
+  4: Blend the cashews with the rest of the water, until smooth, and add to the pot. Turn the heat up to medium and bring the soup to a simmer. Stir often to make sure the bottom does not scorch.
+  5: Once the stems are nearly tender, add the florets along with a good pinch of salt. Let the soup gently simmer until the florets are tender and cooked (approximately 10 min) all the way through. Once the florets are tender, add salt to taste.
+
+=== brown-sauce ===
+TITLE: Brown Sauce
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 dl Coconut milk
+  1: 25 ml Soy sauce
+  2: 25 ml Nutritional yeast
+  3: 1.5 tbsp Cornstarch
+  4: 50 ml Water, drinking water
+STEPS:
+  0: Whisk the first three ingredients in a pot and bring it to boil.
+  1: While boiling mix together corn starch and cold water.
+  2: Slowly stir in the water corn starch slurry while whisking.
+  3: Serve hot.
+
+=== fr-23 ===
+TITLE: Buckwheat Burger
+CATEGORY: Lunch
+INGREDIENTS:
+  0: 1.5 dl Buckwheat, whole grain
+  1: 3 dl Water, drinking water
+  2: 0.5 tsp Salt, table salt
+  3: 1 large Onion, yellow, Norwegian, raw
+  4: 0.5 tsp Herb salt
+  5: 150 g Walnuts
+  6: 2 tsp Vegetable bouillon, fresh
+  7: 1.5 tbsp Nutritional yeast
+  8: 1 tsp Tomato puree, canned
+  9: 1 dl Parsley, Norwegian, raw
+  10: 1 tsp Fibre husk
+  11: 1 tsp Marjoram, dried
+STEPS:
+  0: Bring the water to boil in a water boiler to quicken the process, add water to a pot on the hot stove. Once the water boils, add salt and buckwheat. Let it boil again and cover with a lid that is covered with a clean kitchen towel. Turn the stove to the lowest heat and let steam for 20 minutes.
+  1: Add onion and continue to steam for another 10 minutes.
+  2: Preheat the oven to 205 °C.
+  3: Remove the pot from the stove and add the remaining ingredients. Stir well and taste for seasoning.
+  4: Option 1: Use the lid of a sprouting jar for forming the burgers. Cover the net with plastic foil and press a portion in the lid to cover about ¾s of the volume. Shape the burgers well and press out of the form.
+  5: Option 2: use ice cream scooper and form the burgers with a spoon, dipping in water to avoid sticking.
+  6: Bake for 10 minutes on the first side, flip and bake for another 6 minutes.
+  7: Serve the burgers hot.
+
+=== bulgur-salad ===
+TITLE: Bulgur Salad
+CATEGORY: Salad
+INGREDIENTS:
+  0: 1.5 cup Bulgur groats, dry
+  1: 3 cup Water, drinking water
+  2: 1 tsp Sea salt
+  3: 1 pcs Cucumber, Norwegian, raw
+  4: 2 cup Cherry tomato, imported, raw
+  5: 3 clove Garlic, raw
+  6: 4 pcs Spring onions, raw
+  7: 0.5 tbsp Olive oil, extra virgin, virgin oil
+  8: 4 tbsp Lemon juice, fresh
+  9: 0.5 tbsp Honey
+  10: 0.25 tsp Chilli flakes
+  11: 0.25 tsp Sea salt
+STEPS:
+  0: Bring the water with salt to a boil and then add the bulgur. Remove from the heat and cover with a lid until all the water is absorbed (approx. 25 min) Afterwards, cool down the bulgur.
+  1: Mix in a jar olive oil, lemon juice, honey, chilli flakes and salt.
+  2: Mix the bulgur with the veggies and then add the dressing.
+
+=== burger-buns ===
+TITLE: Burger Buns
+CATEGORY: Bread
+INGREDIENTS:
+  0: 240 g White flour, fine
+  1: 400 g Whole wheat flour, fine
+  2: 1 envelope Yeast, dry yeast
+  3: 2 tsp Sea salt
+  4: 4.4 dl Water
+  5: 1 tbsp Honey
+  6: 3 tbsp Olive oil
+STEPS:
+  0: Mix the flour, yeast, and salt in a large bowl.
+  1: Add the water, honey, and oil, and knead the dough for about 8–10 minutes until it becomes smooth and elastic and no longer sticks to the bowl.
+  2: Cover the bowl and let the dough rise for about an hour, or until it has doubled in size.
+  3: Divide the dough in roughly 110 grams for each piece and shape them into round burger buns.
+  4: Place the buns on a baking sheet lined with bakingpaper and let them rise again for 30–40 minutes under a clean kitchen towel.
+  5: Brush the tops with water or milk, and sprinkle with sesame seeds for a classic look.
+  6: Bake in a preheated oven at 200°C for 12–15 minutes, until golden brown.
+
+=== burger-dressing ===
+TITLE: Burger Dressing
+CATEGORY: Dressing
+INGREDIENTS:
+  0: 3 dl Cashew, unsalted
+  1: 5 dl Water
+  2: 2 tbsp Lemon juice, fresh
+  3: 2 tbsp Tomato puree
+  4: 2 clove Garlic, raw
+  5: 1 tsp Cumin powder
+  6: 1 tsp Smoked paprika powder
+  7: 1 tsp Sea salt
+  8: 1 tsp Maple syrup
+  9: 1 pinch Pepper, cayenne, red
+  10: 2 tsp Mustard seeds
+  11: 1 tsp Onion powder
+  12: 1 tbsp Parsley, dried
+  13: 1 tbsp Basil, dried
+  14: 2 dl Olive oil
+STEPS:
+  0: Blend all the ingredients together until smooth.
+  1: Put in a dressing bottle.
+
+=== fr-27 ===
+TITLE: Cabbage Soup
+CATEGORY: Soup
+INGREDIENTS:
+  0: 0.5 medium Onion, yellow, Norwegian, raw
+  1: 2 clove Garlic, raw
+  2: 1.65 l Water, drinking water
+  3: 2 tbsp Vegetable bouillon, powder
+  4: 1 pcs Carrot, Norwegian, raw
+  5: 1.4 l Head cabbage, raw
+  6: 2.3 dl Tomato, canned
+  7: 1 tsp Sea salt
+  8: 2 tbsp Olive oil
+  9: 1 pcs Bay leaf, dried
+  10: 5 pcs Thyme, raw
+  11: 2 tbsp Parsley, Norwegian, raw
+STEPS:
+  0: Remove the core from the cabbage and cut into small chunks (1 -1.5 cm). Mix the water with the bouillon and set aside.
+  1: Heat a large, heavy-bottomed pot over medium heat. Once hot, add the oil, onions, carrots and a pinch of salt. Let the onion and carrot sweat until they soften (but do not brown). Add garlic and cook for about 1 minute.
+  2: Add the cabbage and a pinch of salt and let sweat for approximately 10 minutes, stirring from time to time until softened. Then add the stock (bouillon water), tomatoes, salt and bring to a simmer.
+  3: Add the seasonings to the soup and let simmer for about 15 minutes to infuse.
+  4: Check the carrots and simmer for another 10 minutes or so until cooked through and tender.
+  5: Add the parsley. Taste the soup for seasoning.
+
+=== fr-28 ===
+TITLE: Caesar Salad
+CATEGORY: Salad
+INGREDIENTS:
+  0: 1.5 pcs Bread, extra coarse (75-100%), purchased, Wholemeal bread without whole grains
+  1: 0.5 tbsp Olive oil
+  2: 0.5 pcs Romaine lettuce, raw
+  3: 30 g Tomatoes, sun-dried, dry
+  4: 0.5 pcs Avocado, raw
+STEPS:
+  0: Soak the sundried tomatoes for 5-10 minutes and then drain them.
+  1: Use croutons, or make them; Cut the bread into cubes, mix with oil and salt. Preheat the oven to 180°C and roast croutons for 10 minutes or untill fully done. Toss after 5 minutes.
+  2: Cut or tear the lettuce into smaller pieces.
+  3: Mix all the ingredients together.
+
+=== caraway-and-cashew-cheese ===
+TITLE: Caraway and Cashew Cheese
+CATEGORY: Spreads
+INGREDIENTS:
+  0: 4 dl Cashew, unsalted
+  1: 1 l Water, drinking water
+  2: 2 tsp Agar-agar
+  3: 1 clove Garlic, raw
+  4: 1 tbsp Onion powder
+  5: 1 tbsp Herb salt
+  6: 2 tbsp Lemon juice, bottled
+  7: 3 tsp Caraway, cumin, whole
+STEPS:
+  0: Blend all ingredients in a high speed blender unitl smooth. Remember to put just 2/3 of the caraway before blending and 1/3 after blending.
+  1: Bring the mixture to a boil in a pot and let it boil while stirring for at least 3-5 minutes.
+  2: Pour into molds and let cool down before refrigerating.
+
+=== fr-33 ===
+TITLE: Cashew Sour Cream
+CATEGORY: Dressing
+INGREDIENTS:
+  0: 2.4 dl Cashew, unsalted
+  1: 0.25 tsp Sea salt
+  2: 2 tbsp Lemon juice, fresh
+  3: 1.2 dl Water, drinking water
+STEPS:
+  0: Blend cashew, water, apple cider vinegar and lemon juice until smooth.
+  1: Adjust water till desired consistency.
+
+=== fr-34 ===
+TITLE: Cashew Vanilla Cream
+CATEGORY: Dessert
+INGREDIENTS:
+  0: 4.7 dl Cashew, unsalted
+  1: 2.4 dl Water, drinking water
+  2: 2 tbsp Honey
+  3: 1 pinch Vanilla powder
+  4: 1 pinch Sea salt
+STEPS:
+  0: Place the cashews, liquid, sweetener, vanilla and salt in a high speed blender. Process on high until very smooth, scraping down the sides of the blender jar from time to time.
+
+=== cashew-bechamel-sauce ===
+TITLE: Cashew Bechamel Sauce
+CATEGORY: Sauce
+INGREDIENTS:
+  0: 4.7 dl Cashew, unsalted
+  1: 2.4 dl Onion, yellow, Norwegian, raw
+  2: 2.5 tbsp Nutritional yeast
+  3: 2 clove Garlic, raw
+  4: 1 pinch Nutmeg, ground
+  5: 2 tbsp Olive oil
+  6: 1 tsp Salt, table salt
+  7: 1 tbsp Vegetable bouillon, fresh
+  8: 1.5 cup Water, drinking water
+  9: 1 tbsp Lemon
+STEPS:
+  0: In a bowl soak the cashews in water for 3-4 hours.
+  1: Heat pan to medium-low heat and add olive oil. add onions and sweat for 5-8 minutes until translusent.
+  2: Add garlic and sweat for a couple extra minutes.
+  3: Transfer into a blender and add the remaining ingredients and blend on a high speed till smooth.
+  4: Bring it to a boil and serve hot.
+
+=== cashew-cheese-sauce ===
+TITLE: Cashew Cheese Sauce
+CATEGORY: Sauce
+INGREDIENTS:
+  0: 12 g Cashew, unsalted
+  1: 175 ml Water
+  2: 2 tbsp Tapioca starch
+  3: 1.5 tbsp Nutritional yeast
+  4: 0.5 tsp Sea salt
+  5: 0.5 tsp Onion powder
+  6: 0.25 tsp Garlic powder
+  7: 1 pinch Turmeric, ground
+  8: 1 pinch Smoked paprika powder
+STEPS:
+  0: Make cashew and water into milk.
+  1: Put everything in a pot, and whisk it until it is combined, and after that turn the stove on, on medium heat.
+  2: Let it simmer until thick consistency, while you continually stir.
+
+=== cauliflower-soup ===
+TITLE: Cauliflower Soup
+CATEGORY: Soup
+INGREDIENTS:
+  0: 3.5 dl Cashew, unsalted
+  1: 3.5 dl Water
+  2: 1 large Onion, yellow, Norwegian, raw
+  3: 600 g Cauliflower, Norwegian, raw
+  4: 1.25 l Water
+  5: 2 tbsp Vegetable bouillon, powder
+  6: 0.75 tsp Sea salt
+  7: 1 tsp Lemon juice, fresh
+STEPS:
+  0: Blend cashews and water until smooth. Set aside.
+  1: Sautéé onions in 1 tsp of olive oil and 2 tbsp of water until almost clear (no brown).
+  2: Add cauliflower, water and seasoning and boil for 5 - 10 minutes.
+  3: Stir in the blended cashews and lemon juice, reheat just to boil before serving.
+
+=== fr-38 ===
+TITLE: Cheese Sauce for Onion Pie
+CATEGORY: Sauce
+INGREDIENTS:
+  0: 180 ml Cashew milk
+  1: 2 tbsp Tapioca starch
+  2: 1.5 tbsp Nutritional yeast
+  3: 0.5 tsp Salt, table salt
+  4: 0.5 tsp Onion powder
+  5: 0.25 tsp Garlic powder
+  6: 1 pinch Turmeric, ground
+  7: 1 pinch Smoked paprika powder
+STEPS:
+  0: Prepare cashew milk according to instructions. (see cook side sheet).
+  1: Put all ingredients in a sauce pan and stir with a whisk.
+  2: Once everything is combined, turn on the heat.
+  3: Turn the heat to low to medium and let it simmer while stirring constantly for one minute or until it gets a stretchy texture.
+  4: It is easier to handle when it is warm. To reheat, add a splash of water or plant based milk and stir constantly until heated through.
+
+=== cheesy-cauliflower-sauce ===
+TITLE: Cheesy Cauliflower Sauce
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 dl Water
+  1: 2.5 dl Cauliflower, Norwegian, raw
+  2: 1 tsp Onion powder
+  3: 2 clove Garlic, raw
+  4: 0.5 tbsp Lemon juice, bottled
+  5: 1 tbsp Potato flour
+  6: 0.125 tsp Turmeric, ground
+  7: 0.6 dl Nutritional yeast
+  8: 0  Sea salt
+STEPS:
+  0: Bring the water to a boil in a saucepan. Add the cauliflower, onion powder, garlic, and turmeric. Cover tightly and reduce the heat to very low. Simmer until the cauliflower is so tender that it easily comes apart when poked with a fork, about 15-20 minutes.
+  1: Carefully transfer the contents of the saucepan to a blender. Add all remaining ingredients. Blend, starting on low and increasing the speed until you’re at the highest setting. Blend until you have a completely smooth sauce.
+  2: Check taste and add salt as needed.
+  3: Pour the sauce back into the saucepan, and heat up, stirring occasionally. When it starts to buble, allow it to cook and thicken for at least another 2 minutes.
+
+=== fr-40 ===
+TITLE: Cheezy Cashew Kale Chips
+CATEGORY: Snack
+INGREDIENTS:
+  0: 3 dl Cashew, unsalted
+  1: 1.2 dl Nutritional yeast
+  2: 4 tsp Onion powder
+  3: 2 tsp Garlic powder
+  4: 1 tsp Hot sauce
+  5: 0.5 tsp Sea salt
+  6: 1.8 dl Soy milk
+  7: 1.8 dl Water, drinking water
+  8: 4 tbsp Lemon juice, fresh
+  9: 320 g Kale, raw
+STEPS:
+  0: To prepare the dressing, put all the ingredients (except the kale) in a high speed blender, blend until very smooth. You are looking for a creamy consistency.
+  1: To prepare the kale, first wash and dry it carefully. Then, remove the leaves from the stems, keeping the pieces of kale as big as possible (this is beacuse they will shrink considerably once dehydrated/baked in the oven).
+  2: Place the kale into a large bowl and pour the dressing over the kale.
+  3: With your hands (wear gloves), start to massage the kale making sure to evenly coat it with the dressing.
+  4: Once done, place the coated kale leaves onto dehydrator trays. Make sure the leaves are in a single layer, otherwise they will not dehydrate evenly. Dehydrate at 115 °F (46°C) for 6 hours (or until crispy).
+
+=== fr-41 ===
+TITLE: Chickpea Omelet
+CATEGORY: Breakfast
+INGREDIENTS:
+  0: 250 g Tofu, soyabønneprodukt
+  1: 250 ml Soy milk
+  2: 6 tbsp Chickpea flour
+  3: 2 tbsp Canola oil
+  4: 2.5 tbsp Nutritional yeast
+  5: 1.5 tsp Garlic powder
+  6: 1 tsp Onion powder
+  7: 0.5 tsp Pepper, cayenne, red
+  8: 0.25 tsp Coriander, raw
+  9: 0.15 tsp Turmeric, ground
+  10: 2 tsp Soy sauce
+  11: 0.25 tsp Black salt
+  12: 1 pcs Parsley, Norwegian, raw
+  13: 1 pcs Bell pepper, red, raw
+  14: 1 pcs Spring onions, raw
+STEPS:
+  0: Preheat the oven at 170 degrees.
+  1: Blend all the ingredients except parsley in a high speed blender for 30 seconds.
+  2: Pour the mixture in a form lined with baking paper (round or squared), the parsley and sprinkle with paprika and spring onion. Bake for 15-20 minutes at 170 degrees.
+  3: Serve in a round shape or pizza slices with sourdough bread, tomato and cucumber.
+
+=== fr-42 ===
+TITLE: Chickpea Salad
+CATEGORY: Salad
+INGREDIENTS:
+  0: 2.4 dl Cashew, unsalted
+  1: 0.5 tsp Sea salt
+  2: 150 ml Water, drinking water
+  3: 5 tbsp Lemon juice, fresh
+  4: 7.1 dl Chickpeas, cooked
+  5: 2.5 tbsp Onion, red, Norwegian, raw
+  6: 2.5 medium Celery stalks, Norwegian, raw
+  7: 2 tbsp Nori, dried seaweed
+  8: 1.25 tsp Sea salt
+  9: 0.5 medium Cucumber, Norwegian, raw
+STEPS:
+  0: To make the sour cream, drain and rinse the cashews. Next, blend together the cashews, water and lemon juice, until you reach a really smooth consistency.
+  1: Place chickpeas in a large bowl.
+  2: Using a potato masher or a fork, mash the chickpeas to break them up. Make sure all chickpeas are at least partly broken up.
+  3: Next, add the onion, celery and cucumber. Add the nori flakes, cashew cream and salt and mix to combine.
+  4: Place small amounts of the salad in washed salad leaves for serving.
+
+=== chickpea-tofu ===
+TITLE: Chickpea Tofu
+CATEGORY: Other
+INGREDIENTS:
+  0: 120 g Chickpea flour
+  1: 7.5 dl Water
+  2: 0.5 tsp Sea salt
+  3: 1 tbsp Olive oil
+STEPS:
+  0: Whisk together the chickpea flour, salt, olive oil and 1/3 of the water. Make sure it is without lumps.
+  1: Heat up the rest of the water. When it is cooking, lower the heat to medium and pour in the chickpea mixture slowly while you continuously whisk.
+  2: Continue stirring until it reaches a pudding-like consistency. This will take a few minutes.
+  3: Pour the mixture into a mold while it is hot and let it cool down and harden.
+
+=== fr-44 ===
+TITLE: Chinese Cabbage Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0.25 pcs Chinese cabbage, Norwegian, raw
+  1: 3 pcs Spring onions, raw
+  2: 0.5 dl Almonds
+  3: 0.5 tbsp Honey
+  4: 0.5 dl Lemon juice, fresh
+  5: 1 tbsp Soy sauce
+  6: 1 tbsp Sesame oil
+STEPS:
+  0: Preheat the oven to 170 °C. Spread the almonds out on a baking tray and bake them for 8 minutes. Let them cool down and then chop roughly.
+  1: Whisk together the honey, lemon juice, soy sauce, and sesame oil.
+  2: Slice thinly the chinese cabbage and the spring onion and place them in a bowl. Add the almonds and dressing, then mix the salad just before serving.
+
+=== chinese-soup ===
+TITLE: Chinese Soup
+CATEGORY: Soup
+INGREDIENTS:
+  0: 200 g Leeks, Norwegian, raw
+  1: 1 pcs Onion, yellow, Norwegian, raw
+  2: 3 tbsp Olive oil
+  3: 5 clove Garlic, raw
+  4: 1 kg Carrot, Norwegian, raw
+  5: 1 kg Celery root, Norwegian, raw
+  6: 2 tbsp Sea salt
+  7: 4.5 l Water
+  8: 2 tsp Ginger, raw
+  9: 200 ml Cashew, unsalted
+  10: 4 tbsp Vegetable bouillon, powder
+  11: 400 ml Coconut milk
+  12: 50 g Rice noodles, dry
+STEPS:
+  0: Sautéé onion and leek in a little oil. When it´s starting to get soft, add garlic.
+  1: Grate celery and carrots or slice them in thin stripes.
+  2: Sautée all vegetables with salt for 5 min. Add boiled water and continue to cook till carrots are soft.
+  3: Take part of the soup (for eksempel 1L) and blend with cashew and ginger till smooth.
+  4: Soak rice noodles in warm water for 2 min. Cut them 3-4 cm long and add to soup.
+  5: Bring to a boil, and it´s ready.
+
+=== breaded-tofu-sticks ===
+TITLE: Breaded Tofu Sticks
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 tbsp Nori, dried seaweed
+  1: 50 g White flour, fine
+  2: 2 tbsp Nutritional yeast
+  3: 0.25 tsp Salt, table salt
+  4: 75 ml Soy milk
+  5: 2 tbsp Nutritional yeast
+  6: 60 g Bread crumbs, gluten free
+  7: 30 g Almonds
+  8: 0.5 tsp Salt, table salt
+  9: 0.25 tsp Onion powder
+  10: 0.25 tsp Garlic powder
+  11: 0.125 tsp Pepper, cayenne, red
+STEPS:
+  0: Prepare three deep containers for the breading: a) Mix flour, nutritional yeast, salt and powdered nori seaweed (put seaweek papers in blender some seconds to make it powder).
+  1: b)Mix soya milk and nutritional yeast.
+  2: c) Blend in thermomix for 15 seconds at highest power the remaining ingredients (GF bread crumbs to cayenne pepper).
+  3: Cover the tofu slices in flour mixture, then toss in milk mixture and afterward roll in breadcrumbs mixture.
+  4: In a preheated oven, bake at 200 degrees for 20-25 minutes.
+  5: Optional: Slices of cherry tomato and fresh leafs on top before baking (thyme, sage leafs).
+  6: Optional: garnish with coconut bacon and chives (add just before serving).
+
+=== fr-29 ===
+TITLE: Candy Rolls
+CATEGORY: Dessert
+INGREDIENTS:
+  0: 480 g Strawberries, raw
+  1: 210 g Banana, raw
+  2: 60 g Date, dried
+  3: 0.25 tsp Sea salt
+STEPS:
+  0: Defrost strawberries and bananas (it should be FULLY DEFROSTED; otherwise, you will not reach a smooth consistency).
+  1: Add all the ingredients into the Vitamix except for dates. Blend for about 1.5 min at the highest setting (until smooth). Then, add the dates and blend for another 1 min at the highest setting using the black stick.
+  2: Directly from the Vitamix, pour out 8 dl on a tray. Distribute it evenly with a spatula.
+  3: Dehydrate for at least 9 hours or more if needed at 145 °F or 63 °C (it is done when it is fully dried, check with the fingers).
+  4: Carefully remove the fruit leather from the tray right away, otherwise, it will be harder to remove it later on.
+  5: Roll up the whole fruit leather as tight as possible and then cut into approx. 2.4 cm wide (use a ruler as a guide in the beginning).
+  6: Store it in an airtight container or pack it right away. Use a tong or clipper to put the candies into the packaging or bag.
+
+=== caramelized-nuts ===
+TITLE: Caramelized Nuts
+CATEGORY: Dessert
+INGREDIENTS:
+  0: 1 dl Pecans
+  1: 1 dl Almonds
+  2: 1 dl Hazelnuts
+  3: 0.5 dl Maple syrup
+  4: 1 tbsp Coconut oil
+  5: 0.5 tsp Cinnamon, ground
+  6: 1 pinch Sea salt
+STEPS:
+  0: Mix the maple sirup, coconut oil, cinnamon ans salt together.
+  1: Chop the nuts in smaller pieces, either with a knife or in the food prosessor.
+  2: option 1: Put the nuts in a pan on medium heat 3-5min. stiring regularly. Then add the sirup mix and stir continuosly 2-3min. Then spread it out on a tray with baking paper to cool down.
+  3: option 2: Mix everything together well and put it evenly out on a tray with bakingpaper and bake in the oven at 160 degrees for 12-15min. (stir ocationally).
+
+=== carob-spread ===
+TITLE: Carob Spread
+CATEGORY: Spreads
+INGREDIENTS:
+  0: 5 dl Hazelnuts
+  1: 3.5 dl Date, dried
+  2: 3 dl Water, drinking water
+  3: 2 tbsp Carob powder
+  4: 1 tbsp Barley coffee
+  5: 0.25 tsp Sea salt
+STEPS:
+  0: In a preheated oven, roast the hazelnuts 170 degrees for 15 minutes.
+  1: Soak the dates in cooking water for 15 minutes until they are soft.
+  2: Blend the hazelnuts for 2-3 minutes in a food processor until smooth. It is important that the nuts are blended until they releases the oil and it turn into butter.
+  3: Add the remaining ingredients and blend for 2 minutes.
+
+=== chipotle-sauce ===
+TITLE: Chipotle Sauce
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 dl Cashew, unsalted
+  1: 4 tbsp Nutritional yeast
+  2: 2 pcs Bell pepper, red, raw
+  3: 2 clove Garlic, raw
+  4: 1.2 tsp Sea salt
+  5: 0.25 tsp Chilli flakes
+  6: 2.5 dl Water
+  7: 1 tbsp Lemon juice, bottled
+STEPS:
+  0: Soak the cashews.
+  1: Roast the bell pepper at 200 celsius for 20 minutes. Then remove the green part, the skin and seeds.
+  2: Blend all ingredients.
+  3: Add the lemon juice slowly.
+  4: Cook a few minutes while stiring regularly, until it has a thicker consistency.
+  5: Let it cool down.
+
+=== chorizo-with-potato-taco ===
+TITLE: Chorizo with Potato Taco
+CATEGORY: Lunch
+INGREDIENTS:
+  0: 1 pcs Chili, red, raw
+  1: 2 tbsp Smoked paprika powder
+  2: 1 tbsp Oregano, dried
+  3: 0 dash Sea salt
+  4: 2 tbsp Nutritional Yeast
+  5: 0.5 dl Soy sauce
+  6: 1 tsp Pepper, cayenne, red
+  7: 226 g Potato, raw
+  8: 2.5 tsp Cumin powder
+  9: 400 g Tofu, soyabønneprodukt
+  10: 1 tbsp Coriander powder
+  11: 1 tsp Rosemary, dried
+STEPS:
+  0: Steam the potatoes in the oven or if you don't have that function, cook the potatoes in water half way through. Make sure you don't overcook it.
+  1: Roast/cook/sautéé the tofu with soysause, chili and seasoning.
+  2: Mix everything and serve hot.
+
+=== citrus-dressing ===
+TITLE: Citrus Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 dl Orange juice
+  1: 125 ml Olive oil
+  2: 2 tbsp Honey
+  3: 1 clove Garlic, raw
+  4: 2 tsp Sea salt
+  5: 1 tsp Coriander powder
+  6: 1 pinch Pepper, cayenne, red
+STEPS:
+  0: Blend all the ingredients for 2 minutes in the VitaMix.
+
+=== fr-49 ===
+TITLE: Classic Greek Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 large Tomato, unspecified, raw
+  1: 0.5 medium Cucumber, Norwegian, raw
+  2: 0.25  Onion, red, Norwegian, raw
+  3: 60 ml Olives, greens, pickles
+  4: 0.5  Bell pepper, green, raw
+STEPS:
+  0: Cut tomatoes, cucumber and onion into 2cm (1in) cubes.
+  1: Put all the ingredients (except feta) into a mixing bowl and combine together gently.
+  2: Serve feta cheese separately.
+
+=== fr-50 ===
+TITLE: Coconut Macaroon Balls
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0.5 cup Cashew, unsalted
+  1: 2 cup Coconut, shredded
+  2: 0.5 tsp Sea salt
+  3: 3 tbsp Lemon peel
+  4: 0.25 cup Honey
+STEPS:
+  0: Crush the cashews in a food prosessor until flour. Place in a bown and set aside.
+  1: Put the rest of the ingredients in the foodprosessor (the honey on top so it doesn´t stick to the bottom), and blend until it is fully blended and begins to bind and form a ball.
+  2: Add the sweet coconut mixture to the cashew flour and combine thoroughly.
+  3: Use a ice cream scoop, scoop the mixture and press together with the palm of your hand - forming a ball in the size of 2tbsp.
+  4: Transfer to the refridgerator to chill before serving.
+
+=== fr-51 ===
+TITLE: Coconut Mozzarella
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 55 g Cashew, unsalted
+  1: 1.2 dl Water, drinking water
+  2: 1 tbsp Lemon juice, fresh
+  3: 2 tbsp Nutritional yeast
+  4: 1.5 tsp Sea salt
+  5: 13 g Tapioca starch
+  6: 60 g Coconut oil
+  7: 1.2 dl Water, drinking water
+  8: 7 g Agar-agar
+STEPS:
+  0: In a high-speed blender, add the cashews, water, lemon juice, nutritional yeast and salt. Blend the mixture until very smooth.
+  1: Add the tapioca flour and melted coconut oil and blend unitl they are fully combined. Set the mixture aside.
+  2: Prepare an ice bath: add some ice and water to a large bowl and set it aside.
+  3: Then add the remaining water and agar agar powder to a medium-sized pot and bring to a simmer over medium heat.
+  4: Cook the mixture until it starts to bubble, thicken and becomes a bit translucent (between 5 and 10 minutes).
+  5: Add the mixture from the blender into the agar agar mixture and whisk to combine.
+  6: Stir continuosly until the mixture starts to look smooth, stretchy and slightly shiny. Once done, remove from the heat.
+  7: To form the mozzarella balls, use an ice-cream scoop to scoop out the hot mozzarella. Place the cheese filled ice cream scoop into the ice bath and hold it there for a few seconds to let it set.
+  8: Then, turn it over and release the mozzarella ball into the water.
+  9: Once done, place the bowl in the refrigerator and let it chill for no more than 30 mins.
+
+=== fr-52 ===
+TITLE: Cranberry Jam
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 5 dl Lingoberries, raw
+  1: 0.5 dl Water, drinking water
+  2: 2.5 tbsp Sukrin
+  3: 1 tbsp Cornstarch
+  4: 2 tbsp Water, drinking water
+STEPS:
+  0: Boil the lingonberries with the first part of water for 7 minutes.
+  1: Meanwhile, mix in a cup the cornstarch, sukrin and the second part of water (cold).
+  2: Add the mix gradually to the lingonberries.
+  3: Stir it continually and cook for 3 more minutes, then turn the heat down.
+  4: Let it cool down before putting it in the refrigiator, and serve it cold.
+
+=== fr-53 ===
+TITLE: Croutons
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0  Bread, extra coarse, 75% wholemeal, home-baked
+  1: 0  Olive oil
+  2: 0  Sea salt
+  3: 0  Oregano, dried
+  4: 0  Thyme, dried
+STEPS:
+  0: Cut the bread slices into approximately 1 cm cubes.
+  1: Place them in a bowl and season with olive oil, salt, and spices.
+  2: Bake for 15 minutes at 180°C.
+
+=== crunchy-carrot-salad ===
+TITLE: Crunchy Carrot Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 4 large Carrot, Norwegian, raw
+  1: 2 pcs Spring onions, raw
+  2: 1 handful Parsley, Norwegian, raw
+  3: 1.2 dl Pecans
+STEPS:
+  0: Mix all ingredients together.
+
+=== crunchy-sweet-cabbage-salad ===
+TITLE: Crunchy Sweet Cabbage Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 200 g Red cabbage, raw
+  1: 200 g Head cabbage, raw
+  2: 1 large Carrot, Norwegian, raw
+  3: 1 small Spring onions, raw
+  4: 0.5 dl Cranberries dried
+  5: 0.5 dl Pecans
+  6: 2 tbsp Coriander, raw
+STEPS:
+  0: Mix all ine ingredients together.
+
+=== fr-56 ===
+TITLE: Cucumber Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 dl Soy milk
+  1: 1 dl Cashew, unsalted
+  2: 70 g Cucumber, Norwegian, raw
+  3: 1 clove Garlic, raw
+  4: 30 g Tofu, soyabønneprodukt
+  5: 10 g Spring onions, raw
+  6: 0.5 tsp Nutritional yeast
+  7: 0.5 tsp Sea salt
+  8: 1.5 tsp Dill, raw
+  9: 0.5 tbsp Herb salt
+  10: 0.5  Lemon, raw
+STEPS:
+  0: Using a high speed blender, blend all the ingredients together until very smooth (at least for 1 minute).
+  1: Let it cool down in the fridge before serving.
+  2: Garnish it with fresh dill and brunoise cucumber (cut in small cubes).
+
+=== fr-57 ===
+TITLE: Cucumber Raita
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 pcs Cucumber, Norwegian, raw
+  1: 1 tsp Onion powder
+  2: 71 ml Parsley, Norwegian, raw
+  3: 0.5 tsp Cumin powder
+  4: 0.5 tsp Sea salt
+  5: 4 dl Cashew sour cream
+STEPS:
+  0: Make cashew sour cream (see seperate recipe).
+  1: Combine all ingredients and gently mix together.
+  2: Season to taste.
+
+=== cucumber-and-sunflowerseed-dressing ===
+TITLE: Cucumber and Sunflowerseed Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 pcs Cucumber, Norwegian, raw
+  1: 700 ml Soy milk
+  2: 200 ml Sunflower seeds
+  3: 3 tbsp Lemon juice, fresh
+  4: 1 tbsp Herb salt
+  5: 2 tsp Onion powder
+  6: 2 tsp Dill, raw
+STEPS:
+  0: Blend the sunflower seeds with 500 ml of the soy milk in a high-speed blender.
+  1: Add the rest of the ingredients except the lemon, and continue blending.
+  2: When the mixture is smooth, add the lemon juice (as a thickener) while the blender is running.
+
+=== dal-stew ===
+TITLE: Dal Stew
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.4 dl Lentils, red/pink, dry
+  1: 4 tbsp Olive oil
+  2: 6 leave Bay leaf, dried
+  3: 0.5 tsp Mustard seeds
+  4: 0.25 tsp Fenugreek seeds
+  5: 0.5 tbsp Garlic, raw
+  6: 0.5 tbsp Ginger, raw
+  7: 1 medium Onion, yellow, Norwegian, raw
+  8: 1 tsp Cumin powder
+  9: 1 tsp Coriander powder
+  10: 1 tsp Chili powder
+  11: 0.5 tsp Turmeric, ground
+  12: 1 tsp Sea salt
+  13: 2 medium Tomato, Norwegian, raw
+  14: 1 tsp Lemon, raw
+  15: 2 tbsp Coriander, raw
+STEPS:
+  0: Soak the lentils, at least 20min.
+  1: Then rinse and cook in a pot with water, until the lentils are tender.
+  2: Once the lentils are cooked, have the lentils with some water in a blender and blend, until smooth.
+  3: In a seperate pot, heat a little olive oil, along with mustard seeds, bay leafs and fenugreek seeds.
+  4: Once these whole spices are fragrant, and the mustard start to crack, then add onions and cook until soft or golden. Make sure not to burn it. Don´t have too high heat and add a little water if needed.
+  5: Then add ginger and garlic and continue cooking for a few minutes. Make sure it does not stick. Add a little water if needed.
+  6: Then add grounded spices, and let it cook for a few minutes.
+  7: Then add tomatoes, and let it cook for a few minutes.
+  8: Finally add the blended lentils. Add water if needed to your desired consistency. Let everything simmer for at lest 15 minutes. (the longer cooking time the more the flavours enrich).
+  9: Remove the bay leaves.
+  10: Add lemon zest and mix it in.
+  11: Top with chopped coriander or parsley as garnish.
+
+=== fr-60 ===
+TITLE: Dried Fruit Jam
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 dl Date, dried
+  1: 2.5 dl Apricot, raw
+  2: 1 l Raisins
+  3: 0.5 l Figs, dried
+  4: 0.5 l Prunes
+  5: 2 l Water, drinking water
+STEPS:
+  0: Cut the dried fruits that are bigger than the raisins into smaller pieces.
+  1: Put the dried fruits in a pot.
+  2: Boil the water in a cooker and pour over the mixed fruits and cook for 2-3min.
+  3: Let cool down before storing in the cooler.
+
+=== easy-colombian-salad ===
+TITLE: Easy Colombian Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 pcs Cucumber, Norwegian, raw
+  1: 3 medium Carrot, Norwegian, raw
+  2: 5 pcs Tomato, Norwegian, raw
+  3: 1 medium Onion, red, Norwegian, raw
+STEPS:
+  0: Mix all ingredients together.
+
+=== ellens-granola ===
+TITLE: Ellen's Granola
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3 l Buckwheat, whole grain
+  1: 1.5 l Date, dried
+  2: 7.5 dl Water, drinking water
+  3: 5 dl Coconut, shredded
+  4: 2.5 dl Sesame seeds, with shell
+  5: 5 dl Sunflower seeds
+  6: 1.25 tbsp Salt, table salt
+  7: 10 tsp Cinnamon, ground
+  8: 750 g Apple, Red aroma, raw
+  9: 5 dl Raisins
+STEPS:
+  0: Soak 3 liter buckwheat for 20 minutes. Afterwards place it in big sives and rinse it three times a day for 1-2 days. Make sure to rinse it thoroughly each time.
+  1: When the sprouts has come out, it’ ready.
+  2: If not making Ellen´s granola that day; Dehydrate the sprouted buckwheat for 24 hours at 39- 40 degrees.
+  3: Soak the dates in boiling water for 10 minutes and blend it into a paste with seasonings and salt.
+  4: Mix the sprouted buckwheat (that was 3liter before sprouting but are bigger volume now) together with the date paste and the remaining ingredients.
+  5: Spread the mix onto dehydrating trays; Drissle the mixture on the trays and push a little down with your fingertips if there is places where it is too tall to fit in the dehydrator.
+  6: Dehydrate for about 24 hours at 39-40 degrees.
+  7: When it´s finished dehydrating, let the granola cool down before storing in airtight container at room temperature.
+  8: Add raisins before storing, if this portion is for selling.
+
+=== fr-63 ===
+TITLE: Erik's Granola
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 5.6 l Small oats
+  1: 5.6 l Oats, big
+  2: 6 dl Sesame seeds, without shell
+  3: 17.5 dl Almonds
+  4: 6 dl Sunflower seeds
+  5: 12.5 dl Coconut, shredded
+  6: 1400 g Banana, raw
+  7: 1 l Water, drinking water
+  8: 12.5 dl Date, dried
+  9: 5 tsp Cinnamon, ground
+  10: 5 tsp Coriander powder
+  11: 2.5 tsp Sea salt
+  12: 1.2 l Raisins
+STEPS:
+  0: Preheat the oven to 100 °C.
+  1: Put the almonds in the food professor and blend until the almonds are chopped. (not flour).
+  2: Mix all dry ingredients in a large bowl (oat - coconut). Except the raisins!
+  3: Blend remaining ingredients, besides raisins, until smooth.
+  4: Add the blended mix to the dry mix and mix it in thoroughly.
+  5: Spread the mix onto baking trays with baking paper or sillicon mats.
+  6: Bake for 2hours, and when it is finished baking, let granola cool down before storing in an airtight container at room temperature.
+  7: Add raisins before storing, if this portion is for selling.
+
+=== fr-64 ===
+TITLE: Falafel
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 7.2 dl Chickpeas, cooked
+  1: 3 clove Garlic, raw
+  2: 0.5 small Onion, yellow, Norwegian, raw
+  3: 3 tbsp White flour, fine
+  4: 0.25 tsp Baking powder
+  5: 1 tsp Sea salt
+  6: 2 tbsp Parsley, Norwegian, raw
+  7: 0.25 tsp Pepper, white
+  8: 2 tbsp Mint, fresh
+STEPS:
+  0: Place dried chickpeas into a large bowl and cover witg cold water letting soak overnight.
+  1: In a food processor pulse garlic couple times then onion couple times add chickpeas,salt,pepper, backing powder and 2 tbsp of flour and pulse to an almost paste.
+  2: When done transfer into large bowl and add parsley and mint.
+  3: Cover bowl in plastic wrap and refrigerate for 1-2 hours.
+  4: Check the falafels to see if they hold together and for taste.
+  5: Preheat the oven to 200 and bake for 15 min.
+
+=== farewell-sesame-eggplant ===
+TITLE: Farewell Sesame Eggplant
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 7.0 Eggplant, raw
+  1: 0 8.0 Soy milk
+  2: 0 1.5 Nutritional yeast
+  3: 0 800.0 Whole wheat flour, fine
+  4: 0 3.0 Nutritional yeast
+  5: 0 3.0 Olive oil
+  6: 0 16.0 Garlic, raw
+  7: 0 1.5 Parsley, Norwegian, raw
+  8: 0 850.0 Bread crumbs
+  9: 0 3.0 Sesame seeds, with shell
+  10: 0 2.5 Onion powder
+  11: 0 2.5 Garlic powder
+  12: 0 1.0 Pepper, cayenne, red
+STEPS:
+  0: Wash eggplants and then cut them in round slices 1 cm thick.
+  1: Take a pasta strainer and place the slices in it neatly in a layer. As you proceed, pour 2 tbsp of salt and spread evenly. Let them be for a couple of hours (when in a hurry, 1h can also be suffiecient). This process is important as in this way a substance called solanine would be released - making eggplants tastier (the bitter aftertaste would be gone) and healthier (solanine is not so good for the body).
+  2: Once done, make sure that you wash every slice carefully in order to get rid of all that salt.
+  3: Do not put any salt anywhere else from this stage on.
+  4: At this point prepare 4 bowls: 1) soy milk and nutritional yeast; 2) flour and nutritional yeast; 3) olive oil, garlic and parsley; 4) all the ingredients from bread crumbs through cayenne pepper.
+  5: Using one hand for wet bowls and the other one for dry, put the eggplant slice in sequence 1,2,3,4. When arriving at n.3. do not dip the slice, but rather take a cooking brush and drizzle some oil and garlic and parsley on both sides and then dip in bowl n.4, making sure that is well covered in crumbs.
+  6: Preheat the oven at 180 °C. Bake eggplant for 15 min.
+
+=== feld-salad-with-pomegranate ===
+TITLE: Feld Salad with Pomegranate
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 130 g Feld salad
+  1: 0.5 pcs Cucumber, Norwegian, raw
+  2: 2 pcs Spring onions, raw
+  3: 1 l Cherry tomato, imported, raw
+  4: 1 pcs Pomegranate, raw
+STEPS:
+  0: Rinse the cucumber, tomato and spring onion.
+  1: Cut the cucumber and spring onion in thin slices and the cherry tomatoes in 2 or 4 pieces.
+  2: Mix all the veggies together and sprincle the pome granate seeds on top.
+
+=== fermented-red-cabbage ===
+TITLE: Fermented Red Cabbage
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 kg Red cabbage, raw
+  1: 3 tbsp Sea salt
+  2: 2 tsp Caraway, cumin, whole
+STEPS:
+  0: Rince the cabbage head good. Throw away the two first layers of cabbage leafs if they don´t look fresh.
+  1: After that save one leaf of cabbage for later use.
+  2: Slice the cabbage head very finely using a knife or mandoline and place it in a bowl.
+  3: Sprinkle the salt evenly over the cabbage.
+  4: Massage the cabbage with your hands for 5–10 minutes until it softens and has released a good amount of liquid (the brine).
+  5: Mix in caraway.
+  6: Firmly press the cabbage into the jar or crock, packing tightly so that liquid rises above the cabbage.
+  7: Place the reserved outer leaf on top and weigh it down.
+  8: Cover with a kitchen towel to keep out dust.
+  9: Leave at room temperature (18–22°C) for 5–10 days.
+  10: Check daily: press down to keep the cabbage submerged and taste after 5 days. When it tastes pleasantly tangy and slightly sour, it’s done!
+  11: Once fermented to your liking, seal the jars, and put it in the refrigerator.
+
+=== fig-spread ===
+TITLE: Fig Spread
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 500 g Figs, dried
+  1: 0  Water
+  2: 1.5 dl Coconut, shredded
+  3: 2 tbsp Lemon juice, fresh
+STEPS:
+  0: Cover the figs with water (not too much) and let it soak.
+  1: Blend the figs and water.
+  2: Mix in coconut and lenom juice.
+
+=== fr-69 ===
+TITLE: Fresh Vegetable Bouillon
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 100 g Celery stalks, Norwegian, raw
+  1: 100 g Celery root, Norwegian, raw
+  2: 200 g Fennel, raw
+  3: 150 g Leeks, Norwegian, raw
+  4: 200 g Carrot, imported, raw
+  5: 30 g Tomatoes, sun-dried, dry
+  6: 100 g Onion, yellow, Norwegian, raw
+  7: 2 clove Garlic, raw
+  8: 10 g Parsley, Norwegian, raw
+  9: 175 g Sea salt
+STEPS:
+  0: Start with celery root and carrots and put them in the blender. Pulse them several times until they start to break down.
+  1: Then add fennel, leeks, celery, shallots and garlic and pulse again.
+  2: Add the sundried tomatoes and blend everything together.
+  3: Next, add the salt and pulse a few times.
+  4: Then add fresh herbs and pulse again until you reach a nice, moist, paste-like consistency.
+  5: If not to use right away, place the paste into a container and freeze.
+
+=== fr-70 ===
+TITLE: Frittata
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 450 g Tofu, soyabønneprodukt
+  1: 1 cup Water
+  2: 1 cup Cashew, unsalted
+  3: 2 tbsp Cornstarch
+  4: 2 tbsp Nutritional yeast
+  5: 2 tsp Sea salt
+  6: 1 tsp Turmeric, ground
+  7: 1 tsp Garlic powder
+  8: 1 pinch Pepper, cayenne, red
+  9: 3 medium Onion, red, Norwegian, raw
+  10: 2 medium Sweet potato, raw
+  11: 1 large Tomato, unspecified, raw
+  12: 1 dl Olive, black, canned
+  13: 1 dl Parsley, Norwegian, raw
+  14: 1 dl Dill, raw
+  15: 1 tbsp Olive oil, extra virgin, virgin oil
+  16: 1 tbsp Maple syrup
+  17: 1 tbsp Lemon juice, fresh
+  18: 0 tsp Sea salt
+STEPS:
+  0: Blend all the first ingredients (including cayenne pepper) to a smooth batter.
+  1: To roast the sweet potatoes; peel and cut the sweet potatoes in medium dice, mix with olive oil and salt and bake it in the oven at 170celsius for 10-15min.
+  2: To caramelize onions; cut the onions in half and then thin slices. Sautéé with olive oil, salt, maple syrup and lemon juice. Use a lid or stir regularly.
+  3: Mix the batter, caramelized onion, roasted sweet potatoes and the rest of the ingredients, gently.
+  4: Put baking paper in the bottom of a round cake form and brush olive oil on the side of the pan. Then pour in the mixture.
+  5: Bake for 30 min. at 170 celsius with cover and then 15min more sithout cover.
+
+=== fruit-crisp ===
+TITLE: Fruit Crisp
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 medium Apple, Granny Smith, Golden Delicious, raw
+  1: 2.4 dl Raspberries, raw
+  2: 1.2 dl Plum, raw
+  3: 0.6 dl Small oats
+  4: 1.2 dl Whole wheat flour, fine
+  5: 2 tbsp Honey
+  6: 0.25 tsp Cinnamon, ground
+  7: 2 tbsp Coconut oil
+STEPS:
+  0: Preheat the oven to 175°C.
+  1: Remove the core from the apples and stone from the plums. Then cut them in cubes or slices.
+  2: Prepare a baking tray with bakingpaper or oil. Put the apples, plums and raspberries evanly out in layers or mix together the fruits with raspberries in a bowl and transfer to a baking tray.
+  3: Melt the coconut oil and mix it with the rest of the ingredients, and stir until well combined. Then drissle/srumble it evenly on top of the fruits.
+  4: Bake for 35-40 minutes until the fruit is cooked through.
+
+=== fruit-salad ===
+TITLE: Fruit Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.4 dl Apple, imported, raw
+  1: 2.4 dl Watermelon, raw
+  2: 2.4 dl Pear, imported, raw
+  3: 2.4 dl Pineapple, canned, with its own juice
+  4: 2.4 dl Honeydew melon, raw
+  5: 2.4 dl Grape, unspecified, raw
+STEPS:
+  0: Mix all the fruits in a bowl.
+
+=== fr-73 ===
+TITLE: Garden Vegetable Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 6.178 kokt
+  1: 0  i små terninger
+  2: 0 8.254 i terninger
+  3: 0 6.114 i grove terninger
+  4: 0 5.42 i tynne skiver
+  5: 0  i skiver
+  6: 0 6.107 i tykke skiver
+  7: 0 6.555 finhakket
+  8: 0 6.195 varm
+  9: 0  kald
+  10: 0  kokende
+  11: 0 6.53 siktet
+  12: 0 6.531 silt
+  13: 0 6.62 most
+  14: 0 6.757 skrellet
+  15: 0 6.621 hakket
+  16: 0 6.529 grovhakket
+  17: 0 6.622 finhakket
+  18: 0 6.758 blanchert
+  19: 0 6.522 smeltet
+  20: 0 6.523 fast
+  21: 0 6.521 finmalt
+  22: 0 6.764 revet
+  23: 0 6.011 revet, smått
+  24: 0  revet, stort
+  25: 0 6.741 ristet
+  26: 0 6.098 strimlet
+  27: 0 6.014 smuldret
+  28: 0 6.012 lunkent
+  29: 0 6.524 uten stilk
+  30: 0 6.749 blader
+  31: 0 6.148 moden
+  32: 0 5.454 juiced
+  33: 0 5.455 bløtlagt
+  34: 0 5.211 brunoise
+  35: 0 5.211 halvert
+  36: 0  frossen
+  37: 0 12.018 valgfri
+  38: 0 10.133 stilken
+  39: 0 6.119 kvart
+  40: 0  fin
+  41: 0 6.525 uten stein
+  42: 0 5.002 kokende
+  43: 0  uskrellet
+  44: 0 5.001 plante
+  45: 0 5.447 revet/strimlede
+  46: 0 6.151 små buketter
+  47: 0 6.111 knust
+STEPS:
+  0: Sauté onion and leek with 1 tsp oil and a bit of water. After onion turns translucent, add garlic and sauté 30 seconds. Add carrot, celery root and parsnip, bay leaf and lemon with the peel, and sauté som eminutes more.
+  1: Add water and bring to boil until hard vegetables are halfway done. Then add the rest of the ingredients and cook until all vegetables are done.
+
+=== fr-74 ===
+TITLE: Garlic and Cashew Cheese
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 4 dl Cashew, unsalted
+  1: 3 clove Garlic, raw
+  2: 1 l Water, drinking water
+  3: 1 tbsp Onion powder
+  4: 2 tsp Agar-agar
+  5: 1 tbsp Herb salt
+  6: 4 tbsp Lemon juice, bottled
+  7: 3 tbsp Garlic powder
+STEPS:
+  0: Blend al lingredients in a high speed blender unitl smooth.
+  1: Bring the mixture to a boil in a pot and let it boil while stirring for at least 3-5 minutes.
+  2: Pour into molds and let it cool down before refrigerating.
+
+=== gluten-free-oat-buns ===
+TITLE: Gluten Free Oat Buns
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 100 g Oat flour
+  1: 60 g Potato flour
+  2: 1 tsp Baking powder
+  3: 1.5 tsp Fibre husk
+  4: 1 tbsp Flaxseeds
+  5: 2 tbsp Water
+  6: 1 tsp Honey
+  7: 1 tbsp Olive oil
+  8: 1 dl Soy milk
+  9: 2 dl Flour, gluten-free, Jyttemel Original
+STEPS:
+  0: Put the flaxseeds in the water to soak.
+  1: Mix all the dry ingredients together.
+  2: Add the rest of the ingredients, including the soaked flaxseeds, and mix well.
+  3: Let the dough rest for 5-10min to let the fiber husk absorb liquid.
+  4: Form into balls (approx 100g for each buns) and put in a tray with baking paper. If they are for burgers, press them down so they are no more than 2 cm thick.
+  5: Bake on 200 degrees for 20min.
+
+=== golden-soup ===
+TITLE: Golden Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3 medium Carrot, Norwegian, raw
+  1: 1 large Onion, yellow, Norwegian, raw
+  2: 0.5 medium Leeks, Norwegian, raw
+  3: 9 dl Water, drinking water
+  4: 9 dl Corn, frozen
+  5: 2.5 tsp Sea salt
+  6: 1 tsp Curry, ground
+  7: 2.5 dl Coconut milk
+STEPS:
+  0: Cook onions, leek and carrots with curry powder and 2,5 dl water until tender.
+  1: Process corn and water in blender.
+  2: Add blended corn, bouillon, salt and coconut milk to the onions, leek and carrots.
+  3: Bring to a boil before serving.
+
+=== fr-77 ===
+TITLE: Green Beans
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 700 g Asparagus beans, frozen
+  1: 1 tsp Sea salt
+  2: 0  Olive oil
+STEPS:
+  0: Sautéé green beans with a bit of oil (or a splash of water).
+  1: Add salt while sautééing.
+
+=== fr-78 ===
+TITLE: Guacamole
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3  Avocado, raw
+  1: 2 tbsp Onion, red, Norwegian, raw
+  2: 1 clove Garlic, raw
+  3: 2 tbsp Lemon, raw
+  4: 1 tsp Sea salt
+  5: 0.25 tsp Cumin powder
+  6: 1 handful Coriander, raw
+STEPS:
+  0: Place the acovado into a bowl and then mash it up a bit with a fork OR use the food processor.
+  1: The texture is realy up to you. It is preferable for our guacamole to be a bit chunkier, especially when serving it as a dip.
+  2: Add the garlic, lemon juice and a bit of salt and gently fold everyting together.
+  3: Sprinkle with red onion and fresh herbs before serving.
+
+=== happy-beans-salad ===
+TITLE: Happy Beans Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 3.0 Corn, frozen
+  1: 0 1.0 Onion, red, Norwegian, raw
+  2: 0 3.0 Tomato, imported, raw
+  3: 0 5.0 White beans, large, canned
+  4: 0 1.0 Basil, raw
+  5: 0 1.0 Olive oil, extra virgin, virgin oil
+  6: 0 1.0 Garlic, raw
+  7: 0 9.0 Lemon juice, fresh
+  8: 0 2.0 Honey
+  9: 0 1.0 Chilli flakes
+  10: 0 0.5 Sea salt
+STEPS:
+  0: Prepare the veggie and add the dressing and mix.
+
+=== hasselback-potatoes ===
+TITLE: Hasselback Potatoes
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3 large Baking potatoes
+  1: 0.25 tbsp Sea salt
+  2: 30 ml Nutritional yeast
+  3: 0.15 tsp Turmeric, ground
+  4: 0.15 tsp Garlic powder
+  5: 0.25 tbsp Onion powder
+  6: 0.15 tsp Marjoram, dried
+  7: 0.15 tsp Sage, dry
+  8: 0.25 tbsp Parsley, dried
+  9: 0  Olive oil
+STEPS:
+  0: Preheat the oven to 180 °C.
+  1: Thoroughly wash potatoes with peel on.
+  2: Cut half lengthways and place the flat edge down on the chopping board.
+  3: Take one halfpotato at a time and place wooden sticks on each side of the half potato.
+  4: Cut the potato in slices (approxinately 4mm apart) down to the wooden sticks. The stick smakes the cuts not go all the way through.
+  5: Put the the potatoes on baking paper (or oiled tray) with the flat side down. Then brush them with some olive oil.
+  6: Blend spices in a small bowl and sprinkle it on top of the potatoes.
+  7: Bake for 45 minutes covered with aluminum foil.
+  8: Remove foil and bake for another 15 minutes.
+  9: Check for doneness.
+
+=== hazelnut-and-sundried-tomato-cheese ===
+TITLE: Hazelnut and Sundried Tomato Cheese
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3 dl Hazelnuts
+  1: 2 pcs Tomatoes, sun-dried, dry
+  2: 1 clove Garlic, raw
+  3: 1 tbsp Onion powder
+  4: 3 tsp Agar-agar
+  5: 9 dl Water, drinking water
+  6: 1 tbsp Herb salt
+  7: 2 tbsp Lemon juice, bottled
+STEPS:
+  0: Blend all ingredients in a high speed blender until smooth.
+  1: Bring the mixture to a boil in a pot and let it boil while stirring for at least 3 - 5 minutes.
+  2: Pour into molds and let cool down before refrigerating.
+
+=== homemade-whole-wheat-bread ===
+TITLE: Homemade Whole Wheat Bread
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 4 l Whole wheat flour, course
+  1: 4 l Whole wheat flour, fine
+  2: 1 l Small oats
+  3: 1 l Gluten flour
+  4: 3 envelope Yeast, dry yeast
+  5: 2 tbsp Sea salt
+  6: 4 l Water
+  7: 2 tbsp Honey
+STEPS:
+  0: Pour all dry ingredients into a mixer, except the yeast. We use the diamond mixer with the hook for kneading. Mix them thoroughly for a few minutes.
+  1: While it is mixing, mix the water together with the honey and dry yeast and dissolve for 3 minutes.
+  2: Pour gradually the water 0.5 - 1 liter at a time while the machine is going on the lowest speed. Turn up the speed to 2 for a minute when all the water is in.
+  3: Turn it back to the lowest and set the timer for 10 minutes.
+  4: Cover bread molds with baking paper.
+  5: Take the dough out and divide it into the molds, 800 g for the small ones and 900 g for the bigger ones.
+  6: Let it rise covered for at least 1 hour until double sized on top of the oven.
+  7: Preheat the oven to 200°C.
+  8: Carefully remove the plastic and bake for 10 minutes, turn down the temperature to 185°C and bake for another 25 minutes.
+  9: Take the bread out of the oven and cover it with a damp towel for about 10 minutes, remove it from the mold and let it cool down before storing.
+
+=== horseradish-dressing ===
+TITLE: Horseradish Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.4 dl Cashew, unsalted
+  1: 1 dl Olive water
+  2: 3 dl Water, drinking water
+  3: 10 g Horseradish, raw
+  4: 1 tsp Coriander, raw
+  5: 0.5 tsp Nutritional yeast
+  6: 2 tbsp Lemon juice, fresh
+  7: 6 g Garlic, raw
+  8: 1 tbsp Onion, yellow, Norwegian, raw
+  9: 0.25 tsp Sea salt
+STEPS:
+  0: Using a high speed blender, blend all the ingredients together unitl smooth (at least for 1 minute).
+  1: Let it cool down in the fridge before serving.
+  2: Garnish it with chopped parsley or chives, and coriander.
+  3: Add water until creamy consistent.
+
+=== fr-84 ===
+TITLE: Hummus
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 5 dl Chickpeas, cooked
+  1: 0.5 dl Lemon juice, bottled
+  2: 1.5 dl Water
+  3: 0.5 tsp Sea salt
+  4: 2 clove Garlic, raw
+  5: 0.5 tsp Cumin powder
+  6: 1 tbsp Onion powder
+STEPS:
+  0: Blend in the food processor the lemon juice and tahini for 1 minute or until is creamy and thick.
+  1: Add the garlic, salt and cumin and blend again.
+  2: Add half of the chickpeas and blend again for one minute. Then add the rest of the chickpeas and blend until smooth.
+  3: In the end add the water while it is blending and then is ready for serving.
+
+=== isabels-dressing ===
+TITLE: Isabel´s Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0.5 dl Water, drinking water
+  1: 0.5 dl Sesame oil
+  2: 2 tbsp Soy sauce
+  3: 2 tbsp Lemon juice, fresh
+  4: 1 dl Nutritional yeast
+STEPS:
+  0: Put the water on top of the yeast flakes and mix.
+  1: Add all other ingredients and shake or whisk well before serving.
+
+=== fr-86 ===
+TITLE: Italian Bruschetta
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0  Bread, extra coarse, 75% wholemeal, home-baked
+  1: 0  Vegan mozzarella
+  2: 0  Tomato Bruschette
+STEPS:
+  0: Preheat the oven at 200 °C, cut the bread slices in the meanwhile (not too thin).
+  1: Bake the bread slices for 5 minutes at 200 °C.
+  2: Cut the vegan mozzarella (see separate recipe) in slices.
+  3: Take the bread out of the oven and place mozzarella slices on it (2 or 3 slices of mozzarella per 1 slice of bread).
+  4: Place the bread with mozzarella slices back in the oven for other 3 or 4 minutes, so that the mozzarella will soften a little bit.
+  5: Once done, place the tomato bruschetta on top (2 or 2.5 tbsp for each slice of bread), garnish with some fresh basil leaves and olive oil and serve.
+
+=== kale-and-sweet-potato-salad ===
+TITLE: Kale and Sweet Potato Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 270 g Sweet potato, raw
+  1: 270 g Kale, raw
+  2: 1 medium Carrot, Norwegian, raw
+  3: 1 stalk Celery stalks, Norwegian, raw
+  4: 0.5 pcs Bell pepper, yellow/orange, raw
+  5: 3 tbsp Lemon juice, fresh
+  6: 40 g Sunflower seeds
+  7: 2 pinch Sea salt
+STEPS:
+  0: Poke holes on the sweet potato with a fork and bake whole sweet potato with peel in the oven at 200 degrees for 35-45min, until soft.
+  1: Let the sweet potato cool down and remove the peel.
+  2: Massage the kale with the sweet potato, lemon juice and salt.
+  3: Mix all ingrediens togeter.
+
+=== kale-avocado ===
+TITLE: Kale Avocado
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 200 g Kale, raw
+  1: 1  Avocado, raw
+  2: 0.5  Lemon, raw
+  3: 2.4 dl Cherry tomato, imported, raw
+  4: 3 pcs Radish, Norwegian, raw
+  5: 2.5 tbsp Leeks, Norwegian, raw
+  6: 0.5 tsp Sea salt
+  7: 60 ml Sesame seeds, with shell
+  8: 60 ml Sunflower seeds
+  9: 0.25 tsp Cumin powder
+  10: 1 tsp Onion powder
+  11: 1.5 tsp Nutritional yeast
+STEPS:
+  0: To toast the seeds, bring a fry pan to medium–high heat. Add the sunflower and sesame seeds.
+  1: Toss gently until the seeds begin to pop and become aromatic. They should acquire a golden color.
+  2: Mix the toasted seeds with cumin, onion powder, nutritional yeast, salt.
+  3: In a mixing bowl add the kale, avocado and lemon juice. Put gloves on and with your hands, press the avocado into cream until thoroughly mixed. Massage for 2 minutes or longer until softened.
+  4: Mix in the leeks, tomatoes and some of the radishes, reserving some for garnish.
+  5: Add the toasted seeds into the kale and mix.
+  6: Garnish with radishes.
+
+=== kale-chips ===
+TITLE: Kale Chips
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 130 g Kale, raw
+  1: 1 tbsp Olive oil, extra virgin, virgin oil
+  2: 1 pinch Pepper, cayenne, red
+  3: 0.25 tsp Garlic powder
+  4: 1 pinch Sea salt
+STEPS:
+  0: Rinse, de-stem, and dry the kale leaves (salad spinner + paper towel).
+  1: Mix the kale with oil, cayenne pepper, garlic and salt.
+  2: Spread out parchment paper on a baking tray.
+  3: Turn the temperature down to 130 degrees and bake for 10 minutes or until the chips are crispy.
+
+=== kale-soup ===
+TITLE: Kale Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3 medium Onion, yellow, Norwegian, raw
+  1: 5 medium Potato, raw
+  2: 2 l Water
+  3: 1 tbsp Caraway, cumin, whole
+  4: 2 tbsp Herb salt
+  5: 1 l Kale, raw
+  6: 2 tbsp Lemon juice, fresh
+STEPS:
+  0: Cook the first 5 ingredients, 15min.
+  1: Add the kale, push it down in the water. Then cook 5min more.
+  2: Let it cool down a little bit if needed and then blend everything in a blender/thermomix/vitamix, together with lemon juice, until smooth.
+  3: Heat up again if nessesary before serving.
+
+=== katrines-pesto-dressing ===
+TITLE: Katrine´s Pesto Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 dl Soy milk
+  1: 1 dl Cashew, unsalted
+  2: 1 dl Olive oil
+  3: 1 clove Garlic, raw
+  4: 1 tbsp Nutritional yeast
+  5: 1 tsp Lemon juice, fresh
+  6: 0.5 tsp Herb salt
+  7: 1 pcs Basil, raw
+STEPS:
+  0: Blend all ingredients until smooth consistency.
+
+=== fr-92 ===
+TITLE: Ketchup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 4 dl Tomato puree, canned
+  1: 4 tbsp Honey
+  2: 4 tsp Onion powder
+  3: 4 tsp Paprika powder
+  4: 2 dl Water, drinking water
+  5: 1 dl Lemon juice, fresh
+  6: 1 tsp Sea salt
+STEPS:
+  0: Put all the ingredients to the thermomix and blend for 20 seconds. Or make the water luke warm and melt the honey in it, then whisk the rest of the ingredients in.
+
+=== kidney-bean-stew ===
+TITLE: Kidney Bean Stew
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 medium Onion, yellow, Norwegian, raw
+  1: 3 clove Garlic, raw
+  2: 2 medium Bell pepper, yellow/orange, raw
+  3: 500 g Kidney beans, red, canned
+  4: 1 dl Tomato puree, canned
+  5: 5 dl Water, drinking water
+  6: 2 tbsp Vegetable bouillon, fresh
+  7: 2 tsp Cumin powder
+  8: 2 tsp Coriander, raw
+  9: 1 tsp Smoked paprika powder
+  10: 1 tbsp Oregano, dried
+  11: 1 tsp Honey
+  12: 0.5 tbsp Sea salt
+  13: 1 dl Nutritional yeast
+STEPS:
+  0: Sautée onion and garlic in ½ tsp of olive oil and 1 tbsp of water until soft.
+  1: Add bell peppers and cook until soft.
+  2: Add the remaining ingredients and bring to a boil, then let simmer for 20 - 30 minutes.
+  3: With a hand blender, blend the stew a bit until it is creamy, some beans need to still be whole.
+
+=== fr-94 ===
+TITLE: Lasagna
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 250 g Tofu, soyabønneprodukt
+  1: 350 g Spinach, frozen, raw
+  2: 1 medium Onion, yellow, Norwegian, raw
+  3: 1 tbsp Salt, table salt
+  4: 4 clove Garlic, raw
+  5: 500 g Tomato, chopped, tetrapak
+  6: 4 tbsp Tomato puree, canned
+  7: 4 dl Water, drinking water
+  8: 3 pcs Tomatoes, sun-dried, dry
+  9: 1 tbsp Basil, dried
+  10: 1 tbsp Oregano, dried
+  11: 1 tsp Vegetable bouillon, fresh
+  12: 1 tbsp Sea salt
+  13: 0  White cashew sauce
+  14: 0  Lasagne sheets
+STEPS:
+  0: Sautéé onion and garlic in 1 tsp olive oil and 2 tbsp water until soft.
+  1: Add remaining ingredients and bring to a quick boil.
+  2: Prepare the white sauce according to the recipe called "white cashew sauce".
+  3: Layer the lasagna in this order: spinach and tofu sauce - lasagna sheets - white sauce. Do 3 layers, and end with extra thick layer of white sauce.
+  4: Preheat the oven to 170°C.
+  5: Bake the lasagna for about 40 minutes until the sheets are soft and the top sauce is golden brown.
+
+=== lemon-and-olive-oil-dressing ===
+TITLE: Lemon and Olive Oil Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 60 ml Olive oil
+  1: 30 ml Lemon juice, fresh
+  2: 1 clove Garlic, raw
+  3: 0.5 tsp Sea salt
+STEPS:
+  0: Whisk all the ingredients together in a bowl or put everything in the vitamix and blend for a few seconds.
+
+=== lentil-lap-stew ===
+TITLE: Lentil Lap Stew
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 dl Lentils, green and brown, dry
+  1: 2.5 dl Water, drinking water
+  2: 1 tsp Salt, table salt
+  3: 1 pcs Bay leaf, dried
+  4: 1 medium Onion, yellow, Norwegian, raw
+  5: 2 clove Garlic, raw
+  6: 500 g Baking potatoes
+  7: 160 g Carrot, Norwegian, raw
+  8: 70 g Celery root, Norwegian, raw
+  9: 65 g Leeks, Norwegian, raw
+  10: 2 tbsp Vegetable bouillon, fresh
+  11: 2 tbsp Nutritional yeast
+  12: 1 tsp Garlic powder
+  13: 1 tsp Onion powder
+  14: 1 tsp Oregano, dried
+  15: 0.5 tsp Sage, dry
+  16: 0.15 tsp Pepper, cayenne, red
+  17: 1 tbsp Tomato puree, canned
+  18: 1 l Water, drinking water
+  19: 1 handful Parsley, Norwegian, raw
+STEPS:
+  0: Place in a pot the lentils, water, salt, bay leafs and boil for 25-30 min. Afterwards, drain the liquid (Don’t worry if it is not done, it will cook a little longer later).
+  1: Mince the garlic, thinly slice the leek in 1 cm rings. Cut all the rest of the vegetables in 2 cm dice, except potatoes which should be cut in 3 cm dice. Rutabaga takes a longer time to cook. You may consider to cut it smaller.
+  2: Sautée on medium-high heat the onion and rutabaga for 2 minutes. (Add some water if it’s sticking to the pot.).
+  3: Add the garlic, seasonings, tomato paste, lentils and vegetables and sautée for 1 more minute, then add the water.
+  4: Let it simmer for 10-15 minutes and then add the leek and let it cook for 3-5 minutes.
+  5: Depending on how much water you used and the consistency you want, use the cornstarch-water mixture and boil for 1 more minute.
+  6: Add the parsley and then is ready to serve.
+
+=== lightly-cooked-broccoli ===
+TITLE: Lightly Cooked Broccoli
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 450 g Broccoli, unspecified, raw
+STEPS:
+  0: Cut the broccoli i bouquets, into equal-sized pieces.
+  1: Put a good amount of water in a pot and add salt.
+  2: When the water is cooking, add the broccoli and push them down into the water.
+  3: Put a lid on and cook for 4minutes. (use a timer).
+  4: Pour them in a siw to get all the water out.
+  5: Serve hot.
+
+=== lindas-gluten-free-bread ===
+TITLE: Linda´s Gluten Free Bread
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1380 g Water
+  1: 90 g Flaxseed, crushed
+  2: 60 g Fibre husk
+  3: 3 tbsp Yeast, dry yeast
+  4: 0  Millet, whole grain
+STEPS:
+  0: Mix the first 4 ingredients in a bowl and the rest of the ingredients in another bowl, and afterwards mix them together.
+  1: Put bakingpaper in breadforms and put the dough in, trying to get smooth surface on the top of the bread.
+  2: cover with kitchen towel and let it rice for 3 hours.
+  3: Bake at 190 celsius for at least 1 hour.
+  4: Take out of bread forms and take off bakingpaper right after it comes out of the oven.
+
+=== fr-99 ===
+TITLE: Luke's Indian Chickpea Sauce
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 760 g Chickpeas, cooked
+  1: 2 pcs Onion, yellow, Norwegian, raw
+  2: 1 pcs Tomato, unspecified, raw
+  3: 100 g Lentils, red/pink, dry
+  4: 2 dl Water
+  5: 250 ml Coconut milk
+  6: 1 tsp Garam Masala
+  7: 1 tsp Curry, ground
+  8: 1 tsp Sea salt
+  9: 1 tsp Turmeric, ground
+  10: 1 dash Pepper, cayenne, red
+STEPS:
+  0: Dice and sautéé onions in some oil.
+  1: Add any tomato.
+  2: Add water and juice from chick peas, red lentils and spices.
+  3: Cook about ca 30 minutes to soften lentils.
+  4: Add chick peas and bring to boil.
+  5: Take off heat and add coconut cream/milk, stir and serve.
+
+=== fr-100 ===
+TITLE: Maddie's Pesto
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 2.0 Basil, raw
+  1: 0 2.0 Spinach, raw
+  2: 0 1.0 Garlic, raw
+  3: 0 1.0 Olive oil
+  4: 0 3.0 Nutritional yeast
+  5: 0 1.5 Walnuts
+  6: 0 2.0 Cashew, unsalted
+  7: 0 0.5 Sea salt
+STEPS:
+  0: Blend all the ingredients together in a food processor until smooth.
+
+=== fr-101 ===
+TITLE: Marika's Tofu Balls
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 medium Onion, yellow, Norwegian, raw
+  1: 1 clove Garlic, raw
+  2: 1 dl White flour, fine
+  3: 2 dl Walnuts
+  4: 4 tbsp Soy sauce
+  5: 1 tsp Tarragon, dried
+  6: 300 g Tofu, soyabønneprodukt
+  7: 1 dl Soy milk
+  8: 5 tsp Vegetable bouillon, fresh
+  9: 0.5 dl Nutritional yeast
+  10: 1 dl Bread crumbs
+STEPS:
+  0: Preheat the oven to 195 °C, on the steaming program.
+  1: Sautée onion in 2 tbsp of olive oil until translucent, ten add garlic and sautée 1 minute more.
+  2: Blend nuts in a food processor until finely chopped.
+  3: Press the liquid out of the tofu and add together with all the other ingredients, except the flour, to the food processor until well combined.
+  4: Add the flour gradually into the mixture in the food processor.
+  5: Once all is incorporated take the mixture out and form by hand small sized balls.
+  6: Place the balls on a baking tray and steam in the oven for 25 minutes or until the balls start to brown.
+
+=== marikas-summer-salad ===
+TITLE: Marika's Summer Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 150 g Sweet potato, raw
+  1: 1 tbsp Olive oil
+  2: 0.15 tsp Sea salt
+  3: 1 salads Romaine lettuce, raw
+  4: 100 g Kale, raw
+  5: 2 dl Cherry tomato, imported, raw
+  6: 1.5 stalk Celery stalks, Norwegian, raw
+  7: 0.5 dl Parsley, Norwegian, raw
+  8: 0.25 dl Chives, raw
+  9: 1 dl Edamame beans, soybeans, frozen
+STEPS:
+  0: Preheat the oven to 180°C.
+  1: Cut sweet potato into large dices, and mix together with the salt and olive oil.
+  2: Bake for 20-30 min until soft. Make sure that the pieces don’t touch each other so that they bake well.
+  3: Massage green kale for 2 minutes with 3 tbsp of the “Isabel dressing (see other recipe).
+  4: Let the sweet potato cool down.
+  5: Mix all ingredients in a large bowl and serve.
+
+=== marinated-tofu-sticks ===
+TITLE: Marinated Tofu Sticks
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 400 g Tofu, soyabønneprodukt
+  1: 1 pcs Nori, dried seaweed
+  2: 3 tbsp Soy sauce
+  3: 1 tbsp Lemon juice, fresh
+  4: 1 tbsp Olive oil
+  5: 2.5 dl Water, drinking water
+  6: 1 tsp Vegetable bouillon, fresh
+STEPS:
+  0: Slice tofu in slices (try to get the size of typical fish sticks).
+  1: Put seaweek paper in blender some seconds to make it almost poder. Mix it with the rest of the ingredients. Place the tofu slices in the marinade and marinate for at least two hours or overnight in the refrigerator.
+
+=== fr-104 ===
+TITLE: Mashed Potatoes
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1.8 kg Potato, raw
+  1: 3 dl Soy milk
+  2: 2 tbsp Herb salt
+  3: 1 tbsp Nutritional yeast
+  4: 0.5 tbsp Vegetable bouillon, fresh
+STEPS:
+  0: Cut potatoes into pieces, boil them in plenty of salted water until soft.
+  1: When the potatoes are done, strain almost all the water, leave a centimeter of water in the bottom of the pot. (save some of the potatowater in case you later want to make the mashed potatoes softer/thinner).
+  2: Add the rest of the ingredients.
+  3: Mash everything together, preferably using the electric mixer for whipping, until smooth and fluffy.
+
+=== mediterranean-soup ===
+TITLE: Mediterranean Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 medium Onion, yellow, Norwegian, raw
+  1: 4 clove Garlic, raw
+  2: 1 stalk Leeks, Norwegian, raw
+  3: 2 pcs Squash, zucchini, raw
+  4: 1 big Eggplant, raw
+  5: 500 g Chickpeas, dry
+  6: 500 g Tomato, canned
+  7: 1  Bay leaf, dried
+  8: 2 tbsp Parsley, Norwegian, raw
+  9: 2 tsp Sea salt
+  10: 2 l Water, drinking water
+  11: 1 medium Bell pepper, red, raw
+STEPS:
+  0: Wash and chop the eggplant in medium dice. Dizzle with oil and salt. Roast for 10 mins at 170 °C in a preheated oven.
+  1: Sautée onion, garlic, leek, bell pepper and zuchini, eather with a lid or with some olive oil.
+  2: Add canned chopped tomato and continue cooking for some minutes.
+  3: Add the rest of the ingredients and let it simmer till all veggies are cooked through.
+
+=== millet-crackers-hirseknekk ===
+TITLE: Millet Crackers, Hirseknekk
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 175 g Millet, whole grai
+  1: 1 l Water, drinking water
+  2: 3 dl Almonds
+  3: 33 g Sesame seeds, with shell
+  4: 33 g Sunflower seeds
+  5: 33 g Squash seeds, pumpkin seeds
+  6: 2 tbsp Garlic powder
+  7: 60 ml Coconut milk
+  8: 1 tsp Fibre husk
+  9: 0.75 tsp Sea salt
+  10: 1 tsp Thyme, dried
+STEPS:
+  0: Cook the millet and 3/4 of the water into a porridge. Cook well through (at least fourty minutes). Or use 900g cooked porridge (multiply the amount with how many times you do the recipe).
+  1: Let the porridge cool down enough to handle with your hands.
+  2: Blend almonds and 1/4 of the water in a high speed blender until the almonds are crushes into small bits.
+  3: Preheat the oven to 100 °C.
+  4: Put all ingredients in a metal bowl and mix thoroughly to avoid lumps. Preferably with your hands, use gloves.
+  5: Line the baking trays with baking paper. Put 1/11 part of the dough in the baking paper, and put a plastic wrap over the dough, and use a rolling pin to spread out the dough between the baking paper and the plastic wrap (it should be about 0.5 - 1 cm thick layer). Then remove the prastic wrap (you can use the same plastic wrap on all the trays).
+  6: Slice the dough with pizza slicer (or a big knife). Two times on the short side and 5 times on the long side so you get 18 same sized squares.
+  7: Bake until the crispbread is dry and cooked all the way through. It takes at least 3 hours.
+  8: Cool down; Place another tray on a tray with crackers and flip it so the crackers are laying uppside down on the other tray and take away the tray it was laying on and rip off the baking paper. Let it cool down on the tray before cracking them in the cut squares and put in airtight boxes.
+
+=== minestrone-soup ===
+TITLE: Minestrone Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 tbsp Olive oil, extra virgin, virgin oil
+  1: 1 medium Onion, yellow, Norwegian, raw
+  2: 3 stalk Celery stalks, Norwegian, raw
+  3: 2 medium Carrot, Norwegian, raw
+  4: 1 medium Squash, zucchini, raw
+  5: 3 large Garlic, raw
+  6: 2 leave Bay leaf, dried
+  7: 2 leave Rosemary, dried
+  8: 2 stalk Thyme, dried
+  9: 1 tsp Smoked paprika powder
+  10: 0.25 tsp Chili powder
+  11: 1.25 tsp Salt, table salt
+  12: 400 g Tomato, canned
+  13: 1 large Potato, raw
+  14: 150 g Pasta, whole grain, dry
+  15: 400 g White beans, large, canned
+  16: 100 g Spinach, raw
+  17: 1 tsp Pepper, cayenne, red
+  18: 1.25 l Water
+STEPS:
+  0: Heat the oil in a large, heavy bottomed pot.
+  1: Once the oil gets hot, throw in diced onion, celery, carrot and zucchini. Sautéé on a very low heat until soft (15 minutes) with lid and stirr regularly.
+  2: Add garlic, bay leaves and herbs. Sautéé for another 5 minutes, stirring regularly.
+  3: Mix in smoked paprika, chilli and salt.
+  4: Add canned tomatoes and some of the water. Cover and simmer for about 30-45 minutes. Top up with more water if the pot is looking dry.
+  5: Add in the rest of water and cubed potatoes. Once the soup comes to a simmer, cook 5 minutes.
+  6: Next add in pasta. Cover the pot with a lid and simmer for about 6 minutes.
+  7: Add spinach and white beans and simmer for further 5 minutes – until all the ingredients are fully cooked.
+
+=== mint-yogurt-dressing ===
+TITLE: Mint Yogurt Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 2.5 Soy yogurt
+  1: 0 2.0 Lemon juice, fresh
+  2: 0 0.25 Sea salt
+  3: 0 0.5 Garlic, raw
+  4: 0 24.0 Mint, fresh
+STEPS:
+  0: Blend all the soy yogurt and garlic in a high-speed blender for 15-20 seconds. Then add the lemon juice, salt, and mint for 10 seconds more. Do not over-blend. Adjust the lemon juice to taste.
+
+=== noodle-wok ===
+TITLE: Noodle Wok
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 800 g Tofu, soyabønneprodukt
+  1: 6 tbsp Soy sauce
+  2: 6 tbsp Sesame oil
+  3: 2 medium Chili, red, raw
+  4: 3 clove Onion, yellow, Norwegian, raw
+  5: 12 pcs Garlic, raw
+  6: 60 g Ginger, raw
+  7: 300 g Head cabbage, raw
+  8: 6 stalk Spring onions, raw
+  9: 200 g Asparagus beans, frozen
+  10: 3 medium Carrot, Norwegian, raw
+  11: 3 pcs Bell pepper, red, raw
+  12: 10 tbsp Ketchup, tomato ketchup
+  13: 1 tbsp Sea salt
+  14: 3 tsp Pepper, black
+  15: 400 g Bean noodles, dry
+STEPS:
+  0: Marinate the tofu cubes in soy sauce, sesame oil and red chili.
+  1: Bring water with a little salt and oil to a boil.
+  2: Cook the noodles according to the package instructions.
+  3: Drain and rince with cold water to prevent sticking.
+  4: Pan fry the small tofu cubes in oil.
+  5: Heat oil in a big pan (or wok). Sautéé onion, garlic and ginger until soft.
+  6: Add bell pepper, carrot and cabbage. Stir-fry on high heat for 3-4min.
+  7: Add the marinate (soy sauce, sesame oil and chili), ketchup, salt and pepper.
+  8: Add the noodles and tofu. Stir fry for 3-4 min.
+  9: Garnish with fresh spring onions.
+
+=== nordic-sprout-salad ===
+TITLE: Nordic Sprout Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 dl Bean sprouts, mung bean sprouts, raw
+  1: 0.5 pcs Cucumber, Norwegian, raw
+  2: 1 small Carrot, Norwegian, raw
+  3: 0.5 pcs Apple, Norwegian, unspecified, raw
+  4: 1 tbsp Parsley, Norwegian, raw
+  5: 1 tbsp Dill, raw
+  6: 1 tbsp Sunflower seeds
+STEPS:
+  0: How to sprout seeds if not using bought sprouts; Rinse thoroughly under cold water to remove dirt or phytic acid. Soak in a bowl with plenty of clean water for 12 hours. Drain and rinse well. Keet it in a siv with a clean tea towel over, at room temperature. Rinse the sprouts with fresh water morning and evening. They are ready in 1-4 days depending on the type, room temperature and desired size.
+  1: Mix all ingredients together.
+
+=== fr-111 ===
+TITLE: Nutloaf
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 dl Cashew, unsalted
+  1: 1 dl Walnuts
+  2: 0.5 dl Peanuts
+  3: 85 g Buckwheat flour
+  4: 20 g Corn flour, polenta
+  5: 200 g Soy yogurt
+  6: 3 dl Onion, yellow, Norwegian, raw
+  7: 2 tbsp Nutritional yeast
+  8: 2 tbsp Olive oil
+  9: 3 tbsp Soy sauce
+  10: 1.5 tbsp Fibre husk
+  11: 0.2 tsp Ginger, powder
+  12: 0.2 tsp Nutmeg, ground
+  13: 0.2 tsp Thyme, dried
+  14: 0.2 tsp Marjoram, dried
+  15: 0.2 tsp Rosemary, dried
+  16: 0.05 tsp Pepper, cayenne, red
+STEPS:
+  0: Ground all nuts in the food processor for 30 seconds.
+  1: Sautéé the onion with olive oil in a pan until soft.
+  2: Combine all the ingredients and mix it well. Add soymilk or water if it is too dry.
+  3: Pour the mixture into a bread form (20x12x7,5 cm) Fill half the bread form with the nutloaf mixture. Then bake it on 175 °C for 1 hour until cooked.
+  4: Let it rest 10min before serving.
+
+=== oat-burger ===
+TITLE: Oat Burger
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 l Water, drinking water
+  1: 1.25 dl Soy sauce
+  2: 1 small Onion, yellow, Norwegian, raw
+  3: 4 dl Walnuts
+  4: 1 tsp Coriander powder
+  5: 2 tbsp Oregano, dried
+  6: 2 tsp Garlic powder
+  7: 1 tbsp Vegetable bouillon, fresh
+  8: 1 l Small oats
+STEPS:
+  0: Bring the water to a boil and add remaining ingredients besides the oats, cook for 5 minutes.
+  1: Add the oats and cook for at least 3 minutes until thick as a porridge. Let the mix cool down a bit.
+  2: Scoop the mixture into small balls (preferably with a ice cream scoop) and put them on a baking tray lined with baking paper and form them into burgers.
+  3: Preheat the oven to 175 °C.
+  4: Bake the oat burgers for at least 20 minutes.
+  5: Let them set a bit before serving.
+
+=== fr-113 ===
+TITLE: Onion Pie Crust
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3 dl Whole wheat flour, fine
+  1: 3 dl Oat flakes, Oat flakes
+  2: 1 tsp Salt, table salt
+  3: 3 tsp Baking soda
+  4: 1 dl Olive oil
+  5: 2 dl Oat milk
+STEPS:
+  0: Mix first dry ingredients, add then fluids.
+  1: Stir until well mixed and spread then quickly to set to the bottom and sides of a baking form in a 1 cm layer.
+
+=== fr-114 ===
+TITLE: Onion Pie Filling
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 400 g Onion, yellow, Norwegian, raw
+  1: 250 g Leeks, Norwegian, raw
+  2: 2 clove Garlic, raw
+  3: 1 tbsp Vegetable bouillon, fresh
+  4: 1 dl Cashew, unsalted
+  5: 1.5 dl Water, drinking water
+STEPS:
+  0: Chop onion and garlic in the food processor, then slice the leek.
+  1: Sautée the vegetables with thyme and bullion for 15 min on high heat adding water if it starts to stick.
+  2: Meanwhile make the cashew cream by blending water and cashews in a blender on high speed for 1-2 min.
+  3: Add cashew cream and stir for 1 - 2 min.
+  4: Spread the filling on top of the crust in a 2 cm layer.
+  5: The cheese should be thinly spread on top in an even layer. (see separated recipe).
+  6: In a preheated oven, bake at 175°C for 22 minutes.
+
+=== fr-115 ===
+TITLE: Parmesan
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1.2 dl Cashew, unsalted
+  1: 2 tbsp Nutritional yeast
+  2: 1 tsp Garlic powder
+  3: 0.5 tsp Sea salt
+STEPS:
+  0: Blend the ingredients in foodprosessor until it is approximately 1mm chunks.
+
+=== peanut-ginger-dressing ===
+TITLE: Peanut Ginger Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 75 ml Sesame seeds, with shell
+  1: 75 ml Peanut butter
+  2: 35 ml Soy sauce
+  3: 50 ml Lemon juice, fresh
+  4: 1.5 tbsp Honey
+  5: 2.5 clove Garlic, raw
+  6: 15 g Ginger, raw
+  7: 570 ml Water
+STEPS:
+  0: Roast the sesame seeds; Heat the pan, add the sesame seeds, stir the seeds continuously with a wooden spoon, roast until slightly puff and become fragrant (2-5min), then transfer the seeds to a cool plate/tray to stop the cooking.
+  1: Mix all ingredients together.
+
+=== pickled-ginger ===
+TITLE: Pickled Ginger
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 200 g Ginger, raw
+  1: 2 dl Water
+  2: 2 tbsp Maple syrup
+  3: 0.5 tsp Sea salt
+STEPS:
+  0: Peel the fresh ginger with a spoon or knife, and slice it into very thin slices.
+  1: In a small pot, bring the water to a boil and add maple syrup.. Stir until it is dissolved.
+  2: Add the sliced ginger and lemon juice. Let it simmer on low heat for 15-20 minutes until the ginger becomes tender and absorbs the flavors.
+  3: Remove the pot from the heat and let the mixture cool completely. Once cooled, transfer the ginger and syrup into a sealed glass jar and store it in the refrigerator.
+
+=== pineapple-cream ===
+TITLE: Pineapple Cream
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 565 g Pineapple, canned, with its own juice
+  1: 2 dl Almonds
+  2: 1 tbsp Honey
+  3: 0 tsp Vanilla powder
+STEPS:
+  0: Blend all ingredients (including the pineapple juice) on high speed until smooth.
+
+=== fr-119 ===
+TITLE: Pizza Crust Dough
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 5 dl Water, drinking water
+  1: 0.5 envelope Yeast, dry yeast
+  2: 2.5 dl White flour, fine
+  3: 2.5 dl Whole wheat flour, course
+  4: 5 dl Whole wheat flour, fine
+  5: 1 tsp Sea salt
+  6: 2 tbsp Olive oil
+  7: 1 tbsp Onion powder
+  8: 2 clove Garlic, raw
+  9: 1 tbsp Oregano, dried
+  10: 1 tbsp Basil, dried
+STEPS:
+  0: Measure the water and pour the yeast on top. Let it desolve before mixing in. Add the flour.
+  1: Add the rest of the ingredients, and mix well.
+  2: Knead the dough for at least 10 minutes. Roll the dough and form it out on a baking tray with baking paper. Forming it thinner is better than too thick. Cover with a kitchen towel to prevent the bread from drying out. Let it rise for 1 hour or til double in size. Preheat the oven to 170 °C. Pre-bake the crust at 170 °C for 10 minutes.
+  3: Make the cashew cheese (see a seperate recipe: White Cashew Sauce). Don´t cook it too long so it gets unnessesary thick, or it will be hard to spread out on the pizza.
+  4: Spread first the tomato sauce on the pizza crust, then add the veggies and then cashew cheese/sauce on top.
+  5: Bake for 15-20 minutes on 170 °C. Make sure it doesn't burn on the sides.
+  6: Cut the pizza and decorate with ruccola. Sprinkle with oregano and olive oil.
+
+=== plant-based-butter ===
+TITLE: Plant Based Butter
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 25 g Cashew, unsalted
+  1: 25 g Almonds
+  2: 50 g Water
+  3: 25 g Canola oil
+  4: 0.35 tsp Sea salt
+  5: 0.75 tsp Nutritional yeast
+  6: 0.25 tsp Turmeric, ground
+  7: 0.5 tsp Lemon juice, bottled
+STEPS:
+  0: Put the almonds in boiling water for a couple of minutes, then simply peel the almonds.
+  1: Mix the nuts and water until smooth.
+  2: The coconut oil must be melted in order to mix, and it best to make sure the other ingredients are not too cold so the coconut oil doesn't solidify while you mix (coconut oil has a melting point of about 24℃).
+  3: Add the rest of the ingredients and mix for at least 2 more minutes, so that a lot of air gets into it.
+  4: Pour it into a bowl/box and place it in the refrigerator to harden (may take several hours).
+
+=== poke-dressing ===
+TITLE: Poke Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 small Apple, imported, raw
+  1: 1 tbsp Ginger, raw
+  2: 2 dl Water
+  3: 2 dl Soy sauce
+  4: 1 dl Sesame oil
+  5: 0 dl Maple syrup
+STEPS:
+  0: Peal and deseed the apple.
+  1: Peal the ginger.
+  2: Blend very well all ingredients. (you can start blending the apple and ginger with just some of the liquid to make sure it is blended well).
+
+=== poke-tofu ===
+TITLE: Poke Tofu
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 400 g Tofu, soyabønneprodukt
+  1: 75 ml Sesame seeds, without shell
+  2: 75 ml Bread crumbs
+  3: 0 dl Whole wheat flour, fine
+  4: 0 dl Water
+STEPS:
+  0: Cut tofu in triangle slices.
+  1: Marinade the tofu in the poke dressing (another recipe) at least one hour.
+  2: Mix flour and water into a paste.
+  3: Mix sesame and bread crumbs.
+  4: Dip the tofu in the flour paste and then in the sesame crumbs.
+  5: Spray it with oil and bake it in the oven at 200celsius for 20 minutes (or on a oiled pan), until golden brown.
+
+=== fr-123 ===
+TITLE: Polenta
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 dl Corn flour, polenta
+  1: 8 dl Water
+  2: 0.5 tsp Sea salt
+  3: 1 tbsp Olive oil
+  4: 1 tbsp Honey
+STEPS:
+  0: Bring the water or milk to a boil, with the salt.
+  1: Once the liquid is boiling, reduce the heat and slowly whisk in the polenta. Make sure to stir continuously to prevent lumps.
+  2: Let the polenta simmer on low heat for about 15-20 minutes, stirring regularly. The polenta should thicken and become soft.
+  3: Once the polenta is cooked, stir in the olive oil or butter and honey.
+
+=== pomodoro-sauce ===
+TITLE: Pomodoro Sauce
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 8 medium Tomato, Norwegian, raw
+  1: 200 g Onion, yellow, Norwegian, raw
+  2: 4 clove Garlic, raw
+  3: 0.5 dl Olive oil
+  4: 2 handful Basil, raw
+  5: 0  Sea salt
+STEPS:
+  0: Remove the core of the tomatoes and cut them in 4 pieces or so.
+  1: Sautéé the onion with olive oil, on medium heat, until soft.
+  2: Add garlic and sautéé 2-3minutes more.
+  3: Add the tomatoes and salt and simmer for 30-40minutes until the tomatoes are breaking/soft.
+  4: Add the basil leaves a short time (approx. 2min) before serveing, enough time to get soft and hot but short enough to keep the green color.
+
+=== potato-and-spinach-soup ===
+TITLE: Potato and Spinach Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 5 medium Potato, raw
+  1: 1 medium Onion, yellow, Norwegian, raw
+  2: 5 clove Garlic, raw
+  3: 2.2 l Water, drinking water
+  4: 2 dl Cashew, unsalted
+  5: 2 dl Cauliflower, Norwegian, raw
+  6: 1 medium Carrot, unspecified, raw
+  7: 1 tbsp Vegetable bouillon, fresh
+  8: 2 tsp Sea salt
+  9: 1 tsp Lemon juice, fresh
+  10: 0 handful Spinach, raw
+STEPS:
+  0: Blend half of the water with the cashews and set aside.
+  1: Sautéé onion and garlic in ½ tsp of olive oil and 1 tbsp of water until soft.
+  2: Add the potatoes and carrots and sautéé for 2 - 3 minutes, add some water if needed.
+  3: Add the remaining water, the cashew cream, bouillon, salt and cauliflower and bring to a boil. Cook for about 10 - 15 minutes until the potato is soft.
+  4: Just before serving, add the spinach and lemon juice, bring up to a boil.
+
+=== potato-gratin ===
+TITLE: Potato Gratin
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 kg Potato, raw
+  1: 1.25 dl Cashew, unsalted
+  2: 1.25 dl Coconut milk
+  3: 3 tbsp Rapeseed oil
+  4: 1.5 tsp Salt, table salt
+  5: 0.25 tsp Nutmeg, ground
+  6: 2.3 dl Oat milk
+  7: 0.5 tbsp Marjoram, dried
+  8: 2 tbsp Onion powder
+STEPS:
+  0: Peel the potato and then grate with a mandolin or coupe machine and steam them in the oven for 20 minutes at 98 degrees.
+  1: Coat the baking form with rapeseed oil. Preheat the oven when the potatoes are done.
+  2: Blend all the ingredients from the sauce except merian.
+  3: Bake everything in the preheated oven for 20 minutes at 200 degrees Celsius.
+
+=== potato-salad ===
+TITLE: Potato Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 kg Potato, raw
+  1: 0.5 pcs Cucumber, Norwegian, raw
+  2: 6 pcs Spring onions, raw
+  3: 400 g Grape, blue, raw
+  4: 1 l Soy mayonnaise
+STEPS:
+  0: Peel the potatoes and cut them in small cubes.
+  1: Put the cubes potatoes in salted water and cook them until soft (but not breaking apart). Takes approx. 10-15min. from it starts to bubble.
+  2: Once they’re done, drain the water immediately to prevent overcooking, and let the potatoes cool down.
+  3: Mix everything gently in a bowl.
+
+=== protein-shake ===
+TITLE: Protein Shake
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 750 ml Coconut milk
+  1: 3 dl Date, dried
+  2: 2 dl Almonds
+  3: 300 g Tofu, soyabønneprodukt
+STEPS:
+  0: Soak dates until soft.
+  1: Blend all in a blender.
+  2: Serve cold.
+
+=== pumpkin-soup ===
+TITLE: Pumpkin Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1400 g Pumpkin, raw
+  1: 700 g Potato, raw
+  2: 3 large Onion, yellow, Norwegian, raw
+  3: 3 clove Garlic, raw
+  4: 3 tsp Ginger, raw
+  5: 1 l Water, drinking water
+  6: 500 ml Coconut milk
+  7: 2.5 tbsp Sea salt
+  8: 0.5 tsp Pepper, cayenne, red
+STEPS:
+  0: Rinse, peel and dice potatoes. Put inside the 1l of water to prevent oxidation.
+  1: Peel the pumpkin and dice. Lay aside.
+  2: Heat the pot to medium-high heat.
+  3: Medium dice the onions and add to the hot pot. Use a little of the water and salt to sautéé the onions.
+  4: Meanwhile, finely chop both ginger and garlic. Add to the pot, continuing to sautéé for another minute.
+  5: Add the cayenne and stir.
+  6: Sieve out the potatoes from the water, and add the potatoes, pumpkin, the rest of the salt and a little more of the water to the pot. Sautée for 5 minutes.
+  7: Add the rest of the water and coconut milk.
+  8: Bring the veggies to a boil. Then simmer them until softened (ca 20-30 min).
+  9: Blend the spoup to a creamy texture.
+  10: Serve with kale chips and seasoned baked chickpeas.
+
+=== fr-130 ===
+TITLE: Pumpkinseed and Basil Cheese
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3 dl Squash seeds, pumpkin seeds
+  1: 3 dl Basil, raw
+  2: 1 clove Garlic, raw
+  3: 1 tbsp Onion powder
+  4: 3 tsp Agar-agar
+  5: 1 l Water
+  6: 1 tbsp Herb salt
+  7: 2 tbsp Lemon juice, bottled
+STEPS:
+  0: Blend all the ingredients in a high speed blender until smooth.
+  1: Bring the mixture to a boil in a pot and let it boil while stirring for at least 3-5 minutes.
+  2: Pour into molds and let cool down before refrigerating.
+
+=== quinoa-salad-first ===
+TITLE: Quinoa Salad First
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 9.5 dl Ruccola lettuce, raw
+  1: 1 dl Quinoa, white, dry
+  2: 4 dl Water, drinking water
+  3: 4.7 dl Chickpeas, cooked
+  4: 2.4 dl Cucumber, Norwegian, raw
+  5: 1.2 dl Parsley, Norwegian, raw
+  6: 1.2 dl Walnuts
+  7: 1 medium Onion, red, Norwegian, raw
+  8: 1 medium Bell pepper, yellow/orange, raw
+STEPS:
+  0: Roast the walnuts in a pan or in a preheated oven for 7 minutes at 180 degrees.
+  1: Rinse the quinoa and put it to cook with the water for 5 minutes, then reduce the heat and let it set until all the water is absorbed. Let it cool down.
+  2: MIx all the ingredients together.
+
+=== quinoa-salad-second ===
+TITLE: Quinoa Salad Second
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 large Bell pepper, red, raw
+  1: 2.5 dl Quinoa, white, dry
+  2: 5 dl Water, drinking water
+  3: 0.5 tsp Sea salt
+  4: 2.5 dl Cherry tomato, imported, raw
+  5: 0.5 pcs Cucumber, Norwegian, raw
+  6: 2.5 dl Corn, frozen
+  7: 2.5 dl Kidney beans, red, canned
+  8: 1 pcs Spring onions, raw
+  9: 1 tbsp Olive oil, extra virgin, virgin oil
+  10: 9 tbsp Lemon juice, fresh
+  11: 1 tbsp Honey
+  12: 1 clove Garlic, raw
+  13: 0.5 tsp Chilli flakes
+  14: 0.5 tsp Sea salt
+  15: 1 pcs Avocado, raw
+STEPS:
+  0: Preheat the oven 200 degrees. Roast the paprika for 45 minutes. Take out of the oven and store in an airtight container and let it sweet until cool. Then peel off the chared and blackened parts.
+  1: Bring the quinoa to a boil and then reduce to the lowest heat and cover with a lid. You may put a metal protection underneath to prevent burning. When done, cool down the quinoa before mixing with the other ingredients.
+  2: Mix in a jar olive oil, lemon juice, honey, chilli flakes and salt.
+  3: Mix all the ingredients the last two and then add the dressing.
+
+=== ranch-dressing ===
+TITLE: Ranch Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 dl Cashew, unsalted
+  1: 2 dl Water
+  2: 1 tbsp Nutritional yeast
+  3: 1 tbsp Lemon juice, fresh
+  4: 1 tsp Onion powder
+  5: 1 tsp Garlic powder
+  6: 0  Dill, raw
+  7: 0.5 tsp Parsley, dried
+  8: 0.5 tsp Sea salt
+  9: 0.25 tsp Pepper, cayenne, red
+STEPS:
+  0: Whisk all ingredients together, except the herbs. Add more water if needed.
+  1: After you have blended the sauce, add the fresh herbs.
+  2: Should sit in the cooler at least 30min so that the flavors can blend before serving.
+
+=== fr-134 ===
+TITLE: Raspberry Jam
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0.5 l Raspberries, raw
+  1: 2 tbsp Date paste
+  2: 0.5 dl Chia seeds, dried
+STEPS:
+  0: Defrost and mash/blend the berries a bit with a hand blender, not smooth.
+  1: Add the datepuré and mix well.
+  2: Add chia seeds and stir every now and then before storing.
+
+=== raw-cheesecake ===
+TITLE: Raw Cheesecake
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 dl Almonds
+  1: 1.5 dl Walnuts
+  2: 1 dl Date, dried
+  3: 0.5 dl Coconut, shredded
+  4: 1 pinch Sea salt
+  5: 6 dl Cashew, unsalted
+  6: 2 dl Lemon juice, fresh
+  7: 1 dl Honey
+  8: 2 dl Coconut oil
+  9: 1 pinch Vanilla powder
+  10: 0  Water
+  11: 2.5 dl Blueberries, raw
+  12: 2.5 dl Blackberries, raw
+  13: 0.5 dl Honey
+  14: 0.5 dl Coconut oil
+STEPS:
+  0: Put the first ingredients (nuts, dates, shredded coconut and salt) in the food prosessor and blend until small pieces and it starts to be able to form something that can hold together when you push it together with your fingers.
+  1: Either take a cake form and put bakingpaper in the bottom or take a deep baking form. Press the nut mix down in the bottom , evenly.
+  2: Blend the next 5 ingredients (from cashews to vanillapowder). Add water if nessesary to blend.
+  3: Pour it on top of the nut layer and spread it out evenly.
+  4: If the filling is thin (liquidy), put it in the fridge for 1-2 hours to let it thicken. (unless you want to make the topping incorporate in the filling).
+  5: Blend the berries, honey and coconut until smooth and pour it on top of the cake filling.
+  6: Cool down in the fridge for at least 1 hour to let it set/thicken.
+
+=== fr-136 ===
+TITLE: Red Beet Spread
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 60 g Cashew, unsalted
+  1: 100 g Red beet, raw
+  2: 0.5 clove Garlic, raw
+  3: 1 tbsp Lemon juice, bottled
+  4: 2 pcs Tomatoes, sun-dried, dry
+  5: 0.25 tsp Herb salt
+  6: 1 tbsp Onion powder
+  7: 0.5 tsp Marjoram, dried
+  8: 0  Parsley, Norwegian, raw
+STEPS:
+  0: Peel the red beet, cut in 2-3 cm cubs and boil for 20 minutes.
+  1: Soak the sun dried tomato for 5 minutes and then strain. (doesn´t need to soak if you are using the ones that are in oil).
+  2: Ground the cashews in a food processor (preferably in a thermomix) until finely ground. Add the remaining ingredients and process 1-2 minutes until smooth. Store in an airtight container in the refrigerator for up to 3 - 4 days.
+
+=== fr-137 ===
+TITLE: Red Cabbage Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 400 g Red cabbage, raw
+  1: 2 medium Carrot, Norwegian, raw
+  2: 0.5 dl Parsley, Norwegian, raw
+  3: 2 tbsp Sesame seeds, with shell
+  4: 2.5 tbsp Lemon juice, fresh
+  5: 0.5 tsp Herb salt
+STEPS:
+  0: Mix all ingredients into a bowl and massage for a few minutes so that the cabbage softens up a bit.
+
+=== red-beet-salad ===
+TITLE: Red Beet Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 500 g Potato, raw
+  1: 250 g Red beet, raw
+  2: 0.5 big Apple, Norwegian, unspecified, raw
+  3: 1 dl Cucumber, Norwegian, raw
+  4: 0.5 dl Onion, red, Norwegian, raw
+  5: 0.25 dl Lemon juice, fresh
+  6: 0.5 tsp Salt, table salt
+  7: 4 dl Soy mayonnaise
+STEPS:
+  0: Option 1: Steam the potatoes for 30-45 minutes in the oven. Option 2: Set the potatoes and red beets in two separate pots and cook with the peel until it is done.
+  1: Meanwhile, prepare the rest of the ingredients. There is a separate recipe for the soya mayo.
+  2: Peel and dice the potatoes and red beets and put them in a large bowl.
+  3: Add the rest of the ingredients and at the end, soya mayonnaise and mix altogether.
+  4: Adjust the salt and lemon juice, if necessary.
+
+=== red-beet-burger ===
+TITLE: Red Beet Burger
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 500 g Chickpeas, cooked
+  1: 1 tsp Sea salt
+  2: 1 pinch Pepper, cayenne, red
+  3: 2 tbsp Olive oil
+  4: 2 dl Small oats
+  5: 2 dl Buckwheat flour
+  6: 2 tsp Cumin powder
+  7: 1 l Squash, zucchini, raw
+  8: 2 medium Red beet, raw
+  9: 2 tbsp Soy sauce
+  10: 1 tsp Coriander, dried
+  11: 1 tbsp Vegetable bouillon, powder
+  12: 0.5 dl Fibre husk
+  13: 2 tbsp Flaxseeds
+  14: 1.5 dl Walnuts
+  15: 2 clove Garlic, raw
+  16: 1 medium Onion, red, Norwegian, raw
+  17: 1 medium Carrot, Norwegian, raw
+  18: 1 tsp Smoked paprika powder
+STEPS:
+  0: Blend the first 4 ingredients in the food prosessor.
+  1: Saauté the onion with a little olive oil and sea salt.
+  2: Mix all the ingredients together.
+  3: Take 100g for each burger and form them round and approxinately 1,5cm thick.
+  4: Put them on a tray with baking paper.
+  5: Bake on 200 degrees for 20min, then turn them and bake for 5min. more.
+
+=== red-lentil-soup ===
+TITLE: Red Lentil Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 dl Lentils, red/pink, dry
+  1: 1 medium Onion, yellow, Norwegian, raw
+  2: 2 clove Garlic, raw
+  3: 5 dl Tomato, chopped, tetrapak
+  4: 3.5 dl Coconut milk
+  5: 6 dl Water, drinking water
+  6: 2 dl Pineapple juice
+  7: 0.5 tsp Sea salt
+  8: 2 medium Spring onions, raw
+  9: 2 tsp Tandoori Masala
+  10: 2 tsp Garam Masala
+  11: 1 tsp Cumin powder
+  12: 1 tsp Coriander powder
+  13: 3 tbsp Vegetable bouillon, powder
+STEPS:
+  0: Sautéé the onion and garlic in ½ tsp olive oil and 1 tbsp water.
+  1: Add spices and bouillon, cook for 30 seconds.
+  2: Add remaining ingredients and cook until lentils are soft.
+
+=== rice-porridge ===
+TITLE: Rice Porridge
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 dl Whole grain rice
+  1: 8 dl Water
+  2: 2 dl Coconut milk
+  3: 1 tbsp Maple syrup
+  4: 0 tsp Sea salt
+  5: 0 tsp Cinnamon, ground
+  6: 0 tsp Vanilla powder
+STEPS:
+  0: Wash the rice.
+  1: Put rice and water in a pot and bring to a boil over high heat, then reduce to low heat and put a lid on. Let it simmer, stirring occasionally, until the rice is very soft and the mixture starts to thicken. (approx. 40-60min.).
+  2: Stir in the coconut milk, vanilla powder, salt, cinnamon and maple syrup.
+
+=== fr-142 ===
+TITLE: Roasted Cauliflower
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 head Cauliflower, Norwegian, raw
+  1: 0.1 dl Lemon juice, fresh
+  2: 2 tbsp Olive oil
+  3: 2 clove Garlic, raw
+  4: 0.5 tsp Sea salt
+STEPS:
+  0: Preheat your oven to 200° degrees Celsius.
+  1: Cut the cauliflower florets into even-sized pieces. The very large florets can be sliced in half.
+  2: To make the dressing; mix all the remaining ingredients.
+  3: Place the cauliflower into the dressing and toss to coat.
+  4: Bake for 8 minutes at 200° degrees Celsius.
+
+=== fr-143 ===
+TITLE: Roasted Pepper Seitan Sausages
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 6 dl Gluten flour
+  1: 1 dl Nutritional yeast
+  2: 2 tbsp Onion powder
+  3: 1.5 tbsp Garlic powder
+  4: 4 pcs Bell pepper, red, raw
+  5: 1.2 dl Chickpeas, cooked
+  6: 0.5 tsp Chilli flakes
+  7: 1 tsp Cumin powder
+  8: 0.5 tsp Smoked paprika powder
+  9: 1 tbsp Honey
+  10: 2 tbsp Salt, table salt
+  11: 1 small Onion, red, Norwegian, raw
+  12: 60 ml Parsley, Norwegian, raw
+  13: 350 g Tofu, soyabønneprodukt
+  14: 2 clove Garlic, raw
+  15: 2 tbsp Vegetable bouillon, powder
+  16: 4.1 dl Water, drinking water
+  17: 2 tbsp Hot sauce
+STEPS:
+  0: Preheat the oven 170 degrees.
+  1: Wash the paprika and poke them with a form. Bake whole the paprika for 30 to 40 minutes. Take out of the oven and store in an airtight container and let it sweet until cool. Then peel off the chared and blackened parts.
+  2: Prepare the seitan base: mix together gluten flour, nutritional yeast, onion powder, garlic powder.
+  3: Mix the Seitan Base Mix, roasted bell pepper, chickpeas (crushed in your hand as you add or in the food processor), chili flakes, cumin, smoked paprika, honey, sea salt, pepper, sautééed onion, and parsley.
+  4: In a blender, add the tofu, remaining roasted bell peppers, garlic, vegetable boullion, water and hot sauce. Blend until smooth.
+  5: To form the dough, you must combine the dry and the wet batches. Create a small well in the center of the dry batch. Gradually add the wet batch into the well, stopping frequently to stir. Continue until the dough takes on a sturdy consistency. You should use most if not all the liquid. The texture is correct if you are able to rip the dough apart with a bit of give.
+  6: To shape the sausages, cut the dough into sausage size pieces: 110 grams. Wrap them in aluminium foil like candy.
+  7: Steam sausages for 45 min. Remove from the steamer and allow to cool a bit before removing the wrapping.
+  8: Once cooled, remove the wrapping and bake for 10-15 minutes at 170 degrees.
+
+=== fr-144 ===
+TITLE: Roasted Sweet Potato and Arugula Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 9.5 dl Sweet potato, raw
+  1: 2 tbsp Olive oil
+  2: 0.25 tsp Cinnamon, ground
+  3: 2 tbsp Chives, raw
+  4: 1 l Arugula
+  5: 1 big Carrot, Norwegian, raw
+  6: 0.5 tbsp Honey
+  7: 3 tbsp Lemon juice, fresh
+STEPS:
+  0: Preheat the oven to 180°C.
+  1: Toss the sweet potatoes with olive oil.
+  2: On a tray spread out the potatoes evenly. Place in the oven and roast for 25 minutes or until tender and slightly browned. Then let the potatoes cool until they are near room temperature. Make sure that the pieces don’t touch each other so that they bake well.
+  3: Prepare the dressing while the potatoes are roasting in a small bowl, by whisking together the lemon juice, honey, cinnamon and chives.
+  4: Just before serving, in a large bowl, gently toss together the arugula and carrot. Next, add the potatoes, drizzle with dressing and toss.
+
+=== roasted-brussels-sprouts ===
+TITLE: Roasted Brussels Sprouts
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 250 g Brussels sprouts, frozen
+  1: 0.5 tsp Herb salt
+  2: 0.25 tsp Smoked paprika powder
+  3: 0.25 tsp Garlic powder
+  4: 0.25 tsp Thyme, dried
+  5: 0.25 tsp Rosemary, dried
+  6: 1 tsp Olive oil
+STEPS:
+  0: Defrost the brussel sprout: Pour hot water on the brussel sprouts and wait a couple of minutes. Then pour out the water.
+  1: Cut them in half.
+  2: Mix all ingredients in a bowl. Make sure the seasonings are evenly spread out on them.
+  3: Spread the brussel sprouts out on a baking tray lined with a silicone mat or baking paper.
+  4: Preheat the oven to 200 °C.
+  5: Roast the brussel sprouts for about 15 - 20 minutes until roasted.
+
+=== roasted-chickpea-tofu ===
+TITLE: Roasted Chickpea Tofu
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 120 g Chickpea flour
+  1: 7.5 dl Water
+  2: 0.5 tsp Sea salt
+  3: 1 tbsp Olive oil
+  4: 1 tsp Soy sauce
+  5: 1 tsp Miso, fermented soy bean paste
+  6: 0.5 tsp Garlic powder
+  7: 0 tsp Ginger, powder
+  8: 0.25 tsp Smoked paprika powder
+  9: 1 tsp Lemon juice, fresh
+  10: 0  water
+  11: 0  Whole wheat flour, fine
+  12: 0  Bread crumbs
+  13: 0  Onion powder
+  14: 0  Nori, dried seaweed
+  15: 0  Dill, dry
+STEPS:
+  0: Whisk together all the first ingredients down to and including lemon juice but just 1/3 of the water. Make sure it is without lumps.
+  1: Heat up the rest of the first water amount. When it is cooking, lower the heat to medium and pour in the chickpea mixture slowly while you continuously whisk.
+  2: Continue stirring until it reaches a pudding-like consistency. This will take a few minutes.
+  3: Pour the mixture into a mold while it is hot and let it cool down and harden.
+  4: Mix water and flour in a bowl to a thick runny paste.
+  5: Mix breadcrunbs, nori paper (crush until very small pieces in the small blender), onion powder and dill (if dry) in another bowl.
+  6: Cut the chickpea tofu in strips, 1-2 cm thick (like fish fillet).
+  7: Dip the chikpea strips in the flourmix to covered of the flour mix.
+  8: Then put them in the crumb mix and get the covered of the crumb mix.
+  9: Take a big pan and pan fry them with olive oil until golden.
+
+=== roasted-salad ===
+TITLE: Roasted Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 600 g Beetroot, Norwegian, raw
+  1: 3 tbsp Olive oil
+  2: 1.5 tsp Sea salt
+  3: 2 tsp Smoked paprika powder
+  4: 1 tsp Pepper, cayenne, red
+  5: 600 g Carrot, Norwegian, raw
+  6: 3 tbsp Olive oil
+  7: 1.5 tsp Sea salt
+  8: 2 tsp Smoked paprika powder
+  9: 1 tsp Pepper, cayenne, red
+  10: 200 g Pecans
+  11: 3 tbsp Maple syrup
+  12: 0.5 tsp Sea salt
+  13: 300 g Kale, raw
+  14: 2 tbsp Avocado, raw
+  15: 4 tbsp Lime juice
+  16: 2 clove Garlic, raw
+  17: 1.5 tsp Sea salt
+STEPS:
+  0: Put the beetroot, oil, salt, paprika powder and cayenne on a tray with baking paper and mix it around to make sure sure the oil and seasonings are spread out evenly on the beetroot. Bake/roast them in the oven at 200°C for 25-30min.
+  1: Do the same with the carrots as the beetroots. (But not mix them. Both because they might need different baking time and the beetroots will color the carrots).
+  2: Chopp the pecans in smaller pieces. Have them on baking paper in the oven with maple syrup at 180°C for 10-12min.
+  3: Remove the stem from the kale and ripp the leaves in bite size pieces and put it in a bowl. Massage the kale with avocado, lime juice, garlic and salt to spread out the flavors and to soften the fibers in the kale leaves.
+  4: When all components is cold, mix them together.
+
+=== fr-148 ===
+TITLE: Roti
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 300 g Whole wheat flour, fine
+  1: 0.5 tsp Sea salt
+  2: 2.5 dl Water
+STEPS:
+  0: Put flour and salt in a bowl and mix it together.
+  1: Add a little of the water at a time while kneding it into a dough. The dough should be a little harder than a bread dough.
+  2: Let the dough rest 10-15min.
+  3: Split the dough in pieces, approximately 45g each piece, and roll out into thin round "pancakes" , which will be about 15–18 cm in diameter.
+  4: Fry the bread rolls over high heat in a dry frying pan for a couple of minutes. Turn the bread rolls frequently so they don't burn. Curl/roll the bread rolls in a kitchen towel to keep them soft.
+
+=== fr-149 ===
+TITLE: Russian Penicillin
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1  Lemon, raw
+  1: 1  Orange, raw
+  2: 2 clove Garlic, raw
+  3: 1 pcs Ginger, raw
+  4: 1 tbsp Honey
+  5: 0.5 tsp Pepper, cayenne, red
+  6: 3.6 dl Water, drinking water
+STEPS:
+  0: Blend all in a blender.
+
+=== fr-150 ===
+TITLE: Salsa
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 6 medium Tomato, Norwegian, raw
+  1: 1 handful Parsley, Norwegian, raw
+  2: 1 medium Onion, red, Norwegian, raw
+  3: 1 clove Garlic, raw
+  4: 0.25 dl Lemon juice, fresh
+  5: 1 tsp Olive oil
+  6: 0.75 tsp Sea salt
+STEPS:
+  0: Mix in a bowl and set aside for flavours to incorporate.
+
+=== fr-151 ===
+TITLE: Sautéed Carrots
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 3.0 Carrot, Norwegian, raw
+  1: 0 0.5 Spring onions, raw
+  2: 0 1.0 Coconut oil
+STEPS:
+  0: Heat a large fry pan over medium-high heat. Once hot, add the oil, followed by the carrots.
+  1: Let cook for a bit on the first side to develop a bit of color. Then toss and continue to cook until the carrots are almost cooked through. Add water as necessarily.
+  2: Taste for seasoning and then top with the green onions. Toss to combine and serve immediately.
+
+=== scrambled-tofu ===
+TITLE: Scrambled Tofu
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 150 g Tofu, soyabønneprodukt
+  1: 1 tbsp Soy sauce
+  2: 2 tbsp Olive oil
+  3: 1.2 dl Onion, red, Norwegian, raw
+  4: 2 clove Garlic, raw
+  5: 1.2 dl Bell pepper, red, raw
+  6: 1.2 dl Spinach, raw
+  7: 1.5 tbsp Nutritional yeast
+  8: 0.5 tsp Black salt
+  9: 0.5 tsp Turmeric, ground
+  10: 0  Parsley, Norwegian, raw
+  11: 0  Chives, raw
+  12: 0  Basil, raw
+STEPS:
+  0: Marinade crumbled tofu with soya sauce.
+  1: Bring a fry pan to medium–high heat and add the olive oil. Add the onions and reduce heat to medium. Sautéé until they are translucent and golden, then add the garlic and peppers.
+  2: Once the onion and garlic are caramelized, add the crumbled tofu. Cook on high heat for 4 minutes until the ingredients begin to brown slightly.
+  3: Next, add the nutritional yeast, optional Indian black salt, turmeric and cook for another 3 to 5 minutes.
+  4: Right before serving, add the spinach and a handful of fresh italian herbs.
+
+=== seasoned-baked-potatoes ===
+TITLE: Seasoned Baked Potatoes
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 kg Potato, raw
+  1: 0 dl Olive oil, extra virgin, virgin oil
+  2: 2 tsp Sea salt
+  3: 2 tbsp Rosemary, dried
+  4: 1 tsp Oregano, dried
+  5: 1 tsp Paprika powder
+  6: 1 tsp Garlic powder
+  7: 1 tsp Onion powder
+STEPS:
+  0: Wash pretty well potatoes.
+  1: Cut the potatoes in boats.
+  2: Add olive oil and spices, and mix very well.
+  3: Bake it at 200 Celsius for 22 minutes.
+
+=== simple-baked-potatoes ===
+TITLE: Simple Baked Potatoes
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 kg Baking potatoes
+  1: 1 tbsp Olive oil
+  2: 0.25 tsp Sea salt
+STEPS:
+  0: Set-in the steaming module and preheat the oven at 98 degrees celsius.
+  1: Steam for 15 minute at 98 degrees celsius.
+  2: Set in baking module and preheat the oven at 200 degrees celsius.
+  3: Toss with olive oil and salt, then bake for 20 minutes at 200 degrees celsius.
+  4: Garnish with fresh or dried herbs.
+
+=== fr-155 ===
+TITLE: Sorbet
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 210 g Banana, raw
+  1: 420 g Raspberries, raw
+  2: 1 pinch Vanilla powder
+  3: 0.5 dl Honey
+STEPS:
+  0: Take the fruits out of the freezer 5 minutes before making the sorbet.
+  1: Place all the ingredients in a food processor (preferably thermomix) and blend for 2-3 minutes. You might need to stop and mix with a spoon a few times. Use an ice cream scoop or spoon to form a nice sorbet scoop. Best when served immediately. If serving later, place in the freezer and take out to soften approx. 5 min before serving.
+
+=== fr-156 ===
+TITLE: Soy Mayonnaise
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 dl Soy milk
+  1: 0.5 dl Canola oil
+  2: 0.5 dl Olive oil, extra virgin, virgin oil
+  3: 1 tsp Onion powder
+  4: 0.5 clove Garlic, raw
+  5: 1 tbsp Lemon juice, bottled
+  6: 1 tsp Sea salt
+  7: 1 tbsp Nutritional yeast
+  8: 1 tsp Coriander powder
+STEPS:
+  0: Blend all ingredients in a blender/vitamix, without the lemon juice and oil, until the garlic is compleately smooth.
+  1: Add the lemon juice and oil while blending on medium speed, and blend on high speed until it is thick in texture.
+
+=== soy-mozzarella ===
+TITLE: Soy Mozzarella
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 dl Soy yogurt
+  1: 2.5 dl Cashew, unsalted
+  2: 2.5 dl Water
+  3: 1 tsp Sea salt
+  4: 3 tbsp Tapioca starch
+  5: 1 tbsp Agar-agar
+STEPS:
+  0: 1: Preferably soak the cashews in water some hours to make them soft. Strain the cashews and pour out the water.
+  1: 2: Blend the cashews with the yogurt and half of the water. Start slow and then on high speed for at least 1min to make sure it is completaly smooth consistency.
+  2: 3: Let the batter rest in a glass bowl for approximately 24 hours, in room temperature. Can be covered with a tea towl or plastikk foil with holes in so the batter gets air.
+  3: Whisk in the salt and tapioca flour.
+  4: Prepare a big bowl with ice water. Use ice cubes or the blue freezepacks.
+  5: Have the rest of the water and the agar agar in a pot. Visp and cook 3-4 min.
+  6: Add the batter to the pot and whisk it in. Then continue cooking on middle temperature, continuesly stiring with a wooden spoon with flat end.
+  7: The batter is finished cooking when it has become thick , shiny and stretchy. Then scoop up balls with a ice cream spoon (with ejector) and scoop out the balls as round as possible in the ice water.
+  8: Let the mozzarella balls rest in the ice water for 20-30min.
+  9: Take the balls out from the water, into a container and store cold.
+
+=== soy-salami ===
+TITLE: Soy Salami
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 10 g Red beet, raw
+  1: 20 g Garlic, raw
+  2: 2 tbsp Olive oil
+  3: 1 dl Nutritional yeast
+  4: 2 tbsp Pineapple juice
+  5: 2 tbsp Onion powder
+  6: 5 tbsp Soy sauce
+  7: 1 tsp Coriander powder
+  8: 500 ml Soy milk
+  9: 1 tsp Lemon juice, fresh
+  10: 3 tsp Agar-agar
+  11: 0.15 tsp Pepper, cayenne, red
+STEPS:
+  0: Blend half of the beetroot and all the other ingredients without the garlic, untill completaly smooth.
+  1: Bring the mixture to a boil in a pot and when it starts bobbling, let it boil while stirring for at least 3-5 minutes.
+  2: Blend the mixture again with the rest of the beetroot and garlic.
+  3: Pour into glasses (that has a practical shape so it can be taken out without being destroyed) and let cool down before refrigerating.
+  4: Before serving; take it out of the glass and cutt in thin slices.
+
+=== soy-yogurt-dressing ===
+TITLE: Soy Yogurt Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 dl Soy yogurt
+  1: 2 tbsp Lemon juice, fresh
+  2: 0.25 tsp Sea salt
+  3: 0.5 clove Garlic, raw
+STEPS:
+  0: Make the dressing just before serving. Blend all the soy yogurt and garlic in a high-speed blender for 15-20 seconds. Then add the lemon juice and salt. Do not over-blend. Adjust the lemon juice to taste.
+
+=== fr-160 ===
+TITLE: Standard Recipes
+CATEGORY: Dinner
+INGREDIENTS:
+STEPS:
+
+=== steamed-small-potatoes ===
+TITLE: Steamed Small Potatoes
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 200 g Potato, raw
+  1: 1 pinch Sea salt
+  2: 0  Parsley, Norwegian, raw
+STEPS:
+  0: Preheat the oven to 100°C for 10 minutes.
+  1: Cut the potatoes lengthwise in half, then once more in the same direction, so you end up with 4 wedges per potato.
+  2: Place in the oven and steam at 98°C for 25 minutes.
+  3: Add salt and garnish with fresh or dry parsley.
+
+=== stine-gros-waffles ===
+TITLE: Stine Gro´s Waffles
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 5.0 Small oats
+  1: 0 3.5 Coconut milk
+  2: 0 3.5 Water, drinking water
+  3: 0 1.0 Date, dried
+  4: 0 0.25 Sea salt
+  5: 0 0.25 Lemon peel
+STEPS:
+  0: Blend all the ingredients in the blender for 30 seconds.
+  1: Bake the waffles in the waffle machine.
+
+=== fr-163 ===
+TITLE: Strawberry Jam
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0.5 l Strawberries, raw
+  1: 0.5 dl Chia seeds, dried
+STEPS:
+  0: Defrost the berries, mash/blend them a bit with a hand blender, not smooth.
+  1: Add chia seeds and stir every now and then before storing.
+
+=== stuffed-paprika-with-tofu ===
+TITLE: Stuffed Paprika with Tofu
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 1 Onion, yellow, Norwegian, raw
+  1: 0 4 Garlic, raw
+  2: 0 750 Tofu, soyabønneprodukt
+  3: 0 1 Leeks, Norwegian, raw
+  4: 0 1 Carrot, Norwegian, raw
+  5: 0 2 Nutritional yeast
+  6: 0 2 Salt, table salt
+  7: 0 4 Soy sauce
+  8: 0 1 Olive oil
+  9: 0 3 Water, drinking water
+  10: 0 2 Cashew, unsalted
+  11: 0 1 Turmeric, ground
+  12: 0 3 Parsley, Norwegian, raw
+STEPS:
+  0: Sautée onion, garlic, leek (sliced in rings) and carrots (grated) with 4 tbsp water, soy sauce and oil. Cook until soft.
+  1: Don’t add more oil and water for larger amounts.
+  2: Grate tofu and add it to the vegetables.
+  3: For large portions it is nice to use the machine to grate vegetables and tofu.
+  4: Blend the cashew with water, yeast flakes, salt and turmeric and add it to the tofu and veggie mixture.
+  5: Mix all together and add finely chopped fresh parsley.
+  6: Let the mixture stay for 5 minutes for the tofu to absorb the flavor.
+  7: Cut the paprika into half and fill with the tofu mixture.
+  8: Preheat the oven 200 deg cel.
+  9: Bake the stuffed paprika for 35 minutes at 150 degrees or untill the paprika is cooked through.
+
+=== fr-165 ===
+TITLE: Super Green Smoothie
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 4.5 Kale, raw
+  1: 0 2.4 Cucumber, Norwegian, raw
+  2: 0 1.0 Apple, Norwegian, unspecified, raw
+  3: 0 3.0 Date, dried
+  4: 0 7.5 Non-diary milk
+  5: 0 1.0 Sea salt
+STEPS:
+  0: To make the smoothie, place everything into the high-speed blender and blend for a couple of minutes or until smooth and creamy. Taste and adjust your flavors and re-blend if desired. Serve immediately.
+  1: Adjust the sweetness after your taste.
+
+=== swedish-oven-pancake ===
+TITLE: Swedish Oven Pancake
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 180 g Tofu, soyabønneprodukt
+  1: 6 dl Soy milk
+  2: 1.5 tsp Sea salt
+  3: 2 tbsp Honey
+  4: 1.5 tbsp Fibre husk
+  5: 400 ml Coconut milk
+  6: 4 dl Spelt flour
+  7: 2 tbsp Olive oil, extra virgin, virgin oil
+STEPS:
+  0: Blend the first four ingredients in a blender until smooth consistency.
+  1: Add fiber husk to the blender and blend a little more to combind it.
+  2: Pour the mixture into a bowl and whisk in the rest of the ingredients.
+  3: Preheat the oven at 180 celcius degrees.
+  4: Choose a form that is a size that will make the mixture 1-1,5cm thick when it´s poured in. spread/paint the form with oil an dpour the mixture in.
+  5: Bake in the midlle of the oven for 30 min. until golden/medium brown on the top.
+  6: Let it rest at room temperature to get more stiff.
+  7: If it´s not served the same day, simply heat it up before serving.
+
+=== sweet-potato-muffins ===
+TITLE: Sweet Potato Muffins
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 450 g Sweet potato, raw
+  1: 4.7 dl Oat flour
+  2: 1 tsp Cinnamon, ground
+  3: 1 tsp Baking powder
+  4: 1 tsp Baking soda
+  5: 0.75 tsp Sea salt
+  6: 1.2 dl Maple syrup
+  7: 1.2 dl Coconut oil
+  8: 75 ml Non-diary milk
+  9: 1 pinch Vanilla powder
+  10: 1.2 dl Pecans
+STEPS:
+  0: Peel th esweet potato and cut in smaller and eaven pieces. Put then in a pot with water and cook until they are soft.
+  1: In a large bowl, combine the flour, cinnamon, baking powder, baking soda and salt. Mix the dry ingredients together.
+  2: In the vitamix, combine the cooked sweet potato, maple syrup, coconut oil (preferably melted), non-dinary milk and vanilla. Blend on high until totally smooth and creamy.
+  3: Pour the pureéd swwet potato mixture into the large bowl with the dry ingredients. Gently stir and fold everything together until JUST combined.
+  4: Preheat the oven to 180 degrees celsius.
+  5: Put paper baking cups in the metal baking form and fill them with the mixture, approximately half full in each.
+  6: Topp them with some chopped pecans as garnish. Press them into the batter so they stick.
+  7: Bake the muffins for 20min or until the tops are domed and slightly darkened and a knife inserted into the middle of one comes out clean.
+  8: Let the muffins cool down completely before serving.
+
+=== sweet-potato-soup ===
+TITLE: Sweet Potato Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 pcs Onion, yellow, Norwegian, raw
+  1: 2 clove Garlic, raw
+  2: 2 tsp Curry, ground
+  3: 500 g Sweet potato, raw
+  4: 4.7 dl Water
+  5: 2 tsp Vegetable bouillon, powder
+  6: 0  Sea salt
+STEPS:
+  0: Sautée onion, garlic and curry powder with a little water until soft.
+  1: Add the rest of the water, bouillon and sweet potato. Let is simmer with a lid until the potatoes are cooked through (approx. 15min).
+  2: Blend the soup.
+
+=== sweet-vinaigrette ===
+TITLE: Sweet Vinaigrette
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3 tbsp Olive oil
+  1: 2 tbsp Lemon juice, fresh
+  2: 2 tbsp Honey
+  3: 0.25 tsp Pepper, cayenne, red
+STEPS:
+  0: Whisk all ingredients together.
+
+=== sweet-yellow-pea-soup ===
+TITLE: Sweet Yellow Pea Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3 medium Onion, yellow, Norwegian, raw
+  1: 4 medium Carrot, Norwegian, raw
+  2: 2 l Yellow peas, cooked
+  3: 2 l Water, drinking water
+  4: 1 pinch Turmeric, ground
+  5: 2 tsp Sea salt
+  6: 4.5 tbsp Vegetable bouillon, powder
+  7: 2.5 tsp Garlic powder
+  8: 2.5 tsp Onion powder
+  9: 0  Parsley, Norwegian, raw
+STEPS:
+  0: Soak yellow peas over night. Then cook the yellow peas separatelly.
+  1: Sautéee onion on medium heat until soft.
+  2: Add carrot and salt, and continue sautéé until the carrots are tender.
+  3: Add the yellow peas, water and turmeric powder, and cook until everything is well combined and hot.
+  4: Take half of the soup and pulse it in the food processor or vitamix a few times.
+  5: Garnish with chopped parsley on top .
+
+=== taco-dressing ===
+TITLE: Taco Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 350.0 White beans, large, canned
+  1: 0 24.0 Parsley, Norwegian, raw
+  2: 0 2.0 Garlic, raw
+  3: 0 3.0 Soy sauce
+  4: 0 3.0 Nutritional yeast
+  5: 0 0.5 Chilli flakes
+  6: 0 1.0 Water, drinking water
+  7: 0 0.5 Lemon juice, fresh
+  8: 0 4.0 Tahini
+STEPS:
+  0: Blend all the ingredients in a high speed blender until smooth.
+
+=== fr-172 ===
+TITLE: Thai Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 4 l Water, drinking water
+  1: 2 medium Onion, yellow, Norwegian, raw
+  2: 2 large Bell pepper, red, cooked
+  3: 1 large Leeks, Norwegian, raw
+  4: 5 medium Carrot, Norwegian, raw
+  5: 5 dl Coconut milk
+  6: 125 g Rice noodles, dry
+  7: 500 g Tofu, soyabønneprodukt
+  8: 1 tsp Turmeric, ground
+  9: 0.25 tsp Ginger, raw
+  10: 0.5 pcs Lemon juice, fresh
+  11: 5 tsp Salt, table salt
+STEPS:
+  0: Dice tofu and marinade 1 - 2 hours with some soy sauce, onion and garlic powder. Bake afterwards for 20 minutes at 170 °C.
+  1: Sautée onions and leek in 1 tsp of olive oil or water until translucent.
+  2: Add carrots and let cook for about 10 minutes stirring regularly. Add hot water and let it cook for another 15 min.
+  3: Add tofu, roasted paprika, coconut milk.
+  4: Lastly just before serving, add the noodles and bring it to a boil.
+
+=== fr-173 ===
+TITLE: Tofu Feta Cheese
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 150 g Tofu, soyabønneprodukt
+  1: 3 tbsp Coconut oil
+  2: 2 tbsp Lemon juice, bottled
+  3: 0.5 tsp Sea salt
+STEPS:
+  0: If tofu is not pressed, place a weight on it for 15-20 minutes to press out as much as water you can.
+  1: Place all the ingredients into a food processor and blend it until smooth.
+  2: Pour into a small dish line with baking paper.
+  3: Cover with plastic wrap and place in the freezer for 30 minutes. Keep in the refrigerator after this time.
+  4: Remove from the dish and crumble or slice as needed. Will keep for around 3 days.
+
+=== fr-174 ===
+TITLE: Tofu Sour Cream
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 13 460g 100
+  1: 17 139 100
+  2: 93 450a 100
+  3: 4 400g 100
+  4: 5 420f 100
+  5: 4 460e 100
+  6: 9 460g 100
+  7: 82 400c 100
+  8: 22 450a 100
+  9: 88 400f 90
+  10: 86 208 90
+  11: 86 400f 91
+  12: 86 280 91
+  13: 87 400f 91
+  14: 86 20 90
+  15: 82 460f 100
+  16: 40 610 100
+  17: 86 460f 93
+  18: 85 400c 100
+  19: 85 450a 43
+  20: 89 212 100
+  21: 91 202 100
+  22: 94 460e 100
+  23: 93 460e 53
+  24: 71 610 74
+  25: 91 208 100
+  26: 92 450a 100
+  27: 26 140 100
+  28: 41 140 100
+  29: 34 131 100
+  30: 34 131 100
+  31: 6 450c 100
+  32: 0 460f 100
+  33: 92 450a 100
+  34: 76 208 66
+  35: 15 310 100
+  36: 13 305 100
+  37: 72 139 100
+  38: 10 460f 100
+  39: 92 460g 64
+  40: 5 450c 100
+  41: 90 460f 100
+  42: 86 202 86
+  43: 84 602 100
+  44: 93 131 83
+  45: 93 450a 85
+  46: 91 131 89
+  47: 93 450c 85
+  48: 93 400f 85
+  49: 13 140 100
+  50: 5 91 100
+  51: 2 400g 100
+  52: 3 210 100
+  53: 3 210 100
+  54: 9 209 100
+  55: 12 210 100
+  56: 69 400c 100
+  57: 12 460g 100
+  58: 85 440a 100
+  59: 88 460e 100
+  60: 84 20 100
+  61: 83 202 100
+  62: 90 20 100
+  63: 10 490a 100
+  64: 3 460e 51
+  65: 37 135 100
+  66: 39 135 100
+  67: 35 135 100
+  68: 35 135 100
+  69: 39 135 100
+  70: 39 135 100
+  71: 37 135 100
+  72: 39 135 100
+  73: 37 135 100
+  74: 39 135 100
+  75: 35 135 100
+  76: 39 225a 100
+  77: 39 225a 100
+  78: 37 225b 100
+  79: 37 225b 100
+  80: 37 225a 100
+  81: 37 225a 100
+  82: 40 106c 100
+  83: 40 106c 100
+  84: 35 106c 100
+  85: 35 106c 100
+  86: 34 106c 100
+  87: 34 106c 100
+  88: 36 225a 100
+  89: 36 225a 100
+  90: 36 106c 100
+  91: 36 106c 100
+  92: 38 136 100
+  93: 38 136 100
+  94: 37 225a 100
+  95: 37 225a 100
+  96: 40 225a 100
+  97: 40 225a 100
+  98: 41 106c 100
+  99: 41 106c 100
+  100: 39 225a 100
+  101: 39 225a 100
+  102: 39 225b 100
+  103: 39 225b 100
+  104: 37 106c 100
+  105: 37 106c 100
+  106: 41 106c 100
+  107: 41 106c 100
+  108: 34 135 100
+  109: 44 106c 100
+  110: 46 106c 100
+  111: 44 106c 100
+  112: 50 106c 100
+  113: 44 106c 100
+  114: 50 106c 100
+  115: 29 30 100
+  116: 29 30 100
+  117: 36 225a 100
+  118: 36 225a 100
+  119: 36 106c 100
+  120: 36 106c 100
+  121: 37 106c 100
+  122: 37 106c 100
+  123: 38 106c 100
+  124: 38 106c 100
+  125: 36 106c 100
+  126: 36 106c 100
+  127: 36 135 100
+  128: 4 210 100
+  129: 3 107a 100
+  130: 3 225a 100
+  131: 8 20 100
+  132: 3 107a 100
+  133: 12 400f 100
+  134: 88 460g 95
+  135: 89 131 86
+  136: 91 212 100
+  137: 90 208 86
+  138: 90 284 86
+  139: 90 30 86
+  140: 5 102 100
+  141: 64 135 100
+  142: 11 400e 100
+  143: 8 91 100
+  144: 86 212 100
+  145: 82 202 80
+  146: 83 400f M
+  147: 13 420f 100
+  148: 14 420f 100
+  149: 63 135 100
+  150: 11 420f 100
+  151: 86 139 100
+  152: 89 131 83
+  153: 90 131 91
+  154: 36 140 100
+  155: 68 140 100
+  156: 11 106c 100
+  157: 90 460e 51
+  158: 84 460e 100
+  159: 91 450a 97
+  160: 10 460f 100
+  161: 8 460f 100
+  162: 91 212 100
+  163: 89 131 86
+  164: 91 212 100
+  165: 91 212 100
+  166: 90 208 89
+  167: 89 283 89
+  168: 89 135 89
+  169: 3 221b 100
+  170: 2 221a 100
+  171: 3 221a 100
+  172: 5 460e 100
+  173: 3 221a 100
+  174: 60 460e 84
+  175: 87 135 100
+  176: 92 131 74
+  177: 94 212 100
+  178: 92 201 74
+  179: 87 135 100
+  180: 87 202 70
+  181: 92 202 76
+  182: 13 135 100
+  183: 8 400e 100
+  184: 6 20 100
+  185: 12 134 100
+  186: 8 134 100
+  187: 11 225a 100
+  188: 9 134 100
+  189: 90 410c 89
+  190: 92 20 100
+  191: 34 135 100
+  192: 93 460e 92
+  193: 94 460g 99
+  194: 62 140 100
+  195: 79 460e 69
+  196: 83 202 86
+  197: 93 208 100
+  198: 40 460e 63
+  199: 6 420f 100
+  200: 9 450c 100
+  201: 67 400c 100
+  202: 10 450a 100
+  203: 94 450a 80
+  204: 11 460f 100
+  205: 88 460f 73
+  206: 88 460f 73
+  207: 95 202 92
+  208: 90 202 100
+  209: 10 460f 100
+  210: 86 460e 77
+  211: 10 460f 100
+  212: 14 103b 100
+  213: 5 420c 100
+  214: 0 400f 100
+  215: 3 420f 100
+  216: 73 460b 100
+  217: 0 60a 100
+  218: 47 460e 52
+  219: 72 135 100
+  220: 65 460g 65
+  221: 9 460g 100
+  222: 7 460f 100
+  223: 92 460f 85
+  224: 5 225a 100
+  225: 4 210 100
+  226: 12 400e 100
+  227: 0 20 100
+  228: 78 460e 100
+  229: 69 212 100
+  230: 77 202 56
+  231: 12 400g 100
+  232: 53 135 100
+  233: 8 460b 100
+  234: 63 135 100
+  235: 88 440a 100
+  236: 57 135 100
+  237: 87 460e 98
+  238: 73 139 100
+  239: 94 139 100
+  240: 96 202 97
+  241: 83 400c 100
+  242: 81 202 100
+  243: 78 202 100
+  244: 50 450c 100
+  245: 9 460f 100
+  246: 15 450a 84
+  247: 86 420a 90
+  248: 75 460g 100
+  249: 94 602 81
+  250: 80 420c 83
+  251: 95 400c 86
+  252: 9 460g M
+  253: 94 450c 93
+  254: 93 602 100
+  255: 30 460g 96
+  256: 14 311 100
+  257: 7 460e 100
+  258: 11 30 100
+  259: 11 106c 100
+  260: 11 106c 100
+  261: 11 30 100
+  262: 11 30 100
+  263: 35 91 100
+  264: 34 209 100
+  265: 66 204 100
+  266: 87 450c 100
+  267: 82 450c 100
+  268: 92 450c 65
+  269: 6 460f 100
+  270: 64 450a 79
+  271: 91 20 60
+  272: 10 460f 100
+  273: 79 460f 94
+  274: 13 460f 100
+  275: 89 400c 98
+  276: 19 140 100
+  277: 83 208 96
+  278: 82 208 96
+  279: 83 208 96
+  280: 89 610 50
+  281: 79 139 100
+  282: 85 450a 88
+  283: 33 135 100
+  284: 33 135 100
+  285: 5 420f 41
+  286: 90 283 92
+  287: 10 400c 100
+  288: 19 104a 100
+  289: 90 460e 46
+  290: 39 140 100
+  291: 32 140 100
+  292: 77 420a 63
+  293: 69 420a 27
+  294: 64 139 100
+  295: 96 202 92
+  296: 73 460g 28
+  297: 92 460e 92
+  298: 47 135 100
+  299: 67 135 100
+  300: 57 135 100
+  301: 72 135 100
+  302: 82 420a 69
+  303: 85 400c 61
+  304: 91 460e 46
+  305: 3 135 100
+  306: 70 400e 100
+  307: 68 400c 100
+  308: 85 610 74
+  309: 89 283 83
+  310: 81 460e 93
+  311: 96 202 94
+  312: 87 131 83
+  313: 87 202 83
+  314: 91 450c 100
+  315: 82 460g 100
+  316: 89 460e 53
+  317: 65 136 100
+  318: 11 450a 100
+  319: 74 400c 100
+  320: 76 400c 100
+  321: 8 460g 100
+  322: 10 460g 100
+  323: 88 460e 74
+  324: 83 202 100
+  325: 0 50 100
+  326: 82 460e 60
+  327: 34 203 100
+  328: 34 203 100
+  329: 33 206 100
+  330: 33 206 100
+  331: 33 135 100
+  332: 33 135 100
+  333: 34 203 100
+  334: 34 203 100
+  335: 35 135 100
+  336: 39 135 100
+  337: 79 460g 79
+  338: 1 460e 31
+  339: 88 140 100
+  340: 86 610 71
+  341: 8 460g 100
+  342: 30 135 100
+  343: 84 135 100
+  344: 0 20 100
+  345: 30 20 100
+  346: 14 400e 100
+  347: 0 400c 100
+  348: 100 0 100
+  349: 100 20 100
+  350: 100 0 100
+  351: 100 0 100
+  352: 100 20 100
+  353: 100 0 100
+  354: 53 400f 100
+  355: 67 135 100
+  356: 84 202 100
+  357: 83 202 89
+  358: 11 450a 100
+  359: 90 202 89
+  360: 93 420c 100
+  361: 5 460f 100
+  362: 88 460g 91
+  363: 86 610 91
+  364: 83 400c 100
+  365: 8 450c 100
+  366: 11 450a 100
+  367: 60 135 100
+  368: 12 400c 100
+  369: 1 207 100
+  370: 4 135 100
+  371: 6 460f 100
+  372: 10 100 100
+  373: 5 20 100
+  374: 10 20 100
+  375: 9 135 100
+  376: 2 20 100
+  377: 3 225a 100
+  378: 81 138 100
+  379: 89 135 100
+  380: 5 225a 100
+  381: 6 210 100
+  382: 4 20 100
+  383: 89 460g 86
+  384: 0 20 100
+  385: 0 20 100
+  386: 43 400c 80
+  387: 79 400f 100
+  388: 75 460e 80
+  389: 88 131 93
+  390: 2 400g 100
+  391: 88 283 93
+  392: 88 204 100
+  393: 72 460g 100
+  394: 88 208 78
+  395: 10 460f 100
+  396: 89 460e 89
+  397: 95 460g 88
+  398: 0 450b 100
+  399: 30 400f 100
+  400: 88 610 62
+  401: 11 460f 100
+  402: 79 460e 92
+  403: 83 131 91
+  404: 84 202 91
+  405: 6 460f 100
+  406: 85 202 66
+  407: 80 602 80
+  408: 75 450c 61
+  409: 9 30 100
+  410: 68 135 100
+  411: 70 136 100
+  412: 66 135 100
+  413: 66 135 100
+  414: 9 450c 100
+  415: 89 460e 96
+  416: 87 450c 100
+  417: 81 450c 100
+  418: 1 450c 100
+  419: 0 20 100
+  420: 6 460e 69
+  421: 2 221b 100
+  422: 2 221a 100
+  423: 2 221a 100
+  424: 1 221a 100
+  425: 87 450a 100
+  426: 83 450a 100
+  427: 85 208 90
+  428: 84 201 90
+  429: 85 20 90
+  430: 81 135 100
+  431: 83 135 100
+  432: 13 450a 100
+  433: 78 212 100
+  434: 82 460e 100
+  435: 3 460e 53
+  436: 13 460e 100
+  437: 8 460f 100
+  438: 11 460f 100
+  439: 80 460e 94
+  440: 2 420f 77
+  441: 86 460e 100
+  442: 87 450c 100
+  443: 82 450c 100
+  444: 86 610 51
+  445: 4 420f 53
+  446: 2 460e 53
+  447: 40 135 100
+  448: 40 135 100
+  449: 42 135 100
+  450: 48 139 100
+  451: 75 135 100
+  452: 84 201 94
+  453: 24 136 100
+  454: 24 136 100
+  455: 78 460e 66
+  456: 90 450a 61
+  457: 4 400c 100
+  458: 4 460b 100
+  459: 6 460f 100
+  460: 93 460g 97
+  461: 15 400g 100
+  462: 78 201 82
+  463: 84 420a 100
+  464: 76 281 87
+  465: 75 281 100
+  466: 80 201 83
+  467: 83 208 100
+  468: 76 135 82
+  469: 55 135 100
+  470: 55 135 100
+  471: 85 450a 75
+  472: 37 610 87
+  473: 3 210 100
+  474: 6 400e 100
+  475: 2 210 100
+  476: 3 107a 100
+  477: 40 400e 100
+  478: 40 400e 100
+  479: 92 460b 70
+  480: 67 140 100
+  481: 12 420f 100
+  482: 66 140 100
+  483: 11 420g 100
+  484: 63 140 100
+  485: 11 420f 100
+  486: 69 140 100
+  487: 11 420f 100
+  488: 93 450a 91
+  489: 94 202 94
+  490: 17 610 100
+  491: 80 450a M
+  492: 0 50 100
+  493: 0 20 100
+  494: 0 20 100
+  495: 95 202 94
+  496: 87 202 100
+  497: 11 450a 100
+  498: 90 602 80
+  499: 94 460e 75
+  500: 87 420e 100
+  501: 11 420c 100
+  502: 58 136 100
+  503: 12 460b 100
+  504: 13 450c 100
+  505: 69 132 100
+  506: 10 209 100
+  507: 9 209 100
+  508: 77 132 100
+  509: 69 135 100
+  510: 69 132 100
+  511: 12 209 100
+  512: 13 209 100
+  513: 70 135 100
+  514: 13 209 100
+  515: 70 135 100
+  516: 11 209 100
+  517: 11 209 100
+  518: 10 209 100
+  519: 69 135 100
+  520: 10 209 100
+  521: 68 136 100
+  522: 8 460e 100
+  523: 35 135 100
+  524: 94 602 94
+  525: 83 420a 65
+  526: 8 450c 100
+  527: 68 460f 65
+  528: 29 204 100
+  529: 29 204 100
+  530: 35 135 100
+  531: 39 135 100
+  532: 32 135 100
+  533: 32 135 100
+  534: 33 131 100
+  535: 33 131 100
+  536: 35 135 100
+  537: 39 135 100
+  538: 35 135 100
+  539: 38 135 100
+  540: 37 135 100
+  541: 37 135 100
+  542: 86 20 100
+  543: 92 460b 100
+  544: 36 135 100
+  545: 36 135 100
+  546: 35 203 100
+  547: 35 203 100
+  548: 14 206 100
+  549: 12 206 100
+  550: 12 460g 100
+  551: 81 140 100
+  552: 0 400c 100
+  553: 0 400c 100
+  554: 86 300 100
+  555: 33 135 100
+  556: 33 135 100
+  557: 33 91 100
+  558: 40 91 100
+  559: 4 400c 100
+  560: 15 20 100
+  561: 0 20 100
+  562: 4 420f 100
+  563: 4 420f 100
+  564: 75 420a 84
+  565: 90 460e 100
+  566: 54 135 100
+  567: 11 400e 100
+  568: 65 450c 100
+  569: 6 450c 100
+  570: 5 460g 100
+  571: 0 20 100
+  572: 8 450a 100
+  573: 92 420a 80
+  574: 94 602 100
+  575: 93 450a 72
+  576: 91 602 70
+  577: 90 460g 96
+  578: 6 420f 100
+  579: 95 610 88
+  580: 80 135 100
+  581: 70 135 100
+  582: 88 201 98
+  583: 86 202 94
+  584: 2 400a 100
+  585: 0 20 100
+  586: 0 20 100
+  587: 5 420f 100
+  588: 77 460e 72
+  589: 75 136 100
+  590: 21 460b 100
+  591: 90 220b 100
+  592: 90 220a 100
+  593: 31 460g 34
+  594: 8 460g 100
+  595: 8 460f 100
+  596: 65 460f 68
+  597: 85 450a 100
+  598: 75 135 100
+  599: 94 450c 100
+  600: 72 450c 100
+  601: 72 450c 100
+  602: 93 140 100
+  603: 94 602 100
+  604: 93 602 100
+  605: 94 131 100
+  606: 94 208 100
+  607: 94 202 100
+  608: 94 135 100
+  609: 14 460b 100
+  610: 55 400c 100
+  611: 29 220a 100
+  612: 29 220a 100
+  613: 27 135 100
+  614: 27 135 100
+  615: 26 220a 100
+  616: 26 220a 100
+  617: 27 220b 100
+  618: 27 220b 100
+  619: 13 460f 100
+  620: 91 202 77
+  621: 92 139 100
+  622: 8 20 100
+  623: 60 91 100
+  624: 93 400e 100
+  625: 0 50 100
+  626: 0 60a 100
+  627: 2 420f 45
+  628: 69 460g 77
+  629: 80 450a 73
+  630: 86 450a 63
+  631: 100 135 100
+  632: 95 610 13
+  633: 90 420a 46
+  634: 12 400e 100
+  635: 4 400g 100
+  636: 6 210 100
+  637: 4 225a 100
+  638: 15 100 100
+  639: 0 450b 100
+  640: 58 135 100
+  641: 13 20 100
+  642: 11 460e 100
+  643: 70 400c 100
+  644: 18 91 100
+  645: 13 211 100
+  646: 13 282 100
+  647: 92 139 100
+  648: 90 139 100
+  649: 86 139 100
+  650: 89 139 100
+  651: 70 460g 86
+  652: 5 460e 100
+  653: 35 208 100
+  654: 31 208 100
+  655: 29 208 100
+  656: 9 30 100
+  657: 9 30 100
+  658: 46 135 100
+  659: 42 135 100
+  660: 9 204 100
+  661: 11 420f 100
+  662: 11 420f 100
+  663: 3 210 100
+  664: 3 210 100
+  665: 3 100 100
+  666: 3 210 100
+  667: 5 210 100
+  668: 3 210 100
+  669: 3 210 100
+  670: 1 400e 100
+  671: 3 210 100
+  672: 2 135 100
+  673: 15 135 100
+  674: 6 135 100
+  675: 26 91 100
+  676: 2 135 100
+  677: 8 140 100
+  678: 2 400e 100
+  679: 3 135 100
+  680: 9 140 100
+  681: 14 135 100
+  682: 16 140 100
+  683: 17 135 100
+  684: 34 135 100
+  685: 28 135 100
+  686: 29 135 100
+  687: 20 138 100
+  688: 30 135 100
+  689: 22 135 100
+  690: 22 209 100
+  691: 34 135 100
+  692: 23 135 100
+  693: 25 135 100
+  694: 25 210 100
+  695: 38 210 100
+  696: 21 135 100
+  697: 30 210 100
+  698: 25 91 100
+  699: 20 135 100
+  700: 30 135 100
+  701: 43 91 100
+  702: 23 135 100
+  703: 26 135 100
+  704: 40 106c 100
+  705: 41 106c 100
+  706: 51 136 100
+  707: 54 135 100
+  708: 53 135 100
+  709: 56 135 100
+  710: 55 135 100
+  711: 51 135 100
+  712: 31 135 100
+  713: 29 135 100
+  714: 34 210 100
+  715: 18 135 100
+  716: 35 140 100
+  717: 46 135 100
+  718: 15 209 100
+  719: 20 106c 100
+  720: 35 91 100
+  721: 18 135 100
+  722: 18 209 100
+  723: 45 91 100
+  724: 57 135 100
+  725: 24 135 100
+  726: 28 135 100
+  727: 48 135 100
+  728: 23 20 100
+  729: 29 135 100
+  730: 18 209 100
+  731: 36 135 100
+  732: 17 135 100
+  733: 37 135 100
+  734: 31 20 100
+  735: 20 135 100
+  736: 25 91 100
+  737: 34 140 100
+  738: 41 91 100
+  739: 11 91 100
+  740: 36 135 100
+  741: 15 400e 100
+  742: 22 91 100
+  743: 34 91 100
+  744: 31 91 100
+  745: 36 91 100
+  746: 25 209 100
+  747: 33 91 100
+  748: 34 140 100
+  749: 41 140 100
+  750: 22 91 100
+  751: 21 91 100
+  752: 21 91 100
+  753: 25 91 100
+  754: 23 91 100
+  755: 20 91 100
+  756: 25 135 100
+  757: 19 91 100
+  758: 42 135 100
+  759: 24 135 100
+  760: 20 135 100
+  761: 45 106c 100
+  762: 39 135 100
+  763: 48 91 100
+  764: 24 135 100
+  765: 21 209 100
+  766: 38 135 100
+  767: 18 91 100
+  768: 32 135 100
+  769: 35 91 100
+  770: 23 135 100
+  771: 17 209 100
+  772: 29 135 100
+  773: 20 135 100
+  774: 19 91 100
+  775: 32 135 100
+  776: 71 135 100
+  777: 29 91 100
+  778: 4 135 100
+  779: 35 135 100
+  780: 11 460g 100
+  781: 53 135 100
+  782: 67 135 100
+  783: 77 135 100
+  784: 74 135 100
+  785: 89 220a 100
+  786: 12 30 100
+  787: 14 135 100
+  788: 19 207 100
+  789: 7 100 100
+  790: 5 450c 100
+  791: 22 132 100
+  792: 14 420a 100
+  793: 8 450a 100
+  794: 7 132 100
+  795: 3 132 100
+  796: 3 135 100
+  797: 9 450a 100
+  798: 12 460b 100
+  799: 15 140 100
+  800: 6 207 100
+  801: 1 450a 100
+  802: 1 207 100
+  803: 1 207 100
+  804: 7 450c 100
+  805: 11 207 100
+  806: 1 135 100
+  807: 9 400f 100
+  808: 1 400f 100
+  809: 4 400f 100
+  810: 1 207 100
+  811: 1 207 100
+  812: 1 207 100
+  813: 6 450c 100
+  814: 1 135 100
+  815: 5 207 100
+  816: 5 450c 100
+  817: 9 400f 100
+  818: 17 450a 100
+  819: 13 207 100
+  820: 20 207 100
+  821: 3 400a 100
+  822: 3 400a 100
+  823: 50 107a 100
+  824: 16 104c 100
+  825: 17 102 100
+  826: 0 450c 100
+  827: 0 20 100
+  828: 38 20 100
+  829: 17 30 100
+  830: 17 135 100
+  831: 23 113a 100
+  832: 18 113a 100
+  833: 20 113a 100
+  834: 28 135 100
+  835: 38 113a 100
+  836: 18 113a 100
+  837: 28 104c 100
+  838: 57 113a 100
+  839: 28 113a 100
+  840: 57 113a 100
+  841: 29 113a 100
+  842: 12 20 100
+  843: 38 113a 100
+  844: 57 113a 100
+  845: 18 113a 100
+  846: 55 113a 100
+  847: 13 135 100
+  848: 16 112a 100
+  849: 16 112a 100
+  850: 16 112a 100
+  851: 0 20 100
+  852: 0 113a 100
+  853: 67 135 100
+  854: 56 135 100
+  855: 46 20 100
+  856: 36 20 100
+  857: 53 138 100
+  858: 45 135 100
+  859: 54 138 100
+  860: 67 135 100
+  861: 14 113a 100
+  862: 46 113a 100
+  863: 33 113a 100
+  864: 52 135 100
+  865: 17 113a 100
+  866: 58 138 100
+  867: 47 135 100
+  868: 81 100 100
+  869: 28 140 100
+  870: 36 135 100
+  871: 85 140 100
+  872: 65 135 100
+  873: 92 135 100
+  874: 86 135 100
+  875: 89 135 100
+  876: 76 135 100
+  877: 86 135 100
+  878: 88 135 100
+  879: 92 135 100
+  880: 82 135 100
+  881: 100 20 100
+  882: 100 20 100
+  883: 99 400a 100
+  884: 99 460b 100
+  885: 96 139 100
+  886: 100 450c 100
+  887: 99 450c 100
+  888: 91 135 100
+  889: 56 135 100
+  890: 90 30 100
+  891: 99 460b 100
+  892: 90 20 100
+  893: 100 460b 100
+  894: 88 460b 100
+  895: 100 460b 100
+  896: 90 100 100
+  897: 90 30 100
+  898: 84 450c 100
+  899: 88 460b 100
+  900: 88 30 100
+  901: 88 400e 100
+  902: 89 135 100
+  903: 90 460e 100
+  904: 87 400h 100
+  905: 85 400g 100
+  906: 90 400a 100
+  907: 89 131 100
+  908: 48 135 100
+  909: 95 400f 100
+  910: 99 135 100
+  911: 94 400f 100
+  912: 94 400f 100
+  913: 89 135 100
+  914: 46 135 100
+  915: 90 135 100
+  916: 61 135 100
+  917: 83 135 100
+  918: 84 140 100
+  919: 86 140 100
+  920: 83 140 100
+  921: 88 140 100
+  922: 86 140 100
+  923: 87 140 100
+  924: 86 140 100
+  925: 87 140 100
+  926: 85 140 100
+  927: 88 140 100
+  928: 88 140 100
+  929: 87 140 100
+  930: 87 140 100
+  931: 88 140 100
+  932: 89 140 100
+  933: 87 140 100
+  934: 83 132 100
+  935: 84 132 100
+  936: 89 135 100
+  937: 46 135 100
+  938: 90 135 100
+  939: 61 135 100
+  940: 92 135 100
+  941: 52 135 100
+  942: 90 450c 100
+  943: 90 135 100
+  944: 87 460e 100
+  945: 89 400f 100
+  946: 76 139 100
+  947: 79 135 100
+  948: 81 135 100
+  949: 66 135 100
+  950: 79 139 100
+  951: 91 140 100
+  952: 76 460f 100
+  953: 70 135 100
+  954: 90 135 100
+  955: 90 140 100
+  956: 92 135 100
+  957: 92 135 100
+  958: 94 139 100
+  959: 88 140 100
+  960: 76 91 100
+  961: 93 140 100
+  962: 87 135 100
+  963: 92 135 100
+  964: 90 100 100
+  965: 68 208 100
+  966: 70 135 100
+  967: 87 135 100
+  968: 90 135 100
+  969: 94 140 100
+  970: 79 135 100
+  971: 82 135 100
+  972: 82 135 100
+  973: 86 135 100
+  974: 71 135 100
+  975: 85 135 100
+  976: 84 140 100
+  977: 91 140 100
+  978: 39 140 100
+  979: 84 135 100
+  980: 86 140 100
+  981: 98 135 100
+  982: 76 91 100
+  983: 87 140 100
+  984: 94 140 100
+  985: 89 140 100
+  986: 87 135 100
+  987: 16 134 100
+  988: 31 134 100
+  989: 88 140 100
+  990: 95 100 100
+  991: 92 140 100
+  992: 89 140 100
+  993: 87 140 100
+  994: 91 135 100
+  995: 89 135 100
+  996: 89 135 100
+  997: 85 135 100
+  998: 74 135 100
+  999: 64 100 100
+  1000: 86 135 100
+  1001: 86 135 100
+  1002: 78 135 100
+  1003: 63 400c 100
+  1004: 50 135 100
+  1005: 55 131 100
+  1006: 64 100 100
+  1007: 63 400c 100
+  1008: 47 106b 100
+  1009: 42 106b 100
+  1010: 40 106b 100
+  1011: 49 135 100
+  1012: 53 135 100
+  1013: 47 106b 100
+  1014: 65 460e 100
+  1015: 73 112a 100
+  1016: 74 112a 100
+  1017: 30 100 100
+  1018: 14 135 100
+  1019: 62 91 100
+  1020: 47 91 100
+  1021: 77 112a 100
+  1022: 82 139 100
+  1023: 82 140 100
+  1024: 71 91 100
+  1025: 72 112a 100
+  1026: 82 135 100
+  1027: 72 106b 100
+  1028: 54 140 100
+  1029: 31 91 100
+  1030: 17 135 100
+  1031: 40 91 100
+  1032: 78 135 100
+  1033: 73 112a 100
+  1034: 28 100 100
+  1035: 38 140 100
+  1036: 49 140 100
+  1037: 12 135 100
+  1038: 11 131 100
+  1039: 67 91 100
+  1040: 74 135 100
+  1041: 73 112a 100
+  1042: 82 135 100
+  1043: 73 112a 100
+  1044: 2 450a 100
+  1045: 3 221b 100
+  1046: 3 221a 100
+  1047: 3 221a 100
+  1048: 3 221a 100
+  1049: 3 400h 100
+  1050: 2 135 100
+  1051: 1 400c 100
+  1052: 4 135 100
+  1053: 2 221b 100
+  1054: 2 221a 100
+  1055: 2 221a 100
+  1056: 5 40 100
+  1057: 3 20 100
+  1058: 4 221a 100
+  1059: 3 420c 100
+  1060: 5 400c 100
+  1061: 2 221b 100
+  1062: 2 221a 100
+  1063: 2 221a 100
+  1064: 80 135 100
+  1065: 61 135 100
+  1066: 37 140 100
+  1067: 85 135 100
+  1068: 88 135 100
+  1069: 86 135 100
+  1070: 3 450a 100
+  1071: 75 450c 100
+  1072: 57 450a 100
+  1073: 5 450a 100
+  1074: 66 400c 100
+  1075: 76 140 100
+  1076: 76 140 100
+  1077: 76 140 100
+  1078: 59 400g 100
+  1079: 61 140 100
+  1080: 60 400g 100
+  1081: 73 140 100
+  1082: 32 450c 100
+  1083: 29 400f 100
+  1084: 81 90 100
+  1085: 13 460e 100
+  1086: 69 460e 100
+  1087: 3 460f 100
+  1088: 88 400c 100
+  1089: 27 460g 100
+  1090: 0 108a 100
+  1091: 0 108a 100
+  1092: 0 108a 100
+  1093: 47 90 100
+  1094: 63 400c 100
+  1095: 6 220b 100
+  1096: 4 220a 100
+  1097: 8 220a 100
+  1098: 74 90 100
+  1099: 91 90 100
+  1100: 29 460g 100
+  1101: 6 102 100
+  1102: 6 102 100
+  1103: 6 102 100
+  1104: 2 400e 100
+  1105: 7 400e 100
+  1106: 4 420c 100
+  1107: 1 420c 100
+  1108: 5 102 100
+STEPS:
+  0: Blend all ingredients.
+  1: Blend all the ingredients in a high speed blender for 2 minutes or until smooth. Cool down before serving.
+
+=== tofu-cottage-cheese ===
+TITLE: Tofu Cottage Cheese
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1.5 dl Soy milk
+  1: 0.5 dl Cashew, unsalted
+  2: 2 tbsp Lemon juice, bottled
+  3: 1 tsp Sea salt
+  4: 2 clove Garlic, raw
+  5: 1 tsp Onion powder
+  6: 2 tbsp Nutritional yeast
+  7: 800 g Tofu, soyabønneprodukt
+STEPS:
+  0: Blend all ingredients until smooth except tofu and fresh herbs.
+  1: Crumble the tofu. Chop the herbs. Mix all together. Serve cold.
+
+=== tofu-form ===
+TITLE: Tofu Form
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 750 g Tofu, soyabønneprodukt
+  1: 0.5 l Soy milk
+  2: 1 dl Soy sauce
+  3: 2 tbsp Olive oil
+  4: 1 tsp Garlic powder
+  5: 0.25 tsp Coriander powder
+  6: 0.25 dl Nutritional yeast
+  7: 1 l Soy milk
+  8: 2 dl Cashew, unsalted
+  9: 0.5 dl Nutritional yeast
+  10: 2 tbsp Cornstarch
+  11: 1 tbsp Garlic powder
+  12: 0.5 tsp Coriander powder
+  13: 0.5 tsp Thyme, dried
+  14: 0.5 tsp Rosemary, dried
+  15: 0.125 tsp Pepper, cayenne, red
+  16: 0.25 tsp Smoked paprika powder
+  17: 0.5 tsp Paprika powder
+STEPS:
+  0: Cut tofu in thin slices (approx. 5mm) and marinade in a container with the 0,5 L soy milk, soya sauce, olive oil and garlic powder for at least 1 hour.
+  1: Remove the tofu from the sauce and put on the tray.
+  2: Bake for 20 minutes at 170°C until they get brownish.
+  3: Leave the tofu to cool down.
+  4: Arrange the tofu nicely on a deep tray.
+  5: Use the leftover marinade to make sauce for the tofu form.(Complete with the leftover the total amount of milk for the sauce) Blend all remaining ingredients and pour the sauce over the tofu.
+  6: Cover with aluminium foil and bake for another 30-40 minutes at 170°C.
+
+=== toms-gluten-free-bread ===
+TITLE: Tom's Gluten Free Bread
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 kg Flour, gluten-free, Jyttemel Original
+  1: 2 tbsp Sea salt
+  2: 1 tsp Yeast, dry yeast
+  3: 1 dl Flaxseeds
+  4: 4.5 dl Water, drinking water
+  5: 2 tbsp Fibre husk
+  6: 13 dl Water, drinking water
+  7: 1.5 dl Canola oil
+STEPS:
+  0: Let linseeds and boiling water swell for approx. 2 hours before making the dough.
+  1: Let Fiber Husk and water swell approx. 10 minutes (stir at once to avoid clumps).
+  2: Mix all the dry ingredients. Pour the oil into the seeds that are finished swelling.
+  3: Mix both dry and wet ingredients (should feel like a thick porridge).
+  4: Pour into 1.5 L bread forms (use baking paper).
+  5: Leave it to set overnight for approx 12-13 hours. Bake the next morning.
+  6: Bake in the preheated oven at 200 degrees Celsius for 15 minutes.
+  7: Cover with aluminum foil and continue baking for 1 hr and 30 mins.
+
+=== fr-179 ===
+TITLE: Tomato Bruschetta
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 810 g Cherry tomato, imported, raw
+  1: 5 tbsp Olive oil
+  2: 2 tbsp Basil, dried
+  3: 2.5 tsp Oregano, dried
+  4: 0.5 tsp Pepper, cayenne, red
+  5: 2.5 clove Garlic, raw
+  6: 1 tsp Herb salt
+STEPS:
+  0: Cut the cherry tomatoes in 4 (or small dices) and put them in a large bowl.
+  1: Then add the rest of the ingredients and mix.
+  2: Once done, cover with plastic wrap and put in the refrigerator for at least 1 hour, to let the flavours incorporate in each other. After that, you should be able to notice a nice and tasty juice in the bowl together with the tomatoes.
+  3: Take out of the refrigerator at least 30 min before serving.
+
+=== fr-180 ===
+TITLE: Tomato Sauce for Pizza
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 dl Tomato puree, canned
+  1: 0.5 dl Water, drinking water
+  2: 0.5 tsp Sea salt
+  3: 1 clove Garlic, raw
+  4: 1 tbsp Onion powder
+  5: 1 tsp Oregano, dried
+  6: 3 tsp Basil, raw
+  7: 3 tsp Thyme, raw
+  8: 1.5 tsp Rosemary, raw
+  9: 25 ml Olive oil
+  10: 2 tbsp Sukrin
+STEPS:
+  0: Mix all ingredients into bowl.
+
+=== fr-181 ===
+TITLE: Tomato Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 6 medium Celery stalks, Norwegian, raw
+  1: 1 medium Bell pepper, red, raw
+  2: 1 large Onion, yellow, Norwegian, raw
+  3: 1.2 l Tomato, canned
+  4: 1 tbsp Tomato puree, canned
+  5: 2 tsp Salt, table salt
+  6: 1.8 dl Basil, raw
+  7: 3.6 dl Coconut milk
+  8: 1.5 tbsp Sukrin
+STEPS:
+  0: In a large saucepan, sautée the celery, onion and red pepper in ¼ cup of coconut milk for 5-6 minutes or until tender. Add tomatoes and tomato paste. Bring to a boil. Reduce heat; cover and simmer for 40 minutes.
+  1: Remove from the heat. Stir in the basil, sugar and salt; cool slightly. Transfer half of the soup mixture to a blender. While processing, gradually add coconut milk; process until pureed. Return to the pan; heat through (do not boil).
+  2: Serve with croutons.
+
+=== tomato-bean-salad ===
+TITLE: Tomato Bean Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.5 dl Black beans
+  1: 2 large Tomato, Norwegian, raw
+  2: 0.5 small Onion, red, Norwegian, raw
+  3: 0.5 pcs Bell pepper, red, raw
+  4: 1 handful Coriander, raw
+  5: 2 tbsp Lime juice
+  6: 0.5 tsp Cumin powder
+  7: 0.25 tsp Smoked paprika powder
+  8: 2 pcs Date, dried
+STEPS:
+  0: Mix all ingredients in a bowl and serve cold/room temperature.
+
+=== fr-183 ===
+TITLE: Turmeric and Cashew Cheese
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 4 dl Cashew, unsalted
+  1: 1 tbsp Turmeric, ground
+  2: 1 clove Garlic, raw
+  3: 1 tbsp Onion powder
+  4: 2 tsp Agar-agar
+  5: 1 l Water, drinking water
+  6: 1 tbsp Herb salt
+  7: 0.5 tbsp Lemon juice, bottled
+STEPS:
+  0: Blend all ingredients in a high speed blender until smooth.
+  1: Bring the mixture to a boil in a pot and let it boil while stirring for at least 3-5 minutes.
+  2: Pour into molds and let cool down before refrigerating.
+
+=== fr-184 ===
+TITLE: Ukrainian Borscht Soup
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3 medium Red beet, raw
+  1: 2 medium Carrot, unspecified, raw
+  2: 3 medium Potato, raw
+  3: 0.25 head Head cabbage, raw
+  4: 2.5 stalk Celery stalks, Norwegian, raw
+  5: 1 medium Onion, yellow, Norwegian, raw
+  6: 3 leave Bay leaf, dried
+  7: 2 tbsp Vegetable bouillon, powder
+  8: 1 tsp Sea salt
+  9: 2.5 l Water, drinking water
+  10: 1 tbsp Sukrin
+  11: 60 ml Lemon juice, fresh
+STEPS:
+  0: Start by sautéeing grated beetroot in a large pot with 1 tsp of olive oil and 1 tbsp of water for 10 minutes.
+  1: Add carrot, potato, cabbage, bullion, salt and water and bring to boil.
+  2: Cook broth for 10-15 minutes until potatoes are fork-tender.
+  3: While broth is cooking prepare the mirepoix and sautée onion and celery stick on a stainless steel pan with 1 tsp of oil and some water for 7-8 minutes until golden brown.
+  4: Add sukrin, stir fry for 30 seconds and add to the broth.
+  5: Taste for seasoning and serve hot.
+
+=== fr-185 ===
+TITLE: Vanilla Sauce
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1 dl Coconut milk
+  1: 1 l Soy milk
+  2: 100 g Carrot, cooked
+  3: 8 tbsp Sukrin
+  4: 0.5 tsp Sea salt
+  5: 6 tbsp Cornstarch
+  6: 2 tbsp Lemon juice, fresh
+  7: 0.15 tsp Vanilla powder
+STEPS:
+  0: Blend all ingredients until smooth.
+  1: Bring the sauce up to a boil on medium heat while stirring vith a whisk.
+  2: Cool down without stiring, and remove the skin that forms on the top or blend or stir and siv.
+
+=== vegetable-pie ===
+TITLE: Vegetable Pie
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 3.75 dl Spelt flour
+  1: 1.5 dl Small oats
+  2: 0.75 tsp Sea salt
+  3: 0.75 dl Olive oil, extra virgin, virgin oil
+  4: 8 tbsp Water
+  5: 1 large Onion, yellow, Norwegian, raw
+  6: 2 clove Garlic, raw
+  7: 1 head Broccoli, Norwegian, raw
+  8: 400 g Tofu, soyabønneprodukt
+  9: 1 small Carrot, Norwegian, raw
+  10: 1 tbsp Soy sauce
+  11: 0  Olive oil, extra virgin, virgin oil
+  12: 1 dl Soy milk
+  13: 1 tbsp Nutritional yeast
+  14: 1 tbsp Cornstarch
+  15: 1 tbsp Lemon juice, fresh
+  16: 0.5 tsp Mustard seeds
+  17: 0.25 tsp Black salt
+STEPS:
+  0: Make the crust; Mix the flour, oats and salt with oil until crumbly. Add water gradually until a smooth dough forms. Press the dough into a form and prick the bottom with a fork. Pre-bake at 200 °C for about 8-10 minutes.
+  1: Prepare the filling; Sautéé onion and garlic in a little oil until soft and golden. Add broccoli, carrot, half of the tofu (scrambled) and soy sauce, and cook for 5–7 minutes until well mixed and heated through.
+  2: Make the Tofu “Custard”; Blend other half of the tofu, soy milk, cornstarch, nutritional yeast, lemon juice, mustard and black salt in a blender until smooth and creamy.
+  3: Assemble and bake; Spread the vegetable mixture evenly in the pre-baked crust. Pour the tofu custard over the vegetables and gently mix the top layer. Bake at 200 °C for 30–35 minutes, until the filling is set and the top is golden.
+
+=== fr-187 ===
+TITLE: Walnut Basil Dressing
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 1.2 dl Walnuts
+  1: 2.4 dl Basil, raw
+  2: 60 ml Olive oil
+  3: 60 ml Nutritional yeast
+  4: 3 tbsp Lemon juice, fresh
+  5: 1 clove Garlic, raw
+  6: 0.5 tsp Salt, table salt
+  7: 1.5 dl Water, drinking water
+STEPS:
+  0: Blend all ingredients till smooth.
+
+=== walnut-milk-with-dates ===
+TITLE: Walnut Milk with Dates
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0 500.0 Water, drinking water
+  1: 0 2.0 Walnuts
+  2: 0 5.0 Date, dried
+  3: 0 1.0 Sea salt
+STEPS:
+  0: Blend in the vitamix until smooth.
+
+=== fr-189 ===
+TITLE: Whipped Cream
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2.4 dl Soy milk
+  1: 2.4 dl Canola oil
+  2: 4 tbsp Sukrin
+  3: 0.15 tsp Vanilla powder
+STEPS:
+  0: Blend all the ingredients until smooth.
+
+=== fr-190 ===
+TITLE: White Cabbage Coleslaw
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 700 g Head cabbage, raw
+  1: 2 small Carrot, imported, raw
+  2: 60 ml Cashew, unsalted
+  3: 60 ml Water, drinking water
+  4: 25 ml Soy milk
+  5: 1 tbsp Lemon juice, fresh
+  6: 0.25 tsp Garlic powder
+  7: 0.25 tsp Sea salt
+STEPS:
+  0: Chop the cabbage into strips and put it in a bowl. Then, massage it with ¼ tsp of salt until it gets soft. Shred the carrots and mix it into the cabbage.
+  1: Mix the remaining ingredients in a high speed blender and blend it for 1-2 minutes until smooth.
+  2: Mix the mayonnaise into the cabbage and carrots before serving.
+
+=== fr-191 ===
+TITLE: White Cashew Sauce
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 2 dl Cashew, unsalted
+  1: 4 dl Coconut milk
+  2: 4 dl Water, drinking water
+  3: 1 clove Garlic, raw
+  4: 1 tbsp Onion powder
+  5: 2 tsp Salt, table salt
+  6: 3 tbsp Cornstarch
+  7: 0.5 tbsp Lemon juice, fresh
+STEPS:
+  0: Blend all ingredients in a high speed blender until smooth.
+  1: Bring to a boil and cook until thick.
+
+=== whole-grain-rice ===
+TITLE: Whole Grain Rice
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 200 g Whole grain rice
+  1: 0.5 l Water
+  2: 0.5 tsp Sea salt
+  3: 0  Garlic, raw
+  4: 0  Bay leaf, dried
+STEPS:
+  0: Wash the rice at least 2-3 times.
+  1: Bring to boil the water, then add the rice and salt. Let it cook around 30 -45 minutes until is sprout.
+  2: Once its cook drain the rest of water and serve.
+
+=== fr-194 ===
+TITLE: Salad
+CATEGORY: Dinner
+INGREDIENTS:
+  0: 0  Head cabbage, raw
+STEPS:
+  0: mix.
+
+=== fluffy-vegan-gluten-free-buns ===
+TITLE: Fluffy Vegan Gluten-Free Buns
+CATEGORY: Bread
+DESC: Soft, pillowy burger and sandwich buns made with gluten-free flour.
+INGREDIENTS:
+  0: 500 g Gluten-free bread flour
+  1: 300 ml Water
+  2: 30 ml Neutral oil
+  3: 7 g Salt
+  4: 7 g Instant yeast
+STEPS:
+  0: Make dough following bread recipe with tangzhong method, mixing vigorously for 4-5 minutes until sticky but scoopable.
+  1: Divide dough: 110-120g for burger buns or 80-90g for smaller rolls.
+  2: Shape with wet hands by gently cupping and rotating dough, smooth top without kneading, place on baking paper.
+  3: Cover loosely and rise 30-45 minutes until 50-70% larger.
+  4: Optional: brush with oat milk and sprinkle sesame seeds, poppy seeds, or oats.
+  5: Bake at 220°C for 8 minutes, then 190°C for 12-18 minutes until golden and hollow-sounding.
+  6: Cool at least 30-45 minutes before slicing.
+
+=== fredheim-deluxe-plant-based-cream-cheese ===
+TITLE: Fredheim Deluxe Plant-Based Cream Cheese
+CATEGORY: Spreads
+DESC: Rich and creamy cashew-based cream cheese with fresh herbs.
+INGREDIENTS:
+  0: 900 g Raw cashews, soaked
+  1: 240 g Medjool dates, pitted
+  2: 270 ml Fresh lemon juice
+  3: 3 tsp Lemon zest
+  4: 15 g Salt
+  5: 15 g White miso
+  6: 60 g Nutritional yeast
+  7: 12 g Onion powder
+  8: 9 g Garlic powder
+  9: 400 ml Cold water
+  10: 35 g Fresh chives, chopped
+  11: 20 g Fresh dill, chopped
+STEPS:
+  0: Soak raw cashews in water for 2-4 hours, or pour boiling water and soak 10 minutes, then drain.
+  1: Blend in 2-3 batches: combine cashews, dates, lemon juice, lemon zest, salt, miso, yeast, onion powder, garlic powder, and water.
+  2: Blend until completely smooth and creamy.
+  3: Add water gradually to reach thick but spreadable consistency (typically 300-500ml total).
+  4: Transfer to bowl and fold in finely chopped chives and dill.
+  5: Refrigerate 2-3 hours before serving; cream cheese will thicken and flavors will develop.
+
+=== creamy-red-lentil-stew ===
+TITLE: Creamy Red Lentil Stew
+CATEGORY: Dinner
+DESC: Warming stew with red lentils, vegetables, and creamy cashew milk.
+INGREDIENTS:
+  0: 300 g Red lentils, rinsed
+  1: 1 pcs Medium onion, finely chopped
+  2: 3 pcs Garlic cloves, minced
+  3: 1 pcs Large carrot, diced
+  4: 2 pcs Small potatoes, diced
+  5: 1 pcs Red bell pepper, diced
+  6: 1000 ml Vegetable broth
+  7: 400 g Crushed tomatoes
+  8: 1 tsp Ground cumin
+  9: 1.5 tsp Smoked paprika
+  10: 0.5 tsp Turmeric
+  11: 0.5 tsp Cinnamon
+  12: 0.5 tsp Ground coriander
+  13: 1.5 tsp Salt
+  14: 2 tbsp Date paste
+  15: 0.5 pcs Lemon, juice
+  16: 120 g Raw cashews for milk
+  17: 360 ml Water for milk
+  18: 15 g Fresh cilantro, chopped
+STEPS:
+  0: Saute onions, garlic, carrots, and bell pepper with splash of water over medium heat until soft and fragrant, about 5-7 minutes.
+  1: Add cumin, smoked paprika, turmeric, cinnamon, coriander, and salt, stirring 30 seconds until fragrant.
+  2: Stir in lentils, potatoes, crushed tomatoes, broth, and date paste. Bring to boil.
+  3: Reduce heat to low, cover partially, and simmer 20-25 minutes until lentils and vegetables are soft.
+  4: Blend cashews with water until smooth and creamy.
+  5: Stir cashew milk and lemon juice into stew, simmer 5 minutes to thicken.
+  6: Optional: use immersion blender to blend portion for creaminess while keeping some texture.
+  7: Taste and adjust salt, lemon, and spices as needed.
+  8: Serve hot garnished with cilantro, alongside bread, rice, or quinoa.
+
+=== ultimate-fluffy-vegan-gluten-free-bread ===
+TITLE: Ultimate Fluffy Vegan Gluten-Free Bread
+CATEGORY: Bread
+DESC: Soft, elastic, moist vegan gluten-free bread that stays fresh for days. Uses psyllium husk for structure and tangzhong method for bakery-level softness.
+INGREDIENTS:
+  0: 200 g Gluten-free oat flour
+  1: 120 g Rice flour
+  2: 80 g Tapioca starch
+  3: 12 g Psyllium husk powder
+  4: 10 g Instant dry yeast
+  5: 10 g Salt
+  6: 20 g Sugar
+  7: 150 ml Water for tangzhong
+  8: 40 g Unsweetened applesauce
+  9: 15 ml Lemon juice
+  10: 315 ml Warm water
+STEPS:
+  0: Make the tangzhong: Mix 25g oat flour (taken from the 200g) with 150ml water in a small pot. Cook over medium heat, stirring constantly, until thickened, about 2-3 minutes. Cool to room temperature.
+  1: Mix all dry ingredients in a large bowl: remaining 175g oat flour, rice flour, tapioca starch, psyllium husk powder, instant yeast, salt, and sugar. Whisk well to combine.
+  2: In another bowl, combine the cooled tangzhong, applesauce, lemon juice, and warm water (38-40°C).
+  3: Pour wet ingredients into dry ingredients and mix vigorously for 4-5 minutes until sticky but scoopable. The dough should hold together and slowly relax when shaped, not spread flat.
+  4: Oil a loaf tin or line with parchment paper. Transfer dough into the tin and smooth the top with a wet hand.
+  5: Cover loosely with plastic wrap or damp cloth and let rise at room temperature for 45-60 minutes until dough rises noticeably above the tin.
+  6: Preheat oven to 220°C. Bake for 8-10 minutes at high heat, then reduce to 190°C and bake for 40-45 minutes more until light golden brown.
+  7: The bread is done when it sounds hollow when tapped on the bottom. Internal temperature should reach 96-98°C.
+  8: Remove from tin and cool on a wire rack for at least 1 hour before slicing. The crumb will continue to set as it cools.
+  9: Store in an airtight container; bread stays soft and moist for 3-4 days or can be frozen up to 1 month.
+

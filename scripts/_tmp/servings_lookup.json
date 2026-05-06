@@ -1,0 +1,947 @@
+{
+  "aioli": {
+    "title": "Aioli",
+    "servings": 6,
+    "file": "Aioli EN 2025-02-25 Oppskrift.xlsx"
+  },
+  "alambre taco": {
+    "title": "Alambre taco",
+    "servings": 1,
+    "file": "Alambre taco EN 2025-02-18 Oppskrift.xlsx"
+  },
+  "almond tartar": {
+    "title": "Almond Tartar",
+    "servings": 1,
+    "file": "Almond Tartar EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "almond and paprika cheese": {
+    "title": "Almond and paprika cheese",
+    "servings": 1,
+    "file": "Almond and Paprika Cheese EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "american oat pancakes": {
+    "title": "American oat pancakes",
+    "servings": 5,
+    "file": "American oat pancakes EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "apple oat bake": {
+    "title": "Apple oat bake",
+    "servings": 8,
+    "file": "Apple oat bake EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "asian noodle salad": {
+    "title": "Asian noodle salad",
+    "servings": 3,
+    "file": "Asian noodle salad EN 2025-09-10 Oppskrift.xlsx"
+  },
+  "avocado cream": {
+    "title": "Avocado cream",
+    "servings": 4,
+    "file": "Avocado Cream EN 2023-05-04 Oppskrift.xlsx"
+  },
+  "avocado dressing": {
+    "title": "Avocado dressing",
+    "servings": 6,
+    "file": "Avocado dressing EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "baba ghanoush": {
+    "title": "Baba ghanoush",
+    "servings": 8,
+    "file": "Baba ghanoush - Aubergine dip EN [YYYY-MM-DD] Oppskrift.xlsx"
+  },
+  "baked roots": {
+    "title": "Baked roots",
+    "servings": 4,
+    "file": "Baked roots EN 2025-02-16 Oppskrift.xlsx"
+  },
+  "baked sweet potato": {
+    "title": "Baked sweet potato",
+    "servings": 1,
+    "file": "Baked sweet potato EN 2025-11-05 Oppskrift.xlsx"
+  },
+  "barley cup drink": {
+    "title": "Barley cup drink",
+    "servings": 2,
+    "file": "Barley Cup Drink EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "bean p t": {
+    "title": "Bean Pâté",
+    "servings": 20,
+    "file": "Bean Pâté _ Bønnepostei EN 2025-10-07 Oppskrift.xlsx"
+  },
+  "bean spread": {
+    "title": "Bean spread",
+    "servings": 5,
+    "file": "Bean spread EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "berry sauce": {
+    "title": "Berry Sauce",
+    "servings": 6,
+    "file": "Berry sauce  EN [2024-09-12] Oppskrift.xlsx"
+  },
+  "black bean stew": {
+    "title": "Black bean stew",
+    "servings": 5,
+    "file": "Black bean stew EN 2025-02-25 Oppskrift.xlsx"
+  },
+  "blissful sprout medley": {
+    "title": "Blissful Sprout Medley",
+    "servings": 4,
+    "file": "Blissful Sprout Medley EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "bread buns": {
+    "title": "Bread Buns",
+    "servings": 7,
+    "file": "Bread Buns EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "broccoli salad": {
+    "title": "Broccoli Salad",
+    "servings": 6,
+    "file": "Broccoli salad EN 2025-11-13 Oppskrift.xlsx"
+  },
+  "broccoli soup": {
+    "title": "Broccoli soup",
+    "servings": 4,
+    "file": "Broccoli soup EN 2025-08-04 Oppskrift.xlsx"
+  },
+  "brown sauce": {
+    "title": "Brown sauce",
+    "servings": 3,
+    "file": "Brown sauce (NEW RECIPE) EN 2024-11-03 Oppskrift.xlsx"
+  },
+  "buckwheat burger": {
+    "title": "Buckwheat burger",
+    "servings": 5,
+    "file": "Buckwheat Burger EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "bulgur salad": {
+    "title": "Bulgur salad",
+    "servings": 12,
+    "file": "Bulgur salad EN 2024-01-26 Oppskrift.xlsx"
+  },
+  "burger buns": {
+    "title": "Burger buns",
+    "servings": 10,
+    "file": "Burger buns EN 2025-11-06 Oppskrift.xlsx"
+  },
+  "burger dressing": {
+    "title": "Burger dressing",
+    "servings": 10,
+    "file": "Burger dressing EN 2025-07-23 Oppskrift.xlsx"
+  },
+  "cabbage soup": {
+    "title": "Cabbage Soup",
+    "servings": 4,
+    "file": "Cabbage Soup EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "caeser salad": {
+    "title": "Caeser salad",
+    "servings": 4,
+    "file": "Caeser Salad EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "candy rolls strawberry": {
+    "title": "Candy Rolls - Strawberry",
+    "servings": 1,
+    "file": "Candy Rolls EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "caramelized nuts": {
+    "title": "Caramelized nuts",
+    "servings": 6,
+    "file": "Caramelized nuts EN 2025-07-23 Oppskrift.xlsx"
+  },
+  "caraway and cashew cheese": {
+    "title": "Caraway and cashew cheese",
+    "servings": 1,
+    "file": "Caraway And Cashew Cheese  EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "carob spread": {
+    "title": "Carob spread",
+    "servings": 30,
+    "file": "Carob spread EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "cashew sour cream": {
+    "title": "Cashew Sour Cream",
+    "servings": 10,
+    "file": "Cashew Sour Cream EN 2022-10-20 Oppskrift.xlsx"
+  },
+  "cashew vanilla cream": {
+    "title": "Cashew vanilla cream",
+    "servings": 6,
+    "file": "Cashew Vanilla Cream EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "cashew bechamel sauce": {
+    "title": "Cashew bechamel sauce",
+    "servings": 10,
+    "file": "Cashew bechamel sauce EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "cashew cheese sauce": {
+    "title": "Cashew cheese sauce",
+    "servings": 8,
+    "file": "Cashew cheese sauce EN 2025-10-07 Oppskrift.xlsx"
+  },
+  "cauliflower soup": {
+    "title": "Cauliflower soup",
+    "servings": 6,
+    "file": "Cauliflower soup EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "cheese sauce for onion pie": {
+    "title": "Cheese Sauce for Onion Pie",
+    "servings": 6,
+    "file": "Cheese Sauce for Onion Pie EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "cheesy cauliflower sauce": {
+    "title": "Cheesy cauliflower sauce",
+    "servings": 8,
+    "file": "Cheesy cauliflower sauce EN 2025-03-18 Oppskrift.xlsx"
+  },
+  "cheezy cashew kale chips": {
+    "title": "Cheezy Cashew Kale Chips",
+    "servings": 1,
+    "file": "Cheezy Cashew Kale Chips EN 2022-10-20 Oppskrift.xlsx"
+  },
+  "chia pudding": {
+    "title": "Chia pudding",
+    "servings": 15,
+    "file": "Chia pudding EN 2025-04-08 Oppskrift.xlsx"
+  },
+  "chickpea omelet": {
+    "title": "Chickpea Omelet",
+    "servings": 8,
+    "file": "Chickpea Omelet EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "chickpea salad": {
+    "title": "Chickpea salad",
+    "servings": 8,
+    "file": "Chickpea Salad EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "chickpea tofu": {
+    "title": "Chickpea tofu",
+    "servings": 4,
+    "file": "Chickpea tofu EN 2025-02-13 Oppskrift.xlsx"
+  },
+  "chinese cabbage salad": {
+    "title": "Chinese Cabbage Salad",
+    "servings": 3,
+    "file": "Chinese Cabbage Salad EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "chinese soup": {
+    "title": "Chinese soup",
+    "servings": 16,
+    "file": "Chinese soup EN 2025-02-16 Oppskrift.xlsx"
+  },
+  "chipotle sauce": {
+    "title": "Chipotle sauce",
+    "servings": 12,
+    "file": "Chipotle sauce EN [2024-12-15] Oppskrift.xlsx"
+  },
+  "chorizo with potato taco": {
+    "title": "Chorizo with potato taco",
+    "servings": 7,
+    "file": "Chorizo with potato taco EN 2023-05-04 Oppskrift.xlsx"
+  },
+  "citrus dressing": {
+    "title": "Citrus dressing",
+    "servings": 7,
+    "file": "Citrus dressing EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "classic greek salad": {
+    "title": "Classic Greek Salad",
+    "servings": 5,
+    "file": "Classic Greek Salad EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "coconut macaroon balls": {
+    "title": "Coconut Macaroon Balls",
+    "servings": 1,
+    "file": "Coconut Macaroon Balls EN 2025-03-03 Oppskrift.xlsx"
+  },
+  "coconut mozzarella": {
+    "title": "Coconut Mozzarella",
+    "servings": 1,
+    "file": "Coconut Mozzarella EN 2022-10-19 Oppskrift.xlsx"
+  },
+  "cranberry jam": {
+    "title": "Cranberry jam",
+    "servings": 6,
+    "file": "Cranberry Jam EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "croutons": {
+    "title": "Croutons",
+    "servings": 1,
+    "file": "Croutons EN 2024-09-12Oppskrift.xlsx"
+  },
+  "crunchy carrot salad": {
+    "title": "Crunchy carrot salad",
+    "servings": 6,
+    "file": "Crunchy carrot salad EN 2025-02-13 Oppskrift.xlsx"
+  },
+  "crunchy sweet cabbage salad": {
+    "title": "Crunchy sweet cabbage salad",
+    "servings": 3,
+    "file": "Crunchy sweet cabbage salad EN 2025-08-04 Oppskrift.xlsx"
+  },
+  "cucumber dressing": {
+    "title": "Cucumber Dressing",
+    "servings": 7,
+    "file": "Cucumber Dressing EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "cucumber raita": {
+    "title": "Cucumber raita",
+    "servings": 10,
+    "file": "Cucumber Raita EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "cucumber and sunflowerseed dressing": {
+    "title": "Cucumber and sunflowerseed dressing",
+    "servings": 10,
+    "file": "Cucumber and sunflowerseed dressing EN 2025-11-19 Oppskrift.xlsx"
+  },
+  "dal stew": {
+    "title": "Dal stew",
+    "servings": 4,
+    "file": "Dal stew EN 2025-11-19 Oppskrift.xlsx"
+  },
+  "dried fruit jam": {
+    "title": "Dried Fruit Jam",
+    "servings": 10,
+    "file": "Dried Fruit Jam EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "easy colombian salad": {
+    "title": "Easy colombian salad",
+    "servings": 12,
+    "file": "Easy colombian salad EN 2025-10-07 Oppskrift.xlsx"
+  },
+  "ellen s granola": {
+    "title": "Ellen's granola",
+    "servings": 1,
+    "file": "Ellen_s granola EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "erik s granola": {
+    "title": "Erik’s granola",
+    "servings": 35,
+    "file": "Erik’s Granola EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "falafel": {
+    "title": "Falafel",
+    "servings": 7,
+    "file": "Falafel EN 2022-10-20 Oppskrift.xlsx"
+  },
+  "farewell sesame eggplant": {
+    "title": "Farewell sesame eggplant",
+    "servings": 25,
+    "file": "Farewell sesame eggplant EN 2023-06-29 Oppskrift.xlsx"
+  },
+  "feld salad with pomegranate": {
+    "title": "Feld salad with pomegranate",
+    "servings": 5,
+    "file": "Feld salad with pomegranate 2024-04-23 Oppskrift.xlsx"
+  },
+  "fermented red cabbage": {
+    "title": "Fermented red cabbage",
+    "servings": 10,
+    "file": "Fermented red cabbage EN 2025-11-13 Oppskrift.xlsx"
+  },
+  "fig spread": {
+    "title": "Fig spread",
+    "servings": 1,
+    "file": "Fig spread EN 2025-07-15 Oppskrift.xlsx"
+  },
+  "frittata": {
+    "title": "Frittata",
+    "servings": 8,
+    "file": "Frittata EN 2024-12-07 Oppskrift.xlsx"
+  },
+  "fruit crisp": {
+    "title": "Fruit crisp",
+    "servings": 4,
+    "file": "Fruit crisp EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "fruit salad": {
+    "title": "Fruit salad",
+    "servings": 6,
+    "file": "Fruit salad EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "garden vegetable soup": {
+    "title": "Garden Vegetable Soup",
+    "servings": 18,
+    "file": "Garden Vegetable Soup EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "garlic and cashew cheese": {
+    "title": "Garlic and cashew cheese",
+    "servings": 24,
+    "file": "Garlic and Cashew Cheese EN 2022-10-22 Oppskrift.xlsx"
+  },
+  "gluten free oat buns": {
+    "title": "Gluten free oat buns",
+    "servings": 4,
+    "file": "Gluten free oat buns EN 2025-07-23 Oppskrift.xlsx"
+  },
+  "golden soup": {
+    "title": "Golden soup",
+    "servings": 6,
+    "file": "Golden soup EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "green beans": {
+    "title": "Green beans",
+    "servings": 7,
+    "file": "Green Beans EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "guacamole": {
+    "title": "Guacamole",
+    "servings": 4,
+    "file": "Guacamole EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "happy bean salad": {
+    "title": "Happy bean salad",
+    "servings": 6,
+    "file": "Happy beans salad 2024-01-26 Oppskrift.xlsx"
+  },
+  "hasselback potatoes": {
+    "title": "Hasselback potatoes",
+    "servings": 5,
+    "file": "Hasselback potatoes EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "hazelnut and sundried tomato cheese": {
+    "title": "Hazelnut and sundried tomato cheese",
+    "servings": 1,
+    "file": "Hazelnut and sundried tomato cheese EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "homemade whole wheat bread": {
+    "title": "Homemade whole wheat bread",
+    "servings": 1,
+    "file": "Homemade whole wheat bread EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "horseradish dressing": {
+    "title": "Horseradish dressing",
+    "servings": 14,
+    "file": "Horseradish dressing EN 2022-10-18 Oppskrift.xlsx"
+  },
+  "hummus": {
+    "title": "Hummus",
+    "servings": 21,
+    "file": "Hummus EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "isabel s dressing": {
+    "title": "Isabel´s dressing",
+    "servings": 4,
+    "file": "Isabel´s dressing EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "kale and sweet potato salad": {
+    "title": "Kale and sweet potato salad",
+    "servings": 4,
+    "file": "Kale and sweet potato salad EN 2025-09-10 Oppskrift.xlsx"
+  },
+  "kale avocado": {
+    "title": "Kale avocado",
+    "servings": 4,
+    "file": "Kale avocado EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "kale chips": {
+    "title": "Kale chips",
+    "servings": 6,
+    "file": "Kale chips EN 2025-06-10 Oppskrift.xlsx"
+  },
+  "kale soup": {
+    "title": "Kale soup",
+    "servings": 10,
+    "file": "Kale soup EN 2025-02-12 Oppskrift.xlsx"
+  },
+  "katrine s pesto dressing": {
+    "title": "Katrine´s pesto dressing",
+    "servings": 6,
+    "file": "Katrine´s pesto dressing EN 2025-03-11 Oppskrift.xlsx"
+  },
+  "ketchup": {
+    "title": "Ketchup",
+    "servings": 10,
+    "file": "Ketchup EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "kidney bean stew": {
+    "title": "Kidney bean Stew",
+    "servings": 4,
+    "file": "Kidney bean Stew EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "lasagna": {
+    "title": "lasagna",
+    "servings": 7,
+    "file": "Lasagna EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "lemon and olive oil dressing": {
+    "title": "Lemon and olive oil dressing",
+    "servings": 3,
+    "file": "Lemon and olive oil dressing  EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "lentil lap stew": {
+    "title": "Lentil lap stew",
+    "servings": 5,
+    "file": "Lentil lap Stew EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "lightly cooked broccoli": {
+    "title": "Lightly cooked broccoli",
+    "servings": 4,
+    "file": "Lightly cooked broccoli EN 2025-07-23 Oppskrift.xlsx"
+  },
+  "luke s indian chickpea sauce": {
+    "title": "Luke's Indian Chickpea Sauce",
+    "servings": 6,
+    "file": "Luke_s Indian Chickpea Sauce EN 2025-04-09 Oppskrift.xlsx"
+  },
+  "maddie s pesto": {
+    "title": "Maddie's Pesto",
+    "servings": 10,
+    "file": "Maddie_s Pesto EN 2023-06-29 Oppskrift.xlsx"
+  },
+  "marika s tofu balls": {
+    "title": "Marika's tofu balls",
+    "servings": 7,
+    "file": "Marika_s Tofu Balls EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "marika s summer salad": {
+    "title": "Marika's summer salad",
+    "servings": 5,
+    "file": "Marika_s summer salad EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "marinade tofu sticks": {
+    "title": "Marinade tofu sticks",
+    "servings": 5,
+    "file": "Marinade Tofu Sticks step 1 EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "mashed potatoes": {
+    "title": "Mashed potatoes",
+    "servings": 8,
+    "file": "Mashed Potatoes EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "mediterranean soup": {
+    "title": "Mediterranean soup",
+    "servings": 12,
+    "file": "Mediterranean soup EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "millet crackers": {
+    "title": "Millet crackers",
+    "servings": 1,
+    "file": "Millet crackers, hirseknekk EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "minestrone soup": {
+    "title": "Minestrone soup",
+    "servings": 6,
+    "file": "Minestrone soup EN 2025-02-12 Oppskrift.xlsx"
+  },
+  "mint yogurt dressing": {
+    "title": "Mint yogurt dressing",
+    "servings": 4,
+    "file": "Mint yogurt dressing EN 2024-01-26 Oppskrift.xlsx"
+  },
+  "noodle wok": {
+    "title": "Noodle wok",
+    "servings": 12,
+    "file": "Noodle wok EN 2025-02-16 Oppskrift.xlsx"
+  },
+  "nordic sprout salad": {
+    "title": "Nordic sprout salad",
+    "servings": 2,
+    "file": "Nordic sprout salad EN 2025-09-30 Oppskrift.xlsx"
+  },
+  "nut loaf": {
+    "title": "Nut loaf",
+    "servings": 5,
+    "file": "Nutloaf EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "oat burger": {
+    "title": "Oat burger",
+    "servings": 12,
+    "file": "Oat burger EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "onion pie crust": {
+    "title": "Onion Pie Crust",
+    "servings": 6,
+    "file": "Onion Pie Crust EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "onion pie filling": {
+    "title": "Onion Pie Filling",
+    "servings": 6,
+    "file": "Onion Pie Filling EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "parmesan": {
+    "title": "Parmesan",
+    "servings": 8,
+    "file": "Parmesan EN 2025-02-11 Oppskrift.xlsx"
+  },
+  "peanut ginger dressing": {
+    "title": "Peanut ginger dressing",
+    "servings": 10,
+    "file": "Peanut ginger dressing EN 2025-09-10 Oppskrift.xlsx"
+  },
+  "pickled ginger": {
+    "title": "Pickled ginger",
+    "servings": 5,
+    "file": "Pickled ginger EN 2025-02-17 Oppskrift.xlsx"
+  },
+  "pineapple cream": {
+    "title": "Pineapple cream",
+    "servings": 8,
+    "file": "Pineapple cream EN 2024-12-15 Oppskrift.xlsx"
+  },
+  "pizza crust dough": {
+    "title": "Pizza Crust Dough",
+    "servings": 10,
+    "file": "Pizza Crust Dough EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "plant based butter": {
+    "title": "Plant based butter",
+    "servings": 1,
+    "file": "Plant based butter EN 2025-03-10 Oppskrift.xlsx"
+  },
+  "poke dressing": {
+    "title": "Poke dressing",
+    "servings": 14,
+    "file": "Poke dressing EN 2024-12-15 Oppskrift.xlsx"
+  },
+  "poke tofu": {
+    "title": "Poke tofu",
+    "servings": 5,
+    "file": "Poke tofu EN 2024-12-15 Oppskrift.xlsx"
+  },
+  "polenta": {
+    "title": "Polenta",
+    "servings": 3,
+    "file": "Polenta EN 2025-02-17 Oppskrift.xlsx"
+  },
+  "pomodoro sauce": {
+    "title": "Pomodoro sauce",
+    "servings": 4,
+    "file": "Pomodoro sauce EN 2024-12-03 Oppskrift.xlsx"
+  },
+  "potato and spinach soup": {
+    "title": "Potato and spinach soup",
+    "servings": 6,
+    "file": "Potato and spinach soup EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "potato gratin": {
+    "title": "Potato gratin",
+    "servings": 7,
+    "file": "Potato gratin EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "potato salad": {
+    "title": "Potato salad",
+    "servings": 15,
+    "file": "Potato salad EN 2025-04-08 Oppskrift.xlsx"
+  },
+  "protein shake": {
+    "title": "Protein shake",
+    "servings": 6,
+    "file": "Protein shake EN [2024-11-05] Oppskrift.xlsx"
+  },
+  "pumpkin soup": {
+    "title": "Pumpkin soup",
+    "servings": 6,
+    "file": "Pumpkin soup EN [2024-01-18] Oppskrift.xlsx"
+  },
+  "pumpkinseed and basil cheese": {
+    "title": "Pumpkinseed and basil cheese",
+    "servings": 1,
+    "file": "Pumpkinseed and Basil Cheese EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "quinoa salad": {
+    "title": "Quinoa salad",
+    "servings": 10,
+    "file": "Quinoa salad second EN 2024-01-26 Oppskrift.xlsx"
+  },
+  "ranch dressing": {
+    "title": "Ranch dressing",
+    "servings": 7,
+    "file": "Ranch dressing EN 2025-02-12 Oppskrift.xlsx"
+  },
+  "raspberry jam": {
+    "title": "Raspberry Jam",
+    "servings": 1,
+    "file": "Raspberry Jam EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "raw cheese cake": {
+    "title": "Raw \"cheese\" cake",
+    "servings": 10,
+    "file": "Raw _cheese_ cake EN 2025-07-23 Oppskrift.xlsx"
+  },
+  "red beet spread": {
+    "title": "Red beet spread",
+    "servings": 1,
+    "file": "Red Beet Spread EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "red cabbage salad": {
+    "title": "Red Cabbage Salad",
+    "servings": 3,
+    "file": "Red Cabbage Salad EN 2025-08-04 Oppskrift.xlsx"
+  },
+  "red beet salad": {
+    "title": "Red beet salad",
+    "servings": 5,
+    "file": "Red beet Salad EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "red beet burger": {
+    "title": "Red beet burger",
+    "servings": 5,
+    "file": "Red beet burger EN 2025-07-23 Oppskrift.xlsx"
+  },
+  "red lentil soup": {
+    "title": "Red lentil soup",
+    "servings": 4,
+    "file": "Red lentil soup EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "rice porridge": {
+    "title": "Rice porridge",
+    "servings": 4,
+    "file": "Rice porridge EN 2024-12-15 Oppskrift.xlsx"
+  },
+  "roasted cauliflower": {
+    "title": "Roasted Cauliflower",
+    "servings": 4,
+    "file": "Roasted Cauliflower EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "roasted pepper seitan sausages": {
+    "title": "Roasted Pepper Seitan Sausages",
+    "servings": 8,
+    "file": "Roasted Pepper Seitan Sausages EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "roasted sweet potato and arugala salad": {
+    "title": "Roasted sweet potato and arugala salad",
+    "servings": 6,
+    "file": "Roasted Sweet Potato and Arugula Salad EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "roasted brussels sprouts": {
+    "title": "Roasted brussels sprouts",
+    "servings": 3,
+    "file": "Roasted brussels sprouts EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "roasted chickpea tofu": {
+    "title": "Roasted chickpea tofu",
+    "servings": 4,
+    "file": "Roasted chickpea tofu EN 2025-02-16 Oppskrift.xlsx"
+  },
+  "roasted salad": {
+    "title": "Roasted salad",
+    "servings": 10,
+    "file": "Roasted salad EN 2025-04-07 Oppskrift.xlsx"
+  },
+  "roti": {
+    "title": "Roti",
+    "servings": 6,
+    "file": "Roti EN 2025-11-19 Oppskrift.xlsx"
+  },
+  "russian penicillin": {
+    "title": "Russian penicillin",
+    "servings": 1,
+    "file": "Russian Penicillin EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "salsa": {
+    "title": "Salsa",
+    "servings": 4,
+    "file": "Salsa EN 2025-02-16 Oppskrift.xlsx"
+  },
+  "sauteed carrots": {
+    "title": "Sauteed Carrots",
+    "servings": 6,
+    "file": "Sautéed Carrots EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "scrambled tofu": {
+    "title": "Scrambled tofu",
+    "servings": 4,
+    "file": "Scrambled tofu EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "seasoned baked potatoes": {
+    "title": "Seasoned baked potatoes",
+    "servings": 5,
+    "file": "Seasoned baked potatoes EN 2024-12-15 Oppskrift.xlsx"
+  },
+  "simple baked potatoes": {
+    "title": "Simple baked potatoes",
+    "servings": 5,
+    "file": "Simple baked potatoes EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "sorbet": {
+    "title": "Sorbet",
+    "servings": 6,
+    "file": "Sorbet EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "soy mayonnaise": {
+    "title": "Soy mayonnaise",
+    "servings": 4,
+    "file": "Soy Mayonnaise EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "soy mozzarella": {
+    "title": "Soy mozzarella",
+    "servings": 8,
+    "file": "Soy mozzarella EN 2025-02-28 Oppskrift.xlsx"
+  },
+  "soy salami": {
+    "title": "Soy salami",
+    "servings": 20,
+    "file": "Soy salami EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "soy yogurt dressing": {
+    "title": "Soy yogurt dressing",
+    "servings": 4,
+    "file": "Soy yogurt dressing EN 2024-01-26 Oppskrift.xlsx"
+  },
+  "steamed potatoes": {
+    "title": "Steamed potatoes",
+    "servings": 1,
+    "file": "Steamed small potatoes EN 2024-09-12 Oppskrift.xlsx"
+  },
+  "stine gro s waffles": {
+    "title": "Stine Gro´s waffles",
+    "servings": 4,
+    "file": "Stine Gro´s waffles EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "strawberry jam": {
+    "title": "Strawberry Jam",
+    "servings": 10,
+    "file": "Strawberry Jam EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "stuffed paprika with tofu": {
+    "title": "Stuffed paprika with tofu",
+    "servings": 8,
+    "file": "Stuffed paprika with tofu EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "super green smoothie": {
+    "title": "Super Green Smoothie",
+    "servings": 3,
+    "file": "Super Green Smoothie EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "swedish oven pancake": {
+    "title": "Swedish oven pancake",
+    "servings": 4,
+    "file": "Swedish oven pancake EN 2025-09-30 Oppskrift.xlsx"
+  },
+  "sweet potato muffins": {
+    "title": "Sweet potato muffins",
+    "servings": 12,
+    "file": "Sweet potato muffins EN 2025-12-03 Oppskrift.xlsx"
+  },
+  "sweet potato soup": {
+    "title": "Sweet potato soup",
+    "servings": 3,
+    "file": "Sweet potato soup EN 2025-08-04 Oppskrift.xlsx"
+  },
+  "sweet vinaigrette": {
+    "title": "Sweet vinaigrette",
+    "servings": 6,
+    "file": "Sweet vinaigrette EN 2025-02-13 Oppskrift.xlsx"
+  },
+  "sweet yellow pea soup": {
+    "title": "Sweet yellow pea soup",
+    "servings": 10,
+    "file": "Sweet yellow pea soup 2024-01-26 Oppskrift.xlsx"
+  },
+  "taco dressing": {
+    "title": "Taco dressing",
+    "servings": 12,
+    "file": "Taco dressing EN 2024-01-25 Oppskrift.xlsx"
+  },
+  "thai soup": {
+    "title": "Thai Soup",
+    "servings": 12,
+    "file": "Thai Soup EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "tofu feta cheese": {
+    "title": "Tofu feta cheese",
+    "servings": 7,
+    "file": "Tofu Feta Cheese EN 2022-10-10 Oppskrift.xlsx"
+  },
+  "tofu sour cream": {
+    "title": "Tofu sour cream",
+    "servings": 10,
+    "file": "Tofu Sour Cream EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "tofu sticks": {
+    "title": "Tofu sticks",
+    "servings": 2,
+    "file": "Tofu Sticks bread crumbs step 2 EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "tofu cottage cheese": {
+    "title": "Tofu cottage cheese",
+    "servings": 10,
+    "file": "Tofu cottage cheese EN 2024-04-23 Oppskrift.xlsx"
+  },
+  "tofu form": {
+    "title": "Tofu form",
+    "servings": 8,
+    "file": "Tofu form EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "tom s gluten free bread": {
+    "title": "Tom's gluten free bread",
+    "servings": 1,
+    "file": "Tom_s gluten free bread EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "tomato bruschetta": {
+    "title": "Tomato bruschetta",
+    "servings": 1,
+    "file": "Tomato Bruschetta EN 2022-10-21 Oppskrift.xlsx"
+  },
+  "tomato sauce for pizza": {
+    "title": "Tomato Sauce for Pizza",
+    "servings": 7,
+    "file": "Tomato Sauce for Pizza EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "tomato soup": {
+    "title": "Tomato soup",
+    "servings": 10,
+    "file": "Tomato Soup EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "tomato bean salad": {
+    "title": "Tomato bean salad",
+    "servings": 2,
+    "file": "Tomato bean salad EN 2025-09-10 Oppskrift.xlsx"
+  },
+  "turmeric and cashew cheese": {
+    "title": "Turmeric and cashew cheese",
+    "servings": 1,
+    "file": "Turmeric and Cashew Cheese EN 2022-10-11 Oppskrift.xlsx"
+  },
+  "ukrainian borscht soup": {
+    "title": "Ukrainian Borscht Soup",
+    "servings": 7,
+    "file": "Ukrainian Borscht Soup EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "vanilla sauce": {
+    "title": "Vanilla sauce",
+    "servings": 10,
+    "file": "Vanilla Sauce EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "vegetable pie": {
+    "title": "Vegetable pie",
+    "servings": 6,
+    "file": "Vegetable pie EN 2025-09-30 Oppskrift.xlsx"
+  },
+  "walnut basil dressing": {
+    "title": "Walnut Basil Dressing",
+    "servings": 4,
+    "file": "Walnut Basil Dressing EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "walnut milk with dates": {
+    "title": "Walnut milk with dates",
+    "servings": 5,
+    "file": "Walnut milk with dates EN 2024-04-23 Oppskrift.xlsx"
+  },
+  "whipped cream": {
+    "title": "Whipped Cream",
+    "servings": 5,
+    "file": "Whipped Cream EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "white cabbage coleslaw": {
+    "title": "White cabbage coleslaw",
+    "servings": 6,
+    "file": "White Cabbage Coleslaw EN 2022-10-12 Oppskrift.xlsx"
+  },
+  "white cashew sauce": {
+    "title": "White Cashew Sauce",
+    "servings": 7,
+    "file": "White Cashew Sauce EN 2022-10-13 Oppskrift.xlsx"
+  },
+  "whole grain rice": {
+    "title": "Whole grain rice",
+    "servings": 4,
+    "file": "Whole grain rice EN 2024-12-14 Oppskrift.xlsx"
+  },
+  "salad": {
+    "title": "salad",
+    "servings": 6,
+    "file": "salad EN [YYYY-MM-DD] Oppskrift.xlsx"
+  }
+}

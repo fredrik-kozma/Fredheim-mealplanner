@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "menu-planner",
+      "runtimeExecutable": "C:\\Windows\\System32\\cmd.exe",
+      "runtimeArgs": ["/c", "C:\\Users\\fredr\\Documents\\Claude projects\\menu-planner-main\\.claude\\start-dev.cmd"],
+      "port": 5173
+    }
+  ]
+}
