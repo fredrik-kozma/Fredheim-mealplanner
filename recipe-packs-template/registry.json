@@ -1,26 +1,11 @@
 [
   {
-    "id": "fredheim-recipes",
-    "name": "Fredheim-oppskrifter",
-    "description": "En kuratert samling av sunne og gode oppskrifter fra Fredheim. Inkluderer frokoster, lunsjer, middager, brød, sauser, salater, supper og mer.",
-    "author": "Fredheim",
-    "version": "1.0.7",
-    "tags": [
-      "sunn",
-      "familievennlig",
-      "variert",
-      "nordisk"
-    ],
-    "recipeCount": 197,
-    "sourceUrl": null
-  },
-  {
     "id": "fredheim-recepies-with-pictures",
     "name": "Fredheim recepies with pictures",
-    "description": "A selection of Fredheim recipes bundled with photos.",
+    "description": "A selection of Fredheim recipes bundled with photos and full per-serving nutritional information.",
     "author": "Fredheim",
-    "version": "1.6.0",
-    "tags": ["fredheim", "with-photos"],
+    "version": "1.6.1",
+    "tags": ["fredheim", "with-photos", "with-nutrition"],
     "recipeCount": 197,
     "sourceUrl": null
   }
