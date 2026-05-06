@@ -4,7 +4,77 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { parseRecipe } from '../../utils/recipeParser'
 import { compressImage } from '../../utils/imageCompressor'
+import { NUTRITION_GROUPS } from '../../utils/nutritionData'
 import UnitSelect from './UnitSelect'
+
+// ── Nutrition form section ────────────────────────────────────────────────────
+function NutritionFormSection({ nutrition, onChange }) {
+  const [open, setOpen] = useState(Boolean(
+    nutrition && Object.values(nutrition).some(v => v !== null && v !== undefined)
+  ))
+
+  function handleField(key, raw) {
+    const val = raw === '' ? null : parseFloat(raw)
+    onChange({ ...nutrition, [key]: isNaN(val) ? null : val })
+  }
+
+  return (
+    <div className="border-t border-slate-100 pt-5">
+      <button
+        type="button"
+        onClick={() => setOpen(v => !v)}
+        className="flex items-center gap-2.5 w-full text-left group"
+      >
+        <span className="text-lg">📊</span>
+        <div className="flex-1">
+          <p className="text-sm font-semibold text-slate-700 group-hover:text-indigo-700 transition-colors">
+            Nutritional Information (per serving)
+          </p>
+          <p className="text-xs text-slate-400">
+            Calories, macros, minerals and vitamins. Use AI to calculate these from your ingredients.
+          </p>
+        </div>
+        <svg className={`w-5 h-5 text-slate-400 transition-transform flex-shrink-0 ${open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="mt-4 space-y-5">
+          {NUTRITION_GROUPS.map(group => (
+            <div key={group.key}>
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">{group.label}</p>
+              <div className="grid grid-cols-2 gap-x-3 gap-y-2">
+                {group.fields.map(field => (
+                  <div key={field.key} className={`flex items-center gap-1.5 ${field.indent ? 'pl-3' : ''}`}>
+                    <div className="flex-1 min-w-0">
+                      <label className="block text-xs text-slate-500 truncate mb-0.5">{field.label}</label>
+                      <div className="flex items-center gap-1">
+                        <input
+                          type="number"
+                          min="0"
+                          step="any"
+                          className="input py-1.5 text-sm w-full"
+                          placeholder="—"
+                          value={nutrition?.[field.key] ?? ''}
+                          onChange={e => handleField(field.key, e.target.value)}
+                        />
+                        <span className="text-xs text-slate-400 whitespace-nowrap flex-shrink-0 w-10">{field.unit}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          <p className="text-xs text-slate-400 pt-1">
+            💡 Tip: Ask an AI (e.g. ChatGPT or Claude) to calculate the nutrition for this recipe and paste the values above.
+          </p>
+        </div>
+      )}
+    </div>
+  )
+}
 
 function IngredientRow({ ing, onChange, onRemove, t }) {
   return (
@@ -71,6 +141,7 @@ export default function RecipeForm() {
   const otherMeta = LANG_META[otherLang] || { label: otherLang, flag: '' }
 
   const [form, setForm] = useState(isEdit ? { ...existing } : EMPTY_FORM)
+  const [nutrition, setNutrition] = useState(isEdit ? (existing?.nutrition || {}) : {})
   const [pasteText, setPasteText] = useState('')
   const [showPaste, setShowPaste] = useState(false)
   const [newStep, setNewStep] = useState('')
@@ -201,12 +272,16 @@ export default function RecipeForm() {
       }
     }
 
+    // Only save nutrition if at least one field has been filled in
+    const hasNutrition = Object.values(nutrition).some(v => v !== null && v !== undefined)
+
     const data = {
       ...form,
       servings: Number(form.servings) || 4,
       prepTime: form.prepTime ? Number(form.prepTime) : null,
       cookTime: form.cookTime ? Number(form.cookTime) : null,
       translations,
+      nutrition: hasNutrition ? nutrition : null,
     }
 
     try {
@@ -417,6 +492,12 @@ export default function RecipeForm() {
               <button type="button" onClick={addStep} className="btn-secondary">{t('recipeForm.addStep')}</button>
             </div>
           </div>
+
+          {/* ── Nutrition Section ────────────────────────────────────── */}
+          <NutritionFormSection
+            nutrition={nutrition}
+            onChange={setNutrition}
+          />
 
           {/* ── Optional Translation Section ─────────────────────────── */}
           <div className="border-t border-slate-100 pt-5">
