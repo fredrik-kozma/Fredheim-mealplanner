@@ -29,3 +29,7 @@ yarn-error.log*
 .cache/
 .parcel-cache/
 .turbo/
+
+# GitHub Desktop folders that live inside this project directory but are not part of it
+Fredheim menu planer/
+Fredheim-Mealplaner/
