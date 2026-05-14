@@ -4,9 +4,9 @@
     "name": "Fredheim recepies with pictures",
     "description": "A selection of Fredheim recipes bundled with photos and full per-serving nutritional information.",
     "author": "Fredheim",
-    "version": "1.6.3",
+    "version": "1.6.4",
     "tags": ["fredheim", "with-photos", "with-nutrition"],
-    "recipeCount": 197,
+    "recipeCount": 185,
     "sourceUrl": null
   }
 ]
