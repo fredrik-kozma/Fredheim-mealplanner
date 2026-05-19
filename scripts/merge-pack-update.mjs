@@ -12,7 +12,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-const NEW_JSON  = 'C:\\Users\\fredr\\Downloads\\senaste-fredheim-bilder-uppdatering.json'
+const NEW_JSON  = 'C:\\Users\\fredr\\Downloads\\almost-final-update.json'
 const PACK_PATH = path.resolve('recipe-packs-template/packs/fredheim-recipes-with-pictures.json')
 
 const newPack     = JSON.parse(fs.readFileSync(NEW_JSON,  'utf8'))
