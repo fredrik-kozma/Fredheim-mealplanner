@@ -9,19 +9,22 @@ import {
   closestCenter,
 } from '@dnd-kit/core'
 import { useTranslation } from 'react-i18next'
-import useStore from '../../store/useStore'
+import useStore, { getPlanDayKeys } from '../../store/useStore'
 import DayColumn from './DayColumn'
 import RecipePicker from '../planner/RecipePicker'
 import PlannerTemplates from './PlannerTemplates'
-import { DAYS } from '../../store/useStore'
 
 export default function WeeklyPlanner() {
   const { t } = useTranslation()
   const mealSlots = useStore(s => s.mealSlots)
+  const weekPlan = useStore(s => s.weekPlan)
   const recipes = useStore(s => s.recipes)
   const addRecipeToSlot = useStore(s => s.addRecipeToSlot)
   const moveRecipeBetweenSlots = useStore(s => s.moveRecipeBetweenSlots)
   const clearWeekPlan = useStore(s => s.clearWeekPlan)
+  const addPlannerDay = useStore(s => s.addPlannerDay)
+
+  const dayKeys = getPlanDayKeys(weekPlan)
 
   const [picker, setPicker] = useState(null) // { day, slot }
   const [activeId, setActiveId] = useState(null)
@@ -107,13 +110,28 @@ export default function WeeklyPlanner() {
             </div>
 
             {/* Day columns */}
-            {DAYS.map(day => (
+            {dayKeys.map(day => (
               <DayColumn
                 key={day}
                 day={day}
                 onAddToSlot={(d, s) => setPicker({ day: d, slot: s })}
               />
             ))}
+
+            {/* + Add day button column */}
+            <div className="flex-shrink-0 w-32 sm:w-40 flex flex-col gap-2">
+              <div className="h-9" />
+              <button
+                onClick={addPlannerDay}
+                className="flex-1 min-h-[120px] rounded-xl border-2 border-dashed border-slate-200 text-slate-400 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/40 transition-colors flex flex-col items-center justify-center gap-1 px-2"
+                title={t('planner.addDayTitle', { defaultValue: 'Add an extra day to this plan' })}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                <span className="text-xs font-medium">{t('planner.addDay', { defaultValue: 'Add day' })}</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 import { useDroppable } from '@dnd-kit/core'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { useRef } from 'react'
-import useStore from '../../store/useStore'
+import { useRef, useState } from 'react'
+import useStore, { normalizeSlotItem } from '../../store/useStore'
 
 const CATEGORY_BG = {
   Breakfast: 'bg-amber-50 border-amber-100',
@@ -12,32 +12,157 @@ const CATEGORY_BG = {
   default: 'bg-slate-50 border-slate-100',
 }
 
-export default function MealSlot({ day, slot, onAdd }) {
-  const { t, i18n } = useTranslation()
-  const currentLang = i18n.language?.slice(0, 2) || 'en'
+// ── One recipe chip inside a slot, with inline servings adjuster ─────────────
+function SlotItemChip({ day, slot, item, recipe, currentLang }) {
+  const { t } = useTranslation()
   const navigate = useNavigate()
-  const pointerStartRef = useRef(null)
-  const recipeIds = useStore(s => s.weekPlan[day]?.[slot] || [])
-  const recipes = useStore(s => s.recipes)
+  const familySize = useStore(s => s.familySize)
+  const setSlotItemServings = useStore(s => s.setSlotItemServings)
   const removeRecipeFromSlot = useStore(s => s.removeRecipeFromSlot)
+  const pointerStartRef = useRef(null)
+  const [showAdjuster, setShowAdjuster] = useState(false)
 
-  // Track pointer-down position so we can distinguish a genuine click
-  // from a drag gesture (dnd-kit's PointerSensor activates at 8px).
-  function handleRecipePointerDown(e) {
+  // What's the effective serving count for this slot? Override → household → 4
+  const effectiveServings = item.servings ?? familySize ?? 4
+
+  function handlePointerDown(e) {
     pointerStartRef.current = { x: e.clientX, y: e.clientY }
   }
 
-  function handleRecipeClick(recipeId, e) {
+  function handleClick(e) {
     const start = pointerStartRef.current
     pointerStartRef.current = null
     if (start) {
       const dx = Math.abs(e.clientX - start.x)
       const dy = Math.abs(e.clientY - start.y)
-      // Treat as a drag if the pointer moved more than a few pixels.
-      if (dx > 5 || dy > 5) return
+      if (dx > 5 || dy > 5) return // it was a drag
     }
-    navigate(`/recipes/${recipeId}`)
+    navigate(`/recipes/${item.recipeId}`)
   }
+
+  function bumpServings(delta, e) {
+    e.stopPropagation()
+    setSlotItemServings(day, slot, item.recipeId, Math.max(1, effectiveServings + delta))
+  }
+
+  function resetServings(e) {
+    e.stopPropagation()
+    setSlotItemServings(day, slot, item.recipeId, null)
+  }
+
+  function toggleAdjuster(e) {
+    e.stopPropagation()
+    setShowAdjuster(v => !v)
+  }
+
+  const isOverridden = item.servings != null
+
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onPointerDown={handlePointerDown}
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          navigate(`/recipes/${item.recipeId}`)
+        }
+      }}
+      className="group bg-white rounded-lg shadow-sm border border-slate-100 cursor-pointer hover:bg-slate-50 hover:border-indigo-200 transition-colors"
+    >
+      {/* Top row: image + title + delete */}
+      <div className="flex items-center gap-1.5 px-2 py-1.5">
+        {recipe.imageUrl ? (
+          <img src={recipe.imageUrl} alt="" className="w-6 h-6 rounded-md object-cover flex-shrink-0" />
+        ) : (
+          <span className="text-sm flex-shrink-0">🍽</span>
+        )}
+        <span className="text-xs font-medium text-slate-700 flex-1 leading-tight line-clamp-1">
+          {recipe.translations?.[currentLang]?.title || recipe.title}
+        </span>
+        <button
+          onPointerDown={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation()
+            removeRecipeFromSlot(day, slot, item.recipeId)
+          }}
+          className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-300 hover:text-red-500 flex-shrink-0"
+          title={t('common.remove')}
+        >
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Bottom row: servings pill (always visible, tap to expand) */}
+      <div className="px-2 pb-1.5 -mt-0.5">
+        {showAdjuster ? (
+          <div
+            className="flex items-center gap-1"
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={(e) => bumpServings(-1, e)}
+              disabled={effectiveServings <= 1}
+              className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
+            >
+              −
+            </button>
+            <span className="flex-1 text-center text-xs font-semibold text-slate-700">
+              {effectiveServings} {t('planner.servingsShort', { defaultValue: 'serv.' })}
+            </span>
+            <button
+              onClick={(e) => bumpServings(1, e)}
+              className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
+            >
+              +
+            </button>
+            {isOverridden && (
+              <button
+                onClick={resetServings}
+                className="text-[10px] text-slate-400 hover:text-indigo-600 px-1 transition-colors"
+                title={t('planner.resetServings', { defaultValue: 'Use household default' })}
+              >
+                ↺
+              </button>
+            )}
+            <button
+              onClick={toggleAdjuster}
+              className="text-slate-300 hover:text-slate-500 ml-0.5"
+              title={t('common.close')}
+            >
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+              </svg>
+            </button>
+          </div>
+        ) : (
+          <button
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={toggleAdjuster}
+            className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
+              isOverridden
+                ? 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'
+                : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+            }`}
+            title={t('planner.adjustServings', { defaultValue: 'Adjust servings' })}
+          >
+            👥 {effectiveServings}
+          </button>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default function MealSlot({ day, slot, onAdd }) {
+  const { t, i18n } = useTranslation()
+  const currentLang = i18n.language?.slice(0, 2) || 'en'
+  const slotItems = useStore(s => s.weekPlan[day]?.[slot] || [])
+  const recipes = useStore(s => s.recipes)
 
   const droppableId = `${day}__${slot}`
   const { isOver, setNodeRef } = useDroppable({
@@ -45,8 +170,14 @@ export default function MealSlot({ day, slot, onAdd }) {
     data: { day, slot },
   })
 
-  const slotRecipes = recipeIds
-    .map(id => recipes.find(r => r.id === id))
+  // Normalize items (handles any leftover string-form items just in case)
+  const slotPairs = slotItems
+    .map(it => {
+      const norm = normalizeSlotItem(it)
+      if (!norm) return null
+      const recipe = recipes.find(r => r.id === norm.recipeId)
+      return recipe ? { item: norm, recipe } : null
+    })
     .filter(Boolean)
 
   const bgClass = CATEGORY_BG[slot] || CATEGORY_BG.default
@@ -58,7 +189,7 @@ export default function MealSlot({ day, slot, onAdd }) {
         isOver ? 'ring-2 ring-indigo-400 ring-offset-1 border-indigo-300' : ''
       }`}
     >
-      {slotRecipes.length === 0 && !isOver && (
+      {slotPairs.length === 0 && !isOver && (
         <div className="flex items-center justify-center h-12 text-xs text-slate-400">
           {t('planner.dropHere')}
         </div>
@@ -66,43 +197,15 @@ export default function MealSlot({ day, slot, onAdd }) {
 
       {/* Recipe chips in slot */}
       <div className="space-y-1.5">
-        {slotRecipes.map(recipe => (
-          <div
-            key={recipe.id}
-            role="button"
-            tabIndex={0}
-            onPointerDown={handleRecipePointerDown}
-            onClick={(e) => handleRecipeClick(recipe.id, e)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault()
-                navigate(`/recipes/${recipe.id}`)
-              }
-            }}
-            className="group flex items-center gap-1.5 bg-white rounded-lg px-2 py-1.5 shadow-sm border border-slate-100 cursor-pointer hover:bg-slate-50 hover:border-indigo-200 transition-colors"
-          >
-            {recipe.imageUrl ? (
-              <img src={recipe.imageUrl} alt="" className="w-6 h-6 rounded-md object-cover flex-shrink-0" />
-            ) : (
-              <span className="text-sm flex-shrink-0">🍽</span>
-            )}
-            <span className="text-xs font-medium text-slate-700 flex-1 leading-tight line-clamp-1">
-              {recipe.translations?.[currentLang]?.title || recipe.title}
-            </span>
-            <button
-              onPointerDown={(e) => e.stopPropagation()}
-              onClick={(e) => {
-                e.stopPropagation()
-                removeRecipeFromSlot(day, slot, recipe.id)
-              }}
-              className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-300 hover:text-red-500 flex-shrink-0"
-              title={t('common.remove')}
-            >
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+        {slotPairs.map(({ item, recipe }) => (
+          <SlotItemChip
+            key={item.recipeId}
+            day={day}
+            slot={slot}
+            item={item}
+            recipe={recipe}
+            currentLang={currentLang}
+          />
         ))}
       </div>
 

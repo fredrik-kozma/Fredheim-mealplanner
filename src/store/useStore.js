@@ -17,6 +17,29 @@ function makeId() {
   return Math.random().toString(36).slice(2) + Date.now().toString(36)
 }
 
+// Build the full ordered list of day keys for a plan: the seven named
+// days plus any extra ones (extra-1, extra-2, …). The plan object itself
+// is the source of truth for which extras exist.
+export function getPlanDayKeys(plan) {
+  if (!plan) return [...DAYS]
+  const extras = Object.keys(plan)
+    .filter(k => k.startsWith('extra-'))
+    .sort((a, b) => Number(a.slice(6)) - Number(b.slice(6)))
+  return [...DAYS, ...extras]
+}
+
+// Items in a slot are stored as { recipeId, servings? }. `servings === null`
+// (or missing) means "use the household default" set in Settings; a number
+// overrides it for that specific slot. This helper accepts either the old
+// string-only shape or the new object shape and normalizes it.
+export function normalizeSlotItem(item) {
+  if (typeof item === 'string') return { recipeId: item, servings: null }
+  if (item && typeof item === 'object' && item.recipeId) {
+    return { recipeId: item.recipeId, servings: item.servings ?? null }
+  }
+  return null
+}
+
 function emptyWeekPlan() {
   const plan = {}
   for (const day of DAYS) {
@@ -620,15 +643,15 @@ const useStore = create(
       // ── Week Plan ──
       weekPlan: DEFAULT_WEEK_PLAN,
 
-      addRecipeToSlot: (day, slot, recipeId) => set((s) => {
+      addRecipeToSlot: (day, slot, recipeId, servings = null) => set((s) => {
         const current = s.weekPlan[day]?.[slot] || []
-        if (current.includes(recipeId)) return {}
+        if (current.some(it => normalizeSlotItem(it)?.recipeId === recipeId)) return {}
         return {
           weekPlan: {
             ...s.weekPlan,
             [day]: {
               ...s.weekPlan[day],
-              [slot]: [...current, recipeId],
+              [slot]: [...current, { recipeId, servings }],
             },
           },
         }
@@ -639,22 +662,73 @@ const useStore = create(
           ...s.weekPlan,
           [day]: {
             ...s.weekPlan[day],
-            [slot]: (s.weekPlan[day]?.[slot] || []).filter(id => id !== recipeId),
+            [slot]: (s.weekPlan[day]?.[slot] || []).filter(it => normalizeSlotItem(it)?.recipeId !== recipeId),
           },
         },
       })),
 
       moveRecipeBetweenSlots: (fromDay, fromSlot, toDay, toSlot, recipeId) => set((s) => {
-        const fromIds = (s.weekPlan[fromDay]?.[fromSlot] || []).filter(id => id !== recipeId)
-        const toIds = s.weekPlan[toDay]?.[toSlot] || []
-        if (toIds.includes(recipeId)) return {}
+        const fromList = s.weekPlan[fromDay]?.[fromSlot] || []
+        const moved = fromList
+          .map(normalizeSlotItem)
+          .find(it => it?.recipeId === recipeId)
+        if (!moved) return {}
+        const fromAfter = fromList.filter(it => normalizeSlotItem(it)?.recipeId !== recipeId)
+        const toList = s.weekPlan[toDay]?.[toSlot] || []
+        if (toList.some(it => normalizeSlotItem(it)?.recipeId === recipeId)) {
+          // Already in destination — just remove from source
+          return {
+            weekPlan: {
+              ...s.weekPlan,
+              [fromDay]: { ...s.weekPlan[fromDay], [fromSlot]: fromAfter },
+            },
+          }
+        }
         return {
           weekPlan: {
             ...s.weekPlan,
-            [fromDay]: { ...s.weekPlan[fromDay], [fromSlot]: fromIds },
-            [toDay]: { ...s.weekPlan[toDay], [toSlot]: [...toIds, recipeId] },
+            [fromDay]: { ...s.weekPlan[fromDay], [fromSlot]: fromAfter },
+            [toDay]: { ...s.weekPlan[toDay], [toSlot]: [...toList, moved] },
           },
         }
+      }),
+
+      // Set or clear the per-slot servings override for one recipe instance.
+      // Pass `servings = null` to reset back to the household default.
+      setSlotItemServings: (day, slot, recipeId, servings) => set((s) => ({
+        weekPlan: {
+          ...s.weekPlan,
+          [day]: {
+            ...s.weekPlan[day],
+            [slot]: (s.weekPlan[day]?.[slot] || []).map(it => {
+              const n = normalizeSlotItem(it)
+              if (!n || n.recipeId !== recipeId) return it
+              return { ...n, servings: servings == null ? null : Math.max(1, Math.floor(servings)) }
+            }),
+          },
+        },
+      })),
+
+      // Append an empty extra day (extra-1, extra-2, …) to the plan.
+      addPlannerDay: () => set((s) => {
+        const existingExtras = Object.keys(s.weekPlan)
+          .filter(k => k.startsWith('extra-'))
+          .map(k => Number(k.slice(6)))
+        const nextN = (existingExtras.length ? Math.max(...existingExtras) : 0) + 1
+        const newDayKey = `extra-${nextN}`
+        const slots = {}
+        for (const slot of s.mealSlots) slots[slot] = []
+        return {
+          weekPlan: { ...s.weekPlan, [newDayKey]: slots },
+        }
+      }),
+
+      // Remove an extra day (only `extra-*` keys can be removed; the seven
+      // named days are permanent).
+      removePlannerDay: (dayKey) => set((s) => {
+        if (!dayKey?.startsWith('extra-')) return {}
+        const { [dayKey]: _removed, ...rest } = s.weekPlan
+        return { weekPlan: rest }
       }),
 
       clearWeekPlan: () => set((s) => ({ weekPlan: emptyWeekPlan() })),
@@ -794,7 +868,7 @@ const useStore = create(
       // IndexedDB-backed (via idb-keyval) instead of the default
       // localStorage. Gives us ~50% of free disk (GBs) instead of ~5 MB.
       storage: createJSONStorage(() => idbStorage),
-      version: 4,
+      version: 5,
       migrate: (persistedState, version) => {
         if (version < 2) {
           if (persistedState.recipes) {
@@ -859,6 +933,39 @@ const useStore = create(
             persistedState.weekPlan = newPlan
           }
         }
+        // v5: each slot used to hold an array of recipe-id strings; now it
+        // holds { recipeId, servings } objects so portions can be overridden
+        // per planner instance.
+        if (version < 5) {
+          function migrateSlots(plan) {
+            if (!plan) return plan
+            const out = {}
+            for (const [day, slots] of Object.entries(plan)) {
+              out[day] = {}
+              for (const [slot, items] of Object.entries(slots || {})) {
+                out[day][slot] = (items || []).map(it =>
+                  typeof it === 'string' ? { recipeId: it, servings: null } : it
+                )
+              }
+            }
+            return out
+          }
+          if (persistedState.weekPlan) {
+            persistedState.weekPlan = migrateSlots(persistedState.weekPlan)
+          }
+          if (Array.isArray(persistedState.plannerTemplates)) {
+            persistedState.plannerTemplates = persistedState.plannerTemplates.map(t => ({
+              ...t,
+              plan: migrateSlots(t.plan),
+            }))
+          }
+          if (Array.isArray(persistedState.savedShoppingLists)) {
+            persistedState.savedShoppingLists = persistedState.savedShoppingLists.map(l => ({
+              ...l,
+              weekPlanSnapshot: migrateSlots(l.weekPlanSnapshot),
+            }))
+          }
+        }
         return persistedState
       },
     }
@@ -867,3 +974,4 @@ const useStore = create(
 
 export default useStore
 export { DAYS, DEFAULT_MEAL_SLOTS }
+// (normalizeSlotItem and getPlanDayKeys are already exported above)

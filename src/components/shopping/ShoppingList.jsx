@@ -142,7 +142,9 @@ export default function ShoppingList() {
           <div className="flex flex-wrap gap-1.5">
             {[...new Set(
               Object.values(weekPlan).flatMap(day =>
-                Object.values(day).flatMap(ids => ids)
+                Object.values(day).flatMap(items =>
+                  (items || []).map(it => typeof it === 'string' ? it : it?.recipeId).filter(Boolean)
+                )
               )
             )].map(rid => {
               const recipe = recipes.find(r => r.id === rid)

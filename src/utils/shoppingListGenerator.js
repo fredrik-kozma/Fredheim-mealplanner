@@ -56,10 +56,17 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en')
 
   for (const day of Object.values(weekPlan)) {
     for (const slotRecipes of Object.values(day)) {
-      for (const recipeId of slotRecipes) {
-        const recipe = recipeMap[recipeId]
+      for (const item of slotRecipes) {
+        // Accept both legacy "id" strings and new { recipeId, servings } shape.
+        const norm = typeof item === 'string'
+          ? { recipeId: item, servings: null }
+          : (item && item.recipeId ? { recipeId: item.recipeId, servings: item.servings ?? null } : null)
+        if (!norm) continue
+        const recipe = recipeMap[norm.recipeId]
         if (!recipe) continue
-        const scaleFactor = familySize / (recipe.servings || 4)
+        // Per-slot override > household default
+        const portionCount = norm.servings ?? familySize
+        const scaleFactor = portionCount / (recipe.servings || 4)
 
         // Use translated ingredients if available for this language,
         // otherwise fall back to the canonical English ones.
