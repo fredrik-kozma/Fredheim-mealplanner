@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navigation from './components/layout/Navigation'
 import Header from './components/layout/Header'
 import RecipesPage from './pages/RecipesPage'
@@ -10,6 +10,9 @@ import PacksPage from './pages/PacksPage'
 import RecipeForm from './components/recipes/RecipeForm'
 import RecipeDetail from './components/recipes/RecipeDetail'
 import useStore from './store/useStore'
+import { AuthProvider, useAuth } from './contexts/AuthContext'
+import { useSubscription } from './hooks/useSubscription'
+import UpgradeWall from './components/subscription/UpgradeWall'
 
 // Blocks rendering until the Zustand store has fully hydrated from IndexedDB.
 // Without this guard, useEffect hooks in child components fire before hydration
@@ -30,29 +33,72 @@ function HydrationGate({ children }) {
   return children
 }
 
+// Shows the UpgradeWall when a signed-in user's subscription is no longer
+// active.  Anonymous visitors see the app normally (with a sign-up nudge in
+// the header) — we only gate access for people who have an account but whose
+// trial / subscription has lapsed.
+function SubscriptionGate({ children }) {
+  const { user, authLoading } = useAuth()
+  const { isActive, loading: subLoading } = useSubscription()
+
+  // While auth / profile is still loading, render nothing to avoid a flash.
+  if (authLoading || (user && subLoading)) return null
+
+  // Signed-in user with an expired / lapsed subscription.
+  if (user && !isActive) {
+    return <UpgradeWall />
+  }
+
+  return children
+}
+
+function AppShell() {
+  const location = useLocation()
+
+  // Handle ?checkout=success query param — Stripe redirects here after payment.
+  // Reload the subscription status so the wall disappears immediately.
+  const { refetch } = useSubscription()
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    if (params.get('checkout') === 'success') {
+      // Give Stripe webhook a couple of seconds to update Supabase, then refetch.
+      const t = setTimeout(refetch, 2500)
+      return () => clearTimeout(t)
+    }
+  }, [location.search, refetch])
+
+  return (
+    <div className="flex flex-col lg:flex-row min-h-dvh">
+      <Navigation />
+
+      {/* Main content area */}
+      <main className="flex-1 flex flex-col lg:ml-60 min-h-dvh">
+        <Header />
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <Routes>
+            <Route path="/" element={<RecipesPage />} />
+            <Route path="/recipes/new" element={<RecipeForm />} />
+            <Route path="/recipes/:id" element={<RecipeDetail />} />
+            <Route path="/recipes/:id/edit" element={<RecipeForm />} />
+            <Route path="/planner" element={<PlannerPage />} />
+            <Route path="/shopping" element={<ShoppingPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/packs" element={<PacksPage />} />
+          </Routes>
+        </div>
+      </main>
+    </div>
+  )
+}
+
 export default function App() {
   return (
-    <HydrationGate>
-      <div className="flex flex-col lg:flex-row min-h-dvh">
-        <Navigation />
-
-        {/* Main content area */}
-        <main className="flex-1 flex flex-col lg:ml-60 min-h-dvh">
-          <Header />
-          <div className="flex-1 flex flex-col overflow-hidden">
-            <Routes>
-              <Route path="/" element={<RecipesPage />} />
-              <Route path="/recipes/new" element={<RecipeForm />} />
-              <Route path="/recipes/:id" element={<RecipeDetail />} />
-              <Route path="/recipes/:id/edit" element={<RecipeForm />} />
-              <Route path="/planner" element={<PlannerPage />} />
-              <Route path="/shopping" element={<ShoppingPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
-              <Route path="/packs" element={<PacksPage />} />
-            </Routes>
-          </div>
-        </main>
-      </div>
-    </HydrationGate>
+    <AuthProvider>
+      <HydrationGate>
+        <SubscriptionGate>
+          <AppShell />
+        </SubscriptionGate>
+      </HydrationGate>
+    </AuthProvider>
   )
 }

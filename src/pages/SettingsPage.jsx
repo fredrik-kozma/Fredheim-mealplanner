@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../store/useStore'
 import { translateRecipe } from '../utils/translator'
+import { useAuth } from '../contexts/AuthContext'
+import { useSubscription } from '../hooks/useSubscription'
+import AuthModal from '../components/auth/AuthModal'
 
 function SectionCard({ title, children }) {
   return (
@@ -40,6 +43,162 @@ const LANGUAGES = [
   { code: 'no', label: 'Norsk', flag: '🇳🇴' },
   { code: 'sv', label: 'Svenska', flag: '🇸🇪' },
 ]
+
+function SubscriptionSection() {
+  const { t } = useTranslation()
+  const { user, signOut } = useAuth()
+  const { isActive, isTrial, isAdmin, status, daysLeft, periodEndsAt, refetch } = useSubscription()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [showAuth, setShowAuth] = useState(false)
+  const [authTab, setAuthTab] = useState('signin')
+
+  async function handleCheckout() {
+    if (!user) return
+    setError(null)
+    setLoading(true)
+    try {
+      const res = await fetch('/.netlify/functions/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: user.id,
+          userEmail: user.email,
+          returnUrl: window.location.origin,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error)
+      window.location.href = data.url
+    } catch (err) {
+      setError(err.message)
+      setLoading(false)
+    }
+  }
+
+  async function handlePortal() {
+    if (!user) return
+    setError(null)
+    setLoading(true)
+    try {
+      const res = await fetch('/.netlify/functions/create-portal-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: user.id, returnUrl: window.location.origin }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error)
+      window.location.href = data.url
+    } catch (err) {
+      setError(err.message)
+      setLoading(false)
+    }
+  }
+
+  const statusLabels = {
+    admin:     { text: t('subscription.adminAccess'),   color: 'text-indigo-700 bg-indigo-50 border-indigo-200' },
+    active:    { text: t('subscription.activeStatus'),  color: 'text-green-700  bg-green-50  border-green-200'  },
+    trialing:  { text: t('subscription.trialDaysLeft', { count: daysLeft }), color: 'text-amber-700 bg-amber-50 border-amber-200' },
+    past_due:  { text: t('subscription.pastDueStatus'), color: 'text-red-700   bg-red-50    border-red-200'    },
+    canceled:  { text: t('subscription.canceledStatus'),color: 'text-slate-700 bg-slate-50  border-slate-200'  },
+    expired:   { text: t('subscription.expiredStatus'), color: 'text-slate-700 bg-slate-50  border-slate-200'  },
+    none:      { text: t('subscription.noAccount'),     color: 'text-slate-500 bg-slate-50  border-slate-200'  },
+  }
+  const badge = statusLabels[status] || statusLabels.none
+
+  return (
+    <>
+      <SectionCard title={t('subscription.title')}>
+        {user ? (
+          <div className="space-y-4">
+            {/* Current status */}
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-slate-600">{user.email}</span>
+              <span className={`text-xs font-semibold border rounded-full px-2.5 py-1 ${badge.color}`}>
+                {badge.text}
+              </span>
+            </div>
+
+            {/* Renewal date */}
+            {status === 'active' && periodEndsAt && (
+              <p className="text-xs text-slate-500">
+                {t('subscription.renewsOn', {
+                  date: periodEndsAt.toLocaleDateString(undefined, { dateStyle: 'medium' }),
+                })}
+              </p>
+            )}
+
+            {error && (
+              <p className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>
+            )}
+
+            {/* Actions */}
+            {!isAdmin && !isActive && (
+              <button
+                onClick={handleCheckout}
+                disabled={loading}
+                className="btn-primary w-full py-2.5 text-sm font-semibold disabled:opacity-60"
+              >
+                {loading ? '…' : t('subscription.subscribeNow')}
+              </button>
+            )}
+            {!isAdmin && isActive && (
+              <button
+                onClick={handlePortal}
+                disabled={loading}
+                className="btn-secondary w-full py-2 text-sm"
+              >
+                {loading ? '…' : t('subscription.manage')}
+              </button>
+            )}
+            {status === 'past_due' && (
+              <button
+                onClick={handlePortal}
+                disabled={loading}
+                className="btn-danger w-full py-2 text-sm"
+              >
+                {loading ? '…' : t('subscription.updatePayment')}
+              </button>
+            )}
+
+            {/* Sign out */}
+            <button
+              onClick={() => { signOut().catch(() => {}) }}
+              className="text-xs text-slate-400 hover:text-red-500 transition-colors"
+            >
+              {t('auth.signOut')}
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <p className="text-sm text-slate-500">{t('subscription.notSignedIn')}</p>
+            <div className="flex gap-2">
+              <button
+                onClick={() => { setAuthTab('signup'); setShowAuth(true) }}
+                className="btn-primary flex-1 py-2 text-sm"
+              >
+                {t('auth.startTrial')}
+              </button>
+              <button
+                onClick={() => { setAuthTab('signin'); setShowAuth(true) }}
+                className="btn-secondary flex-1 py-2 text-sm"
+              >
+                {t('auth.signIn')}
+              </button>
+            </div>
+          </div>
+        )}
+      </SectionCard>
+
+      {showAuth && (
+        <AuthModal
+          initialTab={authTab}
+          onClose={() => setShowAuth(false)}
+        />
+      )}
+    </>
+  )
+}
 
 export default function SettingsPage() {
   const { t, i18n } = useTranslation()
@@ -147,6 +306,9 @@ export default function SettingsPage() {
       </div>
 
       <div className="px-4 space-y-4">
+        {/* Subscription */}
+        <SubscriptionSection />
+
         {/* Language selector */}
         <SectionCard title={t('settings.language')}>
           <div className="grid grid-cols-3 gap-3">
