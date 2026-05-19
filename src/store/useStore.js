@@ -569,7 +569,7 @@ const useStore = create(
       // Categories are stored as stable English keys. Their display name is
       // looked up through i18n (categories.<Key>) so they switch with the UI
       // language. Users can still add custom categories — those render as-is.
-      recipeCategories: ['Breakfast', 'Lunch', 'Dinner', 'Supper', 'Bread', 'Porridge', 'Spreads', 'Snack', 'Dessert', 'Soup', 'Salad', 'Sauce', 'Other'],
+      recipeCategories: ['Breakfast', 'Main', 'Side', 'Salad', 'Soup', 'Sauce', 'Spreads', 'Bread', 'Dessert', 'Snack', 'Drink', 'Jam', 'Other'],
 
       addRecipeCategory: (name) => set((s) => ({
         recipeCategories: s.recipeCategories.includes(name) ? s.recipeCategories : [...s.recipeCategories, name],

@@ -161,6 +161,9 @@
     "Soup": "Soup",
     "Salad": "Salad",
     "Sauce": "Sauce",
+    "Side": "Side",
+    "Drink": "Drink",
+    "Jam": "Jam",
     "Other": "Other"
   },
   "aisles": {

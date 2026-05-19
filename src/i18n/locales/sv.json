@@ -161,6 +161,9 @@
     "Soup": "Soppa",
     "Salad": "Sallad",
     "Sauce": "Sås",
+    "Side": "Tillbehör",
+    "Drink": "Dryck",
+    "Jam": "Sylt",
     "Other": "Övrigt"
   },
   "aisles": {

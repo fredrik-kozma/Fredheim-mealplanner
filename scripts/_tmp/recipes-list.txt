@@ -1,0 +1,176 @@
+﻿fr-1|Aioli|Sauce
+fr-2|Almond Tartar|Spreads
+fr-3|Almond and Paprika Cheese|Spreads
+american-oat-pancakes|American Oat Pancakes|Breakfast
+apple-oat-bake|Apple Oat Bake|Breakfast
+asian-noodle-salad|Asian Noodle Salad|Lunch
+fr-7|Avocado Cream|Sauce
+baba-ghanoush---aubergine-dip|Baba Ghanoush - Aubergine Dip|Spreads
+baked-roots|Baked Roots|Lunch
+baked-sweet-potato|Baked Sweet Potato|Lunch
+fr-12|Barley Cup Drink|Drinks
+bean-pate|Bean PÃ¢tÃ©|Spreads
+bean-spread|Bean Spread|Spreads
+berry-sauce|Berry Sauce|Jams
+black-bean-stew|Black Bean Stew|Lunch
+fr-17|Blissful Sprout Medley|Salad
+fr-18|Blueberry Jam|Jams
+fr-19|Bread Buns|Bread
+broccoli-salad|Broccoli Salad|Salad
+broccoli-soup|Broccoli Soup|Soup
+brown-sauce|Brown Sauce|Sauce
+fr-23|Buckwheat Burger|Lunch
+bulgur-salad|Bulgur Salad|Salad
+burger-buns|Burger Buns|Bread
+burger-dressing|Burger Dressing|Sauce
+fr-27|Cabbage Soup|Soup
+fr-28|Caesar Salad|Salad
+caraway-and-cashew-cheese|Caraway and Cashew Cheese|Spreads
+fr-33|Cashew Sour Cream|Dressing
+fr-34|Cashew Vanilla Cream|Dessert
+cashew-bechamel-sauce|Cashew Bechamel Sauce|Sauce
+cashew-cheese-sauce|Cashew Cheese Sauce|Sauce
+cauliflower-soup|Cauliflower Soup|Soup
+fr-38|Cheese Sauce for Onion Pie|Sauce
+cheesy-cauliflower-sauce|Cheesy Cauliflower Sauce|Sauce
+fr-40|Cheezy Cashew Kale Chips|Snack
+fr-41|Chickpea Omelet|Breakfast
+fr-42|Chickpea Salad|Salad
+chickpea-tofu|Chickpea Tofu|Other
+fr-44|Chinese Cabbage Salad|Salad
+chinese-soup|Chinese Soup|Soup
+breaded-tofu-sticks|Breaded Tofu Sticks|Lunch
+fr-29|Candy Rolls|Dessert
+caramelized-nuts|Caramelized Nuts|Dessert
+carob-spread|Carob Spread|Spreads
+chipotle-sauce|Chipotle Sauce|Sauce
+chorizo-with-potato-taco|Chorizo with Potato Taco|Lunch
+citrus-dressing|Citrus Dressing|Sauce
+fr-49|Classic Greek Salad|Salad
+fr-50|Coconut Macaroon Balls|Dessert
+fr-51|Coconut Mozzarella|Other
+fr-52|Cranberry Jam|Dinner
+fr-53|Croutons|Other
+crunchy-carrot-salad|Crunchy Carrot Salad|Salad
+crunchy-sweet-cabbage-salad|Crunchy Sweet Cabbage Salad|Salad
+fr-56|Cucumber Dressing|Sauce
+fr-57|Cucumber Raita|Sauce
+cucumber-and-sunflowerseed-dressing|Cucumber and Sunflowerseed Dressing|Sauce
+dal-stew|Dal Stew|Lunch
+fr-60|Dried Fruit Jam|Spreads
+easy-colombian-salad|Easy Colombian Salad|Salad
+ellens-granola|Ellen's Granola|Breakfast
+fr-63|Erik's Granola|Breakfast
+fr-64|Falafel|Lunch
+feld-salad-with-pomegranate|Feld Salad with Pomegranate|Salad
+fermented-red-cabbage|Fermented Red Cabbage|Other
+fig-spread|Fig Spread|Spreads
+fr-69|Fresh Vegetable Bouillon|Other
+fr-70|Frittata|Lunch
+fruit-crisp|Fruit Crisp|Breakfast
+fruit-salad|Fruit Salad|Dessert
+fr-74|Garlic and Cashew Cheese|Spreads
+gluten-free-oat-buns|Gluten Free Oat Buns|Bread
+golden-soup|Golden Soup|Soup
+fr-77|Green Beans|Lunch
+fr-78|Guacamole|Spreads
+happy-beans-salad|Happy Beans Salad|Salad
+hasselback-potatoes|Hasselback Potatoes|Lunch
+hazelnut-and-sundried-tomato-cheese|Hazelnut and Sundried Tomato Cheese|Spreads
+homemade-whole-wheat-bread|Homemade Whole Wheat Bread|Bread
+horseradish-dressing|Horseradish Dressing|Sauce
+fr-84|Hummus|Spreads
+isabels-dressing|IsabelÂ´s Dressing|Sauce
+kale-and-sweet-potato-salad|Kale and Sweet Potato Salad|Salad
+kale-avocado|Kale Avocado|Salad
+kale-chips|Kale Chips|Snack
+kale-soup|Kale Soup|Soup
+katrines-pesto-dressing|KatrineÂ´s Pesto Dressing|Sauce
+fr-92|Ketchup|Sauce
+kidney-bean-stew|Kidney Bean Stew|Lunch
+fr-94|Lasagna|Lunch
+lemon-and-olive-oil-dressing|Lemon and Olive Oil Dressing|Sauce
+lentil-lap-stew|Lentil Lap Stew|Dinner
+lightly-cooked-broccoli|Lightly Cooked Broccoli|Dinner
+fr-99|Luke's Indian Chickpea Sauce|Dinner
+fr-101|Marika's Tofu Balls|Dinner
+marikas-summer-salad|Marika's Summer Salad|Dinner
+marinated-tofu-sticks|Marinated Tofu Sticks|Dinner
+fr-104|Mashed Potatoes|Dinner
+mediterranean-soup|Mediterranean Soup|Dinner
+millet-crackers-hirseknekk|Millet Crackers, Hirseknekk|Other
+noodle-wok|Noodle Wok|Lunch
+nordic-sprout-salad|Nordic Sprout Salad|Salad
+fr-111|Nutloaf|Lunch
+oat-burger|Oat Burger|Lunch
+fr-113|Onion Pie Crust|Lunch
+fr-114|Onion Pie Filling|Lunch
+fr-115|Parmesan|Sauce
+peanut-ginger-dressing|Peanut Ginger Dressing|Sauce
+pickled-ginger|Pickled Ginger|Other
+pineapple-cream|Pineapple Cream|Dinner
+fr-119|Pizza Crust Dough|Lunch
+plant-based-butter|Plant Based Butter|Spreads
+fr-123|Polenta|Breakfast
+pomodoro-sauce|Pomodoro Sauce|Sauce
+potato-and-spinach-soup|Potato and Spinach Soup|Soup
+potato-gratin|Potato Gratin|Lunch
+potato-salad|Potato Salad|Salad
+pumpkin-soup|Pumpkin Soup|Soup
+fr-130|Pumpkinseed and Basil Cheese|Spreads
+quinoa-salad-first|Quinoa Salad First|Salad
+quinoa-salad-second|Quinoa Salad Second|Salad
+ranch-dressing|Ranch Dressing|Sauce
+fr-134|Raspberry Jam|Spreads
+raw-cheesecake|Raw Cheesecake|Dessert
+fr-136|Red Beet Spread|Spreads
+fr-137|Red Cabbage Salad|Salad
+red-beet-salad|Red Beet Salad|Salad
+red-beet-burger|Red Beet Burger|Lunch
+red-lentil-soup|Red Lentil Soup|Soup
+rice-porridge|Rice Porridge|Porridge
+fr-142|Roasted Cauliflower|Lunch
+fr-143|Roasted Pepper Seitan Sausages|Lunch
+fr-144|Roasted Sweet Potato and Arugula Salad|Dinner
+roasted-brussels-sprouts|Roasted Brussels Sprouts|Lunch
+roasted-salad|Roasted Salad|Salad
+fr-148|Roti|Bread
+fr-149|Russian Penicillin|Other
+fr-150|Salsa|Sauce
+scrambled-tofu|Scrambled Tofu|Breakfast
+seasoned-baked-potatoes|Seasoned Baked Potatoes|Lunch
+simple-baked-potatoes|Simple Baked Potatoes|Lunch
+fr-155|Sorbet|Dessert
+fr-156|Soy Mayonnaise|Sauce
+soy-mozzarella|Soy Mozzarella|Other
+soy-salami|Soy Salami|Spreads
+soy-yogurt-dressing|Soy Yogurt Dressing|Sauce
+steamed-small-potatoes|Steamed Small Potatoes|Lunch
+stine-gros-waffles|Stine GroÂ´s Waffles|Dinner
+fr-163|Strawberry Jam|Spreads
+stuffed-paprika-with-tofu|Stuffed Paprika with Tofu|Lunch
+swedish-oven-pancake|Swedish Oven Pancake|Breakfast
+sweet-potato-muffins|Sweet Potato Muffins|Dessert
+sweet-potato-soup|Sweet Potato Soup|Supper
+sweet-vinaigrette|Sweet Vinaigrette|Sauce
+sweet-yellow-pea-soup|Sweet Yellow Pea Soup|Soup
+fr-172|Thai Soup|Dinner
+fr-173|Tofu Feta Cheese|Other
+tofu-cottage-cheese|Tofu Cottage Cheese|Other
+tofu-form|Tofu Form|Lunch
+toms-gluten-free-bread|Tom's Gluten Free Bread|Bread
+fr-179|Tomato Bruschetta|Spreads
+fr-180|Tomato Sauce for Pizza|Sauce
+fr-181|Tomato Soup|Soup
+tomato-bean-salad|Tomato Bean Salad|Salad
+fr-183|Turmeric and Cashew Cheese|Spreads
+fr-184|Ukrainian Borscht Soup|Soup
+fr-185|Vanilla Sauce|Dessert
+vegetable-pie|Vegetable Pie|Lunch
+fr-187|Walnut Basil Dressing|Sauce
+fr-190|White Cabbage Coleslaw|Salad
+fr-191|White Cashew Sauce|Sauce
+fredheim-deluxe-plant-based-cream-cheese|Fredheim Plant-Based Cream Cheese|Spreads
+creamy-red-lentil-stew|Creamy Red Lentil Stew|Dinner
+ultimate-fluffy-vegan-gluten-free-bread|Fluffy Gluten-Free Bread|Bread
+mjsge3obgsomp5ixacb|Roti|Dinner
