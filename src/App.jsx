@@ -37,15 +37,28 @@ function HydrationGate({ children }) {
 // active.  Anonymous visitors see the app normally (with a sign-up nudge in
 // the header) — we only gate access for people who have an account but whose
 // trial / subscription has lapsed.
+//
+// A 3-second timeout ensures the app is never stuck blank if Supabase is
+// slow or the device is offline — in that case we fall through to guest mode.
 function SubscriptionGate({ children }) {
   const { user, authLoading } = useAuth()
   const { isActive, loading: subLoading } = useSubscription()
+  const [timedOut, setTimedOut] = useState(false)
 
-  // While auth / profile is still loading, render nothing to avoid a flash.
-  if (authLoading || (user && subLoading)) return null
+  useEffect(() => {
+    const id = setTimeout(() => setTimedOut(true), 3000)
+    return () => clearTimeout(id)
+  }, [])
+
+  const stillLoading = authLoading || (user && subLoading)
+
+  // While loading: show nothing (avoids layout flash).
+  // But if it takes more than 3 s, give up and show the app anyway so
+  // offline / slow-network users are not stuck on a blank screen.
+  if (stillLoading && !timedOut) return null
 
   // Signed-in user with an expired / lapsed subscription.
-  if (user && !isActive) {
+  if (!stillLoading && user && !isActive) {
     return <UpgradeWall />
   }
 

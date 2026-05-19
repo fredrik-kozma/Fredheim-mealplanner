@@ -1,7 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
+import { useAuth } from '../../contexts/AuthContext'
+import { useSubscription } from '../../hooks/useSubscription'
+import AuthModal from '../auth/AuthModal'
 
 const NAV_ITEMS = [
   {
@@ -58,6 +61,29 @@ export default function Navigation() {
   const location = useLocation()
   const lastRecipesPath = useStore(s => s.lastRecipesPath)
   const setLastRecipesPath = useStore(s => s.setLastRecipesPath)
+  const { user, signOut } = useAuth()
+  const { isActive, isTrial, isAdmin, daysLeft } = useSubscription()
+  const [showAuthModal, setShowAuthModal] = useState(false)
+  const [authTab, setAuthTab] = useState('signin')
+
+  const initials = user?.email ? user.email.slice(0, 2).toUpperCase() : '?'
+
+  async function handleSignOut() {
+    try { await signOut() } catch { /* ignore */ }
+  }
+
+  async function handlePortal() {
+    if (!user) return
+    try {
+      const res = await fetch('/.netlify/functions/create-portal-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: user.id, returnUrl: window.location.origin }),
+      })
+      const data = await res.json()
+      if (data.url) window.location.href = data.url
+    } catch (err) { console.error(err) }
+  }
 
   // The recipes tab is active when on the list or any recipe detail/edit page
   const recipesActive = location.pathname === '/' ||
@@ -168,10 +194,72 @@ export default function Navigation() {
             )
           })}
         </div>
-        <div className="px-6 py-4 border-t border-slate-100">
-          <p className="text-xs text-slate-400">{t('app.name')} v1.0</p>
+        {/* Desktop auth / user area */}
+        <div className="px-4 py-4 border-t border-slate-100">
+          {user ? (
+            <div className="space-y-2">
+              {/* Email + status */}
+              <div className="flex items-center gap-2.5 px-2">
+                <div className="w-7 h-7 rounded-full bg-indigo-100 text-indigo-700 font-semibold text-xs flex items-center justify-center flex-shrink-0">
+                  {initials}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-medium text-slate-700 truncate">{user.email}</p>
+                  {isAdmin ? (
+                    <p className="text-[10px] text-indigo-500">{t('subscription.adminAccess')}</p>
+                  ) : isTrial ? (
+                    <p className="text-[10px] text-amber-600">
+                      {t('subscription.trialDaysLeft', { count: daysLeft })}
+                    </p>
+                  ) : isActive ? (
+                    <p className="text-[10px] text-green-600">{t('subscription.activeStatus')}</p>
+                  ) : null}
+                </div>
+              </div>
+
+              {/* Manage subscription */}
+              {!isAdmin && (
+                <button
+                  onClick={handlePortal}
+                  className="w-full text-left px-3 py-1.5 rounded-lg text-xs text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors"
+                >
+                  {t('subscription.manage')}
+                </button>
+              )}
+
+              {/* Sign out */}
+              <button
+                onClick={handleSignOut}
+                className="w-full text-left px-3 py-1.5 rounded-lg text-xs text-slate-500 hover:bg-slate-50 hover:text-red-500 transition-colors"
+              >
+                {t('auth.signOut')}
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              <button
+                onClick={() => { setAuthTab('signup'); setShowAuthModal(true) }}
+                className="btn-primary w-full py-2 text-sm"
+              >
+                {t('auth.startTrial')}
+              </button>
+              <button
+                onClick={() => { setAuthTab('signin'); setShowAuthModal(true) }}
+                className="btn-secondary w-full py-2 text-sm"
+              >
+                {t('auth.signIn')}
+              </button>
+            </div>
+          )}
         </div>
       </nav>
+
+      {showAuthModal && (
+        <AuthModal
+          initialTab={authTab}
+          onClose={() => setShowAuthModal(false)}
+        />
+      )}
     </>
   )
 }
