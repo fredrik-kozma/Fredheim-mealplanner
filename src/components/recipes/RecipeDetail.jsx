@@ -3,124 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { formatQuantity } from '../../utils/shoppingListGenerator'
-import { translateRecipe } from '../../utils/translator'
 import { convertToSystem, displayUnit, normalizeUnit, CANONICAL_UNITS } from '../../utils/unitNormalizer'
 import { printRecipe } from '../../utils/printRecipe'
-import { NUTRITION_GROUPS, fmtNutrient, dvColour } from '../../utils/nutritionData'
-
-// ── Nutrition display panel ───────────────────────────────────────────────────
-function NutritionPanel({ nutrition, servingScale }) {
-  const [open, setOpen] = useState(false)
-
-  // Check if there is any data at all
-  const hasAnyData = nutrition && Object.values(nutrition).some(v => v !== null && v !== undefined)
-  if (!hasAnyData) return null
-
-  function scaled(val) {
-    if (val === null || val === undefined) return null
-    return val * servingScale
-  }
-
-  function dvPct(val, dv) {
-    if (val === null || val === undefined || !dv) return null
-    return Math.round((val / dv) * 100)
-  }
-
-  const cal = fmtNutrient(scaled(nutrition.calories))
-
-  return (
-    <section className="mt-6">
-      <button
-        type="button"
-        onClick={() => setOpen(v => !v)}
-        className="w-full flex items-center justify-between gap-3 card px-4 py-3 hover:bg-slate-50 transition-colors"
-      >
-        <div className="flex items-center gap-3">
-          <span className="text-lg">📊</span>
-          <div className="text-left">
-            <p className="text-sm font-semibold text-slate-800">Nutrition Information</p>
-            {cal !== null && (
-              <p className="text-xs text-slate-500">{cal} kcal per serving</p>
-            )}
-          </div>
-        </div>
-        <svg className={`w-5 h-5 text-slate-400 flex-shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-        </svg>
-      </button>
-
-      {open && (
-        <div className="card mt-1 overflow-hidden">
-          {/* Calories hero row */}
-          {cal !== null && (
-            <div className="px-4 py-3 bg-slate-50 border-b border-slate-100 flex items-baseline justify-between">
-              <span className="text-sm font-bold text-slate-800">Calories</span>
-              <span className="text-2xl font-bold text-indigo-600">{cal} <span className="text-sm font-normal text-slate-500">kcal</span></span>
-            </div>
-          )}
-
-          {NUTRITION_GROUPS.map((group, gi) => {
-            // Only render group if it has at least one value
-            const groupFields = group.fields.filter(f => f.key !== 'calories')
-            const hasGroupData = groupFields.some(f => scaled(nutrition[f.key]) !== null)
-            if (!hasGroupData) return null
-
-            return (
-              <div key={group.key}>
-                {gi > 0 && <div className="border-t border-slate-100" />}
-                <div className="px-4 pt-3 pb-1">
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">{group.label}</p>
-                  <div className="space-y-1.5">
-                    {groupFields.map(field => {
-                      const raw = scaled(nutrition[field.key])
-                      if (raw === null) return null
-                      const display = fmtNutrient(raw)
-                      const pct = dvPct(raw, field.dv)
-                      const colour = pct !== null ? dvColour(pct) : null
-
-                      return (
-                        <div key={field.key} className={`flex items-center gap-2 py-1 ${field.indent ? 'pl-4' : ''}`}>
-                          {/* Name */}
-                          <span className={`flex-1 text-sm ${field.indent ? 'text-slate-500' : 'text-slate-700 font-medium'}`}>
-                            {field.indent && <span className="text-slate-300 mr-1">↳</span>}
-                            {field.label}
-                          </span>
-                          {/* Amount */}
-                          <span className="text-sm text-slate-700 text-right whitespace-nowrap">
-                            {display} <span className="text-slate-400 text-xs">{field.unit}</span>
-                          </span>
-                          {/* % DV */}
-                          {pct !== null ? (
-                            <div className="flex items-center gap-1.5 w-20 flex-shrink-0">
-                              <div className="flex-1 h-1.5 rounded-full bg-slate-100 overflow-hidden">
-                                <div
-                                  className={`h-full rounded-full ${colour}`}
-                                  style={{ width: `${Math.min(pct, 100)}%` }}
-                                />
-                              </div>
-                              <span className="text-xs text-slate-500 w-8 text-right">{pct}%</span>
-                            </div>
-                          ) : (
-                            <span className="text-xs text-slate-300 w-20 text-right flex-shrink-0">—</span>
-                          )}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-                <div className="pb-2" />
-              </div>
-            )
-          })}
-
-          <div className="px-4 py-2 border-t border-slate-100 bg-slate-50">
-            <p className="text-xs text-slate-400">* % Daily Values based on a 2,000 kcal diet (FDA 2020). Values shown per serving scaled to current serving count.</p>
-          </div>
-        </div>
-      )}
-    </section>
-  )
-}
 
 export default function RecipeDetail() {
   const { id } = useParams()
@@ -134,7 +18,6 @@ export default function RecipeDetail() {
   useEffect(() => {
     if (id) setLastOpenedRecipeId(id)
   }, [id, setLastOpenedRecipeId])
-  const updateRecipeTranslation = useStore(s => s.updateRecipeTranslation)
   const familySize = useStore(s => s.familySize)
   const language = useStore(s => s.language)
 
@@ -142,9 +25,6 @@ export default function RecipeDetail() {
   // Normalize legacy 'imperial' value to 'us'.
   const preferredSystem = unitSystem === 'imperial' ? 'us' : (unitSystem || 'metric')
 
-  const [showTranslateMenu, setShowTranslateMenu] = useState(false)
-  const [translating, setTranslating] = useState(false)
-  const [translateToast, setTranslateToast] = useState(null)
   const [displayServings, setDisplayServings] = useState(recipe?.servings || 4)
   // View override: null = follow the user's Settings preference. When the user
   // taps the metric/US toggle on this recipe we switch to that value.
@@ -261,14 +141,6 @@ export default function RecipeDetail() {
     return m && m.system !== 'both'
   })
 
-  const LANG_OPTIONS = [
-    { code: 'en', label: 'English', flag: '🇬🇧' },
-    { code: 'no', label: 'Norsk', flag: '🇳🇴' },
-    { code: 'sv', label: 'Svenska', flag: '🇸🇪' },
-  ]
-
-  const availableLangs = LANG_OPTIONS.filter(l => l.code !== currentLang)
-
   function handlePrint() {
     const translatedCategory = t(`categories.${recipe.category}`, {
       defaultValue: recipe.category,
@@ -298,22 +170,6 @@ export default function RecipeDetail() {
     })
   }
 
-  async function handleTranslate(toLang) {
-    setShowTranslateMenu(false)
-    setTranslating(true)
-    try {
-      const fromLang = recipe.translations?.sourceLang || 'en'
-      const translated = await translateRecipe(recipe, fromLang, toLang)
-      updateRecipeTranslation(id, toLang, translated)
-      setTranslateToast(t('recipeDetail.translationSaved'))
-      setTimeout(() => setTranslateToast(null), 3000)
-    } catch (err) {
-      console.error('Translation failed', err)
-    } finally {
-      setTranslating(false)
-    }
-  }
-
   return (
     <div className="max-w-2xl mx-auto pb-24 lg:pb-8">
       {/* Back button */}
@@ -338,47 +194,6 @@ export default function RecipeDetail() {
         <div className="flex items-start justify-between gap-3 mb-1">
           <h1 className="text-2xl font-bold text-slate-900 leading-tight">{displayTitle}</h1>
           <div className="flex gap-2 flex-shrink-0">
-            {/* Translate button */}
-            <div className="relative">
-              <button
-                onClick={() => setShowTranslateMenu(v => !v)}
-                disabled={translating}
-                className="btn-secondary px-3 py-2"
-                title={t('recipeDetail.translate')}
-              >
-                {translating ? (
-                  <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth={4} />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                  </svg>
-                ) : (
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802" />
-                  </svg>
-                )}
-              </button>
-              {showTranslateMenu && (
-                <div className="absolute right-0 top-full mt-1 z-10 bg-white rounded-xl shadow-lg border border-slate-100 py-1.5 min-w-[160px]">
-                  <p className="text-xs text-slate-500 px-3 pt-1 pb-1.5 font-medium">{t('recipeDetail.translateTo')}</p>
-                  {availableLangs.map(lang => (
-                    <button
-                      key={lang.code}
-                      onClick={() => handleTranslate(lang.code)}
-                      className="w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors flex items-center gap-2"
-                    >
-                      <span>{lang.flag}</span>
-                      <span>{lang.label}</span>
-                      {recipe.translations?.[lang.code] && (
-                        <svg className="w-3.5 h-3.5 text-green-500 ml-auto" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
             <button
               onClick={handlePrint}
               className="btn-secondary px-3 py-2"
@@ -413,14 +228,6 @@ export default function RecipeDetail() {
           )}
           {recipe.cookTime && (
             <span className="badge bg-slate-100 text-slate-600">🔥 {t('recipeDetail.cook', { time: recipe.cookTime })}</span>
-          )}
-          {translation && (
-            <span className="badge bg-green-50 text-green-700">
-              <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802" />
-              </svg>
-              {currentLang.toUpperCase()}
-            </span>
           )}
         </div>
 
@@ -479,27 +286,6 @@ export default function RecipeDetail() {
         {/* Description */}
         {displayDescription && (
           <p className="text-sm text-slate-600 mb-5 leading-relaxed">{displayDescription}</p>
-        )}
-
-        {/* Missing-translation banner — only when viewing in a language
-            that has no stored translation for this recipe. */}
-        {!translation && currentLang !== 'en' && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-5 flex items-start gap-3">
-            <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802" />
-            </svg>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm text-amber-900 font-medium">{t('recipeDetail.translationMissingTitle', { defaultValue: 'This recipe is only in English.' })}</p>
-              <p className="text-xs text-amber-700 mt-0.5">{t('recipeDetail.translationMissingDesc', { defaultValue: 'Translate it now to see the title, ingredients and steps in your language.' })}</p>
-              <button
-                onClick={() => handleTranslate(currentLang)}
-                disabled={translating}
-                className="mt-2 btn-primary py-1.5 px-3 text-xs"
-              >
-                {translating ? t('recipeDetail.translating', { defaultValue: 'Translating…' }) : t('recipeDetail.translateNow', { defaultValue: 'Translate now' })}
-              </button>
-            </div>
-          </div>
         )}
 
         {/* Scale note */}
@@ -568,27 +354,7 @@ export default function RecipeDetail() {
           </section>
         )}
 
-        {/* Nutrition panel */}
-        <NutritionPanel
-          nutrition={recipe.nutrition}
-          servingScale={displayServings / (recipe.servings || 4)}
-        />
       </div>
-
-      {/* Translation toast */}
-      {translateToast && (
-        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-xl">
-          <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-          </svg>
-          {translateToast}
-        </div>
-      )}
-
-      {/* Clicking outside translate menu closes it */}
-      {showTranslateMenu && (
-        <div className="fixed inset-0 z-0" onClick={() => setShowTranslateMenu(false)} />
-      )}
     </div>
   )
 }
