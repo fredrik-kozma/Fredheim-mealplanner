@@ -41,7 +41,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
         // Built-in recipe packs bundle embedded photos (base64), which
         // pushes the main JS chunk past the default 2 MB precache cap.
-        maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
+        maximumFileSizeToCacheInBytes: 50 * 1024 * 1024,
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
