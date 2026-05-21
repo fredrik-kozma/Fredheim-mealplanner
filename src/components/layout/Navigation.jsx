@@ -85,6 +85,23 @@ export default function Navigation() {
     } catch (err) { console.error(err) }
   }
 
+  async function handleCheckout() {
+    if (!user) return
+    try {
+      const res = await fetch('/.netlify/functions/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: user.id,
+          userEmail: user.email,
+          returnUrl: window.location.origin,
+        }),
+      })
+      const data = await res.json()
+      if (data.url) window.location.href = data.url
+    } catch (err) { console.error(err) }
+  }
+
   // The recipes tab is active when on the list or any recipe detail/edit page
   const recipesActive = location.pathname === '/' ||
     location.pathname.startsWith('/recipes')
@@ -217,13 +234,33 @@ export default function Navigation() {
                 </div>
               </div>
 
-              {/* Manage subscription */}
-              {!isAdmin && (
+              {/* Subscribe button for trial / expired users */}
+              {!isAdmin && !isActive && (
+                <button
+                  onClick={handleCheckout}
+                  className="w-full text-left px-3 py-1.5 rounded-lg text-xs font-semibold text-indigo-600 hover:bg-indigo-50 transition-colors"
+                >
+                  ✨ {t('subscription.subscribeNow')}
+                </button>
+              )}
+
+              {/* Manage subscription for active subscribers */}
+              {!isAdmin && isActive && !isTrial && (
                 <button
                   onClick={handlePortal}
                   className="w-full text-left px-3 py-1.5 rounded-lg text-xs text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors"
                 >
                   {t('subscription.manage')}
+                </button>
+              )}
+
+              {/* Trial users: show both subscribe and manage */}
+              {!isAdmin && isTrial && (
+                <button
+                  onClick={handleCheckout}
+                  className="w-full text-left px-3 py-1.5 rounded-lg text-xs font-semibold text-indigo-600 hover:bg-indigo-50 transition-colors"
+                >
+                  ✨ {t('subscription.subscribeNow')}
                 </button>
               )}
 
