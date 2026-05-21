@@ -2,16 +2,9 @@
 // Stripe calls this automatically after every subscription event.
 // We verify the signature and update the user's profile in Supabase.
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const Stripe = require('stripe')
 const { createClient } = require('@supabase/supabase-js')
 
-// Service-role client bypasses RLS so we can update any profile row.
-const supabase = createClient(
-  process.env.VITE_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-)
-
-// Map a Stripe subscription status to what we store in profiles.
 function mapStatus(stripeStatus) {
   const map = {
     active: 'active',
@@ -26,53 +19,85 @@ function mapStatus(stripeStatus) {
   return map[stripeStatus] || stripeStatus
 }
 
-async function upsertProfile(subscription) {
-  const uid = subscription.metadata?.supabase_uid
-  if (!uid) {
-    console.warn('stripe-webhook: subscription missing supabase_uid metadata', subscription.id)
-    return
-  }
-
-  const update = {
-    subscription_id: subscription.id,
-    subscription_status: mapStatus(subscription.status),
-    current_period_end: subscription.current_period_end
-      ? new Date(subscription.current_period_end * 1000).toISOString()
-      : null,
-    updated_at: new Date().toISOString(),
-  }
-
-  const { error } = await supabase
-    .from('profiles')
-    .update(update)
-    .eq('id', uid)
-
-  if (error) {
-    console.error('stripe-webhook: failed to update profile', uid, error)
-  } else {
-    console.log('stripe-webhook: updated profile', uid, update.subscription_status)
-  }
-}
-
 exports.handler = async (event) => {
+  console.log('stripe-webhook: invoked', event.httpMethod)
+
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' }
   }
 
-  // Verify Stripe signature — this proves the request is really from Stripe.
+  // ── Initialise clients inside the handler so env vars are definitely loaded ─
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY
+  const webhookSecret   = process.env.STRIPE_WEBHOOK_SECRET
+  const supabaseUrl     = process.env.VITE_SUPABASE_URL
+  const serviceRoleKey  = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+  console.log('stripe-webhook: env check', {
+    hasStripeKey:    !!stripeSecretKey,
+    hasWebhookSecret: !!webhookSecret,
+    hasSupabaseUrl:  !!supabaseUrl,
+    hasServiceKey:   !!serviceRoleKey,
+  })
+
+  if (!stripeSecretKey || !webhookSecret || !supabaseUrl || !serviceRoleKey) {
+    console.error('stripe-webhook: missing environment variables')
+    return { statusCode: 500, body: 'Missing environment variables' }
+  }
+
+  const stripe   = Stripe(stripeSecretKey)
+  const supabase = createClient(supabaseUrl, serviceRoleKey)
+
+  // ── Verify Stripe signature ────────────────────────────────────────────────
   let stripeEvent
   try {
     stripeEvent = stripe.webhooks.constructEvent(
       event.body,
       event.headers['stripe-signature'],
-      process.env.STRIPE_WEBHOOK_SECRET
+      webhookSecret
     )
+    console.log('stripe-webhook: signature OK, event type:', stripeEvent.type)
   } catch (err) {
-    console.error('stripe-webhook: signature verification failed', err.message)
+    console.error('stripe-webhook: signature verification failed:', err.message)
     return { statusCode: 400, body: `Webhook Error: ${err.message}` }
   }
 
+  // ── Handle events ──────────────────────────────────────────────────────────
   try {
+    async function upsertProfile(subscription) {
+      console.log('stripe-webhook: upsertProfile subscription.id:', subscription.id)
+      console.log('stripe-webhook: subscription.metadata:', JSON.stringify(subscription.metadata))
+      console.log('stripe-webhook: subscription.status:', subscription.status)
+
+      const uid = subscription.metadata?.supabase_uid
+      if (!uid) {
+        console.warn('stripe-webhook: no supabase_uid in subscription metadata — skipping update')
+        return
+      }
+
+      const update = {
+        subscription_id:     subscription.id,
+        subscription_status: mapStatus(subscription.status),
+        current_period_end:  subscription.current_period_end
+          ? new Date(subscription.current_period_end * 1000).toISOString()
+          : null,
+        updated_at: new Date().toISOString(),
+      }
+
+      console.log('stripe-webhook: updating profile', uid, update)
+
+      const { data, error } = await supabase
+        .from('profiles')
+        .update(update)
+        .eq('id', uid)
+        .select()
+
+      if (error) {
+        console.error('stripe-webhook: Supabase update error:', JSON.stringify(error))
+      } else {
+        console.log('stripe-webhook: Supabase update success, rows affected:', data?.length)
+      }
+    }
+
     switch (stripeEvent.type) {
       case 'customer.subscription.created':
       case 'customer.subscription.updated':
@@ -80,16 +105,7 @@ exports.handler = async (event) => {
         await upsertProfile(stripeEvent.data.object)
         break
 
-      case 'invoice.payment_succeeded': {
-        // Keep current_period_end fresh after each renewal.
-        const invoice = stripeEvent.data.object
-        if (invoice.subscription) {
-          const sub = await stripe.subscriptions.retrieve(invoice.subscription)
-          await upsertProfile(sub)
-        }
-        break
-      }
-
+      case 'invoice.payment_succeeded':
       case 'invoice.payment_failed': {
         const invoice = stripeEvent.data.object
         if (invoice.subscription) {
@@ -100,11 +116,11 @@ exports.handler = async (event) => {
       }
 
       default:
-        // Ignore unhandled event types.
+        console.log('stripe-webhook: unhandled event type', stripeEvent.type)
         break
     }
   } catch (err) {
-    console.error('stripe-webhook: handler error', err)
+    console.error('stripe-webhook: handler error:', err.message, err.stack)
     return { statusCode: 500, body: 'Internal error' }
   }
 

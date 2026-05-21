@@ -68,17 +68,32 @@ function SubscriptionGate({ children }) {
 function AppShell() {
   const location = useLocation()
 
-  // Handle ?checkout=success query param — Stripe redirects here after payment.
-  // Reload the subscription status so the wall disappears immediately.
+  // Handle ?checkout=success — Stripe redirects here after payment.
+  // We call sync-subscription directly (reliable fallback for slow webhooks),
+  // then refetch the profile so the UpgradeWall disappears immediately.
   const { refetch } = useSubscription()
+  const { user } = useAuth()
   useEffect(() => {
     const params = new URLSearchParams(location.search)
-    if (params.get('checkout') === 'success') {
-      // Give Stripe webhook a couple of seconds to update Supabase, then refetch.
-      const t = setTimeout(refetch, 2500)
-      return () => clearTimeout(t)
+    if (params.get('checkout') !== 'success' || !user) return
+
+    async function syncAndRefetch() {
+      try {
+        await fetch('/.netlify/functions/sync-subscription', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: user.id }),
+        })
+      } catch (err) {
+        console.warn('sync-subscription failed, relying on webhook:', err)
+      }
+      refetch()
     }
-  }, [location.search, refetch])
+
+    // Small delay to let Stripe finish processing the checkout
+    const t = setTimeout(syncAndRefetch, 1500)
+    return () => clearTimeout(t)
+  }, [location.search, user?.id]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="flex flex-col lg:flex-row min-h-dvh">
