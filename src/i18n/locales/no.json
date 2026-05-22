@@ -249,7 +249,10 @@
     "customUnitsDesc": "Legg til egne enheter (f.eks. glass, kvist, bunt). De vises i nedtrekksmenyen når du legger til ingredienser.",
     "noCustomUnits": "Ingen egendefinerte enheter ennå.",
     "customUnitPlaceholder": "f.eks. glass, kvist, bunt",
-    "addCustomUnit": "Legg til"
+    "addCustomUnit": "Legg til",
+    "support": "Hjelp og støtte",
+    "supportDesc": "Har du et spørsmål eller støter på et problem? Vi hjelper deg gjerne.",
+    "contactSupport": "Kontakt kundestøtte"
   },
   "units": {
     "none": "— ingen —",

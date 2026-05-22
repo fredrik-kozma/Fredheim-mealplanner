@@ -249,7 +249,10 @@
     "customUnitsDesc": "Add your own units (e.g. jar, sprig, bunch). They appear in the dropdown when adding ingredients.",
     "noCustomUnits": "No custom units yet.",
     "customUnitPlaceholder": "e.g. jar, sprig, bunch",
-    "addCustomUnit": "Add"
+    "addCustomUnit": "Add",
+    "support": "Help & Support",
+    "supportDesc": "Have a question or running into an issue? We're happy to help.",
+    "contactSupport": "Contact support"
   },
   "units": {
     "none": "— none —",

@@ -123,6 +123,21 @@ export function smartConvert(quantity, unitKey) {
     if (base.quantity >= 100) {
       return { quantity: round(base.quantity / 100, 1), unit: 'dl' }
     }
+    // Small volumes: use tsp / tbsp when they map cleanly — nobody
+    // measures 5 ml or 15 ml with a graduated cylinder while cooking.
+    const ml = base.quantity
+    if (ml > 0 && ml <= 60) {
+      const asTbsp = ml / 15
+      const asTsp = ml / 5
+      // Prefer tbsp if it rounds to a clean number (whole or .5)
+      if (ml >= 15 && (Math.abs(asTbsp - Math.round(asTbsp * 2) / 2) < 0.05)) {
+        return { quantity: round(Math.round(asTbsp * 2) / 2, 1), unit: 'tbsp' }
+      }
+      // Prefer tsp for smaller amounts
+      if (Math.abs(asTsp - Math.round(asTsp * 2) / 2) < 0.05) {
+        return { quantity: round(Math.round(asTsp * 2) / 2, 1), unit: 'tsp' }
+      }
+    }
     return { quantity: round(base.quantity, 1), unit: 'ml' }
   }
 

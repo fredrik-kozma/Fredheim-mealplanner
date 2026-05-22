@@ -249,7 +249,10 @@
     "customUnitsDesc": "Lägg till egna enheter (t.ex. burk, kvist, knippa). De visas i menyn när du lägger till ingredienser.",
     "noCustomUnits": "Inga egna enheter ännu.",
     "customUnitPlaceholder": "t.ex. burk, kvist, knippa",
-    "addCustomUnit": "Lägg till"
+    "addCustomUnit": "Lägg till",
+    "support": "Hjälp och support",
+    "supportDesc": "Har du en fråga eller stöter du på ett problem? Vi hjälper dig gärna.",
+    "contactSupport": "Kontakta support"
   },
   "units": {
     "none": "— ingen —",
