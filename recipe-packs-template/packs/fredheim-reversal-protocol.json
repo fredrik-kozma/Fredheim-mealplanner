@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -38,11 +38,49 @@
       "translations": {
         "no": {
           "title": "Sprø havrevafler",
-          "description": "Fullkornsvafler med naturlig banansøthet og gyllen, sprø skorpe — uten olje, uten sukker, uten kompromiss."
+          "description": "Fullkornsvafler med naturlig banansøthet og gyllen, sprø skorpe — uten olje, uten sukker, uten kompromiss.",
+          "ingredients": [
+            { "quantity": 200, "unit": "g", "name": "havregryn" },
+            { "quantity": 28, "unit": "g", "name": "malt linfrø" },
+            { "quantity": 120, "unit": "g", "name": "moden banan, most (~1 stor)" },
+            { "quantity": 280, "unit": "ml", "name": "usøtet havremelk" },
+            { "quantity": 2, "unit": "tsp", "name": "bakepulver" },
+            { "quantity": 1, "unit": "tsp", "name": "malt kanel" },
+            { "quantity": 1, "unit": "tsp", "name": "vaniljeekstrakt" }
+          ],
+          "steps": [
+            "Bland havregrynet i en blender eller foodprosessor til det blir et fint mel, ca. 30 sekunder.",
+            "Tilsett malt linfrø, bakepulver og kanel i havremelet. Bland godt sammen.",
+            "Mos bananen veldig godt til det ikke er noen klumper igjen. Tilsett den i den tørre blandingen sammen med havremelken og vaniljeekstrakten. Rør til det blir en glatt røre.",
+            "La røren hvile i 8–10 minutter. Den vil tykne litt — dette er nøkkelen til sprø vafler.",
+            "Varm opp et vaffeljern med non-stick belegg fullstendig før du heller i røre. Ikke smør jernet.",
+            "Hell i røre og lukk lokket. Stek i 5–6 minutter uten å åpne. Dampen trenger tid til å slippe ut.",
+            "Løft vaffelen og legg den på en rist i 1–2 minutter før servering. Dette siste trinnet gjør at de blir sprø i stedet for bløte.",
+            "Server med ferske bær på toppen."
+          ]
         },
         "sv": {
           "title": "Krispiga havrevåfflor",
-          "description": "Fullkornsvåfflor med naturlig banansötma och en gyllene, krispig skorpa — utan olja, utan socker, utan kompromiss."
+          "description": "Fullkornsvåfflor med naturlig banansötma och en gyllene, krispig skorpa — utan olja, utan socker, utan kompromiss.",
+          "ingredients": [
+            { "quantity": 200, "unit": "g", "name": "havregryn" },
+            { "quantity": 28, "unit": "g", "name": "malet linfrö" },
+            { "quantity": 120, "unit": "g", "name": "mogen banan, mosad (~1 stor)" },
+            { "quantity": 280, "unit": "ml", "name": "osötad havremjölk" },
+            { "quantity": 2, "unit": "tsp", "name": "bakpulver" },
+            { "quantity": 1, "unit": "tsp", "name": "malen kanel" },
+            { "quantity": 1, "unit": "tsp", "name": "vaniljextrakt" }
+          ],
+          "steps": [
+            "Mixa havregrynen i en mixer eller matberedare till ett fint mjöl, cirka 30 sekunder.",
+            "Tillsätt malet linfrö, bakpulver och kanel till havremjölet. Blanda samman.",
+            "Mosa bananen mycket väl tills inga klumpar finns kvar. Tillsätt den till den torra blandningen tillsammans med havremjölken och vaniljextraktet. Rör tills en slät smet bildas.",
+            "Låt smeten vila i 8–10 minuter. Den tjocknar något — detta är nyckeln till krispighet.",
+            "Värm upp ett non-stick våffeljärn helt innan du häller i smeten. Smörj inte järnet.",
+            "Häll i smeten och stäng locket. Grädda i 5–6 minuter utan att öppna. Ångan behöver tid att komma ut.",
+            "Lyft våfflan och placera den på ett galler i 1–2 minuter innan servering. Detta sista steg är vad som gör dem krispiga istället för sega.",
+            "Servera toppat med färska bär."
+          ]
         }
       },
       "ingredients": [
@@ -92,11 +130,45 @@
       "translations": {
         "no": {
           "title": "Kremet hvit bønne-, sitron- og dilldressing",
-          "description": "En kremet, oljefri dressing av hvite bønner og dadler som mykgjør sitronens kanter — nydelig til bitre salater som ruccola, radicchio eller grønnkål."
+          "description": "En kremet, oljefri dressing av hvite bønner og dadler som mykgjør sitronens kanter — nydelig til bitre salater som ruccola, radicchio eller grønnkål.",
+          "ingredients": [
+            { "quantity": 300, "unit": "g", "name": "kokte cannellinibønner (1 boks, avrent og skylt)" },
+            { "quantity": 14, "unit": "g", "name": "malt linfrø (2 ss)" },
+            { "quantity": 20, "unit": "g", "name": "utstenede Medjool-dadler (~1 stor)" },
+            { "quantity": 1, "unit": "pcs", "name": "sitron — all saften + skallet" },
+            { "quantity": 1, "unit": "pcs", "name": "hvitløksfedd" },
+            { "quantity": 10, "unit": "g", "name": "fersk dill (liten håndfull)" },
+            { "quantity": 1, "unit": "tsp", "name": "hvitvinseddik" },
+            { "quantity": 80, "unit": "ml", "name": "kaldt vann" },
+            { "quantity": 0.25, "unit": "tsp", "name": "havsalt" }
+          ],
+          "steps": [
+            "Hvis dadlene er faste, bløtlegg dem i de 80 ml lett oppvarmet vann i 5 minutter slik at de blender helt jevnt uten klumper.",
+            "Tilsett alt i en blender.",
+            "Blend på høy hastighet i 60–90 sekunder til det er silkemykt.",
+            "Smak til og juster — mer sitron for friskhet, mer salt for å krydre."
+          ]
         },
         "sv": {
           "title": "Krämig vit bön-, citron- och dilldressing",
-          "description": "En krämig, oljefri dressing på vita bönor och dadlar som mjukar upp citronens skärpa — utsökt till bittra grönsaker som ruccola, radicchio eller grönkål."
+          "description": "En krämig, oljefri dressing på vita bönor och dadlar som mjukar upp citronens skärpa — utsökt till bittra grönsaker som ruccola, radicchio eller grönkål.",
+          "ingredients": [
+            { "quantity": 300, "unit": "g", "name": "kokta cannellinibönor (1 burk, avrunna och sköljda)" },
+            { "quantity": 14, "unit": "g", "name": "malet linfrö (2 msk)" },
+            { "quantity": 20, "unit": "g", "name": "urkärnade Medjool-dadlar (~1 stor)" },
+            { "quantity": 1, "unit": "pcs", "name": "citron — all saft + skalet" },
+            { "quantity": 1, "unit": "pcs", "name": "vitlöksklyfta" },
+            { "quantity": 10, "unit": "g", "name": "färsk dill (liten näve)" },
+            { "quantity": 1, "unit": "tsp", "name": "vitvinsvinäger" },
+            { "quantity": 80, "unit": "ml", "name": "kallt vatten" },
+            { "quantity": 0.25, "unit": "tsp", "name": "havssalt" }
+          ],
+          "steps": [
+            "Om dadlarna är hårda, blötlägg dem i de 80 ml lätt uppvärmt vatten i 5 minuter så att de mixas helt slätt utan klumpar.",
+            "Tillsätt allt i en mixer.",
+            "Mixa på hög hastighet i 60–90 sekunder tills silkeslent.",
+            "Smaka av och justera — mer citron för friskhet, mer salt för smaksättning."
+          ]
         }
       },
       "ingredients": [
@@ -144,11 +216,47 @@
       "translations": {
         "no": {
           "title": "Svart sennep- og daddel-honningsennepsdressing",
-          "description": "En myk, naturlig søt honningsennepsdressing — kremet av hvite bønner, søt av dadler, med akkurat nok bitt fra svart sennepsfrø. Uten olje, uten sukker, dypt mettende."
+          "description": "En myk, naturlig søt honningsennepsdressing — kremet av hvite bønner, søt av dadler, med akkurat nok bitt fra svart sennepsfrø. Uten olje, uten sukker, dypt mettende.",
+          "ingredients": [
+            { "quantity": 1, "unit": "tsp", "name": "svarte sennepsfrø" },
+            { "quantity": 10, "unit": "pcs", "name": "Deglet-dadler, utstenede (bløtlagt 20 min i varmt vann)" },
+            { "quantity": 120, "unit": "ml", "name": "kokte cannellinibønner (hvite bønner)" },
+            { "quantity": 4, "unit": "tbsp", "name": "fersk sitronsaft" },
+            { "quantity": 0.5, "unit": "pcs", "name": "sitron, kun skallet" },
+            { "quantity": 240, "unit": "ml", "name": "vann (pluss bløtleggingsvann fra dadlene)" },
+            { "quantity": 0.3, "unit": "tsp", "name": "malt gurkemeie" },
+            { "quantity": 0.5, "unit": "tsp", "name": "salt" }
+          ],
+          "steps": [
+            "Bløtlegg dadlene: legg utstenede dadler i en liten bolle og dekk med varmt vann. Bløtlegg i 20 minutter til de er veldig myke. Behold alt bløtleggingsvannet.",
+            "Knus sennepsfrøene: ha de svarte sennepsfrøene i en tørr blender. Blend på høy hastighet i 15–20 sekunder for å knuse og delvis male frøene.",
+            "Tilsett resten: de myke dadlene med bløtleggingsvannet sitt, de hvite bønnene, sitronsaft, sitronskall, vann, gurkemeie og salt.",
+            "Blend til silkemykt: blend på høy hastighet i 60–90 sekunder til helt jevnt. Konsistensen skal være hellbar, men litt tykk — som klassisk honningsennep.",
+            "Smak til og juster: søtt foran, mild sennepsvarme bak, lys sitronfinish. Hvis det er for skarpt: tilsett en daddel til. Hvis det er for tykt: tilsett vann en spiseskje om gangen.",
+            "Oppbevar i en tett krukke i kjøleskapet. Rør eller rist før hver bruk. Holder seg i 5 dager."
+          ]
         },
         "sv": {
           "title": "Svart senap- och dadel-honungssenapsdressing",
-          "description": "En mjuk, naturligt söt honungssenapsdressing — krämig av vita bönor, söt av dadlar, med precis lagom bett från svart senapsfrö. Utan olja, utan socker, djupt mättande."
+          "description": "En mjuk, naturligt söt honungssenapsdressing — krämig av vita bönor, söt av dadlar, med precis lagom bett från svart senapsfrö. Utan olja, utan socker, djupt mättande.",
+          "ingredients": [
+            { "quantity": 1, "unit": "tsp", "name": "svarta senapsfrön" },
+            { "quantity": 10, "unit": "pcs", "name": "Deglet-dadlar, urkärnade (blötlagda 20 min i varmt vatten)" },
+            { "quantity": 120, "unit": "ml", "name": "kokta cannellinibönor (vita bönor)" },
+            { "quantity": 4, "unit": "tbsp", "name": "färsk citronsaft" },
+            { "quantity": 0.5, "unit": "pcs", "name": "citron, endast skalet" },
+            { "quantity": 240, "unit": "ml", "name": "vatten (plus blötläggningsvatten från dadlarna)" },
+            { "quantity": 0.3, "unit": "tsp", "name": "malen gurkmeja" },
+            { "quantity": 0.5, "unit": "tsp", "name": "salt" }
+          ],
+          "steps": [
+            "Blötlägg dadlarna: lägg urkärnade dadlar i en liten skål och täck med varmt vatten. Blötlägg i 20 minuter tills de är mycket mjuka. Spara allt blötläggningsvatten.",
+            "Krossa senapsfröna: tillsätt de svarta senapsfröna i en torr mixer. Mixa på hög hastighet i 15–20 sekunder för att krossa och delvis mala fröna.",
+            "Tillsätt resten: de mjuka dadlarna med sitt blötläggningsvatten, de vita bönorna, citronsaft, citronskal, vatten, gurkmeja och salt.",
+            "Mixa till silkeslent: mixa på hög hastighet i 60–90 sekunder tills helt slätt. Konsistensen ska vara hällbar men något tjock — som klassisk honungssenap.",
+            "Smaka av och justera: sött i början, mild senapsvärme bakom, ljus citronfinish. Om för skarp: tillsätt ytterligare en dadel. Om för tjock: tillsätt vatten en matsked i taget.",
+            "Förvara i en sluten burk i kylen. Rör om eller skaka före varje användning. Håller i 5 dagar."
+          ]
         }
       },
       "ingredients": [
@@ -197,11 +305,43 @@
       "translations": {
         "no": {
           "title": "Røkt paprika- og sumak-hvitbønnesaus",
-          "description": "En kremet, hellbar kebab-stil saus av hvite bønner og dadler — rik på umami, syre og varme. Uten olje, uten meieri, helt Ornish GREEN."
+          "description": "En kremet, hellbar kebab-stil saus av hvite bønner og dadler — rik på umami, syre og varme. Uten olje, uten meieri, helt Ornish GREEN.",
+          "ingredients": [
+            { "quantity": 320, "unit": "g", "name": "kokte cannellinibønner (avrent og skylt)" },
+            { "quantity": 4, "unit": "pcs", "name": "Medjool-dadler, utstenede" },
+            { "quantity": 4, "unit": "pcs", "name": "hvitløksfedd" },
+            { "quantity": 2, "unit": "tsp", "name": "røkt paprika" },
+            { "quantity": 1.5, "unit": "tsp", "name": "sumak" },
+            { "quantity": 60, "unit": "ml", "name": "fersk sitronsaft" },
+            { "quantity": 4, "unit": "tbsp", "name": "malt linfrø" },
+            { "quantity": 240, "unit": "ml", "name": "vann" }
+          ],
+          "steps": [
+            "Tilsett alle ingrediensene i en blender.",
+            "Blend på høy hastighet i 60–90 sekunder til helt jevnt og hellbart. Hvis sausen er for tykk, tilsett 1–2 ss ekstra vann og blend igjen.",
+            "Smak til og balanser: mer sitronsaft for friskhet, mer sumak for syre, eller en klype mer røkt paprika for dybde.",
+            "La sausen hvile i 5 minutter. Det malte linfrøet tykner den litt og smakene blir bedre integrert."
+          ]
         },
         "sv": {
           "title": "Rökt paprika- och sumak-vitbönsås",
-          "description": "En krämig, hällbar kebab-style sås på vita bönor och dadlar — rik på umami, syra och värme. Utan olja, utan mejeri, helt Ornish GREEN."
+          "description": "En krämig, hällbar kebab-style sås på vita bönor och dadlar — rik på umami, syra och värme. Utan olja, utan mejeri, helt Ornish GREEN.",
+          "ingredients": [
+            { "quantity": 320, "unit": "g", "name": "kokta cannellinibönor (avrunna och sköljda)" },
+            { "quantity": 4, "unit": "pcs", "name": "Medjool-dadlar, urkärnade" },
+            { "quantity": 4, "unit": "pcs", "name": "vitlöksklyftor" },
+            { "quantity": 2, "unit": "tsp", "name": "rökt paprika" },
+            { "quantity": 1.5, "unit": "tsp", "name": "sumak" },
+            { "quantity": 60, "unit": "ml", "name": "färsk citronsaft" },
+            { "quantity": 4, "unit": "tbsp", "name": "malet linfrö" },
+            { "quantity": 240, "unit": "ml", "name": "vatten" }
+          ],
+          "steps": [
+            "Tillsätt alla ingredienser i en mixer.",
+            "Mixa på hög hastighet i 60–90 sekunder tills helt slät och hällbar. Om såsen är för tjock, tillsätt 1–2 msk extra vatten och mixa igen.",
+            "Smaka av och balansera: mer citronsaft för friskhet, mer sumak för syra, eller en nypa mer rökt paprika för djup.",
+            "Låt såsen vila i 5 minuter. Det malda linfröet tjocknar den något och smakerna smälter samman."
+          ]
         }
       },
       "ingredients": [
@@ -248,11 +388,59 @@
       "translations": {
         "no": {
           "title": "Fyldige johannesbrød- og daddelbrownies",
-          "description": "Saftige, fyldige brownies laget av sorte bønner, dadler, johannesbrød og valnøtter. Naturlig søte, oljefrie og glutenfrie."
+          "description": "Saftige, fyldige brownies laget av sorte bønner, dadler, johannesbrød og valnøtter. Naturlig søte, oljefrie og glutenfrie.",
+          "ingredients": [
+            { "quantity": 240, "unit": "g", "name": "sorte bønner, kokte, avrent, skylt" },
+            { "quantity": 200, "unit": "g", "name": "Medjool-dadler, utstenede" },
+            { "quantity": 35, "unit": "g", "name": "johannesbrødpulver" },
+            { "quantity": 45, "unit": "g", "name": "havregryn" },
+            { "quantity": 40, "unit": "g", "name": "valnøtter, ristede, grovhakket" },
+            { "quantity": 14, "unit": "g", "name": "malt linfrø" },
+            { "quantity": 60, "unit": "ml", "name": "usøtet plantemelk" },
+            { "quantity": 30, "unit": "ml", "name": "aquafaba (bønnevannet du holdt av)" },
+            { "quantity": 2, "unit": "tsp", "name": "ren vaniljeekstrakt" },
+            { "quantity": 0.5, "unit": "tsp", "name": "malt kanel" },
+            { "quantity": 0.25, "unit": "tsp", "name": "fint havsalt" },
+            { "quantity": 1, "unit": "pcs", "name": "sitronskall (valgfritt, anbefalt)" }
+          ],
+          "steps": [
+            "Forvarm ovnen til 175 °C / 350 °F. Kle en 20×20 cm form med bakepapir.",
+            "Bløtlegg dadlene i varmt vann i 10 minutter. Avrenn godt.",
+            "Rist valnøttene i en tørr panne i 4 minutter til de dufter. Sett til side.",
+            "Aktiver johannesbrødpulveret: pisk johannesbrødpulver med 3 ss kokende vann til en tykk pasta. La det stå i 1 minutt. Ikke hopp over dette trinnet.",
+            "Tilsett alt unntatt valnøttene i en foodprosessor. Blend i hele 2 minutter, skrap ned to ganger. Røren skal være helt jevn, tykk og blank.",
+            "Rør inn det meste av valnøttene for hånd. Tilsett sitronskall hvis du bruker det. Spre i formen, glatt toppen, dryss over de resterende valnøttene.",
+            "Stek i 20–22 minutter. Ta dem ut når midten fortsatt ser litt rå ut — de stivner i kjøleskapet.",
+            "Avkjøl helt i formen, sett deretter i kjøleskap i minst 2 timer. Skjær med en varm kniv."
+          ]
         },
         "sv": {
           "title": "Mjuka johannesbröd- och dadelbrownies",
-          "description": "Saftiga, mjuka brownies gjorda på svarta bönor, dadlar, johannesbröd och valnötter. Naturligt söta, oljefria och glutenfria."
+          "description": "Saftiga, mjuka brownies gjorda på svarta bönor, dadlar, johannesbröd och valnötter. Naturligt söta, oljefria och glutenfria.",
+          "ingredients": [
+            { "quantity": 240, "unit": "g", "name": "svarta bönor, kokta, avrunna, sköljda" },
+            { "quantity": 200, "unit": "g", "name": "Medjool-dadlar, urkärnade" },
+            { "quantity": 35, "unit": "g", "name": "johannesbrödpulver" },
+            { "quantity": 45, "unit": "g", "name": "havregryn" },
+            { "quantity": 40, "unit": "g", "name": "valnötter, rostade, grovhackade" },
+            { "quantity": 14, "unit": "g", "name": "malet linfrö" },
+            { "quantity": 60, "unit": "ml", "name": "osötad växtmjölk" },
+            { "quantity": 30, "unit": "ml", "name": "aquafaba (sparat bönvätska)" },
+            { "quantity": 2, "unit": "tsp", "name": "rent vaniljextrakt" },
+            { "quantity": 0.5, "unit": "tsp", "name": "malen kanel" },
+            { "quantity": 0.25, "unit": "tsp", "name": "fint havssalt" },
+            { "quantity": 1, "unit": "pcs", "name": "citronskal (valfritt, rekommenderas)" }
+          ],
+          "steps": [
+            "Förvärm ugnen till 175 °C / 350 °F. Klä en 20×20 cm form med bakplåtspapper.",
+            "Blötlägg dadlarna i varmt vatten i 10 minuter. Häll av väl.",
+            "Rosta valnötterna i en torr panna i 4 minuter tills de doftar. Sätt åt sidan.",
+            "Aktivera johannesbrödpulvret: vispa johannesbrödpulver med 3 msk kokande vatten till en tjock pasta. Låt stå 1 minut. Hoppa inte över detta steg.",
+            "Tillsätt allt utom valnötterna i en matberedare. Mixa i hela 2 minuter, skrapa ner två gånger. Smeten ska vara helt slät, tjock och blank.",
+            "Rör i större delen av valnötterna för hand. Tillsätt citronskal om du använder det. Bred ut i formen, jämna till ytan, strö resterande valnötter över.",
+            "Grädda i 20–22 minuter. Ta ut när mitten fortfarande ser något ogräddad ut — de stelnar i kylen.",
+            "Kyl helt i formen, sätt sedan i kylen i minst 2 timmar. Skär med en varm kniv."
+          ]
         }
       },
       "ingredients": [
@@ -307,11 +495,41 @@
       "translations": {
         "no": {
           "title": "Johannesbrød- og hvitbønne-proteinshake",
-          "description": "En kremet, naturlig søt proteinshake — fyldig og mettende, basert på cannellinibønner og johannesbrød med dadler for dybde. Ornish GREEN. Ingen blender-erfaring kreves."
+          "description": "En kremet, naturlig søt proteinshake — fyldig og mettende, basert på cannellinibønner og johannesbrød med dadler for dybde. Ornish GREEN. Ingen blender-erfaring kreves.",
+          "ingredients": [
+            { "quantity": 100, "unit": "g", "name": "kokte cannellinibønner, avrent og skylt" },
+            { "quantity": 12, "unit": "g", "name": "johannesbrødpulver" },
+            { "quantity": 48, "unit": "g", "name": "Medjool-dadler, utstenede" },
+            { "quantity": 80, "unit": "g", "name": "frossen banan" },
+            { "quantity": 9, "unit": "g", "name": "malt linfrø" },
+            { "quantity": 1, "unit": "g", "name": "malt kanel" },
+            { "quantity": 250, "unit": "ml", "name": "vann" }
+          ],
+          "steps": [
+            "Hvis dadlene er faste, bløtlegg dem i noen spiseskjeer av vannet i 5 minutter for å mykne dem. Hopp over hvis de allerede er myke og klebrige.",
+            "Tilsett bønnene, johannesbrødpulveret, dadlene (med eventuelt bløtleggingsvann), den frosne bananen, malt linfrø, kanel og resten av vannet i en kraftig blender.",
+            "Blend på høy hastighet i 60–90 sekunder til helt jevnt og kremet.",
+            "Smak til og juster — tilsett litt mer vann hvis du vil ha en tynnere konsistens. Hell over i et stort glass og drikk umiddelbart for best konsistens."
+          ]
         },
         "sv": {
           "title": "Johannesbröd- och vitbönsproteinshake",
-          "description": "En krämig, naturligt söt proteinshake — fyllig och mättande, byggd på cannellinibönor och johannesbröd med dadlar för djup. Ornish GREEN. Ingen blender-vana krävs."
+          "description": "En krämig, naturligt söt proteinshake — fyllig och mättande, byggd på cannellinibönor och johannesbröd med dadlar för djup. Ornish GREEN. Ingen blender-vana krävs.",
+          "ingredients": [
+            { "quantity": 100, "unit": "g", "name": "kokta cannellinibönor, avrunna och sköljda" },
+            { "quantity": 12, "unit": "g", "name": "johannesbrödpulver" },
+            { "quantity": 48, "unit": "g", "name": "Medjool-dadlar, urkärnade" },
+            { "quantity": 80, "unit": "g", "name": "fryst banan" },
+            { "quantity": 9, "unit": "g", "name": "malet linfrö" },
+            { "quantity": 1, "unit": "g", "name": "malen kanel" },
+            { "quantity": 250, "unit": "ml", "name": "vatten" }
+          ],
+          "steps": [
+            "Om dadlarna är hårda, blötlägg dem i några matskedar av vattnet i 5 minuter för att mjuka upp dem. Hoppa över om de redan är mjuka och kletiga.",
+            "Tillsätt bönorna, johannesbrödpulvret, dadlarna (med eventuellt blötläggningsvatten), den frysta bananen, malet linfrö, kanel och resten av vattnet i en kraftig mixer.",
+            "Mixa på hög hastighet i 60–90 sekunder tills helt slätt och krämigt.",
+            "Smaka av och justera — tillsätt en skvätt mer vatten om du vill ha en tunnare konsistens. Häll upp i ett stort glas och drick omedelbart för bästa konsistens."
+          ]
         }
       },
       "ingredients": [

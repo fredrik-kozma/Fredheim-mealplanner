@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { supabase } from '../lib/supabase'
-import { useAuth } from './AuthContext'
+import { useAuth, IS_DEV_AUTOLOGIN } from './AuthContext'
 
 const ADMIN_EMAILS = (import.meta.env.VITE_ADMIN_EMAILS || '')
   .split(',')
@@ -55,6 +55,13 @@ export function SubscriptionProvider({ children }) {
       setLoading(false)
       return
     }
+    // Dev autologin: skip Supabase fetch — the admin path below grants full
+    // access without needing a profile row.
+    if (IS_DEV_AUTOLOGIN) {
+      setProfile(null)
+      setLoading(false)
+      return
+    }
     // Only show loading state if we have no cache yet — otherwise refresh
     // silently in the background.
     if (!readCache(user.id)) setLoading(true)
@@ -75,7 +82,10 @@ export function SubscriptionProvider({ children }) {
   }, [fetchProfile])
 
   // ── Derived subscription state ─────────────────────────────────────────
-  const isAdmin = ADMIN_EMAILS.includes((user?.email || '').toLowerCase())
+  // Dev autologin always grants admin access — convenient local testing.
+  const isAdmin =
+    IS_DEV_AUTOLOGIN ||
+    ADMIN_EMAILS.includes((user?.email || '').toLowerCase())
 
   let status = 'none' // none | trialing | active | past_due | canceled | expired | admin
   let isActive = false
