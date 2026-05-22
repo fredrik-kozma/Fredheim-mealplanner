@@ -61,6 +61,26 @@ export default function Header() {
     }
   }
 
+  async function handleCheckout() {
+    setShowUserMenu(false)
+    if (!user) return
+    try {
+      const res = await fetch('/.netlify/functions/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: user.id,
+          userEmail: user.email,
+          returnUrl: window.location.origin,
+        }),
+      })
+      const data = await res.json()
+      if (data.url) window.location.href = data.url
+    } catch (err) {
+      console.error('Checkout error:', err)
+    }
+  }
+
   // Avatar initials from email
   const initials = user?.email
     ? user.email.slice(0, 2).toUpperCase()
@@ -121,8 +141,28 @@ export default function Header() {
                     ) : null}
                   </div>
 
-                  {/* Manage subscription */}
-                  {!isAdmin && (
+                  {/* Subscribe Now — trial users or expired/no-sub users */}
+                  {!isAdmin && (isTrial || !isActive) && (
+                    <button
+                      onClick={handleCheckout}
+                      className="w-full text-left px-3 py-2 text-sm font-semibold text-indigo-600 hover:bg-indigo-50 transition-colors"
+                    >
+                      ✨ {t('subscription.subscribeNow')}
+                    </button>
+                  )}
+
+                  {/* Manage subscription — active paid users only */}
+                  {!isAdmin && isActive && !isTrial && (
+                    <button
+                      onClick={handleManageSubscription}
+                      className="w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                    >
+                      {t('subscription.manage')}
+                    </button>
+                  )}
+
+                  {/* Trial users also get access to portal (cancel trial, etc.) */}
+                  {!isAdmin && isTrial && (
                     <button
                       onClick={handleManageSubscription}
                       className="w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"

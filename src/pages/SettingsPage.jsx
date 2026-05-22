@@ -133,20 +133,34 @@ function SubscriptionSection() {
             )}
 
             {/* Actions */}
-            {!isAdmin && !isActive && (
+            {/* Subscribe — for trial users (upgrade) and expired/no-sub users */}
+            {!isAdmin && (isTrial || !isActive) && (
               <button
                 onClick={handleCheckout}
                 disabled={loading}
                 className="btn-primary w-full py-2.5 text-sm font-semibold disabled:opacity-60"
               >
-                {loading ? '…' : t('subscription.subscribeNow')}
+                {loading ? '…' : (isTrial
+                  ? t('subscription.upgradeNow', { defaultValue: t('subscription.subscribeNow') })
+                  : t('subscription.subscribeNow'))}
               </button>
             )}
-            {!isAdmin && isActive && (
+            {/* Manage — paid active subscribers */}
+            {!isAdmin && isActive && !isTrial && (
               <button
                 onClick={handlePortal}
                 disabled={loading}
                 className="btn-secondary w-full py-2 text-sm"
+              >
+                {loading ? '…' : t('subscription.manage')}
+              </button>
+            )}
+            {/* Trial users — also let them cancel via portal */}
+            {!isAdmin && isTrial && (
+              <button
+                onClick={handlePortal}
+                disabled={loading}
+                className="btn-ghost w-full py-2 text-xs text-slate-500"
               >
                 {loading ? '…' : t('subscription.manage')}
               </button>
