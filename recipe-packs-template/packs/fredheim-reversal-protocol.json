@@ -1,0 +1,346 @@
+{
+  "id": "fredheim-reversal-protocol",
+  "name": "Fredheim Reversal Protocol",
+  "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
+  "author": "Fredheim Livsstilssenter",
+  "version": "1.0.0",
+  "tags": [
+    "ornish",
+    "heart-reversal",
+    "diabetes-reversal",
+    "vegan",
+    "oil-free",
+    "no-added-sugar"
+  ],
+  "translations": {
+    "no": {
+      "name": "Fredheim Reverseringsprotokoll",
+      "description": "Helmat-basert, plantebasert mat bygget rundt Ornish-protokollen — klinisk dokumentert å kunne reversere hjerte- og karsykdom og forbedre diabetes type 2, høyt kolesterol, høyt blodtrykk og åreforkalkning. Helt uten tilsatt olje, kolesterol, tilsatt sukker eller raffinerte karbohydrater. Alle oppskrifter er Ornish GREEN-godkjente."
+    },
+    "sv": {
+      "name": "Fredheim Reverseringsprotokoll",
+      "description": "Helmat-baserade, växtbaserade recept byggda kring Ornish-protokollet — kliniskt visat att kunna reversera hjärt-kärlsjukdom och förbättra typ 2-diabetes, högt kolesterol, högt blodtryck och åderförkalkning. Helt utan tillsatt olja, kolesterol, tillsatt socker eller raffinerade kolhydrater. Alla recept är Ornish GREEN-godkända."
+    }
+  },
+  "recipes": [
+    {
+      "id": "orn-1",
+      "title": "Crispy Oat Waffles",
+      "category": "Breakfast",
+      "servings": 4,
+      "prepTime": 10,
+      "cookTime": 20,
+      "imageUrl": null,
+      "description": "Whole-grain waffles with natural banana sweetness and a golden, crispy crunch — no oil, no sugar, no compromise.",
+      "tags": ["ornish-green", "breakfast", "vegan", "oil-free", "no-added-sugar", "high-fiber"],
+      "kcal": 285,
+      "servingWeightGrams": 130,
+      "translations": {
+        "no": {
+          "title": "Sprø havrevafler",
+          "description": "Fullkornsvafler med naturlig banansøthet og gyllen, sprø skorpe — uten olje, uten sukker, uten kompromiss."
+        },
+        "sv": {
+          "title": "Krispiga havrevåfflor",
+          "description": "Fullkornsvåfflor med naturlig banansötma och en gyllene, krispig skorpa — utan olja, utan socker, utan kompromiss."
+        }
+      },
+      "ingredients": [
+        { "quantity": 200, "unit": "g", "name": "rolled oats" },
+        { "quantity": 28, "unit": "g", "name": "ground flaxseed" },
+        { "quantity": 120, "unit": "g", "name": "ripe banana, mashed (~1 large)" },
+        { "quantity": 280, "unit": "ml", "name": "unsweetened oat milk" },
+        { "quantity": 2, "unit": "tsp", "name": "baking powder" },
+        { "quantity": 1, "unit": "tsp", "name": "ground cinnamon" },
+        { "quantity": 1, "unit": "tsp", "name": "vanilla extract" }
+      ],
+      "steps": [
+        "Blend the rolled oats in a blender or food processor until a fine flour forms, about 30 seconds.",
+        "Add the ground flaxseed, baking powder, and cinnamon to the oat flour. Stir together.",
+        "Mash the banana very well until no lumps remain. Add it to the dry mix along with the oat milk and vanilla extract. Stir until a smooth batter forms.",
+        "Let the batter rest for 8–10 minutes. It will thicken slightly — this is key for crispiness.",
+        "Heat a non-stick waffle iron fully before adding batter. Do not grease it.",
+        "Pour batter in and close the lid. Cook 5–6 minutes without opening. Steam needs time to escape.",
+        "Lift the waffle and place it on a wire rack for 1–2 minutes before serving. This final step is what makes them crispy rather than soggy.",
+        "Serve topped with fresh berries."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 285, "protein": 9.0, "totalFat": 6.7, "saturatedFat": 0.9,
+          "polyunsaturatedFat": 3.4, "monounsaturatedFat": 1.2, "omega3": 1.6,
+          "cholesterol": 0, "totalCarbs": 47, "fiber": 8.7, "totalSugars": 7.1, "addedSugar": 0,
+          "calcium": 130, "potassium": 416, "copper": 0.25, "iron": 3.4, "magnesium": 80,
+          "manganese": 1.9, "selenium": 9, "phosphorus": 226, "zinc": 1.6, "sodium": 293,
+          "vitaminA": 30, "vitaminB6": 0.19, "vitaminB12": 0.27, "vitaminC": 3,
+          "vitaminD": 0.8, "vitaminE": 0.2, "vitaminK": 1, "folate": 12,
+          "thiamin": 0.21, "riboflavin": 0.05, "niacin": 0.6, "choline": 12
+        }
+      }
+    },
+    {
+      "id": "orn-2",
+      "title": "Creamy White Bean, Lemon-Dill & Date Dressing",
+      "category": "Sauce",
+      "servings": 4,
+      "prepTime": 5,
+      "cookTime": 0,
+      "imageUrl": null,
+      "description": "A creamy, oil-free dressing built on white beans, with dates rounding off the lemon's edge — beautiful with bitter greens like rocket, radicchio, or kale.",
+      "tags": ["ornish-green", "sauce", "vegan", "oil-free", "no-added-sugar"],
+      "kcal": 133,
+      "servingWeightGrams": 122,
+      "translations": {
+        "no": {
+          "title": "Kremet hvit bønne-, sitron- og dilldressing",
+          "description": "En kremet, oljefri dressing av hvite bønner og dadler som mykgjør sitronens kanter — nydelig til bitre salater som ruccola, radicchio eller grønnkål."
+        },
+        "sv": {
+          "title": "Krämig vit bön-, citron- och dilldressing",
+          "description": "En krämig, oljefri dressing på vita bönor och dadlar som mjukar upp citronens skärpa — utsökt till bittra grönsaker som ruccola, radicchio eller grönkål."
+        }
+      },
+      "ingredients": [
+        { "quantity": 300, "unit": "g", "name": "cooked cannellini beans (1 can, drained and rinsed)" },
+        { "quantity": 14, "unit": "g", "name": "ground flaxseed (2 tbsp)" },
+        { "quantity": 20, "unit": "g", "name": "pitted Medjool dates (~1 large)" },
+        { "quantity": 1, "unit": "pcs", "name": "lemon — all the juice + the zest" },
+        { "quantity": 1, "unit": "pcs", "name": "garlic clove" },
+        { "quantity": 10, "unit": "g", "name": "fresh dill (small handful)" },
+        { "quantity": 1, "unit": "tsp", "name": "white wine vinegar" },
+        { "quantity": 80, "unit": "ml", "name": "cold water" },
+        { "quantity": 0.25, "unit": "tsp", "name": "sea salt" }
+      ],
+      "steps": [
+        "If your dates are firm, soak them in the 80 ml of slightly warmed water for 5 minutes so they blend completely smooth without specks.",
+        "Add everything to a blender.",
+        "Blend on high for 60–90 seconds until silky.",
+        "Taste and adjust — more lemon for brightness, more salt to season."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 133, "protein": 7.6, "totalFat": 1.9, "saturatedFat": 0.2,
+          "polyunsaturatedFat": 1.14, "monounsaturatedFat": 0.27, "omega3": 0.88,
+          "cholesterol": 0, "totalCarbs": 22.5, "fiber": 6.3, "totalSugars": 3.8, "addedSugar": 0,
+          "calcium": 59, "potassium": 408, "copper": 0.24, "iron": 2.15, "magnesium": 47,
+          "manganese": 0.50, "selenium": 1.4, "phosphorus": 112, "zinc": 1.1, "sodium": 55,
+          "vitaminA": 10, "vitaminB6": 0.13, "vitaminB12": 0, "vitaminC": 5.8,
+          "vitaminD": 0, "vitaminE": 0.03, "vitaminK": 6, "folate": 75,
+          "thiamin": 0.16, "riboflavin": 0.05, "niacin": 0.46, "choline": 24
+        }
+      }
+    },
+    {
+      "id": "orn-3",
+      "title": "Black Mustard & Date Honey Mustard Dressing",
+      "category": "Sauce",
+      "servings": 8,
+      "prepTime": 25,
+      "cookTime": 0,
+      "imageUrl": null,
+      "description": "A smooth, naturally sweet honey-mustard dressing — creamy from white beans, sweet from dates, with just enough black mustard seed bite. Oil-free, sugar-free, deeply satisfying.",
+      "tags": ["ornish-green", "sauce", "vegan", "oil-free", "no-added-sugar"],
+      "kcal": 47,
+      "servingWeightGrams": 70,
+      "translations": {
+        "no": {
+          "title": "Svart sennep- og daddel-honningsennepsdressing",
+          "description": "En myk, naturlig søt honningsennepsdressing — kremet av hvite bønner, søt av dadler, med akkurat nok bitt fra svart sennepsfrø. Uten olje, uten sukker, dypt mettende."
+        },
+        "sv": {
+          "title": "Svart senap- och dadel-honungssenapsdressing",
+          "description": "En mjuk, naturligt söt honungssenapsdressing — krämig av vita bönor, söt av dadlar, med precis lagom bett från svart senapsfrö. Utan olja, utan socker, djupt mättande."
+        }
+      },
+      "ingredients": [
+        { "quantity": 1, "unit": "tsp", "name": "black mustard seeds" },
+        { "quantity": 10, "unit": "pcs", "name": "Deglet dates, pitted (soaked 20 min in warm water)" },
+        { "quantity": 120, "unit": "ml", "name": "cooked cannellini beans (white beans)" },
+        { "quantity": 4, "unit": "tbsp", "name": "fresh lemon juice" },
+        { "quantity": 0.5, "unit": "pcs", "name": "lemon, zest only" },
+        { "quantity": 240, "unit": "ml", "name": "water (plus soaking liquid from dates)" },
+        { "quantity": 0.3, "unit": "tsp", "name": "ground turmeric" },
+        { "quantity": 0.5, "unit": "tsp", "name": "salt" }
+      ],
+      "steps": [
+        "Soak the dates: place pitted dates in a small bowl and cover with warm water. Soak for 20 minutes until very soft. Reserve all the soaking liquid.",
+        "Crack the mustard seeds: add black mustard seeds to a dry blender. Blend on high for 15–20 seconds to crack and partially grind the seeds.",
+        "Add everything else: the softened dates with their soaking liquid, white beans, lemon juice, lemon zest, water, turmeric, and salt.",
+        "Blend until silky: blend on high for 60–90 seconds until completely smooth. The texture should be pourable but slightly thick — like a classic honey mustard.",
+        "Taste and adjust: sweet up front, gentle mustard warmth behind it, bright lemon finish. If too sharp: add one more date. If too thick: add water 1 tbsp at a time.",
+        "Store in a sealed jar in the fridge. Stir or shake before each use. Keeps 5 days."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 47, "protein": 1.6, "totalFat": 0.24, "saturatedFat": 0.03,
+          "polyunsaturatedFat": 0.10, "monounsaturatedFat": 0.05, "omega3": 0.03,
+          "cholesterol": 0, "totalCarbs": 10.0, "fiber": 1.8, "totalSugars": 5.8, "addedSugar": 0,
+          "calcium": 12, "potassium": 131, "copper": 0.051, "iron": 0.68, "magnesium": 12,
+          "manganese": 0.10, "selenium": 0.5, "phosphorus": 34, "zinc": 0.16, "sodium": 144,
+          "vitaminA": 1, "vitaminB6": 0.033, "vitaminB12": 0, "vitaminC": 2.6,
+          "vitaminD": 0, "vitaminE": 0.014, "vitaminK": 0.5, "folate": 21,
+          "thiamin": 0.031, "riboflavin": 0.013, "niacin": 0.14, "choline": 3.8
+        }
+      }
+    },
+    {
+      "id": "orn-4",
+      "title": "Smoked Paprika & Sumac White Bean Sauce",
+      "category": "Sauce",
+      "servings": 4,
+      "prepTime": 5,
+      "cookTime": 0,
+      "imageUrl": null,
+      "description": "A creamy, pourable kebab-style sauce built on white beans and dates — rich in umami, tang, and warmth. No oil, no dairy, fully Ornish GREEN.",
+      "tags": ["ornish-green", "sauce", "vegan", "oil-free", "no-added-sugar", "high-protein"],
+      "kcal": 191,
+      "servingWeightGrams": 180,
+      "translations": {
+        "no": {
+          "title": "Røkt paprika- og sumak-hvitbønnesaus",
+          "description": "En kremet, hellbar kebab-stil saus av hvite bønner og dadler — rik på umami, syre og varme. Uten olje, uten meieri, helt Ornish GREEN."
+        },
+        "sv": {
+          "title": "Rökt paprika- och sumak-vitbönsås",
+          "description": "En krämig, hällbar kebab-style sås på vita bönor och dadlar — rik på umami, syra och värme. Utan olja, utan mejeri, helt Ornish GREEN."
+        }
+      },
+      "ingredients": [
+        { "quantity": 320, "unit": "g", "name": "cooked cannellini beans (drained and rinsed)" },
+        { "quantity": 4, "unit": "pcs", "name": "Medjool dates, pitted" },
+        { "quantity": 4, "unit": "pcs", "name": "garlic cloves" },
+        { "quantity": 2, "unit": "tsp", "name": "smoked paprika" },
+        { "quantity": 1.5, "unit": "tsp", "name": "sumac" },
+        { "quantity": 60, "unit": "ml", "name": "fresh lemon juice" },
+        { "quantity": 4, "unit": "tbsp", "name": "ground flaxseed" },
+        { "quantity": 240, "unit": "ml", "name": "water" }
+      ],
+      "steps": [
+        "Add all ingredients to a blender.",
+        "Blend on high for 60–90 seconds until completely smooth and pourable. If the sauce is too thick, add 1–2 tbsp extra water and blend again.",
+        "Taste and balance: more lemon juice for brightness, more sumac for tang, or a pinch more smoked paprika for depth.",
+        "Let the sauce rest for 5 minutes. The ground flaxseed thickens it slightly and the flavors meld."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 191, "protein": 8.8, "totalFat": 3.3, "saturatedFat": 0.32,
+          "polyunsaturatedFat": 2.1, "monounsaturatedFat": 0.55, "omega3": 1.64,
+          "cholesterol": 0, "totalCarbs": 31, "fiber": 8.4, "totalSugars": 8.4, "addedSugar": 0,
+          "calcium": 126, "potassium": 613, "copper": 0.37, "iron": 3.4, "magnesium": 70,
+          "manganese": 0.85, "selenium": 5.3, "phosphorus": 204, "zinc": 1.6, "sodium": 15,
+          "vitaminA": 40, "vitaminB6": 0.19, "vitaminB12": 0, "vitaminC": 12,
+          "vitaminD": 0, "vitaminE": 0.4, "vitaminK": 2, "folate": 134,
+          "thiamin": 0.34, "riboflavin": 0.05, "niacin": 0.64, "choline": 33
+        }
+      }
+    },
+    {
+      "id": "orn-5",
+      "title": "Fudgy Carob & Date Brownies",
+      "category": "Dessert",
+      "servings": 9,
+      "prepTime": 15,
+      "cookTime": 22,
+      "imageUrl": null,
+      "description": "Rich, fudgy brownies made entirely from black beans, dates, carob, and walnuts. Naturally sweet, oil-free, and gluten-free.",
+      "tags": ["ornish-green", "dessert", "vegan", "oil-free", "no-added-sugar", "gluten-free"],
+      "kcal": 166,
+      "servingWeightGrams": 66,
+      "translations": {
+        "no": {
+          "title": "Fyldige johannesbrød- og daddelbrownies",
+          "description": "Saftige, fyldige brownies laget av sorte bønner, dadler, johannesbrød og valnøtter. Naturlig søte, oljefrie og glutenfrie."
+        },
+        "sv": {
+          "title": "Mjuka johannesbröd- och dadelbrownies",
+          "description": "Saftiga, mjuka brownies gjorda på svarta bönor, dadlar, johannesbröd och valnötter. Naturligt söta, oljefria och glutenfria."
+        }
+      },
+      "ingredients": [
+        { "quantity": 240, "unit": "g", "name": "black beans, cooked, drained, rinsed" },
+        { "quantity": 200, "unit": "g", "name": "Medjool dates, pitted" },
+        { "quantity": 35, "unit": "g", "name": "carob powder" },
+        { "quantity": 45, "unit": "g", "name": "rolled oats" },
+        { "quantity": 40, "unit": "g", "name": "walnuts, toasted, roughly chopped" },
+        { "quantity": 14, "unit": "g", "name": "ground flaxseed" },
+        { "quantity": 60, "unit": "ml", "name": "unsweetened plant milk" },
+        { "quantity": 30, "unit": "ml", "name": "aquafaba (reserved bean liquid)" },
+        { "quantity": 2, "unit": "tsp", "name": "pure vanilla extract" },
+        { "quantity": 0.5, "unit": "tsp", "name": "ground cinnamon" },
+        { "quantity": 0.25, "unit": "tsp", "name": "fine sea salt" },
+        { "quantity": 1, "unit": "pcs", "name": "lemon zest (optional, recommended)" }
+      ],
+      "steps": [
+        "Preheat oven to 175 °C / 350 °F. Line a 20×20 cm tin with baking paper.",
+        "Soak dates in hot water 10 minutes. Drain well.",
+        "Toast walnuts in a dry pan 4 minutes until fragrant. Set aside.",
+        "Bloom the carob: whisk carob powder with 3 tbsp boiling water into a thick paste. Let sit 1 minute. Do not skip this step.",
+        "Add everything except the walnuts to a food processor. Blend a full 2 minutes, scraping down twice. The batter should be completely smooth, thick, and glossy.",
+        "Stir most of the walnuts in by hand. Add lemon zest if using. Spread into the tin, smooth the top, scatter remaining walnuts.",
+        "Bake 20–22 minutes. Pull when the centre still looks slightly underdone — it firms in the fridge.",
+        "Cool completely in the tin, then refrigerate minimum 2 hours. Cut with a hot knife."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 166, "protein": 4.9, "totalFat": 4.2, "saturatedFat": 0.44,
+          "polyunsaturatedFat": 2.7, "monounsaturatedFat": 0.65, "omega3": 0.76,
+          "cholesterol": 0, "totalCarbs": 29.7, "fiber": 6.7, "totalSugars": 15.3, "addedSugar": 0,
+          "calcium": 59, "potassium": 338, "copper": 0.25, "iron": 1.3, "magnesium": 55,
+          "manganese": 0.64, "selenium": 3.1, "phosphorus": 106, "zinc": 0.79, "sodium": 68,
+          "vitaminA": 1.6, "vitaminB6": 0.11, "vitaminB12": 0.03, "vitaminC": 0.2,
+          "vitaminD": 0.07, "vitaminE": 0.04, "vitaminK": 1.6, "folate": 52,
+          "thiamin": 0.15, "riboflavin": 0.05, "niacin": 0.64, "choline": 16
+        }
+      }
+    },
+    {
+      "id": "orn-6",
+      "title": "Carob & White Bean Protein Shake",
+      "category": "Breakfast",
+      "servings": 1,
+      "prepTime": 5,
+      "cookTime": 0,
+      "imageUrl": null,
+      "description": "A creamy, naturally sweet protein shake — rich and filling, built on cannellini beans and carob with dates for depth. Ornish GREEN. No blender skill required.",
+      "tags": ["ornish-green", "breakfast", "snack", "vegan", "oil-free", "no-added-sugar", "high-protein"],
+      "kcal": 439,
+      "servingWeightGrams": 500,
+      "translations": {
+        "no": {
+          "title": "Johannesbrød- og hvitbønne-proteinshake",
+          "description": "En kremet, naturlig søt proteinshake — fyldig og mettende, basert på cannellinibønner og johannesbrød med dadler for dybde. Ornish GREEN. Ingen blender-erfaring kreves."
+        },
+        "sv": {
+          "title": "Johannesbröd- och vitbönsproteinshake",
+          "description": "En krämig, naturligt söt proteinshake — fyllig och mättande, byggd på cannellinibönor och johannesbröd med dadlar för djup. Ornish GREEN. Ingen blender-vana krävs."
+        }
+      },
+      "ingredients": [
+        { "quantity": 100, "unit": "g", "name": "cooked cannellini beans, drained and rinsed" },
+        { "quantity": 12, "unit": "g", "name": "carob powder" },
+        { "quantity": 48, "unit": "g", "name": "Medjool dates, pitted" },
+        { "quantity": 80, "unit": "g", "name": "frozen banana" },
+        { "quantity": 9, "unit": "g", "name": "ground flaxseed" },
+        { "quantity": 1, "unit": "g", "name": "ground cinnamon" },
+        { "quantity": 250, "unit": "ml", "name": "water" }
+      ],
+      "steps": [
+        "If your dates are firm, soak them in a few tablespoons of the water for 5 minutes to soften. Skip if they are already soft and sticky.",
+        "Add the beans, carob powder, dates (with any soaking water), frozen banana, ground flaxseed, cinnamon, and remaining water to a high-speed blender.",
+        "Blend on high for 60–90 seconds until completely smooth and creamy.",
+        "Taste and adjust — add a splash more water if you want a thinner consistency. Pour into a large glass and drink immediately for best texture."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 439, "protein": 13.4, "totalFat": 4.8, "saturatedFat": 0.6,
+          "polyunsaturatedFat": 3.0, "monounsaturatedFat": 0.8, "omega3": 2.3,
+          "cholesterol": 0, "totalCarbs": 93, "fiber": 18, "totalSugars": 47, "addedSugar": 0,
+          "calcium": 247, "potassium": 1406, "copper": 0.68, "iron": 4.9, "magnesium": 161,
+          "manganese": 1.7, "selenium": 6.1, "phosphorus": 356, "zinc": 2.4, "sodium": 19,
+          "vitaminA": 3, "vitaminB6": 0.59, "vitaminB12": 0, "vitaminC": 7.6,
+          "vitaminD": 0, "vitaminE": 0.45, "vitaminK": 7.3, "folate": 124,
+          "thiamin": 0.45, "riboflavin": 0.25, "niacin": 2.4, "choline": 69
+        }
+      }
+    }
+  ]
+}

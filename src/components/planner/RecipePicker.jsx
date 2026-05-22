@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 
@@ -6,10 +6,34 @@ export default function RecipePicker({ onSelect, onClose, title }) {
   const { t, i18n } = useTranslation()
   const recipes = useStore(s => s.recipes)
   const recipeCategories = useStore(s => s.recipeCategories)
+  const installedPacks = useStore(s => s.installedPacks)
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const titleOf = (r) => r.translations?.[currentLang]?.title || r.title
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
+  const [activePack, setActivePack] = useState('All')
+
+  // Build the pack options once per render — only show packs that actually
+  // have installed recipes, plus a "My recipes" bucket for non-pack ones.
+  const packOptions = useMemo(() => {
+    const counts = {}
+    let userRecipeCount = 0
+    for (const r of recipes) {
+      if (r.sourcePackId) counts[r.sourcePackId] = (counts[r.sourcePackId] || 0) + 1
+      else userRecipeCount++
+    }
+    const opts = []
+    for (const [packId, info] of Object.entries(installedPacks || {})) {
+      if (!counts[packId]) continue
+      const localized = info?.translations?.[currentLang]?.name
+      opts.push({ id: packId, label: localized || info?.name || packId, count: counts[packId] })
+    }
+    opts.sort((a, b) => a.label.localeCompare(b.label))
+    if (userRecipeCount > 0) {
+      opts.push({ id: '__user__', label: t('recipes.myRecipes', { defaultValue: 'My recipes' }), count: userRecipeCount })
+    }
+    return opts
+  }, [recipes, installedPacks, currentLang, t])
 
   const pickerTitle = title || t('recipePicker.title')
 
@@ -23,6 +47,11 @@ export default function RecipePicker({ onSelect, onClose, title }) {
 
   const filtered = recipes
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
+    .filter(r => {
+      if (activePack === 'All') return true
+      if (activePack === '__user__') return !r.sourcePackId
+      return r.sourcePackId === activePack
+    })
     .filter(r => {
       if (!search) return true
       const q = search.toLowerCase()
@@ -69,6 +98,35 @@ export default function RecipePicker({ onSelect, onClose, title }) {
             />
           </div>
         </div>
+
+        {/* Pack chips — only shown when more than one bucket exists */}
+        {packOptions.length > 1 && (
+          <div className="flex gap-2 overflow-x-auto px-4 pt-1 pb-2" style={{ scrollbarWidth: 'none' }}>
+            <button
+              onClick={() => setActivePack('All')}
+              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+                activePack === 'All'
+                  ? 'bg-emerald-600 text-white'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              {t('recipes.allPacks', { defaultValue: 'All packs' })}
+            </button>
+            {packOptions.map(opt => (
+              <button
+                key={opt.id}
+                onClick={() => setActivePack(opt.id)}
+                className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+                  activePack === opt.id
+                    ? 'bg-emerald-600 text-white'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Category chips */}
         <div className="flex gap-2 overflow-x-auto px-4 pt-2 pb-5" style={{ scrollbarWidth: 'none' }}>

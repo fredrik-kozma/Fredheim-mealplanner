@@ -7,6 +7,7 @@ import { convertToSystem, displayUnit, normalizeUnit, CANONICAL_UNITS } from '..
 import { printRecipe } from '../../utils/printRecipe'
 import { useAccess } from '../../hooks/useAccess'
 import LockedOverlay from '../subscription/LockedOverlay'
+import NutritionPanel from './NutritionPanel'
 
 export default function RecipeDetail() {
   const { id } = useParams()
@@ -377,6 +378,9 @@ export default function RecipeDetail() {
             </ol>
           </section>
         )}
+
+        {/* Nutrition panel — only renders when recipe has nutrition data */}
+        <NutritionPanel recipe={recipe} displayServings={displayServings} />
         </div>
         {/* end paywall wrapper */}
 

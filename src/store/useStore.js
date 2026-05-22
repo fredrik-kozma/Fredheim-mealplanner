@@ -838,6 +838,9 @@ const useStore = create(
           ...r,
           createdAt: r.createdAt || Date.now(),
           translations: r.translations || {},
+          // Mark each recipe with the pack it came from so the UI can
+          // filter "Show only Fredheim Reversal Protocol", etc.
+          sourcePackId: pack.id,
         }))
         const allRecipeIds = pack.recipes.map(r => r.id)
         return {
@@ -846,6 +849,7 @@ const useStore = create(
             ...s.installedPacks,
             [pack.id]: {
               version: pack.version,
+              name: pack.name,
               installedAt: Date.now(),
               recipeIds: allRecipeIds,
             },
@@ -868,7 +872,7 @@ const useStore = create(
       // IndexedDB-backed (via idb-keyval) instead of the default
       // localStorage. Gives us ~50% of free disk (GBs) instead of ~5 MB.
       storage: createJSONStorage(() => idbStorage),
-      version: 5,
+      version: 6,
       migrate: (persistedState, version) => {
         if (version < 2) {
           if (persistedState.recipes) {
@@ -931,6 +935,23 @@ const useStore = create(
               }
             }
             persistedState.weekPlan = newPlan
+          }
+        }
+        // v6: backfill sourcePackId on recipes installed from packs before
+        // we started tracking it. Uses installedPacks[packId].recipeIds to
+        // know which recipe belongs to which pack.
+        if (version < 6) {
+          if (Array.isArray(persistedState.recipes) && persistedState.installedPacks) {
+            const recipeIdToPackId = {}
+            for (const [packId, info] of Object.entries(persistedState.installedPacks)) {
+              for (const rid of info?.recipeIds || []) {
+                recipeIdToPackId[rid] = packId
+              }
+            }
+            persistedState.recipes = persistedState.recipes.map(r => ({
+              ...r,
+              sourcePackId: r.sourcePackId || recipeIdToPackId[r.id] || null,
+            }))
           }
         }
         // v5: each slot used to hold an array of recipe-id strings; now it

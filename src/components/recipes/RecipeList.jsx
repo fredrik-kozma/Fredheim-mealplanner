@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
@@ -8,16 +8,51 @@ export default function RecipeList() {
   const { t, i18n } = useTranslation()
   const recipes = useStore(s => s.recipes)
   const recipeCategories = useStore(s => s.recipeCategories)
+  const installedPacks = useStore(s => s.installedPacks)
   const navigate = useNavigate()
   const [activeCategory, setActiveCategory] = useState('All')
+  const [activePack, setActivePack] = useState('All')
   const [search, setSearch] = useState('')
   const [sortBy, setSortBy] = useState('newest')
 
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const titleOf = (r) => r.translations?.[currentLang]?.title || r.title
 
+  // Build the pack dropdown options — only show packs that have at least
+  // one installed recipe (and add a "My recipes" bucket for non-pack ones).
+  const packOptions = useMemo(() => {
+    const counts = {}
+    let userRecipeCount = 0
+    for (const r of recipes) {
+      if (r.sourcePackId) counts[r.sourcePackId] = (counts[r.sourcePackId] || 0) + 1
+      else userRecipeCount++
+    }
+    const opts = []
+    for (const [packId, info] of Object.entries(installedPacks || {})) {
+      if (!counts[packId]) continue
+      const pack = info
+      // Resolve a localized name from translations when available
+      const localized = pack?.translations?.[currentLang]?.name
+      opts.push({
+        id: packId,
+        label: localized || pack?.name || packId,
+        count: counts[packId],
+      })
+    }
+    opts.sort((a, b) => a.label.localeCompare(b.label))
+    if (userRecipeCount > 0) {
+      opts.push({ id: '__user__', label: t('recipes.myRecipes', { defaultValue: 'My recipes' }), count: userRecipeCount })
+    }
+    return opts
+  }, [recipes, installedPacks, currentLang, t])
+
   const filtered = recipes
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
+    .filter(r => {
+      if (activePack === 'All') return true
+      if (activePack === '__user__') return !r.sourcePackId
+      return r.sourcePackId === activePack
+    })
     .filter(r => {
       if (!search) return true
       const q = search.toLowerCase()
@@ -59,6 +94,35 @@ export default function RecipeList() {
             <option value="name">{t('recipes.sort.nameAZ')}</option>
           </select>
         </div>
+
+        {/* Pack filter — only shown when more than one bucket exists */}
+        {packOptions.length > 1 && (
+          <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none" style={{ scrollbarWidth: 'none' }}>
+            <button
+              onClick={() => setActivePack('All')}
+              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 ${
+                activePack === 'All'
+                  ? 'bg-emerald-600 text-white shadow-sm'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
+              }`}
+            >
+              {t('recipes.allPacks', { defaultValue: 'All packs' })}
+            </button>
+            {packOptions.map(opt => (
+              <button
+                key={opt.id}
+                onClick={() => setActivePack(opt.id)}
+                className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap ${
+                  activePack === opt.id
+                    ? 'bg-emerald-600 text-white shadow-sm'
+                    : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
+                }`}
+              >
+                {opt.label} <span className="opacity-60">· {opt.count}</span>
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Category filter chips */}
         <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none" style={{ scrollbarWidth: 'none' }}>
