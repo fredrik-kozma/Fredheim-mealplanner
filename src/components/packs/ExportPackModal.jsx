@@ -87,9 +87,11 @@ export default function ExportPackModal({ onClose }) {
   const titleOf = (r) => r.translations?.[currentLang]?.title || r.title
   const recipes = useStore(s => s.recipes)
   const recipeCategories = useStore(s => s.recipeCategories)
+  const installedPacks = useStore(s => s.installedPacks)
 
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
+  const [activePack, setActivePack] = useState('All')
   const [selectedIds, setSelectedIds] = useState(new Set())
 
   const [packName, setPackName] = useState('')
@@ -105,15 +107,44 @@ export default function ExportPackModal({ onClose }) {
     return ['All', ...used]
   }, [recipes, recipeCategories])
 
+  // Build pack options — same pattern used on the Recipes page and the
+  // planner picker. Lets the user export "only Fredheim Reversal Protocol"
+  // or "only My recipes" instead of having to manually deselect everything
+  // they don't want.
+  const packOptions = useMemo(() => {
+    const counts = {}
+    let userRecipeCount = 0
+    for (const r of recipes) {
+      if (r.sourcePackId) counts[r.sourcePackId] = (counts[r.sourcePackId] || 0) + 1
+      else userRecipeCount++
+    }
+    const opts = []
+    for (const [packId, info] of Object.entries(installedPacks || {})) {
+      if (!counts[packId]) continue
+      const localized = info?.translations?.[currentLang]?.name
+      opts.push({ id: packId, label: localized || info?.name || packId, count: counts[packId] })
+    }
+    opts.sort((a, b) => a.label.localeCompare(b.label))
+    if (userRecipeCount > 0) {
+      opts.push({ id: '__user__', label: t('recipes.myRecipes', { defaultValue: 'My recipes' }), count: userRecipeCount })
+    }
+    return opts
+  }, [recipes, installedPacks, currentLang, t])
+
   const filtered = useMemo(() => recipes
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
+    .filter(r => {
+      if (activePack === 'All') return true
+      if (activePack === '__user__') return !r.sourcePackId
+      return r.sourcePackId === activePack
+    })
     .filter(r => {
       if (!search) return true
       const q = search.toLowerCase()
       return titleOf(r).toLowerCase().includes(q) || r.title.toLowerCase().includes(q)
     })
     .sort((a, b) => titleOf(a).localeCompare(titleOf(b))),
-    [recipes, activeCategory, search, currentLang]
+    [recipes, activeCategory, activePack, search, currentLang]
   )
 
   function handleNameChange(val) {
@@ -163,8 +194,12 @@ export default function ExportPackModal({ onClose }) {
         description: r.description ?? '',
         tags: r.tags ?? [],
         kcal: r.kcal ?? null,
+        // Preserve serving weight so per-100g math survives re-install
+        ...(r.servingWeightGrams != null ? { servingWeightGrams: r.servingWeightGrams } : {}),
         ingredients: r.ingredients ?? [],
         steps: r.steps ?? [],
+        // Preserve nutrition so the export round-trips fully
+        ...(r.nutrition ? { nutrition: r.nutrition } : {}),
         translations: r.translations ?? {},
       }))
 
@@ -253,6 +288,35 @@ export default function ExportPackModal({ onClose }) {
                 className="input pl-9"
               />
             </div>
+
+            {/* Pack filter chips — only shown when more than one bucket exists */}
+            {packOptions.length > 1 && (
+              <div className="flex gap-2 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-none mb-2" style={{ scrollbarWidth: 'none' }}>
+                <button
+                  onClick={() => setActivePack('All')}
+                  className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap ${
+                    activePack === 'All'
+                      ? 'bg-emerald-600 text-white shadow-sm'
+                      : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
+                  }`}
+                >
+                  {t('recipes.allPacks', { defaultValue: 'All packs' })}
+                </button>
+                {packOptions.map(opt => (
+                  <button
+                    key={opt.id}
+                    onClick={() => setActivePack(opt.id)}
+                    className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap ${
+                      activePack === opt.id
+                        ? 'bg-emerald-600 text-white shadow-sm'
+                        : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
+                    }`}
+                  >
+                    {opt.label} <span className="opacity-60">· {opt.count}</span>
+                  </button>
+                ))}
+              </div>
+            )}
 
             {/* Category chips */}
             <div className="flex gap-2 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-none mb-3" style={{ scrollbarWidth: 'none' }}>
