@@ -204,7 +204,10 @@
     "savedListsTitle": "Sparade listor",
     "itemCount": "{{count}} varor",
     "listSaved": "Lista sparad",
-    "deleteListConfirm": "Ta bort listan «{{name}}»?"
+    "deleteListConfirm": "Ta bort listan «{{name}}»?",
+    "print": "Skriv ut",
+    "printForPeople": "För",
+    "printItems": "varor"
   },
   "settings": {
     "title": "Inställningar",

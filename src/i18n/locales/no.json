@@ -204,7 +204,10 @@
     "savedListsTitle": "Lagrede lister",
     "itemCount": "{{count}} varer",
     "listSaved": "Liste lagret",
-    "deleteListConfirm": "Slett listen «{{name}}»?"
+    "deleteListConfirm": "Slett listen «{{name}}»?",
+    "print": "Skriv ut",
+    "printForPeople": "For",
+    "printItems": "varer"
   },
   "settings": {
     "title": "Innstillinger",

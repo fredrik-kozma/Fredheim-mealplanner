@@ -204,7 +204,10 @@
     "savedListsTitle": "Saved Lists",
     "itemCount": "{{count}} items",
     "listSaved": "List saved",
-    "deleteListConfirm": "Delete list \"{{name}}\"?"
+    "deleteListConfirm": "Delete list \"{{name}}\"?",
+    "print": "Print",
+    "printForPeople": "For",
+    "printItems": "items"
   },
   "settings": {
     "title": "Settings",

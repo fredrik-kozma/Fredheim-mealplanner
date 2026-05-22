@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { generateShoppingList, formatQuantity } from '../../utils/shoppingListGenerator'
+import { printShoppingList } from '../../utils/printShoppingList'
 import SavedShoppingLists from './SavedShoppingLists'
 
 export default function ShoppingList() {
@@ -35,6 +36,45 @@ export default function ShoppingList() {
     setTimeout(() => setSaveToast(null), 3000)
   }
 
+  function handlePrint() {
+    // Aisle category labels (e.g. "Produce") are stored in English on the
+    // shopping list groups; translate them via i18n for the printout.
+    const printGroups = groups.map(({ category, items }) => ({
+      category: t(`aisles.${category}`, { defaultValue: category }),
+      items: items.map((it) => ({
+        name: it.name,
+        quantityLabel: formatQuantity(it.quantity, it.unit),
+      })),
+    }))
+
+    // Unique list of recipe titles that contributed to this list.
+    const recipeTitles = [...new Set(
+      Object.values(weekPlan).flatMap(day =>
+        Object.values(day).flatMap(items =>
+          (items || []).map(it => typeof it === 'string' ? it : it?.recipeId).filter(Boolean)
+        )
+      )
+    )].map(rid => {
+      const recipe = recipes.find(r => r.id === rid)
+      if (!recipe) return null
+      return recipe.translations?.[currentLang]?.title || recipe.title
+    }).filter(Boolean)
+
+    printShoppingList({
+      title: t('shopping.title'),
+      groups: printGroups,
+      familySize,
+      recipeTitles,
+      labels: {
+        forPeople: t('shopping.printForPeople', { defaultValue: 'For' }),
+        fromRecipes: t('shopping.fromRecipes'),
+        printedOn: t('recipeDetail.printedOn', { defaultValue: 'Printed' }),
+        totalItems: t('shopping.printItems', { defaultValue: 'items' }),
+        people: t('settings.people'),
+      },
+    })
+  }
+
   if (totalItems === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-full py-20 px-6 text-center">
@@ -65,6 +105,16 @@ export default function ShoppingList() {
             </div>
           </div>
           <div className="flex gap-1.5 flex-shrink-0">
+            <button
+              onClick={handlePrint}
+              className="btn-secondary py-1.5 px-2.5 text-xs"
+              title={t('shopping.print', { defaultValue: 'Print' })}
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
+              </svg>
+              <span className="hidden sm:inline">{t('shopping.print', { defaultValue: 'Print' })}</span>
+            </button>
             <button
               onClick={() => setShowSaveModal(true)}
               className="btn-secondary py-1.5 px-2.5 text-xs"
