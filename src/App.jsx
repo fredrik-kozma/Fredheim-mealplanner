@@ -9,6 +9,7 @@ import SettingsPage from './pages/SettingsPage'
 import PacksPage from './pages/PacksPage'
 import RecipeForm from './components/recipes/RecipeForm'
 import RecipeDetail from './components/recipes/RecipeDetail'
+import ResetPasswordPage from './pages/ResetPasswordPage'
 import useStore from './store/useStore'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { SubscriptionProvider } from './contexts/SubscriptionContext'
@@ -133,13 +134,20 @@ function AppShell() {
 export default function App() {
   return (
     <AuthProvider>
-      <SubscriptionProvider>
-        <HydrationGate>
-          <SubscriptionGate>
-            <AppShell />
-          </SubscriptionGate>
-        </HydrationGate>
-      </SubscriptionProvider>
+      <Routes>
+        {/* Password reset lives OUTSIDE the SubscriptionGate so users with
+            past-due / expired subscriptions can still recover their account. */}
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/*" element={
+          <SubscriptionProvider>
+            <HydrationGate>
+              <SubscriptionGate>
+                <AppShell />
+              </SubscriptionGate>
+            </HydrationGate>
+          </SubscriptionProvider>
+        } />
+      </Routes>
     </AuthProvider>
   )
 }

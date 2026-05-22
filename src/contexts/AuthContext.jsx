@@ -42,8 +42,26 @@ export function AuthProvider({ children }) {
     if (error) throw error
   }
 
+  // Sends a password-reset email. Supabase opens our /reset-password page
+  // after the user clicks the link in the email — that page then calls
+  // updatePassword() below.
+  async function resetPassword(email) {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    })
+    if (error) throw error
+  }
+
+  // Called from the /reset-password page once the recovery session is active.
+  async function updatePassword(newPassword) {
+    const { error } = await supabase.auth.updateUser({ password: newPassword })
+    if (error) throw error
+  }
+
   return (
-    <AuthContext.Provider value={{ user, authLoading, signUp, signIn, signOut }}>
+    <AuthContext.Provider value={{
+      user, authLoading, signUp, signIn, signOut, resetPassword, updatePassword
+    }}>
       {children}
     </AuthContext.Provider>
   )

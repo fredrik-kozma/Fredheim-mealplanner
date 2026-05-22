@@ -4,9 +4,10 @@ import { useAuth } from '../../contexts/AuthContext'
 
 export default function AuthModal({ onClose, initialTab = 'signin' }) {
   const { t } = useTranslation()
-  const { signIn, signUp } = useAuth()
+  const { signIn, signUp, resetPassword } = useAuth()
 
-  const [tab, setTab] = useState(initialTab) // 'signin' | 'signup'
+  // 'signin' | 'signup' | 'forgot'
+  const [tab, setTab] = useState(initialTab)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -23,6 +24,11 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
       if (tab === 'signup') {
         await signUp(email.trim(), password)
         setSuccess(t('auth.signUpSuccess'))
+      } else if (tab === 'forgot') {
+        await resetPassword(email.trim())
+        setSuccess(t('auth.resetEmailSent', {
+          defaultValue: 'Check your inbox — we sent you a link to reset your password.',
+        }))
       } else {
         await signIn(email.trim(), password)
         onClose()
@@ -32,6 +38,12 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
     } finally {
       setLoading(false)
     }
+  }
+
+  function switchTab(next) {
+    setTab(next)
+    setError(null)
+    setSuccess(null)
   }
 
   return (
@@ -60,33 +72,37 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
           <p className="text-xs text-slate-500 mt-0.5">
             {tab === 'signup'
               ? t('auth.trialTagline')
+              : tab === 'forgot'
+              ? t('auth.forgotPasswordTagline', { defaultValue: 'Reset your password' })
               : t('auth.welcomeBack')}
           </p>
         </div>
 
-        {/* Tabs */}
-        <div className="flex mx-6 mt-4 bg-slate-100 rounded-xl p-1 gap-1">
-          <button
-            onClick={() => { setTab('signin'); setError(null); setSuccess(null) }}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-              tab === 'signin'
-                ? 'bg-white text-slate-900 shadow-sm'
-                : 'text-slate-500 hover:text-slate-700'
-            }`}
-          >
-            {t('auth.signIn')}
-          </button>
-          <button
-            onClick={() => { setTab('signup'); setError(null); setSuccess(null) }}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-              tab === 'signup'
-                ? 'bg-white text-slate-900 shadow-sm'
-                : 'text-slate-500 hover:text-slate-700'
-            }`}
-          >
-            {t('auth.signUp')}
-          </button>
-        </div>
+        {/* Tabs (hidden on the forgot-password view) */}
+        {tab !== 'forgot' && (
+          <div className="flex mx-6 mt-4 bg-slate-100 rounded-xl p-1 gap-1">
+            <button
+              onClick={() => switchTab('signin')}
+              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+                tab === 'signin'
+                  ? 'bg-white text-slate-900 shadow-sm'
+                  : 'text-slate-500 hover:text-slate-700'
+              }`}
+            >
+              {t('auth.signIn')}
+            </button>
+            <button
+              onClick={() => switchTab('signup')}
+              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+                tab === 'signup'
+                  ? 'bg-white text-slate-900 shadow-sm'
+                  : 'text-slate-500 hover:text-slate-700'
+              }`}
+            >
+              {t('auth.signUp')}
+            </button>
+          </div>
+        )}
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="px-6 py-5 space-y-3">
@@ -105,26 +121,48 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
             />
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-slate-700 mb-1">
-              {t('auth.password')}
-            </label>
-            <input
-              type="password"
-              required
-              autoComplete={tab === 'signup' ? 'new-password' : 'current-password'}
-              minLength={6}
-              className="input w-full"
-              placeholder={t('auth.passwordPlaceholder')}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {tab === 'signup' && (
-              <p className="text-[10px] text-slate-400 mt-1">
-                {t('auth.passwordHint')}
-              </p>
-            )}
-          </div>
+          {/* Password field — hidden on the forgot-password view */}
+          {tab !== 'forgot' && (
+            <div>
+              <div className="flex items-center justify-between mb-1">
+                <label className="block text-xs font-medium text-slate-700">
+                  {t('auth.password')}
+                </label>
+                {tab === 'signin' && (
+                  <button
+                    type="button"
+                    onClick={() => switchTab('forgot')}
+                    className="text-[11px] font-medium text-indigo-600 hover:text-indigo-700"
+                  >
+                    {t('auth.forgotPassword', { defaultValue: 'Forgot password?' })}
+                  </button>
+                )}
+              </div>
+              <input
+                type="password"
+                required
+                autoComplete={tab === 'signup' ? 'new-password' : 'current-password'}
+                minLength={6}
+                className="input w-full"
+                placeholder={t('auth.passwordPlaceholder')}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {tab === 'signup' && (
+                <p className="text-[10px] text-slate-400 mt-1">
+                  {t('auth.passwordHint')}
+                </p>
+              )}
+            </div>
+          )}
+
+          {tab === 'forgot' && (
+            <p className="text-xs text-slate-500 leading-relaxed">
+              {t('auth.forgotPasswordHint', {
+                defaultValue: 'Enter the email you signed up with and we\'ll send you a link to choose a new password.',
+              })}
+            </p>
+          )}
 
           {error && (
             <p className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2">
@@ -146,6 +184,8 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
               ? '…'
               : tab === 'signup'
               ? t('auth.startTrial')
+              : tab === 'forgot'
+              ? t('auth.sendResetLink', { defaultValue: 'Send reset link' })
               : t('auth.signIn')}
           </button>
 
@@ -153,6 +193,16 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
             <p className="text-[10px] text-slate-400 text-center leading-relaxed">
               {t('auth.trialNote')}
             </p>
+          )}
+
+          {tab === 'forgot' && (
+            <button
+              type="button"
+              onClick={() => switchTab('signin')}
+              className="w-full text-xs text-slate-500 hover:text-slate-700 mt-1"
+            >
+              ← {t('auth.backToSignIn', { defaultValue: 'Back to sign in' })}
+            </button>
           )}
         </form>
 
