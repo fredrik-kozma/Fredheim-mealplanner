@@ -342,6 +342,21 @@
     "genericError": "Noe gikk galt. Prøv igjen.",
     "account": "Konto"
   },
+  "preview": {
+    "bannerText": "Prøv Fredheim gratis i 14 dager",
+    "startTrial": "Start gratis prøveperiode",
+    "locked": "Låst",
+    "freePreview": "Gratis forhåndsvisning",
+    "lockedRecipeHint": "Start gratis prøveperiode for å låse opp denne oppskriften",
+    "fourteenDayTrial": "14 dagers gratis prøveperiode",
+    "alreadyHaveAccount": "Har du allerede en konto? Logg inn",
+    "recipeLockedTitle": "Lås opp denne oppskriften",
+    "recipeLockedDesc": "Start din 14-dagers gratis prøveperiode for å se ingredienser, fremgangsmåte og 170+ flere oppskrifter.",
+    "plannerLockedTitle": "Planlegg uken din",
+    "plannerLockedDesc": "Dra oppskrifter inn i ukekalenderen. Start gratis prøveperiode for å låse opp planleggeren.",
+    "shoppingLockedTitle": "Få handlelisten din",
+    "shoppingLockedDesc": "Ukeplanen din blir automatisk en handleliste. Start gratis prøveperiode for å låse opp."
+  },
   "subscription": {
     "title": "Konto og abonnement",
     "notSignedIn": "Registrer deg for 14 dagers gratis prøveperiode, deretter 120 kr / måned.",

@@ -2,6 +2,7 @@ import { useDraggable } from '@dnd-kit/core'
 import { CSS } from '@dnd-kit/utilities'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useAccess } from '../../hooks/useAccess'
 
 const CATEGORY_COLORS = {
   Breakfast: 'bg-amber-100 text-amber-700',
@@ -41,18 +42,27 @@ function TimeChip({ minutes, label }) {
 export default function RecipeCard({ recipe, compact = false }) {
   const navigate = useNavigate()
   const { t, i18n } = useTranslation()
+  const { isLocked, isPreviewRecipe } = useAccess()
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
     id: `recipe-${recipe.id}`,
     data: { type: 'recipe', recipeId: recipe.id },
+    // Disable drag-to-planner for locked, non-preview recipes — they can't
+    // use the planner anyway, but the visual would be misleading.
+    disabled: isLocked && !isPreviewRecipe(recipe.id),
   })
 
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const displayTitle = recipe.translations?.[currentLang]?.title || recipe.title
 
+  // Lock state per-card: locked overall, AND this recipe is not in the
+  // free preview list.
+  const isFreePreview = isPreviewRecipe(recipe.id)
+  const showLock = isLocked && !isFreePreview
+
   const style = {
     transform: CSS.Translate.toString(transform),
     opacity: isDragging ? 0.4 : 1,
-    cursor: isDragging ? 'grabbing' : 'grab',
+    cursor: isDragging ? 'grabbing' : (showLock ? 'pointer' : 'grab'),
   }
 
   return (
@@ -65,15 +75,35 @@ export default function RecipeCard({ recipe, compact = false }) {
         isDragging ? 'shadow-xl ring-2 ring-indigo-400' : ''
       } ${compact ? 'p-3' : 'p-4'}`}
       onClick={() => navigate(`/recipes/${recipe.id}`)}
+      title={showLock ? t('preview.lockedRecipeHint') : undefined}
     >
       {recipe.imageUrl && (
         <div className="relative -mx-4 -mt-4 mb-3 h-36 overflow-hidden">
           <img
             src={recipe.imageUrl}
             alt={displayTitle}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className={`w-full h-full object-cover transition-transform duration-300 ${
+              showLock ? 'filter blur-md scale-110' : 'group-hover:scale-105'
+            }`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+
+          {/* 🔒 Lock badge — locked recipes for non-subscribers */}
+          {showLock && (
+            <div className="absolute top-2 left-2 flex items-center gap-1 bg-white/90 backdrop-blur-sm text-slate-700 text-[10px] font-semibold px-2 py-1 rounded-full shadow-sm">
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+              </svg>
+              {t('preview.locked')}
+            </div>
+          )}
+
+          {/* ✨ Free preview badge — the 2 teaser recipes */}
+          {isLocked && isFreePreview && (
+            <div className="absolute top-2 left-2 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-sm">
+              ✨ {t('preview.freePreview')}
+            </div>
+          )}
         </div>
       )}
 

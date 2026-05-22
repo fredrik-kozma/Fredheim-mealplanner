@@ -5,6 +5,8 @@ import useStore from '../../store/useStore'
 import { formatQuantity } from '../../utils/shoppingListGenerator'
 import { convertToSystem, displayUnit, normalizeUnit, CANONICAL_UNITS } from '../../utils/unitNormalizer'
 import { printRecipe } from '../../utils/printRecipe'
+import { useAccess } from '../../hooks/useAccess'
+import LockedOverlay from '../subscription/LockedOverlay'
 
 export default function RecipeDetail() {
   const { id } = useParams()
@@ -13,6 +15,11 @@ export default function RecipeDetail() {
   const recipe = useStore(s => s.recipes.find(r => r.id === id))
   const deleteRecipe = useStore(s => s.deleteRecipe)
   const setLastOpenedRecipeId = useStore(s => s.setLastOpenedRecipeId)
+
+  // Paywall: locked users can't see the full recipe unless it's a
+  // designated free-preview recipe.
+  const { isLocked, isPreviewRecipe } = useAccess()
+  const showPaywall = isLocked && !isPreviewRecipe(id)
 
   // Remember this recipe so the nav can return to it
   useEffect(() => {
@@ -184,8 +191,20 @@ export default function RecipeDetail() {
 
       {/* Hero image */}
       {recipe.imageUrl && (
-        <div className="mx-4 mt-3 rounded-2xl overflow-hidden h-52">
-          <img src={recipe.imageUrl} alt={displayTitle} className="w-full h-full object-cover" />
+        <div className="mx-4 mt-3 rounded-2xl overflow-hidden h-52 relative">
+          <img
+            src={recipe.imageUrl}
+            alt={displayTitle}
+            className={`w-full h-full object-cover ${showPaywall ? 'filter blur-md scale-110' : ''}`}
+          />
+          {showPaywall && (
+            <div className="absolute top-3 left-3 flex items-center gap-1 bg-white/90 backdrop-blur-sm text-slate-700 text-xs font-semibold px-2.5 py-1.5 rounded-full shadow-sm">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+              </svg>
+              {t('preview.locked')}
+            </div>
+          )}
         </div>
       )}
 
@@ -298,6 +317,16 @@ export default function RecipeDetail() {
           </div>
         )}
 
+        {/* Paywall wrapper around ingredients + steps ---------------------- */}
+        <div className={showPaywall ? 'relative min-h-[400px]' : ''}>
+          {showPaywall && (
+            <LockedOverlay
+              icon="🔒"
+              title={t('preview.recipeLockedTitle')}
+              description={t('preview.recipeLockedDesc')}
+            />
+          )}
+
         {/* Ingredients */}
         {displayIngredients?.length > 0 && (
           <section className="mb-6">
@@ -353,6 +382,8 @@ export default function RecipeDetail() {
             </ol>
           </section>
         )}
+        </div>
+        {/* end paywall wrapper */}
 
       </div>
     </div>

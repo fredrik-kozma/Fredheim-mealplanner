@@ -342,6 +342,21 @@
     "genericError": "Something went wrong. Please try again.",
     "account": "Account"
   },
+  "preview": {
+    "bannerText": "Try Fredheim free for 14 days",
+    "startTrial": "Start free trial",
+    "locked": "Locked",
+    "freePreview": "Free preview",
+    "lockedRecipeHint": "Start your free trial to unlock this recipe",
+    "fourteenDayTrial": "14-day free trial",
+    "alreadyHaveAccount": "Already have an account? Sign in",
+    "recipeLockedTitle": "Unlock this recipe",
+    "recipeLockedDesc": "Start your 14-day free trial to see ingredients, steps, and 170+ more recipes.",
+    "plannerLockedTitle": "Plan your week",
+    "plannerLockedDesc": "Drag recipes onto a weekly calendar. Start your free trial to unlock the planner.",
+    "shoppingLockedTitle": "Get your shopping list",
+    "shoppingLockedDesc": "Your weekly plan automatically becomes a shopping list. Start your free trial to unlock."
+  },
   "subscription": {
     "title": "Account & Subscription",
     "notSignedIn": "Sign up for a 14-day free trial, then 120 NOK / month.",

@@ -13,6 +13,8 @@ import useStore from './store/useStore'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { useSubscription } from './hooks/useSubscription'
 import UpgradeWall from './components/subscription/UpgradeWall'
+import PreviewBanner from './components/subscription/PreviewBanner'
+import AutoInstallDefaultPack from './components/AutoInstallDefaultPack'
 
 // Blocks rendering until the Zustand store has fully hydrated from IndexedDB.
 // Without this guard, useEffect hooks in child components fire before hydration
@@ -33,16 +35,15 @@ function HydrationGate({ children }) {
   return children
 }
 
-// Shows the UpgradeWall when a signed-in user's subscription is no longer
-// active.  Anonymous visitors see the app normally (with a sign-up nudge in
-// the header) — we only gate access for people who have an account but whose
-// trial / subscription has lapsed.
+// Anonymous visitors and trial / active users see the full app (with a soft
+// paywall — locked recipes, planner, shopping). Only users who are signed in
+// AND whose trial / subscription is EXPIRED hit the hard UpgradeWall.
 //
 // A 3-second timeout ensures the app is never stuck blank if Supabase is
 // slow or the device is offline — in that case we fall through to guest mode.
 function SubscriptionGate({ children }) {
   const { user, authLoading } = useAuth()
-  const { isActive, loading: subLoading } = useSubscription()
+  const { isActive, status, loading: subLoading } = useSubscription()
   const [timedOut, setTimedOut] = useState(false)
 
   useEffect(() => {
@@ -57,8 +58,11 @@ function SubscriptionGate({ children }) {
   // offline / slow-network users are not stuck on a blank screen.
   if (stillLoading && !timedOut) return null
 
-  // Signed-in user with an expired / lapsed subscription.
-  if (!stillLoading && user && !isActive) {
+  // Hard wall only for genuinely lapsed accounts (past_due, canceled, expired).
+  // Anyone else — anonymous, trialing, active — sees the app with the soft
+  // paywall (blurred recipes etc.).
+  const hardWallStatuses = ['past_due', 'canceled', 'expired']
+  if (!stillLoading && user && !isActive && hardWallStatuses.includes(status)) {
     return <UpgradeWall />
   }
 
@@ -97,10 +101,16 @@ function AppShell() {
 
   return (
     <div className="flex flex-col lg:flex-row min-h-dvh">
+      {/* One-time install of the built-in pack so first-time visitors have
+          recipes to browse immediately. */}
+      <AutoInstallDefaultPack />
+
       <Navigation />
 
       {/* Main content area */}
       <main className="flex-1 flex flex-col lg:ml-60 min-h-dvh">
+        {/* Sticky CTA banner for anonymous visitors (auto-hidden if signed in) */}
+        <PreviewBanner />
         <Header />
         <div className="flex-1 flex flex-col overflow-hidden">
           <Routes>
