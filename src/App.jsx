@@ -11,6 +11,7 @@ import RecipeForm from './components/recipes/RecipeForm'
 import RecipeDetail from './components/recipes/RecipeDetail'
 import useStore from './store/useStore'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
+import { SubscriptionProvider } from './contexts/SubscriptionContext'
 import { useSubscription } from './hooks/useSubscription'
 import UpgradeWall from './components/subscription/UpgradeWall'
 import PreviewBanner from './components/subscription/PreviewBanner'
@@ -132,11 +133,13 @@ function AppShell() {
 export default function App() {
   return (
     <AuthProvider>
-      <HydrationGate>
-        <SubscriptionGate>
-          <AppShell />
-        </SubscriptionGate>
-      </HydrationGate>
+      <SubscriptionProvider>
+        <HydrationGate>
+          <SubscriptionGate>
+            <AppShell />
+          </SubscriptionGate>
+        </HydrationGate>
+      </SubscriptionProvider>
     </AuthProvider>
   )
 }
