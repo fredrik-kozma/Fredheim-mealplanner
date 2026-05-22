@@ -83,7 +83,7 @@ export default function RecipeCard({ recipe, compact = false }) {
             src={recipe.imageUrl}
             alt={displayTitle}
             className={`w-full h-full object-cover transition-transform duration-300 ${
-              showLock ? 'filter blur-md scale-110' : 'group-hover:scale-105'
+              showLock ? 'filter blur-[1.5px] scale-[1.03]' : 'group-hover:scale-105'
             }`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

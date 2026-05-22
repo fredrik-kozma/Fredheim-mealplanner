@@ -189,22 +189,11 @@ export default function RecipeDetail() {
         </button>
       </div>
 
-      {/* Hero image */}
+      {/* Hero image — never blurred; the food picture is the strongest hook
+          to draw visitors into starting their trial. */}
       {recipe.imageUrl && (
         <div className="mx-4 mt-3 rounded-2xl overflow-hidden h-52 relative">
-          <img
-            src={recipe.imageUrl}
-            alt={displayTitle}
-            className={`w-full h-full object-cover ${showPaywall ? 'filter blur-md scale-110' : ''}`}
-          />
-          {showPaywall && (
-            <div className="absolute top-3 left-3 flex items-center gap-1 bg-white/90 backdrop-blur-sm text-slate-700 text-xs font-semibold px-2.5 py-1.5 rounded-full shadow-sm">
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-              </svg>
-              {t('preview.locked')}
-            </div>
-          )}
+          <img src={recipe.imageUrl} alt={displayTitle} className="w-full h-full object-cover" />
         </div>
       )}
 
