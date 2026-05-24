@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useMemo } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import RecipeCard from './RecipeCard'
@@ -10,10 +10,29 @@ export default function RecipeList() {
   const recipeCategories = useStore(s => s.recipeCategories)
   const installedPacks = useStore(s => s.installedPacks)
   const navigate = useNavigate()
-  const [activeCategory, setActiveCategory] = useState('All')
-  const [activePack, setActivePack] = useState('All')
-  const [search, setSearch] = useState('')
-  const [sortBy, setSortBy] = useState('newest')
+
+  // Filter / sort state lives in the URL search params instead of local
+  // useState. This means: (1) the user can browser-back from a recipe and
+  // their filters are restored automatically, (2) state survives a page
+  // reload, and (3) the URL is shareable / bookmarkable.
+  const [searchParams, setSearchParams] = useSearchParams()
+  const activeCategory = searchParams.get('cat') || 'All'
+  const activePack = searchParams.get('pack') || 'All'
+  const search = searchParams.get('q') || ''
+  const sortBy = searchParams.get('sort') || 'newest'
+
+  // Helper: write a single param to the URL. Removing a param when it
+  // matches the default keeps the URL clean.
+  function setParam(key, value, defaultValue) {
+    const next = new URLSearchParams(searchParams)
+    if (!value || value === defaultValue) next.delete(key)
+    else next.set(key, value)
+    setSearchParams(next, { replace: true })
+  }
+  const setActiveCategory = (v) => setParam('cat', v, 'All')
+  const setActivePack = (v) => setParam('pack', v, 'All')
+  const setSearch = (v) => setParam('q', v, '')
+  const setSortBy = (v) => setParam('sort', v, 'newest')
 
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const titleOf = (r) => r.translations?.[currentLang]?.title || r.title
