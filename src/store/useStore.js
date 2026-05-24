@@ -873,6 +873,25 @@ const useStore = create(
       //          user manually replays it from Settings.
       hasSeenTutorial: false,
       setHasSeenTutorial: (value) => set(() => ({ hasSeenTutorial: !!value })),
+
+      // ── Recipes list filter / search state ──
+      // Persisted so that whenever the user comes back to the Recipes page
+      // — from Settings, the Planner, the Shopping list, a recipe detail,
+      // anywhere — the filters they applied are still there. This also
+      // means the recipe Back button can safely navigate to "/" without
+      // losing context.
+      recipesView: {
+        category: 'All',
+        pack: 'All',
+        search: '',
+        sortBy: 'newest',
+      },
+      setRecipesView: (partial) => set((s) => ({
+        recipesView: { ...s.recipesView, ...partial },
+      })),
+      resetRecipesView: () => set(() => ({
+        recipesView: { category: 'All', pack: 'All', search: '', sortBy: 'newest' },
+      })),
     }),
     {
       name: 'menu-planner-store',

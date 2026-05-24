@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import RecipeCard from './RecipeCard'
@@ -11,28 +11,32 @@ export default function RecipeList() {
   const installedPacks = useStore(s => s.installedPacks)
   const navigate = useNavigate()
 
-  // Filter / sort state lives in the URL search params instead of local
-  // useState. This means: (1) the user can browser-back from a recipe and
-  // their filters are restored automatically, (2) state survives a page
-  // reload, and (3) the URL is shareable / bookmarkable.
-  const [searchParams, setSearchParams] = useSearchParams()
-  const activeCategory = searchParams.get('cat') || 'All'
-  const activePack = searchParams.get('pack') || 'All'
-  const search = searchParams.get('q') || ''
-  const sortBy = searchParams.get('sort') || 'newest'
+  // Filter / sort state lives in the Zustand store (persisted to
+  // IndexedDB). This means: navigating to Settings / Packs / Planner /
+  // Shopping / a recipe and back to the Recipes page keeps every filter
+  // intact. Closing the browser and reopening it tomorrow also keeps
+  // them — the user always lands where they left off.
+  const view = useStore(s => s.recipesView)
+  const setRecipesView = useStore(s => s.setRecipesView)
+  const resetRecipesView = useStore(s => s.resetRecipesView)
 
-  // Helper: write a single param to the URL. Removing a param when it
-  // matches the default keeps the URL clean.
-  function setParam(key, value, defaultValue) {
-    const next = new URLSearchParams(searchParams)
-    if (!value || value === defaultValue) next.delete(key)
-    else next.set(key, value)
-    setSearchParams(next, { replace: true })
-  }
-  const setActiveCategory = (v) => setParam('cat', v, 'All')
-  const setActivePack = (v) => setParam('pack', v, 'All')
-  const setSearch = (v) => setParam('q', v, '')
-  const setSortBy = (v) => setParam('sort', v, 'newest')
+  const activeCategory = view.category
+  const activePack = view.pack
+  const search = view.search
+  const sortBy = view.sortBy
+
+  const setActiveCategory = (v) => setRecipesView({ category: v })
+  const setActivePack = (v) => setRecipesView({ pack: v })
+  const setSearch = (v) => setRecipesView({ search: v })
+  const setSortBy = (v) => setRecipesView({ sortBy: v })
+
+  // True if anything is filtered away from the default state — used to
+  // decide whether to show the "Clear filters" pill.
+  const hasActiveFilters =
+    activeCategory !== 'All' ||
+    activePack !== 'All' ||
+    search !== '' ||
+    sortBy !== 'newest'
 
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const titleOf = (r) => r.translations?.[currentLang]?.title || r.title
@@ -50,7 +54,6 @@ export default function RecipeList() {
     for (const [packId, info] of Object.entries(installedPacks || {})) {
       if (!counts[packId]) continue
       const pack = info
-      // Resolve a localized name from translations when available
       const localized = pack?.translations?.[currentLang]?.name
       opts.push({
         id: packId,
@@ -113,6 +116,19 @@ export default function RecipeList() {
             <option value="name">{t('recipes.sort.nameAZ')}</option>
           </select>
         </div>
+
+        {/* Clear-filters pill — only appears when something is filtered. */}
+        {hasActiveFilters && (
+          <button
+            onClick={resetRecipesView}
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 transition-colors px-3 py-1 rounded-full"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+            {t('recipes.clearFilters', { defaultValue: 'Clear filters' })}
+          </button>
+        )}
 
         {/* Pack filter — only shown when more than one bucket exists */}
         {packOptions.length > 1 && (

@@ -16,6 +16,7 @@
     "exportAsPack": "Export as Pack",
     "allPacks": "All packs",
     "myRecipes": "My recipes",
+    "clearFilters": "Clear filters",
     "searchPlaceholder": "Search recipes…",
     "sort": {
       "newest": "Newest",

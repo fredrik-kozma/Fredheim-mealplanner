@@ -180,15 +180,14 @@ export default function RecipeDetail() {
 
   return (
     <div className="max-w-2xl mx-auto pb-24 lg:pb-8">
-      {/* Back button — uses browser history so filter/sort state from the
-          recipe list (encoded in the URL) is restored on the way back.
-          Falls back to / for deep-link entries with no prior history. */}
+      {/* Back button — always returns to the Recipes list, regardless of
+          how the user navigated here (browser back could go anywhere in
+          their history). The Recipes page reads its filter / sort state
+          from the persisted store, so the user lands exactly where they
+          left off. */}
       <div className="px-4 pt-4">
         <button
-          onClick={() => {
-            if (window.history.length > 1) navigate(-1)
-            else navigate('/')
-          }}
+          onClick={() => navigate('/')}
           className="btn-ghost px-2 -ml-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
