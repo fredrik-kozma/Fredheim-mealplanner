@@ -866,13 +866,20 @@ const useStore = create(
         const s = get()
         return s.installedPacks[packId]?.version ?? null
       },
+
+      // ── Onboarding tutorial ──
+      // false  → tutorial will auto-open on next AppShell mount.
+      // true   → already seen / dismissed; stays out of the way until the
+      //          user manually replays it from Settings.
+      hasSeenTutorial: false,
+      setHasSeenTutorial: (value) => set(() => ({ hasSeenTutorial: !!value })),
     }),
     {
       name: 'menu-planner-store',
       // IndexedDB-backed (via idb-keyval) instead of the default
       // localStorage. Gives us ~50% of free disk (GBs) instead of ~5 MB.
       storage: createJSONStorage(() => idbStorage),
-      version: 6,
+      version: 7,
       migrate: (persistedState, version) => {
         if (version < 2) {
           if (persistedState.recipes) {
@@ -935,6 +942,15 @@ const useStore = create(
               }
             }
             persistedState.weekPlan = newPlan
+          }
+        }
+        // v7: existing users have already discovered the app — silently
+        // mark the tutorial as seen so they aren't ambushed by an
+        // onboarding pop-up on their next visit. Brand-new accounts start
+        // with the default false and will see the tutorial automatically.
+        if (version < 7) {
+          if (typeof persistedState.hasSeenTutorial !== 'boolean') {
+            persistedState.hasSeenTutorial = true
           }
         }
         // v6: backfill sourcePackId on recipes installed from packs before

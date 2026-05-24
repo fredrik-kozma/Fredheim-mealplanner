@@ -257,7 +257,10 @@
     "addCustomUnit": "Legg til",
     "support": "Hjelp og støtte",
     "supportDesc": "Har du et spørsmål eller støter på et problem? Vi hjelper deg gjerne.",
-    "contactSupport": "Kontakt kundestøtte"
+    "contactSupport": "Kontakt kundestøtte",
+    "tutorial": "App-omvisning",
+    "tutorialDesc": "Ta en rask omvisning og se hvordan du planlegger måltider, lager handlelister og får mest mulig ut av appen.",
+    "showTutorial": "Vis omvisning"
   },
   "units": {
     "none": "— ingen —",
@@ -411,6 +414,44 @@
     "feature1": "Ubegrenset antall oppskrifter og menyplanlegging",
     "feature2": "Oppskriftspakker — nye samlinger hver sesong",
     "feature3": "Handleliste med automatiske mengder"
+  },
+  "tutorial": {
+    "skip": "Hopp over",
+    "back": "Tilbake",
+    "next": "Neste",
+    "done": "Sett i gang",
+    "s1": {
+      "title": "Velkommen til Fredheim Menyplanlegger",
+      "body": "Planlegg sunne ukesmenyer, lag handlelister på sekunder og oppdag oppskrifter som hjelper deg å føle deg best mulig — alt på ett sted."
+    },
+    "s2": {
+      "title": "Bla gjennom hundrevis av oppskrifter",
+      "body": "Start med vår innebygde Fredheim-samling eller installer spesialpakker som Reverseringsprotokollen — plantebaserte oppskrifter som kan reversere hjertesykdom.",
+      "tip": "Finn pakker under Pakker i menyen og trykk Installer."
+    },
+    "s3": {
+      "title": "Lag ukesmenyen på minutter",
+      "body": "Åpne Ukeplan, trykk på et måltid og velg en oppskrift. Dra for å flytte, kopier mellom dager, eller lagre hele uken som en mal til senere.",
+      "tip": "Filtrer oppskrifter etter pakke når du velger — perfekt om du følger ett bestemt kosthold."
+    },
+    "s4": {
+      "title": "Automatisk handleliste",
+      "body": "Når uken er planlagt, samler Handleliste-fanen alle ingredienser, gruppert etter butikkavdeling og skalert til familiestørrelsen din.",
+      "tip": "Skriv den ut til butikken eller lagre den til senere."
+    },
+    "s5": {
+      "title": "Tilpass til din familie",
+      "body": "Under Innstillinger setter du familiestørrelse, bytter mellom metrisk og amerikansk enhet, og velger språk. Alle oppskrifter skaleres automatisk."
+    },
+    "s6": {
+      "title": "Se hele næringsinnholdet",
+      "body": "Oppskrifter i næringsrike pakker viser makronæringsstoffer, vitaminer og mineraler — bytt mellom Per porsjon, Per 100 g eller hele oppskriften når som helst.",
+      "tip": "Perfekt for å følge med på hjertehelse, diabetes eller daglige næringsmål."
+    },
+    "s7": {
+      "title": "Du er klar!",
+      "body": "Trykk Sett i gang for å begynne. Du kan spille av denne omvisningen når som helst under Innstillinger → App-omvisning."
+    }
   },
   "nutrition": {
     "title": "Næringsinnhold",

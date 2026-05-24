@@ -591,6 +591,22 @@ export default function SettingsPage() {
           </div>
         )}
 
+        {/* Tutorial */}
+        <SectionCard title={t('settings.tutorial', { defaultValue: 'App tutorial' })}>
+          <p className="text-sm text-slate-500 mb-3">
+            {t('settings.tutorialDesc', { defaultValue: 'Take a quick tour to see how to plan meals, build shopping lists, and get the most out of the app.' })}
+          </p>
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('open-tutorial'))}
+            className="btn-secondary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+            </svg>
+            {t('settings.showTutorial', { defaultValue: 'Show tutorial' })}
+          </button>
+        </SectionCard>
+
         {/* Help & Support */}
         <SectionCard title={t('settings.support', { defaultValue: 'Help & Support' })}>
           <p className="text-sm text-slate-500 mb-3">

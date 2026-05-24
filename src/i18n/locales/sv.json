@@ -257,7 +257,10 @@
     "addCustomUnit": "Lägg till",
     "support": "Hjälp och support",
     "supportDesc": "Har du en fråga eller stöter du på ett problem? Vi hjälper dig gärna.",
-    "contactSupport": "Kontakta support"
+    "contactSupport": "Kontakta support",
+    "tutorial": "App-rundtur",
+    "tutorialDesc": "Ta en snabb rundtur och se hur du planerar måltider, bygger inköpslistor och får ut mest av appen.",
+    "showTutorial": "Visa rundtur"
   },
   "units": {
     "none": "— ingen —",
@@ -411,6 +414,44 @@
     "feature1": "Obegränsat antal recept och menyplanering",
     "feature2": "Receptpaket — nya samlingar varje säsong",
     "feature3": "Inköpslista med automatiska mängder"
+  },
+  "tutorial": {
+    "skip": "Hoppa över",
+    "back": "Tillbaka",
+    "next": "Nästa",
+    "done": "Kör igång",
+    "s1": {
+      "title": "Välkommen till Fredheim Måltidsplanerare",
+      "body": "Planera hälsosamma veckomenyer, generera inköpslistor på sekunder och upptäck recept som hjälper dig må som bäst — allt på ett ställe."
+    },
+    "s2": {
+      "title": "Bläddra bland hundratals recept",
+      "body": "Börja med vår inbyggda Fredheim-samling eller installera specialpaket som Reverseringsprotokollet — växtbaserade recept som kan reversera hjärtsjukdom.",
+      "tip": "Hitta paket under Paket i menyn och tryck Installera."
+    },
+    "s3": {
+      "title": "Bygg din vecka på minuter",
+      "body": "Öppna Planering, tryck på en måltid och välj ett recept. Dra för att flytta, kopiera mellan dagar, eller spara hela veckan som en mall för senare.",
+      "tip": "Filtrera recept efter paket när du väljer — perfekt om du följer en specifik kost."
+    },
+    "s4": {
+      "title": "Automatisk inköpslista",
+      "body": "När veckan är planerad samlar Inköpslista-fliken alla ingredienser, grupperade efter butiksavdelning och skalade efter familjens storlek.",
+      "tip": "Skriv ut den till affären eller spara den för senare."
+    },
+    "s5": {
+      "title": "Anpassa till din familj",
+      "body": "Under Inställningar ställer du in familjens storlek, växlar mellan metriska och amerikanska enheter, och väljer språk. Alla recept skalas automatiskt."
+    },
+    "s6": {
+      "title": "Se hela näringsinnehållet",
+      "body": "Recept i näringsrika paket visar makronäringsämnen, vitaminer och mineraler — växla mellan Per portion, Per 100 g eller hela receptet när du vill.",
+      "tip": "Perfekt för att följa hjärthälsa, diabetes eller dagliga näringsmål."
+    },
+    "s7": {
+      "title": "Du är redo!",
+      "body": "Tryck på Kör igång för att börja utforska. Du kan spela upp denna rundtur när som helst under Inställningar → App-rundtur."
+    }
   },
   "nutrition": {
     "title": "Näringsinnehåll",

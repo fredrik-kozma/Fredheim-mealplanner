@@ -17,6 +17,7 @@ import { useSubscription } from './hooks/useSubscription'
 import UpgradeWall from './components/subscription/UpgradeWall'
 import PreviewBanner from './components/subscription/PreviewBanner'
 import AutoInstallDefaultPack from './components/AutoInstallDefaultPack'
+import TutorialModal from './components/onboarding/TutorialModal'
 
 // Blocks rendering until the Zustand store has fully hydrated from IndexedDB.
 // Without this guard, useEffect hooks in child components fire before hydration
@@ -101,6 +102,30 @@ function AppShell() {
     return () => clearTimeout(t)
   }, [location.search, user?.id]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Onboarding tutorial ──
+  // Auto-opens once for brand-new accounts (hasSeenTutorial=false from the
+  // default state). Existing users were migrated to true in store v7 so
+  // they don't get surprised. They can replay it any time from Settings,
+  // which dispatches the 'open-tutorial' event listened to below.
+  const hasSeenTutorial = useStore(s => s.hasSeenTutorial)
+  const setHasSeenTutorial = useStore(s => s.setHasSeenTutorial)
+  const [showTutorial, setShowTutorial] = useState(false)
+
+  useEffect(() => {
+    if (!hasSeenTutorial) setShowTutorial(true)
+  }, [hasSeenTutorial])
+
+  useEffect(() => {
+    function handleOpen() { setShowTutorial(true) }
+    window.addEventListener('open-tutorial', handleOpen)
+    return () => window.removeEventListener('open-tutorial', handleOpen)
+  }, [])
+
+  function closeTutorial() {
+    setShowTutorial(false)
+    setHasSeenTutorial(true)
+  }
+
   return (
     <div className="flex flex-col lg:flex-row min-h-dvh">
       {/* One-time install of the built-in pack so first-time visitors have
@@ -127,6 +152,8 @@ function AppShell() {
           </Routes>
         </div>
       </main>
+
+      {showTutorial && <TutorialModal onClose={closeTutorial} />}
     </div>
   )
 }

@@ -257,7 +257,10 @@
     "addCustomUnit": "Add",
     "support": "Help & Support",
     "supportDesc": "Have a question or running into an issue? We're happy to help.",
-    "contactSupport": "Contact support"
+    "contactSupport": "Contact support",
+    "tutorial": "App tutorial",
+    "tutorialDesc": "Take a quick tour to see how to plan meals, build shopping lists, and get the most out of the app.",
+    "showTutorial": "Show tutorial"
   },
   "units": {
     "none": "— none —",
@@ -411,6 +414,44 @@
     "feature1": "Unlimited recipes & meal planning",
     "feature2": "Recipe packs — new collections every season",
     "feature3": "Shopping list with automatic quantities"
+  },
+  "tutorial": {
+    "skip": "Skip",
+    "back": "Back",
+    "next": "Next",
+    "done": "Let's go",
+    "s1": {
+      "title": "Welcome to Fredheim Meal Planner",
+      "body": "Plan healthy weekly menus, generate shopping lists in seconds, and discover recipes designed to help you feel your best — all in one place."
+    },
+    "s2": {
+      "title": "Browse hundreds of recipes",
+      "body": "Start with our built-in Fredheim collection or install specialty packs like the Reversal Protocol — plant-based, heart-disease-reversing recipes.",
+      "tip": "Find packs under Packs in the menu and tap Install."
+    },
+    "s3": {
+      "title": "Build your week in minutes",
+      "body": "Open the Planner, tap any meal slot, and pick a recipe. Drag to rearrange, copy across days, or save the whole week as a template for later.",
+      "tip": "Filter recipes by pack when picking — perfect for sticking to one diet."
+    },
+    "s4": {
+      "title": "Automatic shopping list",
+      "body": "Once your week is planned, the Shopping tab assembles every ingredient, grouped by store aisle, scaled to your family size.",
+      "tip": "Print it for the store or save it to revisit later."
+    },
+    "s5": {
+      "title": "Tailor it to your family",
+      "body": "Under Settings, set your family size, switch between metric and US units, and choose your language. Every recipe scales automatically."
+    },
+    "s6": {
+      "title": "See the full nutrition",
+      "body": "Recipes in nutrition-rich packs show macros, vitamins, and minerals — switch between Per Serving, Per 100 g, or the full recipe at any time.",
+      "tip": "Great for tracking heart health, diabetes, or daily nutrient targets."
+    },
+    "s7": {
+      "title": "You're ready!",
+      "body": "Tap Let's go to start exploring. You can replay this tour any time from Settings → App tutorial."
+    }
   },
   "nutrition": {
     "title": "Nutrition",
