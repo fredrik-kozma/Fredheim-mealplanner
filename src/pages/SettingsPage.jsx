@@ -623,11 +623,38 @@ export default function SettingsPage() {
           </a>
         </SectionCard>
 
-        {/* About */}
-        <div className="card p-4 text-center">
-          <div className="text-3xl mb-2">🍽</div>
+        {/* About + cooperation acknowledgement */}
+        <div className="card p-5 text-center">
+          <img
+            src="/fredheim-logo.png"
+            alt="Fredheim"
+            className="w-14 h-14 mx-auto mb-2 rounded-full"
+          />
           <p className="text-sm font-semibold text-slate-700">{t('app.name')}</p>
           <p className="text-xs text-slate-400 mt-1">{t('app.version')}</p>
+
+          {/* "In cooperation with" — both logos side by side */}
+          <div className="mt-5 pt-4 border-t border-slate-100">
+            <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-3">
+              {t('about.inCooperationWith', { defaultValue: 'In cooperation with' })}
+            </p>
+            <div className="flex items-center justify-center gap-6">
+              <div className="flex flex-col items-center gap-1.5">
+                <img src="/fredheim-logo.png" alt="" className="w-10 h-10 rounded-full" />
+                <p className="text-[10px] font-medium text-slate-600 leading-tight">
+                  Fredheim<br />
+                  <span className="text-slate-400">Livsstilssenter</span>
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-1.5">
+                <img src="/Vivera_Health_logo.png" alt="" className="w-10 h-10 object-contain" />
+                <p className="text-[10px] font-medium text-slate-600 leading-tight">
+                  Vivera<br />
+                  <span className="text-slate-400">Health</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -6,8 +6,11 @@
     "packs": "Paket",
     "settings": "Inställningar"
   },
+  "about": {
+    "inCooperationWith": "I samarbete med"
+  },
   "app": {
-    "name": "Menyplanerare",
+    "name": "Fredheim Måltidsplanerare",
     "version": "Version 1.0 · All data lagras lokalt på din enhet"
   },
   "recipes": {

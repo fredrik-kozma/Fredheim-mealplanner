@@ -7,8 +7,11 @@
     "settings": "Settings"
   },
   "app": {
-    "name": "Menu Planner",
+    "name": "Fredheim Meal Planner",
     "version": "Version 1.0 · All data stored locally on your device"
+  },
+  "about": {
+    "inCooperationWith": "In cooperation with"
   },
   "recipes": {
     "title": "Recipes",

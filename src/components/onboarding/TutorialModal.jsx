@@ -101,6 +101,7 @@ export default function TutorialModal({ onClose }) {
       image: '/tutorial/07-ready.png',
       title: t('tutorial.s7.title'),
       body: t('tutorial.s7.body'),
+      showCooperation: true,
     },
   ]
 
@@ -202,6 +203,25 @@ export default function TutorialModal({ onClose }) {
             <div className="mt-6 inline-flex items-start gap-2 bg-emerald-50 text-emerald-800 text-sm px-4 py-2.5 rounded-xl max-w-sm">
               <span className="text-base flex-shrink-0">💡</span>
               <span className="text-left">{slide.tip}</span>
+            </div>
+          )}
+
+          {/* Cooperation acknowledgement — shown only on the closing slide */}
+          {slide.showCooperation && (
+            <div className="mt-8 pt-5 border-t border-slate-100 w-full max-w-sm">
+              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-3">
+                {t('about.inCooperationWith', { defaultValue: 'In cooperation with' })}
+              </p>
+              <div className="flex items-center justify-center gap-6">
+                <div className="flex flex-col items-center gap-1">
+                  <img src="/fredheim-logo.png" alt="" className="w-9 h-9 rounded-full" />
+                  <p className="text-[10px] font-medium text-slate-500 leading-tight">Fredheim<br/>Livsstilssenter</p>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                  <img src="/Vivera_Health_logo.png" alt="" className="w-9 h-9 object-contain" />
+                  <p className="text-[10px] font-medium text-slate-500 leading-tight">Vivera<br/>Health</p>
+                </div>
+              </div>
             </div>
           )}
         </div>

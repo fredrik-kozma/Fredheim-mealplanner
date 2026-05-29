@@ -262,6 +262,22 @@ export function printShoppingList(opts) {
     font-size: 9.5px;
     letter-spacing: 0.8px;
   }
+  .footer .coop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    font-size: 9px;
+    color: var(--ink-soft);
+    letter-spacing: 0.4px;
+  }
+  .footer .coop img {
+    height: 16px;
+    width: auto;
+    object-fit: contain;
+  }
+  .footer .coop .dot { color: var(--muted); padding: 0 2px; }
 
   .print-btn {
     position: fixed;
@@ -314,6 +330,13 @@ export function printShoppingList(opts) {
         </div>` : ''}
 
       <div class="footer">
+        <div class="coop">
+          <img src="/fredheim-logo.png" alt="" onerror="this.style.display='none'" />
+          <span>Fredheim Livsstilssenter</span>
+          <span class="dot">·</span>
+          <img src="/Vivera_Health_logo.png" alt="" onerror="this.style.display='none'" />
+          <span>Vivera Health</span>
+        </div>
         ${escapeHtml(L.printedOn)} ${escapeHtml(printedDate)} · fredheim.org
       </div>
     </div>
