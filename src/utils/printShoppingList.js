@@ -25,7 +25,7 @@ function escapeHtml(s) {
  * @param {string[]} [opts.recipeTitles]       Recipes this list was generated from
  * @param {object} opts.labels                 Localized UI strings:
  *   { forPeople, fromRecipes, printedOn, totalItems }
- * @param {string} [opts.logoUrl='/fredheim-logo.png']
+ * @param {string} [opts.logoUrl='/fredheim-logo.svg']
  */
 export function printShoppingList(opts) {
   const {
@@ -34,7 +34,7 @@ export function printShoppingList(opts) {
     familySize,
     recipeTitles = [],
     labels = {},
-    logoUrl = '/fredheim-logo.png',
+    logoUrl = '/fredheim-logo.svg',
   } = opts
 
   const L = {
@@ -331,7 +331,7 @@ export function printShoppingList(opts) {
 
       <div class="footer">
         <div class="coop">
-          <img src="/fredheim-logo.png" alt="" onerror="this.style.display='none'" />
+          <img src="/fredheim-logo.svg" alt="" onerror="this.style.display='none'" />
           <span>Fredheim Livsstilssenter</span>
           <span class="dot">·</span>
           <img src="/Vivera_Health_logo.png" alt="" onerror="this.style.display='none'" />

@@ -94,9 +94,11 @@ export default function Header() {
           onClick={() => navigate('/')}
           className="flex items-center gap-2.5 hover:opacity-75 transition-opacity flex-1 min-w-0"
         >
-          <div className="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white text-base flex-shrink-0">
-            🍽
-          </div>
+          <img
+            src="/fredheim-logo.svg"
+            alt=""
+            className="w-8 h-8 rounded-full flex-shrink-0 object-cover"
+          />
           <span className="font-semibold text-slate-800 text-base truncate">{title}</span>
         </button>
 

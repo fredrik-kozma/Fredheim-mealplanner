@@ -46,7 +46,7 @@ export function printRecipe(opts) {
     ingredients = [],
     steps = [],
     labels = {},
-    logoUrl = '/fredheim-logo.png',
+    logoUrl = '/fredheim-logo.svg',
   } = opts
 
   const L = {
@@ -341,7 +341,7 @@ export function printRecipe(opts) {
 
       <div class="footer">
         <div class="coop">
-          <img src="/fredheim-logo.png" alt="" onerror="this.style.display='none'" />
+          <img src="/fredheim-logo.svg" alt="" onerror="this.style.display='none'" />
           <span>Fredheim Livsstilssenter</span>
           <span class="dot">·</span>
           <img src="/Vivera_Health_logo.png" alt="" onerror="this.style.display='none'" />

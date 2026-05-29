@@ -626,7 +626,7 @@ export default function SettingsPage() {
         {/* About + cooperation acknowledgement */}
         <div className="card p-5 text-center">
           <img
-            src="/fredheim-logo.png"
+            src="/fredheim-logo.svg"
             alt="Fredheim"
             className="w-14 h-14 mx-auto mb-2 rounded-full"
           />
@@ -640,7 +640,7 @@ export default function SettingsPage() {
             </p>
             <div className="flex items-center justify-center gap-6">
               <div className="flex flex-col items-center gap-1.5">
-                <img src="/fredheim-logo.png" alt="" className="w-10 h-10 rounded-full" />
+                <img src="/fredheim-logo.svg" alt="" className="w-10 h-10 rounded-full" />
                 <p className="text-[10px] font-medium text-slate-600 leading-tight">
                   Fredheim<br />
                   <span className="text-slate-400">Livsstilssenter</span>

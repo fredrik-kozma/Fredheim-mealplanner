@@ -214,7 +214,7 @@ export default function TutorialModal({ onClose }) {
               </p>
               <div className="flex items-center justify-center gap-6">
                 <div className="flex flex-col items-center gap-1">
-                  <img src="/fredheim-logo.png" alt="" className="w-9 h-9 rounded-full" />
+                  <img src="/fredheim-logo.svg" alt="" className="w-9 h-9 rounded-full" />
                   <p className="text-[10px] font-medium text-slate-500 leading-tight">Fredheim<br/>Livsstilssenter</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">

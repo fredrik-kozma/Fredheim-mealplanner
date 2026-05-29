@@ -165,9 +165,11 @@ export default function Navigation() {
       {/* Side nav — desktop */}
       <nav className="hidden lg:flex fixed left-0 top-0 bottom-0 w-60 bg-white border-r border-slate-100 flex-col z-40">
         <div className="flex items-center gap-3 px-6 h-16 border-b border-slate-100">
-          <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white text-lg">
-            🍽
-          </div>
+          <img
+            src="/fredheim-logo.svg"
+            alt=""
+            className="w-9 h-9 rounded-full object-cover flex-shrink-0"
+          />
           <span className="font-bold text-slate-800 text-base">{t('app.name')}</span>
         </div>
         <div className="flex-1 overflow-y-auto py-4 px-3">
