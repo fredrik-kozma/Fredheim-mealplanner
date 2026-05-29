@@ -13,38 +13,29 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'fredheim-logo.png'],
+      includeAssets: ['favicon.svg'],
       manifest: {
         name: 'Fredheim Meal Planner',
         short_name: 'Fredheim',
         description: 'Plan your weekly meals, generate shopping lists, and discover recipes that support a healthier life.',
-        theme_color: '#22B24C',
+        // Indigo matches the in-app brand icon (fork-plate-knife on
+        // indigo), so the splash screen / status-bar tint look continuous
+        // with the app the user is about to open.
+        theme_color: '#4f46e5',
         background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',
         start_url: '/',
         icons: [
-          // SVG icon — modern browsers scale this crisply at any size.
+          // Single SVG icon used at every size — sharp on every screen,
+          // identical to the in-app corner mark. `purpose: 'any maskable'`
+          // lets Android adapt it for its themed-icon system.
           {
             src: 'favicon.svg',
             sizes: 'any',
             type: 'image/svg+xml',
             purpose: 'any maskable'
-          },
-          // PNG fallback (iOS / Safari). Declared size must match the
-          // actual file dimensions or browsers ignore the entry.
-          {
-            src: 'fredheim-logo.png',
-            sizes: '120x120',
-            type: 'image/png',
-            purpose: 'any'
-          },
-          {
-            src: 'fredheim-logo.png',
-            sizes: '120x120',
-            type: 'image/png',
-            purpose: 'maskable'
           }
         ]
       },
