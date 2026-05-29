@@ -13,27 +13,38 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icons/*.png'],
+      includeAssets: ['favicon.svg', 'fredheim-logo.png'],
       manifest: {
-        name: 'Menu Planner',
-        short_name: 'MenuPlan',
-        description: 'Plan your weekly meals and generate shopping lists',
-        theme_color: '#4f46e5',
-        background_color: '#f8fafc',
+        name: 'Fredheim Meal Planner',
+        short_name: 'Fredheim',
+        description: 'Plan your weekly meals, generate shopping lists, and discover recipes that support a healthier life.',
+        theme_color: '#22B24C',
+        background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',
         start_url: '/',
         icons: [
+          // SVG icon — modern browsers scale this crisply at any size.
           {
-            src: 'icons/icon-192.png',
-            sizes: '192x192',
-            type: 'image/png'
+            src: 'favicon.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
+            purpose: 'any maskable'
+          },
+          // PNG fallback (iOS / Safari). Declared size must match the
+          // actual file dimensions or browsers ignore the entry.
+          {
+            src: 'fredheim-logo.png',
+            sizes: '120x120',
+            type: 'image/png',
+            purpose: 'any'
           },
           {
-            src: 'icons/icon-512.png',
-            sizes: '512x512',
-            type: 'image/png'
+            src: 'fredheim-logo.png',
+            sizes: '120x120',
+            type: 'image/png',
+            purpose: 'maskable'
           }
         ]
       },

@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="20" fill="#4f46e5"/>
-  <text x="50" y="68" font-size="55" text-anchor="middle" fill="white" font-family="Arial">🍽</text>
+  <!-- Brand-green rounded square so the icon stays sharp at any size on
+       Android / desktop. iOS falls back to the apple-touch-icon PNG. -->
+  <rect width="100" height="100" rx="22" fill="#22B24C"/>
+  <!-- Stylised "F" mark — keeps the icon recognisable at 16px favicons -->
+  <path d="M32 24 h36 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-24 v12 h20 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-20 v16 a4 4 0 0 1 -4 4 h-8 a4 4 0 0 1 -4 -4 v-56 a4 4 0 0 1 4 -4 z"
+        fill="#ffffff"/>
 </svg>
