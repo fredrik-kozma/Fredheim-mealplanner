@@ -36,8 +36,21 @@ export const UNIT_ALIASES = {
   // tbsp
   'ss': 'tbsp', 'spiseskje': 'tbsp', 'tablespoon': 'tbsp', 'tablespoons': 'tbsp',
   'msk': 'tbsp', 'tbsp': 'tbsp',
-  // pcs
+  // pcs — including informal size descriptors ("2 medium onions") and
+  // produce-specific counts ("1 head of cabbage", "3 stalks of celery",
+  // "1 bunch of basil"). Recipes use these as if they were units, so we
+  // normalize them all to pcs so the aggregator can sum quantities
+  // cleanly across recipes.
   'stk': 'pcs', 'piece': 'pcs', 'pieces': 'pcs', 'st': 'pcs', 'pc': 'pcs', 'pcs': 'pcs',
+  'small': 'pcs', 'medium': 'pcs', 'large': 'pcs', 'big': 'pcs',
+  'liten': 'pcs', 'middels': 'pcs', 'stor': 'pcs',
+  'head': 'pcs', 'hode': 'pcs', 'huvud': 'pcs',
+  'stalk': 'pcs', 'stilk': 'pcs',
+  'bunch': 'pcs', 'bunt': 'pcs', 'knippe': 'pcs',
+  'sprig': 'pcs', 'kvist': 'pcs',
+  'slice': 'pcs', 'skive': 'pcs', 'skiva': 'pcs',
+  'can': 'pcs', 'boks': 'pcs', 'burk': 'pcs',
+  'jar': 'pcs', 'glass': 'pcs',
   // weight
   'gram': 'g', 'grams': 'g', 'gr': 'g', 'g': 'g',
   'kilogram': 'kg', 'kilograms': 'kg', 'kg': 'kg',

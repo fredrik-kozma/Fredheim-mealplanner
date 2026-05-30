@@ -81,25 +81,82 @@ export function ingredientSimilarity(a, b) {
 
 function sumQuantitiesInBase(items) {
   // items: array of { quantity, unit }
-  // Returns { quantity, unit: 'ml'|'g' } or null if units can't be combined
+  // Returns { quantity, unit: 'ml'|'g' } iff every item is convertible to
+  // the SAME base type. Returns null otherwise so the caller can fall
+  // through to the per-unit display path. This is critical: previously
+  // unconvertible items (clove, pcs, head, …) were silently filtered out
+  // and the sum of just the convertible ones was returned. That caused
+  // "garlic = 1.7 ml" and similar nonsense when a recipe used cloves and
+  // another used tsp.
   if (items.length === 0) return null
 
-  const baseResults = items
-    .map(({ quantity, unit }) => {
-      const canonicalUnit = normalizeUnit(unit)
-      if (!quantity || quantity === 0) return null
-      return convertToBase(quantity, canonicalUnit)
-    })
-    .filter(Boolean)
+  const baseResults = []
+  for (const { quantity, unit } of items) {
+    const canonicalUnit = normalizeUnit(unit)
+    if (!quantity || quantity === 0) continue
+    const base = convertToBase(quantity, canonicalUnit)
+    if (!base) return null // mixed convertible + count units → defer
+    baseResults.push(base)
+  }
 
   if (baseResults.length === 0) return null
 
-  // All must be same base unit type
+  // All must be same base unit type (g vs ml can't be combined).
   const baseType = baseResults[0].unit
   if (!baseResults.every(r => r.unit === baseType)) return null
 
   const total = baseResults.reduce((sum, r) => sum + r.quantity, 0)
   return { quantity: total, unit: baseType }
+}
+
+// Format a number for human display: integer if whole, otherwise up to
+// 2 decimals with trailing zeros stripped.
+function fmtNum(n) {
+  if (n === 0 || !isFinite(n)) return '0'
+  const rounded = Math.round(n * 100) / 100
+  return rounded % 1 === 0 ? rounded.toString() : rounded.toFixed(2).replace(/\.?0+$/, '')
+}
+
+/**
+ * Build a clean display string for a group of ingredient quantities that
+ * cannot all be combined into one base unit.
+ *
+ *   [ {5,clove}, {2,tsp}, {1,tbsp}, {10,g} ]   →   "5 clove + 20 ml + 10 g"
+ *
+ * Strategy: bucket items by base type (weight / volume / count). Weight
+ * and volume buckets each get summed in their base unit and re-rendered
+ * via smartConvert. Count units stay separate per unit type (clove vs
+ * pcs vs head) so the user always sees an honest number.
+ */
+function buildMixedQuantityString(items) {
+  let totalMass = 0     // grams
+  let totalVolume = 0   // ml
+  const countByUnit = {}
+
+  for (const { quantity, unit } of items) {
+    if (!quantity || quantity === 0) continue
+    const canonical = normalizeUnit(unit) || 'pcs'
+    const base = convertToBase(quantity, canonical)
+    if (base?.unit === 'g') totalMass += base.quantity
+    else if (base?.unit === 'ml') totalVolume += base.quantity
+    else {
+      countByUnit[canonical] = (countByUnit[canonical] || 0) + quantity
+    }
+  }
+
+  const parts = []
+  for (const [u, q] of Object.entries(countByUnit)) {
+    parts.push(`${fmtNum(q)} ${u}`)
+  }
+  if (totalMass > 0) {
+    const smart = smartConvert(totalMass, 'g')
+    parts.push(`${fmtNum(smart.quantity)} ${smart.unit}`)
+  }
+  if (totalVolume > 0) {
+    const smart = smartConvert(totalVolume, 'ml')
+    parts.push(`${fmtNum(smart.quantity)} ${smart.unit}`)
+  }
+  return parts.join(' + ')
 }
 
 export function groupIngredients(ingredientList) {
@@ -144,25 +201,11 @@ export function groupIngredients(ingredientList) {
         totalQuantity = smart.quantity
         totalUnit = smart.unit
       } else {
-        // Can't convert to base — just sum same-unit items, list others separately
-        const byUnit = {}
-        for (const item of withQty) {
-          const u = normalizeUnit(item.unit) || 'pcs'
-          if (!byUnit[u]) byUnit[u] = 0
-          byUnit[u] += item.quantity
-        }
-        const entries = Object.entries(byUnit)
-        if (entries.length === 1) {
-          totalQuantity = entries[0][1]
-          totalUnit = entries[0][0]
-        } else {
-          // Multiple incompatible units — format as combined string
-          totalQuantity = entries.map(([u, q]) => {
-            const rounded = Math.round(q * 100) / 100
-            return `${rounded} ${u}`
-          }).join(' + ')
-          totalUnit = ''
-        }
+        // Items span more than one base type (e.g. clove + g, or g + ml).
+        // Render each base type as one clean summed entry plus separate
+        // entries per count unit so the shopper sees an honest total.
+        totalQuantity = buildMixedQuantityString(withQty)
+        totalUnit = ''
       }
     }
 
