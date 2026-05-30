@@ -42,6 +42,41 @@ export default function PlannerTemplates({ onClose }) {
     }
   }
 
+  /**
+   * Download the current week as a Fredheim "starter plan" JSON file.
+   * Use case: the author builds the week in the app, downloads the JSON,
+   * and hands it to the developer, who pastes it into starterPlans.js so
+   * every user can install that plan with one tap.
+   */
+  function handleDownloadStarterPlan() {
+    const safeName = (templateName.trim() || 'fredheim-starter-plan')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+    const payload = {
+      id: safeName + '-' + new Date().toISOString().slice(0, 10),
+      name: templateName.trim() || 'My Starter Plan',
+      description: '',
+      condition: '',
+      author: 'Fredheim Livsstilssenter',
+      version: '0.1.0',
+      translations: { no: { name: '', description: '' }, sv: { name: '', description: '' } },
+      requiredPackIds: [],
+      plan: weekPlan,
+    }
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${safeName}.json`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+    setToast(t('planner.downloadedStarterPlan', { defaultValue: 'Starter plan JSON downloaded' }))
+    setTimeout(() => setToast(null), 3000)
+  }
+
   function formatDate(ts) {
     return new Date(ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })
   }
@@ -116,6 +151,31 @@ export default function PlannerTemplates({ onClose }) {
                 >
                   {t('planner.saveTemplate')}
                 </button>
+              </div>
+
+              {/* Download as starter-plan JSON — used by the author when
+                  preparing a condition-focused sample week to ship to all
+                  users. The downloaded file gets hardcoded into
+                  src/data/starterPlans.js. */}
+              <div className="pt-4 mt-4 border-t border-slate-100">
+                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                  {t('planner.advanced', { defaultValue: 'Advanced' })}
+                </p>
+                <button
+                  onClick={handleDownloadStarterPlan}
+                  disabled={currentMealCount === 0}
+                  className="btn-secondary w-full py-2 text-sm inline-flex items-center justify-center gap-2"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                  </svg>
+                  {t('planner.downloadStarterPlan', { defaultValue: 'Download as starter plan JSON' })}
+                </button>
+                <p className="text-[11px] text-slate-400 mt-2 leading-relaxed">
+                  {t('planner.downloadStarterPlanHint', {
+                    defaultValue: 'Saves your current week as a JSON file you can send to your developer to ship as a starter plan for all users.',
+                  })}
+                </p>
               </div>
             </div>
           ) : (

@@ -119,6 +119,10 @@
     "templateName": "Template name",
     "templateNamePlaceholder": "e.g. Healthy week…",
     "saveTemplate": "Save Template",
+    "advanced": "Advanced",
+    "downloadStarterPlan": "Download as starter plan JSON",
+    "downloadStarterPlanHint": "Saves your current week as a JSON file you can send to your developer to ship as a starter plan for all users.",
+    "downloadedStarterPlan": "Starter plan JSON downloaded",
     "loadTemplates": "Load Template",
     "noTemplates": "No templates saved yet.",
     "templateSaved": "Template saved",
@@ -418,6 +422,21 @@
     "feature1": "Unlimited recipes & meal planning",
     "feature2": "Recipe packs — new collections every season",
     "feature3": "Shopping list with automatic quantities"
+  },
+  "starterPlans": {
+    "title": "Starter meal plans",
+    "subtitle": "Tap install to load a full sample week designed for a specific health goal. You can tweak everything afterwards.",
+    "install": "Install",
+    "comingSoon": "Coming soon",
+    "mealCount_one": "{{count}} meal · 7 days",
+    "mealCount_other": "{{count}} meals · 7 days",
+    "installConfirm": "Installing \"{{name}}\" will replace your current week plan. Continue?",
+    "installSuccess": "{{name}} installed — open the Planner to see your week.",
+    "condition": {
+      "hypertension": "Hypertension",
+      "diabetes": "Type 2 diabetes",
+      "autoimmune": "Autoimmune"
+    }
   },
   "tutorial": {
     "skip": "Skip",

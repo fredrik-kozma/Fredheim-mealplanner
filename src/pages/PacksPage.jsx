@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../store/useStore'
 import { BUILT_IN_REGISTRY, BUILT_IN_PACKS } from '../data/installedPacks'
+import { STARTER_PLANS, planHasContent, countPlanMeals } from '../data/starterPlans'
 import { fetchRegistry, fetchPack } from '../utils/recipePacks'
 import ExportPackModal from '../components/packs/ExportPackModal'
 
@@ -121,11 +122,77 @@ function PackCard({ pack, onInstall, installing }) {
   )
 }
 
+// ── Starter plan card ──────────────────────────────────────────────────────
+
+function StarterPlanCard({ plan, onInstall, installing }) {
+  const { t, i18n } = useTranslation()
+  const currentLang = i18n.language?.slice(0, 2) || 'en'
+
+  const localized = plan.translations?.[currentLang]
+  const displayName = localized?.name || plan.name
+  const displayDescription = localized?.description || plan.description
+
+  const isReady = planHasContent(plan)
+  const mealCount = countPlanMeals(plan)
+
+  return (
+    <div className={`card p-5 ${!isReady ? 'opacity-70' : ''}`}>
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 flex-wrap mb-1">
+            <h3 className="text-base font-semibold text-slate-800">{displayName}</h3>
+            <span className="badge bg-emerald-50 text-emerald-700 text-xs">
+              {t(`starterPlans.condition.${plan.condition}`, { defaultValue: plan.condition })}
+            </span>
+          </div>
+          <p className="text-xs text-slate-500">{t('packs.by')} {plan.author}</p>
+        </div>
+
+        {isReady ? (
+          <button
+            onClick={() => onInstall(plan)}
+            disabled={installing}
+            className="btn bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500 shadow-sm py-2 px-3.5 text-xs flex-shrink-0"
+          >
+            {installing ? (
+              <svg className="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth={4} />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+              </svg>
+            ) : (
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+            )}
+            {t('starterPlans.install', { defaultValue: 'Install' })}
+          </button>
+        ) : (
+          <span className="badge bg-amber-50 text-amber-700 text-xs flex-shrink-0 py-1.5 px-3">
+            {t('starterPlans.comingSoon', { defaultValue: 'Coming soon' })}
+          </span>
+        )}
+      </div>
+
+      <p className="text-sm text-slate-600 mb-3 leading-relaxed">{displayDescription}</p>
+
+      {isReady && (
+        <div className="border-t border-slate-100 pt-3 mt-1">
+          <p className="text-xs font-medium text-slate-500">
+            {t('starterPlans.mealCount', { count: mealCount, defaultValue: `${mealCount} meals · 7 days` })}
+          </p>
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ── Main page ──────────────────────────────────────────────────────────────
 
 export default function PacksPage() {
   const { t } = useTranslation()
   const installPack = useStore(s => s.installPack)
+  const installStarterPlan = useStore(s => s.installStarterPlan)
+  const installedPacks = useStore(s => s.installedPacks)
 
   const [installingId, setInstallingId] = useState(null)
   const [toast, setToast] = useState(null)
@@ -162,6 +229,32 @@ export default function PacksPage() {
     installPack(fullPack)
     setInstallingId(null)
     setToast(t('packs.installSuccess', { name: fullPack.name, count: fullPack.recipes.length }))
+  }
+
+  async function handleInstallStarterPlan(plan) {
+    const localizedName = plan.translations?.[(t('app.name') ? 'en' : 'en')]?.name || plan.name
+    if (!confirm(t('starterPlans.installConfirm', {
+      name: localizedName,
+      defaultValue: `Installing "${localizedName}" will replace your current week plan. Continue?`,
+    }))) return
+
+    setInstallingId(plan.id)
+    try {
+      // Auto-install any required recipe packs the user doesn't have yet
+      for (const packId of plan.requiredPackIds || []) {
+        if (installedPacks[packId]) continue
+        const fullPack = BUILT_IN_PACKS[packId]
+        if (fullPack) installPack(fullPack)
+      }
+      installStarterPlan(plan)
+      const localized = plan.translations?.['en']?.name || plan.name
+      setToast(t('starterPlans.installSuccess', {
+        name: localized,
+        defaultValue: `${localized} installed — open the Planner to see your week.`,
+      }))
+    } finally {
+      setInstallingId(null)
+    }
   }
 
   async function handleInstallOnline(packMeta) {
@@ -203,6 +296,26 @@ export default function PacksPage() {
       </div>
 
       <div className="px-4 space-y-8">
+
+        {/* ── Starter meal plans ─────────────────────────────────────────── */}
+        <section>
+          <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">
+            {t('starterPlans.title', { defaultValue: 'Starter meal plans' })}
+          </h2>
+          <p className="text-xs text-slate-400 mb-4">
+            {t('starterPlans.subtitle', { defaultValue: 'Tap install to load a full sample week designed for a specific health goal. You can tweak everything afterwards.' })}
+          </p>
+          <div className="space-y-4">
+            {STARTER_PLANS.map(plan => (
+              <StarterPlanCard
+                key={plan.id}
+                plan={plan}
+                onInstall={handleInstallStarterPlan}
+                installing={installingId === plan.id}
+              />
+            ))}
+          </div>
+        </section>
 
         {/* ── Built-in packs ─────────────────────────────────────────────── */}
         <section>

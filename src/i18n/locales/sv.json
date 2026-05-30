@@ -119,6 +119,10 @@
     "templateName": "Mallnamn",
     "templateNamePlaceholder": "t.ex. Hälsosam vecka…",
     "saveTemplate": "Spara mall",
+    "advanced": "Avancerat",
+    "downloadStarterPlan": "Ladda ner som färdig planmall (JSON)",
+    "downloadStarterPlanHint": "Sparar din aktuella vecka som en JSON-fil du kan skicka till din utvecklare för att publicera som färdig plan för alla användare.",
+    "downloadedStarterPlan": "JSON-fil för färdig plan nedladdad",
     "loadTemplates": "Ladda mall",
     "noTemplates": "Inga mallar sparade ännu.",
     "templateSaved": "Mall sparad",
@@ -418,6 +422,21 @@
     "feature1": "Obegränsat antal recept och menyplanering",
     "feature2": "Receptpaket — nya samlingar varje säsong",
     "feature3": "Inköpslista med automatiska mängder"
+  },
+  "starterPlans": {
+    "title": "Färdiga menyplaner",
+    "subtitle": "Tryck Installera för att ladda en hel exempelvecka byggd för ett specifikt hälsomål. Du kan justera allt efteråt.",
+    "install": "Installera",
+    "comingSoon": "Kommer snart",
+    "mealCount_one": "{{count}} måltid · 7 dagar",
+    "mealCount_other": "{{count}} måltider · 7 dagar",
+    "installConfirm": "Om du installerar \"{{name}}\" ersätts din nuvarande veckoplan. Fortsätta?",
+    "installSuccess": "{{name}} installerad — öppna Planering för att se din vecka.",
+    "condition": {
+      "hypertension": "Högt blodtryck",
+      "diabetes": "Typ 2-diabetes",
+      "autoimmune": "Autoimmun"
+    }
   },
   "tutorial": {
     "skip": "Hoppa över",

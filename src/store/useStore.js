@@ -825,6 +825,17 @@ const useStore = create(
         return { weekPlan: JSON.parse(JSON.stringify(template.plan)) }
       }),
 
+      /**
+       * Installs a starter meal plan (one of the condition-focused sample
+       * weeks shipped with the app). Replaces the current weekPlan with
+       * a deep copy of the plan's week. The caller is responsible for
+       * ensuring required recipe packs are installed first (the UI does
+       * this in PacksPage before calling installStarterPlan).
+       */
+      installStarterPlan: (starterPlan) => set(() => ({
+        weekPlan: JSON.parse(JSON.stringify(starterPlan.plan || {})),
+      })),
+
       deletePlannerTemplate: (id) => set((s) => ({
         plannerTemplates: s.plannerTemplates.filter(t => t.id !== id),
       })),

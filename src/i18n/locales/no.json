@@ -119,6 +119,10 @@
     "templateName": "Malnavn",
     "templateNamePlaceholder": "f.eks. Sunn uke…",
     "saveTemplate": "Lagre mal",
+    "advanced": "Avansert",
+    "downloadStarterPlan": "Last ned som ferdig planmal (JSON)",
+    "downloadStarterPlanHint": "Lagrer den nåværende uken som en JSON-fil du kan sende til utvikleren for å publisere som en ferdig plan for alle brukere.",
+    "downloadedStarterPlan": "JSON-fil for ferdig plan lastet ned",
     "loadTemplates": "Last inn mal",
     "noTemplates": "Ingen maler lagret ennå.",
     "templateSaved": "Mal lagret",
@@ -418,6 +422,21 @@
     "feature1": "Ubegrenset antall oppskrifter og menyplanlegging",
     "feature2": "Oppskriftspakker — nye samlinger hver sesong",
     "feature3": "Handleliste med automatiske mengder"
+  },
+  "starterPlans": {
+    "title": "Ferdige menyplaner",
+    "subtitle": "Trykk Installer for å hente en hel eksempeluke laget for et bestemt helsemål. Du kan tilpasse alt etterpå.",
+    "install": "Installer",
+    "comingSoon": "Kommer snart",
+    "mealCount_one": "{{count}} måltid · 7 dager",
+    "mealCount_other": "{{count}} måltider · 7 dager",
+    "installConfirm": "Hvis du installerer \"{{name}}\" erstattes den nåværende ukeplanen. Fortsette?",
+    "installSuccess": "{{name}} installert — åpne Ukeplan for å se uken din.",
+    "condition": {
+      "hypertension": "Høyt blodtrykk",
+      "diabetes": "Diabetes type 2",
+      "autoimmune": "Autoimmun"
+    }
   },
   "tutorial": {
     "skip": "Hopp over",
