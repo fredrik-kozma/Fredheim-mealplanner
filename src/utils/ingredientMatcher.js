@@ -59,7 +59,19 @@ export function ingredientSimilarity(a, b) {
   const nb = normalizeIngredientName(b)
   if (!na || !nb) return 0
   if (na === nb) return 1.0
-  if (na.includes(nb) || nb.includes(na)) return 0.9
+
+  // Only treat one name as a "variant" of the other when the shorter is
+  // the FIRST WORD(s) of the longer. That catches the merges we want —
+  //   "garlic"  + "garlic clove"           → merge
+  //   "tomato"  + "tomato sauce"           → merge
+  //   "onion"   + "onion yellow norwegian" → merge
+  // …while *not* merging things that share a tail word or substring:
+  //   "potato"  + "sweet potato"           → KEEP separate (head noun differs)
+  //   "milk"    + "oat milk"               → KEEP separate
+  //   "egg"     + "eggplant"               → KEEP separate (eggplant doesn't start with "egg ")
+  const [shorter, longer] = na.length <= nb.length ? [na, nb] : [nb, na]
+  if (longer.startsWith(shorter + ' ')) return 0.9
+
   const dist = levenshtein(na, nb)
   const maxLen = Math.max(na.length, nb.length)
   if (dist <= 2 && maxLen > 3) return 0.8

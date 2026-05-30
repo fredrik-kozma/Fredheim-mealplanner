@@ -14,7 +14,10 @@ const INGREDIENT_CATEGORIES = {
     'courgette', 'mushroom', 'sopp', 'pea', 'ert', 'corn', 'mais', 'kale', 'cabbage', 'kål', 'leek', 'purre',
     'herb', 'basil', 'basilikum', 'parsley', 'persille', 'cilantro', 'dill', 'thyme', 'rosemary', 'oregano',
     'mint', 'coriander', 'chive', 'gressløk', 'fennel', 'fennikel', 'beetroot', 'rødbete', 'parsnip', 'pastinakk',
-    'radish', 'reddik', 'spring onion', 'vårløk', 'edamame', 'sugar snap'],
+    'radish', 'reddik', 'spring onion', 'vårløk', 'edamame', 'sugar snap',
+    // Added so they win over Dairy's "egg" substring match — eggplant is
+    // produce, not dairy.
+    'eggplant', 'aubergine'],
   'Meat & Fish': ['chicken', 'kylling', 'beef', 'biff', 'pork', 'svin', 'lamb', 'lam', 'turkey', 'kalkun',
     'bacon', 'sausage', 'pølse', 'ham', 'salmon', 'laks', 'tuna', 'tunfisk', 'cod', 'torsk', 'shrimp', 'reke',
     'fish', 'fisk', 'mince', 'kjøttdeig', 'steak', 'sea bass', 'havabbor', 'pollock', 'sei', 'mince'],
@@ -35,17 +38,33 @@ const INGREDIENT_CATEGORIES = {
     'sesame', 'sesamolje', 'soy', 'soya', 'fish sauce', 'oyster sauce'],
   Frozen: ['frozen', 'frosne', 'ice cream', 'iskrem'],
   Beverages: ['water', 'vann', 'juice', 'coffee', 'kaffe', 'tea', 'te', 'wine', 'vin', 'beer', 'øl',
-    'oat milk', 'havremelk', 'almond milk', 'plant milk'],
+    'oat milk', 'havremelk', 'almond milk', 'mandelmelk', 'plant milk', 'plantemelk',
+    'soy milk', 'soyamelk', 'soya milk', 'rice milk', 'rismelk', 'cashew milk', 'hazelnut milk'],
   Other: [],
 }
 
 function categoriseIngredient(name) {
   const lower = name.toLowerCase()
+
+  // Pick the LONGEST matching keyword across all categories. This way:
+  //   "oat milk"     → Beverages ("oat milk", 8) beats Dairy ("milk", 4)
+  //   "coconut milk" → Canned & Dried ("coconut milk", 12) beats Dairy ("milk", 4)
+  //   "eggplant"     → Produce ("eggplant", 8) beats Dairy ("egg", 3)
+  // The previous logic walked categories in object order and returned
+  // the FIRST match, which kept dumping plant-milks and eggplant into
+  // Dairy because "milk" / "egg" appeared earlier.
+  let bestCat = 'Other'
+  let bestLen = 0
   for (const [cat, keywords] of Object.entries(INGREDIENT_CATEGORIES)) {
     if (cat === 'Other') continue
-    if (keywords.some(k => lower.includes(k))) return cat
+    for (const kw of keywords) {
+      if (kw.length > bestLen && lower.includes(kw)) {
+        bestCat = cat
+        bestLen = kw.length
+      }
+    }
   }
-  return 'Other'
+  return bestCat
 }
 
 export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en') {
