@@ -37,7 +37,9 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
       const dy = Math.abs(e.clientY - start.y)
       if (dx > 5 || dy > 5) return // it was a drag
     }
-    navigate(`/recipes/${item.recipeId}`)
+    // Tell the recipe page where we came from so its Back button can
+    // return here instead of the recipes list.
+    navigate(`/recipes/${item.recipeId}`, { state: { from: '/planner' } })
   }
 
   function bumpServings(delta, e) {
@@ -66,7 +68,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault()
-          navigate(`/recipes/${item.recipeId}`)
+          navigate(`/recipes/${item.recipeId}`, { state: { from: '/planner' } })
         }
       }}
       className="group bg-white rounded-lg shadow-sm border border-slate-100 cursor-pointer hover:bg-slate-50 hover:border-indigo-200 transition-colors"

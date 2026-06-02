@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { formatQuantity } from '../../utils/shoppingListGenerator'
@@ -12,7 +12,16 @@ import NutritionPanel from './NutritionPanel'
 export default function RecipeDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const location = useLocation()
   const { t, i18n } = useTranslation()
+
+  // If the recipe was opened from the Planner (MealSlot sets state.from
+  // to '/planner' when navigating here), the Back button returns to the
+  // Planner. For every other entry point — Recipes list, deep link,
+  // shopping list, etc. — Back still goes to the Recipes list so the
+  // user's saved filter / sort state is restored from the store. This
+  // preserves all earlier back-button behaviour.
+  const backTarget = location.state?.from === '/planner' ? '/planner' : '/'
   const recipe = useStore(s => s.recipes.find(r => r.id === id))
   const deleteRecipe = useStore(s => s.deleteRecipe)
   const setLastOpenedRecipeId = useStore(s => s.setLastOpenedRecipeId)
@@ -180,14 +189,13 @@ export default function RecipeDetail() {
 
   return (
     <div className="max-w-2xl mx-auto pb-24 lg:pb-8 w-full min-w-0 overflow-x-hidden">
-      {/* Back button — always returns to the Recipes list, regardless of
-          how the user navigated here (browser back could go anywhere in
-          their history). The Recipes page reads its filter / sort state
-          from the persisted store, so the user lands exactly where they
-          left off. */}
+      {/* Back button — usually returns to the Recipes list (with filters
+          restored from the persisted store). When the user opened this
+          recipe from a meal slot in the Planner, navigation state carries
+          { from: '/planner' } and we go back to the Planner instead. */}
       <div className="px-4 pt-4">
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate(backTarget)}
           className="btn-ghost px-2 -ml-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
