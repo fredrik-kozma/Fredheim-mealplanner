@@ -229,6 +229,9 @@ export function printRecipe(opts) {
     padding: 5px 0;
     border-bottom: 1px dotted var(--line);
     font-size: 11.5px;
+    /* Never split a single ingredient row across two pages */
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
   .ing-name { color: var(--ink); }
   .ing-qty { color: var(--ink-soft); font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
@@ -242,8 +245,21 @@ export function printRecipe(opts) {
     font-size: 11.5px;
     line-height: 1.55;
     color: var(--ink);
+    /* Each numbered step stays intact, never splits across pages */
     break-inside: avoid;
+    page-break-inside: avoid;
   }
+
+  /* ── Print break protections ──────────────────────────────────────────
+     These rules keep the page nice no matter how long the recipe is.
+     - Section headings stick to their first row of content (no orphans)
+     - The header / hero / chips / footer never split mid-element */
+  h2 { break-after: avoid; page-break-after: avoid; }
+  .header { break-after: avoid; page-break-after: avoid; }
+  .title-block { break-after: avoid; page-break-after: avoid; }
+  .hero { break-inside: avoid; page-break-inside: avoid; break-after: avoid; }
+  .chips { break-inside: avoid; page-break-inside: avoid; }
+  .footer { break-inside: avoid; page-break-inside: avoid; }
   .step-num {
     flex-shrink: 0;
     width: 22px;
@@ -302,10 +318,30 @@ export function printRecipe(opts) {
   }
   .print-btn:hover { background: var(--brand-dark); }
 
-  @page { size: A4 portrait; margin: 0; }
+  /* ── Multi-page mode ─────────────────────────────────────────────────
+     When the recipe is too long to fit one A4 even at our minimum readable
+     scale, we drop the scale transform and let the sheet grow naturally.
+     The browser handles page breaks across A4 sheets using the
+     break-inside rules above. */
+  .sheet.multi-page { min-height: 0; height: auto; }
+  .sheet.multi-page .scale { flex: none; display: block; }
+  /* Stacked columns flow more predictably across page boundaries than
+     a side-by-side grid does on a multi-page recipe. */
+  .sheet.multi-page .body { grid-template-columns: 1fr; gap: 18px; }
+
+  /* @page margin lets every printed page (incl. pages 2+ in multi-page
+     mode) start with proper white space at the top/sides. The on-screen
+     preview keeps its own .sheet padding for the page-card look. */
+  @page { size: A4 portrait; margin: 14mm; }
   @media print {
     html, body { background: #fff; }
-    .sheet { margin: 0; box-shadow: none; width: 210mm; min-height: 297mm; page-break-after: avoid; }
+    .sheet {
+      margin: 0;
+      box-shadow: none;
+      width: auto;          /* fill the @page printable area */
+      min-height: 0;
+      padding: 0;            /* @page margin replaces sheet padding */
+    }
     .print-btn { display: none; }
   }
 </style>
@@ -353,35 +389,59 @@ export function printRecipe(opts) {
   </div>
 
 <script>
-  // Fit-to-one-page: if the content is taller than the printable area of an
-  // A4 page, scale it down proportionally so it still prints on exactly one
-  // sheet. Uses the computed height of .sheet minus its padding as the budget.
-  function fitOnePage() {
+  // Smart layout: pick the best of three strategies based on content length.
+  //
+  //  - Short recipe (fits naturally): no scaling, no multi-page
+  //  - Medium recipe (fits at >= 72% scale): shrink to fit one page
+  //  - Long recipe (would shrink below 72%): drop scaling and let it flow
+  //    across multiple A4 pages, with break-inside rules preventing
+  //    mid-ingredient / mid-step splits
+  //
+  // 72% is the floor — beyond that, body text gets uncomfortably small
+  // (~8pt). Better to use two pages with readable type than to cram
+  // everything into one unreadable page.
+  var MIN_SCALE = 0.72;
+
+  function layoutRecipe() {
     var scale = document.getElementById('scale');
     var sheet = scale.parentElement;
+
+    // Reset any previous layout pass before measuring
+    scale.style.transform = '';
+    scale.style.width = '';
+    sheet.classList.remove('multi-page');
+
     var cs = window.getComputedStyle(sheet);
     var padTop = parseFloat(cs.paddingTop) || 0;
     var padBottom = parseFloat(cs.paddingBottom) || 0;
-    // A4 portrait at 96dpi ≈ 1123px tall; use the rendered .sheet height as
-    // a practical cap (min-height is 297mm).
     var available = sheet.clientHeight - padTop - padBottom;
     var needed = scale.scrollHeight;
-    if (needed > available && available > 100) {
-      var factor = available / needed;
+
+    if (needed <= available || available <= 100) {
+      // Fits naturally on one page — done
+      return;
+    }
+
+    var factor = available / needed;
+    if (factor >= MIN_SCALE) {
+      // Scale down to fit one A4
       scale.style.transform = 'scale(' + factor + ')';
       scale.style.transformOrigin = 'top left';
       scale.style.width = (100 / factor) + '%';
     } else {
-      scale.style.transform = '';
-      scale.style.width = '';
+      // Too long even at minimum readable scale → let the browser
+      // paginate naturally across multiple A4 sheets. The break-inside
+      // rules on ingredients / steps / headers keep elements intact.
+      sheet.classList.add('multi-page');
     }
   }
+
   // Run once, and again after the hero image decodes (its height can shift).
-  fitOnePage();
+  layoutRecipe();
   var heroImg = document.querySelector('.hero img');
   if (heroImg && !heroImg.complete) {
-    heroImg.addEventListener('load', fitOnePage);
-    heroImg.addEventListener('error', fitOnePage);
+    heroImg.addEventListener('load', layoutRecipe);
+    heroImg.addEventListener('error', layoutRecipe);
   }
 
   // Open the print dialog automatically after images have had a chance to load.

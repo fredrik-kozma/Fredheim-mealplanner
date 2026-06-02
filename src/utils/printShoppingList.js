@@ -296,10 +296,35 @@ export function printShoppingList(opts) {
   }
   .print-btn:hover { background: var(--brand-dark); }
 
-  @page { size: A4 portrait; margin: 0; }
+  /* ── Print break protections ────────────────────────────────────────── */
+  h2 { break-after: avoid; page-break-after: avoid; }
+  .header { break-after: avoid; page-break-after: avoid; }
+  .title-block { break-after: avoid; page-break-after: avoid; }
+  .chips { break-inside: avoid; page-break-inside: avoid; }
+  .recipes-block { break-inside: avoid; page-break-inside: avoid; }
+  .footer { break-inside: avoid; page-break-inside: avoid; }
+
+  /* ── Multi-page mode ─────────────────────────────────────────────────
+     For very long shopping lists, drop the scale transform and let the
+     content flow across multiple A4 pages. The 2-column aisle layout
+     becomes 1 column so each aisle stays vertically intact even when a
+     page break lands inside it. */
+  .sheet.multi-page { min-height: 0; height: auto; }
+  .sheet.multi-page .scale { flex: none; display: block; }
+  .sheet.multi-page .aisles { column-count: 1; }
+
+  /* @page margin gives every printed page (incl. pages 2+ in multi-page
+     mode) proper white space at the top/sides. */
+  @page { size: A4 portrait; margin: 14mm; }
   @media print {
     html, body { background: #fff; }
-    .sheet { margin: 0; box-shadow: none; width: 210mm; min-height: 297mm; }
+    .sheet {
+      margin: 0;
+      box-shadow: none;
+      width: auto;
+      min-height: 0;
+      padding: 0;
+    }
     .print-btn { display: none; }
   }
 </style>
@@ -343,26 +368,39 @@ export function printShoppingList(opts) {
   </div>
 
 <script>
-  // Fit-to-one-page: scale down if content exceeds the printable area.
-  function fitOnePage() {
+  // Smart layout — same three-tier strategy as the recipe printout:
+  //   - Short list (fits naturally): no scaling
+  //   - Medium list (fits at >= 72% scale): shrink to one page
+  //   - Long list: drop scaling, let it flow across multiple A4 sheets
+  //     with break-inside rules so aisles never split mid-section
+  var MIN_SCALE = 0.72;
+
+  function layoutSheet() {
     var scale = document.getElementById('scale');
     var sheet = scale.parentElement;
+
+    scale.style.transform = '';
+    scale.style.width = '';
+    sheet.classList.remove('multi-page');
+
     var cs = window.getComputedStyle(sheet);
     var padTop = parseFloat(cs.paddingTop) || 0;
     var padBottom = parseFloat(cs.paddingBottom) || 0;
     var available = sheet.clientHeight - padTop - padBottom;
     var needed = scale.scrollHeight;
-    if (needed > available && available > 100) {
-      var factor = available / needed;
+
+    if (needed <= available || available <= 100) return;
+
+    var factor = available / needed;
+    if (factor >= MIN_SCALE) {
       scale.style.transform = 'scale(' + factor + ')';
       scale.style.transformOrigin = 'top left';
       scale.style.width = (100 / factor) + '%';
     } else {
-      scale.style.transform = '';
-      scale.style.width = '';
+      sheet.classList.add('multi-page');
     }
   }
-  fitOnePage();
+  layoutSheet();
 
   window.addEventListener('load', function () {
     setTimeout(function () {
