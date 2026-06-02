@@ -179,7 +179,7 @@ export default function RecipeDetail() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto pb-24 lg:pb-8">
+    <div className="max-w-2xl mx-auto pb-24 lg:pb-8 w-full min-w-0 overflow-x-hidden">
       {/* Back button — always returns to the Recipes list, regardless of
           how the user navigated here (browser back could go anywhere in
           their history). The Recipes page reads its filter / sort state
@@ -206,9 +206,13 @@ export default function RecipeDetail() {
       )}
 
       <div className="px-4 mt-4">
-        {/* Title row */}
+        {/* Title row — title gets min-w-0 so long single words can wrap
+            instead of pushing the icon buttons off the right edge on
+            narrow / zoomed screens. */}
         <div className="flex items-start justify-between gap-3 mb-1">
-          <h1 className="text-2xl font-bold text-slate-900 leading-tight">{displayTitle}</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight min-w-0 break-words flex-1">
+            {displayTitle}
+          </h1>
           {/* Print / Edit / Delete are subscriber-only — hidden when the
               user is locked out (anonymous or expired). They can still see
               and tap the recipe to view the paywall, but cannot mutate or
@@ -253,17 +257,23 @@ export default function RecipeDetail() {
           )}
         </div>
 
-        {/* Servings Scaler Control */}
+        {/* Servings Scaler Control — fully responsive. On narrow / zoomed
+            screens (e.g. an Android phone with text-scale increased) the
+            "Original servings" block stacks above the counter, and the
+            Reset button wraps to its own row so the counter never pushes
+            content off the right edge. The number input uses a fixed
+            width with tabular-nums so going from "1" to "20" doesn't
+            change the widget's geometry. */}
         {recipe.servings && (
-          <div className="card px-4 py-3 mb-5">
-            <div className="flex items-center justify-between gap-4">
-              <div>
+          <div className="card px-3 sm:px-4 py-3 mb-5">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div className="min-w-0">
                 <p className="text-xs text-slate-500 font-medium mb-1">{t('recipeDetail.originalServings')}</p>
                 <p className="text-sm text-slate-700 font-medium">
                   {t('recipeDetail.servings', { count: recipe.servings })}
                 </p>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 flex-wrap justify-end">
                 <button
                   onClick={() => setDisplayServings(Math.max(1, displayServings - 1))}
                   className="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold flex items-center justify-center transition-colors"
@@ -271,18 +281,21 @@ export default function RecipeDetail() {
                 >
                   −
                 </button>
-                <div className="text-center min-w-[60px]">
+                <div className="text-center flex-shrink-0 w-16">
                   <input
                     type="number"
+                    inputMode="numeric"
                     min="1"
                     value={displayServings}
                     onChange={(e) => {
                       const val = Math.max(1, parseInt(e.target.value) || 1)
                       setDisplayServings(val)
                     }}
-                    className="w-full text-center font-semibold text-slate-900 bg-indigo-50 border border-indigo-200 rounded-lg px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full text-center font-semibold text-slate-900 bg-indigo-50 border border-indigo-200 rounded-lg px-1 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 tabular-nums"
                   />
-                  <p className="text-xs text-slate-500 mt-0.5">{t('recipeDetail.servings', { count: displayServings })}</p>
+                  <p className="text-[10px] text-slate-500 mt-0.5 truncate">
+                    {t('recipeDetail.servings', { count: displayServings })}
+                  </p>
                 </div>
                 <button
                   onClick={() => setDisplayServings(displayServings + 1)}
@@ -291,16 +304,16 @@ export default function RecipeDetail() {
                 >
                   +
                 </button>
+                {displayServings !== recipe.servings && (
+                  <button
+                    onClick={() => setDisplayServings(recipe.servings)}
+                    className="btn-ghost px-2.5 py-1.5 text-xs font-medium flex-shrink-0"
+                    title={t('recipeDetail.resetServings')}
+                  >
+                    {t('recipeDetail.reset')}
+                  </button>
+                )}
               </div>
-              {displayServings !== recipe.servings && (
-                <button
-                  onClick={() => setDisplayServings(recipe.servings)}
-                  className="btn-ghost px-3 py-1.5 text-xs font-medium"
-                  title={t('recipeDetail.resetServings')}
-                >
-                  {t('recipeDetail.reset')}
-                </button>
-              )}
             </div>
           </div>
         )}
@@ -358,9 +371,9 @@ export default function RecipeDetail() {
             </div>
             <div className="card divide-y divide-slate-50">
               {displayIngredients.map((ing, i) => (
-                <div key={i} className="flex items-center justify-between px-4 py-2.5">
-                  <span className="text-sm text-slate-700">{ing.name}</span>
-                  <span className="text-sm font-medium text-slate-900">
+                <div key={i} className="flex items-start justify-between gap-3 px-4 py-2.5">
+                  <span className="text-sm text-slate-700 min-w-0 break-words flex-1">{ing.name}</span>
+                  <span className="text-sm font-medium text-slate-900 flex-shrink-0 tabular-nums whitespace-nowrap">
                     {formatScaledQuantity(ing.quantity, ing.unit)}
                   </span>
                 </div>
