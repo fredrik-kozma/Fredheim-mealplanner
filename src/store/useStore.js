@@ -769,6 +769,24 @@ const useStore = create(
       })),
       clearCheckedItems: () => set({ checkedItems: {} }),
 
+      /**
+       * Drop any checked-item entries whose ids are no longer present in
+       * the active shopping list. Called whenever the user's weekplan or
+       * family size changes — without this, old check marks accumulate
+       * forever and inflate the "X of Y checked" counter past Y. Also
+       * returns the current map untouched if nothing actually needs
+       * pruning, so we don't write to IndexedDB on every render.
+       */
+      pruneCheckedItems: (validIds) => set((s) => {
+        let changed = false
+        const next = {}
+        for (const id of Object.keys(s.checkedItems)) {
+          if (validIds.has(id)) next[id] = s.checkedItems[id]
+          else changed = true
+        }
+        return changed ? { checkedItems: next } : {}
+      }),
+
       // ── Saved Shopping Lists ──
       savedShoppingLists: [],
 

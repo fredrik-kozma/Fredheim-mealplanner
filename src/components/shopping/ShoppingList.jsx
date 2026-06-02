@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { generateShoppingList, formatQuantity } from '../../utils/shoppingListGenerator'
@@ -14,6 +14,7 @@ export default function ShoppingList() {
   const checkedItems = useStore(s => s.checkedItems)
   const toggleCheckedItem = useStore(s => s.toggleCheckedItem)
   const clearCheckedItems = useStore(s => s.clearCheckedItems)
+  const pruneCheckedItems = useStore(s => s.pruneCheckedItems)
   const saveShoppingList = useStore(s => s.saveShoppingList)
 
   const [showChecked, setShowChecked] = useState(true)
@@ -24,7 +25,30 @@ export default function ShoppingList() {
 
   const groups = generateShoppingList(weekPlan, recipes, familySize, currentLang)
   const totalItems = groups.reduce((sum, g) => sum + g.items.length, 0)
-  const checkedCount = Object.values(checkedItems).filter(Boolean).length
+
+  // Set of ids currently in the shopping list. Used for both display
+  // counting and for pruning the persisted checkedItems map below.
+  // Memoised on a stable key so we don't re-prune on every render.
+  const currentIdsKey = useMemo(
+    () => groups.flatMap(g => g.items.map(i => i.id)).sort().join('|'),
+    [groups]
+  )
+
+  // Auto-prune: whenever the active list changes, drop any checked
+  // entries that no longer correspond to a visible item. Without this,
+  // changing the weekplan leaves stale check marks behind and the
+  // "X of Y checked" counter goes nonsensical (32 of 7, etc.).
+  useEffect(() => {
+    const validIds = new Set(currentIdsKey ? currentIdsKey.split('|') : [])
+    pruneCheckedItems(validIds)
+  }, [currentIdsKey, pruneCheckedItems])
+
+  // Count ONLY the items in the active list (defensive — even if the
+  // prune effect lags one tick, the displayed number is honest).
+  const checkedCount = groups.reduce(
+    (n, g) => n + g.items.reduce((m, item) => m + (checkedItems[item.id] ? 1 : 0), 0),
+    0
+  )
 
   function handleSaveList() {
     const name = listName.trim()
