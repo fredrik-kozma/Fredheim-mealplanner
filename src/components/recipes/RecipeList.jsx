@@ -93,7 +93,10 @@ export default function RecipeList() {
   return (
     <div className="flex flex-col h-full">
       {/* Search + Sort bar */}
-      <div className="px-4 pt-4 pb-2 space-y-3">
+      {/* Header area: search bar + clear-filters pill + filter chip strips.
+          flex-shrink-0 locks this whole block so the recipe grid below
+          can never push it up and compress the chip strips visually. */}
+      <div className="flex-shrink-0 px-4 pt-4 pb-2 space-y-3">
         <div className="flex gap-2">
           <div className="relative flex-1">
             <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

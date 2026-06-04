@@ -106,7 +106,7 @@ export default function RecipePicker({ onSelect, onClose, title }) {
             state — only the colour changes when selected. */}
         {packOptions.length > 1 && (
           <div
-            className="flex gap-2 overflow-x-auto px-4 pt-1 pb-2"
+            className="flex flex-shrink-0 gap-2 overflow-x-auto px-4 pt-1 pb-2"
             style={{ scrollbarWidth: 'none' }}
           >
             <button
@@ -137,7 +137,7 @@ export default function RecipePicker({ onSelect, onClose, title }) {
 
         {/* Category chips */}
         <div
-          className="flex gap-2 overflow-x-auto px-4 pt-2 pb-5"
+          className="flex flex-shrink-0 gap-2 overflow-x-auto px-4 pt-2 pb-5"
           style={{ scrollbarWidth: 'none' }}
         >
           {categories.map(cat => (
