@@ -488,6 +488,7 @@
     "fullRecipeShort": "Full",
     "no100gAvail": "Serving weight not set",
     "footnote": "Values are estimates based on standard food composition data. % DV based on a 2000 kcal reference diet.",
+    "omega63Ratio": "Omega-6 : Omega-3 ratio",
     "groups": {
       "macros": "Macronutrients",
       "minerals": "Minerals",
@@ -501,6 +502,7 @@
       "polyunsaturatedFat": "Polyunsat. Fat",
       "monounsaturatedFat": "Monounsat. Fat",
       "omega3": "Omega-3 (ALA)",
+      "omega6": "Omega-6 (LA)",
       "cholesterol": "Cholesterol",
       "totalCarbs": "Total Carbohydrates",
       "fiber": "Dietary Fiber",

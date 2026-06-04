@@ -488,6 +488,7 @@
     "fullRecipeShort": "Hele",
     "no100gAvail": "Porsjonsvekt ikke oppgitt",
     "footnote": "Verdiene er estimater basert på standard næringsdata. %-verdi er basert på et 2000 kcal referansekosthold.",
+    "omega63Ratio": "Omega-6 : Omega-3-forhold",
     "groups": {
       "macros": "Makronæringsstoffer",
       "minerals": "Mineraler",
@@ -501,6 +502,7 @@
       "polyunsaturatedFat": "Flerumettet fett",
       "monounsaturatedFat": "Enumettet fett",
       "omega3": "Omega-3 (ALA)",
+      "omega6": "Omega-6 (LA)",
       "cholesterol": "Kolesterol",
       "totalCarbs": "Karbohydrater",
       "fiber": "Kostfiber",

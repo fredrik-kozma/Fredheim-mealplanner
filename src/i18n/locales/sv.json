@@ -488,6 +488,7 @@
     "fullRecipeShort": "Hela",
     "no100gAvail": "Portionsvikt ej angiven",
     "footnote": "Värdena är uppskattningar baserade på standard näringsdata. %-värde baserat på 2000 kcal referenskost.",
+    "omega63Ratio": "Omega-6 : Omega-3-kvot",
     "groups": {
       "macros": "Makronäringsämnen",
       "minerals": "Mineraler",
@@ -501,6 +502,7 @@
       "polyunsaturatedFat": "Fleromättat fett",
       "monounsaturatedFat": "Enkelomättat fett",
       "omega3": "Omega-3 (ALA)",
+      "omega6": "Omega-6 (LA)",
       "cholesterol": "Kolesterol",
       "totalCarbs": "Kolhydrater",
       "fiber": "Kostfiber",

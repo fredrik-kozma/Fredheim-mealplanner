@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -1366,6 +1366,1348 @@
           "riboflavin": 0.25,
           "niacin": 2.4,
           "choline": 69
+        }
+      }
+    },
+    {
+      "id": "orn-7",
+      "title": "Forest Berry & White Bean Protein Smoothie",
+      "category": "Drink",
+      "servings": 1,
+      "prepTime": 5,
+      "cookTime": 0,
+      "imageUrl": null,
+      "description": "A thick, luxurious berry smoothie with hidden plant protein from white beans — naturally sweet from dates, brightened with lemon zest, and loaded with omega-3s.",
+      "tags": [
+        "ornish-green",
+        "drink",
+        "breakfast",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "high-protein"
+      ],
+      "kcal": 402,
+      "servingWeightGrams": 612,
+      "translations": {
+        "no": {
+          "title": "Skogsbær- og hvitbønne-proteinsmoothie",
+          "description": "En tykk, luksuriøs bærsmoothie med skjult planteprotein fra hvite bønner — naturlig søt fra dadler, friskere med sitronskall, og full av omega-3.",
+          "ingredients": [
+            {
+              "quantity": 120,
+              "unit": "g",
+              "name": "kokte hvite bønner (cannellini), avrent og skylt"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "frosne blandede bær (blåbær, bringebær, bjørnebær)"
+            },
+            {
+              "quantity": 48,
+              "unit": "g",
+              "name": "Medjool-dadler, utstenede"
+            },
+            {
+              "quantity": 25,
+              "unit": "g",
+              "name": "havregryn"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "name": "malt linfrø"
+            },
+            {
+              "quantity": 5,
+              "unit": "g",
+              "name": "chiafrø"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "pcs",
+              "name": "sitron, skall og saft"
+            },
+            {
+              "quantity": 0.3,
+              "unit": "tsp",
+              "name": "kanel"
+            },
+            {
+              "quantity": 250,
+              "unit": "ml",
+              "name": "kaldt vann"
+            }
+          ],
+          "steps": [
+            "Ha havregrynet i blenderen med det kalde vannet. La det stå i 2 minutter for å mykne havren slik at smoothien blir silkemyk uten grynete tekstur.",
+            "Tilsett de hvite bønnene, de frosne bærene, dadlene, sitronskall og -saft, og kanel. Ha det malte linfrøet og chiafrøene øverst til slutt.",
+            "Start på lav hastighet, øk så til full styrke. Blend til det er helt jevnt og tykt, bruk støteren ved behov for å holde de frosne bærene i bevegelse.",
+            "Smak før du heller. For en tykkere smoothie bruker du litt mindre vann; for mer friskhet tilsetter du mer sitronsaft. Server umiddelbart."
+          ]
+        },
+        "sv": {
+          "title": "Skogsbär- och vitbönsproteinsmoothie",
+          "description": "En tjock, lyxig bärsmoothie med dolt växtprotein från vita bönor — naturligt söt från dadlar, friskare med citronskal, och full av omega-3.",
+          "ingredients": [
+            {
+              "quantity": 120,
+              "unit": "g",
+              "name": "kokta vita bönor (cannellini), avrunna och sköljda"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "frysta blandade bär (blåbär, hallon, björnbär)"
+            },
+            {
+              "quantity": 48,
+              "unit": "g",
+              "name": "Medjool-dadlar, urkärnade"
+            },
+            {
+              "quantity": 25,
+              "unit": "g",
+              "name": "havregryn"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "name": "malet linfrö"
+            },
+            {
+              "quantity": 5,
+              "unit": "g",
+              "name": "chiafrön"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "pcs",
+              "name": "citron, skal och saft"
+            },
+            {
+              "quantity": 0.3,
+              "unit": "tsp",
+              "name": "kanel"
+            },
+            {
+              "quantity": 250,
+              "unit": "ml",
+              "name": "kallt vatten"
+            }
+          ],
+          "steps": [
+            "Tillsätt havregrynen i mixern med det kalla vattnet. Låt stå i 2 minuter för att mjuka upp havren så att smoothien blir silkeslen utan grynig konsistens.",
+            "Tillsätt de vita bönorna, de frysta bären, dadlarna, citronskal och -saft, samt kanel. Lägg det malda linfröet och chiafröna överst sist.",
+            "Börja på låg hastighet, öka sedan till full styrka. Mixa tills helt slätt och tjockt, använd pressaren vid behov för att hålla de frysta bären i rörelse.",
+            "Smaka innan du häller. För en tjockare smoothie använder du lite mindre vatten; för mer friskhet tillsätter du mer citronsaft. Servera omedelbart."
+          ]
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 120,
+          "unit": "g",
+          "name": "cooked white (cannellini) beans, drained and rinsed"
+        },
+        {
+          "quantity": 150,
+          "unit": "g",
+          "name": "frozen mixed berries (blueberries, raspberries, blackberries)"
+        },
+        {
+          "quantity": 48,
+          "unit": "g",
+          "name": "Medjool dates, pitted"
+        },
+        {
+          "quantity": 25,
+          "unit": "g",
+          "name": "rolled oats"
+        },
+        {
+          "quantity": 10,
+          "unit": "g",
+          "name": "ground flaxseed"
+        },
+        {
+          "quantity": 5,
+          "unit": "g",
+          "name": "chia seeds"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "pcs",
+          "name": "lemon, zested and juiced"
+        },
+        {
+          "quantity": 0.3,
+          "unit": "tsp",
+          "name": "cinnamon"
+        },
+        {
+          "quantity": 250,
+          "unit": "ml",
+          "name": "cold water"
+        }
+      ],
+      "steps": [
+        "Add the rolled oats to your blender with the cold water. Let sit for 2 minutes to soften the oats so the smoothie blends silky-smooth with no grit.",
+        "Add the white beans, frozen berries, dates, lemon zest and juice, and cinnamon. Add the ground flaxseed and chia seeds last, on top.",
+        "Start on low, then ramp to full speed. Blend until completely smooth and thick, using the tamper if needed to keep the frozen berries moving.",
+        "Taste before pouring. For a thicker smoothie use a little less water; for more brightness add extra lemon juice. Serve immediately."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 402,
+          "protein": 16.2,
+          "totalFat": 7.4,
+          "saturatedFat": 0.7,
+          "polyunsaturatedFat": 4.6,
+          "monounsaturatedFat": 0.9,
+          "omega3": 2.8,
+          "omega6": 1.6,
+          "cholesterol": 0,
+          "totalCarbs": 70,
+          "fiber": 17.2,
+          "totalSugars": 33,
+          "addedSugar": 0,
+          "calcium": 186,
+          "potassium": 876,
+          "copper": 0.55,
+          "iron": 5.5,
+          "magnesium": 124,
+          "manganese": 2.2,
+          "selenium": 8,
+          "phosphorus": 328,
+          "zinc": 2.5,
+          "sodium": 19,
+          "vitaminA": 18,
+          "vitaminB6": 0.45,
+          "vitaminB12": 0,
+          "vitaminC": 28,
+          "vitaminD": 0,
+          "vitaminE": 1.8,
+          "vitaminK": 22,
+          "folate": 152,
+          "thiamin": 0.5,
+          "riboflavin": 0.2,
+          "niacin": 2.2,
+          "choline": 54
+        }
+      }
+    },
+    {
+      "id": "orn-8",
+      "title": "The Perfect Homemade Oat Milk",
+      "category": "Drink",
+      "servings": 3,
+      "prepTime": 10,
+      "cookTime": 0,
+      "imageUrl": null,
+      "description": "Creamy, naturally sweet, and completely slime-free — the technique is everything here. Cold water, a short soak, a quick blend, and a gravity strain.",
+      "tags": [
+        "ornish-orange",
+        "drink",
+        "vegan",
+        "oil-free",
+        "no-added-sugar"
+      ],
+      "kcal": 48,
+      "servingWeightGrams": 250,
+      "translations": {
+        "no": {
+          "title": "Den perfekte hjemmelagde havremelken",
+          "description": "Kremet, naturlig søt og helt uten slim — teknikken er alt her. Kaldt vann, kort bløtlegging, rask blending og siling med tyngdekraft.",
+          "ingredients": [
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "havregryn (ikke hurtighavre)"
+            },
+            {
+              "quantity": 900,
+              "unit": "ml",
+              "name": "kaldt filtrert vann (til blending)"
+            },
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "name": "Medjool-daddel, utstenet"
+            },
+            {
+              "quantity": 0.3,
+              "unit": "tsp",
+              "name": "vaniljepulver (usøtet)"
+            },
+            {
+              "quantity": 0.1,
+              "unit": "tsp",
+              "name": "fint havsalt"
+            }
+          ],
+          "steps": [
+            "Legg havregrynet i en bolle. Dekk helt med kaldt vann og bløtlegg i nøyaktig 5 minutter — ikke lenger. Kaldt vann og kort bløtlegging er hemmeligheten bak silkemyk, slimfri havremelk.",
+            "Hell av havren gjennom en sil, og skyll under kaldt rennende vann i cirka 20 sekunder til vannet renner nesten klart. Dette fjerner overflatestivelse som gir slim.",
+            "Ha den skylte havren i en blender med det kalde filtrerte vannet, daddelen, vaniljepulveret og saltet. Blend på høy hastighet i nøyaktig 30 sekunder — ikke lenger. Overblending bryter ned stivelsen og gir en klissete tekstur.",
+            "Hell den blendede melken gjennom en nøttemelkpose eller dobbelt lag osteklut over en stor bolle. La tyngdekraften gjøre jobben. Ikke press eller klem — det tvinger fin stivelse gjennom og ødelegger teksturen.",
+            "Hell den silte melken over på en ren glassflaske eller krukke og sett kaldt umiddelbart. Rist godt før servering — naturlig separasjon er normalt. Best innen 4 dager."
+          ]
+        },
+        "sv": {
+          "title": "Den perfekta hemgjorda havremjölken",
+          "description": "Krämig, naturligt söt och helt utan slem — tekniken är allt här. Kallt vatten, kort blötläggning, snabb mixning och silning med gravitation.",
+          "ingredients": [
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "havregryn (inte snabbhavre)"
+            },
+            {
+              "quantity": 900,
+              "unit": "ml",
+              "name": "kallt filtrerat vatten (för mixning)"
+            },
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "name": "Medjool-dadel, urkärnad"
+            },
+            {
+              "quantity": 0.3,
+              "unit": "tsp",
+              "name": "vaniljpulver (osötat)"
+            },
+            {
+              "quantity": 0.1,
+              "unit": "tsp",
+              "name": "fint havssalt"
+            }
+          ],
+          "steps": [
+            "Lägg havregrynen i en skål. Täck helt med kallt vatten och blötlägg i exakt 5 minuter — inte längre. Kallt vatten och kort blötläggning är hemligheten bakom silkeslen, slemfri havremjölk.",
+            "Häll av havren genom en sil och skölj under kallt rinnande vatten i cirka 20 sekunder tills vattnet rinner nästan klart. Detta tar bort ytstärkelse som ger slem.",
+            "Tillsätt den sköljda havren i en mixer med det kalla filtrerade vattnet, dadeln, vaniljpulvret och saltet. Mixa på hög hastighet i exakt 30 sekunder — inte längre. Övermixning bryter ner stärkelsen och ger en kletig konsistens.",
+            "Häll den mixade mjölken genom en nötmjölkspåse eller dubbelt lager ostduk över en stor skål. Låt gravitationen göra jobbet. Pressa eller krama inte — det tvingar fin stärkelse igenom och förstör konsistensen.",
+            "Häll den silade mjölken i en ren glasflaska eller burk och ställ kallt omedelbart. Skaka väl före servering — naturlig separation är normalt. Bäst inom 4 dagar."
+          ]
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 100,
+          "unit": "g",
+          "name": "rolled oats (not instant)"
+        },
+        {
+          "quantity": 900,
+          "unit": "ml",
+          "name": "cold filtered water (for blending)"
+        },
+        {
+          "quantity": 1,
+          "unit": "pcs",
+          "name": "Medjool date, pitted"
+        },
+        {
+          "quantity": 0.3,
+          "unit": "tsp",
+          "name": "vanilla powder (unsweetened)"
+        },
+        {
+          "quantity": 0.1,
+          "unit": "tsp",
+          "name": "fine sea salt"
+        }
+      ],
+      "steps": [
+        "Place the rolled oats in a bowl. Cover completely with cold water and soak for exactly 5 minutes — no longer. Cold water and a short soak are the secret to silky, non-slimy oat milk.",
+        "Drain the oats through a sieve, then rinse under cold running water for about 20 seconds until the water runs mostly clear. This removes surface starch that causes sliminess.",
+        "Add the rinsed oats to a blender with the cold filtered water, the date, vanilla powder, and salt. Blend on high for exactly 30 seconds — no longer. Over-blending breaks down starch and creates a gluey texture.",
+        "Pour the blended milk through a nut milk bag or a double layer of cheesecloth set over a large bowl. Let gravity do the work. Do not press or squeeze — this forces fine starch through and ruins the texture.",
+        "Pour the strained milk into a clean glass bottle or jar and refrigerate immediately. Shake well before pouring — natural separation is normal. Best within 4 days."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 48,
+          "protein": 1.8,
+          "totalFat": 0.7,
+          "saturatedFat": 0.1,
+          "polyunsaturatedFat": 0.26,
+          "monounsaturatedFat": 0.22,
+          "omega3": 0.011,
+          "omega6": 0.24,
+          "cholesterol": 0,
+          "totalCarbs": 9.1,
+          "fiber": 1.3,
+          "totalSugars": 2.2,
+          "addedSugar": 0,
+          "calcium": 8,
+          "potassium": 74,
+          "copper": 0.07,
+          "iron": 0.6,
+          "magnesium": 22,
+          "manganese": 0.55,
+          "selenium": 3.3,
+          "phosphorus": 59,
+          "zinc": 0.5,
+          "sodium": 59,
+          "vitaminA": 0,
+          "vitaminB6": 0.01,
+          "vitaminB12": 0,
+          "vitaminC": 0,
+          "vitaminD": 0,
+          "vitaminE": 0.08,
+          "vitaminK": 0.2,
+          "folate": 6,
+          "thiamin": 0.09,
+          "riboflavin": 0.02,
+          "niacin": 0.11,
+          "choline": 4.5
+        }
+      }
+    },
+    {
+      "id": "orn-9",
+      "title": "Tropical Mango, Date & White Bean Smoothie Bowl",
+      "category": "Breakfast",
+      "servings": 1,
+      "prepTime": 10,
+      "cookTime": 0,
+      "imageUrl": null,
+      "description": "A thick, ice-cold breakfast bowl — mango sweetness, date richness, and white beans for hidden creaminess and a protein boost.",
+      "tags": [
+        "ornish-green",
+        "breakfast",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "high-protein"
+      ],
+      "kcal": 477,
+      "servingWeightGrams": 368,
+      "translations": {
+        "no": {
+          "title": "Tropisk mango-, daddel- og hvitbønne-smoothiebolle",
+          "description": "En tykk, iskald frokostbolle — mangosøthet, daddelfylde og hvite bønner for skjult kremethet og et proteinløft.",
+          "ingredients": [
+            {
+              "quantity": 200,
+              "unit": "g",
+              "name": "frosne mangobiter"
+            },
+            {
+              "quantity": 80,
+              "unit": "g",
+              "name": "kokte hvite bønner (cannellini), skylt"
+            },
+            {
+              "quantity": 36,
+              "unit": "g",
+              "name": "Medjool-dadler, utstenede"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "havregryn"
+            },
+            {
+              "quantity": 7,
+              "unit": "g",
+              "name": "malt linfrø"
+            },
+            {
+              "quantity": 15,
+              "unit": "ml",
+              "name": "fersk sitronsaft"
+            }
+          ],
+          "steps": [
+            "Kvelden før: legg havregrynet i en liten bolle, dekk med kaldt vann og sett i kjøleskap over natten. Alternativt kan du hurtigkoke det i 3 minutter i kokende vann og avkjøle helt før bruk.",
+            "Ha den frosne mangoen, de hvite bønnene og dadlene i en blender med et par spiseskjeer kaldt vann. Blend til det er helt jevnt og veldig tykt. De hvite bønnene smelter helt inn — du vil ikke smake dem. Tilsett vann litt om gangen kun ved behov; hold basen så tykk som mulig.",
+            "Hell basen i en kald bolle. Legg den bløtlagte havren oppå i en klynge. Dryss det malte linfrøet jevnt over overflaten.",
+            "Drypp sitronsaften over bollen. Server umiddelbart mens basen er kald og tykk."
+          ]
+        },
+        "sv": {
+          "title": "Tropisk mango-, dadel- och vitbönssmoothiebowl",
+          "description": "En tjock, iskall frukostbowl — mangosötma, dadelfyllighet och vita bönor för dold krämighet och ett proteinlyft.",
+          "ingredients": [
+            {
+              "quantity": 200,
+              "unit": "g",
+              "name": "frysta mangobitar"
+            },
+            {
+              "quantity": 80,
+              "unit": "g",
+              "name": "kokta vita bönor (cannellini), sköljda"
+            },
+            {
+              "quantity": 36,
+              "unit": "g",
+              "name": "Medjool-dadlar, urkärnade"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "havregryn"
+            },
+            {
+              "quantity": 7,
+              "unit": "g",
+              "name": "malet linfrö"
+            },
+            {
+              "quantity": 15,
+              "unit": "ml",
+              "name": "färsk citronsaft"
+            }
+          ],
+          "steps": [
+            "Kvällen innan: lägg havregrynen i en liten skål, täck med kallt vatten och ställ i kylen över natten. Alternativt kan du snabbkoka dem i 3 minuter i kokande vatten och kyla helt före användning.",
+            "Tillsätt den frysta mangon, de vita bönorna och dadlarna i en mixer med ett par matskedar kallt vatten. Mixa tills helt slätt och mycket tjockt. De vita bönorna smälter helt in — du kommer inte att smaka dem. Tillsätt vatten lite i taget endast vid behov; håll basen så tjock som möjligt.",
+            "Häll basen i en kall skål. Lägg den blötlagda havren ovanpå i en klunga. Strö det malda linfröet jämnt över ytan.",
+            "Droppa citronsaften över skålen. Servera omedelbart medan basen är kall och tjock."
+          ]
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 200,
+          "unit": "g",
+          "name": "frozen mango chunks"
+        },
+        {
+          "quantity": 80,
+          "unit": "g",
+          "name": "cooked white (cannellini) beans, rinsed"
+        },
+        {
+          "quantity": 36,
+          "unit": "g",
+          "name": "Medjool dates, pitted"
+        },
+        {
+          "quantity": 30,
+          "unit": "g",
+          "name": "rolled oats"
+        },
+        {
+          "quantity": 7,
+          "unit": "g",
+          "name": "ground flaxseed"
+        },
+        {
+          "quantity": 15,
+          "unit": "ml",
+          "name": "fresh lemon juice"
+        }
+      ],
+      "steps": [
+        "The night before, place the rolled oats in a small bowl, cover with cold water and refrigerate overnight. Alternatively, quick-cook them for 3 minutes in boiling water and cool completely before using.",
+        "Add the frozen mango, white beans, and dates to a blender with a couple of tablespoons of cold water. Blend until completely smooth and very thick. The white beans melt in completely — you will not taste them. Add water a little at a time only if needed; keep the base as thick as possible.",
+        "Pour the base into a chilled bowl. Spoon the soaked oats on top in a cluster. Sprinkle the ground flaxseed evenly over the surface.",
+        "Drizzle the lemon juice over the bowl. Serve immediately while the base is cold and thick."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 477,
+          "protein": 14.2,
+          "totalFat": 6.3,
+          "saturatedFat": 0.9,
+          "polyunsaturatedFat": 3.1,
+          "monounsaturatedFat": 1.6,
+          "omega3": 1.7,
+          "omega6": 1.33,
+          "cholesterol": 0,
+          "totalCarbs": 100,
+          "fiber": 15,
+          "totalSugars": 55.2,
+          "addedSugar": 0,
+          "calcium": 140,
+          "potassium": 1143,
+          "copper": 0.77,
+          "iron": 5.3,
+          "magnesium": 161,
+          "manganese": 2.35,
+          "selenium": 12.9,
+          "phosphorus": 360,
+          "zinc": 2.7,
+          "sodium": 14,
+          "vitaminA": 54,
+          "vitaminB6": 0.47,
+          "vitaminB12": 0,
+          "vitaminC": 97,
+          "vitaminD": 0,
+          "vitaminE": 1.8,
+          "vitaminK": 10.4,
+          "folate": 169,
+          "thiamin": 0.33,
+          "riboflavin": 0.16,
+          "niacin": 2.3,
+          "choline": 58
+        }
+      }
+    },
+    {
+      "id": "orn-10",
+      "title": "Warm Buckwheat Porridge with Dates, Carob & Cinnamon",
+      "category": "Breakfast",
+      "servings": 1,
+      "prepTime": 5,
+      "cookTime": 15,
+      "imageUrl": null,
+      "description": "A rich, chocolatey-tasting breakfast bowl — naturally sweet from Medjool dates, with earthy depth from carob and warmth from cinnamon.",
+      "tags": [
+        "ornish-green",
+        "breakfast",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "gluten-free"
+      ],
+      "kcal": 360,
+      "servingWeightGrams": 193,
+      "translations": {
+        "no": {
+          "title": "Varm bokhvetegrøt med dadler, johannesbrød og kanel",
+          "description": "En fyldig frokostbolle med sjokoladesmak — naturlig søt fra Medjool-dadler, med jordnær dybde fra johannesbrød og varme fra kanel.",
+          "ingredients": [
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "hele bokhvetegryn (rå, skylt)"
+            },
+            {
+              "quantity": 200,
+              "unit": "ml",
+              "name": "vann"
+            },
+            {
+              "quantity": 48,
+              "unit": "g",
+              "name": "Medjool-dadler, utstenede og grovhakket"
+            },
+            {
+              "quantity": 7,
+              "unit": "g",
+              "name": "johannesbrødpulver"
+            },
+            {
+              "quantity": 1.3,
+              "unit": "g",
+              "name": "malt kanel"
+            },
+            {
+              "quantity": 7,
+              "unit": "g",
+              "name": "malt linfrø"
+            }
+          ],
+          "steps": [
+            "Skyll bokhvetegrynet godt under kaldt vann. Ha det i en liten kjele med vannet. Kok opp, skru ned til lav varme, legg på lokk og la det småkoke til vannet er absorbert og grynene er møre.",
+            "Ta av lokket. Tilsett dadlene, johannesbrødpulveret og kanelen. Rør godt over lav varme i 2–3 minutter, og press dadlene forsiktig med baksiden av en skje så de mykner og smelter inn i grøten.",
+            "Ta av varmen. Rør inn det malte linfrøet — det tykner grøten litt og gir deg dagens omega-3. Server umiddelbart."
+          ]
+        },
+        "sv": {
+          "title": "Varm bovetegröt med dadlar, johannesbröd och kanel",
+          "description": "En fyllig frukostbowl med chokladsmak — naturligt söt från Medjool-dadlar, med jordnära djup från johannesbröd och värme från kanel.",
+          "ingredients": [
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "hela bovetegryn (råa, sköljda)"
+            },
+            {
+              "quantity": 200,
+              "unit": "ml",
+              "name": "vatten"
+            },
+            {
+              "quantity": 48,
+              "unit": "g",
+              "name": "Medjool-dadlar, urkärnade och grovhackade"
+            },
+            {
+              "quantity": 7,
+              "unit": "g",
+              "name": "johannesbrödpulver"
+            },
+            {
+              "quantity": 1.3,
+              "unit": "g",
+              "name": "malen kanel"
+            },
+            {
+              "quantity": 7,
+              "unit": "g",
+              "name": "malet linfrö"
+            }
+          ],
+          "steps": [
+            "Skölj bovetegrynen väl under kallt vatten. Tillsätt dem i en liten kastrull med vattnet. Koka upp, sänk till låg värme, lägg på lock och låt sjuda tills vattnet absorberats och grynen är mjuka.",
+            "Ta av locket. Tillsätt dadlarna, johannesbrödpulvret och kanelen. Rör väl över låg värme i 2–3 minuter och tryck dadlarna försiktigt med baksidan av en sked så att de mjuknar och smälter in i gröten.",
+            "Ta av värmen. Rör i det malda linfröet — det tjockar gröten något och ger dig dagens omega-3. Servera omedelbart."
+          ]
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 50,
+          "unit": "g",
+          "name": "whole buckwheat groats (raw, rinsed)"
+        },
+        {
+          "quantity": 200,
+          "unit": "ml",
+          "name": "water"
+        },
+        {
+          "quantity": 48,
+          "unit": "g",
+          "name": "Medjool dates, pitted and roughly chopped"
+        },
+        {
+          "quantity": 7,
+          "unit": "g",
+          "name": "carob powder"
+        },
+        {
+          "quantity": 1.3,
+          "unit": "g",
+          "name": "ground cinnamon"
+        },
+        {
+          "quantity": 7,
+          "unit": "g",
+          "name": "ground flaxseed"
+        }
+      ],
+      "steps": [
+        "Rinse the buckwheat groats well under cold water. Add to a small saucepan with the water. Bring to a boil, then reduce heat to low, cover, and simmer until the water is absorbed and the groats are tender.",
+        "Remove the lid. Add the dates, carob powder, and cinnamon. Stir well over low heat for 2–3 minutes, pressing the dates gently with the back of a spoon so they soften and melt into the porridge.",
+        "Remove from heat. Stir in the ground flaxseed — it slightly thickens the porridge and adds your omega-3 for the day. Serve immediately."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 360,
+          "protein": 8.2,
+          "totalFat": 4.3,
+          "saturatedFat": 0.5,
+          "polyunsaturatedFat": 2.7,
+          "monounsaturatedFat": 0.8,
+          "omega3": 1.65,
+          "omega6": 0.69,
+          "cholesterol": 0,
+          "totalCarbs": 78,
+          "fiber": 11,
+          "totalSugars": 35,
+          "addedSugar": 0,
+          "calcium": 66,
+          "potassium": 675,
+          "copper": 0.5,
+          "iron": 2.4,
+          "magnesium": 112,
+          "manganese": 1.39,
+          "selenium": 4.5,
+          "phosphorus": 222,
+          "zinc": 1.5,
+          "sodium": 6,
+          "vitaminA": 3,
+          "vitaminB6": 0.26,
+          "vitaminB12": 0,
+          "vitaminC": 1,
+          "vitaminD": 0,
+          "vitaminE": 0.1,
+          "vitaminK": 2.1,
+          "folate": 27,
+          "thiamin": 0.13,
+          "riboflavin": 0.16,
+          "niacin": 2.8,
+          "choline": 45
+        }
+      }
+    },
+    {
+      "id": "orn-11",
+      "title": "Miso Red Lentil & Sweet Potato Soup",
+      "category": "Soup",
+      "servings": 4,
+      "prepTime": 15,
+      "cookTime": 25,
+      "imageUrl": null,
+      "description": "A warming, deeply savory soup that gets even better overnight. Miso and nutritional yeast build remarkable umami depth — no oil, no cream, no compromise.",
+      "tags": [
+        "ornish-green",
+        "soup",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "high-protein"
+      ],
+      "kcal": 320,
+      "servingWeightGrams": 425,
+      "translations": {
+        "no": {
+          "title": "Miso-, rød linse- og søtpotetsuppe",
+          "description": "En varmende, dypt smaksrik suppe som blir enda bedre over natten. Miso og næringsgjær bygger bemerkelsesverdig umami-dybde — uten olje, uten fløte, uten kompromiss.",
+          "ingredients": [
+            {
+              "quantity": 200,
+              "unit": "g",
+              "name": "røde linser (tørre, skylt)"
+            },
+            {
+              "quantity": 300,
+              "unit": "g",
+              "name": "søtpotet, skrelt og ternet"
+            },
+            {
+              "quantity": 160,
+              "unit": "g",
+              "name": "gulrøtter, ternet"
+            },
+            {
+              "quantity": 120,
+              "unit": "g",
+              "name": "løk, finhakket"
+            },
+            {
+              "quantity": 3,
+              "unit": "pcs",
+              "name": "hvitløksfedd, finhakket"
+            },
+            {
+              "quantity": 80,
+              "unit": "g",
+              "name": "babyspinat"
+            },
+            {
+              "quantity": 1,
+              "unit": "tbsp",
+              "name": "lys misopasta (lavt natrium)"
+            },
+            {
+              "quantity": 4,
+              "unit": "tsp",
+              "name": "chiafrø (til topping)"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "name": "næringsgjær"
+            },
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "name": "sitron, saften av"
+            },
+            {
+              "quantity": 800,
+              "unit": "ml",
+              "name": "grønnsaksbuljong med lavt natrium"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "name": "malt spisskummen"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "name": "malt gurkemeie"
+            }
+          ],
+          "steps": [
+            "Skrell og skjær søtpoteten og gulrøttene i 1,5 cm terninger. Finhakk løken og hakk hvitløken. Skyll de røde linsene under kaldt vann til vannet renner klart.",
+            "Varm en stor gryte over middels varme. Tilsett noen spiseskjeer vann og surr løken til den er myk og blank, tilsett en skvett mer vann hvis den fester seg.",
+            "Tilsett hvitløken, spisskummen og gurkemeie. Rør konstant i 1 minutt til det dufter. Hvitløken skal mykne, men ikke bli brun.",
+            "Tilsett linsene, søtpoteten, gulrøttene og grønnsaksbuljongen. Rør sammen. Kok opp, og skru deretter ned til forsiktig småkoking.",
+            "La det småkoke uten lokk i cirka 20 minutter, rør av og til, til linsene stort sett har løst seg opp i buljongen og søtpoteten er helt mør.",
+            "Løs opp misopastaen i litt varmt vann (ikke kokende) og rør forsiktig inn i suppen. Ikke kok etter dette trinnet — varme ødelegger misoens gunstige kulturer.",
+            "Rør inn næringsgjæren og sitronsaften. Smak til og tilsett litt mer sitron hvis du vil ha mer friskhet.",
+            "Tilsett babyspinaten og rør forsiktig til den akkurat har falt sammen, cirka 2 minutter. Ta av varmen.",
+            "Øs opp i boller og dryss chiafrøene over hver porsjon rett før servering."
+          ]
+        },
+        "sv": {
+          "title": "Miso-, röd lins- och sötpotatissoppa",
+          "description": "En värmande, djupt smakrik soppa som blir ännu bättre över natten. Miso och näringsjäst bygger anmärkningsvärt umamidjup — utan olja, utan grädde, utan kompromiss.",
+          "ingredients": [
+            {
+              "quantity": 200,
+              "unit": "g",
+              "name": "röda linser (torra, sköljda)"
+            },
+            {
+              "quantity": 300,
+              "unit": "g",
+              "name": "sötpotatis, skalad och tärnad"
+            },
+            {
+              "quantity": 160,
+              "unit": "g",
+              "name": "morötter, tärnade"
+            },
+            {
+              "quantity": 120,
+              "unit": "g",
+              "name": "lök, finhackad"
+            },
+            {
+              "quantity": 3,
+              "unit": "pcs",
+              "name": "vitlöksklyftor, finhackade"
+            },
+            {
+              "quantity": 80,
+              "unit": "g",
+              "name": "babyspenat"
+            },
+            {
+              "quantity": 1,
+              "unit": "tbsp",
+              "name": "ljus misopasta (lågt natrium)"
+            },
+            {
+              "quantity": 4,
+              "unit": "tsp",
+              "name": "chiafrön (till topping)"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "name": "näringsjäst"
+            },
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "name": "citron, saften av"
+            },
+            {
+              "quantity": 800,
+              "unit": "ml",
+              "name": "grönsaksbuljong med lågt natrium"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "name": "malen spiskummin"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "name": "malen gurkmeja"
+            }
+          ],
+          "steps": [
+            "Skala och skär sötpotatisen och morötterna i 1,5 cm tärningar. Finhacka löken och hacka vitlöken. Skölj de röda linserna under kallt vatten tills vattnet rinner klart.",
+            "Värm en stor gryta över medelvärme. Tillsätt några matskedar vatten och fräs löken tills den är mjuk och genomskinlig, tillsätt en skvätt mer vatten om den fastnar.",
+            "Tillsätt vitlöken, spiskumminen och gurkmejan. Rör konstant i 1 minut tills det doftar. Vitlöken ska mjukna men inte bli brun.",
+            "Tillsätt linserna, sötpotatisen, morötterna och grönsaksbuljongen. Rör samman. Koka upp, sänk sedan till försiktig sjudning.",
+            "Låt sjuda utan lock i cirka 20 minuter, rör om då och då, tills linserna mestadels har löst upp sig i buljongen och sötpotatisen är helt mjuk.",
+            "Lös upp misopastan i lite varmt vatten (inte kokande) och rör försiktigt ner i soppan. Koka inte efter detta steg — värme förstör misons nyttiga kulturer.",
+            "Rör i näringsjästen och citronsaften. Smaka av och tillsätt lite mer citron om du vill ha mer friskhet.",
+            "Tillsätt babyspenaten och rör försiktigt tills den precis fallit ihop, cirka 2 minuter. Ta av värmen.",
+            "Slå upp i skålar och strö chiafröna över varje portion precis före servering."
+          ]
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 200,
+          "unit": "g",
+          "name": "red lentils (dry, rinsed)"
+        },
+        {
+          "quantity": 300,
+          "unit": "g",
+          "name": "sweet potato, peeled and diced"
+        },
+        {
+          "quantity": 160,
+          "unit": "g",
+          "name": "carrots, diced"
+        },
+        {
+          "quantity": 120,
+          "unit": "g",
+          "name": "onion, finely diced"
+        },
+        {
+          "quantity": 3,
+          "unit": "pcs",
+          "name": "garlic cloves, minced"
+        },
+        {
+          "quantity": 80,
+          "unit": "g",
+          "name": "baby spinach"
+        },
+        {
+          "quantity": 1,
+          "unit": "tbsp",
+          "name": "white miso paste (low sodium)"
+        },
+        {
+          "quantity": 4,
+          "unit": "tsp",
+          "name": "chia seeds (for topping)"
+        },
+        {
+          "quantity": 2,
+          "unit": "tbsp",
+          "name": "nutritional yeast"
+        },
+        {
+          "quantity": 1,
+          "unit": "pcs",
+          "name": "lemon, juice of"
+        },
+        {
+          "quantity": 800,
+          "unit": "ml",
+          "name": "low-sodium vegetable broth"
+        },
+        {
+          "quantity": 1,
+          "unit": "tsp",
+          "name": "ground cumin"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "name": "ground turmeric"
+        }
+      ],
+      "steps": [
+        "Peel and cut the sweet potato and carrots into 1.5 cm cubes. Finely dice the onion and mince the garlic. Rinse the red lentils under cold water until the water runs clear.",
+        "Heat a large pot over medium heat. Add a few tablespoons of water and sauté the onion until soft and translucent, adding a splash more water if it sticks.",
+        "Add the garlic, cumin, and turmeric. Stir constantly for 1 minute until fragrant. The garlic should soften but not brown.",
+        "Add the lentils, sweet potato, carrots, and vegetable broth. Stir to combine. Bring to a boil, then reduce to a gentle simmer.",
+        "Simmer uncovered for about 20 minutes, stirring occasionally, until the lentils have mostly dissolved into the broth and the sweet potato is completely tender.",
+        "Dissolve the miso paste in a little warm water (not boiling) and stir gently into the soup. Do not boil after this step — heat destroys miso’s beneficial cultures.",
+        "Stir in the nutritional yeast and the lemon juice. Taste and add a touch more lemon if you want more brightness.",
+        "Add the baby spinach and stir gently until just wilted, about 2 minutes. Remove from heat.",
+        "Ladle into bowls and sprinkle the chia seeds over each serving just before eating."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 320,
+          "protein": 19,
+          "totalFat": 2.3,
+          "saturatedFat": 0.3,
+          "polyunsaturatedFat": 1.2,
+          "monounsaturatedFat": 0.3,
+          "omega3": 0.9,
+          "cholesterol": 0,
+          "totalCarbs": 58,
+          "fiber": 12,
+          "totalSugars": 8,
+          "addedSugar": 0,
+          "calcium": 172,
+          "potassium": 1010,
+          "copper": 0.44,
+          "iron": 5.2,
+          "magnesium": 83,
+          "manganese": 1.8,
+          "selenium": 23,
+          "phosphorus": 355,
+          "zinc": 2.8,
+          "sodium": 225,
+          "vitaminA": 1050,
+          "vitaminB6": 1,
+          "vitaminB12": 1.2,
+          "vitaminC": 35,
+          "vitaminD": 0,
+          "vitaminE": 1.1,
+          "vitaminK": 152,
+          "folate": 302,
+          "thiamin": 0.76,
+          "riboflavin": 0.49,
+          "niacin": 6.6,
+          "choline": 60
+        }
+      }
+    },
+    {
+      "id": "orn-12",
+      "title": "Fredheim Golden Vegetable Broth",
+      "category": "Soup",
+      "servings": 6,
+      "prepTime": 15,
+      "cookTime": 50,
+      "imageUrl": null,
+      "description": "A rich, golden, low-sodium broth built on mushrooms, sweet aromatics, and anti-inflammatory turmeric. Deeply nourishing and microbiome-friendly — a cooking base or a warming drink.",
+      "tags": [
+        "ornish-orange",
+        "soup",
+        "vegan",
+        "oil-free",
+        "no-added-sugar"
+      ],
+      "kcal": 32,
+      "servingWeightGrams": 330,
+      "translations": {
+        "no": {
+          "title": "Fredheim gyllen grønnsaksbuljong",
+          "description": "En rik, gyllen buljong med lavt natrium, bygget på sopp, søte aromater og betennelsesdempende gurkemeie. Dypt næringsrik og tarmvennlig — en kokebase eller en varmende drikk.",
+          "ingredients": [
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "name": "løk, grovhakket"
+            },
+            {
+              "quantity": 4,
+              "unit": "pcs",
+              "name": "hvitløksfedd, knust"
+            },
+            {
+              "quantity": 3,
+              "unit": "pcs",
+              "name": "stilker selleri, grovhakket"
+            },
+            {
+              "quantity": 200,
+              "unit": "g",
+              "name": "sopp (valgfri type), halvert"
+            },
+            {
+              "quantity": 2,
+              "unit": "pcs",
+              "name": "tomater, i båter"
+            },
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "name": "rød eller gul paprika, grovhakket"
+            },
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "name": "søtpotet, grovhakket (med skall)"
+            },
+            {
+              "quantity": 2,
+              "unit": "pcs",
+              "name": "laurbærblad"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "name": "malt gurkemeie"
+            },
+            {
+              "quantity": 2,
+              "unit": "l",
+              "name": "kaldt vann"
+            },
+            {
+              "quantity": 1,
+              "unit": "tbsp",
+              "name": "fersk sitronsaft (tilsettes til slutt)"
+            },
+            {
+              "quantity": 2,
+              "unit": "tsp",
+              "name": "lys miso (shiro), løses opp til slutt"
+            }
+          ],
+          "steps": [
+            "Varm en vanlig panne over middels høy varme — uten olje. Ha løken, hvitløken og soppen rett i den tørre pannen. La det ligge urørt i 2–3 minutter til det er lett brunet i kantene. Dette bygger dyp, karamellisert smak — ikke hopp over det.",
+            "Overfør de ristede aromatene til en trykkoker eller stor gryte. Tilsett selleri, tomater, paprika og søtpotet. Tilsett laurbærbladene og gurkemeie. Hell i det kalde vannet og rør raskt sammen.",
+            "Trykkkok på høyt i 30 minutter med naturlig trykkutløsning (eller la det småkoke under lokk på komfyren i cirka 1 time).",
+            "Sil buljongen gjennom en finmasket sil eller osteklut over en stor bolle, og press solidene forsiktig for å trekke ut all væsken. Kast laurbærbladene og sett solidene til side for gjenbruk.",
+            "La buljongen avkjøle litt til den er varm, men ikke kokende. Løs opp misoen i en øse varm buljong, og rør den tilbake i hele batchen. Tilsett sitronsaften. Smak til og juster. Kok aldri etter at miso er tilsatt — det ødelegger de levende kulturene.",
+            "Avkjøl til romtemperatur før oppbevaring. Holder seg i kjøleskap i opptil 5 dager, eller frys i porsjoner i opptil 3 måneder."
+          ]
+        },
+        "sv": {
+          "title": "Fredheim gyllene grönsaksbuljong",
+          "description": "En rik, gyllene buljong med lågt natrium, byggd på svamp, söta aromater och antiinflammatorisk gurkmeja. Djupt näringsrik och tarmvänlig — en matlagningsbas eller en värmande dryck.",
+          "ingredients": [
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "name": "lök, grovhackad"
+            },
+            {
+              "quantity": 4,
+              "unit": "pcs",
+              "name": "vitlöksklyftor, krossade"
+            },
+            {
+              "quantity": 3,
+              "unit": "pcs",
+              "name": "stjälkar selleri, grovhackade"
+            },
+            {
+              "quantity": 200,
+              "unit": "g",
+              "name": "svamp (valfri sort), halverad"
+            },
+            {
+              "quantity": 2,
+              "unit": "pcs",
+              "name": "tomater, i klyftor"
+            },
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "name": "röd eller gul paprika, grovhackad"
+            },
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "name": "sötpotatis, grovhackad (med skal)"
+            },
+            {
+              "quantity": 2,
+              "unit": "pcs",
+              "name": "lagerblad"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "name": "malen gurkmeja"
+            },
+            {
+              "quantity": 2,
+              "unit": "l",
+              "name": "kallt vatten"
+            },
+            {
+              "quantity": 1,
+              "unit": "tbsp",
+              "name": "färsk citronsaft (tillsätts på slutet)"
+            },
+            {
+              "quantity": 2,
+              "unit": "tsp",
+              "name": "ljus miso (shiro), löses upp på slutet"
+            }
+          ],
+          "steps": [
+            "Värm en vanlig panna över medelhög värme — utan olja. Tillsätt löken, vitlöken och svampen direkt i den torra pannan. Låt ligga orört i 2–3 minuter tills det är lätt brynt i kanterna. Detta bygger djup, karamelliserad smak — hoppa inte över det.",
+            "För över de rostade aromaterna till en tryckkokare eller stor gryta. Tillsätt selleri, tomater, paprika och sötpotatis. Tillsätt lagerbladen och gurkmejan. Häll i det kalla vattnet och rör snabbt samman.",
+            "Tryckkoka på högt i 30 minuter med naturlig tryckutsläpp (eller sjud under lock på spisen i cirka 1 timme).",
+            "Sila buljongen genom en finmaskig sil eller ostduk över en stor skål, och pressa fasta delar försiktigt för att få ut all vätska. Kasta lagerbladen och ställ de fasta delarna åt sidan för återanvändning.",
+            "Låt buljongen svalna något tills den är varm men inte kokande. Lös upp mison i en slev varm buljong och rör tillbaka i hela satsen. Tillsätt citronsaften. Smaka av och justera. Koka aldrig efter att miso tillsatts — det förstör de levande kulturerna.",
+            "Kyl till rumstemperatur före förvaring. Håller i kylen upp till 5 dagar, eller frys i portioner upp till 3 månader."
+          ]
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 1,
+          "unit": "pcs",
+          "name": "onion, roughly chopped"
+        },
+        {
+          "quantity": 4,
+          "unit": "pcs",
+          "name": "garlic cloves, smashed"
+        },
+        {
+          "quantity": 3,
+          "unit": "pcs",
+          "name": "celery stalks, roughly chopped"
+        },
+        {
+          "quantity": 200,
+          "unit": "g",
+          "name": "mushrooms (any variety), halved"
+        },
+        {
+          "quantity": 2,
+          "unit": "pcs",
+          "name": "tomatoes, quartered"
+        },
+        {
+          "quantity": 1,
+          "unit": "pcs",
+          "name": "red or yellow bell pepper, roughly chopped"
+        },
+        {
+          "quantity": 1,
+          "unit": "pcs",
+          "name": "sweet potato, roughly chopped (skin on)"
+        },
+        {
+          "quantity": 2,
+          "unit": "pcs",
+          "name": "bay leaves"
+        },
+        {
+          "quantity": 1,
+          "unit": "tsp",
+          "name": "ground turmeric"
+        },
+        {
+          "quantity": 2,
+          "unit": "l",
+          "name": "cold water"
+        },
+        {
+          "quantity": 1,
+          "unit": "tbsp",
+          "name": "fresh lemon juice (added at finish)"
+        },
+        {
+          "quantity": 2,
+          "unit": "tsp",
+          "name": "white miso (shiro), dissolved at finish"
+        }
+      ],
+      "steps": [
+        "Heat a regular pan over medium-high heat — no oil. Add the onion, garlic, and mushrooms directly into the dry pan. Let sit without stirring for 2–3 minutes until slightly charred at the edges. This builds deep, caramelized flavor — do not skip it.",
+        "Transfer the toasted aromatics into a pressure cooker or large pot. Add the celery, tomatoes, bell pepper, and sweet potato. Add the bay leaves and turmeric. Pour in the cold water and stir briefly.",
+        "Pressure cook on high for 30 minutes with natural release (or simmer covered on the stovetop for about 1 hour).",
+        "Strain the broth through a fine-mesh sieve or cheesecloth into a large bowl, pressing the solids gently to extract all the liquid. Discard the bay leaves and set the solids aside for a second use.",
+        "Let the broth cool slightly to hot-but-not-boiling. Dissolve the miso in a ladleful of warm broth, then stir it back into the full batch. Add the lemon juice. Taste and adjust. Never boil after adding miso — this destroys the live cultures.",
+        "Cool to room temperature before storing. Keeps in the fridge up to 5 days, or freeze in portions for up to 3 months."
+      ],
+      "nutrition": {
+        "perServing": {
+          "calories": 32,
+          "protein": 2.2,
+          "totalFat": 0.3,
+          "saturatedFat": 0.04,
+          "polyunsaturatedFat": 0.1,
+          "monounsaturatedFat": 0.04,
+          "omega3": 0.02,
+          "omega6": 0.06,
+          "cholesterol": 0,
+          "totalCarbs": 6.2,
+          "fiber": 0.6,
+          "totalSugars": 3,
+          "addedSugar": 0,
+          "calcium": 30,
+          "potassium": 400,
+          "copper": 0.18,
+          "iron": 0.9,
+          "magnesium": 24,
+          "manganese": 0.28,
+          "selenium": 5,
+          "phosphorus": 60,
+          "zinc": 0.5,
+          "sodium": 590,
+          "vitaminA": 90,
+          "vitaminB6": 0.2,
+          "vitaminB12": 0,
+          "vitaminC": 24,
+          "vitaminD": 0.1,
+          "vitaminE": 0.7,
+          "vitaminK": 14,
+          "folate": 30,
+          "thiamin": 0.08,
+          "riboflavin": 0.14,
+          "niacin": 2,
+          "choline": 20
         }
       }
     }

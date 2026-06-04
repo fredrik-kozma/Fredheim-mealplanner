@@ -16,6 +16,7 @@ export const NUTRITION_GROUPS = [
       { key: 'polyunsaturatedFat', label: 'Polyunsat. Fat',       unit: 'g',       dv: null, indent: true },
       { key: 'monounsaturatedFat', label: 'Monounsat. Fat',       unit: 'g',       dv: null, indent: true },
       { key: 'omega3',             label: 'Omega-3 (ALA)',        unit: 'g',       dv: null, indent: true },
+      { key: 'omega6',             label: 'Omega-6 (LA)',         unit: 'g',       dv: null, indent: true },
       { key: 'cholesterol',        label: 'Cholesterol',          unit: 'mg',      dv: 300   },
       { key: 'totalCarbs',         label: 'Total Carbohydrates',  unit: 'g',       dv: 275   },
       { key: 'fiber',              label: 'Dietary Fiber',        unit: 'g',       dv: 28,   indent: true },
