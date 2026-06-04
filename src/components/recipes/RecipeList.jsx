@@ -5,24 +5,36 @@ import useStore from '../../store/useStore'
 import RecipeCard from './RecipeCard'
 
 /**
- * Smoothly scrolls the currently-active chip into view within its
- * horizontal scroll strip. Centring the active chip in the strip
- * guarantees the user can always see what they just selected — without
- * this, tapping a chip near the end of a long row could leave the
- * highlighted pill clipped off the side. Only scrolls the strip, never
- * the page (manual scrollLeft math rather than scrollIntoView).
+ * Scroll the active chip into view ONLY IF it's actually clipped off
+ * either edge. If the chip is already visible in the strip — even
+ * partially in the middle — we leave the strip where it is, so tapping
+ * a chip never disrupts the layout the user was looking at.
+ *
+ * Earlier this hook centred the active chip on every selection. That
+ * worked for chips on the far right but caused "All" (always at the
+ * left edge) to snap the strip back to position 0, hiding the longer
+ * chips on the right and making it look like the strip had collapsed.
+ *
+ * Only ever touches the strip's own scrollLeft (manual delta math, not
+ * scrollIntoView) so the page itself can never scroll as a side effect.
  */
-function useCenterActiveChip(containerRef, activeKey) {
+function useKeepActiveChipVisible(containerRef, activeKey) {
   useEffect(() => {
     const c = containerRef.current
     if (!c) return
     const active = c.querySelector('[data-active="true"]')
     if (!active) return
-    const containerRect = c.getBoundingClientRect()
-    const activeRect = active.getBoundingClientRect()
-    const targetCenter = containerRect.left + containerRect.width / 2
-    const activeCenter = activeRect.left + activeRect.width / 2
-    const delta = activeCenter - targetCenter
+
+    const cRect = c.getBoundingClientRect()
+    const aRect = active.getBoundingClientRect()
+    const PAD = 16 // breathing room from the edge
+
+    let delta = 0
+    if (aRect.left < cRect.left + PAD) {
+      delta = aRect.left - cRect.left - PAD
+    } else if (aRect.right > cRect.right - PAD) {
+      delta = aRect.right - cRect.right + PAD
+    }
     if (Math.abs(delta) < 1) return
     c.scrollTo({ left: c.scrollLeft + delta, behavior: 'smooth' })
   }, [containerRef, activeKey])
@@ -58,8 +70,8 @@ export default function RecipeList() {
   // so it's always visible no matter how long the pack/category list is.
   const packStripRef = useRef(null)
   const categoryStripRef = useRef(null)
-  useCenterActiveChip(packStripRef, activePack)
-  useCenterActiveChip(categoryStripRef, activeCategory)
+  useKeepActiveChipVisible(packStripRef, activePack)
+  useKeepActiveChipVisible(categoryStripRef, activeCategory)
 
   // True if anything is filtered away from the default state — used to
   // decide whether to show the "Clear filters" pill.
