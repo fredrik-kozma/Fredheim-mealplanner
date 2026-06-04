@@ -908,8 +908,8 @@
       "servingWeightGrams": 66,
       "translations": {
         "no": {
-          "title": "Fyldige johannesbrød- og daddelbrownies",
-          "description": "Saftige, fyldige brownies laget av sorte bønner, dadler, johannesbrød og valnøtter. Naturlig søte, oljefrie og glutenfrie.",
+          "title": "Fyldige carob- og daddelbrownies",
+          "description": "Saftige, fyldige brownies laget av sorte bønner, dadler, carob og valnøtter. Naturlig søte, oljefrie og glutenfrie.",
           "ingredients": [
             {
               "quantity": 240,
@@ -924,7 +924,7 @@
             {
               "quantity": 35,
               "unit": "g",
-              "name": "johannesbrødpulver"
+              "name": "carobpulver"
             },
             {
               "quantity": 45,
@@ -976,7 +976,7 @@
             "Forvarm ovnen til 175 °C / 350 °F. Kle en 20×20 cm form med bakepapir.",
             "Bløtlegg dadlene i varmt vann i 10 minutter. Avrenn godt.",
             "Rist valnøttene i en tørr panne i 4 minutter til de dufter. Sett til side.",
-            "Aktiver johannesbrødpulveret: pisk johannesbrødpulver med 3 ss kokende vann til en tykk pasta. La det stå i 1 minutt. Ikke hopp over dette trinnet.",
+            "Aktiver carobpulveret: pisk carobpulver med 3 ss kokende vann til en tykk pasta. La det stå i 1 minutt. Ikke hopp over dette trinnet.",
             "Tilsett alt unntatt valnøttene i en foodprosessor. Blend i hele 2 minutter, skrap ned to ganger. Røren skal være helt jevn, tykk og blank.",
             "Rør inn det meste av valnøttene for hånd. Tilsett sitronskall hvis du bruker det. Spre i formen, glatt toppen, dryss over de resterende valnøttene.",
             "Stek i 20–22 minutter. Ta dem ut når midten fortsatt ser litt rå ut — de stivner i kjøleskapet.",
@@ -984,8 +984,8 @@
           ]
         },
         "sv": {
-          "title": "Mjuka johannesbröd- och dadelbrownies",
-          "description": "Saftiga, mjuka brownies gjorda på svarta bönor, dadlar, johannesbröd och valnötter. Naturligt söta, oljefria och glutenfria.",
+          "title": "Mjuka carob- och dadelbrownies",
+          "description": "Saftiga, mjuka brownies gjorda på svarta bönor, dadlar, carob och valnötter. Naturligt söta, oljefria och glutenfria.",
           "ingredients": [
             {
               "quantity": 240,
@@ -1000,7 +1000,7 @@
             {
               "quantity": 35,
               "unit": "g",
-              "name": "johannesbrödpulver"
+              "name": "carobpulver"
             },
             {
               "quantity": 45,
@@ -1052,7 +1052,7 @@
             "Förvärm ugnen till 175 °C / 350 °F. Klä en 20×20 cm form med bakplåtspapper.",
             "Blötlägg dadlarna i varmt vatten i 10 minuter. Häll av väl.",
             "Rosta valnötterna i en torr panna i 4 minuter tills de doftar. Sätt åt sidan.",
-            "Aktivera johannesbrödpulvret: vispa johannesbrödpulver med 3 msk kokande vatten till en tjock pasta. Låt stå 1 minut. Hoppa inte över detta steg.",
+            "Aktivera carobpulvret: vispa carobpulver med 3 msk kokande vatten till en tjock pasta. Låt stå 1 minut. Hoppa inte över detta steg.",
             "Tillsätt allt utom valnötterna i en matberedare. Mixa i hela 2 minuter, skrapa ner två gånger. Smeten ska vara helt slät, tjock och blank.",
             "Rör i större delen av valnötterna för hand. Tillsätt citronskal om du använder det. Bred ut i formen, jämna till ytan, strö resterande valnötter över.",
             "Grädda i 20–22 minuter. Ta ut när mitten fortfarande ser något ogräddad ut — de stelnar i kylen.",
@@ -1193,8 +1193,8 @@
       "servingWeightGrams": 500,
       "translations": {
         "no": {
-          "title": "Johannesbrød- og hvitbønne-proteinshake",
-          "description": "En kremet, naturlig søt proteinshake — fyldig og mettende, basert på cannellinibønner og johannesbrød med dadler for dybde. Ornish GREEN. Ingen blender-erfaring kreves.",
+          "title": "Carob- og hvitbønne-proteinshake",
+          "description": "En kremet, naturlig søt proteinshake — fyldig og mettende, basert på cannellinibønner og carob med dadler for dybde. Ornish GREEN. Ingen blender-erfaring kreves.",
           "ingredients": [
             {
               "quantity": 100,
@@ -1204,7 +1204,7 @@
             {
               "quantity": 12,
               "unit": "g",
-              "name": "johannesbrødpulver"
+              "name": "carobpulver"
             },
             {
               "quantity": 48,
@@ -1234,14 +1234,14 @@
           ],
           "steps": [
             "Hvis dadlene er faste, bløtlegg dem i noen spiseskjeer av vannet i 5 minutter for å mykne dem. Hopp over hvis de allerede er myke og klebrige.",
-            "Tilsett bønnene, johannesbrødpulveret, dadlene (med eventuelt bløtleggingsvann), den frosne bananen, malt linfrø, kanel og resten av vannet i en kraftig blender.",
+            "Tilsett bønnene, carobpulveret, dadlene (med eventuelt bløtleggingsvann), den frosne bananen, malt linfrø, kanel og resten av vannet i en kraftig blender.",
             "Blend på høy hastighet i 60–90 sekunder til helt jevnt og kremet.",
             "Smak til og juster — tilsett litt mer vann hvis du vil ha en tynnere konsistens. Hell over i et stort glass og drikk umiddelbart for best konsistens."
           ]
         },
         "sv": {
-          "title": "Johannesbröd- och vitbönsproteinshake",
-          "description": "En krämig, naturligt söt proteinshake — fyllig och mättande, byggd på cannellinibönor och johannesbröd med dadlar för djup. Ornish GREEN. Ingen blender-vana krävs.",
+          "title": "Carob- och vitbönsproteinshake",
+          "description": "En krämig, naturligt söt proteinshake — fyllig och mättande, byggd på cannellinibönor och carob med dadlar för djup. Ornish GREEN. Ingen blender-vana krävs.",
           "ingredients": [
             {
               "quantity": 100,
@@ -1251,7 +1251,7 @@
             {
               "quantity": 12,
               "unit": "g",
-              "name": "johannesbrödpulver"
+              "name": "carobpulver"
             },
             {
               "quantity": 48,
@@ -1281,7 +1281,7 @@
           ],
           "steps": [
             "Om dadlarna är hårda, blötlägg dem i några matskedar av vattnet i 5 minuter för att mjuka upp dem. Hoppa över om de redan är mjuka och kletiga.",
-            "Tillsätt bönorna, johannesbrödpulvret, dadlarna (med eventuellt blötläggningsvatten), den frysta bananen, malet linfrö, kanel och resten av vattnet i en kraftig mixer.",
+            "Tillsätt bönorna, carobpulvret, dadlarna (med eventuellt blötläggningsvatten), den frysta bananen, malet linfrö, kanel och resten av vattnet i en kraftig mixer.",
             "Mixa på hög hastighet i 60–90 sekunder tills helt slätt och krämigt.",
             "Smaka av och justera — tillsätt en skvätt mer vatten om du vill ha en tunnare konsistens. Häll upp i ett stort glas och drick omedelbart för bästa konsistens."
           ]
@@ -1972,8 +1972,8 @@
       "servingWeightGrams": 193,
       "translations": {
         "no": {
-          "title": "Varm bokhvetegrøt med dadler, johannesbrød og kanel",
-          "description": "En fyldig frokostbolle med sjokoladesmak — naturlig søt fra Medjool-dadler, med jordnær dybde fra johannesbrød og varme fra kanel.",
+          "title": "Varm bokhvetegrøt med dadler, carob og kanel",
+          "description": "En fyldig frokostbolle med sjokoladesmak — naturlig søt fra Medjool-dadler, med jordnær dybde fra carob og varme fra kanel.",
           "ingredients": [
             {
               "quantity": 50,
@@ -1993,7 +1993,7 @@
             {
               "quantity": 7,
               "unit": "g",
-              "name": "johannesbrødpulver"
+              "name": "carobpulver"
             },
             {
               "quantity": 1.3,
@@ -2008,13 +2008,13 @@
           ],
           "steps": [
             "Skyll bokhvetegrynet godt under kaldt vann. Ha det i en liten kjele med vannet. Kok opp, skru ned til lav varme, legg på lokk og la det småkoke til vannet er absorbert og grynene er møre.",
-            "Ta av lokket. Tilsett dadlene, johannesbrødpulveret og kanelen. Rør godt over lav varme i 2–3 minutter, og press dadlene forsiktig med baksiden av en skje så de mykner og smelter inn i grøten.",
+            "Ta av lokket. Tilsett dadlene, carobpulveret og kanelen. Rør godt over lav varme i 2–3 minutter, og press dadlene forsiktig med baksiden av en skje så de mykner og smelter inn i grøten.",
             "Ta av varmen. Rør inn det malte linfrøet — det tykner grøten litt og gir deg dagens omega-3. Server umiddelbart."
           ]
         },
         "sv": {
-          "title": "Varm bovetegröt med dadlar, johannesbröd och kanel",
-          "description": "En fyllig frukostbowl med chokladsmak — naturligt söt från Medjool-dadlar, med jordnära djup från johannesbröd och värme från kanel.",
+          "title": "Varm bovetegröt med dadlar, carob och kanel",
+          "description": "En fyllig frukostbowl med chokladsmak — naturligt söt från Medjool-dadlar, med jordnära djup från carob och värme från kanel.",
           "ingredients": [
             {
               "quantity": 50,
@@ -2034,7 +2034,7 @@
             {
               "quantity": 7,
               "unit": "g",
-              "name": "johannesbrödpulver"
+              "name": "carobpulver"
             },
             {
               "quantity": 1.3,
@@ -2049,7 +2049,7 @@
           ],
           "steps": [
             "Skölj bovetegrynen väl under kallt vatten. Tillsätt dem i en liten kastrull med vattnet. Koka upp, sänk till låg värme, lägg på lock och låt sjuda tills vattnet absorberats och grynen är mjuka.",
-            "Ta av locket. Tillsätt dadlarna, johannesbrödpulvret och kanelen. Rör väl över låg värme i 2–3 minuter och tryck dadlarna försiktigt med baksidan av en sked så att de mjuknar och smälter in i gröten.",
+            "Ta av locket. Tillsätt dadlarna, carobpulvret och kanelen. Rör väl över låg värme i 2–3 minuter och tryck dadlarna försiktigt med baksidan av en sked så att de mjuknar och smälter in i gröten.",
             "Ta av värmen. Rör i det malda linfröet — det tjockar gröten något och ger dig dagens omega-3. Servera omedelbart."
           ]
         }
