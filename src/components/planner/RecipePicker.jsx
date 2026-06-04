@@ -135,10 +135,10 @@ export default function RecipePicker({ onSelect, onClose, title }) {
             <button
               onClick={() => setActivePack('All')}
               data-active={activePack === 'All' ? 'true' : 'false'}
-              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap border transition-colors ${
                 activePack === 'All'
-                  ? 'bg-emerald-600 text-white'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  ? 'bg-emerald-600 text-white border-emerald-600'
+                  : 'bg-slate-100 text-slate-600 border-slate-100 hover:bg-slate-200 hover:border-slate-200'
               }`}
             >
               {t('recipes.allPacks', { defaultValue: 'All packs' })}
@@ -148,7 +148,7 @@ export default function RecipePicker({ onSelect, onClose, title }) {
                 key={opt.id}
                 onClick={() => setActivePack(opt.id)}
                 data-active={activePack === opt.id ? 'true' : 'false'}
-                className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+                className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap border transition-colors ${
                   activePack === opt.id
                     ? 'bg-emerald-600 text-white'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -171,10 +171,10 @@ export default function RecipePicker({ onSelect, onClose, title }) {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               data-active={activeCategory === cat ? 'true' : 'false'}
-              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap border transition-colors ${
                 activeCategory === cat
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  ? 'bg-indigo-600 text-white border-indigo-600'
+                  : 'bg-slate-100 text-slate-600 border-slate-100 hover:bg-slate-200 hover:border-slate-200'
               }`}
             >
               {cat === 'All' ? t('recipes.allCategories') : t(`categories.${cat}`, { defaultValue: cat })}
@@ -182,8 +182,14 @@ export default function RecipePicker({ onSelect, onClose, title }) {
           ))}
         </div>
 
-        {/* Recipe list */}
-        <div className="flex-1 overflow-y-auto px-4 pt-4 pb-4">
+        {/* Recipe list — scrollbar-gutter: stable reserves the scrollbar's
+            width even when the list doesn't overflow, so the chip strips
+            above don't visually "shift" when the user changes filters and
+            the result count crosses the overflow threshold. */}
+        <div
+          className="flex-1 overflow-y-auto px-4 pt-4 pb-4"
+          style={{ scrollbarGutter: 'stable' }}
+        >
           {filtered.length === 0 ? (
             <div className="text-center py-10 text-sm text-slate-400">{t('recipePicker.noResults')}</div>
           ) : (

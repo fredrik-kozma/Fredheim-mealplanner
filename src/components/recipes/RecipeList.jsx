@@ -186,10 +186,10 @@ export default function RecipeList() {
             <button
               onClick={() => setActivePack('All')}
               data-active={activePack === 'All' ? 'true' : 'false'}
-              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap ${
+              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap border ${
                 activePack === 'All'
-                  ? 'bg-emerald-600 text-white shadow-sm'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
+                  ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+                  : 'bg-white text-slate-600 border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
               }`}
             >
               {t('recipes.allPacks', { defaultValue: 'All packs' })}
@@ -199,10 +199,10 @@ export default function RecipeList() {
                 key={opt.id}
                 onClick={() => setActivePack(opt.id)}
                 data-active={activePack === opt.id ? 'true' : 'false'}
-                className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap ${
+                className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap border ${
                   activePack === opt.id
-                    ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
+                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+                    : 'bg-white text-slate-600 border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
                 }`}
               >
                 {opt.label} <span className="opacity-60">· {opt.count}</span>
@@ -222,10 +222,10 @@ export default function RecipeList() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               data-active={activeCategory === cat ? 'true' : 'false'}
-              className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors duration-150 whitespace-nowrap ${
+              className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors duration-150 whitespace-nowrap border ${
                 activeCategory === cat
-                  ? 'bg-indigo-600 text-white shadow-sm'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:border-indigo-300 hover:text-indigo-600'
+                  ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                  : 'bg-white text-slate-600 border-slate-200 hover:border-indigo-300 hover:text-indigo-600'
               }`}
             >
               {cat === 'All' ? t('recipes.allCategories') : t(`categories.${cat}`, { defaultValue: cat })}
