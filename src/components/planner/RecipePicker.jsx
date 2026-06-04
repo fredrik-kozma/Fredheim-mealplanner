@@ -1,27 +1,6 @@
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
-
-// Keep the active chip visible inside its horizontal scroll strip,
-// but only when it's actually clipped — otherwise leave the strip
-// alone. Mirrors the helper in RecipeList.jsx; kept here as a local
-// copy so the two screens stay independent.
-function useKeepActiveChipVisible(containerRef, activeKey) {
-  useEffect(() => {
-    const c = containerRef.current
-    if (!c) return
-    const active = c.querySelector('[data-active="true"]')
-    if (!active) return
-    const cRect = c.getBoundingClientRect()
-    const aRect = active.getBoundingClientRect()
-    const PAD = 16
-    let delta = 0
-    if (aRect.left < cRect.left + PAD) delta = aRect.left - cRect.left - PAD
-    else if (aRect.right > cRect.right - PAD) delta = aRect.right - cRect.right + PAD
-    if (Math.abs(delta) < 1) return
-    c.scrollTo({ left: c.scrollLeft + delta, behavior: 'smooth' })
-  }, [containerRef, activeKey])
-}
 
 export default function RecipePicker({ onSelect, onClose, title }) {
   const { t, i18n } = useTranslation()
@@ -33,11 +12,6 @@ export default function RecipePicker({ onSelect, onClose, title }) {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
   const [activePack, setActivePack] = useState('All')
-
-  const packStripRef = useRef(null)
-  const categoryStripRef = useRef(null)
-  useKeepActiveChipVisible(packStripRef, activePack)
-  useKeepActiveChipVisible(categoryStripRef, activeCategory)
 
   // Build the pack options once per render — only show packs that actually
   // have installed recipes, plus a "My recipes" bucket for non-pack ones.
@@ -125,20 +99,22 @@ export default function RecipePicker({ onSelect, onClose, title }) {
           </div>
         </div>
 
-        {/* Pack chips — only shown when more than one bucket exists */}
+        {/* Pack chips — only shown when more than one bucket exists.
+            Strict static styling: explicit h-7, always-on 1px border with
+            colour matching the chip background, no color transition, no
+            auto-scroll. The chip should look pixel-identical in every
+            state — only the colour changes when selected. */}
         {packOptions.length > 1 && (
           <div
-            ref={packStripRef}
-            className="flex gap-2 overflow-x-auto px-4 pt-1 pb-2 scroll-smooth"
+            className="flex gap-2 overflow-x-auto px-4 pt-1 pb-2"
             style={{ scrollbarWidth: 'none' }}
           >
             <button
               onClick={() => setActivePack('All')}
-              data-active={activePack === 'All' ? 'true' : 'false'}
-              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap border transition-colors ${
+              className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
                 activePack === 'All'
                   ? 'bg-emerald-600 text-white border-emerald-600'
-                  : 'bg-slate-100 text-slate-600 border-slate-100 hover:bg-slate-200 hover:border-slate-200'
+                  : 'bg-slate-100 text-slate-600 border-slate-100'
               }`}
             >
               {t('recipes.allPacks', { defaultValue: 'All packs' })}
@@ -147,11 +123,10 @@ export default function RecipePicker({ onSelect, onClose, title }) {
               <button
                 key={opt.id}
                 onClick={() => setActivePack(opt.id)}
-                data-active={activePack === opt.id ? 'true' : 'false'}
-                className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap border transition-colors ${
+                className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
                   activePack === opt.id
-                    ? 'bg-emerald-600 text-white'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-emerald-600 text-white border-emerald-600'
+                    : 'bg-slate-100 text-slate-600 border-slate-100'
                 }`}
               >
                 {opt.label}
@@ -162,19 +137,17 @@ export default function RecipePicker({ onSelect, onClose, title }) {
 
         {/* Category chips */}
         <div
-          ref={categoryStripRef}
-          className="flex gap-2 overflow-x-auto px-4 pt-2 pb-5 scroll-smooth"
+          className="flex gap-2 overflow-x-auto px-4 pt-2 pb-5"
           style={{ scrollbarWidth: 'none' }}
         >
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              data-active={activeCategory === cat ? 'true' : 'false'}
-              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap border transition-colors ${
+              className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
                 activeCategory === cat
                   ? 'bg-indigo-600 text-white border-indigo-600'
-                  : 'bg-slate-100 text-slate-600 border-slate-100 hover:bg-slate-200 hover:border-slate-200'
+                  : 'bg-slate-100 text-slate-600 border-slate-100'
               }`}
             >
               {cat === 'All' ? t('recipes.allCategories') : t(`categories.${cat}`, { defaultValue: cat })}

@@ -1,44 +1,8 @@
-import { useMemo, useRef, useEffect } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import RecipeCard from './RecipeCard'
-
-/**
- * Scroll the active chip into view ONLY IF it's actually clipped off
- * either edge. If the chip is already visible in the strip — even
- * partially in the middle — we leave the strip where it is, so tapping
- * a chip never disrupts the layout the user was looking at.
- *
- * Earlier this hook centred the active chip on every selection. That
- * worked for chips on the far right but caused "All" (always at the
- * left edge) to snap the strip back to position 0, hiding the longer
- * chips on the right and making it look like the strip had collapsed.
- *
- * Only ever touches the strip's own scrollLeft (manual delta math, not
- * scrollIntoView) so the page itself can never scroll as a side effect.
- */
-function useKeepActiveChipVisible(containerRef, activeKey) {
-  useEffect(() => {
-    const c = containerRef.current
-    if (!c) return
-    const active = c.querySelector('[data-active="true"]')
-    if (!active) return
-
-    const cRect = c.getBoundingClientRect()
-    const aRect = active.getBoundingClientRect()
-    const PAD = 16 // breathing room from the edge
-
-    let delta = 0
-    if (aRect.left < cRect.left + PAD) {
-      delta = aRect.left - cRect.left - PAD
-    } else if (aRect.right > cRect.right - PAD) {
-      delta = aRect.right - cRect.right + PAD
-    }
-    if (Math.abs(delta) < 1) return
-    c.scrollTo({ left: c.scrollLeft + delta, behavior: 'smooth' })
-  }, [containerRef, activeKey])
-}
 
 export default function RecipeList() {
   const { t, i18n } = useTranslation()
@@ -66,12 +30,6 @@ export default function RecipeList() {
   const setSearch = (v) => setRecipesView({ search: v })
   const setSortBy = (v) => setRecipesView({ sortBy: v })
 
-  // Refs + effects keep the selected chip centred in its scroll strip
-  // so it's always visible no matter how long the pack/category list is.
-  const packStripRef = useRef(null)
-  const categoryStripRef = useRef(null)
-  useKeepActiveChipVisible(packStripRef, activePack)
-  useKeepActiveChipVisible(categoryStripRef, activeCategory)
 
   // True if anything is filtered away from the default state — used to
   // decide whether to show the "Clear filters" pill.
@@ -174,22 +132,20 @@ export default function RecipeList() {
         )}
 
         {/* Pack filter — only shown when more than one bucket exists.
-            scroll-smooth + scroll-px-4 give the auto-centring effect a
-            little breathing room so the active chip is never flush
-            against the edge. */}
+            Strict static styling: fixed h-7, always-on 1px border, no
+            transitions, no auto-scroll. Tapping a chip only flips the
+            colour, never moves anything. */}
         {packOptions.length > 1 && (
           <div
-            ref={packStripRef}
-            className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none scroll-smooth"
-            style={{ scrollbarWidth: 'none', scrollPaddingInline: '1rem' }}
+            className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none"
+            style={{ scrollbarWidth: 'none' }}
           >
             <button
               onClick={() => setActivePack('All')}
-              data-active={activePack === 'All' ? 'true' : 'false'}
-              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap border ${
+              className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
                 activePack === 'All'
-                  ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                  : 'bg-white text-slate-600 border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
+                  ? 'bg-emerald-600 text-white border-emerald-600'
+                  : 'bg-white text-slate-600 border-slate-200'
               }`}
             >
               {t('recipes.allPacks', { defaultValue: 'All packs' })}
@@ -198,14 +154,13 @@ export default function RecipeList() {
               <button
                 key={opt.id}
                 onClick={() => setActivePack(opt.id)}
-                data-active={activePack === opt.id ? 'true' : 'false'}
-                className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap border ${
+                className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
                   activePack === opt.id
-                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                    : 'bg-white text-slate-600 border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
+                    ? 'bg-emerald-600 text-white border-emerald-600'
+                    : 'bg-white text-slate-600 border-slate-200'
                 }`}
               >
-                {opt.label} <span className="opacity-60">· {opt.count}</span>
+                {opt.label} <span className="opacity-60">&nbsp;· {opt.count}</span>
               </button>
             ))}
           </div>
@@ -213,19 +168,17 @@ export default function RecipeList() {
 
         {/* Category filter chips */}
         <div
-          ref={categoryStripRef}
-          className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none scroll-smooth"
-          style={{ scrollbarWidth: 'none', scrollPaddingInline: '1rem' }}
+          className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none"
+          style={{ scrollbarWidth: 'none' }}
         >
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              data-active={activeCategory === cat ? 'true' : 'false'}
-              className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors duration-150 whitespace-nowrap border ${
+              className={`flex-shrink-0 h-8 px-3.5 inline-flex items-center rounded-full text-sm font-medium whitespace-nowrap border ${
                 activeCategory === cat
-                  ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                  : 'bg-white text-slate-600 border-slate-200 hover:border-indigo-300 hover:text-indigo-600'
+                  ? 'bg-indigo-600 text-white border-indigo-600'
+                  : 'bg-white text-slate-600 border-slate-200'
               }`}
             >
               {cat === 'All' ? t('recipes.allCategories') : t(`categories.${cat}`, { defaultValue: cat })}
