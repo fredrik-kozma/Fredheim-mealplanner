@@ -1,8 +1,32 @@
-import { useMemo } from 'react'
+import { useMemo, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import RecipeCard from './RecipeCard'
+
+/**
+ * Smoothly scrolls the currently-active chip into view within its
+ * horizontal scroll strip. Centring the active chip in the strip
+ * guarantees the user can always see what they just selected — without
+ * this, tapping a chip near the end of a long row could leave the
+ * highlighted pill clipped off the side. Only scrolls the strip, never
+ * the page (manual scrollLeft math rather than scrollIntoView).
+ */
+function useCenterActiveChip(containerRef, activeKey) {
+  useEffect(() => {
+    const c = containerRef.current
+    if (!c) return
+    const active = c.querySelector('[data-active="true"]')
+    if (!active) return
+    const containerRect = c.getBoundingClientRect()
+    const activeRect = active.getBoundingClientRect()
+    const targetCenter = containerRect.left + containerRect.width / 2
+    const activeCenter = activeRect.left + activeRect.width / 2
+    const delta = activeCenter - targetCenter
+    if (Math.abs(delta) < 1) return
+    c.scrollTo({ left: c.scrollLeft + delta, behavior: 'smooth' })
+  }, [containerRef, activeKey])
+}
 
 export default function RecipeList() {
   const { t, i18n } = useTranslation()
@@ -29,6 +53,13 @@ export default function RecipeList() {
   const setActivePack = (v) => setRecipesView({ pack: v })
   const setSearch = (v) => setRecipesView({ search: v })
   const setSortBy = (v) => setRecipesView({ sortBy: v })
+
+  // Refs + effects keep the selected chip centred in its scroll strip
+  // so it's always visible no matter how long the pack/category list is.
+  const packStripRef = useRef(null)
+  const categoryStripRef = useRef(null)
+  useCenterActiveChip(packStripRef, activePack)
+  useCenterActiveChip(categoryStripRef, activeCategory)
 
   // True if anything is filtered away from the default state — used to
   // decide whether to show the "Clear filters" pill.
@@ -130,12 +161,20 @@ export default function RecipeList() {
           </button>
         )}
 
-        {/* Pack filter — only shown when more than one bucket exists */}
+        {/* Pack filter — only shown when more than one bucket exists.
+            scroll-smooth + scroll-px-4 give the auto-centring effect a
+            little breathing room so the active chip is never flush
+            against the edge. */}
         {packOptions.length > 1 && (
-          <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none" style={{ scrollbarWidth: 'none' }}>
+          <div
+            ref={packStripRef}
+            className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none scroll-smooth"
+            style={{ scrollbarWidth: 'none', scrollPaddingInline: '1rem' }}
+          >
             <button
               onClick={() => setActivePack('All')}
-              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 ${
+              data-active={activePack === 'All' ? 'true' : 'false'}
+              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap ${
                 activePack === 'All'
                   ? 'bg-emerald-600 text-white shadow-sm'
                   : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
@@ -147,6 +186,7 @@ export default function RecipeList() {
               <button
                 key={opt.id}
                 onClick={() => setActivePack(opt.id)}
+                data-active={activePack === opt.id ? 'true' : 'false'}
                 className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-150 whitespace-nowrap ${
                   activePack === opt.id
                     ? 'bg-emerald-600 text-white shadow-sm'
@@ -160,12 +200,17 @@ export default function RecipeList() {
         )}
 
         {/* Category filter chips */}
-        <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none" style={{ scrollbarWidth: 'none' }}>
+        <div
+          ref={categoryStripRef}
+          className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none scroll-smooth"
+          style={{ scrollbarWidth: 'none', scrollPaddingInline: '1rem' }}
+        >
           {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors duration-150 ${
+              data-active={activeCategory === cat ? 'true' : 'false'}
+              className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors duration-150 whitespace-nowrap ${
                 activeCategory === cat
                   ? 'bg-indigo-600 text-white shadow-sm'
                   : 'bg-white text-slate-600 border border-slate-200 hover:border-indigo-300 hover:text-indigo-600'
