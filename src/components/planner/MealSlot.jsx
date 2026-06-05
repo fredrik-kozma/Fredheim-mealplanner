@@ -89,7 +89,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
             e.stopPropagation()
             removeRecipeFromSlot(day, slot, item.recipeId)
           }}
-          className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-300 hover:text-red-500 flex-shrink-0"
+          className="text-slate-400 hover:text-red-500 transition-colors flex-shrink-0"
           title={t('common.remove')}
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -191,8 +191,11 @@ export default function MealSlot({ day, slot, onAdd }) {
         isOver ? 'ring-2 ring-indigo-400 ring-offset-1 border-indigo-300' : ''
       }`}
     >
-      {slotPairs.length === 0 && !isOver && (
-        <div className="flex items-center justify-center h-12 text-xs text-slate-400">
+      {/* Empty placeholder — kept for vertical spacing only when the slot
+          is the drop target. No "Drop here" label: the empty card + the
+          "+ Add" button below already make the affordance clear. */}
+      {slotPairs.length === 0 && isOver && (
+        <div className="flex items-center justify-center h-12 text-xs font-medium text-indigo-500">
           {t('planner.dropHere')}
         </div>
       )}

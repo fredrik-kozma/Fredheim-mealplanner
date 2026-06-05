@@ -357,7 +357,7 @@
     "welcomeBack": "Välkommen tillbaka!",
     "trialTagline": "Starta din 14-dagars kostnadsfria provperiod",
     "startTrial": "Starta gratis provperiod",
-    "signUpSuccess": "Konto skapat! Kontrollera din e-post för bekräftelse, sedan loggar du in.",
+    "signUpSuccess": "Konto skapat! Kontrollera din e-post för bekräftelse, sedan loggar du in. Om du inte ser mejlet inom ett par minuter, kolla skräppost- eller spam-mappen.",
     "genericError": "Något gick fel. Försök igen.",
     "account": "Konto",
     "forgotPassword": "Glömt lösenord?",

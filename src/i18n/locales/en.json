@@ -357,7 +357,7 @@
     "welcomeBack": "Welcome back!",
     "trialTagline": "Start your 14-day free trial",
     "startTrial": "Start free trial",
-    "signUpSuccess": "Account created! Check your email to confirm, then sign in.",
+    "signUpSuccess": "Account created! Check your email to confirm, then sign in. If you don't see it within a minute or two, please check your spam or junk folder.",
     "genericError": "Something went wrong. Please try again.",
     "account": "Account",
     "forgotPassword": "Forgot password?",
