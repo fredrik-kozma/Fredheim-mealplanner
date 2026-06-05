@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -677,7 +677,7 @@
     },
     {
       "id": "orn-4",
-      "title": "Smoked Paprika & Sumac White Bean Sauce",
+      "title": "Kebab Dressing",
       "category": "Sauce",
       "servings": 4,
       "prepTime": 5,
@@ -696,7 +696,7 @@
       "servingWeightGrams": 180,
       "translations": {
         "no": {
-          "title": "Røkt paprika- og sumak-hvitbønnesaus",
+          "title": "Kebabsaus",
           "description": "En kremet, hellbar kebab-stil saus av hvite bønner og dadler — rik på umami, syre og varme. Uten olje, uten meieri, helt Ornish GREEN.",
           "ingredients": [
             {
@@ -748,7 +748,7 @@
           ]
         },
         "sv": {
-          "title": "Rökt paprika- och sumak-vitbönsås",
+          "title": "Kebabsås",
           "description": "En krämig, hällbar kebab-style sås på vita bönor och dadlar — rik på umami, syra och värme. Utan olja, utan mejeri, helt Ornish GREEN.",
           "ingredients": [
             {
