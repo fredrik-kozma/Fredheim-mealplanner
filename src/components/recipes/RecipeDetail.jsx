@@ -8,6 +8,7 @@ import { printRecipe } from '../../utils/printRecipe'
 import { useAccess } from '../../hooks/useAccess'
 import LockedOverlay from '../subscription/LockedOverlay'
 import NutritionPanel from './NutritionPanel'
+import EditableNumber from '../common/EditableNumber'
 
 export default function RecipeDetail() {
   const { id } = useParams()
@@ -290,15 +291,12 @@ export default function RecipeDetail() {
                   −
                 </button>
                 <div className="text-center flex-shrink-0 w-16">
-                  <input
-                    type="number"
-                    inputMode="numeric"
-                    min="1"
+                  {/* Editable: tap to clear and type a fresh value. */}
+                  <EditableNumber
                     value={displayServings}
-                    onChange={(e) => {
-                      const val = Math.max(1, parseInt(e.target.value) || 1)
-                      setDisplayServings(val)
-                    }}
+                    onChange={setDisplayServings}
+                    min={1}
+                    max={999}
                     className="w-full text-center font-semibold text-slate-900 bg-indigo-50 border border-indigo-200 rounded-lg px-1 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 tabular-nums"
                   />
                   <p className="text-[10px] text-slate-500 mt-0.5 truncate">

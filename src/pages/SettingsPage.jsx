@@ -5,6 +5,7 @@ import { translateRecipe } from '../utils/translator'
 import { useAuth } from '../contexts/AuthContext'
 import { useSubscription } from '../hooks/useSubscription'
 import AuthModal from '../components/auth/AuthModal'
+import EditableNumber from '../components/common/EditableNumber'
 
 function SectionCard({ title, children }) {
   return (
@@ -379,7 +380,14 @@ export default function SettingsPage() {
               className="btn-secondary w-10 h-10 p-0 text-xl"
             >−</button>
             <div className="flex-1 text-center">
-              <span className="text-3xl font-bold text-indigo-600">{familySize}</span>
+              {/* Editable: tap to clear and type a fresh number. */}
+              <EditableNumber
+                value={familySize}
+                onChange={setFamilySize}
+                min={1}
+                max={99}
+                className="block w-full text-center text-3xl font-bold text-indigo-600 bg-transparent border-0 focus:outline-none focus:ring-0 tabular-nums"
+              />
               <p className="text-xs text-slate-500 mt-0.5">{t('settings.people')}</p>
             </div>
             <button
