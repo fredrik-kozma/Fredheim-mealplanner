@@ -9,6 +9,17 @@
   "about": {
     "inCooperationWith": "I samarbete med"
   },
+  "install": {
+    "title": "Installera Fredheim",
+    "subtitle": "Lägg den på hemskärmen",
+    "cta": "Installera",
+    "iosTitle": "Lägg till på hemskärmen",
+    "iosIntro": "Installera Fredheim Måltidsplanerare på iPhone eller iPad i tre steg:",
+    "iosStep1": "Tryck på Dela-knappen längst ner i Safari (rutan med en uppåtpil).",
+    "iosStep2": "Bläddra ner och tryck på \"Lägg till på hemskärm\".",
+    "iosStep3": "Tryck på \"Lägg till\" uppe till höger. Appikonen visas på hemskärmen.",
+    "iosDone": "Förstått"
+  },
   "app": {
     "name": "Fredheim Måltidsplanerare",
     "version": "Version 1.0 · All data lagras lokalt på din enhet"

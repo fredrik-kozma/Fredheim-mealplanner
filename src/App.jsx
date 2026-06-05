@@ -18,6 +18,7 @@ import UpgradeWall from './components/subscription/UpgradeWall'
 import PreviewBanner from './components/subscription/PreviewBanner'
 import AutoInstallDefaultPack from './components/AutoInstallDefaultPack'
 import TutorialModal from './components/onboarding/TutorialModal'
+import InstallBanner from './components/pwa/InstallBanner'
 
 // Blocks rendering until the Zustand store has fully hydrated from IndexedDB.
 // Without this guard, useEffect hooks in child components fire before hydration
@@ -154,6 +155,12 @@ function AppShell() {
       </main>
 
       {showTutorial && <TutorialModal onClose={closeTutorial} />}
+
+      {/* PWA install prompt — appears after a short delay on devices
+          where installing is possible and the user hasn't already
+          dismissed it. Hidden completely when running as an installed
+          PWA, when previously dismissed, or on unsupported browsers. */}
+      <InstallBanner />
     </div>
   )
 }

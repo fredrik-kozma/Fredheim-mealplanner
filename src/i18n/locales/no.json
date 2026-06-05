@@ -9,6 +9,17 @@
   "about": {
     "inCooperationWith": "I samarbeid med"
   },
+  "install": {
+    "title": "Installer Fredheim",
+    "subtitle": "Legg den til på hjemskjermen",
+    "cta": "Installer",
+    "iosTitle": "Legg til på Hjem-skjerm",
+    "iosIntro": "Installer Fredheim Menyplanlegger på iPhone eller iPad i tre trinn:",
+    "iosStep1": "Trykk på Del-knappen nederst i Safari (firkanten med en pil opp).",
+    "iosStep2": "Bla ned og trykk på «Legg til på Hjem-skjerm».",
+    "iosStep3": "Trykk på «Legg til» øverst til høyre. App-ikonet kommer opp på hjemskjermen.",
+    "iosDone": "Skjønner"
+  },
   "app": {
     "name": "Fredheim Menyplanlegger",
     "version": "Versjon 1.0 · Alle data lagres lokalt på enheten din"

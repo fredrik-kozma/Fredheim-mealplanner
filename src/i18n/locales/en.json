@@ -13,6 +13,17 @@
   "about": {
     "inCooperationWith": "In cooperation with"
   },
+  "install": {
+    "title": "Install Fredheim",
+    "subtitle": "Add it to your home screen",
+    "cta": "Install",
+    "iosTitle": "Add to Home Screen",
+    "iosIntro": "Install Fredheim Meal Planner on your iPhone or iPad in three steps:",
+    "iosStep1": "Tap the Share button at the bottom of Safari (the square with an arrow pointing up).",
+    "iosStep2": "Scroll down and tap \"Add to Home Screen\".",
+    "iosStep3": "Tap \"Add\" in the top-right corner. The app icon appears on your home screen.",
+    "iosDone": "Got it"
+  },
   "recipes": {
     "title": "Recipes",
     "addRecipe": "Add Recipe",
