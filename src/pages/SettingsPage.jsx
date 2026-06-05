@@ -6,6 +6,8 @@ import { useAuth } from '../contexts/AuthContext'
 import { useSubscription } from '../hooks/useSubscription'
 import AuthModal from '../components/auth/AuthModal'
 import EditableNumber from '../components/common/EditableNumber'
+import useInstallPWA from '../hooks/useInstallPWA'
+import IOSInstallInstructions from '../components/pwa/IOSInstallInstructions'
 
 function SectionCard({ title, children }) {
   return (
@@ -219,6 +221,15 @@ export default function SettingsPage() {
   const { t, i18n } = useTranslation()
   const language = useStore(s => s.language)
   const setLanguage = useStore(s => s.setLanguage)
+
+  // PWA install support — same hook the floating banner uses, so the
+  // card here lights up under the exact same conditions.
+  const { isStandalone, isIOSSafari, canInstall, install } = useInstallPWA()
+  const [showInstallIOSHelp, setShowInstallIOSHelp] = useState(false)
+  async function handleInstallClick() {
+    const result = await install()
+    if (result === 'ios') setShowInstallIOSHelp(true)
+  }
 
   const familySize = useStore(s => s.familySize)
   const setFamilySize = useStore(s => s.setFamilySize)
@@ -598,6 +609,40 @@ export default function SettingsPage() {
             </div>
           </div>
         )}
+
+        {/* Install app — only renders on devices that actually support
+            installing (Android/Desktop Chrome/Edge OR iOS Safari) AND
+            when the app is not already running as an installed PWA.
+            When isStandalone is true, show a tiny confirmation card so
+            the user sees they've already got the app installed. */}
+        {isStandalone ? (
+          <SectionCard title={t('install.title', { defaultValue: 'Install Fredheim' })}>
+            <p className="text-sm text-emerald-700 inline-flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              {t('install.alreadyInstalled', { defaultValue: 'You\'re using the installed app — nice!' })}
+            </p>
+          </SectionCard>
+        ) : canInstall && (
+          <SectionCard title={t('install.title', { defaultValue: 'Install Fredheim' })}>
+            <p className="text-sm text-slate-500 mb-3">
+              {isIOSSafari
+                ? t('install.descIOS', { defaultValue: 'Add the app to your iPhone or iPad home screen for a full-screen, faster experience.' })
+                : t('install.desc', { defaultValue: 'Install the app on your device for a full-screen, faster experience — works offline and lives on your home screen.' })}
+            </p>
+            <button
+              onClick={handleInstallClick}
+              className="btn-primary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              {t('install.cta', { defaultValue: 'Install' })}
+            </button>
+          </SectionCard>
+        )}
+        {showInstallIOSHelp && <IOSInstallInstructions onClose={() => setShowInstallIOSHelp(false)} />}
 
         {/* Tutorial */}
         <SectionCard title={t('settings.tutorial', { defaultValue: 'App tutorial' })}>

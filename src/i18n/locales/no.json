@@ -12,6 +12,10 @@
   "install": {
     "title": "Installer Fredheim",
     "subtitle": "Legg den til på hjemskjermen",
+    "subtitleIOS": "Legg til på Hjem-skjerm — trykk Installer",
+    "desc": "Installer appen på enheten for en fullskjerm-, raskere opplevelse — fungerer offline og ligger på hjemskjermen.",
+    "descIOS": "Legg til appen på iPhone- eller iPad-hjemskjermen for en fullskjerm-, raskere opplevelse.",
+    "alreadyInstalled": "Du bruker den installerte appen — helt topp!",
     "cta": "Installer",
     "iosTitle": "Legg til på Hjem-skjerm",
     "iosIntro": "Installer Fredheim Menyplanlegger på iPhone eller iPad i tre trinn:",

@@ -16,6 +16,10 @@
   "install": {
     "title": "Install Fredheim",
     "subtitle": "Add it to your home screen",
+    "subtitleIOS": "Add to Home Screen — tap Install",
+    "desc": "Install the app on your device for a full-screen, faster experience — works offline and lives on your home screen.",
+    "descIOS": "Add the app to your iPhone or iPad home screen for a full-screen, faster experience.",
+    "alreadyInstalled": "You're using the installed app — nice!",
     "cta": "Install",
     "iosTitle": "Add to Home Screen",
     "iosIntro": "Install Fredheim Meal Planner on your iPhone or iPad in three steps:",

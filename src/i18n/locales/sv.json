@@ -12,6 +12,10 @@
   "install": {
     "title": "Installera Fredheim",
     "subtitle": "Lägg den på hemskärmen",
+    "subtitleIOS": "Lägg till på hemskärmen — tryck Installera",
+    "desc": "Installera appen på enheten för en helskärms-, snabbare upplevelse — fungerar offline och ligger på hemskärmen.",
+    "descIOS": "Lägg till appen på iPhone- eller iPad-hemskärmen för en helskärms-, snabbare upplevelse.",
+    "alreadyInstalled": "Du använder den installerade appen — toppen!",
     "cta": "Installera",
     "iosTitle": "Lägg till på hemskärmen",
     "iosIntro": "Installera Fredheim Måltidsplanerare på iPhone eller iPad i tre steg:",
