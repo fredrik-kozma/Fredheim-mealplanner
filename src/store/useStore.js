@@ -861,9 +861,29 @@ const useStore = create(
       // ── Recipe Packs ──
       installedPacks: {},
 
+      /**
+       * Installs OR updates a recipe pack. Replaces every recipe that
+       * belongs to this pack (matched by recipe id) with the latest
+       * version from `pack`, while leaving recipes from other packs and
+       * user-created recipes completely untouched.
+       *
+       * Earlier this method only *appended* recipe ids that didn't
+       * already exist, which meant tapping "Update" on the Packs page
+       * silently bumped the version number but did NOT refresh the
+       * recipe content — bug fixes in updated packs never reached users.
+       */
       installPack: (pack) => set((s) => {
-        const existingIds = new Set(s.recipes.map(r => r.id))
-        const newRecipes = pack.recipes.filter(r => !existingIds.has(r.id)).map(r => ({
+        const packRecipeIds = new Set(pack.recipes.map(r => r.id))
+
+        // Keep everything that isn't part of this pack's id set:
+        //  - user-created recipes (no sourcePackId)
+        //  - recipes from other packs
+        //  - recipes whose ids the new pack version no longer ships
+        //    (treated as removed, which matches user intent: install
+        //    means make this pack's content match what's shipped)
+        const keptRecipes = s.recipes.filter(r => !packRecipeIds.has(r.id))
+
+        const freshPackRecipes = pack.recipes.map(r => ({
           ...r,
           createdAt: r.createdAt || Date.now(),
           translations: r.translations || {},
@@ -871,9 +891,10 @@ const useStore = create(
           // filter "Show only Fredheim Reversal Protocol", etc.
           sourcePackId: pack.id,
         }))
+
         const allRecipeIds = pack.recipes.map(r => r.id)
         return {
-          recipes: [...s.recipes, ...newRecipes],
+          recipes: [...keptRecipes, ...freshPackRecipes],
           installedPacks: {
             ...s.installedPacks,
             [pack.id]: {
