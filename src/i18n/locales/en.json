@@ -13,6 +13,17 @@
   "about": {
     "inCooperationWith": "In cooperation with"
   },
+  "favorites": {
+    "add": "Add to favorites",
+    "remove": "Remove from favorites",
+    "showOnly": "Show favorites only",
+    "showAll": "Show all recipes"
+  },
+  "whatsNew": {
+    "label": "What's new",
+    "next": "Next",
+    "gotIt": "Got it"
+  },
   "install": {
     "title": "Install Fredheim",
     "subtitle": "Add it to your home screen",

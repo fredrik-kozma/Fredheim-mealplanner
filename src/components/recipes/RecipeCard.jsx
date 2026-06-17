@@ -3,6 +3,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAccess } from '../../hooks/useAccess'
+import FavoriteStar from './FavoriteStar'
 
 const CATEGORY_COLORS = {
   Breakfast: 'bg-amber-100 text-amber-700',
@@ -104,6 +105,20 @@ export default function RecipeCard({ recipe, compact = false }) {
               ✨ {t('preview.freePreview')}
             </div>
           )}
+
+          {/* ⭐ Favorite star — sits on top of the image so it's always
+              visible at a glance. Overlay variant gives it a soft white
+              halo so it shows up over both light and dark photos. */}
+          <div className="absolute top-2 right-2">
+            <FavoriteStar recipeId={recipe.id} variant="overlay" />
+          </div>
+        </div>
+      )}
+
+      {/* Star for image-less cards goes top-right of the content area */}
+      {!recipe.imageUrl && (
+        <div className="absolute top-2 right-2">
+          <FavoriteStar recipeId={recipe.id} />
         </div>
       )}
 
@@ -131,8 +146,9 @@ export default function RecipeCard({ recipe, compact = false }) {
         </div>
       )}
 
-      {/* Drag handle indicator */}
-      <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-30 transition-opacity pointer-events-none">
+      {/* Drag handle indicator (moved to bottom-right to keep top-right
+          clear for the favorite star). */}
+      <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-30 transition-opacity pointer-events-none">
         <svg className="w-4 h-4 text-slate-500" fill="currentColor" viewBox="0 0 24 24">
           <path d="M8 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm0 5a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm0 5a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8-10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm0 5a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm0 5a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
         </svg>

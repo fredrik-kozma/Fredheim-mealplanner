@@ -9,6 +9,7 @@ import { useAccess } from '../../hooks/useAccess'
 import LockedOverlay from '../subscription/LockedOverlay'
 import NutritionPanel from './NutritionPanel'
 import EditableNumber from '../common/EditableNumber'
+import FavoriteStar from './FavoriteStar'
 
 export default function RecipeDetail() {
   const { id } = useParams()
@@ -227,7 +228,11 @@ export default function RecipeDetail() {
               and tap the recipe to view the paywall, but cannot mutate or
               export the content. */}
           {!showPaywall && (
-            <div className="flex gap-2 flex-shrink-0">
+            <div className="flex gap-2 flex-shrink-0 items-center">
+              {/* Favorite star — always available even on locked
+                  previews, so visitors can build a wishlist while
+                  browsing. */}
+              <FavoriteStar recipeId={id} size="lg" />
               <button
                 onClick={handlePrint}
                 className="btn-secondary px-3 py-2"

@@ -19,6 +19,7 @@ import PreviewBanner from './components/subscription/PreviewBanner'
 import AutoInstallDefaultPack from './components/AutoInstallDefaultPack'
 import TutorialModal from './components/onboarding/TutorialModal'
 import InstallBanner from './components/pwa/InstallBanner'
+import WhatsNewModal from './components/whatsnew/WhatsNewModal'
 
 // Blocks rendering until the Zustand store has fully hydrated from IndexedDB.
 // Without this guard, useEffect hooks in child components fire before hydration
@@ -155,6 +156,11 @@ function AppShell() {
       </main>
 
       {showTutorial && <TutorialModal onClose={closeTutorial} />}
+
+      {/* What's-new announcements — small modal that pops up once per
+          unseen entry in src/data/whatsNew.js, after the tutorial has
+          been acknowledged so the two never stack on top of each other. */}
+      <WhatsNewModal tutorialOpen={showTutorial} />
 
       {/* PWA install prompt — appears after a short delay on devices
           where installing is possible and the user hasn't already

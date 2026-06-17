@@ -924,6 +924,36 @@ const useStore = create(
       hasSeenTutorial: false,
       setHasSeenTutorial: (value) => set(() => ({ hasSeenTutorial: !!value })),
 
+      // ── Recipe favorites ──
+      // Array of recipe ids the user has starred. Toggling is idempotent
+      // so the UI can call it without checking current state first.
+      favoriteRecipes: [],
+      toggleFavorite: (recipeId) => set((s) => {
+        if (!recipeId) return {}
+        const list = s.favoriteRecipes || []
+        const exists = list.includes(recipeId)
+        return {
+          favoriteRecipes: exists
+            ? list.filter(id => id !== recipeId)
+            : [...list, recipeId],
+        }
+      }),
+
+      // ── "What's new" tracker ──
+      // Array of news ids the user has already dismissed. Anything in
+      // src/data/whatsNew.js whose id is NOT in here will pop up next
+      // time the AppShell mounts. We start with null to distinguish
+      // "uninitialised" from "explicitly empty" — the WhatsNewModal
+      // initialises this on first load so brand-new users don't get
+      // bombarded with historical announcements.
+      seenNewsIds: null,
+      markNewsSeen: (ids) => set((s) => {
+        const additions = Array.isArray(ids) ? ids : [ids]
+        const existing = Array.isArray(s.seenNewsIds) ? s.seenNewsIds : []
+        const merged = Array.from(new Set([...existing, ...additions]))
+        return { seenNewsIds: merged }
+      }),
+
       // ── Recipes list filter / search state ──
       // Persisted so that whenever the user comes back to the Recipes page
       // — from Settings, the Planner, the Shopping list, a recipe detail,

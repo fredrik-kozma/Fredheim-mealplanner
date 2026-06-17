@@ -9,6 +9,17 @@
   "about": {
     "inCooperationWith": "I samarbeid med"
   },
+  "favorites": {
+    "add": "Legg til i favoritter",
+    "remove": "Fjern fra favoritter",
+    "showOnly": "Vis kun favoritter",
+    "showAll": "Vis alle oppskrifter"
+  },
+  "whatsNew": {
+    "label": "Nyheter",
+    "next": "Neste",
+    "gotIt": "Skjønner"
+  },
   "install": {
     "title": "Installer Fredheim",
     "subtitle": "Legg den til på hjemskjermen",
