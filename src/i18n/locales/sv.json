@@ -126,6 +126,7 @@
     "saveChanges": "Spara ändringar",
     "addTranslation": "Lägg till {{lang}}-version (valfritt)",
     "addTranslations": "Lägg till översättningar (valfritt)",
+    "baseLangNotice": "Fälten nedan är den ursprungliga {{lang}}-versionen. För att redigera ett annat språk, använd ”Lägg till översättningar” längre ner.",
     "addTranslationDesc": "Fyll i samma recept på andra språk så att alla ser det på sitt eget språk.",
     "translationHint": "Fält du lämnar tomma faller tillbaka till originaltexten för receptet på det språket.",
     "translatedTitle": "Titel på {{lang}}",

@@ -65,12 +65,37 @@ export default function RecipeForm() {
 
   const isEdit = Boolean(id && existing)
 
-  // Current UI language is the recipe's "base" language. The two OTHER
-  // supported languages can each get an optional translation — this used
-  // to be hardcoded to a single language (and never offered Swedish).
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const ALL_LANGS = ['en', 'no', 'sv']
-  const otherLangs = ALL_LANGS.filter(l => l !== currentLang) // always exactly 2
+
+  // Which language are the base fields (title / ingredient names / steps in
+  // the main section) actually written in? For a brand-new recipe it's the
+  // language the user is creating in. For an existing recipe we infer it:
+  // bundled pack recipes keep the English original in the base fields and
+  // store no/sv only in `translations`, so the base language is the one
+  // that does NOT have its own translations entry.
+  //
+  // This was the bug behind "I'm in Norwegian but the form shows English
+  // and there's no Norwegian tab": the form previously assumed the base
+  // language was always the current UI language, so for an English-base
+  // recipe the Norwegian translation (which exists!) was never editable.
+  function inferBaseLang() {
+    if (!isEdit) return currentLang
+    const trans = existing?.translations || {}
+    const missing = ALL_LANGS.filter(l => !trans[l]?.title)
+    if (missing.length === 1) return missing[0]
+    if (missing.includes('en')) return 'en'              // ambiguous → English convention
+    if (missing.includes(currentLang)) return currentLang
+    return missing[0] || 'en'
+  }
+  const baseLang = inferBaseLang()
+  const baseMeta = LANG_META[baseLang] || { label: baseLang, flag: '' }
+  const otherLangs = ALL_LANGS.filter(l => l !== baseLang) // exactly 2
+
+  // Default the active translation tab to the current UI language when it's
+  // one of the translation languages — so a Norwegian user editing an
+  // English-base recipe lands straight on the Norwegian fields.
+  const defaultTransLang = otherLangs.includes(currentLang) ? currentLang : otherLangs[0]
 
   const [form, setForm] = useState(isEdit ? { ...existing } : EMPTY_FORM)
   const [pasteText, setPasteText] = useState('')
@@ -83,10 +108,13 @@ export default function RecipeForm() {
   // language. Each language keeps its own { title, description, ingNames,
   // steps } record. Ingredient-name and step arrays are kept the same
   // length as the base form so each row lines up by index.
+  // Auto-expanded when the base language differs from the UI language
+  // (so the user immediately sees where to edit their own language) or
+  // when any translation already exists.
   const [showTranslation, setShowTranslation] = useState(
-    () => isEdit && otherLangs.some(l => existing?.translations?.[l]?.title)
+    () => isEdit && (baseLang !== currentLang || otherLangs.some(l => existing?.translations?.[l]?.title))
   )
-  const [activeTransLang, setActiveTransLang] = useState(otherLangs[0])
+  const [activeTransLang, setActiveTransLang] = useState(defaultTransLang)
   const [transByLang, setTransByLang] = useState(() => {
     const baseIngs = (isEdit && existing?.ingredients) || []
     const baseSteps = (isEdit && existing?.steps) || []
@@ -360,9 +388,28 @@ export default function RecipeForm() {
             <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
           </div>
 
+          {/* Base-language notice — shown when the recipe's original text
+              is in a different language than the UI. Tells the user the
+              main fields below are the original, and their own language
+              is editable in the translations panel further down. */}
+          {isEdit && baseLang !== currentLang && (
+            <div className="flex items-start gap-2.5 bg-indigo-50 border border-indigo-100 rounded-xl px-3.5 py-2.5">
+              <span className="text-base leading-none mt-0.5">{baseMeta.flag}</span>
+              <p className="text-xs text-indigo-900 leading-relaxed">
+                {t('recipeForm.baseLangNotice', {
+                  lang: baseMeta.label,
+                  defaultValue: `The fields below are the original ${baseMeta.label} version. To edit another language, use “Add translations” at the bottom.`,
+                })}
+              </p>
+            </div>
+          )}
+
           {/* Title */}
           <div>
-            <label className="label">{t('recipeForm.titleRequired')}</label>
+            <label className="label flex items-center gap-1.5">
+              {t('recipeForm.titleRequired')}
+              {isEdit && baseLang !== currentLang && <span className="text-sm">{baseMeta.flag}</span>}
+            </label>
             <input
               className={`input ${errors.title ? 'ring-2 ring-red-400 border-red-300' : ''}`}
               value={form.title}

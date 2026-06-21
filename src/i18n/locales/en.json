@@ -126,6 +126,7 @@
     "saveChanges": "Save Changes",
     "addTranslation": "Add {{lang}} version (optional)",
     "addTranslations": "Add translations (optional)",
+    "baseLangNotice": "The fields below are the original {{lang}} version. To edit another language, use “Add translations” further down.",
     "addTranslationDesc": "Fill in the same recipe in other languages so everyone sees it in their own language.",
     "translationHint": "Any field you leave blank falls back to the original recipe text for that language.",
     "translatedTitle": "Title in {{lang}}",

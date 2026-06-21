@@ -126,6 +126,7 @@
     "saveChanges": "Lagre endringer",
     "addTranslation": "Legg til {{lang}}-versjon (valgfritt)",
     "addTranslations": "Legg til oversettelser (valgfritt)",
+    "baseLangNotice": "Feltene nedenfor er den originale {{lang}}-versjonen. For å redigere et annet språk, bruk «Legg til oversettelser» lenger ned.",
     "addTranslationDesc": "Fyll inn den samme oppskriften på andre språk, slik at alle ser den på sitt eget språk.",
     "translationHint": "Felt du lar stå tomme, faller tilbake til den opprinnelige oppskriftsteksten for det språket.",
     "translatedTitle": "Tittel på {{lang}}",
