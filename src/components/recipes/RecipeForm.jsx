@@ -70,19 +70,31 @@ export default function RecipeForm() {
 
   // Which language are the base fields (title / ingredient names / steps in
   // the main section) actually written in? For a brand-new recipe it's the
-  // language the user is creating in. For an existing recipe we infer it:
-  // bundled pack recipes keep the English original in the base fields and
-  // store no/sv only in `translations`, so the base language is the one
-  // that does NOT have its own translations entry.
+  // language the user is creating in. For an existing recipe:
   //
-  // This was the bug behind "I'm in Norwegian but the form shows English
-  // and there's no Norwegian tab": the form previously assumed the base
-  // language was always the current UI language, so for an English-base
-  // recipe the Norwegian translation (which exists!) was never editable.
+  //   1. If the recipe carries an explicit `baseLang` (every recipe we save
+  //      from now on does), trust it. This is the reliable path.
+  //   2. Otherwise fall back to a heuristic for older / bundled recipes:
+  //      bundled pack recipes keep the English original in the base fields
+  //      and store no/sv only in `translations`, so the base language is the
+  //      one that does NOT have its own translations entry.
+  //
+  // Two bugs lived here before:
+  //   - "I'm in Norwegian but the form shows English and there's no Norwegian
+  //     tab" — fixed by detecting the base from `translations`.
+  //   - "I write a recipe in Norwegian, save it, reopen it and it's English"
+  //     — a single-language recipe has an EMPTY `translations`, so the old
+  //     heuristic fell through to its English convention. Fixed by (a)
+  //     storing baseLang explicitly on save, and (b) when there are no
+  //     translations at all, assuming the base is the current UI language
+  //     instead of English.
   function inferBaseLang() {
     if (!isEdit) return currentLang
+    if (existing?.baseLang && ALL_LANGS.includes(existing.baseLang)) return existing.baseLang
     const trans = existing?.translations || {}
+    const present = ALL_LANGS.filter(l => trans[l]?.title)
     const missing = ALL_LANGS.filter(l => !trans[l]?.title)
+    if (present.length === 0) return currentLang        // single-language recipe → assume UI lang
     if (missing.length === 1) return missing[0]
     if (missing.includes('en')) return 'en'              // ambiguous → English convention
     if (missing.includes(currentLang)) return currentLang
@@ -279,6 +291,11 @@ export default function RecipeForm() {
       servings: Number(form.servings) || 4,
       prepTime: form.prepTime ? Number(form.prepTime) : null,
       cookTime: form.cookTime ? Number(form.cookTime) : null,
+      // Record which language the base fields are written in, so reopening
+      // the recipe to edit never has to guess. For a new recipe that's the
+      // language the user is creating in; for an edit it's the language we
+      // resolved above (preserving an explicit baseLang when present).
+      baseLang,
       translations,
     }
 
