@@ -2,7 +2,6 @@ import { useState, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
-import { parseRecipe } from '../../utils/recipeParser'
 import { compressImage } from '../../utils/imageCompressor'
 import UnitSelect from './UnitSelect'
 
@@ -110,8 +109,6 @@ export default function RecipeForm() {
   const defaultTransLang = otherLangs.includes(currentLang) ? currentLang : otherLangs[0]
 
   const [form, setForm] = useState(isEdit ? { ...existing } : EMPTY_FORM)
-  const [pasteText, setPasteText] = useState('')
-  const [showPaste, setShowPaste] = useState(false)
   const [newStep, setNewStep] = useState('')
   const [errors, setErrors] = useState({})
   const fileRef = useRef()
@@ -157,39 +154,6 @@ export default function RecipeForm() {
   function set(key, value) {
     setForm(f => ({ ...f, [key]: value }))
     if (errors[key]) setErrors(e => ({ ...e, [key]: null }))
-  }
-
-  function handleParse() {
-    const parsed = parseRecipe(pasteText)
-    if (!parsed) return
-    setForm(f => ({
-      ...f,
-      title: parsed.title || f.title,
-      servings: parsed.servings || f.servings,
-      prepTime: parsed.prepTime || f.prepTime,
-      cookTime: parsed.cookTime || f.cookTime,
-      ingredients: parsed.ingredients?.length ? parsed.ingredients : f.ingredients,
-      steps: parsed.steps?.length ? parsed.steps : f.steps,
-      category: parsed.category || f.category,
-    }))
-    // Resize every language's translation arrays to match the newly
-    // parsed ingredient / step counts.
-    if (parsed.ingredients?.length || parsed.steps?.length) {
-      const ingCount = parsed.ingredients?.length || form.ingredients.length
-      const stepCount = parsed.steps?.length || form.steps.length
-      const fit = (arr, n) => {
-        const next = [...arr]
-        while (next.length < n) next.push('')
-        return next.slice(0, n)
-      }
-      syncTransArrays(rec => ({
-        ...rec,
-        ingNames: fit(rec.ingNames, ingCount),
-        steps: fit(rec.steps, stepCount),
-      }))
-    }
-    setPasteText('')
-    setShowPaste(false)
   }
 
   async function handleImageChange(e) {
@@ -337,42 +301,6 @@ export default function RecipeForm() {
         <h1 className="text-2xl font-bold text-slate-900 mb-6">
           {isEdit ? t('recipeForm.editRecipe') : t('recipeForm.addRecipe')}
         </h1>
-
-        {/* Smart Paste */}
-        <div className="card p-4 mb-6 border-dashed border-indigo-200 bg-indigo-50/50">
-          <button
-            type="button"
-            className="flex items-center gap-2 w-full text-left"
-            onClick={() => setShowPaste(!showPaste)}
-          >
-            <span className="text-2xl">✨</span>
-            <div className="flex-1">
-              <p className="text-sm font-semibold text-indigo-800">{t('recipeForm.smartPaste')}</p>
-              <p className="text-xs text-indigo-600">{t('recipeForm.smartPasteDesc')}</p>
-            </div>
-            <svg className={`w-5 h-5 text-indigo-500 transition-transform ${showPaste ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-          </button>
-          {showPaste && (
-            <div className="mt-3 space-y-2">
-              <textarea
-                className="input min-h-[140px] resize-y text-sm font-mono"
-                placeholder={t('recipeForm.pastePlaceholder')}
-                value={pasteText}
-                onChange={e => setPasteText(e.target.value)}
-              />
-              <button
-                type="button"
-                onClick={handleParse}
-                disabled={!pasteText.trim()}
-                className="btn-primary w-full"
-              >
-                {t('recipeForm.parseRecipe')}
-              </button>
-            </div>
-          )}
-        </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Image upload */}
