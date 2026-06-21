@@ -65,10 +65,12 @@ export default function RecipeForm() {
 
   const isEdit = Boolean(id && existing)
 
-  // Current UI language and the "other" language for the optional translation section
+  // Current UI language is the recipe's "base" language. The two OTHER
+  // supported languages can each get an optional translation — this used
+  // to be hardcoded to a single language (and never offered Swedish).
   const currentLang = i18n.language?.slice(0, 2) || 'en'
-  const otherLang = currentLang === 'no' ? 'en' : currentLang === 'en' ? 'no' : 'en'
-  const otherMeta = LANG_META[otherLang] || { label: otherLang, flag: '' }
+  const ALL_LANGS = ['en', 'no', 'sv']
+  const otherLangs = ALL_LANGS.filter(l => l !== currentLang) // always exactly 2
 
   const [form, setForm] = useState(isEdit ? { ...existing } : EMPTY_FORM)
   const [pasteText, setPasteText] = useState('')
@@ -77,19 +79,40 @@ export default function RecipeForm() {
   const [errors, setErrors] = useState({})
   const fileRef = useRef()
 
-  // Optional translation state — pre-filled if editing a recipe that already has a translation
-  const existingTrans = isEdit ? (existing?.translations?.[otherLang] || {}) : {}
-  const [showTranslation, setShowTranslation] = useState(isEdit && Boolean(existingTrans.title))
-  const [transTitle, setTransTitle] = useState(existingTrans.title || '')
-  const [transDescription, setTransDescription] = useState(existingTrans.description || '')
-  // Per-ingredient translated names — kept in sync with main form ingredient count
-  const [transIngNames, setTransIngNames] = useState(
-    () => (isEdit && existingTrans.ingredients?.length)
-      ? existingTrans.ingredients.map(i => i.name || '')
-      : (existing?.ingredients || []).map(() => '')
+  // Translation editor: a collapsible panel with one tab per other
+  // language. Each language keeps its own { title, description, ingNames,
+  // steps } record. Ingredient-name and step arrays are kept the same
+  // length as the base form so each row lines up by index.
+  const [showTranslation, setShowTranslation] = useState(
+    () => isEdit && otherLangs.some(l => existing?.translations?.[l]?.title)
   )
-  const [transSteps, setTransSteps] = useState(existingTrans.steps || [])
-  const [newTransStep, setNewTransStep] = useState('')
+  const [activeTransLang, setActiveTransLang] = useState(otherLangs[0])
+  const [transByLang, setTransByLang] = useState(() => {
+    const baseIngs = (isEdit && existing?.ingredients) || []
+    const baseSteps = (isEdit && existing?.steps) || []
+    const init = {}
+    for (const l of otherLangs) {
+      const ex = (isEdit && existing?.translations?.[l]) || {}
+      init[l] = {
+        title: ex.title || '',
+        description: ex.description || '',
+        ingNames: baseIngs.map((_, i) => ex.ingredients?.[i]?.name || ''),
+        steps: baseSteps.map((_, i) => ex.steps?.[i] || ''),
+      }
+    }
+    return init
+  })
+
+  // Update one field of the currently-active translation language.
+  function setTrans(field, value) {
+    setTransByLang(prev => ({
+      ...prev,
+      [activeTransLang]: { ...prev[activeTransLang], [field]: value },
+    }))
+  }
+  // Convenience accessor for the active language's record.
+  const activeTrans = transByLang[activeTransLang] || { title: '', description: '', ingNames: [], steps: [] }
+  const activeMeta = LANG_META[activeTransLang] || { label: activeTransLang, flag: '' }
 
   function set(key, value) {
     setForm(f => ({ ...f, [key]: value }))
@@ -109,13 +132,21 @@ export default function RecipeForm() {
       steps: parsed.steps?.length ? parsed.steps : f.steps,
       category: parsed.category || f.category,
     }))
-    // Sync transIngNames length to new ingredient count
-    if (parsed.ingredients?.length) {
-      setTransIngNames(prev => {
-        const next = [...prev]
-        while (next.length < parsed.ingredients.length) next.push('')
-        return next.slice(0, parsed.ingredients.length)
-      })
+    // Resize every language's translation arrays to match the newly
+    // parsed ingredient / step counts.
+    if (parsed.ingredients?.length || parsed.steps?.length) {
+      const ingCount = parsed.ingredients?.length || form.ingredients.length
+      const stepCount = parsed.steps?.length || form.steps.length
+      const fit = (arr, n) => {
+        const next = [...arr]
+        while (next.length < n) next.push('')
+        return next.slice(0, n)
+      }
+      syncTransArrays(rec => ({
+        ...rec,
+        ingNames: fit(rec.ingNames, ingCount),
+        steps: fit(rec.steps, stepCount),
+      }))
     }
     setPasteText('')
     setShowPaste(false)
@@ -139,9 +170,19 @@ export default function RecipeForm() {
     }
   }
 
+  // Keep every language's per-ingredient / per-step arrays the same
+  // length as the base form so rows line up by index.
+  function syncTransArrays(mutate) {
+    setTransByLang(prev => {
+      const next = {}
+      for (const l of otherLangs) next[l] = mutate(prev[l] || { title: '', description: '', ingNames: [], steps: [] })
+      return next
+    })
+  }
+
   function addIngredient() {
     set('ingredients', [...form.ingredients, { quantity: 0, unit: '', name: '' }])
-    setTransIngNames(prev => [...prev, ''])
+    syncTransArrays(rec => ({ ...rec, ingNames: [...rec.ingNames, ''] }))
   }
 
   function updateIngredient(i, val) {
@@ -152,26 +193,19 @@ export default function RecipeForm() {
 
   function removeIngredient(i) {
     set('ingredients', form.ingredients.filter((_, idx) => idx !== i))
-    setTransIngNames(prev => prev.filter((_, idx) => idx !== i))
+    syncTransArrays(rec => ({ ...rec, ingNames: rec.ingNames.filter((_, idx) => idx !== i) }))
   }
 
   function addStep() {
     if (!newStep.trim()) return
     set('steps', [...form.steps, newStep.trim()])
     setNewStep('')
-    // Add a blank translation step to keep counts in sync
-    setTransSteps(prev => [...prev, ''])
+    syncTransArrays(rec => ({ ...rec, steps: [...rec.steps, ''] }))
   }
 
   function removeStep(i) {
     set('steps', form.steps.filter((_, idx) => idx !== i))
-    setTransSteps(prev => prev.filter((_, idx) => idx !== i))
-  }
-
-  function addTransStep() {
-    if (!newTransStep.trim()) return
-    setTransSteps(prev => [...prev, newTransStep.trim()])
-    setNewTransStep('')
+    syncTransArrays(rec => ({ ...rec, steps: rec.steps.filter((_, idx) => idx !== i) }))
   }
 
   function validate() {
@@ -185,19 +219,30 @@ export default function RecipeForm() {
     ev.preventDefault()
     if (!validate()) return
 
-    // Build translations object, preserving any existing translations
+    // Build translations object, preserving any existing translations.
+    // Write a translation for each OTHER language whose title was filled
+    // in — so a single recipe can now carry EN + NO + SV at once.
     const existingTranslations = isEdit ? (existing?.translations || {}) : {}
     const translations = { ...existingTranslations }
 
-    if (showTranslation && transTitle.trim()) {
-      translations[otherLang] = {
-        title: transTitle.trim(),
-        ...(transDescription.trim() ? { description: transDescription.trim() } : {}),
-        ingredients: form.ingredients.map((ing, i) => ({
-          ...ing,
-          name: transIngNames[i]?.trim() || ing.name,
-        })),
-        steps: transSteps.filter(s => s.trim()),
+    for (const l of otherLangs) {
+      const tr = transByLang[l]
+      if (!tr) continue
+      if (tr.title.trim()) {
+        translations[l] = {
+          title: tr.title.trim(),
+          ...(tr.description.trim() ? { description: tr.description.trim() } : {}),
+          ingredients: form.ingredients.map((ing, i) => ({
+            ...ing,
+            name: tr.ingNames[i]?.trim() || ing.name,
+          })),
+          // Index-matched to base steps; fall back to the base step text
+          // for any step the user left blank in this language.
+          steps: form.steps.map((s, i) => tr.steps[i]?.trim() || s),
+        }
+      } else {
+        // Title cleared → drop any previously-saved translation for it.
+        delete translations[l]
       }
     }
 
@@ -425,13 +470,13 @@ export default function RecipeForm() {
               onClick={() => setShowTranslation(v => !v)}
               className="flex items-center gap-2.5 w-full text-left group"
             >
-              <span className="text-lg">{otherMeta.flag}</span>
+              <span className="text-lg">🌐</span>
               <div className="flex-1">
                 <p className="text-sm font-semibold text-slate-700 group-hover:text-indigo-700 transition-colors">
-                  {t('recipeForm.addTranslation', { lang: otherMeta.label, defaultValue: `Add ${otherMeta.label} version (optional)` })}
+                  {t('recipeForm.addTranslations', { defaultValue: 'Add translations (optional)' })}
                 </p>
                 <p className="text-xs text-slate-400">
-                  {t('recipeForm.addTranslationDesc', { defaultValue: 'Fill in the same recipe in the other language. You can also do this later via the Translate button.' })}
+                  {t('recipeForm.addTranslationDesc', { defaultValue: 'Fill in the same recipe in other languages so everyone sees it in their own language.' })}
                 </p>
               </div>
               <svg className={`w-5 h-5 text-slate-400 transition-transform flex-shrink-0 ${showTranslation ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -440,151 +485,113 @@ export default function RecipeForm() {
             </button>
 
             {showTranslation && (
-              <div className="mt-4 space-y-4 bg-slate-50 rounded-2xl p-4 border border-slate-100">
-                {/* Translated title */}
-                <div>
-                  <label className="label">{t('recipeForm.translatedTitle', { lang: otherMeta.label, defaultValue: `Title in ${otherMeta.label}` })}</label>
-                  <input
-                    className="input"
-                    value={transTitle}
-                    onChange={e => setTransTitle(e.target.value)}
-                    placeholder={t('recipeForm.translatedTitlePlaceholder', { defaultValue: 'Recipe title…' })}
-                  />
+              <div className="mt-4 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+                {/* Language tabs — one per OTHER language. A green dot marks
+                    languages that already have a title filled in. */}
+                <div className="flex gap-2 mb-4">
+                  {otherLangs.map(l => {
+                    const meta = LANG_META[l] || { label: l, flag: '' }
+                    const filled = Boolean(transByLang[l]?.title?.trim())
+                    const isActive = l === activeTransLang
+                    return (
+                      <button
+                        key={l}
+                        type="button"
+                        onClick={() => setActiveTransLang(l)}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${
+                          isActive
+                            ? 'bg-white border-indigo-300 text-indigo-700 shadow-sm'
+                            : 'bg-transparent border-slate-200 text-slate-500 hover:border-slate-300'
+                        }`}
+                      >
+                        <span>{meta.flag}</span>
+                        {meta.label}
+                        {filled && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
+                      </button>
+                    )
+                  })}
                 </div>
 
-                {/* Translated description */}
-                <div>
-                  <label className="label">{t('recipeForm.translatedDescription', { lang: otherMeta.label, defaultValue: `Description in ${otherMeta.label} (optional)` })}</label>
-                  <textarea
-                    className="input min-h-[80px] resize-y text-sm"
-                    value={transDescription}
-                    onChange={e => setTransDescription(e.target.value)}
-                    placeholder={t('recipeForm.translatedDescPlaceholder', { defaultValue: 'Short description…' })}
-                  />
-                </div>
-
-                {/* Translated ingredient names */}
-                {form.ingredients.length > 0 && (
+                <div className="space-y-4">
+                  {/* Translated title */}
                   <div>
-                    <label className="label">{t('recipeForm.translatedIngredients', { lang: otherMeta.label, defaultValue: `Ingredient names in ${otherMeta.label}` })}</label>
-                    <div className="space-y-2">
-                      {form.ingredients.map((ing, i) => (
-                        <div key={i} className="flex gap-2 items-center">
-                          <span className="text-xs text-slate-400 w-24 flex-shrink-0 truncate">{ing.name || `#${i + 1}`}</span>
-                          <svg className="w-3 h-3 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                          </svg>
-                          <input
-                            className="input flex-1 text-sm"
-                            placeholder={ing.name}
-                            value={transIngNames[i] || ''}
-                            onChange={e => {
-                              const updated = [...transIngNames]
-                              updated[i] = e.target.value
-                              setTransIngNames(updated)
-                            }}
-                          />
-                        </div>
-                      ))}
-                    </div>
+                    <label className="label">{t('recipeForm.translatedTitle', { lang: activeMeta.label, defaultValue: `Title in ${activeMeta.label}` })}</label>
+                    <input
+                      className="input"
+                      value={activeTrans.title}
+                      onChange={e => setTrans('title', e.target.value)}
+                      placeholder={t('recipeForm.translatedTitlePlaceholder', { defaultValue: 'Recipe title…' })}
+                    />
                   </div>
-                )}
 
-                {/* Translated steps */}
-                {form.steps.length > 0 && (
+                  {/* Translated description */}
                   <div>
-                    <label className="label">{t('recipeForm.translatedSteps', { lang: otherMeta.label, defaultValue: `Steps in ${otherMeta.label}` })}</label>
-                    <div className="space-y-2 mb-2">
-                      {form.steps.map((_, i) => (
-                        <div key={i} className="flex gap-2 items-start">
-                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-xs font-bold flex items-center justify-center mt-2">
-                            {i + 1}
-                          </span>
-                          <textarea
-                            className="input flex-1 min-h-[60px] resize-none text-sm"
-                            placeholder={form.steps[i]}
-                            value={transSteps[i] || ''}
-                            onChange={e => {
-                              const updated = [...transSteps]
-                              updated[i] = e.target.value
-                              setTransSteps(updated)
-                            }}
-                          />
-                        </div>
-                      ))}
-                    </div>
+                    <label className="label">{t('recipeForm.translatedDescription', { lang: activeMeta.label, defaultValue: `Description in ${activeMeta.label} (optional)` })}</label>
+                    <textarea
+                      className="input min-h-[80px] resize-y text-sm"
+                      value={activeTrans.description}
+                      onChange={e => setTrans('description', e.target.value)}
+                      placeholder={t('recipeForm.translatedDescPlaceholder', { defaultValue: 'Short description…' })}
+                    />
                   </div>
-                )}
 
-                {/* Extra translated steps (if translation has more than main form) */}
-                {transSteps.length > form.steps.length && (
-                  <div className="space-y-2">
-                    {transSteps.slice(form.steps.length).map((step, i) => (
-                      <div key={i} className="flex gap-2 items-start">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-xs font-bold flex items-center justify-center mt-2">
-                          {form.steps.length + i + 1}
-                        </span>
-                        <textarea
-                          className="input flex-1 min-h-[60px] resize-none text-sm"
-                          value={step}
-                          onChange={e => {
-                            const updated = [...transSteps]
-                            updated[form.steps.length + i] = e.target.value
-                            setTransSteps(updated)
-                          }}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setTransSteps(prev => prev.filter((_, idx) => idx !== form.steps.length + i))}
-                          className="btn-ghost p-2 text-slate-400 hover:text-red-500 mt-1"
-                        >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                          </svg>
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {form.steps.length === 0 && (
-                  <div>
-                    <label className="label">{t('recipeForm.translatedSteps', { lang: otherMeta.label, defaultValue: `Steps in ${otherMeta.label}` })}</label>
-                    <div className="space-y-2 mb-2">
-                      {transSteps.map((step, i) => (
-                        <div key={i} className="flex gap-2 items-start">
-                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-xs font-bold flex items-center justify-center mt-2">
-                            {i + 1}
-                          </span>
-                          <textarea
-                            className="input flex-1 min-h-[60px] resize-none text-sm"
-                            value={step}
-                            onChange={e => {
-                              const updated = [...transSteps]
-                              updated[i] = e.target.value
-                              setTransSteps(updated)
-                            }}
-                          />
-                          <button type="button" onClick={() => setTransSteps(prev => prev.filter((_, idx) => idx !== i))} className="btn-ghost p-2 text-slate-400 hover:text-red-500 mt-1">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  {/* Translated ingredient names */}
+                  {form.ingredients.length > 0 && (
+                    <div>
+                      <label className="label">{t('recipeForm.translatedIngredients', { lang: activeMeta.label, defaultValue: `Ingredient names in ${activeMeta.label}` })}</label>
+                      <div className="space-y-2">
+                        {form.ingredients.map((ing, i) => (
+                          <div key={i} className="flex gap-2 items-center">
+                            <span className="text-xs text-slate-400 w-24 flex-shrink-0 truncate">{ing.name || `#${i + 1}`}</span>
+                            <svg className="w-3 h-3 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                             </svg>
-                          </button>
-                        </div>
-                      ))}
+                            <input
+                              className="input flex-1 text-sm"
+                              placeholder={ing.name}
+                              value={activeTrans.ingNames[i] || ''}
+                              onChange={e => {
+                                const updated = [...activeTrans.ingNames]
+                                updated[i] = e.target.value
+                                setTrans('ingNames', updated)
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex gap-2">
-                      <input
-                        className="input flex-1"
-                        placeholder={t('recipeForm.addStepPlaceholder')}
-                        value={newTransStep}
-                        onChange={e => setNewTransStep(e.target.value)}
-                        onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), addTransStep())}
-                      />
-                      <button type="button" onClick={addTransStep} className="btn-secondary">{t('recipeForm.addStep')}</button>
+                  )}
+
+                  {/* Translated steps — index-matched to base steps */}
+                  {form.steps.length > 0 && (
+                    <div>
+                      <label className="label">{t('recipeForm.translatedSteps', { lang: activeMeta.label, defaultValue: `Steps in ${activeMeta.label}` })}</label>
+                      <div className="space-y-2">
+                        {form.steps.map((_, i) => (
+                          <div key={i} className="flex gap-2 items-start">
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-xs font-bold flex items-center justify-center mt-2">
+                              {i + 1}
+                            </span>
+                            <textarea
+                              className="input flex-1 min-h-[60px] resize-none text-sm"
+                              placeholder={form.steps[i]}
+                              value={activeTrans.steps[i] || ''}
+                              onChange={e => {
+                                const updated = [...activeTrans.steps]
+                                updated[i] = e.target.value
+                                setTrans('steps', updated)
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    {t('recipeForm.translationHint', { defaultValue: 'Any field you leave blank falls back to the original recipe text for that language.' })}
+                  </p>
+                </div>
               </div>
             )}
           </div>
