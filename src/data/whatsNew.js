@@ -22,6 +22,20 @@
 
 export const WHATS_NEW = [
   {
+    id: 'fmd-plan-v1',
+    icon: '🥑',
+    title: {
+      en: 'New: Fasting Mimicking Plan',
+      no: 'Nytt: Faste-imiterende plan',
+      sv: 'Nytt: Fastehärmande plan',
+    },
+    body: {
+      en: 'A new 5-day Fasting Mimicking Plan is now built in — 16 plant-based, oil-free recipes with photos and full nutrition, based on the research of Valter Longo. It is designed to support metabolic health, cardiovascular and inflammatory conditions, and healthy ageing. Load the ready-made week from the Planner → “Load week” → Sample weeks.',
+      no: 'En ny 5-dagers faste-imiterende plan er nå innebygd — 16 plantebaserte, oljefrie oppskrifter med bilder og fullt næringsinnhold, basert på forskningen til Valter Longo. Den er laget for å støtte metabolsk helse, hjerte- og betennelsestilstander og sunn aldring. Last inn den ferdige uken fra Ukeplan → «Last inn uke» → Ferdige uker.',
+      sv: 'En ny 5-dagars fastehärmande plan är nu inbyggd — 16 växtbaserade, oljefria recept med bilder och fullständig näring, baserad på forskningen av Valter Longo. Den är gjord för att stödja metabol hälsa, hjärt- och inflammationstillstånd och hälsosamt åldrande. Ladda den färdiga veckan från Planering → ”Ladda vecka” → Färdiga veckor.',
+    },
+  },
+  {
     id: 'favorites-v1',
     icon: '⭐',
     title: {
