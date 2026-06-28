@@ -1,14 +1,23 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
+import { STARTER_PLANS, planHasContent, countPlanMeals } from '../../data/starterPlans'
+import { BUILT_IN_PACKS } from '../../data/installedPacks'
 
 export default function PlannerTemplates({ onClose }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = i18n.language?.slice(0, 2) || 'en'
   const plannerTemplates = useStore(s => s.plannerTemplates)
   const savePlannerTemplate = useStore(s => s.savePlannerTemplate)
   const loadPlannerTemplate = useStore(s => s.loadPlannerTemplate)
   const deletePlannerTemplate = useStore(s => s.deletePlannerTemplate)
+  const installStarterPlan = useStore(s => s.installStarterPlan)
+  const installPack = useStore(s => s.installPack)
+  const installedPacks = useStore(s => s.installedPacks)
   const weekPlan = useStore(s => s.weekPlan)
+
+  // The ready-to-load sample weeks (those that have actually been authored).
+  const sampleWeeks = STARTER_PLANS.filter(planHasContent)
 
   const [mode, setMode] = useState('list') // 'list' | 'save'
   const [templateName, setTemplateName] = useState('')
@@ -40,6 +49,24 @@ export default function PlannerTemplates({ onClose }) {
     if (confirm(t('planner.deleteConfirm', { name: tmpl.name }))) {
       deletePlannerTemplate(tmpl.id)
     }
+  }
+
+  // Load a ready-made sample week (e.g. the 5-day FMD plan). We first make
+  // sure every pack the plan depends on is installed so its recipes resolve,
+  // then replace the current week with the sample. This is the same flow the
+  // Packs page used to host — it now lives here in the Planner where loading
+  // a week is more intuitive.
+  function handleLoadSampleWeek(plan) {
+    const name = plan.translations?.[lang]?.name || plan.name
+    if (!confirm(t('planner.loadConfirm', { name }))) return
+    for (const packId of plan.requiredPackIds || []) {
+      if (!installedPacks?.[packId]) {
+        const fullPack = BUILT_IN_PACKS[packId]
+        if (fullPack) installPack(fullPack)
+      }
+    }
+    installStarterPlan(plan)
+    onClose()
   }
 
   /**
@@ -179,15 +206,60 @@ export default function PlannerTemplates({ onClose }) {
               </div>
             </div>
           ) : (
-            <div>
-              {plannerTemplates.length === 0 ? (
-                <div className="text-center py-10">
-                  <div className="text-4xl mb-3">📅</div>
-                  <p className="text-sm text-slate-500">{t('planner.noTemplates')}</p>
+            <div className="space-y-6">
+              {/* Ready-made sample weeks shipped with the app (e.g. the
+                  5-day FMD plan). Loading one replaces the current week. */}
+              {sampleWeeks.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                    {t('planner.sampleWeeks', { defaultValue: 'Sample weeks' })}
+                  </p>
+                  <div className="space-y-3">
+                    {sampleWeeks.map(plan => {
+                      const name = plan.translations?.[lang]?.name || plan.name
+                      const desc = plan.translations?.[lang]?.description || plan.description
+                      const meals = countPlanMeals(plan)
+                      return (
+                        <div key={plan.id} className="card p-4">
+                          <div className="flex items-start gap-3">
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-semibold text-slate-800">{name}</p>
+                              <p className="text-xs text-slate-500 mt-0.5">
+                                {t('planner.mealsPlanned', { count: meals })}
+                              </p>
+                            </div>
+                            <button
+                              onClick={() => handleLoadSampleWeek(plan)}
+                              className="btn-primary py-1.5 px-3 text-xs flex-shrink-0"
+                            >
+                              {t('planner.load')}
+                            </button>
+                          </div>
+                          {desc && (
+                            <p className="text-xs text-slate-500 mt-2 leading-relaxed">{desc}</p>
+                          )}
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
-              ) : (
-                <div className="space-y-3">
-                  {[...plannerTemplates].reverse().map(tmpl => (
+              )}
+
+              {/* The user's own saved weeks */}
+              <div>
+                {sampleWeeks.length > 0 && (
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                    {t('planner.myTemplates', { defaultValue: 'My saved weeks' })}
+                  </p>
+                )}
+                {plannerTemplates.length === 0 ? (
+                  <div className="text-center py-10">
+                    <div className="text-4xl mb-3">📅</div>
+                    <p className="text-sm text-slate-500">{t('planner.noTemplates')}</p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {[...plannerTemplates].reverse().map(tmpl => (
                     <div key={tmpl.id} className="card p-4 flex items-center gap-3">
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-semibold text-slate-800 truncate">{tmpl.name}</p>
@@ -213,7 +285,8 @@ export default function PlannerTemplates({ onClose }) {
                     </div>
                   ))}
                 </div>
-              )}
+                )}
+              </div>
             </div>
           )}
         </div>

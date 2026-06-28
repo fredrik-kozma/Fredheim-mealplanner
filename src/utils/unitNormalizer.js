@@ -137,7 +137,11 @@ export function smartConvert(quantity, unitKey) {
       return { quantity: round(base.quantity / 100, 1), unit: 'dl' }
     }
     // Small volumes: use tsp / tbsp when they map cleanly — nobody
-    // measures 5 ml or 15 ml with a graduated cylinder while cooking.
+    // measures 5 ml or 15 ml with a graduated cylinder while cooking, and
+    // spices in particular are measured in spoons. tbsp is accepted at
+    // half-spoon precision; tsp at quarter-spoon precision (¼ / ½ / ¾ tsp
+    // are all real measuring-spoon sizes), so a ¼ tsp of cinnamon shows as
+    // "¼ tsp" rather than an unhelpful "1.3 ml".
     const ml = base.quantity
     if (ml > 0 && ml <= 60) {
       const asTbsp = ml / 15
@@ -146,9 +150,9 @@ export function smartConvert(quantity, unitKey) {
       if (ml >= 15 && (Math.abs(asTbsp - Math.round(asTbsp * 2) / 2) < 0.05)) {
         return { quantity: round(Math.round(asTbsp * 2) / 2, 1), unit: 'tbsp' }
       }
-      // Prefer tsp for smaller amounts
-      if (Math.abs(asTsp - Math.round(asTsp * 2) / 2) < 0.05) {
-        return { quantity: round(Math.round(asTsp * 2) / 2, 1), unit: 'tsp' }
+      // Prefer tsp for smaller amounts, snapping to the nearest quarter spoon.
+      if (Math.abs(asTsp - Math.round(asTsp * 4) / 4) < 0.03) {
+        return { quantity: round(Math.round(asTsp * 4) / 4, 2), unit: 'tsp' }
       }
     }
     return { quantity: round(base.quantity, 1), unit: 'ml' }

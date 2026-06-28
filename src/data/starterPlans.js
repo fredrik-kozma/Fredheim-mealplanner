@@ -35,12 +35,29 @@
  *   }
  */
 
-import { FREDHEIM_RECIPES_WITH_PICTURES_PACK, FREDHEIM_REVERSAL_PROTOCOL_PACK } from './installedPacks'
+import { FREDHEIM_RECIPES_WITH_PICTURES_PACK, FREDHEIM_REVERSAL_PROTOCOL_PACK, FREDHEIM_FMD_5DAY_PACK } from './installedPacks'
 
 // Convenience reference to the canonical Fredheim recipes pack id — the
 // vast majority of starter plans will pull recipes from it.
 const FREDHEIM_PACK_ID = FREDHEIM_RECIPES_WITH_PICTURES_PACK.id
 const REVERSAL_PACK_ID = FREDHEIM_REVERSAL_PROTOCOL_PACK.id
+const FMD_PACK_ID = FREDHEIM_FMD_5DAY_PACK.id
+
+// The FMD sample week maps Day 1–5 of the protocol onto Monday–Friday;
+// Saturday/Sunday are intentionally left empty (the protocol is 5 days,
+// with Day 6 being an unstructured refeeding day the user manages
+// themselves). The daily broth is dropped into every day's Breakfast
+// slot as the first item — it is "prepared each morning" and then sipped
+// freely throughout the day, so breakfast is its natural anchor in the
+// grid. `servings: null` means "use the recipe's own default servings".
+const fmdDay = (n) => ({
+  Breakfast: [
+    { recipeId: 'fmd-broth', servings: null },
+    { recipeId: `fmd-d${n}-breakfast`, servings: null },
+  ],
+  Lunch: [{ recipeId: `fmd-d${n}-lunch`, servings: null }],
+  Dinner: [{ recipeId: `fmd-d${n}-dinner`, servings: null }],
+})
 
 export const STARTER_PLANS = [
   {
@@ -102,6 +119,32 @@ export const STARTER_PLANS = [
     },
     requiredPackIds: [FREDHEIM_PACK_ID, REVERSAL_PACK_ID],
     plan: {}, // ← drop in your authored week here
+  },
+  {
+    id: 'fmd-5day-week-1',
+    name: 'Fasting Mimicking Plan — 5-Day Plan',
+    description: 'The full 5-day FMD protocol (Longo) mapped to Monday–Friday: three small plant-based, oil-free meals a day plus a vegetable broth sipped freely throughout. ⚠ Not suitable in pregnancy, type 1/insulin-dependent diabetes, BMI under 18.5, eating-disorder history, or under-18s.',
+    condition: 'fmd',
+    author: 'Fredheim Livsstilssenter',
+    version: '1.1.0',
+    translations: {
+      no: {
+        name: 'Faste-imiterende plan — 5-dagers plan',
+        description: 'Hele den 5-dagers FMD-protokollen (Longo) lagt på mandag–fredag: tre små plantebaserte, oljefrie måltider om dagen pluss en grønnsaksbuljong som drikkes fritt gjennom dagen. ⚠ Ikke egnet ved graviditet, diabetes type 1 / insulinavhengig diabetes, BMI under 18,5, historikk med spiseforstyrrelse, eller under 18 år.',
+      },
+      sv: {
+        name: 'Fastehärmande plan — 5-dagarsplan',
+        description: 'Hela den 5-dagars FMD-protokollen (Longo) lagd på måndag–fredag: tre små växtbaserade, oljefria måltider per dag plus en grönsaksbuljong som dricks fritt under dagen. ⚠ Inte lämplig vid graviditet, typ 1- / insulinberoende diabetes, BMI under 18,5, historik av ätstörning, eller under 18 år.',
+      },
+    },
+    requiredPackIds: [FMD_PACK_ID],
+    plan: {
+      monday: fmdDay(1),
+      tuesday: fmdDay(2),
+      wednesday: fmdDay(3),
+      thursday: fmdDay(4),
+      friday: fmdDay(5),
+    },
   },
 ]
 

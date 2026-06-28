@@ -12,6 +12,14 @@ const CATEGORY_BG = {
   default: 'bg-slate-50 border-slate-100',
 }
 
+// Stable empty-array reference. The slot selector below falls back to this
+// when a day/slot is missing from the plan. Returning a fresh `[]` literal
+// from a Zustand selector makes every render look like a state change and
+// triggers an infinite update loop ("Maximum update depth exceeded") — which
+// is exactly what happened when a loaded sample week left some weekdays
+// undefined. A single shared reference keeps the selector output stable.
+const EMPTY_SLOT = []
+
 // ── One recipe chip inside a slot, with inline servings adjuster ─────────────
 function SlotItemChip({ day, slot, item, recipe, currentLang }) {
   const { t } = useTranslation()
@@ -163,7 +171,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
 export default function MealSlot({ day, slot, onAdd }) {
   const { t, i18n } = useTranslation()
   const currentLang = i18n.language?.slice(0, 2) || 'en'
-  const slotItems = useStore(s => s.weekPlan[day]?.[slot] || [])
+  const slotItems = useStore(s => s.weekPlan[day]?.[slot] ?? EMPTY_SLOT)
   const recipes = useStore(s => s.recipes)
 
   const droppableId = `${day}__${slot}`

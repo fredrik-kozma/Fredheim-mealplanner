@@ -850,9 +850,30 @@ const useStore = create(
        * ensuring required recipe packs are installed first (the UI does
        * this in PacksPage before calling installStarterPlan).
        */
-      installStarterPlan: (starterPlan) => set(() => ({
-        weekPlan: JSON.parse(JSON.stringify(starterPlan.plan || {})),
-      })),
+      installStarterPlan: (starterPlan) => set((s) => {
+        // Build a complete skeleton: every named day carries every meal
+        // slot the user currently has, initialised to an empty array. Then
+        // overlay the sample plan on top. This guarantees a structurally
+        // complete weekPlan even when the sample only fills some of the
+        // days (the FMD plan, for instance, only fills Mon–Fri) — leaving
+        // a day undefined would otherwise crash the planner.
+        const plan = {}
+        for (const day of DAYS) {
+          plan[day] = {}
+          for (const slot of s.mealSlots) plan[day][slot] = []
+        }
+        const incoming = starterPlan.plan || {}
+        for (const [day, slots] of Object.entries(incoming)) {
+          if (!plan[day]) {
+            plan[day] = {}
+            for (const slot of s.mealSlots) plan[day][slot] = []
+          }
+          for (const [slot, items] of Object.entries(slots || {})) {
+            plan[day][slot] = JSON.parse(JSON.stringify(items || []))
+          }
+        }
+        return { weekPlan: plan }
+      }),
 
       deletePlannerTemplate: (id) => set((s) => ({
         plannerTemplates: s.plannerTemplates.filter(t => t.id !== id),

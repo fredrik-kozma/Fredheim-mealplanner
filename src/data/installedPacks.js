@@ -12,6 +12,9 @@ import fredheimRecipesWithPicturesData from '../../recipe-packs-template/packs/f
 // Import Fredheim Reversal Protocol pack (Ornish-aligned)
 import fredheimReversalProtocolData from '../../recipe-packs-template/packs/fredheim-reversal-protocol.json'
 
+// Import Fredheim FMD 5-day pack (Longo Fasting Mimicking Diet)
+import fredheimFmd5DayData from '../../recipe-packs-template/packs/fredheim-fmd-5day.json'
+
 // ---------------------------------------------------------------------------
 // Pack — Fredheim Recipes with Pictures
 // ---------------------------------------------------------------------------
@@ -21,6 +24,11 @@ export const FREDHEIM_RECIPES_WITH_PICTURES_PACK = fredheimRecipesWithPicturesDa
 // Pack — Fredheim Reversal Protocol
 // ---------------------------------------------------------------------------
 export const FREDHEIM_REVERSAL_PROTOCOL_PACK = fredheimReversalProtocolData
+
+// ---------------------------------------------------------------------------
+// Pack — Fredheim FMD (Fasting Mimicking Diet) 5-Day Plan
+// ---------------------------------------------------------------------------
+export const FREDHEIM_FMD_5DAY_PACK = fredheimFmd5DayData
 
 // ---------------------------------------------------------------------------
 // Registry index — mirrors what registry.json on GitHub should contain
@@ -45,10 +53,21 @@ export const BUILT_IN_REGISTRY = [
     translations: FREDHEIM_REVERSAL_PROTOCOL_PACK.translations,
     recipeCount: FREDHEIM_REVERSAL_PROTOCOL_PACK.recipes.length,
   },
+  {
+    id: FREDHEIM_FMD_5DAY_PACK.id,
+    name: FREDHEIM_FMD_5DAY_PACK.name,
+    description: FREDHEIM_FMD_5DAY_PACK.description,
+    author: FREDHEIM_FMD_5DAY_PACK.author,
+    version: FREDHEIM_FMD_5DAY_PACK.version,
+    tags: FREDHEIM_FMD_5DAY_PACK.tags,
+    translations: FREDHEIM_FMD_5DAY_PACK.translations,
+    recipeCount: FREDHEIM_FMD_5DAY_PACK.recipes.length,
+  },
 ]
 
 // Lookup map for quick access by id
 export const BUILT_IN_PACKS = {
   [FREDHEIM_RECIPES_WITH_PICTURES_PACK.id]: FREDHEIM_RECIPES_WITH_PICTURES_PACK,
   [FREDHEIM_REVERSAL_PROTOCOL_PACK.id]: FREDHEIM_REVERSAL_PROTOCOL_PACK,
+  [FREDHEIM_FMD_5DAY_PACK.id]: FREDHEIM_FMD_5DAY_PACK,
 }
