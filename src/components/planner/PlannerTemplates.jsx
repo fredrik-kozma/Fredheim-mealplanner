@@ -4,7 +4,7 @@ import useStore from '../../store/useStore'
 import { STARTER_PLANS, planHasContent, countPlanMeals } from '../../data/starterPlans'
 import { BUILT_IN_PACKS } from '../../data/installedPacks'
 
-export default function PlannerTemplates({ onClose }) {
+export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
   const { t, i18n } = useTranslation()
   const lang = i18n.language?.slice(0, 2) || 'en'
   const plannerTemplates = useStore(s => s.plannerTemplates)
@@ -19,7 +19,7 @@ export default function PlannerTemplates({ onClose }) {
   // The ready-to-load sample weeks (those that have actually been authored).
   const sampleWeeks = STARTER_PLANS.filter(planHasContent)
 
-  const [mode, setMode] = useState('list') // 'list' | 'save'
+  const [mode, setMode] = useState(initialMode) // 'list' | 'save'
   const [templateName, setTemplateName] = useState('')
   const [toast, setToast] = useState(null)
 
