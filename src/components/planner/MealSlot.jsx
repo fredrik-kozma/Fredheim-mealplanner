@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
 import useStore, { normalizeSlotItem } from '../../store/useStore'
+import EditableNumber from '../common/EditableNumber'
 
 const CATEGORY_BG = {
   Breakfast: 'bg-amber-50 border-amber-100',
@@ -121,9 +122,18 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
             >
               −
             </button>
-            <span className="flex-1 text-center text-xs font-semibold text-slate-700">
-              {effectiveServings} {t('planner.servingsShort', { defaultValue: 'serv.' })}
-            </span>
+            <div className="flex-1 flex items-center justify-center gap-1 min-w-0">
+              <EditableNumber
+                value={effectiveServings}
+                onChange={(n) => setSlotItemServings(day, slot, item.recipeId, n)}
+                min={1}
+                className="w-8 text-center text-xs font-semibold text-slate-700 bg-slate-50 border border-slate-200 rounded py-0.5 outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-300"
+                aria-label={t('planner.adjustServings', { defaultValue: 'Adjust servings' })}
+              />
+              <span className="text-xs text-slate-500 flex-shrink-0">
+                {t('planner.servingsShort', { defaultValue: 'serv.' })}
+              </span>
+            </div>
             <button
               onClick={(e) => bumpServings(1, e)}
               className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
