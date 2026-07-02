@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -2708,6 +2708,180 @@
           "riboflavin": 0.14,
           "niacin": 2,
           "choline": 20
+        }
+      }
+    },
+    {
+      "id": "orn-13",
+      "title": "Sweet Almond Milk Chia Pudding with Mango",
+      "category": "Breakfast",
+      "servings": 2,
+      "prepTime": 10,
+      "cookTime": null,
+      "imageUrl": null,
+      "description": "A chia pudding made on homemade almond milk, naturally sweetened with Medjool dates and topped with mango. No added syrup, no store-bought milk — and an excellent omega-6:omega-3 ratio of about 0.8:1.",
+      "tags": [
+        "ornish-orange",
+        "breakfast",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "high-fiber"
+      ],
+      "kcal": 383,
+      "servingWeightGrams": 338,
+      "nutrition": {
+        "perServing": {
+          "calories": 383,
+          "protein": 10.4,
+          "totalFat": 19.7,
+          "saturatedFat": 1.86,
+          "polyunsaturatedFat": 9.73,
+          "monounsaturatedFat": 7.15,
+          "omega3": 5.43,
+          "omega6": 4.26,
+          "cholesterol": 0,
+          "totalCarbs": 48.3,
+          "totalSugars": 28.8,
+          "addedSugar": 0,
+          "fiber": 16,
+          "calcium": 271,
+          "potassium": 583,
+          "copper": 0.67,
+          "iron": 3.45,
+          "magnesium": 178,
+          "manganese": 1.39,
+          "selenium": 18.9,
+          "phosphorus": 386,
+          "zinc": 2.21,
+          "sodium": 6.2,
+          "vitaminA": 46.6,
+          "vitaminB6": 0.19,
+          "vitaminB12": 0,
+          "vitaminC": 30.5,
+          "vitaminD": 0,
+          "vitaminE": 6.03,
+          "vitaminK": 4.14,
+          "folate": 63,
+          "thiamin": 0.27,
+          "riboflavin": 0.3,
+          "niacin": 4.37,
+          "choline": 22.2
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 40,
+          "unit": "g",
+          "name": "Raw almonds"
+        },
+        {
+          "quantity": 360,
+          "unit": "ml",
+          "name": "Water (for the almond milk)"
+        },
+        {
+          "quantity": 50,
+          "unit": "g",
+          "name": "Medjool dates, pitted"
+        },
+        {
+          "quantity": 60,
+          "unit": "g",
+          "name": "Chia seeds"
+        },
+        {
+          "quantity": 165,
+          "unit": "g",
+          "name": "Frozen mango, for topping"
+        }
+      ],
+      "steps": [
+        "Blend the almonds and water on high in a powerful blender for 60–90 seconds until smooth and creamy. No straining needed — keeping the almond pulp in adds fibre and body.",
+        "Add the pitted dates to the almond milk and blend again until completely smooth — this replaces any added syrup.",
+        "Pour the sweetened almond milk over the chia seeds in a bowl or two jars. Whisk thoroughly to prevent clumping.",
+        "Let sit for 5 minutes, then whisk again to break up any clumps that have formed.",
+        "Cover and refrigerate for at least 4 hours, or overnight, until thickened to a pudding consistency.",
+        "Just before serving, dice or lightly blend the frozen mango and spoon it over the top. Keeps in the fridge for up to 3 days, so it doubles easily for batch prep."
+      ],
+      "translations": {
+        "no": {
+          "title": "Chiapudding med søt mandelmelk og mango",
+          "description": "Chiapudding laget på hjemmelaget mandelmelk, naturlig søtet med medjooldadler og toppet med mango. Uten tilsatt sirup, uten kjøpemelk — og et utmerket omega-6:omega-3-forhold på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "rå mandler"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vann (til mandelmelken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadler, uten stein"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrø"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "frossen mango, til topping"
+            }
+          ],
+          "steps": [
+            "Kjør mandlene og vannet på høy hastighet i en kraftig blender i 60–90 sekunder til det er glatt og kremet. Ingen siling nødvendig — mandelmassen gir fiber og fylde.",
+            "Tilsett de utstenede dadlene i mandelmelken og kjør igjen til det er helt glatt — dette erstatter all tilsatt sirup.",
+            "Hell den søtede mandelmelken over chiafrøene i en bolle eller to glass. Visp grundig for å unngå klumper.",
+            "La stå i 5 minutter, og visp igjen for å bryte opp eventuelle klumper.",
+            "Dekk til og sett i kjøleskapet i minst 4 timer, eller over natten, til det har tyknet til puddingkonsistens.",
+            "Rett før servering: kutt eller kjør den frosne mangoen lett, og skje den over toppen. Holder seg i kjøleskapet i opptil 3 dager, så den er lett å lage i større porsjoner."
+          ]
+        },
+        "sv": {
+          "title": "Chiapudding med söt mandelmjölk och mango",
+          "description": "Chiapudding gjord på hemgjord mandelmjölk, naturligt sötad med medjooldadlar och toppad med mango. Utan tillsatt sirap, utan köpt mjölk — och ett utmärkt omega-6:omega-3-förhållande på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "råa mandlar"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vatten (till mandelmjölken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrön"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "fryst mango, till topping"
+            }
+          ],
+          "steps": [
+            "Mixa mandlarna och vattnet på hög hastighet i en kraftfull mixer i 60–90 sekunder tills det är slätt och krämigt. Ingen silning behövs — mandelmassan ger fiber och fyllighet.",
+            "Tillsätt de urkärnade dadlarna i mandelmjölken och mixa igen tills det är helt slätt — detta ersätter all tillsatt sirap.",
+            "Häll den sötade mandelmjölken över chiafröna i en skål eller två burkar. Vispa ordentligt för att undvika klumpar.",
+            "Låt stå i 5 minuter och vispa sedan igen för att bryta upp eventuella klumpar.",
+            "Täck över och ställ i kylen i minst 4 timmar, eller över natten, tills det tjocknat till puddingkonsistens.",
+            "Strax före servering: tärna eller mixa den frysta mangon lätt och skeda den över toppen. Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
+          ]
         }
       }
     }
