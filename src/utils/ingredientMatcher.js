@@ -1,16 +1,21 @@
 import { normalizeUnit, convertToBase, smartConvert, TO_BASE } from './unitNormalizer'
 
+// Preparation words that describe the SAME whole food (a knife/pan/state
+// change), so they are stripped before matching — "crushed garlic" is
+// still garlic. Grinding words (ground / malt / malen) are deliberately
+// NOT here; they mark a milled form and live in FORM_WORDS below so a
+// "ground X" spice stays separate from the whole "X".
 const STRIP_WORDS = [
   // English
   'fresh', 'raw', 'frozen', 'cooked', 'dried', 'chopped', 'diced', 'sliced',
   'minced', 'grated', 'peeled', 'whole', 'organic', 'large', 'small', 'medium',
-  'ripe', 'crushed', 'ground', 'roasted', 'toasted', 'shredded', 'trimmed',
+  'ripe', 'crushed', 'roasted', 'toasted', 'shredded', 'trimmed',
   // Norwegian
   'fersk', 'rå', 'frossen', 'kokt', 'tørket', 'hakket', 'skivet', 'revet',
-  'skrelt', 'hel', 'moden', 'knust', 'malt', 'stekt', 'ristet',
+  'skrelt', 'hel', 'moden', 'knust', 'stekt', 'ristet',
   // Swedish
   'färsk', 'fryst', 'torkad', 'hackad', 'skivad', 'riven',
-  'skalad', 'mogen', 'krossad', 'malen', 'rostad', 'rostade',
+  'skalad', 'mogen', 'krossad', 'rostad', 'rostade',
 ]
 
 const STRIP_PATTERN = new RegExp(
@@ -54,12 +59,15 @@ function levenshtein(a, b) {
   return matrix[b.length][a.length]
 }
 
-// Words that mark a dried / powdered / processed FORM of an ingredient.
-// A form like "garlic powder" must never be merged with the whole food
-// "garlic", so if exactly one of two names carries a form word we keep
-// them apart. Matched as substrings so Nordic compounds are caught too
-// ("hvitløkspulver", "løkpulver", "vitlökspulver").
-const FORM_WORDS = ['powder', 'pulver', 'granulated', 'granules', 'granulat', 'flakes', 'flingor']
+// Words that mark a dried / powdered / milled FORM of an ingredient.
+// A form like "garlic powder" or "ground ginger" must never be merged
+// with the whole food ("garlic", "ginger"), so if exactly one of two
+// names carries a form word we keep them apart. Matched as substrings so
+// Nordic compounds are caught too ("hvitløkspulver", "ferskmalt").
+const FORM_WORDS = [
+  'powder', 'pulver', 'granulated', 'granules', 'granulat', 'flakes', 'flingor',
+  'ground', 'malt', 'malte', 'malen', 'malet', 'malda',
+]
 function hasFormWord(name) {
   return FORM_WORDS.some(w => name.includes(w))
 }
