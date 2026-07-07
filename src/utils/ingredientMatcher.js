@@ -54,11 +54,28 @@ function levenshtein(a, b) {
   return matrix[b.length][a.length]
 }
 
+// Words that mark a dried / powdered / processed FORM of an ingredient.
+// A form like "garlic powder" must never be merged with the whole food
+// "garlic", so if exactly one of two names carries a form word we keep
+// them apart. Matched as substrings so Nordic compounds are caught too
+// ("hvitløkspulver", "løkpulver", "vitlökspulver").
+const FORM_WORDS = ['powder', 'pulver', 'granulated', 'granules', 'granulat', 'flakes', 'flingor']
+function hasFormWord(name) {
+  return FORM_WORDS.some(w => name.includes(w))
+}
+
 export function ingredientSimilarity(a, b) {
   const na = normalizeIngredientName(a)
   const nb = normalizeIngredientName(b)
   if (!na || !nb) return 0
   if (na === nb) return 1.0
+
+  // Keep powdered/processed forms separate from the whole food:
+  //   "garlic" vs "garlic powder"   → KEEP separate
+  //   "onion"  vs "onion powder"    → KEEP separate
+  //   "baking powder" vs "baking soda" → KEEP separate
+  // (Two "garlic powder"s still merge — they normalise equal above.)
+  if (hasFormWord(na) !== hasFormWord(nb)) return 0
 
   // Only treat one name as a "variant" of the other when the shorter is
   // the FIRST WORD(s) of the longer. That catches the merges we want —
