@@ -16,22 +16,33 @@ export default function ShoppingList() {
   const clearCheckedItems = useStore(s => s.clearCheckedItems)
   const pruneCheckedItems = useStore(s => s.pruneCheckedItems)
   const saveShoppingList = useStore(s => s.saveShoppingList)
+  const customShoppingItems = useStore(s => s.customShoppingItems) || []
+  const addCustomShoppingItem = useStore(s => s.addCustomShoppingItem)
+  const removeCustomShoppingItem = useStore(s => s.removeCustomShoppingItem)
 
   const [showChecked, setShowChecked] = useState(true)
   const [showSaveModal, setShowSaveModal] = useState(false)
   const [showSavedLists, setShowSavedLists] = useState(false)
   const [listName, setListName] = useState('')
   const [saveToast, setSaveToast] = useState(null)
+  const [showAddForm, setShowAddForm] = useState(false)
+  const [newItemName, setNewItemName] = useState('')
+  const [newItemAmount, setNewItemAmount] = useState('')
 
   const groups = generateShoppingList(weekPlan, recipes, familySize, currentLang)
-  const totalItems = groups.reduce((sum, g) => sum + g.items.length, 0)
+  const generatedTotal = groups.reduce((sum, g) => sum + g.items.length, 0)
+  const totalItems = generatedTotal + customShoppingItems.length
 
-  // Set of ids currently in the shopping list. Used for both display
-  // counting and for pruning the persisted checkedItems map below.
-  // Memoised on a stable key so we don't re-prune on every render.
+  // Set of ids currently in the shopping list (generated + custom). Used
+  // for both display counting and for pruning the persisted checkedItems
+  // map below. Memoised on a stable key so we don't re-prune on every
+  // render. Custom ids are included so their check marks survive.
   const currentIdsKey = useMemo(
-    () => groups.flatMap(g => g.items.map(i => i.id)).sort().join('|'),
-    [groups]
+    () => [
+      ...groups.flatMap(g => g.items.map(i => i.id)),
+      ...customShoppingItems.map(i => i.id),
+    ].sort().join('|'),
+    [groups, customShoppingItems]
   )
 
   // Auto-prune: whenever the active list changes, drop any checked
@@ -45,10 +56,19 @@ export default function ShoppingList() {
 
   // Count ONLY the items in the active list (defensive — even if the
   // prune effect lags one tick, the displayed number is honest).
-  const checkedCount = groups.reduce(
-    (n, g) => n + g.items.reduce((m, item) => m + (checkedItems[item.id] ? 1 : 0), 0),
-    0
-  )
+  const checkedCount =
+    groups.reduce(
+      (n, g) => n + g.items.reduce((m, item) => m + (checkedItems[item.id] ? 1 : 0), 0),
+      0
+    ) + customShoppingItems.reduce((n, i) => n + (checkedItems[i.id] ? 1 : 0), 0)
+
+  function handleAddCustomItem() {
+    if (!newItemName.trim()) return
+    addCustomShoppingItem(newItemName, newItemAmount)
+    setNewItemName('')
+    setNewItemAmount('')
+    // Keep the form open so several items can be added in a row.
+  }
 
   function handleSaveList() {
     const name = listName.trim()
@@ -70,6 +90,14 @@ export default function ShoppingList() {
         quantityLabel: formatQuantity(it.quantity, it.unit),
       })),
     }))
+
+    // Append the user's own items as their own aisle at the end.
+    if (customShoppingItems.length > 0) {
+      printGroups.push({
+        category: t('shopping.myItems', { defaultValue: 'My items' }),
+        items: customShoppingItems.map((it) => ({ name: it.name, quantityLabel: it.amount || '' })),
+      })
+    }
 
     // Unique list of recipe titles that contributed to this list.
     const recipeTitles = [...new Set(
@@ -99,14 +127,68 @@ export default function ShoppingList() {
     })
   }
 
+  // The "+ Add item" affordance — a dashed button that expands into a
+  // name + amount form. Reused in the empty state and at the end of the
+  // populated list.
+  const addItemSection = showAddForm ? (
+    <div className="card p-3 border border-indigo-100 relative">
+      <button
+        onClick={() => { setShowAddForm(false); setNewItemName(''); setNewItemAmount('') }}
+        className="absolute top-2 right-2 text-slate-300 hover:text-slate-500"
+        title={t('common.close', { defaultValue: 'Close' })}
+      >
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div className="flex gap-2 pr-6">
+        <input
+          className="input flex-1"
+          placeholder={t('shopping.itemNamePlaceholder', { defaultValue: 'Item name…' })}
+          value={newItemName}
+          onChange={e => setNewItemName(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && handleAddCustomItem()}
+          autoFocus
+        />
+        <input
+          className="input w-24"
+          placeholder={t('shopping.itemAmountPlaceholder', { defaultValue: 'Amount' })}
+          value={newItemAmount}
+          onChange={e => setNewItemAmount(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && handleAddCustomItem()}
+        />
+      </div>
+      <button
+        onClick={handleAddCustomItem}
+        disabled={!newItemName.trim()}
+        className="btn-primary w-full mt-2 text-sm py-2"
+      >
+        {t('shopping.addItem', { defaultValue: 'Add item' })}
+      </button>
+    </div>
+  ) : (
+    <button
+      onClick={() => setShowAddForm(true)}
+      className="w-full flex items-center justify-center gap-1.5 py-3 rounded-xl border-2 border-dashed border-slate-200 text-slate-500 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/40 transition-colors text-sm font-medium"
+    >
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg>
+      {t('shopping.addItem', { defaultValue: 'Add item' })}
+    </button>
+  )
+
   if (totalItems === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-full py-20 px-6 text-center">
-        <div className="text-5xl mb-4">🛒</div>
-        <h3 className="text-lg font-semibold text-slate-700 mb-2">{t('shopping.noItemsYet')}</h3>
-        <p className="text-sm text-slate-500 max-w-xs">
-          {t('shopping.noItemsDesc')}
-        </p>
+      <div className="flex flex-col h-full">
+        <div className="flex-1 flex flex-col items-center justify-center py-16 px-6 text-center">
+          <div className="text-5xl mb-4">🛒</div>
+          <h3 className="text-lg font-semibold text-slate-700 mb-2">{t('shopping.noItemsYet')}</h3>
+          <p className="text-sm text-slate-500 max-w-xs">
+            {t('shopping.noItemsDesc')}
+          </p>
+        </div>
+        <div className="px-4 pb-24 lg:pb-8">{addItemSection}</div>
       </div>
     )
   }
@@ -210,27 +292,84 @@ export default function ShoppingList() {
           )
         })}
 
-        {/* Recipe source summary */}
-        <div className="card p-4 mt-2 bg-slate-50">
-          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">{t('shopping.fromRecipes')}</p>
-          <div className="flex flex-wrap gap-1.5">
-            {[...new Set(
-              Object.values(weekPlan).flatMap(day =>
-                Object.values(day).flatMap(items =>
-                  (items || []).map(it => typeof it === 'string' ? it : it?.recipeId).filter(Boolean)
+        {/* My items — the user's own manually-added entries */}
+        {(() => {
+          const visibleCustom = showChecked
+            ? customShoppingItems
+            : customShoppingItems.filter(i => !checkedItems[i.id])
+          if (visibleCustom.length === 0) return null
+          return (
+            <div>
+              <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 px-1">
+                {t('shopping.myItems', { defaultValue: 'My items' })}
+              </h3>
+              <div className="card divide-y divide-slate-50">
+                {visibleCustom.map(item => {
+                  const isChecked = Boolean(checkedItems[item.id])
+                  return (
+                    <div
+                      key={item.id}
+                      className={`flex items-center gap-3 px-4 py-3 hover:bg-slate-50/80 transition-colors ${isChecked ? 'opacity-50' : ''}`}
+                    >
+                      <label className="flex items-center gap-3 flex-1 min-w-0 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => toggleCheckedItem(item.id)}
+                          className="w-4.5 h-4.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                        />
+                        <span className={`flex-1 text-sm text-slate-700 ${isChecked ? 'line-through' : ''}`}>
+                          {item.name}
+                        </span>
+                      </label>
+                      {item.amount && (
+                        <span className={`text-sm font-medium ${isChecked ? 'text-slate-400 line-through' : 'text-slate-900'}`}>
+                          {item.amount}
+                        </span>
+                      )}
+                      <button
+                        onClick={() => removeCustomShoppingItem(item.id)}
+                        className="text-slate-300 hover:text-red-500 transition-colors flex-shrink-0"
+                        title={t('common.remove')}
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })()}
+
+        {/* Add-your-own-item affordance */}
+        {addItemSection}
+
+        {/* Recipe source summary — only when the plan contributed items */}
+        {generatedTotal > 0 && (
+          <div className="card p-4 mt-2 bg-slate-50">
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">{t('shopping.fromRecipes')}</p>
+            <div className="flex flex-wrap gap-1.5">
+              {[...new Set(
+                Object.values(weekPlan).flatMap(day =>
+                  Object.values(day).flatMap(items =>
+                    (items || []).map(it => typeof it === 'string' ? it : it?.recipeId).filter(Boolean)
+                  )
                 )
-              )
-            )].map(rid => {
-              const recipe = recipes.find(r => r.id === rid)
-              if (!recipe) return null
-              return (
-                <span key={rid} className="badge bg-indigo-50 text-indigo-700 text-xs">
-                  {recipe.translations?.[currentLang]?.title || recipe.title}
-                </span>
-              )
-            })}
+              )].map(rid => {
+                const recipe = recipes.find(r => r.id === rid)
+                if (!recipe) return null
+                return (
+                  <span key={rid} className="badge bg-indigo-50 text-indigo-700 text-xs">
+                    {recipe.translations?.[currentLang]?.title || recipe.title}
+                  </span>
+                )
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Save list modal */}

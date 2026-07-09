@@ -769,6 +769,26 @@ const useStore = create(
       })),
       clearCheckedItems: () => set({ checkedItems: {} }),
 
+      // ── Custom (manually-added) shopping items ──
+      // Items the user types in themselves, on top of what the meal plan
+      // generates. Each carries a freeform `amount` string (e.g. "2 kg",
+      // "a bunch") shown as-is. Checked/prune state reuses the same
+      // checkedItems map, keyed by the item's id.
+      customShoppingItems: [],
+      addCustomShoppingItem: (name, amount) => set((s) => {
+        const trimmed = (name || '').trim()
+        if (!trimmed) return {}
+        return {
+          customShoppingItems: [
+            ...s.customShoppingItems,
+            { id: 'custom-' + makeId(), name: trimmed, amount: (amount || '').trim() },
+          ],
+        }
+      }),
+      removeCustomShoppingItem: (id) => set((s) => ({
+        customShoppingItems: s.customShoppingItems.filter(i => i.id !== id),
+      })),
+
       /**
        * Drop any checked-item entries whose ids are no longer present in
        * the active shopping list. Called whenever the user's weekplan or
