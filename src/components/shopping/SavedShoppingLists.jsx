@@ -42,17 +42,31 @@ export default function SavedShoppingLists({ onClose }) {
     return t(`aisles.${category}`, { defaultValue: category })
   }
 
+  // Scale the leading number of a freeform amount string ("2 pk" -> "4 pk",
+  // "1,5 l" -> "3 l") while leaving the trailing text alone. Amounts with
+  // no leading number ("a bunch") are returned unchanged.
+  function scaleAmountString(amount, ratio) {
+    if (!amount || ratio === 1) return amount || ''
+    const m = String(amount).trim().match(/^(\d+(?:[.,]\d+)?)\s*(.*)$/)
+    if (!m) return amount
+    const num = parseFloat(m[1].replace(',', '.'))
+    if (isNaN(num)) return amount
+    const scaled = Math.round(num * ratio * 100) / 100
+    const numStr = scaled % 1 === 0 ? String(scaled) : scaled.toFixed(2).replace(/\.?0+$/, '')
+    return m[2] ? `${numStr} ${m[2]}` : numStr
+  }
+
   // Re-scale a saved list's quantities from the portions it was saved for
   // to the portions the user wants now. Generated items carry per-recipe
   // `sources`, which we scale and re-combine for an exact result; custom
-  // items keep their freeform amount as-is.
+  // items scale the numeric part of their freeform amount.
   function scaledGroups(list, targetPortions) {
     const savedFor = list.portions || targetPortions || 1
     const ratio = savedFor ? targetPortions / savedFor : 1
     return (list.items || []).map(group => ({
       category: group.category,
       items: (group.items || []).map(item => {
-        if (item.custom) return { name: item.name, label: item.quantity || '' }
+        if (item.custom) return { name: item.name, label: scaleAmountString(item.quantity, ratio) }
         if (Array.isArray(item.sources) && item.sources.length > 0) {
           const scaled = item.sources.map(s => ({ ...s, quantity: (s.quantity || 0) * ratio }))
           const c = combineQuantities(scaled)
