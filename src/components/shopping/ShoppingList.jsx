@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { generateShoppingList, formatQuantity } from '../../utils/shoppingListGenerator'
@@ -22,8 +22,15 @@ export default function ShoppingList() {
   const removeCustomShoppingItem = useStore(s => s.removeCustomShoppingItem)
   const dismissedShoppingItems = useStore(s => s.dismissedShoppingItems) || {}
   const dismissShoppingItem = useStore(s => s.dismissShoppingItem)
+  const undismissShoppingItem = useStore(s => s.undismissShoppingItem)
   const restoreDismissedShoppingItems = useStore(s => s.restoreDismissedShoppingItems)
   const pruneDismissedShoppingItems = useStore(s => s.pruneDismissedShoppingItems)
+  const dismissedShoppingSources = useStore(s => s.dismissedShoppingSources) || {}
+  const dismissShoppingSource = useStore(s => s.dismissShoppingSource)
+  const undismissShoppingSource = useStore(s => s.undismissShoppingSource)
+  const restoreDismissedShoppingSources = useStore(s => s.restoreDismissedShoppingSources)
+  const pruneDismissedShoppingSources = useStore(s => s.pruneDismissedShoppingSources)
+  const restoreCustomShoppingItem = useStore(s => s.restoreCustomShoppingItem)
 
   const [showChecked, setShowChecked] = useState(true)
   const [showSaveModal, setShowSaveModal] = useState(false)
@@ -34,32 +41,58 @@ export default function ShoppingList() {
   const [newItemName, setNewItemName] = useState('')
   const [newItemAmount, setNewItemAmount] = useState('')
   const [infoOpenId, setInfoOpenId] = useState(null)
+  const [undoInfo, setUndoInfo] = useState(null) // { label, revert }
+  const undoTimer = useRef(null)
 
   const rawGroups = generateShoppingList(weekPlan, recipes, familySize, currentLang)
 
-  // How many generated items the user has removed from the current list.
-  const dismissedCount = rawGroups.reduce(
-    (n, g) => n + g.items.reduce((m, i) => m + (dismissedShoppingItems[i.id] ? 1 : 0), 0),
-    0
-  )
+  const srcKey = (itemId, recipe) => `${itemId}::${recipe}`
 
-  // Groups with dismissed (deleted) items filtered out — what we actually
-  // display, count, print and save.
+  // Apply per-item and per-source removals. An item whose every source was
+  // removed disappears; an item with some sources removed keeps a total
+  // recomputed from what's left. This is what we display / count / save.
   const groups = rawGroups
-    .map(g => ({ ...g, items: g.items.filter(i => !dismissedShoppingItems[i.id]) }))
+    .map(g => ({
+      category: g.category,
+      items: g.items
+        .filter(i => !dismissedShoppingItems[i.id])
+        .map(i => {
+          const allSources = i.sources || []
+          if (allSources.length === 0) return i
+          const sources = allSources.filter(s => !dismissedShoppingSources[srcKey(i.id, s.recipe)])
+          if (sources.length === 0) return null // all contributions removed
+          if (sources.length === allSources.length) return { ...i, sources }
+          const c = combineQuantities(sources)
+          return { ...i, sources, quantity: c.quantity, unit: c.unit || '' }
+        })
+        .filter(Boolean),
+    }))
     .filter(g => g.items.length > 0)
 
   const generatedTotal = groups.reduce((sum, g) => sum + g.items.length, 0)
   const totalItems = generatedTotal + customShoppingItems.length
 
-  // Set of ALL generated + custom ids (before dismiss filtering) — used to
-  // prune stale checked/dismissed entries once an id leaves the list.
+  // Count of active removals (whole items + single contributions) that
+  // belong to the current list — drives the "restore all" footer.
+  const currentItemIds = new Set(rawGroups.flatMap(g => g.items.map(i => i.id)))
+  const currentSourceKeys = new Set(
+    rawGroups.flatMap(g => g.items.flatMap(i => (i.sources || []).map(s => srcKey(i.id, s.recipe))))
+  )
+  const dismissedCount =
+    Object.keys(dismissedShoppingItems).filter(id => currentItemIds.has(id)).length +
+    Object.keys(dismissedShoppingSources).filter(k => currentSourceKeys.has(k)).length
+
+  // Stable keys for pruning stale checked/dismissed entries once ids leave.
   const currentIdsKey = useMemo(
     () => [
       ...rawGroups.flatMap(g => g.items.map(i => i.id)),
       ...customShoppingItems.map(i => i.id),
     ].sort().join('|'),
     [rawGroups, customShoppingItems]
+  )
+  const currentSourceKeysKey = useMemo(
+    () => rawGroups.flatMap(g => g.items.flatMap(i => (i.sources || []).map(s => srcKey(i.id, s.recipe)))).sort().join('|'),
+    [rawGroups]
   )
 
   // Auto-prune: whenever the active list changes, drop any checked
@@ -70,7 +103,43 @@ export default function ShoppingList() {
     const validIds = new Set(currentIdsKey ? currentIdsKey.split('|') : [])
     pruneCheckedItems(validIds)
     pruneDismissedShoppingItems(validIds)
-  }, [currentIdsKey, pruneCheckedItems, pruneDismissedShoppingItems])
+    const validSrc = new Set(currentSourceKeysKey ? currentSourceKeysKey.split('|') : [])
+    pruneDismissedShoppingSources(validSrc)
+  }, [currentIdsKey, currentSourceKeysKey, pruneCheckedItems, pruneDismissedShoppingItems, pruneDismissedShoppingSources])
+
+  // Show a short-lived "Removed X · Undo" toast after any deletion.
+  function pushUndo(label, revert) {
+    if (undoTimer.current) clearTimeout(undoTimer.current)
+    setUndoInfo({ label, revert })
+    undoTimer.current = setTimeout(() => setUndoInfo(null), 7000)
+  }
+  function handleUndo() {
+    if (undoTimer.current) clearTimeout(undoTimer.current)
+    undoInfo?.revert?.()
+    setUndoInfo(null)
+  }
+
+  function removeWholeItem(item) {
+    dismissShoppingItem(item.id)
+    setInfoOpenId(null)
+    pushUndo(t('shopping.removedItem', { name: item.name, defaultValue: `Removed ${item.name}` }),
+      () => undismissShoppingItem(item.id))
+  }
+  function removeSource(item, recipe) {
+    dismissShoppingSource(item.id, recipe)
+    pushUndo(t('shopping.removedItem', { name: item.name, defaultValue: `Removed ${item.name}` }),
+      () => undismissShoppingSource(item.id, recipe))
+  }
+  function removeCustom(item) {
+    const snapshot = { ...item }
+    removeCustomShoppingItem(item.id)
+    pushUndo(t('shopping.removedItem', { name: item.name, defaultValue: `Removed ${item.name}` }),
+      () => restoreCustomShoppingItem(snapshot))
+  }
+  function restoreAllRemoved() {
+    restoreDismissedShoppingItems()
+    restoreDismissedShoppingSources()
+  }
 
   // Count ONLY the items in the active list (defensive — even if the
   // prune effect lags one tick, the displayed number is honest).
@@ -234,8 +303,8 @@ export default function ShoppingList() {
           {dismissedCount > 0 && (
             <div className="flex items-center justify-between gap-2 px-1 text-xs text-slate-500">
               <span>{t('shopping.removedCount', { count: dismissedCount, defaultValue: `${dismissedCount} removed` })}</span>
-              <button onClick={restoreDismissedShoppingItems} className="font-medium text-indigo-600 hover:text-indigo-700">
-                {t('shopping.restoreRemoved', { defaultValue: 'Restore' })}
+              <button onClick={restoreAllRemoved} className="font-medium text-indigo-600 hover:text-indigo-700">
+                {t('shopping.restoreAll', { defaultValue: 'Restore all' })}
               </button>
             </div>
           )}
@@ -356,15 +425,27 @@ export default function ShoppingList() {
                           {infoOpenId === item.id && (
                             <>
                               <div className="fixed inset-0 z-20" onClick={() => setInfoOpenId(null)} />
-                              <div className="absolute right-0 top-6 z-30 w-60 bg-white rounded-xl shadow-xl border border-slate-100 p-3 text-left">
+                              <div className="absolute right-0 top-6 z-30 w-64 bg-white rounded-xl shadow-xl border border-slate-100 p-3 text-left">
                                 <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
                                   {t('shopping.breakdown', { defaultValue: 'Where this comes from' })}
                                 </p>
-                                <div className="space-y-1.5">
+                                <div className="space-y-1">
                                   {recipeBreakdown(item).map((r, idx) => (
-                                    <div key={idx} className="flex items-baseline justify-between gap-3 text-xs">
-                                      <span className="text-slate-600 min-w-0 break-words">{r.recipe}</span>
+                                    <div key={idx} className="flex items-center justify-between gap-2 text-xs py-0.5">
+                                      <span className="text-slate-600 min-w-0 break-words flex-1">{r.recipe}</span>
                                       <span className="text-slate-900 font-medium whitespace-nowrap">{r.label}</span>
+                                      {item.sources.length > 1 && (
+                                        <button
+                                          onClick={() => removeSource(item, r.recipe)}
+                                          className="text-slate-300 hover:text-red-500 transition-colors flex-shrink-0"
+                                          title={t('shopping.removeContribution', { defaultValue: 'Remove this contribution' })}
+                                          aria-label={t('shopping.removeContribution', { defaultValue: 'Remove this contribution' })}
+                                        >
+                                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                          </svg>
+                                        </button>
+                                      )}
                                     </div>
                                   ))}
                                   <div className="flex items-baseline justify-between gap-3 text-xs pt-1.5 mt-1 border-t border-slate-100">
@@ -372,15 +453,25 @@ export default function ShoppingList() {
                                     <span className="text-slate-900 font-semibold whitespace-nowrap">{formatQuantity(item.quantity, item.unit)}</span>
                                   </div>
                                 </div>
+                                <button
+                                  onClick={() => removeWholeItem(item)}
+                                  className="mt-2.5 w-full text-xs font-medium text-red-600 hover:bg-red-50 rounded-lg py-1.5 transition-colors"
+                                >
+                                  {t('shopping.removeAll', { defaultValue: 'Remove all from list' })}
+                                </button>
                               </div>
                             </>
                           )}
                         </div>
                       )}
 
-                      {/* Delete from this list */}
+                      {/* Delete — direct for single-source, opens the
+                          per-recipe menu when several recipes contribute. */}
                       <button
-                        onClick={() => dismissShoppingItem(item.id)}
+                        onClick={() => {
+                          if (hasSources && item.sources.length > 1) setInfoOpenId(item.id)
+                          else removeWholeItem(item)
+                        }}
                         className="text-slate-300 hover:text-red-500 transition-colors flex-shrink-0"
                         title={t('common.remove')}
                         aria-label={t('common.remove')}
@@ -433,7 +524,7 @@ export default function ShoppingList() {
                         </span>
                       )}
                       <button
-                        onClick={() => removeCustomShoppingItem(item.id)}
+                        onClick={() => removeCustom(item)}
                         className="text-slate-300 hover:text-red-500 transition-colors flex-shrink-0"
                         title={t('common.remove')}
                       >
@@ -454,10 +545,10 @@ export default function ShoppingList() {
           <div className="flex items-center justify-between gap-2 px-1 text-xs text-slate-500">
             <span>{t('shopping.removedCount', { count: dismissedCount, defaultValue: `${dismissedCount} removed` })}</span>
             <button
-              onClick={restoreDismissedShoppingItems}
+              onClick={restoreAllRemoved}
               className="font-medium text-indigo-600 hover:text-indigo-700"
             >
-              {t('shopping.restoreRemoved', { defaultValue: 'Restore' })}
+              {t('shopping.restoreAll', { defaultValue: 'Restore all' })}
             </button>
           </div>
         )}
@@ -536,6 +627,16 @@ export default function ShoppingList() {
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
           {saveToast}
+        </div>
+      )}
+
+      {/* Undo (regret) toast after a deletion */}
+      {undoInfo && (
+        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 bg-slate-900 text-white text-sm px-4 py-3 rounded-xl shadow-xl max-w-[90vw]">
+          <span className="truncate">{undoInfo.label}</span>
+          <button onClick={handleUndo} className="font-semibold text-indigo-300 hover:text-indigo-200 flex-shrink-0">
+            {t('shopping.undo', { defaultValue: 'Undo' })}
+          </button>
         </div>
       )}
     </div>

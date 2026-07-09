@@ -788,6 +788,12 @@ const useStore = create(
       removeCustomShoppingItem: (id) => set((s) => ({
         customShoppingItems: s.customShoppingItems.filter(i => i.id !== id),
       })),
+      // Re-insert a previously-removed custom item verbatim (for undo).
+      restoreCustomShoppingItem: (item) => set((s) => (
+        !item || s.customShoppingItems.some(i => i.id === item.id)
+          ? {}
+          : { customShoppingItems: [...s.customShoppingItems, item] }
+      )),
 
       // ── Dismissed (deleted) generated shopping items ──
       // Generated items the user removed from the current list, keyed by
@@ -796,6 +802,11 @@ const useStore = create(
       dismissShoppingItem: (id) => set((s) => ({
         dismissedShoppingItems: { ...s.dismissedShoppingItems, [id]: true },
       })),
+      undismissShoppingItem: (id) => set((s) => {
+        const next = { ...s.dismissedShoppingItems }
+        delete next[id]
+        return { dismissedShoppingItems: next }
+      }),
       restoreDismissedShoppingItems: () => set({ dismissedShoppingItems: {} }),
       pruneDismissedShoppingItems: (validIds) => set((s) => {
         let changed = false
@@ -805,6 +816,30 @@ const useStore = create(
           else changed = true
         }
         return changed ? { dismissedShoppingItems: next } : {}
+      }),
+
+      // ── Dismissed single-recipe contributions ──
+      // One recipe's contribution to an aggregated item removed, keyed
+      // `${itemId}::${recipe}`. The item's total is recomputed from the
+      // sources that remain.
+      dismissedShoppingSources: {},
+      dismissShoppingSource: (itemId, recipe) => set((s) => ({
+        dismissedShoppingSources: { ...s.dismissedShoppingSources, [`${itemId}::${recipe}`]: true },
+      })),
+      undismissShoppingSource: (itemId, recipe) => set((s) => {
+        const next = { ...s.dismissedShoppingSources }
+        delete next[`${itemId}::${recipe}`]
+        return { dismissedShoppingSources: next }
+      }),
+      restoreDismissedShoppingSources: () => set({ dismissedShoppingSources: {} }),
+      pruneDismissedShoppingSources: (validKeys) => set((s) => {
+        let changed = false
+        const next = {}
+        for (const k of Object.keys(s.dismissedShoppingSources)) {
+          if (validKeys.has(k)) next[k] = s.dismissedShoppingSources[k]
+          else changed = true
+        }
+        return changed ? { dismissedShoppingSources: next } : {}
       }),
 
       /**

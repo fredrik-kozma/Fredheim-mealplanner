@@ -260,7 +260,12 @@
     "deleteListConfirm": "Delete list \"{{name}}\"?",
     "print": "Print",
     "printForPeople": "For",
-    "printItems": "items"
+    "printItems": "items",
+    "removeAll": "Remove all from list",
+    "removeContribution": "Remove this contribution",
+    "removedItem": "Removed {{name}}",
+    "undo": "Undo",
+    "restoreAll": "Restore all"
   },
   "settings": {
     "title": "Settings",

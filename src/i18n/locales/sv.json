@@ -260,7 +260,12 @@
     "deleteListConfirm": "Ta bort listan «{{name}}»?",
     "print": "Skriv ut",
     "printForPeople": "För",
-    "printItems": "varor"
+    "printItems": "varor",
+    "removeAll": "Ta bort allt från listan",
+    "removeContribution": "Ta bort detta bidrag",
+    "removedItem": "Tog bort {{name}}",
+    "undo": "Ångra",
+    "restoreAll": "Återställ alla"
   },
   "settings": {
     "title": "Inställningar",

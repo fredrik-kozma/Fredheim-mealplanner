@@ -260,7 +260,12 @@
     "deleteListConfirm": "Slett listen «{{name}}»?",
     "print": "Skriv ut",
     "printForPeople": "For",
-    "printItems": "varer"
+    "printItems": "varer",
+    "removeAll": "Fjern alt fra listen",
+    "removeContribution": "Fjern dette bidraget",
+    "removedItem": "Fjernet {{name}}",
+    "undo": "Angre",
+    "restoreAll": "Gjenopprett alle"
   },
   "settings": {
     "title": "Innstillinger",
