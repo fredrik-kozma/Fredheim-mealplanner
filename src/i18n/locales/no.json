@@ -155,8 +155,6 @@
     "loadTemplates": "Last inn uke",
     "sampleWeeks": "Ferdige uker",
     "myTemplates": "Mine lagrede uker",
-    "sampleWeeks": "Ferdige uker",
-    "myTemplates": "Mine lagrede uker",
     "noTemplates": "Ingen maler lagret ennå.",
     "templateSaved": "Mal lagret",
     "mealsPlanned": "{{count}} måltider planlagt",
@@ -240,6 +238,14 @@
     "addItem": "Legg til vare",
     "itemNamePlaceholder": "Varenavn…",
     "itemAmountPlaceholder": "Mengde (valgfritt)",
+    "breakdown": "Hvor dette kommer fra",
+    "total": "Totalt",
+    "removedCount": "{{count}} fjernet",
+    "restoreRemoved": "Angre",
+    "openList": "Åpne",
+    "portions": "Porsjoner",
+    "forPortions": "for {{count}}",
+    "savedForPortions": "Lagret for {{count}} porsjoner",
     "fromRecipes": "Fra oppskrifter",
     "saveList": "Lagre liste",
     "savedLists": "Lagrede lister",
@@ -381,7 +387,8 @@
     "add": "Legg til",
     "remove": "Fjern",
     "load": "Last inn",
-    "addToPlan": "Legg til i plan"
+    "addToPlan": "Legg til i plan",
+    "back": "Tilbake"
   },
   "auth": {
     "signIn": "Logg inn",

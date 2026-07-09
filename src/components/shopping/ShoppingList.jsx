@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { generateShoppingList, formatQuantity } from '../../utils/shoppingListGenerator'
+import { combineQuantities } from '../../utils/ingredientMatcher'
 import { printShoppingList } from '../../utils/printShoppingList'
 import SavedShoppingLists from './SavedShoppingLists'
 
@@ -19,6 +20,10 @@ export default function ShoppingList() {
   const customShoppingItems = useStore(s => s.customShoppingItems) || []
   const addCustomShoppingItem = useStore(s => s.addCustomShoppingItem)
   const removeCustomShoppingItem = useStore(s => s.removeCustomShoppingItem)
+  const dismissedShoppingItems = useStore(s => s.dismissedShoppingItems) || {}
+  const dismissShoppingItem = useStore(s => s.dismissShoppingItem)
+  const restoreDismissedShoppingItems = useStore(s => s.restoreDismissedShoppingItems)
+  const pruneDismissedShoppingItems = useStore(s => s.pruneDismissedShoppingItems)
 
   const [showChecked, setShowChecked] = useState(true)
   const [showSaveModal, setShowSaveModal] = useState(false)
@@ -28,21 +33,33 @@ export default function ShoppingList() {
   const [showAddForm, setShowAddForm] = useState(false)
   const [newItemName, setNewItemName] = useState('')
   const [newItemAmount, setNewItemAmount] = useState('')
+  const [infoOpenId, setInfoOpenId] = useState(null)
 
-  const groups = generateShoppingList(weekPlan, recipes, familySize, currentLang)
+  const rawGroups = generateShoppingList(weekPlan, recipes, familySize, currentLang)
+
+  // How many generated items the user has removed from the current list.
+  const dismissedCount = rawGroups.reduce(
+    (n, g) => n + g.items.reduce((m, i) => m + (dismissedShoppingItems[i.id] ? 1 : 0), 0),
+    0
+  )
+
+  // Groups with dismissed (deleted) items filtered out — what we actually
+  // display, count, print and save.
+  const groups = rawGroups
+    .map(g => ({ ...g, items: g.items.filter(i => !dismissedShoppingItems[i.id]) }))
+    .filter(g => g.items.length > 0)
+
   const generatedTotal = groups.reduce((sum, g) => sum + g.items.length, 0)
   const totalItems = generatedTotal + customShoppingItems.length
 
-  // Set of ids currently in the shopping list (generated + custom). Used
-  // for both display counting and for pruning the persisted checkedItems
-  // map below. Memoised on a stable key so we don't re-prune on every
-  // render. Custom ids are included so their check marks survive.
+  // Set of ALL generated + custom ids (before dismiss filtering) — used to
+  // prune stale checked/dismissed entries once an id leaves the list.
   const currentIdsKey = useMemo(
     () => [
-      ...groups.flatMap(g => g.items.map(i => i.id)),
+      ...rawGroups.flatMap(g => g.items.map(i => i.id)),
       ...customShoppingItems.map(i => i.id),
     ].sort().join('|'),
-    [groups, customShoppingItems]
+    [rawGroups, customShoppingItems]
   )
 
   // Auto-prune: whenever the active list changes, drop any checked
@@ -52,7 +69,8 @@ export default function ShoppingList() {
   useEffect(() => {
     const validIds = new Set(currentIdsKey ? currentIdsKey.split('|') : [])
     pruneCheckedItems(validIds)
-  }, [currentIdsKey, pruneCheckedItems])
+    pruneDismissedShoppingItems(validIds)
+  }, [currentIdsKey, pruneCheckedItems, pruneDismissedShoppingItems])
 
   // Count ONLY the items in the active list (defensive — even if the
   // prune effect lags one tick, the displayed number is honest).
@@ -70,10 +88,34 @@ export default function ShoppingList() {
     // Keep the form open so several items can be added in a row.
   }
 
+  // Per-recipe breakdown for the little ⓘ popover: how much of this
+  // ingredient came from each recipe (contributions summed per recipe).
+  function recipeBreakdown(item) {
+    const byRecipe = {}
+    for (const s of item.sources || []) {
+      (byRecipe[s.recipe] = byRecipe[s.recipe] || []).push(s)
+    }
+    return Object.entries(byRecipe).map(([recipe, arr]) => {
+      const c = combineQuantities(arr)
+      return { recipe, label: formatQuantity(c.quantity, c.unit) }
+    })
+  }
+
   function handleSaveList() {
     const name = listName.trim()
     if (!name) return
-    saveShoppingList(name, groups)
+    // Save the generated groups (which carry per-recipe `sources` for
+    // re-scaling) plus any custom items, tagged with the portion count.
+    const groupsToSave = groups.map(g => ({ ...g, items: g.items.map(i => ({ ...i })) }))
+    if (customShoppingItems.length > 0) {
+      groupsToSave.push({
+        category: '__custom__',
+        items: customShoppingItems.map(i => ({
+          id: i.id, name: i.name, quantity: i.amount || '', unit: '', custom: true,
+        })),
+      })
+    }
+    saveShoppingList(name, groupsToSave, familySize)
     setListName('')
     setShowSaveModal(false)
     setSaveToast(t('shopping.listSaved'))
@@ -188,7 +230,17 @@ export default function ShoppingList() {
             {t('shopping.noItemsDesc')}
           </p>
         </div>
-        <div className="px-4 pb-24 lg:pb-8">{addItemSection}</div>
+        <div className="px-4 pb-24 lg:pb-8 space-y-3">
+          {dismissedCount > 0 && (
+            <div className="flex items-center justify-between gap-2 px-1 text-xs text-slate-500">
+              <span>{t('shopping.removedCount', { count: dismissedCount, defaultValue: `${dismissedCount} removed` })}</span>
+              <button onClick={restoreDismissedShoppingItems} className="font-medium text-indigo-600 hover:text-indigo-700">
+                {t('shopping.restoreRemoved', { defaultValue: 'Restore' })}
+              </button>
+            </div>
+          )}
+          {addItemSection}
+        </div>
       </div>
     )
   }
@@ -265,26 +317,79 @@ export default function ShoppingList() {
               <div className="card divide-y divide-slate-50">
                 {visibleItems.map(item => {
                   const isChecked = Boolean(checkedItems[item.id])
+                  const hasSources = item.sources && item.sources.length > 0
                   return (
-                    <label
+                    <div
                       key={item.id}
-                      className={`flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-slate-50/80 transition-colors ${
+                      className={`relative flex items-center gap-2 px-4 py-3 hover:bg-slate-50/80 transition-colors ${
                         isChecked ? 'opacity-50' : ''
                       }`}
                     >
-                      <input
-                        type="checkbox"
-                        checked={isChecked}
-                        onChange={() => toggleCheckedItem(item.id)}
-                        className="w-4.5 h-4.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
-                      />
-                      <span className={`flex-1 text-sm text-slate-700 ${isChecked ? 'line-through' : ''}`}>
-                        {item.name}
-                      </span>
-                      <span className={`text-sm font-medium ${isChecked ? 'text-slate-400 line-through' : 'text-slate-900'}`}>
+                      <label className="flex items-center gap-3 flex-1 min-w-0 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => toggleCheckedItem(item.id)}
+                          className="w-4.5 h-4.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer flex-shrink-0"
+                        />
+                        <span className={`flex-1 min-w-0 text-sm text-slate-700 ${isChecked ? 'line-through' : ''}`}>
+                          {item.name}
+                        </span>
+                      </label>
+                      <span className={`text-sm font-medium whitespace-nowrap ${isChecked ? 'text-slate-400 line-through' : 'text-slate-900'}`}>
                         {formatQuantity(item.quantity, item.unit)}
                       </span>
-                    </label>
+
+                      {/* ⓘ breakdown — which recipes contributed how much */}
+                      {hasSources && (
+                        <div className="relative flex-shrink-0">
+                          <button
+                            onClick={() => setInfoOpenId(infoOpenId === item.id ? null : item.id)}
+                            className={`transition-colors ${infoOpenId === item.id ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}`}
+                            title={t('shopping.breakdown', { defaultValue: 'Where this comes from' })}
+                            aria-label={t('shopping.breakdown', { defaultValue: 'Where this comes from' })}
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                            </svg>
+                          </button>
+                          {infoOpenId === item.id && (
+                            <>
+                              <div className="fixed inset-0 z-20" onClick={() => setInfoOpenId(null)} />
+                              <div className="absolute right-0 top-6 z-30 w-60 bg-white rounded-xl shadow-xl border border-slate-100 p-3 text-left">
+                                <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                                  {t('shopping.breakdown', { defaultValue: 'Where this comes from' })}
+                                </p>
+                                <div className="space-y-1.5">
+                                  {recipeBreakdown(item).map((r, idx) => (
+                                    <div key={idx} className="flex items-baseline justify-between gap-3 text-xs">
+                                      <span className="text-slate-600 min-w-0 break-words">{r.recipe}</span>
+                                      <span className="text-slate-900 font-medium whitespace-nowrap">{r.label}</span>
+                                    </div>
+                                  ))}
+                                  <div className="flex items-baseline justify-between gap-3 text-xs pt-1.5 mt-1 border-t border-slate-100">
+                                    <span className="text-slate-500">{t('shopping.total', { defaultValue: 'Total' })}</span>
+                                    <span className="text-slate-900 font-semibold whitespace-nowrap">{formatQuantity(item.quantity, item.unit)}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Delete from this list */}
+                      <button
+                        onClick={() => dismissShoppingItem(item.id)}
+                        className="text-slate-300 hover:text-red-500 transition-colors flex-shrink-0"
+                        title={t('common.remove')}
+                        aria-label={t('common.remove')}
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
                   )
                 })}
               </div>
@@ -343,6 +448,19 @@ export default function ShoppingList() {
             </div>
           )
         })()}
+
+        {/* Removed-items notice with a one-tap restore */}
+        {dismissedCount > 0 && (
+          <div className="flex items-center justify-between gap-2 px-1 text-xs text-slate-500">
+            <span>{t('shopping.removedCount', { count: dismissedCount, defaultValue: `${dismissedCount} removed` })}</span>
+            <button
+              onClick={restoreDismissedShoppingItems}
+              className="font-medium text-indigo-600 hover:text-indigo-700"
+            >
+              {t('shopping.restoreRemoved', { defaultValue: 'Restore' })}
+            </button>
+          </div>
+        )}
 
         {/* Add-your-own-item affordance */}
         {addItemSection}

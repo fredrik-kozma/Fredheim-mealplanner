@@ -789,6 +789,24 @@ const useStore = create(
         customShoppingItems: s.customShoppingItems.filter(i => i.id !== id),
       })),
 
+      // ── Dismissed (deleted) generated shopping items ──
+      // Generated items the user removed from the current list, keyed by
+      // item id. Pruned alongside checkedItems when the id leaves the list.
+      dismissedShoppingItems: {},
+      dismissShoppingItem: (id) => set((s) => ({
+        dismissedShoppingItems: { ...s.dismissedShoppingItems, [id]: true },
+      })),
+      restoreDismissedShoppingItems: () => set({ dismissedShoppingItems: {} }),
+      pruneDismissedShoppingItems: (validIds) => set((s) => {
+        let changed = false
+        const next = {}
+        for (const id of Object.keys(s.dismissedShoppingItems)) {
+          if (validIds.has(id)) next[id] = s.dismissedShoppingItems[id]
+          else changed = true
+        }
+        return changed ? { dismissedShoppingItems: next } : {}
+      }),
+
       /**
        * Drop any checked-item entries whose ids are no longer present in
        * the active shopping list. Called whenever the user's weekplan or
@@ -810,13 +828,16 @@ const useStore = create(
       // ── Saved Shopping Lists ──
       savedShoppingLists: [],
 
-      saveShoppingList: (name, items) => set((s) => ({
+      saveShoppingList: (name, items, portions = null) => set((s) => ({
         savedShoppingLists: [
           ...s.savedShoppingLists,
           {
             id: makeId(),
             name,
             savedAt: Date.now(),
+            // Portions the list was generated for, so it can be re-scaled
+            // when reused. Falls back to the household size.
+            portions: portions ?? s.familySize ?? null,
             items,
             weekPlanSnapshot: s.weekPlan,
           },

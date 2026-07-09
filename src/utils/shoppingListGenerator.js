@@ -154,6 +154,13 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en')
     // If quantity is already a formatted string (mixed units), qty is the string
     const id = group.normalizedName + '__' + formattedUnit
 
+    // Raw per-occurrence contributions (already scaled to the plan's
+    // servings). Kept so the UI can show "which recipe, how much" and so
+    // a saved list can be re-scaled to a different portion count.
+    const sources = group.items
+      .filter(it => it.quantity && it.quantity > 0)
+      .map(it => ({ recipe: it.recipeTitle, quantity: it.quantity, unit: it.unit }))
+
     byCat[cat].push({
       id,
       quantity: qty,
@@ -161,6 +168,7 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en')
       name: group.displayName,
       category: cat,
       recipeNames: [...new Set(group.items.map(i => i.recipeTitle))],
+      sources,
     })
   }
 

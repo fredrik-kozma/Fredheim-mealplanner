@@ -184,6 +184,25 @@ function buildMixedQuantityString(items) {
   return parts.join(' + ')
 }
 
+/**
+ * Combine a set of { quantity, unit } entries into a single display
+ * quantity, using the same base-unit summing + smart formatting the
+ * shopping list uses. Returns { quantity, unit } where quantity is a
+ * number for combinable units, or a pre-formatted string (unit '') when
+ * the entries span more than one base type. Exported so the shopping
+ * list can reuse it for per-recipe breakdowns and portion re-scaling.
+ */
+export function combineQuantities(items) {
+  const withQty = (items || []).filter(g => g.quantity && g.quantity > 0)
+  if (withQty.length === 0) return { quantity: null, unit: null }
+  const base = sumQuantitiesInBase(withQty)
+  if (base) {
+    const smart = smartConvert(base.quantity, base.unit)
+    return { quantity: smart.quantity, unit: smart.unit }
+  }
+  return { quantity: buildMixedQuantityString(withQty), unit: '' }
+}
+
 export function groupIngredients(ingredientList) {
   // ingredientList: array of { quantity, unit, name, recipeTitle }
   const groups = []
@@ -214,25 +233,9 @@ export function groupIngredients(ingredientList) {
     }
     const displayName = Object.entries(nameCount).sort((a, b) => b[1] - a[1])[0][0]
 
-    // Try to sum quantities
-    const withQty = group.filter(g => g.quantity && g.quantity > 0)
-    let totalQuantity = null
-    let totalUnit = null
-
-    if (withQty.length > 0) {
-      const base = sumQuantitiesInBase(withQty)
-      if (base) {
-        const smart = smartConvert(base.quantity, base.unit)
-        totalQuantity = smart.quantity
-        totalUnit = smart.unit
-      } else {
-        // Items span more than one base type (e.g. clove + g, or g + ml).
-        // Render each base type as one clean summed entry plus separate
-        // entries per count unit so the shopper sees an honest total.
-        totalQuantity = buildMixedQuantityString(withQty)
-        totalUnit = ''
-      }
-    }
+    // Sum quantities into one clean display total (numbers where units
+    // combine, otherwise a "5 clove + 20 ml"-style honest string).
+    const { quantity: totalQuantity, unit: totalUnit } = combineQuantities(group)
 
     groups.push({
       normalizedName: normalizeIngredientName(pivot.name),

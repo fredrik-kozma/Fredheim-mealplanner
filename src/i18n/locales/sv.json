@@ -155,8 +155,6 @@
     "loadTemplates": "Ladda vecka",
     "sampleWeeks": "Färdiga veckor",
     "myTemplates": "Mina sparade veckor",
-    "sampleWeeks": "Färdiga veckor",
-    "myTemplates": "Mina sparade veckor",
     "noTemplates": "Inga mallar sparade ännu.",
     "templateSaved": "Mall sparad",
     "mealsPlanned": "{{count}} måltider planerade",
@@ -240,6 +238,14 @@
     "addItem": "Lägg till vara",
     "itemNamePlaceholder": "Varunamn…",
     "itemAmountPlaceholder": "Mängd (valfritt)",
+    "breakdown": "Varifrån detta kommer",
+    "total": "Totalt",
+    "removedCount": "{{count}} borttagna",
+    "restoreRemoved": "Ångra",
+    "openList": "Öppna",
+    "portions": "Portioner",
+    "forPortions": "för {{count}}",
+    "savedForPortions": "Sparad för {{count}} portioner",
     "fromRecipes": "Från recept",
     "saveList": "Spara lista",
     "savedLists": "Sparade listor",
@@ -381,7 +387,8 @@
     "add": "Lägg till",
     "remove": "Ta bort",
     "load": "Ladda",
-    "addToPlan": "Lägg till i plan"
+    "addToPlan": "Lägg till i plan",
+    "back": "Tillbaka"
   },
   "auth": {
     "signIn": "Logga in",

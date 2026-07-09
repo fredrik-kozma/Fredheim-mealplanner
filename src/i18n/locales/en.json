@@ -155,8 +155,6 @@
     "loadTemplates": "Load week",
     "sampleWeeks": "Sample weeks",
     "myTemplates": "My saved weeks",
-    "sampleWeeks": "Sample weeks",
-    "myTemplates": "My saved weeks",
     "noTemplates": "No templates saved yet.",
     "templateSaved": "Template saved",
     "mealsPlanned": "{{count}} meals planned",
@@ -240,6 +238,14 @@
     "addItem": "Add item",
     "itemNamePlaceholder": "Item name…",
     "itemAmountPlaceholder": "Amount (optional)",
+    "breakdown": "Where this comes from",
+    "total": "Total",
+    "removedCount": "{{count}} removed",
+    "restoreRemoved": "Restore",
+    "openList": "Open",
+    "portions": "Portions",
+    "forPortions": "for {{count}}",
+    "savedForPortions": "Saved for {{count}} portions",
     "fromRecipes": "From recipes",
     "saveList": "Save List",
     "savedLists": "Saved Lists",
@@ -381,7 +387,8 @@
     "add": "Add",
     "remove": "Remove",
     "load": "Load",
-    "addToPlan": "Add to Plan"
+    "addToPlan": "Add to Plan",
+    "back": "Back"
   },
   "auth": {
     "signIn": "Sign in",
