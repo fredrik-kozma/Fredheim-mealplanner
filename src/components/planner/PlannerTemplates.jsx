@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { STARTER_PLANS, planHasContent, countPlanMeals } from '../../data/starterPlans'
@@ -22,6 +22,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
   const [mode, setMode] = useState(initialMode) // 'list' | 'save'
   const [templateName, setTemplateName] = useState('')
   const [toast, setToast] = useState(null)
+  const fileRef = useRef(null)
 
   // Count meals in current week plan
   const currentMealCount = Object.values(weekPlan).reduce((sum, day) =>
@@ -67,6 +68,35 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
     }
     installStarterPlan(plan)
     onClose()
+  }
+
+  // Load a week from an uploaded JSON file — the counterpart to the
+  // "Download as … JSON" export. Accepts either a full starter-plan
+  // wrapper ({ plan, requiredPackIds, … }) or a bare week-plan object.
+  async function handleUploadFile(e) {
+    const file = e.target.files?.[0]
+    if (e.target) e.target.value = '' // let the same file be picked again
+    if (!file) return
+    try {
+      const data = JSON.parse(await file.text())
+      const plan = data && typeof data.plan === 'object' && data.plan ? data.plan : data
+      const looksLikePlan =
+        plan && typeof plan === 'object' && !Array.isArray(plan) &&
+        Object.values(plan).some(day => day && typeof day === 'object' && !Array.isArray(day))
+      if (!looksLikePlan) throw new Error('not a week plan')
+      if (!confirm(t('planner.loadFileConfirm', { defaultValue: 'Load this week from the file? It will replace the current week plan.' }))) return
+      for (const packId of data?.requiredPackIds || []) {
+        if (!installedPacks?.[packId]) {
+          const fullPack = BUILT_IN_PACKS[packId]
+          if (fullPack) installPack(fullPack)
+        }
+      }
+      installStarterPlan({ plan, requiredPackIds: data?.requiredPackIds || [] })
+      onClose()
+    } catch {
+      setToast(t('planner.loadFileError', { defaultValue: 'That file is not a valid week plan.' }))
+      setTimeout(() => setToast(null), 4000)
+    }
   }
 
   /**
@@ -207,6 +237,26 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
             </div>
           ) : (
             <div className="space-y-6">
+              {/* Load a week from an uploaded JSON file. */}
+              <div>
+                <input
+                  ref={fileRef}
+                  type="file"
+                  accept=".json,application/json"
+                  className="hidden"
+                  onChange={handleUploadFile}
+                />
+                <button
+                  onClick={() => fileRef.current?.click()}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-dashed border-slate-200 text-slate-500 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/40 transition-colors text-sm font-medium"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                  </svg>
+                  {t('planner.loadFromFile', { defaultValue: 'Load week from file' })}
+                </button>
+              </div>
+
               {/* Ready-made sample weeks shipped with the app (e.g. the
                   5-day FMD plan). Loading one replaces the current week. */}
               {sampleWeeks.length > 0 && (

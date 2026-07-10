@@ -194,7 +194,10 @@
       "Dinner": "Middag",
       "Snack": "Mellommåltid",
       "Supper": "Kveldsmat"
-    }
+    },
+    "loadFromFile": "Last inn uke fra fil",
+    "loadFileConfirm": "Last inn denne uken fra filen? Det vil overskrive den nåværende ukeplanen.",
+    "loadFileError": "Denne filen er ikke en gyldig ukeplan."
   },
   "categories": {
     "Breakfast": "Frokost",

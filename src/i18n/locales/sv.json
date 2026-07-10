@@ -194,7 +194,10 @@
       "Dinner": "Middag",
       "Snack": "Mellanmål",
       "Supper": "Kvällsmat"
-    }
+    },
+    "loadFromFile": "Ladda vecka från fil",
+    "loadFileConfirm": "Ladda denna vecka från filen? Det ersätter den nuvarande veckoplanen.",
+    "loadFileError": "Filen är inte en giltig veckoplan."
   },
   "categories": {
     "Breakfast": "Frukost",

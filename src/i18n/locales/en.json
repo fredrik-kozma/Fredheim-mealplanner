@@ -194,7 +194,10 @@
       "Dinner": "Dinner",
       "Snack": "Snack",
       "Supper": "Supper"
-    }
+    },
+    "loadFromFile": "Load week from file",
+    "loadFileConfirm": "Load this week from the file? It will replace the current week plan.",
+    "loadFileError": "That file is not a valid week plan."
   },
   "categories": {
     "Breakfast": "Breakfast",
