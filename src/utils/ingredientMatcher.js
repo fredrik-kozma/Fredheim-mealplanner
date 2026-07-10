@@ -97,10 +97,21 @@ export function ingredientSimilarity(a, b) {
   const [shorter, longer] = na.length <= nb.length ? [na, nb] : [nb, na]
   if (longer.startsWith(shorter + ' ')) return 0.9
 
-  const dist = levenshtein(na, nb)
-  const maxLen = Math.max(na.length, nb.length)
-  if (dist <= 2 && maxLen > 3) return 0.8
-  if (dist <= 3 && maxLen > 5) return 0.65
+  // Fuzzy match to absorb typos / plural forms ("tomato" ~ "tomatos").
+  // Only applied to single-word names, or multi-word names that share the
+  // SAME first word (the qualifier). Otherwise "red cabbage" and "head
+  // cabbage" — different vegetables just 2 edits apart because they share
+  // the "cabbage" head noun — would wrongly merge.
+  const wordsA = na.split(' ')
+  const wordsB = nb.split(' ')
+  const bothSingleWord = wordsA.length === 1 && wordsB.length === 1
+  const sameQualifier = wordsA[0] === wordsB[0]
+  if (bothSingleWord || sameQualifier) {
+    const dist = levenshtein(na, nb)
+    const maxLen = Math.max(na.length, nb.length)
+    if (dist <= 2 && maxLen > 3) return 0.8
+    if (dist <= 3 && maxLen > 5) return 0.65
+  }
   return 0
 }
 
