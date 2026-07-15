@@ -88,7 +88,8 @@
     "resetServings": "Återställ",
     "reset": "Återställ",
     "metric": "Metrisk",
-    "us": "US"
+    "us": "US",
+    "notes": "Kockens tips"
   },
   "recipeForm": {
     "addRecipe": "Lägg till recept",

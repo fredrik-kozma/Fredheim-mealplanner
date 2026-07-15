@@ -68,6 +68,7 @@ export default function RecipeDetail() {
   const displayDescription = translation?.description || recipe.description
   const displayIngredients = translation?.ingredients || recipe.ingredients
   const displaySteps = translation?.steps || recipe.steps
+  const displayNotes = translation?.notes || recipe.notes
 
   function handleDelete() {
     if (confirm(t('recipeDetail.deleteConfirm', { title: recipe.title }))) {
@@ -414,6 +415,17 @@ export default function RecipeDetail() {
                 </li>
               ))}
             </ol>
+          </section>
+        )}
+
+        {/* Chef's notes — tips, substitutions, storage. Kept verbatim from
+            the recipe source. Preserves paragraph breaks. */}
+        {displayNotes && displayNotes.trim() && (
+          <section className="rounded-2xl bg-amber-50 border border-amber-100 p-4">
+            <h2 className="text-sm font-semibold text-amber-800 mb-2 flex items-center gap-1.5">
+              <span aria-hidden>👩‍🍳</span>{t('recipeDetail.notes', { defaultValue: "Chef's notes" })}
+            </h2>
+            <p className="text-sm text-amber-900/80 leading-relaxed whitespace-pre-line">{displayNotes}</p>
           </section>
         )}
 
