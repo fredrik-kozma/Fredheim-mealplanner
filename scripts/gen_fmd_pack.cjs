@@ -531,17 +531,27 @@ function buildRecipe(r) {
 
 const out = path.join(__dirname, '..', 'recipe-packs-template', 'packs', 'fredheim-fmd-5day.json')
 
-// Preserve any images already added to the existing JSON. The user adds
-// base64 photos to each recipe by hand after generation; re-running this
-// script must NOT wipe them. We map id -> imageUrl from the current file
-// and reuse it for any recipe that already has one.
+// Preserve data added to the existing JSON by later tooling:
+//  - imageUrl (base64 photos added by the user)
+//  - condition tags (assigned by scripts/audit_condition_tags.cjs)
+// Re-running this generator must NOT wipe either.
+const CONDITION_TAGS = ['diabetes-friendly', 'blood-pressure-friendly', 'heart-healthy', 'weight-loss']
 let existingImages = {}
+let existingConditions = {}
 try {
   const prev = JSON.parse(fs.readFileSync(out, 'utf8'))
-  for (const r of prev.recipes || []) if (r.imageUrl) existingImages[r.id] = r.imageUrl
+  for (const r of prev.recipes || []) {
+    if (r.imageUrl) existingImages[r.id] = r.imageUrl
+    const cond = (r.tags || []).filter(tg => CONDITION_TAGS.includes(tg))
+    if (cond.length) existingConditions[r.id] = cond
+  }
 } catch { /* first run — no existing file */ }
 
-const recipes = RECIPES.map(buildRecipe).map(r => ({ ...r, imageUrl: existingImages[r.id] || r.imageUrl }))
+const recipes = RECIPES.map(buildRecipe).map(r => ({
+  ...r,
+  imageUrl: existingImages[r.id] || r.imageUrl,
+  tags: [...r.tags, ...(existingConditions[r.id] || [])],
+}))
 const pack = { ...PACK, recipes }
 fs.writeFileSync(out, JSON.stringify(pack, null, 2) + '\n', 'utf8')
 const withImg = recipes.filter(r => r.imageUrl).length

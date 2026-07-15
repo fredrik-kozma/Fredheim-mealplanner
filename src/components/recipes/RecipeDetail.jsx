@@ -10,6 +10,7 @@ import LockedOverlay from '../subscription/LockedOverlay'
 import NutritionPanel from './NutritionPanel'
 import EditableNumber from '../common/EditableNumber'
 import FavoriteStar from './FavoriteStar'
+import { recipeConditions, CONDITION_BADGE } from '../../data/conditionTags'
 
 export default function RecipeDetail() {
   const { id } = useParams()
@@ -269,6 +270,12 @@ export default function RecipeDetail() {
           {recipe.cookTime && (
             <span className="badge bg-slate-100 text-slate-600">🔥 {t('recipeDetail.cook', { time: recipe.cookTime })}</span>
           )}
+          {/* Condition badges — which health conditions this recipe suits */}
+          {recipeConditions(recipe).map(c => (
+            <span key={c.id} className={`badge ${CONDITION_BADGE[c.color]}`}>
+              {c.icon} {t(`conditions.${c.id}`, { defaultValue: c.id })}
+            </span>
+          ))}
         </div>
 
         {/* Servings Scaler Control — fully responsive. On narrow / zoomed

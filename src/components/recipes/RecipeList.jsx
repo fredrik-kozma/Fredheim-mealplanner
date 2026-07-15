@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import RecipeCard from './RecipeCard'
+import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
 
 export default function RecipeList() {
   const { t, i18n } = useTranslation()
@@ -28,11 +29,13 @@ export default function RecipeList() {
 
   const activeCategory = view.category
   const activePack = view.pack
+  const activeCondition = view.condition || 'All'
   const search = view.search
   const sortBy = view.sortBy
 
   const setActiveCategory = (v) => setRecipesView({ category: v })
   const setActivePack = (v) => setRecipesView({ pack: v })
+  const setActiveCondition = (v) => setRecipesView({ condition: v })
   const setSearch = (v) => setRecipesView({ search: v })
   const setSortBy = (v) => setRecipesView({ sortBy: v })
 
@@ -42,6 +45,7 @@ export default function RecipeList() {
   const hasActiveFilters =
     activeCategory !== 'All' ||
     activePack !== 'All' ||
+    activeCondition !== 'All' ||
     search !== '' ||
     sortBy !== 'newest'
 
@@ -78,6 +82,7 @@ export default function RecipeList() {
   const filtered = recipes
     .filter(r => !favoritesOnly || favSet.has(r.id))
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
+    .filter(r => activeCondition === 'All' || (r.tags || []).includes(activeCondition))
     .filter(r => {
       if (activePack === 'All') return true
       if (activePack === '__user__') return !r.sourcePackId
@@ -200,6 +205,38 @@ export default function RecipeList() {
             ))}
           </div>
         )}
+
+        {/* Condition filter chips — filter recipes by health condition
+            (diabetes, blood pressure, heart & cholesterol, weight loss). */}
+        <div
+          className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none flex-shrink-0"
+          style={{ scrollbarWidth: 'none' }}
+        >
+          <button
+            onClick={() => setActiveCondition('All')}
+            className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
+              activeCondition === 'All'
+                ? 'bg-slate-700 text-white border-slate-700'
+                : 'bg-white text-slate-600 border-slate-200'
+            }`}
+          >
+            {t('conditions.all', { defaultValue: 'All conditions' })}
+          </button>
+          {CONDITION_TAGS.map(c => (
+            <button
+              key={c.id}
+              onClick={() => setActiveCondition(activeCondition === c.id ? 'All' : c.id)}
+              className={`flex-shrink-0 h-7 px-3 inline-flex items-center gap-1 rounded-full text-xs font-medium whitespace-nowrap border ${
+                activeCondition === c.id
+                  ? `${CONDITION_CHIP_ACTIVE[c.color]} border-transparent`
+                  : 'bg-white text-slate-600 border-slate-200'
+              }`}
+            >
+              <span aria-hidden>{c.icon}</span>
+              {t(`conditions.${c.id}`, { defaultValue: c.id })}
+            </button>
+          ))}
+        </div>
 
         {/* Category filter chips */}
         <div

@@ -1,0 +1,62 @@
+{
+  "fr-69": {
+    "remove": ["heart-healthy", "diabetes-friendly", "weight-loss"],
+    "note": "Fresh Vegetable Bouillon is a salt-based concentrate (16.9 g sodium) — a seasoning, not a dish; tagging it for any condition would mislead."
+  },
+  "fr-60": {
+    "remove": ["diabetes-friendly"],
+    "note": "Dried Fruit Jam: concentrated dried-fruit sugars carry a high glycemic load despite zero added sugar."
+  },
+  "fr-94": {
+    "remove": ["weight-loss"],
+    "note": "Lasagna per-serving data implausible (78 kcal); cannot verify energy density."
+  },
+  "fr-29": {
+    "remove": ["blood-pressure-friendly"],
+    "note": "Candy Rolls are a dried-fruit sweet; DASH explicitly limits sweets."
+  },
+  "caramelized-nuts": {
+    "remove": ["blood-pressure-friendly"],
+    "note": "Sugar-coated nuts are a sweet snack; DASH limits sweets regardless of sodium."
+  },
+  "fr-34": {
+    "remove": ["blood-pressure-friendly"],
+    "note": "Cashew Vanilla Cream is a sweetened dessert cream; DASH limits sweets."
+  },
+  "fr-143": {
+    "remove": ["heart-healthy"],
+    "note": "Seitan sausages: refined gluten product with added sugar and 2.7 g sodium — processed, not whole-food."
+  },
+  "berry-sauce": {
+    "add": ["heart-healthy", "diabetes-friendly"],
+    "note": "Plain berry sauce; fiber 2.6 g misses the 3 g line only because the serving is small."
+  },
+  "fr-17": {
+    "add": ["heart-healthy", "diabetes-friendly"],
+    "note": "Blissful Sprout Medley: raw sprouts/vegetables; fiber 2.6 g on a tiny serving."
+  },
+  "lightly-cooked-broccoli": {
+    "add": ["heart-healthy", "diabetes-friendly"],
+    "note": "Plain steamed broccoli; fiber 2.9 g barely under threshold."
+  },
+  "fr-42": {
+    "add": ["weight-loss"],
+    "note": "Chickpea Salad: 263 kcal (13 over line), fiber 7.8, no oil — clearly compatible."
+  },
+  "fruit-salad": {
+    "add": ["weight-loss"],
+    "note": "Fruit salad at 261 kcal is the canonical low-energy-density food."
+  },
+  "potato-and-spinach-soup": {
+    "add": ["weight-loss"],
+    "note": "Brothy vegetable soup at 254 kcal (4 over line)."
+  },
+  "fmd-d3-lunch": {
+    "add": ["blood-pressure-friendly"],
+    "note": "Red Lentil & Tomato Soup: 541 mg sodium (41 over line, from optional broth salt) with strong K:Na ratio."
+  },
+  "fmd-d5-dinner": {
+    "add": ["weight-loss"],
+    "note": "Celebration Green Bowl: 58 kcal/100 g — excellent energy density; satFat 3.1 g comes solely from whole avocado."
+  }
+}

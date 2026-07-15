@@ -583,5 +583,12 @@
       "niacin": "Niacin",
       "choline": "Kolin"
     }
+  },
+  "conditions": {
+    "all": "Alle tilstander",
+    "diabetes-friendly": "Diabetesvennlig",
+    "blood-pressure-friendly": "Blodtrykk",
+    "heart-healthy": "Hjerte & kolesterol",
+    "weight-loss": "Vektnedgang"
   }
 }

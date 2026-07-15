@@ -583,5 +583,12 @@
       "niacin": "Niacin",
       "choline": "Choline"
     }
+  },
+  "conditions": {
+    "all": "All conditions",
+    "diabetes-friendly": "Diabetes-friendly",
+    "blood-pressure-friendly": "Blood pressure",
+    "heart-healthy": "Heart & cholesterol",
+    "weight-loss": "Weight loss"
   }
 }

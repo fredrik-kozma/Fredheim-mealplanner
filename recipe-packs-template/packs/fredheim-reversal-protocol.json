@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -38,7 +38,10 @@
         "vegan",
         "oil-free",
         "no-added-sugar",
-        "high-fiber"
+        "high-fiber",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly"
       ],
       "kcal": 285,
       "servingWeightGrams": 130,
@@ -246,7 +249,11 @@
         "sauce",
         "vegan",
         "oil-free",
-        "no-added-sugar"
+        "no-added-sugar",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
       ],
       "kcal": 133,
       "servingWeightGrams": 122,
@@ -472,7 +479,9 @@
         "sauce",
         "vegan",
         "oil-free",
-        "no-added-sugar"
+        "no-added-sugar",
+        "heart-healthy",
+        "weight-loss"
       ],
       "kcal": 47,
       "servingWeightGrams": 70,
@@ -690,7 +699,11 @@
         "vegan",
         "oil-free",
         "no-added-sugar",
-        "high-protein"
+        "high-protein",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
       ],
       "kcal": 191,
       "servingWeightGrams": 180,
@@ -902,7 +915,10 @@
         "vegan",
         "oil-free",
         "no-added-sugar",
-        "gluten-free"
+        "gluten-free",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly"
       ],
       "kcal": 166,
       "servingWeightGrams": 66,
@@ -1187,7 +1203,11 @@
         "vegan",
         "oil-free",
         "no-added-sugar",
-        "high-protein"
+        "high-protein",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
       ],
       "kcal": 439,
       "servingWeightGrams": 500,
@@ -1385,7 +1405,11 @@
         "vegan",
         "oil-free",
         "no-added-sugar",
-        "high-protein"
+        "high-protein",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
       ],
       "kcal": 402,
       "servingWeightGrams": 612,
@@ -1612,7 +1636,9 @@
         "drink",
         "vegan",
         "oil-free",
-        "no-added-sugar"
+        "no-added-sugar",
+        "blood-pressure-friendly",
+        "weight-loss"
       ],
       "kcal": 48,
       "servingWeightGrams": 250,
@@ -1783,7 +1809,11 @@
         "vegan",
         "oil-free",
         "no-added-sugar",
-        "high-protein"
+        "high-protein",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
       ],
       "kcal": 477,
       "servingWeightGrams": 368,
@@ -1966,7 +1996,10 @@
         "vegan",
         "oil-free",
         "no-added-sugar",
-        "gluten-free"
+        "gluten-free",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly"
       ],
       "kcal": 360,
       "servingWeightGrams": 193,
@@ -2146,7 +2179,11 @@
         "vegan",
         "oil-free",
         "no-added-sugar",
-        "high-protein"
+        "high-protein",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
       ],
       "kcal": 320,
       "servingWeightGrams": 425,
@@ -2447,7 +2484,8 @@
         "soup",
         "vegan",
         "oil-free",
-        "no-added-sugar"
+        "no-added-sugar",
+        "weight-loss"
       ],
       "kcal": 32,
       "servingWeightGrams": 330,
@@ -2726,7 +2764,11 @@
         "vegan",
         "oil-free",
         "no-added-sugar",
-        "high-fiber"
+        "high-fiber",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
       ],
       "kcal": 383,
       "servingWeightGrams": 338,

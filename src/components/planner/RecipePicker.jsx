@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
+import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
 
 export default function RecipePicker({ onSelect, onClose, title }) {
   const { t, i18n } = useTranslation()
@@ -12,6 +13,7 @@ export default function RecipePicker({ onSelect, onClose, title }) {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
   const [activePack, setActivePack] = useState('All')
+  const [activeCondition, setActiveCondition] = useState('All')
 
   // Build the pack options once per render — only show packs that actually
   // have installed recipes, plus a "My recipes" bucket for non-pack ones.
@@ -47,6 +49,7 @@ export default function RecipePicker({ onSelect, onClose, title }) {
 
   const filtered = recipes
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
+    .filter(r => activeCondition === 'All' || (r.tags || []).includes(activeCondition))
     .filter(r => {
       if (activePack === 'All') return true
       if (activePack === '__user__') return !r.sourcePackId
@@ -134,6 +137,38 @@ export default function RecipePicker({ onSelect, onClose, title }) {
             ))}
           </div>
         )}
+
+        {/* Condition chips — filter by health condition, same set as the
+            main recipes page so a guest can build their week filtered. */}
+        <div
+          className="flex flex-shrink-0 gap-2 overflow-x-auto px-4 pt-2 pb-2"
+          style={{ scrollbarWidth: 'none' }}
+        >
+          <button
+            onClick={() => setActiveCondition('All')}
+            className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
+              activeCondition === 'All'
+                ? 'bg-slate-700 text-white border-slate-700'
+                : 'bg-slate-100 text-slate-600 border-slate-100'
+            }`}
+          >
+            {t('conditions.all', { defaultValue: 'All conditions' })}
+          </button>
+          {CONDITION_TAGS.map(c => (
+            <button
+              key={c.id}
+              onClick={() => setActiveCondition(activeCondition === c.id ? 'All' : c.id)}
+              className={`flex-shrink-0 h-7 px-3 inline-flex items-center gap-1 rounded-full text-xs font-medium whitespace-nowrap border ${
+                activeCondition === c.id
+                  ? `${CONDITION_CHIP_ACTIVE[c.color]} border-transparent`
+                  : 'bg-slate-100 text-slate-600 border-slate-100'
+              }`}
+            >
+              <span aria-hidden>{c.icon}</span>
+              {t(`conditions.${c.id}`, { defaultValue: c.id })}
+            </button>
+          ))}
+        </div>
 
         {/* Category chips */}
         <div

@@ -1060,6 +1060,7 @@ const useStore = create(
       recipesView: {
         category: 'All',
         pack: 'All',
+        condition: 'All',
         search: '',
         sortBy: 'newest',
       },
@@ -1067,7 +1068,7 @@ const useStore = create(
         recipesView: { ...s.recipesView, ...partial },
       })),
       resetRecipesView: () => set(() => ({
-        recipesView: { category: 'All', pack: 'All', search: '', sortBy: 'newest' },
+        recipesView: { category: 'All', pack: 'All', condition: 'All', search: '', sortBy: 'newest' },
       })),
     }),
     {
