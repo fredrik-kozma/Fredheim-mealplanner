@@ -20,7 +20,7 @@ const RECIPE = {
   cookTime: null,
   imageUrl,
   description:
-    'A generous overnight-oats bowl soaked in homemade raw cashew milk, warmed with ginger and cinnamon and sweetened only with Medjool dates, pear and raisins. The blender yields extra creamy "milk" to save for coffee, smoothies or porridge.',
+    'A generous overnight-oats bowl soaked in homemade raw cashew milk, warmed with ginger and cinnamon and sweetened only with Medjool dates, pear and raisins. The blender yields extra creamy "milk" to save for smoothies or porridge.',
   tags: ['fredheim', 'breakfast', 'vegan', 'oil-free', 'no-added-sugar', 'high-fiber'],
   kcal: 1117,
   servingWeightGrams: 950,
@@ -64,7 +64,7 @@ const RECIPE = {
     },
   },
   notes:
-    'The cashew milk makes more than one bowl needs — reserve the extra in the fridge for coffee, smoothies or porridge over the next couple of days. For a nut-free version, swap the cashews for soaked sunflower seeds. Use ripe, fragrant pears: half is grated into the oats and the rest sliced on top.',
+    'The cashew milk makes more than one bowl needs — reserve the extra in the fridge for smoothies or porridge over the next couple of days. For a nut-free version, swap the cashews for soaked sunflower seeds. Use ripe, fragrant pears: half is grated into the oats and the rest sliced on top.',
   ingredients: [
     { quantity: 69, unit: 'g', name: 'Raw unsalted cashews' },
     { quantity: 2, unit: 'pinch', name: 'Salt' },
@@ -79,7 +79,7 @@ const RECIPE = {
     { quantity: 2, unit: 'tbsp', name: 'Raisins' },
   ],
   steps: [
-    'For the "milk", blend the raw cashews, vanilla extract, pitted Medjool dates, salt and water in a powerful blender until completely smooth. Set the milk aside — it makes more than you need, so reserve the rest for coffee, smoothies, porridge, etc.',
+    'For the "milk", blend the raw cashews, vanilla extract, pitted Medjool dates, salt and water in a powerful blender until completely smooth. Set the milk aside — it makes more than you need, so reserve the rest for smoothies, porridge, etc.',
     'Rinse and finely chop or grate half of one pear.',
     'To build the oats, mix the rolled oats, chia seeds, cinnamon, ground ginger, grated pear and raisins in a bowl. Add enough of the cashew milk to moisten and stir to combine.',
     'Cover and leave overnight in the fridge.',
@@ -89,7 +89,7 @@ const RECIPE = {
     no: {
       title: 'Ingefær- og pæreovernight oats med cashewmelk',
       description:
-        'En raus bolle overnight oats bløtlagt i hjemmelaget rå cashewmelk, varmet med ingefær og kanel og søtet kun med medjooldadler, pære og rosiner. Blenderen gir ekstra kremet «melk» til overs som du kan spare til kaffe, smoothies eller grøt.',
+        'En raus bolle overnight oats bløtlagt i hjemmelaget rå cashewmelk, varmet med ingefær og kanel og søtet kun med medjooldadler, pære og rosiner. Blenderen gir ekstra kremet «melk» til overs som du kan spare til smoothies eller grøt.',
       ingredients: [
         { quantity: 69, unit: 'g', name: 'rå usaltede cashewnøtter' },
         { quantity: 2, unit: 'pinch', name: 'salt' },
@@ -104,7 +104,7 @@ const RECIPE = {
         { quantity: 2, unit: 'tbsp', name: 'rosiner' },
       ],
       steps: [
-        'Til «melken»: kjør de rå cashewnøttene, vaniljeekstraktet, de utstenede medjooldadlene, saltet og vannet i en kraftig blender til det er helt glatt. Sett melken til side — den blir mer enn du trenger, så spar resten til kaffe, smoothies, grøt osv.',
+        'Til «melken»: kjør de rå cashewnøttene, vaniljeekstraktet, de utstenede medjooldadlene, saltet og vannet i en kraftig blender til det er helt glatt. Sett melken til side — den blir mer enn du trenger, så spar resten til smoothies, grøt osv.',
         'Skyll og finhakk eller riv halvparten av den ene pæren.',
         'Til havregrynsblandingen: bland havregryn, chiafrø, kanel, malt ingefær, revet pære og rosiner i en bolle. Tilsett nok cashewmelk til å fukte, og rør sammen.',
         'Dekk til og la stå over natten i kjøleskapet.',
@@ -114,7 +114,7 @@ const RECIPE = {
     sv: {
       title: "Ingefära päron overnight oats med cashewmjölk",
       description:
-        'En generös skål overnight oats blötlagd i hemgjord rå cashewmjölk, värmd med ingefära och kanel och sötad enbart med medjooldadlar, päron och russin. Mixern ger extra krämig "mjölk" över att spara till kaffe, smoothies eller gröt.',
+        'En generös skål overnight oats blötlagd i hemgjord rå cashewmjölk, värmd med ingefära och kanel och sötad enbart med medjooldadlar, päron och russin. Mixern ger extra krämig "mjölk" över att spara till smoothies eller gröt.',
       ingredients: [
         { quantity: 69, unit: 'g', name: 'råa osaltade cashewnötter' },
         { quantity: 2, unit: 'pinch', name: 'salt' },
@@ -129,7 +129,7 @@ const RECIPE = {
         { quantity: 2, unit: 'tbsp', name: 'russin' },
       ],
       steps: [
-        'För "mjölken", mixa de osaltade cashewnötterna, vaniljextraktet, medjooldadlarna (se till att de är utan kärnor), saltet och vattnet i en kraftfull mixer tills det är helt slätt. Ställ "mjölken" åt sidan — du får extra och kan spara resten till kaffe, smoothies, gröt, etc.',
+        'För "mjölken", mixa de osaltade cashewnötterna, vaniljextraktet, medjooldadlarna (se till att de är utan kärnor), saltet och vattnet i en kraftfull mixer tills det är helt slätt. Ställ "mjölken" åt sidan — du får extra och kan spara resten till smoothies, gröt, etc.',
         'Skölj och finhacka eller riv hälften av päronet.',
         'För att förbereda müslin, blanda havregrynen, chiafrön, kanel, malen ingefära, päron och russin i en blandningsskål. Tillsätt lite av "mjölken" och rör om för att kombinera.',
         'Täck över och låt stå över natten i kylskåpet.',
@@ -153,4 +153,4 @@ function addRecipe(file, recipe, newVersion) {
   console.log(file, '->', newVersion, '| recipes:', pack.recipes.length, '| added:', recipe.id, '| img KB:', Math.round(imageUrl.length / 1024))
 }
 
-addRecipe('fredheim-recipes-with-pictures.json', RECIPE, '1.9.0')
+addRecipe('fredheim-recipes-with-pictures.json', RECIPE, '1.9.1')
