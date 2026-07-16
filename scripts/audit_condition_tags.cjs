@@ -30,7 +30,7 @@ const path = require('path')
 
 const PACKS = [
   ['fredheim-recipes-with-pictures.json', '1.8.0'],
-  ['fredheim-reversal-protocol.json', '1.7.0'],
+  ['fredheim-reversal-protocol.json', '1.7.1'],
   ['fredheim-fmd-5day.json', '1.3.0'],
 ]
 const CONDITION_TAGS = ['diabetes-friendly', 'blood-pressure-friendly', 'heart-healthy', 'weight-loss']
