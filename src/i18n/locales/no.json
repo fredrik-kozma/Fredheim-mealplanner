@@ -198,7 +198,13 @@
     },
     "loadFromFile": "Last inn uke fra fil",
     "loadFileConfirm": "Last inn denne uken fra filen? Det vil overskrive den nåværende ukeplanen.",
-    "loadFileError": "Denne filen er ikke en gyldig ukeplan."
+    "loadFileError": "Denne filen er ikke en gyldig ukeplan.",
+    "weekNotesTitle": "Smarte tips",
+    "addWeekNote": "Legg til smarte tips for denne uken",
+    "weekNotesPlaceholder": "f.eks. Bak brødet på mandag — det holder hele uken. Sett bønnene i bløt søndag kveld.",
+    "notesRow": "Notater",
+    "addDayNote": "Legg til et notat for denne dagen",
+    "dayNotePlaceholder": "Notat…"
   },
   "categories": {
     "Breakfast": "Frokost",

@@ -15,6 +15,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
   const installPack = useStore(s => s.installPack)
   const installedPacks = useStore(s => s.installedPacks)
   const weekPlan = useStore(s => s.weekPlan)
+  const weekNotes = useStore(s => s.weekNotes)
 
   // The ready-to-load sample weeks (those that have actually been authored).
   const sampleWeeks = STARTER_PLANS.filter(planHasContent)
@@ -66,7 +67,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
         if (fullPack) installPack(fullPack)
       }
     }
-    installStarterPlan(plan)
+    installStarterPlan(plan, lang)
     onClose()
   }
 
@@ -91,7 +92,10 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
           if (fullPack) installPack(fullPack)
         }
       }
-      installStarterPlan({ plan, requiredPackIds: data?.requiredPackIds || [] })
+      installStarterPlan(
+        { plan, notes: data?.notes, translations: data?.translations, requiredPackIds: data?.requiredPackIds || [] },
+        lang,
+      )
       onClose()
     } catch {
       setToast(t('planner.loadFileError', { defaultValue: 'That file is not a valid week plan.' }))
@@ -117,9 +121,13 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
       condition: '',
       author: 'Fredheim Livsstilssenter',
       version: '0.1.0',
-      translations: { no: { name: '', description: '' }, sv: { name: '', description: '' } },
+      translations: {
+        no: { name: '', description: '', notes: { week: '', days: {} } },
+        sv: { name: '', description: '', notes: { week: '', days: {} } },
+      },
       requiredPackIds: [],
       plan: weekPlan,
+      notes: weekNotes,
     }
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)

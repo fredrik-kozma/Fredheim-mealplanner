@@ -13,6 +13,8 @@ import useStore, { getPlanDayKeys } from '../../store/useStore'
 import MealSlot from './MealSlot'
 import RecipePicker from '../planner/RecipePicker'
 import PlannerTemplates from './PlannerTemplates'
+import WeekNotes from './WeekNotes'
+import DayNote from './DayNote'
 
 // Column width (in rem) for each day. Kept in a constant so the grid
 // template and the "add day" column stay in sync.
@@ -162,6 +164,9 @@ export default function WeeklyPlanner() {
           </button>
         </div>
 
+        {/* Week-level "smart tips" — batch-prep guidance for the whole week */}
+        <WeekNotes />
+
         {/* Scrollable planner grid */}
         <div className="flex-1 overflow-x-auto overflow-y-auto px-4 pb-24 lg:pb-8">
           <div className="flex gap-3 min-w-max">
@@ -188,6 +193,15 @@ export default function WeeklyPlanner() {
                     />
                   ))}
                 </Fragment>
+              ))}
+
+              {/* Notes row — one short reminder per day, aligned to the
+                  day columns like any meal-slot row. */}
+              <div className="flex items-start justify-end text-xs font-semibold text-slate-500 uppercase tracking-wide pr-1 pt-1.5">
+                {t('planner.notesRow', { defaultValue: 'Notes' })}
+              </div>
+              {dayKeys.map(day => (
+                <DayNote key={`${day}__note`} day={day} />
               ))}
             </div>
 

@@ -198,7 +198,13 @@
     },
     "loadFromFile": "Load week from file",
     "loadFileConfirm": "Load this week from the file? It will replace the current week plan.",
-    "loadFileError": "That file is not a valid week plan."
+    "loadFileError": "That file is not a valid week plan.",
+    "weekNotesTitle": "Smart tips",
+    "addWeekNote": "Add smart tips for this week",
+    "weekNotesPlaceholder": "e.g. Bake the bread on Monday — it covers the whole week. Soak the beans Sunday night.",
+    "notesRow": "Notes",
+    "addDayNote": "Add a note for this day",
+    "dayNotePlaceholder": "Note…"
   },
   "categories": {
     "Breakfast": "Breakfast",

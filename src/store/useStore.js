@@ -51,6 +51,37 @@ function emptyWeekPlan() {
   return plan
 }
 
+// Free-text notes that travel with the week: one "smart tips" note for the
+// whole week (batch-prep guidance like "bake the bread Monday — it covers
+// the week") plus an optional short note per day.
+//
+// Deliberately a sibling of weekPlan rather than a key inside it: weekPlan
+// is walked as day → slot → items to derive the day columns and count
+// meals, so any non-day key living in there would be read as a day.
+function emptyWeekNotes() {
+  return { week: '', days: {} }
+}
+
+// Accepts anything (a persisted value, an uploaded file's field, undefined)
+// and returns a well-formed notes object. Keeps the rest of the app free of
+// defensive checks.
+function normalizeWeekNotes(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return emptyWeekNotes()
+  const days = {}
+  if (raw.days && typeof raw.days === 'object' && !Array.isArray(raw.days)) {
+    for (const [day, text] of Object.entries(raw.days)) {
+      if (typeof text === 'string' && text.trim()) days[day] = text
+    }
+  }
+  return { week: typeof raw.week === 'string' ? raw.week : '', days }
+}
+
+// True when a notes object carries anything worth saving/showing.
+export function weekNotesHaveContent(notes) {
+  const n = normalizeWeekNotes(notes)
+  return Boolean(n.week.trim() || Object.keys(n.days).length)
+}
+
 const SAMPLE_RECIPES = [
   {
     id: 'sample-1',
@@ -643,6 +674,27 @@ const useStore = create(
       // ── Week Plan ──
       weekPlan: DEFAULT_WEEK_PLAN,
 
+      // ── Week notes ──
+      // Saved, loaded and exported alongside weekPlan (see
+      // savePlannerTemplate / loadPlannerTemplate / installStarterPlan).
+      weekNotes: emptyWeekNotes(),
+
+      setWeekNote: (text) => set((s) => ({
+        weekNotes: { ...normalizeWeekNotes(s.weekNotes), week: text },
+      })),
+
+      setDayNote: (day, text) => set((s) => {
+        const notes = normalizeWeekNotes(s.weekNotes)
+        const days = { ...notes.days }
+        // An emptied note is removed rather than stored blank, so
+        // weekNotesHaveContent stays accurate and exports stay tidy.
+        if (text && text.trim()) days[day] = text
+        else delete days[day]
+        return { weekNotes: { ...notes, days } }
+      }),
+
+      clearWeekNotes: () => set({ weekNotes: emptyWeekNotes() }),
+
       addRecipeToSlot: (day, slot, recipeId, servings = null) => set((s) => {
         const current = s.weekPlan[day]?.[slot] || []
         if (current.some(it => normalizeSlotItem(it)?.recipeId === recipeId)) return {}
@@ -728,10 +780,16 @@ const useStore = create(
       removePlannerDay: (dayKey) => set((s) => {
         if (!dayKey?.startsWith('extra-')) return {}
         const { [dayKey]: _removed, ...rest } = s.weekPlan
-        return { weekPlan: rest }
+        // Drop that day's note too — otherwise it would linger unseen and
+        // reappear in exports for a day that no longer exists.
+        const notes = normalizeWeekNotes(s.weekNotes)
+        const { [dayKey]: _removedNote, ...restDays } = notes.days
+        return { weekPlan: rest, weekNotes: { ...notes, days: restDays } }
       }),
 
-      clearWeekPlan: () => set((s) => ({ weekPlan: emptyWeekPlan() })),
+      // Clearing the week clears its notes too — they describe that week's
+      // prep, so leaving them behind on a fresh week would be misleading.
+      clearWeekPlan: () => set((s) => ({ weekPlan: emptyWeekPlan(), weekNotes: emptyWeekNotes() })),
 
       // ── Settings ──
       // Default language is Norwegian, but the Settings page allows switching
@@ -907,6 +965,7 @@ const useStore = create(
               name,
               savedAt: Date.now(),
               plan: JSON.parse(JSON.stringify(s.weekPlan)),
+              notes: normalizeWeekNotes(s.weekNotes),
               mealCount,
             },
           ],
@@ -916,7 +975,12 @@ const useStore = create(
       loadPlannerTemplate: (id) => set((s) => {
         const template = s.plannerTemplates.find(t => t.id === id)
         if (!template) return {}
-        return { weekPlan: JSON.parse(JSON.stringify(template.plan)) }
+        // `notes` is absent on weeks saved before this feature — those
+        // simply load with empty notes.
+        return {
+          weekPlan: JSON.parse(JSON.stringify(template.plan)),
+          weekNotes: normalizeWeekNotes(template.notes),
+        }
       }),
 
       /**
@@ -925,8 +989,14 @@ const useStore = create(
        * a deep copy of the plan's week. The caller is responsible for
        * ensuring required recipe packs are installed first (the UI does
        * this in PacksPage before calling installStarterPlan).
+       *
+       * Also replaces the week's notes. A shipped plan may localize them
+       * under translations[lang].notes (same convention as its name and
+       * description); pass `lang` to pick that up, otherwise plan.notes is
+       * used. This is the path both sample weeks and uploaded week JSON
+       * files take, so tips travel with either.
        */
-      installStarterPlan: (starterPlan) => set((s) => {
+      installStarterPlan: (starterPlan, lang) => set((s) => {
         // Build a complete skeleton: every named day carries every meal
         // slot the user currently has, initialised to an empty array. Then
         // overlay the sample plan on top. This guarantees a structurally
@@ -948,7 +1018,9 @@ const useStore = create(
             plan[day][slot] = JSON.parse(JSON.stringify(items || []))
           }
         }
-        return { weekPlan: plan }
+        const incomingNotes =
+          (lang && starterPlan.translations?.[lang]?.notes) || starterPlan.notes
+        return { weekPlan: plan, weekNotes: normalizeWeekNotes(incomingNotes) }
       }),
 
       deletePlannerTemplate: (id) => set((s) => ({

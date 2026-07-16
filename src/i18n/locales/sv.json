@@ -198,7 +198,13 @@
     },
     "loadFromFile": "Ladda vecka från fil",
     "loadFileConfirm": "Ladda denna vecka från filen? Det ersätter den nuvarande veckoplanen.",
-    "loadFileError": "Filen är inte en giltig veckoplan."
+    "loadFileError": "Filen är inte en giltig veckoplan.",
+    "weekNotesTitle": "Smarta tips",
+    "addWeekNote": "Lägg till smarta tips för denna vecka",
+    "weekNotesPlaceholder": "t.ex. Baka brödet på måndag — det räcker hela veckan. Blötlägg bönorna på söndagskvällen.",
+    "notesRow": "Anteckningar",
+    "addDayNote": "Lägg till en anteckning för denna dag",
+    "dayNotePlaceholder": "Anteckning…"
   },
   "categories": {
     "Breakfast": "Frukost",
