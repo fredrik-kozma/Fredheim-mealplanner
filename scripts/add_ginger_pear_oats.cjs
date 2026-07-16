@@ -2,8 +2,10 @@
    recipes-with-pictures pack, with EN/NO/SV, nutrition and photo.
 
    Source: Swedish recipe PDF "Ingefära Päron Müsli med Krämig Rå cashew
-   'Mjölk'" (Dream week, Vecka 1, Frukost Dag 3). Nutrition panel is for
-   "1 extra stor portion" (one extra-large portion) — kept as servings: 1.
+   'Mjölk'" (Dream week, Vecka 1, Frukost Dag 3). Nutrition panel was
+   labeled "1 extra stor portion" (one extra-large portion), but the
+   batch is actually enough for two people — ingredient quantities are
+   unchanged, servings is 2, and nutrition-per-serving is halved.
 */
 const fs = require('fs')
 const path = require('path')
@@ -15,52 +17,52 @@ const RECIPE = {
   id: 'ginger-pear-overnight-oats',
   title: 'Ginger Pear Overnight Oats with Cashew Milk',
   category: 'Breakfast',
-  servings: 1,
+  servings: 2,
   prepTime: 10,
   cookTime: null,
   imageUrl,
   description:
     'A generous overnight-oats bowl soaked in homemade raw cashew milk, warmed with ginger and cinnamon and sweetened only with Medjool dates, pear and raisins. The blender yields extra creamy "milk" to save for smoothies or porridge.',
   tags: ['fredheim', 'breakfast', 'vegan', 'oil-free', 'no-added-sugar', 'high-fiber'],
-  kcal: 1117,
-  servingWeightGrams: 950,
+  kcal: 559,
+  servingWeightGrams: 475,
   nutrition: {
     perServing: {
-      calories: 1117,
-      protein: 24.5,
-      totalFat: 38.8,
-      saturatedFat: 7.4,
-      polyunsaturatedFat: 8.4,
-      monounsaturatedFat: 20.7,
-      omega3: 0.81,
-      omega6: 7.5,
+      calories: 558.5,
+      protein: 12.25,
+      totalFat: 19.4,
+      saturatedFat: 3.7,
+      polyunsaturatedFat: 4.2,
+      monounsaturatedFat: 10.35,
+      omega3: 0.41,
+      omega6: 3.75,
       cholesterol: 0,
-      totalCarbs: 185.2,
-      totalSugars: 81.9,
+      totalCarbs: 92.6,
+      totalSugars: 40.95,
       addedSugar: 0,
-      fiber: 27.1,
-      calcium: 179,
-      potassium: 1596,
-      copper: 2.4,
-      iron: 9.5,
-      magnesium: 360,
-      manganese: 4.49,
-      selenium: 34.3,
-      phosphorus: 790,
-      zinc: 7.6,
-      sodium: 313,
-      vitaminA: 8,
-      vitaminB6: 0.52,
+      fiber: 13.55,
+      calcium: 89.5,
+      potassium: 798,
+      copper: 1.2,
+      iron: 4.75,
+      magnesium: 180,
+      manganese: 2.25,
+      selenium: 17.15,
+      phosphorus: 395,
+      zinc: 3.8,
+      sodium: 156.5,
+      vitaminA: 4,
+      vitaminB6: 0.26,
       vitaminB12: 0,
-      vitaminC: 15.9,
+      vitaminC: 7.95,
       vitaminD: 0,
-      vitaminE: 1.46,
-      vitaminK: 43.2,
-      folate: 108,
-      thiamin: 0.62,
-      riboflavin: 0.42,
-      niacin: 3.77,
-      choline: 100,
+      vitaminE: 0.73,
+      vitaminK: 21.6,
+      folate: 54,
+      thiamin: 0.31,
+      riboflavin: 0.21,
+      niacin: 1.89,
+      choline: 50,
     },
   },
   notes:
@@ -153,4 +155,4 @@ function addRecipe(file, recipe, newVersion) {
   console.log(file, '->', newVersion, '| recipes:', pack.recipes.length, '| added:', recipe.id, '| img KB:', Math.round(imageUrl.length / 1024))
 }
 
-addRecipe('fredheim-recipes-with-pictures.json', RECIPE, '1.9.1')
+addRecipe('fredheim-recipes-with-pictures.json', RECIPE, '1.9.2')
