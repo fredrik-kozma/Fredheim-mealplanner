@@ -204,7 +204,14 @@
     "weekNotesPlaceholder": "e.g. Bake the bread on Monday — it covers the whole week. Soak the beans Sunday night.",
     "notesRow": "Notes",
     "addDayNote": "Add a note for this day",
-    "dayNotePlaceholder": "Note…"
+    "dayNotePlaceholder": "Note…",
+    "batchCook": "Batch cooking",
+    "batchCookHint": "Prep once for the week. Counted in the shopping list.",
+    "batchTextPlaceholder": "e.g. double batch of tomato sauce",
+    "addRecipe": "Recipe",
+    "addNote": "Note",
+    "skipShopping": "Already batch cooked — skip shopping list",
+    "countInShopping": "Count in shopping list"
   },
   "categories": {
     "Breakfast": "Breakfast",
@@ -234,7 +241,8 @@
     "Oils & Condiments": "Oils & Condiments",
     "Frozen": "Frozen",
     "Beverages": "Beverages",
-    "Other": "Other"
+    "Other": "Other",
+    "__batch__": "Batch cooking"
   },
   "shopping": {
     "title": "Shopping List",

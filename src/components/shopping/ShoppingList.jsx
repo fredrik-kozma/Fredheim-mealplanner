@@ -31,6 +31,7 @@ export default function ShoppingList() {
   const restoreDismissedShoppingSources = useStore(s => s.restoreDismissedShoppingSources)
   const pruneDismissedShoppingSources = useStore(s => s.pruneDismissedShoppingSources)
   const restoreCustomShoppingItem = useStore(s => s.restoreCustomShoppingItem)
+  const batchCook = useStore(s => s.batchCook) || []
 
   const [showChecked, setShowChecked] = useState(true)
   const [showSaveModal, setShowSaveModal] = useState(false)
@@ -44,7 +45,7 @@ export default function ShoppingList() {
   const [undoInfo, setUndoInfo] = useState(null) // { label, revert }
   const undoTimer = useRef(null)
 
-  const rawGroups = generateShoppingList(weekPlan, recipes, familySize, currentLang)
+  const rawGroups = generateShoppingList(weekPlan, recipes, familySize, currentLang, batchCook)
 
   const srcKey = (itemId, recipe) => `${itemId}::${recipe}`
 

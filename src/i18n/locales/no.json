@@ -204,7 +204,14 @@
     "weekNotesPlaceholder": "f.eks. Bak brødet på mandag — det holder hele uken. Sett bønnene i bløt søndag kveld.",
     "notesRow": "Notater",
     "addDayNote": "Legg til et notat for denne dagen",
-    "dayNotePlaceholder": "Notat…"
+    "dayNotePlaceholder": "Notat…",
+    "batchCook": "Storkokking",
+    "batchCookHint": "Lag én gang for hele uken. Tas med i handlelisten.",
+    "batchTextPlaceholder": "f.eks. dobbel porsjon tomatsaus",
+    "addRecipe": "Oppskrift",
+    "addNote": "Notat",
+    "skipShopping": "Allerede storkokt — hopp over handlelisten",
+    "countInShopping": "Ta med i handlelisten"
   },
   "categories": {
     "Breakfast": "Frokost",
@@ -234,7 +241,8 @@
     "Oils & Condiments": "Olje og krydder",
     "Frozen": "Frossen",
     "Beverages": "Drikke",
-    "Other": "Annet"
+    "Other": "Annet",
+    "__batch__": "Storkokking"
   },
   "shopping": {
     "title": "Handleliste",

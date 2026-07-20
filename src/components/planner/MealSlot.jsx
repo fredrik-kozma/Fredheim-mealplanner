@@ -28,6 +28,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
   const familySize = useStore(s => s.familySize)
   const setSlotItemServings = useStore(s => s.setSlotItemServings)
   const removeRecipeFromSlot = useStore(s => s.removeRecipeFromSlot)
+  const toggleSlotItemShopping = useStore(s => s.toggleSlotItemShopping)
   const pointerStartRef = useRef(null)
   const [showAdjuster, setShowAdjuster] = useState(false)
 
@@ -67,6 +68,14 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
   }
 
   const isOverridden = item.servings != null
+  // Covered by the week's batch cooking (or leftovers) — still on the plan,
+  // but buying nothing, so it's dimmed to read as "already handled".
+  const isCovered = Boolean(item.excludeFromShopping)
+
+  function toggleShopping(e) {
+    e.stopPropagation()
+    toggleSlotItemShopping(day, slot, item.recipeId)
+  }
 
   return (
     <div
@@ -80,7 +89,11 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
           navigate(`/recipes/${item.recipeId}`, { state: { from: '/planner' } })
         }
       }}
-      className="group bg-white rounded-lg shadow-sm border border-slate-100 cursor-pointer hover:bg-slate-50 hover:border-indigo-200 transition-colors"
+      className={`group rounded-lg shadow-sm border cursor-pointer transition-colors ${
+        isCovered
+          ? 'bg-white/50 border-dashed border-slate-200 opacity-60 hover:opacity-90'
+          : 'bg-white border-slate-100 hover:bg-slate-50 hover:border-indigo-200'
+      }`}
     >
       {/* Top row: image + title + delete */}
       <div className="flex items-center gap-1.5 px-2 py-1.5">
@@ -160,18 +173,38 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
             </button>
           </div>
         ) : (
-          <button
-            onPointerDown={(e) => e.stopPropagation()}
-            onClick={toggleAdjuster}
-            className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
-              isOverridden
-                ? 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'
-                : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
-            }`}
-            title={t('planner.adjustServings', { defaultValue: 'Adjust servings' })}
-          >
-            👥 {effectiveServings}
-          </button>
+          <div className="flex items-center gap-1">
+            <button
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={toggleAdjuster}
+              className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
+                isOverridden
+                  ? 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'
+                  : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+              }`}
+              title={t('planner.adjustServings', { defaultValue: 'Adjust servings' })}
+            >
+              👥 {effectiveServings}
+            </button>
+
+            {/* Shopping-list toggle: 🛒 = counted, 🍲 = covered by batch prep */}
+            <button
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={toggleShopping}
+              className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
+                isCovered
+                  ? 'bg-orange-100 text-orange-700 hover:bg-orange-200'
+                  : 'bg-slate-100 text-slate-400 hover:bg-slate-200'
+              }`}
+              title={
+                isCovered
+                  ? t('planner.countInShopping', { defaultValue: 'Count in shopping list' })
+                  : t('planner.skipShopping', { defaultValue: 'Already batch cooked — skip shopping list' })
+              }
+            >
+              {isCovered ? '🍲' : '🛒'}
+            </button>
+          </div>
         )}
       </div>
     </div>

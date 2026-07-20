@@ -204,7 +204,14 @@
     "weekNotesPlaceholder": "t.ex. Baka brödet på måndag — det räcker hela veckan. Blötlägg bönorna på söndagskvällen.",
     "notesRow": "Anteckningar",
     "addDayNote": "Lägg till en anteckning för denna dag",
-    "dayNotePlaceholder": "Anteckning…"
+    "dayNotePlaceholder": "Anteckning…",
+    "batchCook": "Storkok",
+    "batchCookHint": "Laga en gång för hela veckan. Räknas med i inköpslistan.",
+    "batchTextPlaceholder": "t.ex. dubbel sats tomatsås",
+    "addRecipe": "Recept",
+    "addNote": "Anteckning",
+    "skipShopping": "Redan storkokt — hoppa över inköpslistan",
+    "countInShopping": "Räkna med i inköpslistan"
   },
   "categories": {
     "Breakfast": "Frukost",
@@ -234,7 +241,8 @@
     "Oils & Condiments": "Olja och kryddor",
     "Frozen": "Fryst",
     "Beverages": "Drycker",
-    "Other": "Övrigt"
+    "Other": "Övrigt",
+    "__batch__": "Storkok"
   },
   "shopping": {
     "title": "Inköpslista",

@@ -96,81 +96,119 @@ function categoriseIngredient(name) {
   return bestCat
 }
 
-export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en') {
+// Category key for the "Batch cooking" section. Kept distinct from the aisle
+// categories so the UI can label it via its own i18n key, the same way the
+// user's custom "My items" section works.
+export const BATCH_CATEGORY = '__batch__'
+
+export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en', batchCook = []) {
   const recipeMap = Object.fromEntries(recipes.map(r => [r.id, r]))
 
-  // Collect all ingredient occurrences (not yet aggregated)
+  // Ingredient occurrences, kept in two buckets so the week's batch prep can
+  // be shown as its own section rather than melted into the aisles.
   const allIngredients = []
+  const batchIngredients = []
+
+  // Expands one recipe into scaled ingredient occurrences on the given bucket.
+  function collect(bucket, recipeId, servings) {
+    const recipe = recipeMap[recipeId]
+    if (!recipe) return
+    // Per-slot override > household default
+    const portionCount = servings ?? familySize
+    const scaleFactor = portionCount / (recipe.servings || 4)
+
+    // Use translated ingredients if available for this language,
+    // otherwise fall back to the canonical English ones.
+    const translation = recipe.translations?.[lang]
+    const ingredients = translation?.ingredients?.length
+      ? translation.ingredients
+      : (recipe.ingredients || [])
+    const recipeTitle = translation?.title || recipe.title
+
+    for (const ing of ingredients) {
+      const unit = normalizeUnit(ing.unit)
+      const scaledQty = ing.quantity ? ing.quantity * scaleFactor : 0
+      bucket.push({
+        quantity: scaledQty,
+        unit,
+        name: ing.name,
+        recipeTitle,
+      })
+    }
+  }
 
   for (const day of Object.values(weekPlan)) {
     for (const slotRecipes of Object.values(day)) {
       for (const item of slotRecipes) {
         // Accept both legacy "id" strings and new { recipeId, servings } shape.
         const norm = typeof item === 'string'
-          ? { recipeId: item, servings: null }
-          : (item && item.recipeId ? { recipeId: item.recipeId, servings: item.servings ?? null } : null)
+          ? { recipeId: item, servings: null, excludeFromShopping: false }
+          : (item && item.recipeId
+            ? {
+              recipeId: item.recipeId,
+              servings: item.servings ?? null,
+              excludeFromShopping: Boolean(item.excludeFromShopping),
+            }
+            : null)
         if (!norm) continue
-        const recipe = recipeMap[norm.recipeId]
-        if (!recipe) continue
-        // Per-slot override > household default
-        const portionCount = norm.servings ?? familySize
-        const scaleFactor = portionCount / (recipe.servings || 4)
-
-        // Use translated ingredients if available for this language,
-        // otherwise fall back to the canonical English ones.
-        const translation = recipe.translations?.[lang]
-        const ingredients = translation?.ingredients?.length
-          ? translation.ingredients
-          : (recipe.ingredients || [])
-        const recipeTitle = translation?.title || recipe.title
-
-        for (const ing of ingredients) {
-          const unit = normalizeUnit(ing.unit)
-          const scaledQty = ing.quantity ? ing.quantity * scaleFactor : 0
-          allIngredients.push({
-            quantity: scaledQty,
-            unit,
-            name: ing.name,
-            recipeTitle,
-          })
-        }
+        // Meals covered by batch cooking or leftovers buy nothing.
+        if (norm.excludeFromShopping) continue
+        collect(allIngredients, norm.recipeId, norm.servings)
       }
     }
   }
 
-  // Group similar ingredients using ingredientMatcher
-  const grouped = groupIngredients(allIngredients)
-
-  // Assign categories and build final items list
-  const byCat = {}
-  for (const group of grouped) {
-    const cat = categoriseIngredient(group.displayName)
-    if (!byCat[cat]) byCat[cat] = []
-
-    const qty = group.totalQuantity
-    const unit = group.totalUnit
-
-    let formattedUnit = unit || ''
-    // If quantity is already a formatted string (mixed units), qty is the string
-    const id = group.normalizedName + '__' + formattedUnit
-
-    // Raw per-occurrence contributions (already scaled to the plan's
-    // servings). Kept so the UI can show "which recipe, how much" and so
-    // a saved list can be re-scaled to a different portion count.
-    const sources = group.items
-      .filter(it => it.quantity && it.quantity > 0)
-      .map(it => ({ recipe: it.recipeTitle, quantity: it.quantity, unit: it.unit }))
-
-    byCat[cat].push({
-      id,
-      quantity: qty,
-      unit: formattedUnit,
-      name: group.displayName,
-      category: cat,
-      recipeNames: [...new Set(group.items.map(i => i.recipeTitle))],
-      sources,
-    })
+  // The week's batch prep. Text-only entries are reminders and buy nothing.
+  for (const entry of batchCook || []) {
+    if (!entry || entry.kind !== 'recipe' || !entry.recipeId) continue
+    collect(batchIngredients, entry.recipeId, entry.servings)
   }
+
+  // Aggregates one bucket into shopping items. `forcedCategory` overrides the
+  // aisle so every batch ingredient lands in the single batch section.
+  //
+  // The `idPrefix` keeps batch item ids distinct from the daily ones: the two
+  // sections aggregate separately, so the same ingredient can legitimately
+  // appear in both, and identical ids would make checking off (or deleting)
+  // one silently affect the other.
+  function buildItems(bucket, { forcedCategory = null, idPrefix = '' } = {}) {
+    const byCat = {}
+    for (const group of groupIngredients(bucket)) {
+      const cat = forcedCategory || categoriseIngredient(group.displayName)
+      if (!byCat[cat]) byCat[cat] = []
+
+      const qty = group.totalQuantity
+      const unit = group.totalUnit
+
+      let formattedUnit = unit || ''
+      // If quantity is already a formatted string (mixed units), qty is the string
+      const id = idPrefix + group.normalizedName + '__' + formattedUnit
+
+      // Raw per-occurrence contributions (already scaled to the plan's
+      // servings). Kept so the UI can show "which recipe, how much" and so
+      // a saved list can be re-scaled to a different portion count.
+      const sources = group.items
+        .filter(it => it.quantity && it.quantity > 0)
+        .map(it => ({ recipe: it.recipeTitle, quantity: it.quantity, unit: it.unit }))
+
+      byCat[cat].push({
+        id,
+        quantity: qty,
+        unit: formattedUnit,
+        name: group.displayName,
+        category: cat,
+        recipeNames: [...new Set(group.items.map(i => i.recipeTitle))],
+        sources,
+      })
+    }
+    return byCat
+  }
+
+  const byCat = buildItems(allIngredients)
+  const batchByCat = buildItems(batchIngredients, {
+    forcedCategory: BATCH_CATEGORY,
+    idPrefix: 'batch__',
+  })
 
   // Sort categories and items within
   const categoryOrder = Object.keys(INGREDIENT_CATEGORIES)
@@ -183,10 +221,16 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en')
     return ia - ib
   })
 
-  return sortedGroups.map(([category, items]) => ({
+  const sortItems = ([category, items]) => ({
     category,
     items: items.sort((a, b) => a.name.localeCompare(b.name)),
-  }))
+  })
+
+  // Batch prep leads the list — it's the shop-once, cook-once part of the week.
+  return [
+    ...Object.entries(batchByCat).map(sortItems),
+    ...sortedGroups.map(sortItems),
+  ]
 }
 
 export function formatQuantity(quantity, unit) {

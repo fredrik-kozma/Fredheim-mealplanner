@@ -16,6 +16,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
   const installedPacks = useStore(s => s.installedPacks)
   const weekPlan = useStore(s => s.weekPlan)
   const weekNotes = useStore(s => s.weekNotes)
+  const batchCook = useStore(s => s.batchCook) || []
 
   // The ready-to-load sample weeks (those that have actually been authored).
   const sampleWeeks = STARTER_PLANS.filter(planHasContent)
@@ -128,6 +129,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
       requiredPackIds: [],
       plan: weekPlan,
       notes: weekNotes,
+      batchCook,
     }
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)

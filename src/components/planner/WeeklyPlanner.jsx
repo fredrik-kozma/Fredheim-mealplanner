@@ -15,6 +15,7 @@ import RecipePicker from '../planner/RecipePicker'
 import PlannerTemplates from './PlannerTemplates'
 import WeekNotes from './WeekNotes'
 import DayNote from './DayNote'
+import BatchCookColumn from './BatchCookColumn'
 
 // Column width (in rem) for each day. Kept in a constant so the grid
 // template and the "add day" column stay in sync.
@@ -80,10 +81,12 @@ export default function WeeklyPlanner() {
   const moveRecipeBetweenSlots = useStore(s => s.moveRecipeBetweenSlots)
   const clearWeekPlan = useStore(s => s.clearWeekPlan)
   const addPlannerDay = useStore(s => s.addPlannerDay)
+  const addBatchRecipe = useStore(s => s.addBatchRecipe)
 
   const dayKeys = getPlanDayKeys(weekPlan)
 
-  const [picker, setPicker] = useState(null) // { day, slot }
+  // { day, slot } for a meal slot, or { batch: true } for the batch column.
+  const [picker, setPicker] = useState(null)
   const [activeId, setActiveId] = useState(null)
   const [templatesMode, setTemplatesMode] = useState(null) // null | 'list' | 'save'
 
@@ -170,6 +173,9 @@ export default function WeeklyPlanner() {
         {/* Scrollable planner grid */}
         <div className="flex-1 overflow-x-auto overflow-y-auto px-4 pb-24 lg:pb-8">
           <div className="flex gap-3 min-w-max">
+            {/* Batch cooking — what gets prepped once for the whole week */}
+            <BatchCookColumn onAddRecipe={() => setPicker({ batch: true })} />
+
             {/* Aligned grid: label column + one column per day */}
             <div className="grid gap-3 gap-y-2" style={gridStyle}>
               {/* Header row: empty corner + day headers */}
@@ -233,11 +239,18 @@ export default function WeeklyPlanner() {
         )}
       </DragOverlay>
 
-      {/* Recipe picker modal */}
+      {/* Recipe picker modal — targets either a meal slot or the batch column */}
       {picker && (
         <RecipePicker
-          title={`${t('common.addToPlan')} – ${t(`planner.mealSlots.${picker.slot}`, { defaultValue: picker.slot })} · ${t(`planner.days.${picker.day}`)}`}
-          onSelect={(recipeId) => addRecipeToSlot(picker.day, picker.slot, recipeId)}
+          title={
+            picker.batch
+              ? `${t('common.addToPlan')} – ${t('planner.batchCook', { defaultValue: 'Batch cooking' })}`
+              : `${t('common.addToPlan')} – ${t(`planner.mealSlots.${picker.slot}`, { defaultValue: picker.slot })} · ${t(`planner.days.${picker.day}`)}`
+          }
+          onSelect={(recipeId) => {
+            if (picker.batch) addBatchRecipe(recipeId)
+            else addRecipeToSlot(picker.day, picker.slot, recipeId)
+          }}
           onClose={() => setPicker(null)}
         />
       )}

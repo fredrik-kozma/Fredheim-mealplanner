@@ -32,10 +32,21 @@ export function getPlanDayKeys(plan) {
 // (or missing) means "use the household default" set in Settings; a number
 // overrides it for that specific slot. This helper accepts either the old
 // string-only shape or the new object shape and normalizes it.
+// A planned meal. `excludeFromShopping` marks a meal whose ingredients are
+// already covered — typically something batch-cooked earlier in the week, or
+// leftovers — so it still shows in the plan but buys nothing.
+//
+// Normalizing here (rather than at each call site) is what keeps the flag
+// alive across servings edits and drag-and-drop, since those actions rebuild
+// items from this function's output.
 export function normalizeSlotItem(item) {
-  if (typeof item === 'string') return { recipeId: item, servings: null }
+  if (typeof item === 'string') return { recipeId: item, servings: null, excludeFromShopping: false }
   if (item && typeof item === 'object' && item.recipeId) {
-    return { recipeId: item.recipeId, servings: item.servings ?? null }
+    return {
+      recipeId: item.recipeId,
+      servings: item.servings ?? null,
+      excludeFromShopping: Boolean(item.excludeFromShopping),
+    }
   }
   return null
 }
@@ -695,6 +706,38 @@ const useStore = create(
 
       clearWeekNotes: () => set({ weekNotes: emptyWeekNotes() }),
 
+      // ── Batch cooking ──
+      // Things prepped once for the whole week (bouillon, bread, spreads).
+      // Recipe entries feed the shopping list; text entries are plain
+      // reminders that buy nothing. Like weekNotes, this is a sibling of
+      // weekPlan rather than a key inside it.
+      batchCook: [],
+
+      addBatchRecipe: (recipeId, servings = null) => set((s) => {
+        if (s.batchCook.some(b => b.kind === 'recipe' && b.recipeId === recipeId)) return {}
+        return { batchCook: [...s.batchCook, { id: makeId(), kind: 'recipe', recipeId, servings }] }
+      }),
+
+      addBatchText: (text) => set((s) => {
+        const clean = (text || '').trim()
+        if (!clean) return {}
+        return { batchCook: [...s.batchCook, { id: makeId(), kind: 'text', text: clean }] }
+      }),
+
+      updateBatchText: (id, text) => set((s) => ({
+        batchCook: s.batchCook.map(b => (b.id === id ? { ...b, text: (text || '').trim() } : b)),
+      })),
+
+      setBatchServings: (id, servings) => set((s) => ({
+        batchCook: s.batchCook.map(b =>
+          b.id === id ? { ...b, servings: servings == null ? null : Math.max(1, Math.floor(servings)) } : b
+        ),
+      })),
+
+      removeBatchItem: (id) => set((s) => ({ batchCook: s.batchCook.filter(b => b.id !== id) })),
+
+      clearBatchCook: () => set({ batchCook: [] }),
+
       addRecipeToSlot: (day, slot, recipeId, servings = null) => set((s) => {
         const current = s.weekPlan[day]?.[slot] || []
         if (current.some(it => normalizeSlotItem(it)?.recipeId === recipeId)) return {}
@@ -761,6 +804,23 @@ const useStore = create(
         },
       })),
 
+      // Flip whether one planned meal contributes to the shopping list.
+      // Used for meals covered by the week's batch cooking (or leftovers):
+      // they stay visible in the plan but stop buying ingredients.
+      toggleSlotItemShopping: (day, slot, recipeId) => set((s) => ({
+        weekPlan: {
+          ...s.weekPlan,
+          [day]: {
+            ...s.weekPlan[day],
+            [slot]: (s.weekPlan[day]?.[slot] || []).map(it => {
+              const n = normalizeSlotItem(it)
+              if (!n || n.recipeId !== recipeId) return it
+              return { ...n, excludeFromShopping: !n.excludeFromShopping }
+            }),
+          },
+        },
+      })),
+
       // Append an empty extra day (extra-1, extra-2, …) to the plan.
       addPlannerDay: () => set((s) => {
         const existingExtras = Object.keys(s.weekPlan)
@@ -789,7 +849,11 @@ const useStore = create(
 
       // Clearing the week clears its notes too — they describe that week's
       // prep, so leaving them behind on a fresh week would be misleading.
-      clearWeekPlan: () => set((s) => ({ weekPlan: emptyWeekPlan(), weekNotes: emptyWeekNotes() })),
+      clearWeekPlan: () => set((s) => ({
+        weekPlan: emptyWeekPlan(),
+        weekNotes: emptyWeekNotes(),
+        batchCook: [],
+      })),
 
       // ── Settings ──
       // Default language is Norwegian, but the Settings page allows switching
@@ -966,6 +1030,7 @@ const useStore = create(
               savedAt: Date.now(),
               plan: JSON.parse(JSON.stringify(s.weekPlan)),
               notes: normalizeWeekNotes(s.weekNotes),
+              batchCook: JSON.parse(JSON.stringify(s.batchCook || [])),
               mealCount,
             },
           ],
@@ -980,6 +1045,7 @@ const useStore = create(
         return {
           weekPlan: JSON.parse(JSON.stringify(template.plan)),
           weekNotes: normalizeWeekNotes(template.notes),
+          batchCook: JSON.parse(JSON.stringify(template.batchCook || [])),
         }
       }),
 
@@ -1020,7 +1086,15 @@ const useStore = create(
         }
         const incomingNotes =
           (lang && starterPlan.translations?.[lang]?.notes) || starterPlan.notes
-        return { weekPlan: plan, weekNotes: normalizeWeekNotes(incomingNotes) }
+        // Batch entries may be localized the same way (their text lines are
+        // free prose); fall back to the plan's canonical list.
+        const incomingBatch =
+          (lang && starterPlan.translations?.[lang]?.batchCook) || starterPlan.batchCook
+        return {
+          weekPlan: plan,
+          weekNotes: normalizeWeekNotes(incomingNotes),
+          batchCook: Array.isArray(incomingBatch) ? JSON.parse(JSON.stringify(incomingBatch)) : [],
+        }
       }),
 
       deletePlannerTemplate: (id) => set((s) => ({
