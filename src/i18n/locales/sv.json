@@ -211,7 +211,15 @@
     "addRecipe": "Recept",
     "addNote": "Anteckning",
     "skipShopping": "Redan storkokt — hoppa över inköpslistan",
-    "countInShopping": "Räkna med i inköpslistan"
+    "countInShopping": "Räkna med i inköpslistan",
+    "people": "personer",
+    "peopleCount": "Personer",
+    "scaleUp": "Fler personer",
+    "scaleDown": "Färre personer",
+    "scaleWeekHint": "Skala hela veckan — justerade portioner skalas med",
+    "savedForPeople": "för {{count}} personer",
+    "loadFor": "Ladda för",
+    "resetPortions": "Tillbaka till sparad storlek"
   },
   "categories": {
     "Breakfast": "Frukost",

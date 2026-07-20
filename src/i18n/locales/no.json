@@ -211,7 +211,15 @@
     "addRecipe": "Oppskrift",
     "addNote": "Notat",
     "skipShopping": "Allerede storkokt — hopp over handlelisten",
-    "countInShopping": "Ta med i handlelisten"
+    "countInShopping": "Ta med i handlelisten",
+    "people": "personer",
+    "peopleCount": "Personer",
+    "scaleUp": "Flere personer",
+    "scaleDown": "Færre personer",
+    "scaleWeekHint": "Skaler hele uken — justerte porsjoner skaleres med",
+    "savedForPeople": "for {{count}} personer",
+    "loadFor": "Last inn for",
+    "resetPortions": "Tilbake til lagret størrelse"
   },
   "categories": {
     "Breakfast": "Frokost",

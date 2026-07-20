@@ -25,6 +25,8 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
   const [templateName, setTemplateName] = useState('')
   const [toast, setToast] = useState(null)
   const fileRef = useRef(null)
+  // Per-template portion override chosen in the load list, keyed by id.
+  const [loadPortions, setLoadPortions] = useState({})
 
   // Count meals in current week plan
   const currentMealCount = Object.values(weekPlan).reduce((sum, day) =>
@@ -41,9 +43,13 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
     setTimeout(() => setToast(null), 3000)
   }
 
+  // Load at the portion count chosen in the card (defaults to whatever the
+  // week was saved for, so the common case is unchanged).
   function handleLoad(tmpl) {
     if (confirm(t('planner.loadConfirm', { name: tmpl.name }))) {
-      loadPlannerTemplate(tmpl.id)
+      const base = tmpl.portions ?? null
+      const target = loadPortions[tmpl.id] ?? base
+      loadPlannerTemplate(tmpl.id, target)
       onClose()
     }
   }
@@ -319,14 +325,56 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    {[...plannerTemplates].reverse().map(tmpl => (
-                    <div key={tmpl.id} className="card p-4 flex items-center gap-3">
+                    {[...plannerTemplates].reverse().map(tmpl => {
+                    const base = tmpl.portions ?? null
+                    const target = loadPortions[tmpl.id] ?? base
+                    const rescaled = base != null && target != null && target !== base
+                    return (
+                    <div key={tmpl.id} className="card p-4 flex items-center gap-3 flex-wrap">
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-semibold text-slate-800 truncate">{tmpl.name}</p>
                         <p className="text-xs text-slate-500 mt-0.5">
                           {t('planner.mealsPlanned', { count: tmpl.mealCount })} ·{' '}
                           {t('planner.savedAt', { date: formatDate(tmpl.savedAt) })}
+                          {base != null && (
+                            <> · {t('planner.savedForPeople', { count: base, defaultValue: 'for {{count}} people' })}</>
+                          )}
                         </p>
+
+                        {/* Load at a different size. Only offered for weeks
+                            that recorded what they were built for. */}
+                        {base != null && (
+                          <div className="flex items-center gap-1 mt-2">
+                            <span className="text-[11px] text-slate-500">
+                              {t('planner.loadFor', { defaultValue: 'Load for' })}
+                            </span>
+                            <button
+                              onClick={() => setLoadPortions(p => ({ ...p, [tmpl.id]: Math.max(1, (target ?? base) - 1) }))}
+                              disabled={(target ?? base) <= 1}
+                              className="w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 text-xs font-bold flex items-center justify-center"
+                            >
+                              −
+                            </button>
+                            <span className={`text-xs font-semibold px-1.5 tabular-nums ${rescaled ? 'text-indigo-600' : 'text-slate-700'}`}>
+                              {target ?? base}
+                            </span>
+                            <button
+                              onClick={() => setLoadPortions(p => ({ ...p, [tmpl.id]: (target ?? base) + 1 }))}
+                              className="w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center"
+                            >
+                              +
+                            </button>
+                            {rescaled && (
+                              <button
+                                onClick={() => setLoadPortions(p => { const { [tmpl.id]: _drop, ...rest } = p; return rest })}
+                                className="text-[10px] text-slate-400 hover:text-indigo-600 px-1"
+                                title={t('planner.resetPortions', { defaultValue: 'Back to saved size' })}
+                              >
+                                ↺
+                              </button>
+                            )}
+                          </div>
+                        )}
                       </div>
                       <button
                         onClick={() => handleLoad(tmpl)}
@@ -343,7 +391,8 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
                         </svg>
                       </button>
                     </div>
-                  ))}
+                    )
+                  })}
                 </div>
                 )}
               </div>

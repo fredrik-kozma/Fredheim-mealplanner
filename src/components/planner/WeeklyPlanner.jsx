@@ -16,6 +16,7 @@ import PlannerTemplates from './PlannerTemplates'
 import WeekNotes from './WeekNotes'
 import DayNote from './DayNote'
 import BatchCookColumn from './BatchCookColumn'
+import WeekScale from './WeekScale'
 
 // Column width (in rem) for each day. Kept in a constant so the grid
 // template and the "add day" column stay in sync.
@@ -139,8 +140,10 @@ export default function WeeklyPlanner() {
       onDragEnd={handleDragEnd}
     >
       <div className="flex flex-col h-full">
-        {/* Toolbar — two clear actions (load / save a week) plus clear. */}
-        <div className="px-4 pt-4 pb-3 flex items-center justify-end gap-2">
+        {/* Toolbar — week scale on the left, then load / save / clear. */}
+        <div className="px-4 pt-4 pb-3 flex items-center justify-between gap-2 flex-wrap">
+          <WeekScale />
+          <div className="flex items-center gap-2">
           <button
             onClick={() => setTemplatesMode('list')}
             className="btn-secondary py-2 px-3.5 inline-flex items-center gap-1.5"
@@ -165,6 +168,7 @@ export default function WeeklyPlanner() {
           >
             {t('planner.clearWeek')}
           </button>
+          </div>
         </div>
 
         {/* Week-level "smart tips" — batch-prep guidance for the whole week */}

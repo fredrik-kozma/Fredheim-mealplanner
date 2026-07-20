@@ -93,6 +93,38 @@ export function weekNotesHaveContent(notes) {
   return Boolean(n.week.trim() || Object.keys(n.days).length)
 }
 
+// ── Scaling a whole week to a different number of people ──────────────────
+//
+// Items left at the default carry `servings: null` and already follow the
+// household size, so they need no rewriting. Only the *tweaked* ones hold a
+// fixed number, and those are what would otherwise be stranded when the week
+// is cooked for a different crowd — so scaling multiplies exactly those.
+function scaleServingsValue(value, ratio) {
+  if (value == null) return null
+  return Math.max(1, Math.round(value * ratio))
+}
+
+function scalePlanServings(plan, ratio) {
+  const out = {}
+  for (const [day, slots] of Object.entries(plan || {})) {
+    out[day] = {}
+    for (const [slot, items] of Object.entries(slots || {})) {
+      out[day][slot] = (items || []).map(it => {
+        const n = normalizeSlotItem(it)
+        if (!n) return it
+        return { ...n, servings: scaleServingsValue(n.servings, ratio) }
+      })
+    }
+  }
+  return out
+}
+
+function scaleBatchServings(batch, ratio) {
+  return (batch || []).map(b =>
+    b && b.kind === 'recipe' ? { ...b, servings: scaleServingsValue(b.servings, ratio) } : b
+  )
+}
+
 const SAMPLE_RECIPES = [
   {
     id: 'sample-1',
@@ -865,6 +897,75 @@ const useStore = create(
       familySize: 4,
       setFamilySize: (n) => set({ familySize: n }),
 
+      /**
+       * Rescale the whole current week to a different number of people.
+       *
+       * The household size doubles as the week's portion count, so it moves
+       * to the target and every item left at the default follows it for
+       * free. Tweaked items (a batch bouillon at 10, a dinner bumped to 3)
+       * hold fixed numbers, so they get multiplied by the same ratio —
+       * without that they'd stay stuck at the old crowd's amounts.
+       *
+       * Servings are whole numbers, so scaling rounds. Scaling out and back
+       * (2 → 5 → 2) can therefore drift by a serving on odd ratios; the
+       * numbers stay individually editable afterwards.
+       */
+      scaleWeek: (targetPortions) => set((s) => {
+        const target = Math.max(1, Math.floor(targetPortions))
+        const base = s.familySize || 4
+        if (target === base) return {}
+        const ratio = target / base
+        return {
+          weekPlan: scalePlanServings(s.weekPlan, ratio),
+          batchCook: scaleBatchServings(s.batchCook, ratio),
+          familySize: target,
+        }
+      }),
+
+      /**
+       * Scale using serving values captured before the user started
+       * adjusting, rather than the week's current ones.
+       *
+       * Stepping 4 → 8 one press at a time would otherwise re-round on every
+       * press and compound the error (a 13-portion batch drifted to 25
+       * instead of 26). Replaying from the captured values keeps every
+       * intermediate result an exact ratio of the original.
+       *
+       * Only the servings are replayed — the plan's structure is read live,
+       * so a recipe added or removed mid-adjustment survives. Anything the
+       * capture doesn't know about is left untouched rather than guessed at.
+       *
+       * `baseServings` is keyed `day__slot__recipeId`; `baseBatchServings` by
+       * batch entry id. A null value means "was at the default", which stays
+       * null and keeps following the household size.
+       */
+      scaleWeekFromBase: (baseServings, baseBatchServings, basePortions, targetPortions) => set((s) => {
+        const target = Math.max(1, Math.floor(targetPortions))
+        const base = basePortions || 4
+        const ratio = target / base
+
+        const plan = {}
+        for (const [day, slots] of Object.entries(s.weekPlan || {})) {
+          plan[day] = {}
+          for (const [slot, items] of Object.entries(slots || {})) {
+            plan[day][slot] = (items || []).map(it => {
+              const n = normalizeSlotItem(it)
+              if (!n) return it
+              const key = `${day}__${slot}__${n.recipeId}`
+              if (!(key in baseServings)) return it
+              return { ...n, servings: scaleServingsValue(baseServings[key], ratio) }
+            })
+          }
+        }
+
+        const batch = (s.batchCook || []).map(b => {
+          if (!b || b.kind !== 'recipe' || !(b.id in baseBatchServings)) return b
+          return { ...b, servings: scaleServingsValue(baseBatchServings[b.id], ratio) }
+        })
+
+        return { weekPlan: plan, batchCook: batch, familySize: target }
+      }),
+
       // 'metric' | 'us' — drives the preferred unit group in the recipe-form
       // dropdown and the metric ⇄ US conversion on the recipe view.
       units: 'metric',
@@ -1031,21 +1132,43 @@ const useStore = create(
               plan: JSON.parse(JSON.stringify(s.weekPlan)),
               notes: normalizeWeekNotes(s.weekNotes),
               batchCook: JSON.parse(JSON.stringify(s.batchCook || [])),
+              // How many people this week was built for, so it can be
+              // reloaded at a different size later (same idea as the
+              // portions stored on a saved shopping list).
+              portions: s.familySize ?? null,
               mealCount,
             },
           ],
         }
       }),
 
-      loadPlannerTemplate: (id) => set((s) => {
+      /**
+       * Load a saved week. Pass `targetPortions` to cook it for a different
+       * number of people than it was saved for — every tweaked serving is
+       * scaled by the same ratio and the household size moves to the target.
+       */
+      loadPlannerTemplate: (id, targetPortions = null) => set((s) => {
         const template = s.plannerTemplates.find(t => t.id === id)
         if (!template) return {}
-        // `notes` is absent on weeks saved before this feature — those
-        // simply load with empty notes.
+        // `notes` / `batchCook` / `portions` are absent on weeks saved before
+        // those features — such weeks load with empty notes, no batch list,
+        // and at their original (unscaled) servings.
+        let plan = JSON.parse(JSON.stringify(template.plan))
+        let batch = JSON.parse(JSON.stringify(template.batchCook || []))
+
+        const base = template.portions ?? s.familySize ?? 4
+        const target = targetPortions == null ? base : Math.max(1, Math.floor(targetPortions))
+        if (target !== base && base > 0) {
+          const ratio = target / base
+          plan = scalePlanServings(plan, ratio)
+          batch = scaleBatchServings(batch, ratio)
+        }
+
         return {
-          weekPlan: JSON.parse(JSON.stringify(template.plan)),
+          weekPlan: plan,
           weekNotes: normalizeWeekNotes(template.notes),
-          batchCook: JSON.parse(JSON.stringify(template.batchCook || [])),
+          batchCook: batch,
+          familySize: target,
         }
       }),
 

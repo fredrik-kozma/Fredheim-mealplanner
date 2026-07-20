@@ -211,7 +211,15 @@
     "addRecipe": "Recipe",
     "addNote": "Note",
     "skipShopping": "Already batch cooked — skip shopping list",
-    "countInShopping": "Count in shopping list"
+    "countInShopping": "Count in shopping list",
+    "people": "people",
+    "peopleCount": "People",
+    "scaleUp": "More people",
+    "scaleDown": "Fewer people",
+    "scaleWeekHint": "Scale the whole week — adjusted portions scale with it",
+    "savedForPeople": "for {{count}} people",
+    "loadFor": "Load for",
+    "resetPortions": "Back to saved size"
   },
   "categories": {
     "Breakfast": "Breakfast",
