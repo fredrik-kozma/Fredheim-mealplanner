@@ -4,7 +4,8 @@
     "planner": "Planering",
     "shopping": "Inköpslista",
     "packs": "Paket",
-    "settings": "Inställningar"
+    "settings": "Inställningar",
+    "nutrition": "Näring"
   },
   "about": {
     "inCooperationWith": "I samarbete med"
@@ -467,7 +468,9 @@
     "plannerLockedTitle": "Planera din vecka",
     "plannerLockedDesc": "Dra recept till veckokalendern. Starta din gratis provperiod för att låsa upp planeraren.",
     "shoppingLockedTitle": "Få din inköpslista",
-    "shoppingLockedDesc": "Din veckoplan blir automatiskt en inköpslista. Starta din gratis provperiod för att låsa upp."
+    "shoppingLockedDesc": "Din veckoplan blir automatiskt en inköpslista. Starta din gratis provperiod för att låsa upp.",
+    "nutritionLockedTitle": "Följ din näring",
+    "nutritionLockedDesc": "Logga vad du äter och se hur din vecka balanseras. Starta din gratisperiod för att använda näringsspåraren."
   },
   "subscription": {
     "title": "Konto och prenumeration",
@@ -613,5 +616,30 @@
     "blood-pressure-friendly": "Blodtryck",
     "heart-healthy": "Hjärta & kolesterol",
     "weight-loss": "Viktminskning"
+  },
+  "nutritionTracker": {
+    "title": "Näring",
+    "today": "Idag",
+    "jumpToday": "Gå till idag",
+    "prevDay": "Föregående dag",
+    "nextDay": "Nästa dag",
+    "dayView": "Dag",
+    "weekView": "Vecka",
+    "mealsEaten": "Vad du åt",
+    "addFood": "Lägg till mat",
+    "noMeals": "Inga måltider loggade för denna dag ännu.",
+    "portionsEaten_one": "{{count}} portion",
+    "portionsEaten_other": "{{count}} portioner",
+    "less": "Mindre",
+    "more": "Mer",
+    "dailyCoverage": "Näringstäckning",
+    "weekCalories": "Kalorier under veckan",
+    "weeklyCoverage": "Veckosnitt",
+    "weeklyAvgLabel": "Genomsnitt per dag denna vecka (mån–sön)",
+    "emptyTotals": "Inget loggat ännu – lägg till en måltid för att se täckningen.",
+    "pickTitle": "Logga mat du åt",
+    "balanceTitle": "Sikta på balans, inte perfektion.",
+    "balanceBody": "Du behöver inte nå 100 % av varje näringsämne varje dag – vissa dagar blir högre, andra lägre. Det som spelar roll är att det jämnar ut sig under veckan. Dessa siffror är uppskattningar från standardiserade livsmedelsdata, inte medicinsk rådgivning.",
+    "noNutritionData": "ingen näringsdata"
   }
 }

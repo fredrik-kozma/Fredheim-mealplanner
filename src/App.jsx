@@ -7,6 +7,7 @@ import PlannerPage from './pages/PlannerPage'
 import ShoppingPage from './pages/ShoppingPage'
 import SettingsPage from './pages/SettingsPage'
 import PacksPage from './pages/PacksPage'
+import NutritionPage from './pages/NutritionPage'
 import RecipeForm from './components/recipes/RecipeForm'
 import RecipeDetail from './components/recipes/RecipeDetail'
 import ResetPasswordPage from './pages/ResetPasswordPage'
@@ -148,6 +149,7 @@ function AppShell() {
             <Route path="/recipes/:id" element={<RecipeDetail />} />
             <Route path="/recipes/:id/edit" element={<RecipeForm />} />
             <Route path="/planner" element={<PlannerPage />} />
+            <Route path="/nutrition" element={<NutritionPage />} />
             <Route path="/shopping" element={<ShoppingPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/packs" element={<PacksPage />} />

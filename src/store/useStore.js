@@ -770,6 +770,55 @@ const useStore = create(
 
       clearBatchCook: () => set({ batchCook: [] }),
 
+      // ── Nutrition log ──
+      // What the user actually ate, keyed by local date 'YYYY-MM-DD':
+      //   { [date]: [ { id, recipeId, portions } ] }
+      // Portions are servings of that recipe eaten (halves allowed), so a
+      // day's total nutrition is Σ recipe.perServing × portions. Kept as its
+      // own map, independent of the planner — logging what you ate is a
+      // separate act from planning what you'll cook.
+      nutritionLog: {},
+
+      addNutritionEntry: (date, recipeId, portions = 1) => set((s) => {
+        const day = s.nutritionLog[date] || []
+        // If the same recipe is already logged that day, bump its portions
+        // rather than adding a duplicate row.
+        const existing = day.find(e => e.recipeId === recipeId)
+        const nextDay = existing
+          ? day.map(e => e.recipeId === recipeId
+            ? { ...e, portions: Math.round((e.portions + portions) * 2) / 2 }
+            : e)
+          : [...day, { id: makeId(), recipeId, portions }]
+        return { nutritionLog: { ...s.nutritionLog, [date]: nextDay } }
+      }),
+
+      setNutritionPortions: (date, entryId, portions) => set((s) => {
+        const clean = Math.max(0.5, Math.round(portions * 2) / 2)
+        return {
+          nutritionLog: {
+            ...s.nutritionLog,
+            [date]: (s.nutritionLog[date] || []).map(e =>
+              e.id === entryId ? { ...e, portions: clean } : e),
+          },
+        }
+      }),
+
+      removeNutritionEntry: (date, entryId) => set((s) => {
+        const nextDay = (s.nutritionLog[date] || []).filter(e => e.id !== entryId)
+        const next = { ...s.nutritionLog }
+        // Drop the date key entirely once its last entry is gone, keeping the
+        // map tidy (and "which days have data" a simple key check).
+        if (nextDay.length) next[date] = nextDay
+        else delete next[date]
+        return { nutritionLog: next }
+      }),
+
+      clearNutritionDay: (date) => set((s) => {
+        const next = { ...s.nutritionLog }
+        delete next[date]
+        return { nutritionLog: next }
+      }),
+
       addRecipeToSlot: (day, slot, recipeId, servings = null) => set((s) => {
         const current = s.weekPlan[day]?.[slot] || []
         if (current.some(it => normalizeSlotItem(it)?.recipeId === recipeId)) return {}

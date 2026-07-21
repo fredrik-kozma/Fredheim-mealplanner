@@ -63,6 +63,37 @@ export const NUTRITION_GROUPS = [
 // All field keys in a flat list — useful for initialising empty nutrition objects.
 export const ALL_NUTRITION_KEYS = NUTRITION_GROUPS.flatMap(g => g.fields.map(f => f.key))
 
+/**
+ * Sum the nutrition of a set of logged entries into a single totals object
+ * keyed by nutrient. Each entry contributes recipe.perServing × portions.
+ *
+ * @param {Array<{recipeId:string, portions:number}>} entries
+ * @param {Object} recipeMap  id → recipe (with nutrition.perServing)
+ * @returns {Object} totals keyed by nutrient (only keys with data)
+ */
+export function sumNutrition(entries, recipeMap) {
+  const totals = {}
+  for (const entry of entries || []) {
+    const recipe = recipeMap[entry.recipeId]
+    const per = recipe?.nutrition?.perServing
+    if (!per) continue
+    const portions = entry.portions || 0
+    for (const key of ALL_NUTRITION_KEYS) {
+      const v = per[key]
+      if (v === null || v === undefined) continue
+      totals[key] = (totals[key] || 0) + v * portions
+    }
+  }
+  return totals
+}
+
+/** Scale a totals object by a factor (e.g. ÷7 for a weekly daily-average). */
+export function scaleNutrition(totals, factor) {
+  const out = {}
+  for (const [k, v] of Object.entries(totals || {})) out[k] = v * factor
+  return out
+}
+
 /** Round a nutrition value for display (smart precision). */
 export function fmtNutrient(value) {
   if (value === null || value === undefined) return null

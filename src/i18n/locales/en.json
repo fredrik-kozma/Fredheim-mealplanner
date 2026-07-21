@@ -4,7 +4,8 @@
     "planner": "Planner",
     "shopping": "Shopping",
     "packs": "Packs",
-    "settings": "Settings"
+    "settings": "Settings",
+    "nutrition": "Nutrition"
   },
   "app": {
     "name": "Fredheim Meal Planner",
@@ -467,7 +468,9 @@
     "plannerLockedTitle": "Plan your week",
     "plannerLockedDesc": "Drag recipes onto a weekly calendar. Start your free trial to unlock the planner.",
     "shoppingLockedTitle": "Get your shopping list",
-    "shoppingLockedDesc": "Your weekly plan automatically becomes a shopping list. Start your free trial to unlock."
+    "shoppingLockedDesc": "Your weekly plan automatically becomes a shopping list. Start your free trial to unlock.",
+    "nutritionLockedTitle": "Track your nutrition",
+    "nutritionLockedDesc": "Log what you eat and see how your week balances out. Start your free trial to use the nutrition tracker."
   },
   "subscription": {
     "title": "Account & Subscription",
@@ -613,5 +616,30 @@
     "blood-pressure-friendly": "Blood pressure",
     "heart-healthy": "Heart & cholesterol",
     "weight-loss": "Weight loss"
+  },
+  "nutritionTracker": {
+    "title": "Nutrition",
+    "today": "Today",
+    "jumpToday": "Jump to today",
+    "prevDay": "Previous day",
+    "nextDay": "Next day",
+    "dayView": "Day",
+    "weekView": "Week",
+    "mealsEaten": "What you ate",
+    "addFood": "Add food",
+    "noMeals": "No meals logged for this day yet.",
+    "portionsEaten_one": "{{count}} portion",
+    "portionsEaten_other": "{{count}} portions",
+    "less": "Less",
+    "more": "More",
+    "dailyCoverage": "Nutrient coverage",
+    "weekCalories": "Calories across the week",
+    "weeklyCoverage": "Weekly average",
+    "weeklyAvgLabel": "Average per day across this week (Mon–Sun)",
+    "emptyTotals": "Nothing logged yet — add a meal to see your coverage.",
+    "pickTitle": "Log a food you ate",
+    "balanceTitle": "Aim for balance, not perfection.",
+    "balanceBody": "You don't need to hit 100% of every nutrient every single day — some days run higher, others lower. What matters is that things even out across the week. These figures are estimates from standard food data, not medical advice.",
+    "noNutritionData": "no nutrition data"
   }
 }

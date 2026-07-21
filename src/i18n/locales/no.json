@@ -4,7 +4,8 @@
     "planner": "Ukeplan",
     "shopping": "Handleliste",
     "packs": "Pakker",
-    "settings": "Innstillinger"
+    "settings": "Innstillinger",
+    "nutrition": "Ernæring"
   },
   "about": {
     "inCooperationWith": "I samarbeid med"
@@ -467,7 +468,9 @@
     "plannerLockedTitle": "Planlegg uken din",
     "plannerLockedDesc": "Dra oppskrifter inn i ukekalenderen. Start gratis prøveperiode for å låse opp planleggeren.",
     "shoppingLockedTitle": "Få handlelisten din",
-    "shoppingLockedDesc": "Ukeplanen din blir automatisk en handleliste. Start gratis prøveperiode for å låse opp."
+    "shoppingLockedDesc": "Ukeplanen din blir automatisk en handleliste. Start gratis prøveperiode for å låse opp.",
+    "nutritionLockedTitle": "Følg ernæringen din",
+    "nutritionLockedDesc": "Logg hva du spiser og se hvordan uken balanserer seg ut. Start gratisperioden for å bruke ernæringssporeren."
   },
   "subscription": {
     "title": "Konto og abonnement",
@@ -613,5 +616,30 @@
     "blood-pressure-friendly": "Blodtrykk",
     "heart-healthy": "Hjerte & kolesterol",
     "weight-loss": "Vektnedgang"
+  },
+  "nutritionTracker": {
+    "title": "Ernæring",
+    "today": "I dag",
+    "jumpToday": "Gå til i dag",
+    "prevDay": "Forrige dag",
+    "nextDay": "Neste dag",
+    "dayView": "Dag",
+    "weekView": "Uke",
+    "mealsEaten": "Hva du spiste",
+    "addFood": "Legg til mat",
+    "noMeals": "Ingen måltider logget for denne dagen ennå.",
+    "portionsEaten_one": "{{count}} porsjon",
+    "portionsEaten_other": "{{count}} porsjoner",
+    "less": "Mindre",
+    "more": "Mer",
+    "dailyCoverage": "Næringsdekning",
+    "weekCalories": "Kalorier gjennom uken",
+    "weeklyCoverage": "Ukesnitt",
+    "weeklyAvgLabel": "Gjennomsnitt per dag denne uken (man–søn)",
+    "emptyTotals": "Ingenting logget ennå – legg til et måltid for å se dekningen.",
+    "pickTitle": "Logg mat du spiste",
+    "balanceTitle": "Sikt på balanse, ikke perfeksjon.",
+    "balanceBody": "Du trenger ikke å nå 100 % av hvert næringsstoff hver eneste dag – noen dager blir høyere, andre lavere. Det som betyr noe, er at det jevner seg ut i løpet av uken. Disse tallene er estimater fra standard matvaredata, ikke medisinske råd.",
+    "noNutritionData": "ingen næringsdata"
   }
 }
