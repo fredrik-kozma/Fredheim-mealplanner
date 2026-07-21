@@ -1,8 +1,13 @@
 /*
- * Appends 10 recipes (orn-14..orn-23) to the Fredheim Reversal Protocol
- * pack, transcribed from the user's PDF. Each carries EN/NO/SV content,
- * chef's notes, per-serving nutrition (from the source panels), and base
- * tags. Condition tags are assigned afterwards by audit_condition_tags.cjs.
+ * Appends recipes (orn-14..orn-21, orn-23) to the Fredheim Reversal
+ * Protocol pack, transcribed from the user's PDF. Each carries EN/NO/SV
+ * content, chef's notes, full per-serving nutrition (from the source
+ * panels), and base tags. Condition tags are assigned afterwards by
+ * audit_condition_tags.cjs.
+ *
+ * orn-22 (Golden Vegetable Broth) is deliberately not built here — it
+ * duplicated orn-12 (Fredheim Golden Vegetable Broth, same recipe, already
+ * photographed) and was removed from the pack.
  *
  * Steps are genericised (no inline quantities) so servings scale cleanly,
  * matching the rest of the pack. Notes are kept verbatim (advisory text).
@@ -18,26 +23,40 @@ const S_EN = 'Sea salt, to taste'
 const S_NO = 'Havsalt, etter smak'
 const S_SV = 'Havssalt, efter smak'
 
-// perServing helper — only the values reliably read from the panels.
-const nut = (o) => ({ cholesterol: 0, addedSugar: 0, ...o })
+// Canonical nutrient order, matching the rest of the pack. The helper emits
+// keys in this order and only those actually provided, so a full panel gives
+// a complete 35-field profile and a partial one stays partial.
+const NUT_ORDER = [
+  'calories', 'protein', 'totalFat', 'saturatedFat', 'polyunsaturatedFat', 'monounsaturatedFat',
+  'omega3', 'omega6', 'cholesterol', 'totalCarbs', 'totalSugars', 'addedSugar', 'fiber',
+  'calcium', 'potassium', 'copper', 'iron', 'magnesium', 'manganese', 'selenium', 'phosphorus', 'zinc', 'sodium',
+  'vitaminA', 'vitaminB6', 'vitaminB12', 'vitaminC', 'vitaminD', 'vitaminE', 'vitaminK',
+  'folate', 'thiamin', 'riboflavin', 'niacin', 'choline',
+]
+const nut = (o) => {
+  const full = { cholesterol: 0, addedSugar: 0, ...o }
+  const out = {}
+  for (const k of NUT_ORDER) if (full[k] !== undefined) out[k] = full[k]
+  return out
+}
 
 const RECIPES = [
   {
     id: 'orn-14', category: 'Salad', servings: 2, prepTime: 10, cookTime: 0, weight: 383,
     tags: ['ornish-green', 'salad', 'vegan', 'oil-free', 'no-added-sugar', 'high-fiber'],
     en: {
-      title: 'Black Bean & Tomato Breakfast Salad',
-      description: 'A fresh, filling, protein-rich salad that works as a light breakfast or quick lunch — vibrant, earthy, sweet-sour, and ready in under 10 minutes.',
+      title: 'Black Bean & Tomato Salad',
+      description: 'A fresh, filling, protein-rich salad that works as a light meal or quick lunch — vibrant, earthy, sweet-sour, and ready in under 10 minutes.',
       notes: 'Ground flaxseed is always added off-heat and per bowl to preserve ALA omega-3 integrity — never cook it in. Chop the dates as finely as possible; they soften into the dressing and distribute sweetness evenly through every bite. For batch cooking, store undressed and add lemon, salt and flaxseed fresh per serving. Keeps refrigerated for up to 24 hours. If using canned black beans, rinse very thoroughly — residual canning liquid can add 50–80 mg sodium per serving.',
     },
     no: {
-      title: 'Frokostsalat med sorte bønner og tomat',
-      description: 'En frisk, mettende og proteinrik salat som fungerer som lett frokost eller rask lunsj — fargerik, jordnær, søtsyrlig og klar på under 10 minutter.',
+      title: 'Salat med sorte bønner og tomat',
+      description: 'En frisk, mettende og proteinrik salat som fungerer som lett måltid eller rask lunsj — fargerik, jordnær, søtsyrlig og klar på under 10 minutter.',
       notes: 'Malt linfrø tilsettes alltid utenom varmen og per skål for å bevare ALA-omega-3 — kok det aldri inn. Hakk dadlene så fint som mulig; de mykner inn i dressingen og fordeler søtheten jevnt. Til matprep: oppbevar udressert og tilsett sitron, salt og linfrø ferskt per porsjon. Holder seg i kjøleskap i opptil 24 timer. Bruker du hermetiske bønner, skyll dem svært godt — restvæske kan tilføre 50–80 mg natrium per porsjon.',
     },
     sv: {
-      title: 'Frukostsallad med svarta bönor och tomat',
-      description: 'En fräsch, mättande och proteinrik sallad som fungerar som lätt frukost eller snabb lunch — färgstark, jordnära, sötsyrlig och klar på under 10 minuter.',
+      title: 'Sallad med svarta bönor och tomat',
+      description: 'En fräsch, mättande och proteinrik sallad som fungerar som lätt måltid eller snabb lunch — färgstark, jordnära, sötsyrlig och klar på under 10 minuter.',
       notes: 'Malet linfrö tillsätts alltid utanför värmen och per skål för att bevara ALA-omega-3 — koka aldrig in det. Hacka dadlarna så fint som möjligt; de mjuknar in i dressingen och fördelar sötman jämnt. För matprep: förvara odressad och tillsätt citron, salt och linfrö färskt per portion. Håller sig i kylen i upp till 24 timmar. Använder du bönor på burk, skölj dem mycket noga — restvätska kan tillföra 50–80 mg natrium per portion.',
     },
     ings: [
@@ -58,7 +77,7 @@ const RECIPES = [
       ['Sprinkle in the cumin, smoked paprika and salt. Squeeze over the lemon juice and toss well to coat everything.', 'Dryss over spisskummen, røkt paprika og salt. Press over sitronsaften og vend godt så alt dekkes.', 'Strö över spiskummin, rökt paprika och salt. Pressa över citronsaften och vänd väl så allt täcks.'],
       ['Scatter the cilantro and ground flaxseed over the top and toss gently. Let the salad rest 5 minutes before serving — the sweet-sour contrast deepens as it sits.', 'Dryss koriander og malt linfrø over toppen og vend forsiktig. La salaten hvile i 5 minutter før servering — den søtsyrlige kontrasten blir dypere når den står.', 'Strö koriander och malet linfrö över och vänd försiktigt. Låt salladen vila i 5 minuter före servering — den sötsyrliga kontrasten fördjupas när den står.'],
     ],
-    nutrition: nut({ calories: 246, protein: 12.9, totalFat: 3.6, saturatedFat: 0.4, polyunsaturatedFat: 2.3, omega3: 1.6, totalCarbs: 44, totalSugars: 12, fiber: 11, sodium: 290, potassium: 890 }),
+    nutrition: nut({ calories: 246, protein: 12.9, totalFat: 3.6, saturatedFat: 0.4, polyunsaturatedFat: 2.3, monounsaturatedFat: 0.4, omega3: 1.8, omega6: 0.5, totalCarbs: 44, totalSugars: 14.5, fiber: 11, calcium: 115, potassium: 890, copper: 0.45, iron: 4.5, magnesium: 92, manganese: 0.72, selenium: 4, phosphorus: 238, zinc: 1.9, sodium: 290, vitaminA: 125, vitaminB6: 0.38, vitaminB12: 0, vitaminC: 84, vitaminD: 0, vitaminE: 2.1, vitaminK: 70, folate: 218, thiamin: 0.34, riboflavin: 0.16, niacin: 2.2, choline: 50 }),
   },
 
   {
@@ -92,7 +111,7 @@ const RECIPES = [
       ['Warm the blended date-oat milk in a small saucepan over low-medium heat until steaming — do not boil. Froth it now if you have a frother.', 'Varm den blandede dadel-havremelken i en liten kjele på lav-middels varme til den damper — ikke kok. Skum den nå hvis du har en melkeskummer.', 'Värm den mixade dadel-havremjölken i en liten kastrull på låg-medelvärme tills den ryker — koka inte. Skumma den nu om du har en mjölkskummare.'],
       ['Pour the hot date-oat milk into the mug over the dissolved barley coffee, stir gently and dust with cinnamon on top.', 'Hell den varme dadel-havremelken i koppen over den oppløste byggkaffen, rør forsiktig og dryss kanel på toppen.', 'Häll den varma dadel-havremjölken i muggen över det upplösta kornkaffet, rör försiktigt och pudra kanel över.'],
     ],
-    nutrition: nut({ calories: 105, protein: 2.3, totalFat: 1.6, saturatedFat: 0.2, polyunsaturatedFat: 0.35, monounsaturatedFat: 0.45, omega3: 0.04, omega6: 0.3, totalCarbs: 20, totalSugars: 10, fiber: 1.2, sodium: 50, potassium: 195 }),
+    nutrition: nut({ calories: 105, protein: 2.3, totalFat: 1.6, saturatedFat: 0.2, polyunsaturatedFat: 0.35, monounsaturatedFat: 0.45, omega3: 0.04, omega6: 0.3, totalCarbs: 20, totalSugars: 10, fiber: 1.2, calcium: 115, potassium: 195, copper: 0.08, iron: 0.6, magnesium: 22, manganese: 0.35, selenium: 2, phosphorus: 65, zinc: 0.4, sodium: 50, vitaminA: 0, vitaminB6: 0.04, vitaminB12: 0, vitaminC: 0.3, vitaminD: 0, vitaminE: 0.4, vitaminK: 1.0, folate: 8, thiamin: 0.05, riboflavin: 0.10, niacin: 0.8, choline: 11 }),
   },
 
   {
@@ -127,7 +146,7 @@ const RECIPES = [
       ['Put the shredded red cabbage and cooked edamame in a large bowl. Pour over the dressing and toss thoroughly to coat every strand.', 'Ha den finstrimlede rødkålen og kokt edamame i en stor bolle. Hell over dressingen og vend godt så alt dekkes.', 'Lägg den strimlade rödkålen och kokt edamame i en stor skål. Häll över dressingen och vänd väl så allt täcks.'],
       ['Fold in the chopped parsley and ground flaxseed. Serve straight away, or let it sit 10 minutes for the flavours to deepen.', 'Vend inn hakket persille og malt linfrø. Server med en gang, eller la den stå i 10 minutter så smakene blir dypere.', 'Vänd ner hackad persilja och malet linfrö. Servera direkt, eller låt stå i 10 minuter så smakerna fördjupas.'],
     ],
-    nutrition: nut({ calories: 178, protein: 9.8, totalFat: 5.1, saturatedFat: 0.6, polyunsaturatedFat: 2.8, monounsaturatedFat: 1.1, omega3: 1.7, omega6: 1.0, totalCarbs: 24.5, totalSugars: 12.8, fiber: 7.4, sodium: 195, potassium: 620 }),
+    nutrition: nut({ calories: 178, protein: 9.8, totalFat: 5.1, saturatedFat: 0.6, polyunsaturatedFat: 2.8, monounsaturatedFat: 1.1, omega3: 1.7, omega6: 1.0, totalCarbs: 24.5, totalSugars: 12.8, fiber: 7.4, calcium: 128, potassium: 620, copper: 0.28, iron: 2.8, magnesium: 62, manganese: 0.55, selenium: 3.2, phosphorus: 145, zinc: 1.2, sodium: 195, vitaminA: 210, vitaminB6: 0.38, vitaminB12: 0, vitaminC: 72, vitaminD: 0, vitaminE: 1.4, vitaminK: 145, folate: 118, thiamin: 0.22, riboflavin: 0.18, niacin: 1.6, choline: 48 }),
   },
 
   {
@@ -170,7 +189,7 @@ const RECIPES = [
       ['Bake at 220°C for about 10 minutes, then reduce to 190°C and bake a further 18 minutes until light golden. The base should sound hollow.', 'Stek ved 220°C i ca. 10 minutter, skru så ned til 190°C og stek videre i 18 minutter til de er lyst gyllne. Bunnen skal høres hul ut.', 'Grädda vid 220°C i ca 10 minuter, sänk sedan till 190°C och grädda ytterligare 18 minuter tills ljust gyllene. Botten ska låta ihålig.'],
       ['Cool on a rack for at least 60 minutes before eating — the crumb keeps setting as it cools.', 'Avkjøl på rist i minst 60 minutter før servering — krummen setter seg videre mens den avkjøles.', 'Svalna på galler i minst 60 minuter innan servering — inkråmet sätter sig medan det svalnar.'],
     ],
-    nutrition: nut({ calories: 191, protein: 5.4, totalFat: 3.2, saturatedFat: 0.5, polyunsaturatedFat: 1.5, monounsaturatedFat: 0.8, omega3: 0.65, omega6: 0.72, totalCarbs: 36.5, totalSugars: 0.7, fiber: 6.3, sodium: 188 }),
+    nutrition: nut({ calories: 191, protein: 5.4, totalFat: 3.2, saturatedFat: 0.5, polyunsaturatedFat: 1.5, monounsaturatedFat: 0.8, omega3: 0.65, omega6: 0.72, totalCarbs: 36.5, totalSugars: 0.7, fiber: 6.3, calcium: 20, potassium: 310, copper: 0.16, iron: 1.9, magnesium: 50, manganese: 1.1, selenium: 6.4, phosphorus: 142, zinc: 1.0, sodium: 188, vitaminA: 0, vitaminB6: 0.24, vitaminB12: 0, vitaminC: 5.2, vitaminD: 0, vitaminE: 0.3, vitaminK: 2.1, folate: 24, thiamin: 0.24, riboflavin: 0.07, niacin: 2.3, choline: 16 }),
   },
 
   {
@@ -208,7 +227,7 @@ const RECIPES = [
       ['In a large bowl, combine the oats, chia, flaxseed and cinnamon. Pour in the remaining oat milk and the carob-date cream and stir thoroughly.', 'I en stor bolle blander du havregryn, chia, linfrø og kanel. Hell i resten av havremelken og karob-dadel-kremen og rør godt.', 'I en stor skål blandar du havregryn, chia, linfrö och kanel. Häll i resten av havremjölken och karob-dadelkrämen och rör ordentligt.'],
       ['Divide into 4 jars and refrigerate overnight. In the morning, stir and top each jar with sliced banana.', 'Fordel i 4 glass og sett i kjøleskapet over natten. Om morgenen rører du og topper hvert glass med bananskiver.', 'Fördela i 4 burkar och ställ i kylen över natten. På morgonen rör du och toppar varje burk med bananskivor.'],
     ],
-    nutrition: nut({ calories: 441, protein: 12.6, totalFat: 7.9, saturatedFat: 1.2, polyunsaturatedFat: 3.9, monounsaturatedFat: 2.0, omega3: 1.8, omega6: 2.1, totalCarbs: 86, totalSugars: 27.5, fiber: 14.4, sodium: 11, potassium: 780 }),
+    nutrition: nut({ calories: 441, protein: 12.6, totalFat: 7.9, saturatedFat: 1.2, polyunsaturatedFat: 3.9, monounsaturatedFat: 2.0, omega3: 1.8, omega6: 2.1, totalCarbs: 86, totalSugars: 27.5, fiber: 14.4, calcium: 119, potassium: 780, copper: 0.55, iron: 3.9, magnesium: 141, manganese: 2.6, selenium: 19.5, phosphorus: 331, zinc: 2.6, sodium: 11, vitaminA: 3, vitaminB6: 0.36, vitaminB12: 0, vitaminC: 5, vitaminD: 0, vitaminE: 0.3, vitaminK: 1, folate: 43, thiamin: 0.55, riboflavin: 0.16, niacin: 1.9, choline: 38 }),
   },
 
   {
@@ -245,7 +264,7 @@ const RECIPES = [
       ['Divide into 4 glasses or jars, cover and refrigerate at least 2 hours — ideally overnight. The pudding firms up as the psyllium gels.', 'Fordel i 4 glass, dekk til og sett i kjøleskapet i minst 2 timer — helst over natten. Puddingen setter seg mens psylliumet gelerer.', 'Fördela i 4 glas, täck och ställ i kylen i minst 2 timmar — helst över natten. Puddingen sätter sig medan psylliumet gelar.'],
       ['Serve cold, topped with a few fresh pineapple pieces or a pinch of cardamom.', 'Server kald, toppet med noen biter fersk ananas eller en klype kardemomme.', 'Servera kall, toppad med några bitar färsk ananas eller en nypa kardemumma.'],
     ],
-    nutrition: nut({ calories: 152, protein: 3.0, totalFat: 3.0, saturatedFat: 0.3, polyunsaturatedFat: 2.1, monounsaturatedFat: 0.5, omega3: 1.7, omega6: 0.35, totalCarbs: 31.0, totalSugars: 17.1, fiber: 17.4, sodium: 65, potassium: 278 }),
+    nutrition: nut({ calories: 152, protein: 3.0, totalFat: 3.0, saturatedFat: 0.3, polyunsaturatedFat: 2.1, monounsaturatedFat: 0.5, omega3: 1.7, omega6: 0.35, totalCarbs: 31.0, totalSugars: 17.1, fiber: 17.4, calcium: 112, potassium: 278, copper: 0.14, iron: 1.3, magnesium: 40, manganese: 1.1, selenium: 3.0, phosphorus: 95, zinc: 0.6, sodium: 65, vitaminA: 8, vitaminB6: 0.14, vitaminB12: 0, vitaminC: 18.4, vitaminD: 0, vitaminE: 1.0, vitaminK: 6, folate: 22, thiamin: 0.13, riboflavin: 0.07, niacin: 0.7, choline: 15 }),
   },
 
   {
@@ -293,7 +312,7 @@ const RECIPES = [
       ['Form 8 patties about 1.5 cm thick on the tray and brush the tops lightly with the remaining olive oil — the thin brush is what lets them turn golden in dry oven heat.', 'Form 8 biffer ca. 1,5 cm tykke på brettet og pensle toppene lett med resten av olivenoljen — det tynne penselstrøket er det som gir dem gyllen farge i tørr ovnsvarme.', 'Forma 8 biffar ca 1,5 cm tjocka på plåten och pensla ovansidorna lätt med resten av olivoljan — det tunna penseldraget är det som ger dem gyllene färg i torr ugnsvärme.'],
       ['Bake 25 minutes, flipping at the halfway point so both faces brown. Pull them when deep golden and firm — they keep setting as they cool.', 'Stek i 25 minutter, snu halvveis så begge sider brunes. Ta dem ut når de er dypt gyllne og faste — de setter seg videre mens de avkjøles.', 'Grädda 25 minuter, vänd halvvägs så båda sidor får färg. Ta ut dem när de är djupt gyllene och fasta — de sätter sig medan de svalnar.'],
     ],
-    nutrition: nut({ calories: 422, protein: 14.3, totalFat: 25.4, saturatedFat: 2.5, polyunsaturatedFat: 15.9, monounsaturatedFat: 5.3, omega3: 3.9, omega6: 12.2, totalCarbs: 42.6, totalSugars: 4.4, fiber: 9.6, sodium: 308, potassium: 737 }),
+    nutrition: nut({ calories: 422, protein: 14.3, totalFat: 25.4, saturatedFat: 2.5, polyunsaturatedFat: 15.9, monounsaturatedFat: 5.3, omega3: 3.9, omega6: 12.2, totalCarbs: 42.6, totalSugars: 4.4, fiber: 9.6, calcium: 138, potassium: 737, copper: 0.73, iron: 4.7, magnesium: 121, manganese: 1.74, selenium: 4.1, phosphorus: 250, zinc: 2.3, sodium: 308, vitaminA: 342, vitaminB6: 0.37, vitaminB12: 0, vitaminC: 8.5, vitaminD: 0, vitaminE: 1.3, vitaminK: 45, folate: 111, thiamin: 0.39, riboflavin: 0.15, niacin: 1.8, choline: 37 }),
   },
 
   {
@@ -330,49 +349,7 @@ const RECIPES = [
       ['Reduce the heat, add the date paste, lemon juice and salt, and stir to coat every strand. Cook 2 more minutes until glossy and unified.', 'Skru ned varmen, tilsett dadelpastaen, sitronsaften og saltet, og rør så alt dekkes. Stek 2 minutter til, til det er blankt og samlet.', 'Sänk värmen, tillsätt dadelpastan, citronsaften och saltet och rör så allt täcks. Stek 2 minuter till tills blankt och samlat.'],
       ['Remove from the heat, scatter the lemon zest over the top and toss once — added off-heat, it keeps its bright, floral lift.', 'Ta av varmen, dryss sitronskallet over toppen og vend én gang — tilsatt utenom varmen beholder det det friske, blomstrende løftet.', 'Ta av värmen, strö citronskalet över och vänd en gång — tillsatt utanför värmen behåller det sitt fräscha, blommiga lyft.'],
     ],
-    nutrition: nut({ calories: 105, protein: 2.2, totalFat: 0.4, saturatedFat: 0.1, polyunsaturatedFat: 0.2, monounsaturatedFat: 0.05, omega3: 0.1, omega6: 0.1, totalCarbs: 26, totalSugars: 17, fiber: 5.2, sodium: 165, potassium: 490 }),
-  },
-
-  {
-    id: 'orn-22', category: 'Soup', servings: 6, prepTime: 15, cookTime: 50, weight: 330,
-    tags: ['ornish-green', 'soup', 'vegan', 'oil-free', 'no-added-sugar'],
-    en: {
-      title: 'Golden Vegetable Broth',
-      description: 'A rich, golden, low-sodium broth built on mushrooms, sweet aromatics and anti-inflammatory turmeric. Deeply nourishing, microbiome-friendly and perfect as a cooking base or warming drink. Ornish GREEN certified.',
-      notes: 'Zero-waste scrap use — second boil: return the strained solids to the pot, cover with fresh water and simmer 20–30 minutes; use as a mild cooking liquid for oats, quinoa or brown rice. Scrap soup: blend first-round scraps with cooked lentils, turmeric and lemon (remove bay leaves first). Miso rule: always add miso off the heat into warm (not boiling) broth — boiling destroys the live cultures. Microbiome tip: onion, garlic, celery, mushrooms and sweet potato each feed different beneficial gut bacteria. Drinking broth: serve hot in a mug with an extra squeeze of lemon and 1 tbsp ground flaxseed for daily omega-3.',
-    },
-    no: {
-      title: 'Gyllen grønnsaksbuljong',
-      description: 'En fyldig, gyllen, natriumfattig buljong bygget på sopp, søte aromaer og betennelsesdempende gurkemeie. Dypt nærende, mikrobiomvennlig og perfekt som kokebase eller varmende drikk. Ornish GREEN-sertifisert.',
-      notes: 'Null-svinn bruk av rester — andre koking: ha de silte grønnsaksrestene tilbake i gryten, dekk med friskt vann og la småkoke i 20–30 minutter; bruk som mild kokevæske til havre, quinoa eller brun ris. Restesuppe: kjør restene fra første runde med kokte linser, gurkemeie og sitron (fjern laurbærbladene først). Miso-regel: tilsett alltid miso utenom varmen i lunken (ikke kokende) buljong — koking ødelegger de levende kulturene. Mikrobiomtips: løk, hvitløk, selleri, sopp og søtpotet mater hver sine gunstige tarmbakterier. Drikkebuljong: server varm i en kopp med en ekstra skvis sitron og 1 ss malt linfrø for daglig omega-3.',
-    },
-    sv: {
-      title: 'Gyllene grönsaksbuljong',
-      description: 'En fyllig, gyllene, natriumsnål buljong byggd på svamp, söta aromater och antiinflammatorisk gurkmeja. Djupt närande, mikrobiomvänlig och perfekt som matlagningsbas eller värmande dryck. Ornish GREEN-certifierad.',
-      notes: 'Noll-svinn användning av rester — andra kok: lägg tillbaka de silade grönsaksresterna i grytan, täck med färskt vatten och sjud 20–30 minuter; använd som mild kokvätska till havre, quinoa eller brunt ris. Restsoppa: mixa resterna från första omgången med kokta linser, gurkmeja och citron (ta bort lagerbladen först). Miso-regel: tillsätt alltid miso utanför värmen i ljummen (inte kokande) buljong — kokning förstör de levande kulturerna. Mikrobiomtips: lök, vitlök, selleri, svamp och sötpotatis matar var sina nyttiga tarmbakterier. Drickbuljong: servera varm i en mugg med en extra klick citron och 1 msk malet linfrö för daglig omega-3.',
-    },
-    ings: [
-      [1, 'pcs', 'Large onion, roughly chopped', 'Stor løk, grovhakket', 'Stor lök, grovhackad'],
-      [4, 'clove', 'Garlic cloves, smashed', 'Hvitløksfedd, knust', 'Vitlöksklyftor, krossade'],
-      [3, 'pcs', 'Celery stalks, roughly chopped', 'Selleristilker, grovhakket', 'Selleristjälkar, grovhackade'],
-      [200, 'g', 'Mushrooms (any variety), halved', 'Sopp (valgfri sort), halvert', 'Svamp (valfri sort), halverad'],
-      [2, 'pcs', 'Medium tomatoes, quartered', 'Middels tomater, i båter', 'Medelstora tomater, i klyftor'],
-      [1, 'pcs', 'Red or yellow bell pepper, roughly chopped', 'Rød eller gul paprika, grovhakket', 'Röd eller gul paprika, grovhackad'],
-      [1, 'pcs', 'Small sweet potato, roughly chopped (skin on)', 'Liten søtpotet, grovhakket (med skall)', 'Liten sötpotatis, grovhackad (med skal)'],
-      [2, 'pcs', 'Bay leaves', 'Laurbærblad', 'Lagerblad'],
-      [1, 'tsp', 'Ground turmeric', 'Malt gurkemeie', 'Malen gurkmeja'],
-      [2000, 'ml', 'Cold water', 'Kaldt vann', 'Kallt vatten'],
-      [1, 'tbsp', 'Fresh lemon juice (at finish)', 'Fersk sitronsaft (til slutt)', 'Färsk citronsaft (på slutet)'],
-      [0.5, 'tsp', 'White miso (shiro), at finish', 'Hvit miso (shiro), til slutt', 'Vit miso (shiro), på slutet'],
-    ],
-    steps: [
-      ['Dry-toast the aromatics: in a dry pan over medium-high heat, add the onion, garlic and mushrooms and let them sit without stirring 2–3 minutes until slightly charred at the edges — this builds deep flavour, do not skip it.', 'Tørrist aromatene: i en tørr panne på middels-høy varme har du i løk, hvitløk og sopp og lar dem ligge urørt i 2–3 minutter til de er lett svidd i kantene — dette bygger dyp smak, ikke hopp over det.', 'Torrosta aromaterna: i en torr panna på medelhög värme lägg i lök, vitlök och svamp och låt dem ligga orörda 2–3 minuter tills lätt brända i kanterna — detta bygger djup smak, hoppa inte över det.'],
-      ['Transfer the toasted aromatics to a large pot. Add the celery, tomatoes, bell pepper, sweet potato, bay leaves, turmeric and the cold water. Stir to combine.', 'Overfør de ristede aromatene til en stor gryte. Tilsett selleri, tomater, paprika, søtpotet, laurbærblad, gurkemeie og det kalde vannet. Rør sammen.', 'För över de rostade aromaterna till en stor gryta. Tillsätt selleri, tomater, paprika, sötpotatis, lagerblad, gurkmeja och det kalla vattnet. Rör samman.'],
-      ['Cook: bring to the boil, then simmer covered for about 45 minutes (or pressure-cook on high 30 minutes with natural release).', 'Kok: kok opp, og la småkoke under lokk i ca. 45 minutter (eller trykk-kok på høy i 30 minutter med naturlig trykkutløsning).', 'Koka: koka upp och sjud under lock i ca 45 minuter (eller tryckkoka på hög i 30 minuter med naturlig tryckutsläpp).'],
-      ['Strain the broth through a fine sieve, pressing the solids gently to extract all liquid. Discard the bay leaves and set the solids aside for a second boil.', 'Sil buljongen gjennom en finmasket sil, press grønnsaksrestene forsiktig for å få ut all væske. Kast laurbærbladene og sett restene til side for en andre koking.', 'Sila buljongen genom en finmaskig sil, pressa resterna försiktigt för att få ut all vätska. Släng lagerbladen och spara resterna för ett andra kok.'],
-      ['Let the broth cool to around 60–65°C. Dissolve the miso in a small ladleful of warm broth, stir it back into the batch and add the lemon juice. Taste — never boil after adding miso.', 'La buljongen avkjøle til ca. 60–65°C. Løs opp misoen i en liten øse lunken buljong, rør den tilbake i gryten og tilsett sitronsaften. Smak til — kok aldri etter at misoen er tilsatt.', 'Låt buljongen svalna till ca 60–65°C. Lös upp mison i en liten slev ljummen buljong, rör tillbaka den i grytan och tillsätt citronsaften. Smaka av — koka aldrig efter att mison tillsatts.'],
-    ],
-    nutrition: nut({ calories: 30, protein: 2.0, totalFat: 0.2, saturatedFat: 0.03, polyunsaturatedFat: 0.09, monounsaturatedFat: 0.03, omega3: 0.02, omega6: 0.05, totalCarbs: 6.0, totalSugars: 2.9, fiber: 0.6, sodium: 180, potassium: 390 }),
+    nutrition: nut({ calories: 105, protein: 2.2, totalFat: 0.4, saturatedFat: 0.1, polyunsaturatedFat: 0.2, monounsaturatedFat: 0.05, omega3: 0.1, omega6: 0.1, totalCarbs: 26, totalSugars: 17, fiber: 5.2, calcium: 72, potassium: 490, copper: 0.09, iron: 1.0, magnesium: 28, manganese: 0.35, selenium: 1.2, phosphorus: 62, zinc: 0.4, sodium: 165, vitaminA: 22, vitaminB6: 0.28, vitaminB12: 0, vitaminC: 95, vitaminD: 0, vitaminE: 0.4, vitaminK: 52, folate: 42, thiamin: 0.09, riboflavin: 0.06, niacin: 0.7, choline: 22 }),
   },
 
   {
@@ -411,7 +388,7 @@ const RECIPES = [
       ['Bring to the boil and simmer covered for about 30 minutes (or pressure-cook on high 20 minutes with natural release).', 'Kok opp og la småkoke under lokk i ca. 30 minutter (eller trykk-kok på høy i 20 minutter med naturlig trykkutløsning).', 'Koka upp och sjud under lock i ca 30 minuter (eller tryckkoka på hög i 20 minuter med naturlig tryckutsläpp).'],
       ['Strain through a fine sieve, pressing the solids gently to extract the liquid. Stir in salt to taste and serve hot.', 'Sil gjennom en finmasket sil, press restene forsiktig for å få ut væsken. Rør inn salt etter smak og server varm.', 'Sila genom en finmaskig sil, pressa resterna försiktigt för att få ut vätskan. Rör i salt efter smak och servera varm.'],
     ],
-    nutrition: nut({ calories: 25, protein: 1.2, totalFat: 0.3, saturatedFat: 0, polyunsaturatedFat: 0.1, monounsaturatedFat: 0.05, omega3: 0.02, omega6: 0.05, totalCarbs: 5, totalSugars: 2, fiber: 1, sodium: 150, potassium: 220 }),
+    nutrition: nut({ calories: 9, protein: 0.21, totalFat: 0.02, saturatedFat: 0.003, polyunsaturatedFat: 0.008, monounsaturatedFat: 0.004, omega3: 0.001, omega6: 0.003, totalCarbs: 2.19, totalSugars: 1.16, fiber: 0.21, calcium: 7.9, potassium: 83.4, copper: 0.043, iron: 0.14, magnesium: 3.6, manganese: 0.047, selenium: 1.05, phosphorus: 15.2, zinc: 0.098, sodium: 143, vitaminA: 10.7, vitaminB6: 0.042, vitaminB12: 0, vitaminC: 1.52, vitaminD: 0.038, vitaminE: 0.013, vitaminK: 0.54, folate: 6.35, thiamin: 0.018, riboflavin: 0.048, niacin: 0.44, choline: 3.19 }),
   },
 ]
 
@@ -461,8 +438,14 @@ const built = RECIPES.map(buildRecipe).map(r => {
 })
 
 const builtIds = new Set(built.map(r => r.id))
-pack.recipes = [...pack.recipes.filter(r => !builtIds.has(r.id)), ...built]
-pack.version = '1.7.0'
+// orn-22 duplicated orn-12 (Fredheim Golden Vegetable Broth) — drop it.
+const REMOVE_IDS = new Set(['orn-22'])
+pack.recipes = [
+  ...pack.recipes.filter(r => !builtIds.has(r.id) && !REMOVE_IDS.has(r.id)),
+  ...built,
+]
+pack.version = '1.9.0'
 fs.writeFileSync(out, JSON.stringify(pack, null, 2) + '\n', 'utf8')
 console.log('Reversal pack now has', pack.recipes.length, 'recipes ->', pack.version)
 console.log('Added/updated:', built.map(r => r.id).join(', '))
+console.log('Removed:', [...REMOVE_IDS].join(', '))

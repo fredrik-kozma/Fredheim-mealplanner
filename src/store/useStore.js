@@ -1241,13 +1241,17 @@ const useStore = create(
       installPack: (pack) => set((s) => {
         const packRecipeIds = new Set(pack.recipes.map(r => r.id))
 
-        // Keep everything that isn't part of this pack's id set:
+        // Keep everything that isn't this pack's content:
         //  - user-created recipes (no sourcePackId)
         //  - recipes from other packs
-        //  - recipes whose ids the new pack version no longer ships
-        //    (treated as removed, which matches user intent: install
-        //    means make this pack's content match what's shipped)
-        const keptRecipes = s.recipes.filter(r => !packRecipeIds.has(r.id))
+        // Drop this pack's recipes — the ones still shipped are re-added
+        // below from the fresh pack, and the ones it no longer ships are
+        // pruned (a recipe removed in a new pack version should disappear,
+        // not linger as an orphan). We match on sourcePackId rather than
+        // just the new id set, since a removed id is absent from that set.
+        const keptRecipes = s.recipes.filter(r =>
+          !packRecipeIds.has(r.id) && r.sourcePackId !== pack.id
+        )
 
         const freshPackRecipes = pack.recipes.map(r => ({
           ...r,
