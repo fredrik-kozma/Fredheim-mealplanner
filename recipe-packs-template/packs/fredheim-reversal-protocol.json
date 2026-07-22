@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -5040,6 +5040,896 @@
         "Bring to the boil and simmer covered for about 30 minutes (or pressure-cook on high 20 minutes with natural release).",
         "Strain through a fine sieve, pressing the solids gently to extract the liquid. Stir in salt to taste and serve hot."
       ]
+    },
+    {
+      "id": "orn-24",
+      "title": "Sweet Almond Milk Chia Pudding with Pineapple",
+      "category": "Breakfast",
+      "servings": 2,
+      "prepTime": 10,
+      "cookTime": null,
+      "imageUrl": null,
+      "description": "A chia pudding made on homemade almond milk, blended with pineapple and naturally sweetened with Medjool dates. No added syrup, no store-bought milk — and an excellent omega-6:omega-3 ratio of about 0.8:1.",
+      "tags": [
+        "ornish-orange",
+        "breakfast",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "high-fiber",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
+      ],
+      "kcal": 375,
+      "servingWeightGrams": 338,
+      "nutrition": {
+        "perServing": {
+          "calories": 375,
+          "protein": 10.2,
+          "totalFat": 19.5,
+          "saturatedFat": 1.79,
+          "polyunsaturatedFat": 9.7,
+          "monounsaturatedFat": 7.05,
+          "omega3": 5.4,
+          "omega6": 4.26,
+          "cholesterol": 0,
+          "totalCarbs": 46.8,
+          "totalSugars": 25.7,
+          "addedSugar": 0,
+          "fiber": 15.8,
+          "calcium": 273,
+          "potassium": 534,
+          "copper": 0.669,
+          "iron": 3.56,
+          "magnesium": 180,
+          "manganese": 2.1,
+          "selenium": 18.5,
+          "phosphorus": 381,
+          "zinc": 2.23,
+          "sodium": 6.2,
+          "vitaminA": 4.53,
+          "vitaminB6": 0.184,
+          "vitaminB12": 0,
+          "vitaminC": 39.9,
+          "vitaminD": 0,
+          "vitaminE": 5.3,
+          "vitaminK": 1.25,
+          "folate": 42.4,
+          "thiamin": 0.312,
+          "riboflavin": 0.295,
+          "niacin": 4.23,
+          "choline": 20.5
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 40,
+          "unit": "g",
+          "name": "Raw almonds"
+        },
+        {
+          "quantity": 360,
+          "unit": "ml",
+          "name": "Water (for the almond milk)"
+        },
+        {
+          "quantity": 50,
+          "unit": "g",
+          "name": "Medjool dates, pitted"
+        },
+        {
+          "quantity": 60,
+          "unit": "g",
+          "name": "Chia seeds"
+        },
+        {
+          "quantity": 165,
+          "unit": "g",
+          "name": "Frozen pineapple, for blending"
+        }
+      ],
+      "steps": [
+        "Blend the almonds and water on high in a powerful blender for 60–90 seconds until smooth and creamy. No straining needed — keeping the almond pulp in adds fibre and body.",
+        "Add the pitted dates and frozen pineapple to the almond milk and blend again until completely smooth — this replaces any added syrup.",
+        "Pour the blended mixture into a bowl or two jars, add the chia seeds, and stir well until fully combined with no dry pockets.",
+        "Let sit for 5 minutes, then stir again to break up any clumps that have formed.",
+        "Cover and refrigerate for at least 4 hours, or overnight, until thickened to a pudding consistency.",
+        "Keeps in the fridge for up to 3 days, so it doubles easily for batch prep."
+      ],
+      "translations": {
+        "no": {
+          "title": "Chiapudding med søt mandelmelk og ananas",
+          "description": "Chiapudding laget på hjemmelaget mandelmelk, blandet med ananas og naturlig søtet med medjooldadler. Uten tilsatt sirup, uten kjøpemelk — og et utmerket omega-6:omega-3-forhold på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "rå mandler"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vann (til mandelmelken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadler, uten stein"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrø"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "frossen ananas, til blending"
+            }
+          ],
+          "steps": [
+            "Kjør mandlene og vannet på høy hastighet i en kraftig blender i 60–90 sekunder til det er glatt og kremet. Ingen siling nødvendig — mandelmassen gir fiber og fylde.",
+            "Tilsett de utstenede dadlene og frossen ananas i mandelmelken, og kjør igjen til det er helt glatt — dette erstatter all tilsatt sirup.",
+            "Hell blandingen i en bolle eller to glass, tilsett chiafrøene og rør godt sammen til alt er blandet, uten tørre klumper.",
+            "La stå i 5 minutter, og rør igjen for å bryte opp eventuelle klumper.",
+            "Dekk til og sett i kjøleskapet i minst 4 timer, eller over natten, til det har tyknet til puddingkonsistens.",
+            "Holder seg i kjøleskapet i opptil 3 dager, så den er lett å lage i større porsjoner."
+          ]
+        },
+        "sv": {
+          "title": "Chiapudding med söt mandelmjölk och ananas",
+          "description": "Chiapudding gjord på hemgjord mandelmjölk, mixad med ananas och naturligt sötad med medjooldadlar. Utan tillsatt sirap, utan köpt mjölk — och ett utmärkt omega-6:omega-3-förhållande på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "råa mandlar"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vatten (till mandelmjölken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrön"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "fryst ananas, till mixning"
+            }
+          ],
+          "steps": [
+            "Mixa mandlarna och vattnet på hög hastighet i en kraftfull mixer i 60–90 sekunder tills det är slätt och krämigt. Ingen silning behövs — mandelmassan ger fiber och fyllighet.",
+            "Tillsätt de urkärnade dadlarna och fryst ananas i mandelmjölken, och mixa igen tills det är helt slätt — detta ersätter all tillsatt sirap.",
+            "Häll blandningen i en skål eller två burkar, tillsätt chiafröna och rör om ordentligt tills allt är blandat, utan torra fickor.",
+            "Låt stå i 5 minuter och rör om igen för att bryta upp eventuella klumpar.",
+            "Täck över och ställ i kylen i minst 4 timmar, eller över natten, tills det tjocknat till puddingkonsistens.",
+            "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
+          ]
+        }
+      }
+    },
+    {
+      "id": "orn-25",
+      "title": "Sweet Almond Milk Chia Pudding with Forest Berries",
+      "category": "Breakfast",
+      "servings": 2,
+      "prepTime": 10,
+      "cookTime": null,
+      "imageUrl": null,
+      "description": "A chia pudding made on homemade almond milk, blended with forest berries and naturally sweetened with Medjool dates. No added syrup, no store-bought milk — and an excellent omega-6:omega-3 ratio of about 0.8:1.",
+      "tags": [
+        "ornish-orange",
+        "breakfast",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "high-fiber",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
+      ],
+      "kcal": 371,
+      "servingWeightGrams": 338,
+      "nutrition": {
+        "perServing": {
+          "calories": 371,
+          "protein": 10.5,
+          "totalFat": 19.8,
+          "saturatedFat": 1.8,
+          "polyunsaturatedFat": 9.87,
+          "monounsaturatedFat": 7.08,
+          "omega3": 5.46,
+          "omega6": 4.37,
+          "cholesterol": 0,
+          "totalCarbs": 45,
+          "totalSugars": 22.5,
+          "addedSugar": 0,
+          "fiber": 18,
+          "calcium": 278,
+          "potassium": 556,
+          "copper": 0.653,
+          "iron": 3.73,
+          "magnesium": 182,
+          "manganese": 1.76,
+          "selenium": 18.6,
+          "phosphorus": 392,
+          "zinc": 2.39,
+          "sodium": 6.2,
+          "vitaminA": 5.56,
+          "vitaminB6": 0.13,
+          "vitaminB12": 0,
+          "vitaminC": 24.3,
+          "vitaminD": 0,
+          "vitaminE": 5.89,
+          "vitaminK": 10.8,
+          "folate": 43.2,
+          "thiamin": 0.27,
+          "riboflavin": 0.295,
+          "niacin": 4.24,
+          "choline": 22.6
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 40,
+          "unit": "g",
+          "name": "Raw almonds"
+        },
+        {
+          "quantity": 360,
+          "unit": "ml",
+          "name": "Water (for the almond milk)"
+        },
+        {
+          "quantity": 50,
+          "unit": "g",
+          "name": "Medjool dates, pitted"
+        },
+        {
+          "quantity": 60,
+          "unit": "g",
+          "name": "Chia seeds"
+        },
+        {
+          "quantity": 165,
+          "unit": "g",
+          "name": "Frozen forest berries, for blending"
+        }
+      ],
+      "steps": [
+        "Blend the almonds and water on high in a powerful blender for 60–90 seconds until smooth and creamy. No straining needed — keeping the almond pulp in adds fibre and body.",
+        "Add the pitted dates and frozen forest berries to the almond milk and blend again until completely smooth — this replaces any added syrup.",
+        "Pour the blended mixture into a bowl or two jars, add the chia seeds, and stir well until fully combined with no dry pockets.",
+        "Let sit for 5 minutes, then stir again to break up any clumps that have formed.",
+        "Cover and refrigerate for at least 4 hours, or overnight, until thickened to a pudding consistency.",
+        "Keeps in the fridge for up to 3 days, so it doubles easily for batch prep."
+      ],
+      "translations": {
+        "no": {
+          "title": "Chiapudding med søt mandelmelk og skogsbær",
+          "description": "Chiapudding laget på hjemmelaget mandelmelk, blandet med skogsbær og naturlig søtet med medjooldadler. Uten tilsatt sirup, uten kjøpemelk — og et utmerket omega-6:omega-3-forhold på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "rå mandler"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vann (til mandelmelken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadler, uten stein"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrø"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "frosne skogsbær, til blending"
+            }
+          ],
+          "steps": [
+            "Kjør mandlene og vannet på høy hastighet i en kraftig blender i 60–90 sekunder til det er glatt og kremet. Ingen siling nødvendig — mandelmassen gir fiber og fylde.",
+            "Tilsett de utstenede dadlene og frosne skogsbær i mandelmelken, og kjør igjen til det er helt glatt — dette erstatter all tilsatt sirup.",
+            "Hell blandingen i en bolle eller to glass, tilsett chiafrøene og rør godt sammen til alt er blandet, uten tørre klumper.",
+            "La stå i 5 minutter, og rør igjen for å bryte opp eventuelle klumper.",
+            "Dekk til og sett i kjøleskapet i minst 4 timer, eller over natten, til det har tyknet til puddingkonsistens.",
+            "Holder seg i kjøleskapet i opptil 3 dager, så den er lett å lage i større porsjoner."
+          ]
+        },
+        "sv": {
+          "title": "Chiapudding med söt mandelmjölk och skogsbär",
+          "description": "Chiapudding gjord på hemgjord mandelmjölk, mixad med skogsbär och naturligt sötad med medjooldadlar. Utan tillsatt sirap, utan köpt mjölk — och ett utmärkt omega-6:omega-3-förhållande på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "råa mandlar"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vatten (till mandelmjölken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrön"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "frysta skogsbär, till mixning"
+            }
+          ],
+          "steps": [
+            "Mixa mandlarna och vattnet på hög hastighet i en kraftfull mixer i 60–90 sekunder tills det är slätt och krämigt. Ingen silning behövs — mandelmassan ger fiber och fyllighet.",
+            "Tillsätt de urkärnade dadlarna och frysta skogsbär i mandelmjölken, och mixa igen tills det är helt slätt — detta ersätter all tillsatt sirap.",
+            "Häll blandningen i en skål eller två burkar, tillsätt chiafröna och rör om ordentligt tills allt är blandat, utan torra fickor.",
+            "Låt stå i 5 minuter och rör om igen för att bryta upp eventuella klumpar.",
+            "Täck över och ställ i kylen i minst 4 timmar, eller över natten, tills det tjocknat till puddingkonsistens.",
+            "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
+          ]
+        }
+      }
+    },
+    {
+      "id": "orn-26",
+      "title": "Sweet Almond Milk Chia Pudding with Blueberries",
+      "category": "Breakfast",
+      "servings": 2,
+      "prepTime": 10,
+      "cookTime": null,
+      "imageUrl": null,
+      "description": "A chia pudding made on homemade almond milk, blended with blueberries and naturally sweetened with Medjool dates. No added syrup, no store-bought milk — and an excellent omega-6:omega-3 ratio of about 0.8:1.",
+      "tags": [
+        "ornish-orange",
+        "breakfast",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "high-fiber",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
+      ],
+      "kcal": 381,
+      "servingWeightGrams": 338,
+      "nutrition": {
+        "perServing": {
+          "calories": 381,
+          "protein": 10.3,
+          "totalFat": 19.7,
+          "saturatedFat": 1.81,
+          "polyunsaturatedFat": 9.79,
+          "monounsaturatedFat": 7.07,
+          "omega3": 5.44,
+          "omega6": 4.32,
+          "cholesterol": 0,
+          "totalCarbs": 47.9,
+          "totalSugars": 25.7,
+          "addedSugar": 0,
+          "fiber": 16.7,
+          "calcium": 267,
+          "potassium": 508,
+          "copper": 0.625,
+          "iron": 3.55,
+          "magnesium": 175,
+          "manganese": 1.62,
+          "selenium": 18.5,
+          "phosphorus": 384,
+          "zinc": 2.27,
+          "sodium": 6.2,
+          "vitaminA": 4.53,
+          "vitaminB6": 0.135,
+          "vitaminB12": 0,
+          "vitaminC": 8.47,
+          "vitaminD": 0,
+          "vitaminE": 5.76,
+          "vitaminK": 16.6,
+          "folate": 32.5,
+          "thiamin": 0.277,
+          "riboflavin": 0.302,
+          "niacin": 4.16,
+          "choline": 20.9
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 40,
+          "unit": "g",
+          "name": "Raw almonds"
+        },
+        {
+          "quantity": 360,
+          "unit": "ml",
+          "name": "Water (for the almond milk)"
+        },
+        {
+          "quantity": 50,
+          "unit": "g",
+          "name": "Medjool dates, pitted"
+        },
+        {
+          "quantity": 60,
+          "unit": "g",
+          "name": "Chia seeds"
+        },
+        {
+          "quantity": 165,
+          "unit": "g",
+          "name": "Frozen blueberries, for blending"
+        }
+      ],
+      "steps": [
+        "Blend the almonds and water on high in a powerful blender for 60–90 seconds until smooth and creamy. No straining needed — keeping the almond pulp in adds fibre and body.",
+        "Add the pitted dates and frozen blueberries to the almond milk and blend again until completely smooth — this replaces any added syrup.",
+        "Pour the blended mixture into a bowl or two jars, add the chia seeds, and stir well until fully combined with no dry pockets.",
+        "Let sit for 5 minutes, then stir again to break up any clumps that have formed.",
+        "Cover and refrigerate for at least 4 hours, or overnight, until thickened to a pudding consistency.",
+        "Keeps in the fridge for up to 3 days, so it doubles easily for batch prep."
+      ],
+      "translations": {
+        "no": {
+          "title": "Chiapudding med søt mandelmelk og blåbær",
+          "description": "Chiapudding laget på hjemmelaget mandelmelk, blandet med blåbær og naturlig søtet med medjooldadler. Uten tilsatt sirup, uten kjøpemelk — og et utmerket omega-6:omega-3-forhold på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "rå mandler"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vann (til mandelmelken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadler, uten stein"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrø"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "frosne blåbær, til blending"
+            }
+          ],
+          "steps": [
+            "Kjør mandlene og vannet på høy hastighet i en kraftig blender i 60–90 sekunder til det er glatt og kremet. Ingen siling nødvendig — mandelmassen gir fiber og fylde.",
+            "Tilsett de utstenede dadlene og frosne blåbær i mandelmelken, og kjør igjen til det er helt glatt — dette erstatter all tilsatt sirup.",
+            "Hell blandingen i en bolle eller to glass, tilsett chiafrøene og rør godt sammen til alt er blandet, uten tørre klumper.",
+            "La stå i 5 minutter, og rør igjen for å bryte opp eventuelle klumper.",
+            "Dekk til og sett i kjøleskapet i minst 4 timer, eller over natten, til det har tyknet til puddingkonsistens.",
+            "Holder seg i kjøleskapet i opptil 3 dager, så den er lett å lage i større porsjoner."
+          ]
+        },
+        "sv": {
+          "title": "Chiapudding med söt mandelmjölk och blåbär",
+          "description": "Chiapudding gjord på hemgjord mandelmjölk, mixad med blåbär och naturligt sötad med medjooldadlar. Utan tillsatt sirap, utan köpt mjölk — och ett utmärkt omega-6:omega-3-förhållande på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "råa mandlar"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vatten (till mandelmjölken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrön"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "frysta blåbär, till mixning"
+            }
+          ],
+          "steps": [
+            "Mixa mandlarna och vattnet på hög hastighet i en kraftfull mixer i 60–90 sekunder tills det är slätt och krämigt. Ingen silning behövs — mandelmassan ger fiber och fyllighet.",
+            "Tillsätt de urkärnade dadlarna och frysta blåbär i mandelmjölken, och mixa igen tills det är helt slätt — detta ersätter all tillsatt sirap.",
+            "Häll blandningen i en skål eller två burkar, tillsätt chiafröna och rör om ordentligt tills allt är blandat, utan torra fickor.",
+            "Låt stå i 5 minuter och rör om igen för att bryta upp eventuella klumpar.",
+            "Täck över och ställ i kylen i minst 4 timmar, eller över natten, tills det tjocknat till puddingkonsistens.",
+            "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
+          ]
+        }
+      }
+    },
+    {
+      "id": "orn-27",
+      "title": "Sweet Almond Milk Chia Pudding with Raspberries",
+      "category": "Breakfast",
+      "servings": 2,
+      "prepTime": 10,
+      "cookTime": null,
+      "imageUrl": null,
+      "description": "A chia pudding made on homemade almond milk, blended with raspberries and naturally sweetened with Medjool dates. No added syrup, no store-bought milk — and an excellent omega-6:omega-3 ratio of about 0.8:1.",
+      "tags": [
+        "ornish-orange",
+        "breakfast",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "high-fiber",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
+      ],
+      "kcal": 376,
+      "servingWeightGrams": 338,
+      "nutrition": {
+        "perServing": {
+          "calories": 376,
+          "protein": 10.7,
+          "totalFat": 19.9,
+          "saturatedFat": 1.8,
+          "polyunsaturatedFat": 9.98,
+          "monounsaturatedFat": 7.09,
+          "omega3": 5.49,
+          "omega6": 4.45,
+          "cholesterol": 0,
+          "totalCarbs": 45.8,
+          "totalSugars": 21.2,
+          "addedSugar": 0,
+          "fiber": 20,
+          "calcium": 283,
+          "potassium": 569,
+          "copper": 0.653,
+          "iron": 3.89,
+          "magnesium": 188,
+          "manganese": 1.89,
+          "selenium": 18.6,
+          "phosphorus": 398,
+          "zinc": 2.48,
+          "sodium": 6.2,
+          "vitaminA": 3.7,
+          "vitaminB6": 0.137,
+          "vitaminB12": 0,
+          "vitaminC": 22.1,
+          "vitaminD": 0,
+          "vitaminE": 6.01,
+          "vitaminK": 7.11,
+          "folate": 44.8,
+          "thiamin": 0.273,
+          "riboflavin": 0.3,
+          "niacin": 4.31,
+          "choline": 26.1
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 40,
+          "unit": "g",
+          "name": "Raw almonds"
+        },
+        {
+          "quantity": 360,
+          "unit": "ml",
+          "name": "Water (for the almond milk)"
+        },
+        {
+          "quantity": 50,
+          "unit": "g",
+          "name": "Medjool dates, pitted"
+        },
+        {
+          "quantity": 60,
+          "unit": "g",
+          "name": "Chia seeds"
+        },
+        {
+          "quantity": 165,
+          "unit": "g",
+          "name": "Frozen raspberries, for blending"
+        }
+      ],
+      "steps": [
+        "Blend the almonds and water on high in a powerful blender for 60–90 seconds until smooth and creamy. No straining needed — keeping the almond pulp in adds fibre and body.",
+        "Add the pitted dates and frozen raspberries to the almond milk and blend again until completely smooth — this replaces any added syrup.",
+        "Pour the blended mixture into a bowl or two jars, add the chia seeds, and stir well until fully combined with no dry pockets.",
+        "Let sit for 5 minutes, then stir again to break up any clumps that have formed.",
+        "Cover and refrigerate for at least 4 hours, or overnight, until thickened to a pudding consistency.",
+        "Keeps in the fridge for up to 3 days, so it doubles easily for batch prep."
+      ],
+      "translations": {
+        "no": {
+          "title": "Chiapudding med søt mandelmelk og bringebær",
+          "description": "Chiapudding laget på hjemmelaget mandelmelk, blandet med bringebær og naturlig søtet med medjooldadler. Uten tilsatt sirup, uten kjøpemelk — og et utmerket omega-6:omega-3-forhold på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "rå mandler"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vann (til mandelmelken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadler, uten stein"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrø"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "frosne bringebær, til blending"
+            }
+          ],
+          "steps": [
+            "Kjør mandlene og vannet på høy hastighet i en kraftig blender i 60–90 sekunder til det er glatt og kremet. Ingen siling nødvendig — mandelmassen gir fiber og fylde.",
+            "Tilsett de utstenede dadlene og frosne bringebær i mandelmelken, og kjør igjen til det er helt glatt — dette erstatter all tilsatt sirup.",
+            "Hell blandingen i en bolle eller to glass, tilsett chiafrøene og rør godt sammen til alt er blandet, uten tørre klumper.",
+            "La stå i 5 minutter, og rør igjen for å bryte opp eventuelle klumper.",
+            "Dekk til og sett i kjøleskapet i minst 4 timer, eller over natten, til det har tyknet til puddingkonsistens.",
+            "Holder seg i kjøleskapet i opptil 3 dager, så den er lett å lage i større porsjoner."
+          ]
+        },
+        "sv": {
+          "title": "Chiapudding med söt mandelmjölk och hallon",
+          "description": "Chiapudding gjord på hemgjord mandelmjölk, mixad med hallon och naturligt sötad med medjooldadlar. Utan tillsatt sirap, utan köpt mjölk — och ett utmärkt omega-6:omega-3-förhållande på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "råa mandlar"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vatten (till mandelmjölken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrön"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "frysta hallon, till mixning"
+            }
+          ],
+          "steps": [
+            "Mixa mandlarna och vattnet på hög hastighet i en kraftfull mixer i 60–90 sekunder tills det är slätt och krämigt. Ingen silning behövs — mandelmassan ger fiber och fyllighet.",
+            "Tillsätt de urkärnade dadlarna och frysta hallon i mandelmjölken, och mixa igen tills det är helt slätt — detta ersätter all tillsatt sirap.",
+            "Häll blandningen i en skål eller två burkar, tillsätt chiafröna och rör om ordentligt tills allt är blandat, utan torra fickor.",
+            "Låt stå i 5 minuter och rör om igen för att bryta upp eventuella klumpar.",
+            "Täck över och ställ i kylen i minst 4 timmar, eller över natten, tills det tjocknat till puddingkonsistens.",
+            "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
+          ]
+        }
+      }
+    },
+    {
+      "id": "orn-28",
+      "title": "Sweet Almond Milk Chia Pudding with Strawberries",
+      "category": "Breakfast",
+      "servings": 2,
+      "prepTime": 10,
+      "cookTime": null,
+      "imageUrl": null,
+      "description": "A chia pudding made on homemade almond milk, blended with strawberries and naturally sweetened with Medjool dates. No added syrup, no store-bought milk — and an excellent omega-6:omega-3 ratio of about 0.8:1.",
+      "tags": [
+        "ornish-orange",
+        "breakfast",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "high-fiber",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly",
+        "weight-loss"
+      ],
+      "kcal": 360,
+      "servingWeightGrams": 338,
+      "nutrition": {
+        "perServing": {
+          "calories": 360,
+          "protein": 10.3,
+          "totalFat": 19.6,
+          "saturatedFat": 1.8,
+          "polyunsaturatedFat": 9.8,
+          "monounsaturatedFat": 7.07,
+          "omega3": 5.44,
+          "omega6": 4.32,
+          "cholesterol": 0,
+          "totalCarbs": 42.3,
+          "totalSugars": 21.6,
+          "addedSugar": 0,
+          "fiber": 16.3,
+          "calcium": 275,
+          "potassium": 571,
+          "copper": 0.618,
+          "iron": 3.66,
+          "magnesium": 180,
+          "manganese": 1.66,
+          "selenium": 18.7,
+          "phosphorus": 394,
+          "zinc": 2.25,
+          "sodium": 6.2,
+          "vitaminA": 2.88,
+          "vitaminB6": 0.131,
+          "vitaminB12": 0,
+          "vitaminC": 49,
+          "vitaminD": 0,
+          "vitaminE": 5.53,
+          "vitaminK": 2.49,
+          "folate": 47.3,
+          "thiamin": 0.267,
+          "riboflavin": 0.287,
+          "niacin": 4.14,
+          "choline": 20.6
+        }
+      },
+      "ingredients": [
+        {
+          "quantity": 40,
+          "unit": "g",
+          "name": "Raw almonds"
+        },
+        {
+          "quantity": 360,
+          "unit": "ml",
+          "name": "Water (for the almond milk)"
+        },
+        {
+          "quantity": 50,
+          "unit": "g",
+          "name": "Medjool dates, pitted"
+        },
+        {
+          "quantity": 60,
+          "unit": "g",
+          "name": "Chia seeds"
+        },
+        {
+          "quantity": 165,
+          "unit": "g",
+          "name": "Frozen strawberries, for blending"
+        }
+      ],
+      "steps": [
+        "Blend the almonds and water on high in a powerful blender for 60–90 seconds until smooth and creamy. No straining needed — keeping the almond pulp in adds fibre and body.",
+        "Add the pitted dates and frozen strawberries to the almond milk and blend again until completely smooth — this replaces any added syrup.",
+        "Pour the blended mixture into a bowl or two jars, add the chia seeds, and stir well until fully combined with no dry pockets.",
+        "Let sit for 5 minutes, then stir again to break up any clumps that have formed.",
+        "Cover and refrigerate for at least 4 hours, or overnight, until thickened to a pudding consistency.",
+        "Keeps in the fridge for up to 3 days, so it doubles easily for batch prep."
+      ],
+      "translations": {
+        "no": {
+          "title": "Chiapudding med søt mandelmelk og jordbær",
+          "description": "Chiapudding laget på hjemmelaget mandelmelk, blandet med jordbær og naturlig søtet med medjooldadler. Uten tilsatt sirup, uten kjøpemelk — og et utmerket omega-6:omega-3-forhold på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "rå mandler"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vann (til mandelmelken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadler, uten stein"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrø"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "frosne jordbær, til blending"
+            }
+          ],
+          "steps": [
+            "Kjør mandlene og vannet på høy hastighet i en kraftig blender i 60–90 sekunder til det er glatt og kremet. Ingen siling nødvendig — mandelmassen gir fiber og fylde.",
+            "Tilsett de utstenede dadlene og frosne jordbær i mandelmelken, og kjør igjen til det er helt glatt — dette erstatter all tilsatt sirup.",
+            "Hell blandingen i en bolle eller to glass, tilsett chiafrøene og rør godt sammen til alt er blandet, uten tørre klumper.",
+            "La stå i 5 minutter, og rør igjen for å bryte opp eventuelle klumper.",
+            "Dekk til og sett i kjøleskapet i minst 4 timer, eller over natten, til det har tyknet til puddingkonsistens.",
+            "Holder seg i kjøleskapet i opptil 3 dager, så den er lett å lage i større porsjoner."
+          ]
+        },
+        "sv": {
+          "title": "Chiapudding med söt mandelmjölk och jordgubbar",
+          "description": "Chiapudding gjord på hemgjord mandelmjölk, mixad med jordgubbar och naturligt sötad med medjooldadlar. Utan tillsatt sirap, utan köpt mjölk — och ett utmärkt omega-6:omega-3-förhållande på cirka 0,8:1.",
+          "ingredients": [
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "råa mandlar"
+            },
+            {
+              "quantity": 360,
+              "unit": "ml",
+              "name": "vatten (till mandelmjölken)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrön"
+            },
+            {
+              "quantity": 165,
+              "unit": "g",
+              "name": "frysta jordgubbar, till mixning"
+            }
+          ],
+          "steps": [
+            "Mixa mandlarna och vattnet på hög hastighet i en kraftfull mixer i 60–90 sekunder tills det är slätt och krämigt. Ingen silning behövs — mandelmassan ger fiber och fyllighet.",
+            "Tillsätt de urkärnade dadlarna och frysta jordgubbar i mandelmjölken, och mixa igen tills det är helt slätt — detta ersätter all tillsatt sirap.",
+            "Häll blandningen i en skål eller två burkar, tillsätt chiafröna och rör om ordentligt tills allt är blandat, utan torra fickor.",
+            "Låt stå i 5 minuter och rör om igen för att bryta upp eventuella klumpar.",
+            "Täck över och ställ i kylen i minst 4 timmar, eller över natten, tills det tjocknat till puddingkonsistens.",
+            "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
+          ]
+        }
+      }
     }
   ]
 }
