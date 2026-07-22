@@ -819,6 +819,30 @@ const useStore = create(
         return { nutritionLog: next }
       }),
 
+      // ── Ingredient checklist ──
+      // Cooking-progress ticks, keyed by recipe id → { [ingredientIndex]: true }.
+      // Indexed by position so a tick survives language switches and serving
+      // scaling (which change the text/amounts but not the order). Persisted so
+      // progress isn't lost if you navigate away mid-cook; easily reset.
+      checkedIngredients: {},
+
+      toggleIngredientChecked: (recipeId, index) => set((s) => {
+        const forRecipe = { ...(s.checkedIngredients[recipeId] || {}) }
+        if (forRecipe[index]) delete forRecipe[index]
+        else forRecipe[index] = true
+        const next = { ...s.checkedIngredients }
+        if (Object.keys(forRecipe).length) next[recipeId] = forRecipe
+        else delete next[recipeId] // drop empty maps so "any checked?" stays a simple check
+        return { checkedIngredients: next }
+      }),
+
+      clearCheckedIngredients: (recipeId) => set((s) => {
+        if (!s.checkedIngredients[recipeId]) return {}
+        const next = { ...s.checkedIngredients }
+        delete next[recipeId]
+        return { checkedIngredients: next }
+      }),
+
       addRecipeToSlot: (day, slot, recipeId, servings = null) => set((s) => {
         const current = s.weekPlan[day]?.[slot] || []
         if (current.some(it => normalizeSlotItem(it)?.recipeId === recipeId)) return {}

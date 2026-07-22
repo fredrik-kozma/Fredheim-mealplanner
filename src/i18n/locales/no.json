@@ -90,7 +90,8 @@
     "reset": "Nullstill",
     "metric": "Metrisk",
     "us": "US",
-    "notes": "Kokkens tips"
+    "notes": "Kokkens tips",
+    "resetChecklist": "Nullstill"
   },
   "recipeForm": {
     "addRecipe": "Legg til oppskrift",

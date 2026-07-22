@@ -40,6 +40,9 @@ export default function RecipeDetail() {
   }, [id, setLastOpenedRecipeId])
   const familySize = useStore(s => s.familySize)
   const language = useStore(s => s.language)
+  const checkedIngredients = useStore(s => s.checkedIngredients)
+  const toggleIngredientChecked = useStore(s => s.toggleIngredientChecked)
+  const clearCheckedIngredients = useStore(s => s.clearCheckedIngredients)
 
   const unitSystem = useStore(s => s.units)
   // Normalize legacy 'imperial' value to 'us'.
@@ -362,11 +365,30 @@ export default function RecipeDetail() {
             />
           )}
 
-        {/* Ingredients */}
-        {displayIngredients?.length > 0 && (
+        {/* Ingredients — tap a row to tick it off while you shop or cook */}
+        {displayIngredients?.length > 0 && (() => {
+          const checkedForRecipe = checkedIngredients[recipe.id] || {}
+          const checkedCount = displayIngredients.reduce((n, _ing, i) => n + (checkedForRecipe[i] ? 1 : 0), 0)
+          const allChecked = checkedCount === displayIngredients.length
+          return (
           <section className="mb-6">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-slate-800">{t('recipeDetail.ingredients')}</h2>
+            <div className="flex items-center justify-between mb-3 gap-2">
+              <h2 className="text-lg font-semibold text-slate-800 flex items-center gap-2 min-w-0">
+                {t('recipeDetail.ingredients')}
+                {checkedCount > 0 && (
+                  <span className={`text-xs font-semibold tabular-nums px-2 py-0.5 rounded-full ${allChecked ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>
+                    {checkedCount}/{displayIngredients.length}
+                  </span>
+                )}
+                {checkedCount > 0 && (
+                  <button
+                    onClick={() => clearCheckedIngredients(recipe.id)}
+                    className="text-xs font-medium text-slate-400 hover:text-indigo-600 transition-colors whitespace-nowrap"
+                  >
+                    {t('recipeDetail.resetChecklist', { defaultValue: 'Reset' })}
+                  </button>
+                )}
+              </h2>
               {hasConvertibleUnit && (
                 <div className="inline-flex rounded-full bg-slate-100 p-0.5 text-xs font-medium">
                   <button
@@ -389,17 +411,39 @@ export default function RecipeDetail() {
               )}
             </div>
             <div className="card divide-y divide-slate-50">
-              {displayIngredients.map((ing, i) => (
-                <div key={i} className="flex items-start justify-between gap-3 px-4 py-2.5">
-                  <span className="text-sm text-slate-700 min-w-0 break-words flex-1">{ing.name}</span>
-                  <span className="text-sm font-medium text-slate-900 flex-shrink-0 tabular-nums whitespace-nowrap">
-                    {formatScaledQuantity(ing.quantity, ing.unit)}
-                  </span>
-                </div>
-              ))}
+              {displayIngredients.map((ing, i) => {
+                const isChecked = Boolean(checkedForRecipe[i])
+                return (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => toggleIngredientChecked(recipe.id, i)}
+                    className="w-full flex items-start gap-3 px-4 py-2.5 text-left hover:bg-slate-50/80 transition-colors"
+                    aria-pressed={isChecked}
+                  >
+                    {/* Checkbox */}
+                    <span className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${
+                      isChecked ? 'bg-emerald-500 border-emerald-500' : 'bg-white border-slate-300'
+                    }`}>
+                      {isChecked && (
+                        <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                      )}
+                    </span>
+                    <span className={`text-sm min-w-0 break-words flex-1 transition-colors ${isChecked ? 'text-slate-400 line-through' : 'text-slate-700'}`}>
+                      {ing.name}
+                    </span>
+                    <span className={`text-sm font-medium flex-shrink-0 tabular-nums whitespace-nowrap transition-colors ${isChecked ? 'text-slate-300 line-through' : 'text-slate-900'}`}>
+                      {formatScaledQuantity(ing.quantity, ing.unit)}
+                    </span>
+                  </button>
+                )
+              })}
             </div>
           </section>
-        )}
+          )
+        })()}
 
         {/* Steps */}
         {displaySteps?.length > 0 && (

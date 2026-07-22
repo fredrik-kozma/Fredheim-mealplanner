@@ -29,7 +29,7 @@ const fs = require('fs')
 const path = require('path')
 
 const PACKS = [
-  ['fredheim-recipes-with-pictures.json', '1.9.2'],
+  ['fredheim-recipes-with-pictures.json', '1.10.0'],
   ['fredheim-reversal-protocol.json', '1.9.0'],
   ['fredheim-fmd-5day.json', '1.3.0'],
 ]
