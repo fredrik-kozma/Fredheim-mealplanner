@@ -59,7 +59,8 @@
     "noRecipesMatch": "Inga recept matchar din sökning.",
     "addFirstRecipe": "Lägg till ditt första recept för att komma igång!",
     "notFound": "Receptet hittades inte.",
-    "backToRecipes": "Tillbaka till recept"
+    "backToRecipes": "Tillbaka till recept",
+    "fmdBadge": "Fastedag"
   },
   "recipeDetail": {
     "back": "Tillbaka",
@@ -93,7 +94,9 @@
     "us": "US",
     "notes": "Kockens tips",
     "resetChecklist": "Återställ",
-    "goodFor": "Bra för"
+    "goodFor": "Bra för",
+    "fmdNoticeTitle": "Del av den 5-dagars fasteimiterande dieten (FMD)",
+    "fmdNoticeBody": "Dessa måltider är medvetet kalorisnåla och är inte kompletta, självständiga måltider. Följ hela FMD-planen för att den ska fungera som avsett."
   },
   "recipeForm": {
     "addRecipe": "Lägg till recept",

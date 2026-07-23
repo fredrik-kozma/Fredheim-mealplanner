@@ -11,6 +11,7 @@ import NutritionPanel from './NutritionPanel'
 import EditableNumber from '../common/EditableNumber'
 import FavoriteStar from './FavoriteStar'
 import { recipeConditions, CONDITION_BADGE } from '../../data/conditionTags'
+import { isFmdRecipe } from '../../utils/recipeFlags'
 
 export default function RecipeDetail() {
   const { id } = useParams()
@@ -286,6 +287,24 @@ export default function RecipeDetail() {
             </span>
           ))}
         </div>
+
+        {/* Fasting-diet notice — makes clear this is a restricted protocol
+            meal, not a complete standalone one, before anyone plans around it. */}
+        {isFmdRecipe(recipe) && (
+          <div className="mb-5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 flex gap-3">
+            <span className="text-lg flex-shrink-0" aria-hidden>⏳</span>
+            <div>
+              <p className="text-sm font-semibold text-amber-900">
+                {t('recipeDetail.fmdNoticeTitle', { defaultValue: 'Part of the 5-Day Fasting Mimicking Diet' })}
+              </p>
+              <p className="text-xs text-amber-800 leading-relaxed mt-0.5">
+                {t('recipeDetail.fmdNoticeBody', {
+                  defaultValue: 'These meals are intentionally low-calorie and are not complete standalone meals. Follow the full FMD plan for it to work as intended.',
+                })}
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Servings Scaler Control — fully responsive. On narrow / zoomed
             screens (e.g. an Android phone with text-scale increased) the

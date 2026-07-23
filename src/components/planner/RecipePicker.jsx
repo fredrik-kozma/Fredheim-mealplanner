@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
+import { isFmdRecipe } from '../../utils/recipeFlags'
 
 export default function RecipePicker({ onSelect, onClose, title }) {
   const { t, i18n } = useTranslation()
@@ -227,6 +228,14 @@ export default function RecipePicker({ onSelect, onClose, title }) {
                     <p className="text-xs text-slate-500 mt-0.5">
                       {t(`categories.${recipe.category}`, { defaultValue: recipe.category })} · {t('recipeDetail.servings', { count: recipe.servings })}
                     </p>
+                    {/* Flag restricted fasting-diet meals so a day isn't built
+                        on them by mistake. */}
+                    {isFmdRecipe(recipe) && (
+                      <span className="mt-1 inline-flex items-center gap-1 badge bg-amber-100 text-amber-800 text-[11px] font-semibold">
+                        <span aria-hidden>⏳</span>
+                        {t('recipes.fmdBadge', { defaultValue: 'Fasting day' })}
+                      </span>
+                    )}
                   </div>
                   <svg className="w-4 h-4 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

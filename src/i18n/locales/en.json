@@ -59,7 +59,8 @@
     "noRecipesMatch": "No recipes match your search.",
     "addFirstRecipe": "Add your first recipe to get started!",
     "notFound": "Recipe not found.",
-    "backToRecipes": "Back to Recipes"
+    "backToRecipes": "Back to Recipes",
+    "fmdBadge": "Fasting day"
   },
   "recipeDetail": {
     "back": "Back",
@@ -93,7 +94,9 @@
     "us": "US",
     "notes": "Chef's notes",
     "resetChecklist": "Reset",
-    "goodFor": "Good for"
+    "goodFor": "Good for",
+    "fmdNoticeTitle": "Part of the 5-Day Fasting Mimicking Diet",
+    "fmdNoticeBody": "These meals are intentionally low-calorie and are not complete standalone meals. Follow the full FMD plan for it to work as intended."
   },
   "recipeForm": {
     "addRecipe": "Add Recipe",

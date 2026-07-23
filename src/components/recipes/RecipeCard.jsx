@@ -3,6 +3,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAccess } from '../../hooks/useAccess'
+import { isFmdRecipe } from '../../utils/recipeFlags'
 import FavoriteStar from './FavoriteStar'
 
 const CATEGORY_COLORS = {
@@ -130,6 +131,17 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
           {t(`categories.${recipe.category}`, { defaultValue: recipe.category })}
         </span>
       </div>
+
+      {/* Fasting-diet flag — these are restricted protocol meals, not full
+          standalone meals, so it's called out wherever the recipe is browsed. */}
+      {isFmdRecipe(recipe) && (
+        <div className="mb-1.5">
+          <span className="inline-flex items-center gap-1 badge bg-amber-100 text-amber-800 text-xs font-semibold">
+            <span aria-hidden>⏳</span>
+            {t('recipes.fmdBadge', { defaultValue: 'Fasting day' })}
+          </span>
+        </div>
+      )}
 
       {/* Nutrient amount — shown when the list is ranked by a nutrient, so
           the ordering is legible ("this one has 2.3 mg zinc"). */}
