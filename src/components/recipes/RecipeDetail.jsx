@@ -181,6 +181,10 @@ export default function RecipeDetail() {
       prepTime: recipe.prepTime ?? null,
       cookTime: recipe.cookTime ?? null,
       servings: displayServings,
+      conditions: recipeConditions(recipe).map(c => ({
+        icon: c.icon,
+        label: t(`conditions.${c.id}`, { defaultValue: c.id }),
+      })),
       ingredients: printIngredients,
       steps: displaySteps || [],
       labels: {
@@ -190,6 +194,7 @@ export default function RecipeDetail() {
         prep: t('recipeDetail.prepLabel', { defaultValue: 'Prep' }),
         cook: t('recipeDetail.cookLabel', { defaultValue: 'Cook' }),
         printedOn: t('recipeDetail.printedOn', { defaultValue: 'Printed' }),
+        goodFor: t('recipeDetail.goodFor', { defaultValue: 'Good for' }),
       },
     })
   }

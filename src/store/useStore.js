@@ -1406,7 +1406,11 @@ const useStore = create(
       recipesView: {
         category: 'All',
         pack: 'All',
-        condition: 'All',
+        // Health conditions to filter by, AND-combined: a recipe must match
+        // every selected condition. Empty = no condition filter. (Replaces the
+        // old single `condition` string so people with several conditions can
+        // find food that suits all of them.)
+        conditions: [],
         search: '',
         sortBy: 'newest',
       },
@@ -1414,7 +1418,7 @@ const useStore = create(
         recipesView: { ...s.recipesView, ...partial },
       })),
       resetRecipesView: () => set(() => ({
-        recipesView: { category: 'All', pack: 'All', condition: 'All', search: '', sortBy: 'newest' },
+        recipesView: { category: 'All', pack: 'All', conditions: [], search: '', sortBy: 'newest' },
       })),
     }),
     {

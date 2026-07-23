@@ -43,6 +43,7 @@ export function printRecipe(opts) {
     prepTime,
     cookTime,
     servings,
+    conditions = [],
     ingredients = [],
     steps = [],
     labels = {},
@@ -57,6 +58,7 @@ export function printRecipe(opts) {
     cook: 'Cook',
     category: 'Category',
     printedOn: 'Printed',
+    goodFor: 'Good for',
     ...labels,
   }
 
@@ -65,6 +67,12 @@ export function printRecipe(opts) {
   if (prepTime) chips.push(`<span class="chip">⏱ ${escapeHtml(L.prep)}: <b>${prepTime}m</b></span>`)
   if (cookTime) chips.push(`<span class="chip">🔥 ${escapeHtml(L.cook)}: <b>${cookTime}m</b></span>`)
   if (category) chips.push(`<span class="chip chip--accent">${escapeHtml(category)}</span>`)
+
+  // "Good for" health-condition chips — so the printed sheet shows at a
+  // glance what the recipe supports (diabetes, blood pressure, etc.).
+  const conditionChips = conditions
+    .map((c) => `<span class="chip chip--health">${c.icon ? c.icon + ' ' : ''}${escapeHtml(c.label)}</span>`)
+    .join('')
 
   const ingredientItems = ingredients
     .map(
@@ -200,6 +208,30 @@ export function printRecipe(opts) {
     background: var(--accent);
     border-color: #bbe5c6;
     color: var(--brand-dark);
+    font-weight: 700;
+  }
+  .good-for {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: -6px 0 14px 0;
+  }
+  .good-for .label {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+  }
+  .chip--health {
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    color: #3730a3;
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    line-height: 1;
     font-weight: 700;
   }
 
@@ -363,6 +395,8 @@ export function printRecipe(opts) {
       ${imageUrl ? `<div class="hero"><img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)}" /></div>` : ''}
 
       ${chips.length ? `<div class="chips">${chips.join('')}</div>` : ''}
+
+      ${conditionChips ? `<div class="good-for"><span class="label">${escapeHtml(L.goodFor)}</span>${conditionChips}</div>` : ''}
 
       <div class="body">
         <section>

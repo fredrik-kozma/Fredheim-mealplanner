@@ -51,7 +51,10 @@ export default function RecipeList() {
 
   const activeCategory = view.category
   const activePack = view.pack
-  const activeCondition = view.condition || 'All'
+  // Conditions are AND-combined; empty array = no condition filter. Falls back
+  // to the legacy single `condition` string for anyone with an old persisted view.
+  const activeConditions = view.conditions
+    ?? (view.condition && view.condition !== 'All' ? [view.condition] : [])
   const search = view.search
   const sortBy = view.sortBy
 
@@ -63,9 +66,18 @@ export default function RecipeList() {
 
   const setActiveCategory = (v) => setRecipesView({ category: v })
   const setActivePack = (v) => setRecipesView({ pack: v })
-  const setActiveCondition = (v) => setRecipesView({ condition: v })
   const setSearch = (v) => setRecipesView({ search: v })
   const setSortBy = (v) => setRecipesView({ sortBy: v })
+  // Toggle one condition in/out of the AND-filter set. Reads the current
+  // conditions from the store (not the render closure) so two quick taps
+  // before a re-render don't clobber each other.
+  const toggleCondition = (id) => {
+    const cur = useStore.getState().recipesView.conditions
+      ?? (useStore.getState().recipesView.condition && useStore.getState().recipesView.condition !== 'All'
+        ? [useStore.getState().recipesView.condition] : [])
+    setRecipesView({ conditions: cur.includes(id) ? cur.filter(c => c !== id) : [...cur, id] })
+  }
+  const clearConditions = () => setRecipesView({ conditions: [] })
 
 
   // True if anything is filtered away from the default state — used to
@@ -73,7 +85,7 @@ export default function RecipeList() {
   const hasActiveFilters =
     activeCategory !== 'All' ||
     activePack !== 'All' ||
-    activeCondition !== 'All' ||
+    activeConditions.length > 0 ||
     search !== '' ||
     sortBy !== 'newest'
 
@@ -110,7 +122,8 @@ export default function RecipeList() {
   const filtered = recipes
     .filter(r => !favoritesOnly || favSet.has(r.id))
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
-    .filter(r => activeCondition === 'All' || (r.tags || []).includes(activeCondition))
+    // AND across selected conditions: recipe must carry every chosen tag.
+    .filter(r => activeConditions.every(c => (r.tags || []).includes(c)))
     .filter(r => {
       if (activePack === 'All') return true
       if (activePack === '__user__') return !r.sourcePackId
@@ -264,29 +277,33 @@ export default function RecipeList() {
           style={{ scrollbarWidth: 'none' }}
         >
           <button
-            onClick={() => setActiveCondition('All')}
+            onClick={clearConditions}
             className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
-              activeCondition === 'All'
+              activeConditions.length === 0
                 ? 'bg-slate-700 text-white border-slate-700'
                 : 'bg-white text-slate-600 border-slate-200'
             }`}
           >
             {t('conditions.all', { defaultValue: 'All conditions' })}
           </button>
-          {CONDITION_TAGS.map(c => (
-            <button
-              key={c.id}
-              onClick={() => setActiveCondition(activeCondition === c.id ? 'All' : c.id)}
-              className={`flex-shrink-0 h-7 px-3 inline-flex items-center gap-1 rounded-full text-xs font-medium whitespace-nowrap border ${
-                activeCondition === c.id
-                  ? `${CONDITION_CHIP_ACTIVE[c.color]} border-transparent`
-                  : 'bg-white text-slate-600 border-slate-200'
-              }`}
-            >
-              <span aria-hidden>{c.icon}</span>
-              {t(`conditions.${c.id}`, { defaultValue: c.id })}
-            </button>
-          ))}
+          {CONDITION_TAGS.map(c => {
+            const on = activeConditions.includes(c.id)
+            return (
+              <button
+                key={c.id}
+                onClick={() => toggleCondition(c.id)}
+                aria-pressed={on}
+                className={`flex-shrink-0 h-7 px-3 inline-flex items-center gap-1 rounded-full text-xs font-medium whitespace-nowrap border ${
+                  on
+                    ? `${CONDITION_CHIP_ACTIVE[c.color]} border-transparent`
+                    : 'bg-white text-slate-600 border-slate-200'
+                }`}
+              >
+                <span aria-hidden>{on ? '✓' : c.icon}</span>
+                {t(`conditions.${c.id}`, { defaultValue: c.id })}
+              </button>
+            )
+          })}
         </div>
 
         {/* Category filter chips */}

@@ -92,7 +92,8 @@
     "metric": "Metric",
     "us": "US",
     "notes": "Chef's notes",
-    "resetChecklist": "Reset"
+    "resetChecklist": "Reset",
+    "goodFor": "Good for"
   },
   "recipeForm": {
     "addRecipe": "Add Recipe",
