@@ -4,6 +4,28 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import RecipeCard from './RecipeCard'
 import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
+import { NUTRITION_GROUPS, fmtNutrient } from '../../utils/nutritionData'
+
+// Nutrients offered in the "Most …" sort — the ones you'd want more of.
+// The "less is better" fields (calories, fats, sugars, cholesterol, sodium)
+// and the non-target fat breakdowns are left out to keep the menu on-message.
+const SORT_NUTRIENT_EXCLUDE = new Set([
+  'calories', 'totalFat', 'saturatedFat', 'polyunsaturatedFat', 'monounsaturatedFat',
+  'omega6', 'cholesterol', 'totalCarbs', 'totalSugars', 'addedSugar', 'sodium',
+])
+const NUTRIENT_SORT_GROUPS = NUTRITION_GROUPS
+  .map(g => ({ key: g.key, fields: g.fields.filter(f => !SORT_NUTRIENT_EXCLUDE.has(f.key)) }))
+  .filter(g => g.fields.length)
+// key → { unit } for reading the value/unit off a picked nutrient.
+const NUTRIENT_META = Object.fromEntries(
+  NUTRITION_GROUPS.flatMap(g => g.fields.map(f => [f.key, { unit: f.unit }]))
+)
+const NUTRIENT_SORT_PREFIX = 'nutrient:'
+
+function nutrientValue(recipe, key) {
+  const v = recipe?.nutrition?.perServing?.[key]
+  return typeof v === 'number' ? v : null
+}
 
 export default function RecipeList() {
   const { t, i18n } = useTranslation()
@@ -32,6 +54,12 @@ export default function RecipeList() {
   const activeCondition = view.condition || 'All'
   const search = view.search
   const sortBy = view.sortBy
+
+  // When sorting by a nutrient, sortBy is "nutrient:<key>". Otherwise it's one
+  // of newest/oldest/name.
+  const activeNutrient = sortBy?.startsWith(NUTRIENT_SORT_PREFIX)
+    ? sortBy.slice(NUTRIENT_SORT_PREFIX.length)
+    : null
 
   const setActiveCategory = (v) => setRecipesView({ category: v })
   const setActivePack = (v) => setRecipesView({ pack: v })
@@ -93,7 +121,17 @@ export default function RecipeList() {
       const q = search.toLowerCase()
       return titleOf(r).toLowerCase().includes(q) || r.title.toLowerCase().includes(q)
     })
+    // When ranking by a nutrient, keep only recipes that actually contain it
+    // (a positive per-serving amount) — recipes without nutrition data, or
+    // with none of that nutrient, drop out rather than sort to a confusing
+    // pile of zeros at the bottom.
+    .filter(r => {
+      if (!activeNutrient) return true
+      const v = nutrientValue(r, activeNutrient)
+      return v != null && v > 0
+    })
     .sort((a, b) => {
+      if (activeNutrient) return nutrientValue(b, activeNutrient) - nutrientValue(a, activeNutrient)
       if (sortBy === 'newest') return b.createdAt - a.createdAt
       if (sortBy === 'oldest') return a.createdAt - b.createdAt
       if (sortBy === 'name') return titleOf(a).localeCompare(titleOf(b))
@@ -130,6 +168,19 @@ export default function RecipeList() {
             <option value="newest">{t('recipes.sort.newest')}</option>
             <option value="oldest">{t('recipes.sort.oldest')}</option>
             <option value="name">{t('recipes.sort.nameAZ')}</option>
+            {/* Rank by nutrient — "Most protein / calcium / zinc …" */}
+            {NUTRIENT_SORT_GROUPS.map(g => (
+              <optgroup key={g.key} label={t(`nutrition.groups.${g.key}`, { defaultValue: g.key })}>
+                {g.fields.map(f => (
+                  <option key={f.key} value={NUTRIENT_SORT_PREFIX + f.key}>
+                    {t('recipes.sort.mostNutrient', {
+                      nutrient: t(`nutrition.fields.${f.key}`, { defaultValue: f.label }),
+                      defaultValue: 'Most {{nutrient}}',
+                    })}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
           </select>
           {/* Favorites-only toggle. Always rendered so users can find it;
               becomes rose-filled (heart) when active — matching the
@@ -283,7 +334,15 @@ export default function RecipeList() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-2">
             {filtered.map(recipe => (
-              <RecipeCard key={recipe.id} recipe={recipe} />
+              <RecipeCard
+                key={recipe.id}
+                recipe={recipe}
+                nutrientBadge={activeNutrient ? {
+                  label: t(`nutrition.fields.${activeNutrient}`, { defaultValue: activeNutrient }),
+                  value: fmtNutrient(nutrientValue(recipe, activeNutrient)),
+                  unit: NUTRIENT_META[activeNutrient]?.unit || '',
+                } : null}
+              />
             ))}
           </div>
         )}

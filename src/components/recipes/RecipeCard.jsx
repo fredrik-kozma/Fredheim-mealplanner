@@ -40,7 +40,7 @@ function TimeChip({ minutes, label }) {
   )
 }
 
-export default function RecipeCard({ recipe, compact = false }) {
+export default function RecipeCard({ recipe, compact = false, nutrientBadge = null }) {
   const navigate = useNavigate()
   const { t, i18n } = useTranslation()
   const { isLocked, isPreviewRecipe } = useAccess()
@@ -130,6 +130,17 @@ export default function RecipeCard({ recipe, compact = false }) {
           {t(`categories.${recipe.category}`, { defaultValue: recipe.category })}
         </span>
       </div>
+
+      {/* Nutrient amount — shown when the list is ranked by a nutrient, so
+          the ordering is legible ("this one has 2.3 mg zinc"). */}
+      {nutrientBadge && (
+        <div className="mb-1">
+          <span className="inline-flex items-center gap-1 badge bg-emerald-50 text-emerald-700 text-xs font-semibold">
+            {nutrientBadge.label}
+            <span className="tabular-nums">{nutrientBadge.value} {nutrientBadge.unit}</span>
+          </span>
+        </div>
+      )}
 
       {!compact && (
         <div className="flex items-center gap-3 mt-2">

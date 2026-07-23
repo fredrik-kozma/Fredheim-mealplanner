@@ -51,7 +51,8 @@
     "sort": {
       "newest": "Nyeste",
       "oldest": "Eldste",
-      "nameAZ": "A–Å"
+      "nameAZ": "A–Å",
+      "mostNutrient": "Mest {{nutrient}}"
     },
     "allCategories": "Alle",
     "noRecipesYet": "Ingen oppskrifter ennå",

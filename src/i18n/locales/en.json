@@ -51,7 +51,8 @@
     "sort": {
       "newest": "Newest",
       "oldest": "Oldest",
-      "nameAZ": "A–Z"
+      "nameAZ": "A–Z",
+      "mostNutrient": "Most {{nutrient}}"
     },
     "allCategories": "All",
     "noRecipesYet": "No recipes yet",
