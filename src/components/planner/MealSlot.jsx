@@ -47,9 +47,11 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
       const dy = Math.abs(e.clientY - start.y)
       if (dx > 5 || dy > 5) return // it was a drag
     }
-    // Tell the recipe page where we came from so its Back button can
-    // return here instead of the recipes list.
-    navigate(`/recipes/${item.recipeId}`, { state: { from: '/planner' } })
+    // Tell the recipe page where we came from (so its Back button returns
+    // here instead of the recipes list) and what serving count this slot is
+    // planned for, so the recipe opens already scaled to it instead of the
+    // recipe's own default — you shouldn't have to re-adjust it by hand.
+    navigate(`/recipes/${item.recipeId}`, { state: { from: '/planner', servings: effectiveServings } })
   }
 
   function bumpServings(delta, e) {
@@ -86,7 +88,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault()
-          navigate(`/recipes/${item.recipeId}`, { state: { from: '/planner' } })
+          navigate(`/recipes/${item.recipeId}`, { state: { from: '/planner', servings: effectiveServings } })
         }
       }}
       className={`group rounded-lg shadow-sm border cursor-pointer transition-colors ${
@@ -127,6 +129,12 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
             className="flex items-center gap-1"
             onPointerDown={(e) => e.stopPropagation()}
             onClick={(e) => e.stopPropagation()}
+            // Also contain keydown: without this, pressing Enter inside the
+            // number input to confirm a value bubbles up to the chip's own
+            // "Enter/Space to open recipe" handler and navigates away in the
+            // same tick — before the commit's re-render — so the recipe
+            // would open with the servings count from just before the edit.
+            onKeyDown={(e) => e.stopPropagation()}
           >
             <button
               onClick={(e) => bumpServings(-1, e)}

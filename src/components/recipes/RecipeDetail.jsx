@@ -49,7 +49,13 @@ export default function RecipeDetail() {
   // Normalize legacy 'imperial' value to 'us'.
   const preferredSystem = unitSystem === 'imperial' ? 'us' : (unitSystem || 'metric')
 
-  const [displayServings, setDisplayServings] = useState(recipe?.servings || 4)
+  // Opening a recipe from a planned meal slot carries the portion count that
+  // slot is set to (state.servings, set by MealSlot) — the detail page opens
+  // already scaled to it instead of the recipe's own default, so batch/family
+  // sizing planned in the week doesn't have to be re-entered by hand here.
+  const [displayServings, setDisplayServings] = useState(
+    location.state?.servings || recipe?.servings || 4
+  )
   // View override: null = follow the user's Settings preference. When the user
   // taps the metric/US toggle on this recipe we switch to that value.
   const [viewSystem, setViewSystem] = useState(null)
