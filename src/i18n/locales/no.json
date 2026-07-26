@@ -60,7 +60,12 @@
     "addFirstRecipe": "Legg til din første oppskrift for å komme i gang!",
     "notFound": "Oppskrift ikke funnet.",
     "backToRecipes": "Tilbake til oppskrifter",
-    "fmdBadge": "Fastedag"
+    "fmdBadge": "Fastedag",
+    "allergenHidden_one": "{{count}} oppskrift skjult av allergenfilteret ditt.",
+    "allergenHidden_other": "{{count}} oppskrifter skjult av allergenfilteret ditt.",
+    "allergenPaused": "Allergenfilteret er satt på pause — viser alle oppskrifter.",
+    "allergenShowAll": "Vis likevel",
+    "allergenResume": "Slå på igjen"
   },
   "recipeDetail": {
     "back": "Tilbake",
@@ -349,7 +354,11 @@
     "contactSupport": "Kontakt kundestøtte",
     "tutorial": "App-omvisning",
     "tutorialDesc": "Ta en rask omvisning og se hvordan du planlegger måltider, lager handlelister og får mest mulig ut av appen.",
-    "showTutorial": "Vis omvisning"
+    "showTutorial": "Vis omvisning",
+    "allergens": "Allergener å unngå",
+    "allergensDesc": "Oppskrifter som inneholder disse skjules fra oppskriftslisten og ukeplanen.",
+    "allergensClear": "Nullstill alle",
+    "allergensWarning": "Oppdages automatisk fra ingrediensnavn. Sjekk alltid hele ingredienslisten selv — dette kan ikke ta høyde for merkeforskjeller eller «kan inneholde spor av»."
   },
   "units": {
     "none": "— ingen —",
@@ -647,5 +656,14 @@
     "balanceTitle": "Sikt på balanse, ikke perfeksjon.",
     "balanceBody": "Du trenger ikke å nå 100 % av hvert næringsstoff hver eneste dag – noen dager blir høyere, andre lavere. Det som betyr noe, er at det jevner seg ut i løpet av uken. Disse tallene er estimater fra standard matvaredata, ikke medisinske råd.",
     "noNutritionData": "ingen næringsdata"
+  },
+  "allergens": {
+    "tree-nuts": "Nøtter",
+    "peanuts": "Peanøtter",
+    "gluten": "Gluten / hvete",
+    "soy": "Soya",
+    "sesame": "Sesam",
+    "mustard": "Sennep",
+    "celery": "Selleri"
   }
 }

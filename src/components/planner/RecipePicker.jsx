@@ -3,12 +3,16 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
 import { isFmdRecipe } from '../../utils/recipeFlags'
+import { recipeHasAvoidedAllergen } from '../../data/allergens'
 
 export default function RecipePicker({ onSelect, onClose, title }) {
   const { t, i18n } = useTranslation()
   const recipes = useStore(s => s.recipes)
   const recipeCategories = useStore(s => s.recipeCategories)
   const installedPacks = useStore(s => s.installedPacks)
+  const avoidedAllergens = useStore(s => s.avoidedAllergens) || []
+  const allergenFilterPaused = useStore(s => s.allergenFilterPaused)
+  const allergenActive = avoidedAllergens.length > 0 && !allergenFilterPaused
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const titleOf = (r) => r.translations?.[currentLang]?.title || r.title
   const [search, setSearch] = useState('')
@@ -54,6 +58,9 @@ export default function RecipePicker({ onSelect, onClose, title }) {
   const filtered = recipes
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
     .filter(r => activeConditions.every(c => (r.tags || []).includes(c)))
+    // Allergen profile applies here too — you shouldn't be able to plan a
+    // meal containing something the household avoids.
+    .filter(r => !allergenActive || !recipeHasAvoidedAllergen(r, avoidedAllergens))
     .filter(r => {
       if (activePack === 'All') return true
       if (activePack === '__user__') return !r.sourcePackId

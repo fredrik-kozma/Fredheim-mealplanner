@@ -5,6 +5,7 @@ import useStore from '../../store/useStore'
 import RecipeCard from './RecipeCard'
 import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
 import { NUTRITION_GROUPS, fmtNutrient } from '../../utils/nutritionData'
+import { recipeHasAvoidedAllergen } from '../../data/allergens'
 
 // Nutrients offered in the "Most …" sort — the ones you'd want more of.
 // The "less is better" fields (calories, fats, sugars, cholesterol, sodium)
@@ -33,6 +34,9 @@ export default function RecipeList() {
   const recipeCategories = useStore(s => s.recipeCategories)
   const installedPacks = useStore(s => s.installedPacks)
   const favoriteRecipes = useStore(s => s.favoriteRecipes)
+  const avoidedAllergens = useStore(s => s.avoidedAllergens) || []
+  const allergenFilterPaused = useStore(s => s.allergenFilterPaused)
+  const setAllergenFilterPaused = useStore(s => s.setAllergenFilterPaused)
   const navigate = useNavigate()
 
   // Local-only toggle for "show only my favorites". Not persisted because
@@ -151,6 +155,14 @@ export default function RecipeList() {
       return 0
     })
 
+  // Allergen filter runs last so the "N hidden" count reflects recipes the
+  // user would otherwise be seeing right now, given their other filters.
+  const allergenActive = avoidedAllergens.length > 0 && !allergenFilterPaused
+  const visible = allergenActive
+    ? filtered.filter(r => !recipeHasAvoidedAllergen(r, avoidedAllergens))
+    : filtered
+  const hiddenByAllergens = filtered.length - visible.length
+
   const categories = ['All', ...recipeCategories.filter(c => recipes.some(r => r.category === c))]
 
   return (
@@ -233,6 +245,30 @@ export default function RecipeList() {
             </svg>
             {t('recipes.clearFilters', { defaultValue: 'Clear filters' })}
           </button>
+        )}
+
+        {/* Allergen notice — so recipes never go missing without explanation,
+            with a temporary override for cooking for someone else. */}
+        {avoidedAllergens.length > 0 && (
+          <div className="flex items-center gap-2 flex-wrap text-xs bg-red-50 border border-red-100 text-red-800 rounded-lg px-3 py-2">
+            <span aria-hidden>🚫</span>
+            <span className="flex-1 min-w-0">
+              {allergenFilterPaused
+                ? t('recipes.allergenPaused', { defaultValue: 'Allergen filter paused — showing all recipes.' })
+                : t('recipes.allergenHidden', {
+                  count: hiddenByAllergens,
+                  defaultValue: '{{count}} recipes hidden by your allergen filter.',
+                })}
+            </span>
+            <button
+              onClick={() => setAllergenFilterPaused(!allergenFilterPaused)}
+              className="font-semibold underline hover:no-underline whitespace-nowrap"
+            >
+              {allergenFilterPaused
+                ? t('recipes.allergenResume', { defaultValue: 'Re-apply' })
+                : t('recipes.allergenShowAll', { defaultValue: 'Show anyway' })}
+            </button>
+          </div>
         )}
 
         {/* Pack filter — only shown when more than one bucket exists.
@@ -329,7 +365,7 @@ export default function RecipeList() {
 
       {/* Recipe grid */}
       <div className="flex-1 overflow-y-auto px-4 pb-24 lg:pb-6">
-        {filtered.length === 0 ? (
+        {visible.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <div className="relative flex mb-4" style={{ width: '4rem', height: '3.5rem' }}>
               <span className="text-5xl absolute left-0">🥑</span>
@@ -350,7 +386,7 @@ export default function RecipeList() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-2">
-            {filtered.map(recipe => (
+            {visible.map(recipe => (
               <RecipeCard
                 key={recipe.id}
                 recipe={recipe}

@@ -970,6 +970,29 @@ const useStore = create(
       familySize: 4,
       setFamilySize: (n) => set({ familySize: n }),
 
+      // ── Allergens ──
+      // Allergen ids the household avoids. Unlike the condition filter (a
+      // browsing intent), an allergy is a persistent fact, so this lives in
+      // settings and applies everywhere automatically — you can't forget to
+      // re-apply it. Recipes containing any of these are hidden from the
+      // recipe list and the planner's picker.
+      avoidedAllergens: [],
+
+      toggleAvoidedAllergen: (id) => set((s) => {
+        const cur = s.avoidedAllergens || []
+        return {
+          avoidedAllergens: cur.includes(id) ? cur.filter(a => a !== id) : [...cur, id],
+        }
+      }),
+
+      clearAvoidedAllergens: () => set({ avoidedAllergens: [] }),
+
+      // Temporarily show everything (e.g. cooking for someone without the
+      // allergy) without losing the saved profile. Not persisted — it resets
+      // on reload so the safe default always comes back.
+      allergenFilterPaused: false,
+      setAllergenFilterPaused: (v) => set({ allergenFilterPaused: Boolean(v) }),
+
       /**
        * Rescale the whole current week to a different number of people.
        *
@@ -1426,6 +1449,14 @@ const useStore = create(
       // IndexedDB-backed (via idb-keyval) instead of the default
       // localStorage. Gives us ~50% of free disk (GBs) instead of ~5 MB.
       storage: createJSONStorage(() => idbStorage),
+      // Persist everything EXCEPT the temporary "show allergens anyway"
+      // escape hatch. That one must reset on reload so the protective
+      // filter is always back on by default — a paused allergen filter
+      // silently surviving a restart is exactly the unsafe case.
+      partialize: (state) => {
+        const { allergenFilterPaused, ...persisted } = state
+        return persisted
+      },
       version: 7,
       migrate: (persistedState, version) => {
         if (version < 2) {

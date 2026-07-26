@@ -8,6 +8,7 @@ import AuthModal from '../components/auth/AuthModal'
 import EditableNumber from '../components/common/EditableNumber'
 import useInstallPWA from '../hooks/useInstallPWA'
 import IOSInstallInstructions from '../components/pwa/IOSInstallInstructions'
+import { ALLERGENS } from '../data/allergens'
 
 function SectionCard({ title, children }) {
   return (
@@ -233,6 +234,9 @@ export default function SettingsPage() {
 
   const familySize = useStore(s => s.familySize)
   const setFamilySize = useStore(s => s.setFamilySize)
+  const avoidedAllergens = useStore(s => s.avoidedAllergens) || []
+  const toggleAvoidedAllergen = useStore(s => s.toggleAvoidedAllergen)
+  const clearAvoidedAllergens = useStore(s => s.clearAvoidedAllergens)
   const units = useStore(s => s.units)
   const setUnits = useStore(s => s.setUnits)
 
@@ -408,6 +412,50 @@ export default function SettingsPage() {
           </div>
           <p className="text-xs text-slate-500 mt-3 text-center">
             {t('settings.familySizeDesc')}
+          </p>
+        </SectionCard>
+
+        {/* Allergens — a saved profile, applied everywhere automatically */}
+        <SectionCard title={t('settings.allergens', { defaultValue: 'Allergens to avoid' })}>
+          <p className="text-xs text-slate-500 mb-3">
+            {t('settings.allergensDesc', {
+              defaultValue: 'Recipes containing these are hidden from the recipe list and the planner.',
+            })}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {ALLERGENS.map(a => {
+              const on = avoidedAllergens.includes(a.id)
+              return (
+                <button
+                  key={a.id}
+                  onClick={() => toggleAvoidedAllergen(a.id)}
+                  aria-pressed={on}
+                  className={`inline-flex items-center gap-1.5 h-9 px-3 rounded-full text-sm font-medium border transition-colors ${
+                    on
+                      ? 'bg-red-600 text-white border-red-600'
+                      : 'bg-white text-slate-600 border-slate-200 hover:border-red-300'
+                  }`}
+                >
+                  <span aria-hidden>{on ? '✓' : a.icon}</span>
+                  {t(`allergens.${a.id}`, { defaultValue: a.id })}
+                </button>
+              )
+            })}
+          </div>
+          {avoidedAllergens.length > 0 && (
+            <button
+              onClick={clearAvoidedAllergens}
+              className="mt-3 text-xs font-medium text-slate-400 hover:text-indigo-600 transition-colors"
+            >
+              {t('settings.allergensClear', { defaultValue: 'Clear all' })}
+            </button>
+          )}
+          {/* Honest about the limitation: this is inferred from ingredient
+              names, not authored allergen metadata. */}
+          <p className="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-3 leading-relaxed">
+            ⚠️ {t('settings.allergensWarning', {
+              defaultValue: 'Detected automatically from ingredient names. Always check the full ingredient list yourself — this cannot account for brand differences or “may contain” cross-contamination.',
+            })}
           </p>
         </SectionCard>
 

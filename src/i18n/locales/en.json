@@ -60,7 +60,12 @@
     "addFirstRecipe": "Add your first recipe to get started!",
     "notFound": "Recipe not found.",
     "backToRecipes": "Back to Recipes",
-    "fmdBadge": "Fasting day"
+    "fmdBadge": "Fasting day",
+    "allergenHidden_one": "{{count}} recipe hidden by your allergen filter.",
+    "allergenHidden_other": "{{count}} recipes hidden by your allergen filter.",
+    "allergenPaused": "Allergen filter paused — showing all recipes.",
+    "allergenShowAll": "Show anyway",
+    "allergenResume": "Re-apply"
   },
   "recipeDetail": {
     "back": "Back",
@@ -349,7 +354,11 @@
     "contactSupport": "Contact support",
     "tutorial": "App tutorial",
     "tutorialDesc": "Take a quick tour to see how to plan meals, build shopping lists, and get the most out of the app.",
-    "showTutorial": "Show tutorial"
+    "showTutorial": "Show tutorial",
+    "allergens": "Allergens to avoid",
+    "allergensDesc": "Recipes containing these are hidden from the recipe list and the planner.",
+    "allergensClear": "Clear all",
+    "allergensWarning": "Detected automatically from ingredient names. Always check the full ingredient list yourself — this cannot account for brand differences or “may contain” cross-contamination."
   },
   "units": {
     "none": "— none —",
@@ -647,5 +656,14 @@
     "balanceTitle": "Aim for balance, not perfection.",
     "balanceBody": "You don't need to hit 100% of every nutrient every single day — some days run higher, others lower. What matters is that things even out across the week. These figures are estimates from standard food data, not medical advice.",
     "noNutritionData": "no nutrition data"
+  },
+  "allergens": {
+    "tree-nuts": "Tree nuts",
+    "peanuts": "Peanuts",
+    "gluten": "Gluten / wheat",
+    "soy": "Soy",
+    "sesame": "Sesame",
+    "mustard": "Mustard",
+    "celery": "Celery"
   }
 }

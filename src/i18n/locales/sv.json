@@ -60,7 +60,12 @@
     "addFirstRecipe": "Lägg till ditt första recept för att komma igång!",
     "notFound": "Receptet hittades inte.",
     "backToRecipes": "Tillbaka till recept",
-    "fmdBadge": "Fastedag"
+    "fmdBadge": "Fastedag",
+    "allergenHidden_one": "{{count}} recept dolt av ditt allergenfilter.",
+    "allergenHidden_other": "{{count}} recept dolda av ditt allergenfilter.",
+    "allergenPaused": "Allergenfiltret är pausat — visar alla recept.",
+    "allergenShowAll": "Visa ändå",
+    "allergenResume": "Aktivera igen"
   },
   "recipeDetail": {
     "back": "Tillbaka",
@@ -349,7 +354,11 @@
     "contactSupport": "Kontakta support",
     "tutorial": "App-rundtur",
     "tutorialDesc": "Ta en snabb rundtur och se hur du planerar måltider, bygger inköpslistor och får ut mest av appen.",
-    "showTutorial": "Visa rundtur"
+    "showTutorial": "Visa rundtur",
+    "allergens": "Allergener att undvika",
+    "allergensDesc": "Recept som innehåller dessa döljs från receptlistan och veckoplaneraren.",
+    "allergensClear": "Rensa alla",
+    "allergensWarning": "Upptäcks automatiskt från ingrediensnamn. Kontrollera alltid hela ingredienslistan själv — detta kan inte ta hänsyn till märkesskillnader eller ”kan innehålla spår av”."
   },
   "units": {
     "none": "— ingen —",
@@ -647,5 +656,14 @@
     "balanceTitle": "Sikta på balans, inte perfektion.",
     "balanceBody": "Du behöver inte nå 100 % av varje näringsämne varje dag – vissa dagar blir högre, andra lägre. Det som spelar roll är att det jämnar ut sig under veckan. Dessa siffror är uppskattningar från standardiserade livsmedelsdata, inte medicinsk rådgivning.",
     "noNutritionData": "ingen näringsdata"
+  },
+  "allergens": {
+    "tree-nuts": "Nötter",
+    "peanuts": "Jordnötter",
+    "gluten": "Gluten / vete",
+    "soy": "Soja",
+    "sesame": "Sesam",
+    "mustard": "Senap",
+    "celery": "Selleri"
   }
 }
