@@ -110,6 +110,6 @@ if (pack.recipes.some(r => r.id === RECIPE.id)) {
 } else {
   pack.recipes.push(RECIPE)
 }
-pack.version = '1.11.0'
+pack.version = '1.11.1'
 fs.writeFileSync(PACK, JSON.stringify(pack, null, 2) + '\n', 'utf8')
 console.log('fredheim-reversal-protocol.json ->', pack.version, '| recipes:', pack.recipes.length, '| added:', RECIPE.id, '| img KB:', Math.round(imageUrl.length / 1024))

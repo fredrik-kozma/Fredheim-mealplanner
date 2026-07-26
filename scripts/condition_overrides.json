@@ -58,5 +58,10 @@
   "fmd-d5-dinner": {
     "add": ["weight-loss"],
     "note": "Celebration Green Bowl: 58 kcal/100 g — excellent energy density; satFat 3.1 g comes solely from whole avocado."
+  },
+  "orn-29": {
+    "add": ["diabetes-friendly", "weight-loss"],
+    "remove": ["blood-pressure-friendly"],
+    "note": "Metabolic Support Drink: a condiment-sized spice tonic (5.9 g) — bulk nutrient thresholds (fiber/energy density) don't fit a dose this small, but the whole-spice research basis (cinnamon for insulin sensitivity, ginger/cumin/nigella sativa for metabolism, garlic/nigella/cinnamon for lipids) supports diabetes and weight-loss tagging on user request. Heart-healthy already auto-qualifies (covers cholesterol). Blood pressure dropped per user — not a claim being made for this recipe."
   }
 }
