@@ -375,13 +375,18 @@ export default function RecipeDetail() {
           <p className="text-sm text-slate-600 mb-5 leading-relaxed">{displayDescription}</p>
         )}
 
-        {/* Scale note */}
-        {familySize !== recipe.servings && (
+        {/* Scale note — reflects what's actually shown below (displayServings),
+            not the household default. Using familySize here was misleading: it
+            could claim "scaled for 4" on a fresh page load where nothing was
+            scaled yet, and stay silent when a recipe opened from the planner
+            really was pre-scaled (whenever that override happened to equal the
+            household size). */}
+        {displayServings !== recipe.servings && (
           <div className="bg-indigo-50 rounded-xl px-4 py-2.5 mb-5 text-sm text-indigo-700 flex items-center gap-2">
             <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
             </svg>
-            {t('recipeDetail.scaledFor', { count: familySize, original: recipe.servings })}
+            {t('recipeDetail.scaledFor', { count: displayServings, original: recipe.servings })}
           </div>
         )}
 
