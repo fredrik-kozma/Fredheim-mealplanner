@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.11.1",
+  "version": "1.11.2",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -4269,45 +4269,45 @@
         "high-fiber",
         "blood-pressure-friendly"
       ],
-      "kcal": 422,
-      "servingWeightGrams": 170,
+      "kcal": 367,
+      "servingWeightGrams": 155,
       "nutrition": {
         "perServing": {
-          "calories": 422,
-          "protein": 14.3,
-          "totalFat": 25.4,
-          "saturatedFat": 2.5,
-          "polyunsaturatedFat": 15.9,
-          "monounsaturatedFat": 5.3,
+          "calories": 367,
+          "protein": 12.5,
+          "totalFat": 25,
+          "saturatedFat": 2.42,
+          "polyunsaturatedFat": 15.8,
+          "monounsaturatedFat": 5.24,
           "omega3": 3.9,
-          "omega6": 12.2,
+          "omega6": 12.1,
           "cholesterol": 0,
-          "totalCarbs": 42.6,
-          "totalSugars": 4.4,
+          "totalCarbs": 31.8,
+          "totalSugars": 3.95,
           "addedSugar": 0,
-          "fiber": 9.6,
-          "calcium": 138,
-          "potassium": 737,
-          "copper": 0.73,
-          "iron": 4.7,
-          "magnesium": 121,
-          "manganese": 1.74,
-          "selenium": 4.1,
-          "phosphorus": 250,
-          "zinc": 2.3,
-          "sodium": 308,
+          "fiber": 9,
+          "calcium": 132,
+          "potassium": 715,
+          "copper": 0.71,
+          "iron": 4.25,
+          "magnesium": 117,
+          "manganese": 1.65,
+          "selenium": 1.1,
+          "phosphorus": 234,
+          "zinc": 2.17,
+          "sodium": 233,
           "vitaminA": 342,
-          "vitaminB6": 0.37,
+          "vitaminB6": 0.36,
           "vitaminB12": 0,
           "vitaminC": 8.5,
           "vitaminD": 0,
-          "vitaminE": 1.3,
-          "vitaminK": 45,
-          "folate": 111,
-          "thiamin": 0.39,
-          "riboflavin": 0.15,
-          "niacin": 1.8,
-          "choline": 37
+          "vitaminE": 1.26,
+          "vitaminK": 44.9,
+          "folate": 97.5,
+          "thiamin": 0.32,
+          "riboflavin": 0.11,
+          "niacin": 1.13,
+          "choline": 35.2
         }
       },
       "translations": {
@@ -4340,11 +4340,6 @@
               "quantity": 240,
               "unit": "g",
               "name": "Kokte cannellini (hvite) bønner, avrent"
-            },
-            {
-              "quantity": 60,
-              "unit": "g",
-              "name": "Pankorasp"
             },
             {
               "quantity": 20,
@@ -4394,7 +4389,7 @@
             "I en skvett av olivenoljen steker du løken på middels varme til den er myk og gyllen, og tilsetter hvitløken kun det siste minuttet.",
             "Rør inn den revne gulroten og stek i 2–3 minutter til den mister det rå bittet — den er hovedkilden til saftighet.",
             "Mos cannellinibønnene grovt med en gaffel, la noen være halvhele — bønnestivelsen er det kremede limet som lar deg droppe egg.",
-            "Bland de ristede valnøttene, de mosede bønnene, løk-gulrot-hvitløk, linfrø-egget, panko, tamari, røkt paprika, timian, salt og persille. Bland godt og la hvile i 10 minutter så panko og linfrø trekker til seg fukt.",
+            "Bland de ristede valnøttene, de mosede bønnene, løk-gulrot-hvitløk, linfrø-egget, tamari, røkt paprika, timian, salt og persille. Bland godt og la hvile i 10 minutter så linfrøet trekker til seg fukt og massen stivner.",
             "Form 8 biffer ca. 1,5 cm tykke på brettet og pensle toppene lett med resten av olivenoljen — det tynne penselstrøket er det som gir dem gyllen farge i tørr ovnsvarme.",
             "Stek i 25 minutter, snu halvveis så begge sider brunes. Ta dem ut når de er dypt gyllne og faste — de setter seg videre mens de avkjøles."
           ]
@@ -4428,11 +4423,6 @@
               "quantity": 240,
               "unit": "g",
               "name": "Kokta cannellini (vita) bönor, avrunna"
-            },
-            {
-              "quantity": 60,
-              "unit": "g",
-              "name": "Pankoströbröd"
             },
             {
               "quantity": 20,
@@ -4482,7 +4472,7 @@
             "I en skvätt av olivoljan steker du löken på medelvärme tills den är mjuk och gyllene, och tillsätter vitlöken bara den sista minuten.",
             "Rör i den rivna moroten och stek 2–3 minuter tills den tappar sitt råa tuggmotstånd — den är den huvudsakliga fuktkällan.",
             "Mosa cannellinibönorna grovt med en gaffel, låt några vara halvhela — bönstärkelsen är det krämiga limmet som låter dig hoppa över ägg.",
-            "Blanda de rostade valnötterna, de mosade bönorna, lök-morot-vitlök, linfrö-ägget, panko, tamari, rökt paprika, timjan, salt och persilja. Blanda väl och låt vila 10 minuter så panko och linfrö suger åt sig fukt.",
+            "Blanda de rostade valnötterna, de mosade bönorna, lök-morot-vitlök, linfrö-ägget, tamari, rökt paprika, timjan, salt och persilja. Blanda väl och låt vila 10 minuter så linfröet suger åt sig fukt och smeten stelnar.",
             "Forma 8 biffar ca 1,5 cm tjocka på plåten och pensla ovansidorna lätt med resten av olivoljan — det tunna penseldraget är det som ger dem gyllene färg i torr ugnsvärme.",
             "Grädda 25 minuter, vänd halvvägs så båda sidor får färg. Ta ut dem när de är djupt gyllene och fasta — de sätter sig medan de svalnar."
           ]
@@ -4513,11 +4503,6 @@
           "quantity": 240,
           "unit": "g",
           "name": "Cooked cannellini (white) beans, drained"
-        },
-        {
-          "quantity": 60,
-          "unit": "g",
-          "name": "Panko breadcrumbs"
         },
         {
           "quantity": 20,
@@ -4567,7 +4552,7 @@
         "In a splash of the olive oil, cook the onion over medium heat until soft and golden, then add the garlic for the final minute only.",
         "Stir in the grated carrot and cook 2–3 minutes until it loses its raw crunch — it is the main moisture engine.",
         "Roughly mash the cannellini beans with a fork, leaving some half-whole — the bean starch is the creamy glue that lets you skip the egg.",
-        "Combine the toasted walnuts, mashed beans, onion-carrot-garlic, flax egg, panko, tamari, smoked paprika, thyme, salt and parsley. Mix well and rest 10 minutes so the panko and flax hydrate.",
+        "Combine the toasted walnuts, mashed beans, onion-carrot-garlic, flax egg, tamari, smoked paprika, thyme, salt and parsley. Mix well and rest 10 minutes so the flax hydrates and the mix firms up.",
         "Form 8 patties about 1.5 cm thick on the tray and brush the tops lightly with the remaining olive oil — the thin brush is what lets them turn golden in dry oven heat.",
         "Bake 25 minutes, flipping at the halfway point so both faces brown. Pull them when deep golden and firm — they keep setting as they cool."
       ]
