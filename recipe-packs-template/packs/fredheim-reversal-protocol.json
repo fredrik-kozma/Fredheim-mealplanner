@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.11.2",
+  "version": "1.11.3",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -304,7 +304,7 @@
             }
           ],
           "steps": [
-            "Hvis dadlene er faste, bløtlegg dem i de 80 ml lett oppvarmet vann i 5 minutter slik at de blender helt jevnt uten klumper.",
+            "Hvis dadlene er faste, bløtlegg dem i de {{80 ml}} lett oppvarmet vann i 5 minutter slik at de blender helt jevnt uten klumper.",
             "Tilsett alt i en blender.",
             "Blend på høy hastighet i 60–90 sekunder til det er silkemykt.",
             "Smak til og juster — mer sitron for friskhet, mer salt for å krydre."
@@ -356,7 +356,7 @@
             }
           ],
           "steps": [
-            "Om dadlarna är hårda, blötlägg dem i de 80 ml lätt uppvärmt vatten i 5 minuter så att de mixas helt slätt utan klumpar.",
+            "Om dadlarna är hårda, blötlägg dem i de {{80 ml}} lätt uppvärmt vatten i 5 minuter så att de mixas helt slätt utan klumpar.",
             "Tillsätt allt i en mixer.",
             "Mixa på hög hastighet i 60–90 sekunder tills silkeslent.",
             "Smaka av och justera — mer citron för friskhet, mer salt för smaksättning."
@@ -406,7 +406,7 @@
         }
       ],
       "steps": [
-        "If your dates are firm, soak them in the 80 ml of slightly warmed water for 5 minutes so they blend completely smooth without specks.",
+        "If your dates are firm, soak them in the {{80 ml}} of slightly warmed water for 5 minutes so they blend completely smooth without specks.",
         "Add everything to a blender.",
         "Blend on high for 60–90 seconds until silky.",
         "Taste and adjust — more lemon for brightness, more salt to season."
@@ -977,7 +977,7 @@
             "Forvarm ovnen til 175 °C / 350 °F. Kle en 20×20 cm form med bakepapir.",
             "Bløtlegg dadlene i varmt vann i 10 minutter. Avrenn godt.",
             "Rist valnøttene i en tørr panne i 4 minutter til de dufter. Sett til side.",
-            "Aktiver carobpulveret: pisk carobpulver med 3 ss kokende vann til en tykk pasta. La det stå i 1 minutt. Ikke hopp over dette trinnet.",
+            "Aktiver carobpulveret: pisk carobpulver med {{3 ss}} kokende vann til en tykk pasta. La det stå i 1 minutt. Ikke hopp over dette trinnet.",
             "Tilsett alt unntatt valnøttene i en foodprosessor. Blend i hele 2 minutter, skrap ned to ganger. Røren skal være helt jevn, tykk og blank.",
             "Rør inn det meste av valnøttene for hånd. Tilsett sitronskall hvis du bruker det. Spre i formen, glatt toppen, dryss over de resterende valnøttene.",
             "Stek i 20–22 minutter. Ta dem ut når midten fortsatt ser litt rå ut — de stivner i kjøleskapet.",
@@ -1053,7 +1053,7 @@
             "Förvärm ugnen till 175 °C / 350 °F. Klä en 20×20 cm form med bakplåtspapper.",
             "Blötlägg dadlarna i varmt vatten i 10 minuter. Häll av väl.",
             "Rosta valnötterna i en torr panna i 4 minuter tills de doftar. Sätt åt sidan.",
-            "Aktivera carobpulvret: vispa carobpulver med 3 msk kokande vatten till en tjock pasta. Låt stå 1 minut. Hoppa inte över detta steg.",
+            "Aktivera carobpulvret: vispa carobpulver med {{3 msk}} kokande vatten till en tjock pasta. Låt stå 1 minut. Hoppa inte över detta steg.",
             "Tillsätt allt utom valnötterna i en matberedare. Mixa i hela 2 minuter, skrapa ner två gånger. Smeten ska vara helt slät, tjock och blank.",
             "Rör i större delen av valnötterna för hand. Tillsätt citronskal om du använder det. Bred ut i formen, jämna till ytan, strö resterande valnötter över.",
             "Grädda i 20–22 minuter. Ta ut när mitten fortfarande ser något ogräddad ut — de stelnar i kylen.",
@@ -1127,7 +1127,7 @@
         "Preheat oven to 175 °C / 350 °F. Line a 20×20 cm tin with baking paper.",
         "Soak dates in hot water 10 minutes. Drain well.",
         "Toast walnuts in a dry pan 4 minutes until fragrant. Set aside.",
-        "Bloom the carob: whisk carob powder with 3 tbsp boiling water into a thick paste. Let sit 1 minute. Do not skip this step.",
+        "Bloom the carob: whisk carob powder with {{3 tbsp}} boiling water into a thick paste. Let sit 1 minute. Do not skip this step.",
         "Add everything except the walnuts to a food processor. Blend a full 2 minutes, scraping down twice. The batter should be completely smooth, thick, and glossy.",
         "Stir most of the walnuts in by hand. Add lemon zest if using. Spread into the tin, smooth the top, scatter remaining walnuts.",
         "Bake 20–22 minutes. Pull when the centre still looks slightly underdone — it firms in the fridge.",

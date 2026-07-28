@@ -12,6 +12,7 @@ import EditableNumber from '../common/EditableNumber'
 import FavoriteStar from './FavoriteStar'
 import { recipeConditions, CONDITION_BADGE } from '../../data/conditionTags'
 import { isFmdRecipe } from '../../utils/recipeFlags'
+import { renderStepText } from '../../utils/scaleStepText'
 
 export default function RecipeDetail() {
   const { id } = useParams()
@@ -490,7 +491,12 @@ export default function RecipeDetail() {
                   <span className="flex-shrink-0 w-7 h-7 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
-                  <p className="text-sm text-slate-700 leading-relaxed pt-1">{step}</p>
+                  {/* Amounts marked {{…}} in the step text scale with the
+                      serving count, using the same formatter as the
+                      ingredient list so the two always agree. */}
+                  <p className="text-sm text-slate-700 leading-relaxed pt-1">
+                    {renderStepText(step, formatScaledQuantity)}
+                  </p>
                 </li>
               ))}
             </ol>
