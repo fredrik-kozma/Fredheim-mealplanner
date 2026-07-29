@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { idbStorage, migrateFromLocalStorage } from './idbStorage'
+import { STARTER_PLANS } from '../data/starterPlans'
 
 // Fire-and-forget — copy any pre-IndexedDB localStorage blob over the
 // first time the new app loads on an existing device, so users don't
@@ -722,8 +723,16 @@ const useStore = create(
       // savePlannerTemplate / loadPlannerTemplate / installStarterPlan).
       weekNotes: emptyWeekNotes(),
 
+      // Id of the shipped STARTER_PLANS entry the current week notes were
+      // last loaded from, or null. Lets setLanguage() re-fetch the notes
+      // in the new language — but only while they still read exactly as
+      // installed; the moment the user edits them (setWeekNote) they're
+      // the user's own text and stop following the language switch.
+      activeStarterPlanId: null,
+
       setWeekNote: (text) => set((s) => ({
         weekNotes: { ...normalizeWeekNotes(s.weekNotes), week: text },
+        activeStarterPlanId: null,
       })),
 
       setDayNote: (day, text) => set((s) => {
@@ -736,7 +745,7 @@ const useStore = create(
         return { weekNotes: { ...notes, days } }
       }),
 
-      clearWeekNotes: () => set({ weekNotes: emptyWeekNotes() }),
+      clearWeekNotes: () => set({ weekNotes: emptyWeekNotes(), activeStarterPlanId: null }),
 
       // ── Batch cooking ──
       // Things prepped once for the whole week (bouillon, bread, spreads).
@@ -958,6 +967,7 @@ const useStore = create(
         weekPlan: emptyWeekPlan(),
         weekNotes: emptyWeekNotes(),
         batchCook: [],
+        activeStarterPlanId: null,
       })),
 
       // ── Settings ──
@@ -965,7 +975,34 @@ const useStore = create(
       // to English or Swedish. All UI strings translate via i18n, and recipe
       // content falls back through `recipe.translations[lang]` when available.
       language: 'no',
-      setLanguage: (lang) => set({ language: lang }),
+      setLanguage: (lang) => set((s) => {
+        const patch = { language: lang }
+        // If the current week notes are still the untouched text a shipped
+        // starter plan installed, follow the language switch — this is the
+        // only place STARTER_PLANS text lives outside the planner grid, and
+        // nothing else re-derives it. installStarterPlan picks its text
+        // from i18n's language, not this store's `language` field, and the
+        // two can disagree (they're set independently) — so rather than
+        // assume which language the installed text is in, check the
+        // current text against every language the plan ships. If it still
+        // matches one of them untouched, it's stock and safe to swap; if
+        // it matches none, the user has edited it and it's left alone.
+        const plan = s.activeStarterPlanId
+          ? STARTER_PLANS.find(p => p.id === s.activeStarterPlanId)
+          : null
+        if (plan) {
+          const currentText = normalizeWeekNotes(s.weekNotes).week
+          const stockVariants = [
+            normalizeWeekNotes(plan.notes).week,
+            ...Object.values(plan.translations || {}).map(t => normalizeWeekNotes(t?.notes).week),
+          ]
+          if (stockVariants.includes(currentText)) {
+            const nextNotes = (lang && plan.translations?.[lang]?.notes) || plan.notes
+            patch.weekNotes = normalizeWeekNotes(nextNotes)
+          }
+        }
+        return patch
+      }),
 
       familySize: 4,
       setFamilySize: (n) => set({ familySize: n }),
@@ -1265,6 +1302,9 @@ const useStore = create(
           weekNotes: normalizeWeekNotes(template.notes),
           batchCook: batch,
           familySize: target,
+          // A saved personal template isn't a STARTER_PLANS entry, so its
+          // notes have no other-language text to follow.
+          activeStarterPlanId: null,
         }
       }),
 
@@ -1313,6 +1353,11 @@ const useStore = create(
           weekPlan: plan,
           weekNotes: normalizeWeekNotes(incomingNotes),
           batchCook: Array.isArray(incomingBatch) ? JSON.parse(JSON.stringify(incomingBatch)) : [],
+          // Tracks provenance so setLanguage() can re-fetch these notes in
+          // another language later. starterPlan.id is only set for the
+          // shipped STARTER_PLANS entries (see PlannerTemplates.jsx) — an
+          // uploaded week-plan file has no id, so this is null for those.
+          activeStarterPlanId: starterPlan.id || null,
         }
       }),
 
