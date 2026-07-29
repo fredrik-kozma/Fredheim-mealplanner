@@ -17,6 +17,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
   const weekPlan = useStore(s => s.weekPlan)
   const weekNotes = useStore(s => s.weekNotes)
   const batchCook = useStore(s => s.batchCook) || []
+  const familySize = useStore(s => s.familySize)
 
   // The ready-to-load sample weeks (those that have actually been authored).
   const sampleWeeks = STARTER_PLANS.filter(planHasContent)
@@ -100,7 +101,13 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
         }
       }
       installStarterPlan(
-        { plan, notes: data?.notes, translations: data?.translations, requiredPackIds: data?.requiredPackIds || [] },
+        {
+          plan,
+          notes: data?.notes,
+          translations: data?.translations,
+          requiredPackIds: data?.requiredPackIds || [],
+          portions: data?.portions,
+        },
         lang,
       )
       onClose()
@@ -133,6 +140,10 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
         sv: { name: '', description: '', notes: { week: '', days: {} } },
       },
       requiredPackIds: [],
+      // Records the household size the current week's fixed servings were
+      // built for, so reloading this file resets the people control to the
+      // right baseline instead of scaling against a leftover value.
+      portions: familySize,
       plan: weekPlan,
       notes: weekNotes,
       batchCook,

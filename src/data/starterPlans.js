@@ -27,6 +27,14 @@
  *     }
  *     requiredPackIds:  string[] — pack ids that must be installed to
  *                                  render this plan's recipes
+ *     portions:         number  — optional. Set this when the plan's items
+ *                                 carry fixed serving counts (see `m`)
+ *                                 rather than `null`, i.e. the amounts were
+ *                                 authored for a specific household size.
+ *                                 installStarterPlan resets familySize to
+ *                                 it on load, so the people-count control
+ *                                 scales from the true baseline instead of
+ *                                 whatever size was left over from before.
  *     plan: {
  *       <DayName>: {
  *         <MealSlot>: Array<{ recipeId: string, servings: number|null }>
@@ -96,6 +104,13 @@ export const STARTER_PLANS = [
       days: {},
     },
     requiredPackIds: [FREDHEIM_PACK_ID, REVERSAL_PACK_ID, FMD_PACK_ID],
+    // Every item below carries a fixed serving count rather than `null`
+    // (see the `m` helper), so this is the household size the numbers were
+    // actually written for. installStarterPlan resets familySize to this on
+    // load, so the "👥 people" control always starts from the true baseline
+    // — otherwise its first tap scales against whatever household size was
+    // left over from before, not against what these portions assume.
+    portions: 1,
     plan: {
       monday: {
         Breakfast: [m('ginger-pear-overnight-oats')],

@@ -1358,6 +1358,14 @@ const useStore = create(
           // shipped STARTER_PLANS entries (see PlannerTemplates.jsx) — an
           // uploaded week-plan file has no id, so this is null for those.
           activeStarterPlanId: starterPlan.id || null,
+          // Plans that carry fixed (non-null) servings were authored for a
+          // specific household size — reset familySize to it so the people
+          // control's next tap scales from that real baseline rather than
+          // whatever size was left over from a previous week. Plans built
+          // entirely from `servings: null` items don't declare `portions`
+          // and leave familySize untouched, since those items already
+          // follow it automatically with nothing to reset.
+          ...(starterPlan.portions != null ? { familySize: starterPlan.portions } : {}),
         }
       }),
 
