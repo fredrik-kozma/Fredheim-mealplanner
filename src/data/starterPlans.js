@@ -59,7 +59,81 @@ const fmdDay = (n) => ({
   Dinner: [{ recipeId: `fmd-d${n}-dinner`, servings: null }],
 })
 
+// Slot item helper. Servings are stated explicitly rather than left null
+// (which would follow the household size), because the Easy Start week is
+// portioned for one person — the amounts should not change with a setting.
+const m = (recipeId, servings = 1) => ({ recipeId, servings })
+
 export const STARTER_PLANS = [
+  {
+    id: 'easy-start-week-1',
+    name: 'Easy Start — Sample Week (1 person)',
+    description: 'A gentle first week for one person: seven different breakfasts, a salad or soup for lunch, and a light soup or bowl every evening. Nothing takes over 50 minutes. Averages about 1650 kcal a day, with protein and fibre well covered. Vitamin B12 and vitamin D must be supplemented — that is true of any whole-food plant-based diet, not just this week.',
+    condition: 'starter',
+    author: 'Fredheim Livsstilssenter',
+    version: '1.0.0',
+    translations: {
+      no: {
+        name: 'Enkel start — Eksempeluke (1 person)',
+        description: 'En rolig første uke for én person: sju forskjellige frokoster, salat eller suppe til lunsj, og en lett suppe eller bolle hver kveld. Ingenting tar over 50 minutter. Cirka 1650 kcal per dag, med protein og fiber godt dekket. Vitamin B12 og vitamin D må tas som tilskudd — det gjelder ethvert helmat-basert plantekosthold, ikke bare denne uken.',
+        notes: {
+          week: 'Bak havre- og potetrundstykkene én gang og frys dem — de går igjen fem dager. Lag hummusen i én omgang på søndag; den holder hele uken. Chiapuddingene og overnattshavren lages kvelden før, så morgenene går raskt. Ta tilskudd av vitamin B12 og vitamin D: ingen sammensetning av plantemat dekker dem. Kalsium ligger litt under målet denne uken — en skje tahini, ekstra grønt eller en beriket plantemelk tetter gapet.',
+          days: {},
+        },
+      },
+      sv: {
+        name: 'Enkel start — Exempelvecka (1 person)',
+        description: 'En lugn första vecka för en person: sju olika frukostar, sallad eller soppa till lunch, och en lätt soppa eller skål varje kväll. Inget tar över 50 minuter. Cirka 1650 kcal per dag, med protein och fiber väl täckta. Vitamin B12 och vitamin D måste tas som tillskott — det gäller all helmat-baserad växtbaserad kost, inte bara denna vecka.',
+        notes: {
+          week: 'Baka havre- och potatisfrallorna en gång och frys dem — de återkommer fem dagar. Gör hummusen i en omgång på söndagen; den håller hela veckan. Chiapuddingarna och overnight-havren görs kvällen innan, så morgnarna går snabbt. Ta tillskott av vitamin B12 och vitamin D: ingen sammansättning av växtbaserad mat täcker dem. Kalcium ligger något under målet denna vecka — en sked tahini, extra grönt eller en berikad växtmjölk täpper till luckan.',
+          days: {},
+        },
+      },
+    },
+    // Smart tips travel with the week and land in the planner's tips card.
+    notes: {
+      week: 'Bake the oat & potato bread rolls once and freeze them — they appear on five days. Make the hummus in one go on Sunday; it keeps all week. The chia puddings and overnight oats are all made the night before, so mornings stay quick. Supplement vitamin B12 and vitamin D: no arrangement of plant foods covers them. Calcium runs a little under target this week — a spoon of tahini, extra greens or a fortified plant milk closes the gap.',
+      days: {},
+    },
+    requiredPackIds: [FREDHEIM_PACK_ID, REVERSAL_PACK_ID, FMD_PACK_ID],
+    plan: {
+      monday: {
+        Breakfast: [m('ginger-pear-overnight-oats')],
+        Lunch: [m('orn-14'), m('orn-17', 2), m('roasted-red-pepper-hummus')],
+        Dinner: [m('fmd-d1-dinner', 2)],
+      },
+      tuesday: {
+        Breakfast: [m('orn-13')],
+        Lunch: [m('orn-11'), m('orn-17', 2)],
+        Dinner: [m('fmd-d2-dinner', 2), m('orn-15')],
+      },
+      wednesday: {
+        Breakfast: [m('orn-18')],
+        Lunch: [m('fmd-d1-lunch'), m('orn-17')],
+        Dinner: [m('fmd-d5-lunch', 2), m('orn-21')],
+      },
+      thursday: {
+        Breakfast: [m('orn-26')],
+        Lunch: [m('orn-16'), m('roasted-red-pepper-hummus'), m('orn-17', 2)],
+        Dinner: [m('fmd-d4-lunch', 2), m('orn-7')],
+      },
+      friday: {
+        Breakfast: [m('orn-10')],
+        Lunch: [m('fmd-d3-lunch'), m('orn-17', 2)],
+        Dinner: [m('orn-20'), m('orn-19')],
+      },
+      saturday: {
+        Breakfast: [m('orn-1'), m('carob-spread-almond')],
+        Lunch: [m('fmd-d5-dinner'), m('orn-17')],
+        Dinner: [m('fmd-d3-dinner'), m('squash-cake')],
+      },
+      sunday: {
+        Breakfast: [m('orn-9')],
+        Lunch: [m('fmd-d2-lunch', 2)],
+        Dinner: [m('fmd-d4-dinner'), m('orn-15')],
+      },
+    },
+  },
   {
     id: 'hypertension-week-1',
     name: 'Hypertension — Sample Week',
