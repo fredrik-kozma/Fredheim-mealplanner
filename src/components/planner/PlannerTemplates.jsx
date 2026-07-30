@@ -9,6 +9,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
   const lang = i18n.language?.slice(0, 2) || 'en'
   const plannerTemplates = useStore(s => s.plannerTemplates)
   const savePlannerTemplate = useStore(s => s.savePlannerTemplate)
+  const updatePlannerTemplate = useStore(s => s.updatePlannerTemplate)
   const loadPlannerTemplate = useStore(s => s.loadPlannerTemplate)
   const deletePlannerTemplate = useStore(s => s.deletePlannerTemplate)
   const installStarterPlan = useStore(s => s.installStarterPlan)
@@ -41,6 +42,17 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
     setTemplateName('')
     setMode('list')
     setToast(t('planner.templateSaved'))
+    setTimeout(() => setToast(null), 3000)
+  }
+
+  // Overwrite an already-saved week (same name) with the current plan —
+  // the "I tweaked a recipe I didn't like" flow, as an alternative to
+  // always creating a new saved week.
+  function handleUpdate(tmpl) {
+    if (!confirm(t('planner.updateConfirm', { name: tmpl.name }))) return
+    updatePlannerTemplate(tmpl.id)
+    setMode('list')
+    setToast(t('planner.templateUpdated'))
     setTimeout(() => setToast(null), 3000)
   }
 
@@ -210,31 +222,68 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
         <div className="flex-1 overflow-y-auto p-5">
           {mode === 'save' ? (
             <div className="space-y-4">
-              <div>
-                <label className="label">{t('planner.templateName')}</label>
-                <input
-                  className="input"
-                  placeholder={t('planner.templateNamePlaceholder')}
-                  value={templateName}
-                  onChange={e => setTemplateName(e.target.value)}
-                  onKeyDown={e => e.key === 'Enter' && handleSave()}
-                  autoFocus
-                />
-              </div>
-              <p className="text-xs text-slate-500">
-                {t('planner.mealsPlanned', { count: currentMealCount })}
-              </p>
-              <div className="flex gap-3">
-                <button onClick={() => setMode('list')} className="btn-secondary flex-1">
-                  {t('common.cancel')}
-                </button>
-                <button
-                  onClick={handleSave}
-                  disabled={!templateName.trim()}
-                  className="btn-primary flex-1"
-                >
-                  {t('planner.saveTemplate')}
-                </button>
+              {/* Overwrite one of the user's own saved weeks — same name,
+                  fresh content. Only offered when there's something to
+                  update; otherwise this is identical to "save as new". */}
+              {plannerTemplates.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                    {t('planner.updateExistingWeek')}
+                  </p>
+                  <div className="space-y-2">
+                    {[...plannerTemplates].reverse().map(tmpl => (
+                      <div key={tmpl.id} className="card p-3 flex items-center gap-3">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-slate-800 truncate">{tmpl.name}</p>
+                          <p className="text-xs text-slate-500">
+                            {t('planner.savedAt', { date: formatDate(tmpl.savedAt) })}
+                          </p>
+                        </div>
+                        <button
+                          onClick={() => handleUpdate(tmpl)}
+                          disabled={currentMealCount === 0}
+                          className="btn-secondary py-1.5 px-3 text-xs flex-shrink-0"
+                        >
+                          {t('planner.updateTemplate')}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className={plannerTemplates.length > 0 ? 'space-y-4 pt-4 border-t border-slate-100' : 'space-y-4'}>
+                {plannerTemplates.length > 0 && (
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider -mb-2">
+                    {t('planner.saveAsNew')}
+                  </p>
+                )}
+                <div>
+                  <label className="label">{t('planner.templateName')}</label>
+                  <input
+                    className="input"
+                    placeholder={t('planner.templateNamePlaceholder')}
+                    value={templateName}
+                    onChange={e => setTemplateName(e.target.value)}
+                    onKeyDown={e => e.key === 'Enter' && handleSave()}
+                    autoFocus
+                  />
+                </div>
+                <p className="text-xs text-slate-500">
+                  {t('planner.mealsPlanned', { count: currentMealCount })}
+                </p>
+                <div className="flex gap-3">
+                  <button onClick={() => setMode('list')} className="btn-secondary flex-1">
+                    {t('common.cancel')}
+                  </button>
+                  <button
+                    onClick={handleSave}
+                    disabled={!templateName.trim()}
+                    className="btn-primary flex-1"
+                  >
+                    {t('planner.saveTemplate')}
+                  </button>
+                </div>
               </div>
 
               {/* Download as starter-plan JSON — used by the author when

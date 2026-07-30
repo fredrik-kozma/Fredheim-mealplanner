@@ -1276,6 +1276,34 @@ const useStore = create(
       }),
 
       /**
+       * Overwrite an already-saved week with the current plan — same id and
+       * name, fresh content and timestamp. The counterpart to
+       * savePlannerTemplate for the "I tweaked a recipe I didn't like, now
+       * update the saved week" flow, rather than always creating a new one.
+       */
+      updatePlannerTemplate: (id) => set((s) => {
+        let mealCount = 0
+        for (const day of Object.values(s.weekPlan)) {
+          for (const slotRecipes of Object.values(day)) {
+            mealCount += slotRecipes.length
+          }
+        }
+        return {
+          plannerTemplates: s.plannerTemplates.map((t) => t.id === id
+            ? {
+              ...t,
+              savedAt: Date.now(),
+              plan: JSON.parse(JSON.stringify(s.weekPlan)),
+              notes: normalizeWeekNotes(s.weekNotes),
+              batchCook: JSON.parse(JSON.stringify(s.batchCook || [])),
+              portions: s.familySize ?? null,
+              mealCount,
+            }
+            : t),
+        }
+      }),
+
+      /**
        * Load a saved week. Pass `targetPortions` to cook it for a different
        * number of people than it was saved for — every tweaked serving is
        * scaled by the same ratio and the household size moves to the target.
