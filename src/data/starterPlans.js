@@ -277,6 +277,76 @@ export const STARTER_PLANS = [
     },
   },
   {
+    id: 'diabetes-if-week-1',
+    name: 'Diabetes + Intermittent Fasting — Sample Week (1 person)',
+    description: "Two meals a day, every recipe diabetes-friendly: a substantial breakfast with the Metabolic Support Drink, a substantial lunch, and no evening meal — the eating window closes after lunch. Averages about 1400 kcal a day, lower than a three-meal week by design, with protein and fibre still well covered. Combining fasting with diabetes affects blood sugar and medication timing (especially insulin or sulfonylureas) — talk to your doctor or care team before starting, and never skip a meal that your medication schedule depends on.",
+    condition: 'diabetes-if',
+    author: 'Fredheim Livsstilssenter',
+    version: '1.0.0',
+    translations: {
+      no: {
+        name: 'Diabetes + Intervallfaste — Eksempeluke (1 person)',
+        description: 'To måltider om dagen, alle diabetesvennlige: en god frokost med Metabolisme-drikken, en god lunsj, og ingen kveldsmåltid — spisevinduet lukkes etter lunsj. Cirka 1400 kcal per dag i snitt, lavere enn en tre-måltidsuke med hensikt, med protein og fiber fortsatt godt dekket. Å kombinere faste med diabetes påvirker blodsukker og medisintiming (spesielt insulin eller sulfonylurea) — snakk med legen eller behandlingsteamet ditt før du starter, og hopp aldri over et måltid medisinskjemaet ditt er avhengig av.',
+        notes: {
+          week: 'Havre- og potetrundstykkene ligger i Storkokking-kortet — bak hele oppskriften mandag, den dekker alle sju gangene de dukker opp denne uken, med én til overs å fryse ned. De teller ikke med i handlelisten hver dag, kun én gang der. Metabolisme-drikken skal blandes fersk og drikkes med én gang — den er ikke egnet til å lages på forhånd. Ta tilskudd av vitamin B12 og vitamin D: ingen sammensetning av plantemat dekker dem. Kalsium ligger under målet denne uken — en skje tahini, ekstra grønt eller en beriket plantemelk tetter gapet.',
+          days: {},
+        },
+      },
+      sv: {
+        name: 'Diabetes + Periodisk fasta — Exempelvecka (1 person)',
+        description: 'Två måltider om dagen, alla diabetesvänliga: en rejäl frukost med Metabolism-drycken, en rejäl lunch, och ingen kvällsmåltid — ätfönstret stängs efter lunch. Cirka 1400 kcal per dag i snitt, lägre än en tremåltidsvecka med avsikt, med protein och fiber fortfarande väl täckta. Att kombinera fasta med diabetes påverkar blodsocker och medicintiming (särskilt insulin eller sulfonylurea) — prata med din läkare eller ditt vårdteam innan du börjar, och hoppa aldrig över en måltid som ditt medicinschema är beroende av.',
+        notes: {
+          week: 'Havre- och potatisfrallorna ligger i Storkokning-kortet — baka hela receptet på måndag, det täcker alla sju gångerna de dyker upp denna vecka, med en över att frysa in. De räknas inte in i inköpslistan varje dag, bara en gång där. Metabolism-drycken ska blandas färsk och drickas direkt — den lämpar sig inte för att göras i förväg. Ta tillskott av vitamin B12 och vitamin D: ingen sammansättning av växtbaserad mat täcker dem. Kalcium ligger under målet denna vecka — en sked tahini, extra grönt eller en berikad växtmjölk täpper till luckan.',
+          days: {},
+        },
+      },
+    },
+    requiredPackIds: [REVERSAL_PACK_ID, FMD_PACK_ID],
+    // Every item below carries a fixed serving count (see `easy-start-week-1`
+    // above for why); this is the household size they were written for.
+    portions: 1,
+    // Baked once, Monday, as a batch — one full recipe (8 rolls) covers all
+    // seven eaten across the week with one spare.
+    batchCook: [
+      { id: 'diabetes-if-week-1-rolls', kind: 'recipe', recipeId: 'orn-17', servings: 8 },
+    ],
+    // Smart tips travel with the week and land in the planner's tips card.
+    notes: {
+      week: "The oat & potato bread rolls live in the Batch cooking card — bake the full recipe on Monday and it covers all seven times they appear this week, with one spare to freeze. They don't count toward the shopping list each day, only once there. The Metabolic Support Drink should be blended fresh and drunk right away — it isn't meant to be made ahead. Supplement vitamin B12 and vitamin D: no arrangement of plant foods covers them. Calcium runs under target this week — a spoon of tahini, extra greens or a fortified plant milk closes the gap.",
+      days: {},
+    },
+    plan: {
+      monday: {
+        Breakfast: [m('orn-9'), m('orn-29')],
+        Lunch: [m('orn-11', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
+      },
+      tuesday: {
+        Breakfast: [m('orn-6'), m('orn-29')],
+        Lunch: [m('fmd-d4-dinner', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
+      },
+      wednesday: {
+        Breakfast: [m('orn-18'), m('orn-29')],
+        Lunch: [m('fmd-d1-dinner', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
+      },
+      thursday: {
+        Breakfast: [m('orn-13'), m('orn-29')],
+        Lunch: [m('fmd-d3-lunch', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
+      },
+      friday: {
+        Breakfast: [m('orn-25'), m('orn-29')],
+        Lunch: [m('fmd-d2-dinner', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
+      },
+      saturday: {
+        Breakfast: [m('orn-27'), m('orn-29')],
+        Lunch: [m('orn-14', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
+      },
+      sunday: {
+        Breakfast: [m('fmd-d3-breakfast'), m('orn-29')],
+        Lunch: [m('fmd-d3-dinner', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
+      },
+    },
+  },
+  {
     id: 'autoimmune-week-1',
     name: 'Autoimmune Support — Sample Week',
     description: 'Anti-inflammatory, gut-friendly meals emphasizing leafy greens, berries, omega-3 sources, and whole foods that calm immune over-activity.',
