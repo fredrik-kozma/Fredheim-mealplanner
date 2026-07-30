@@ -35,6 +35,16 @@
  *                                 it on load, so the people-count control
  *                                 scales from the true baseline instead of
  *                                 whatever size was left over from before.
+ *     batchCook:        Array<{ id, kind: 'recipe', recipeId, servings }>
+ *                                — optional. Recipes prepped once for the
+ *                                  whole week rather than per-meal; shown in
+ *                                  the planner's own Batch cooking card and
+ *                                  bought once in the shopping list. Pair
+ *                                  each day the batch is actually eaten with
+ *                                  `mb(recipeId)` (not `m`) in `plan` below,
+ *                                  which marks that slot's ingredients as
+ *                                  already covered so they aren't bought
+ *                                  again on top of the batch entry.
  *     plan: {
  *       <DayName>: {
  *         <MealSlot>: Array<{ recipeId: string, servings: number|null }>
@@ -71,6 +81,12 @@ const fmdDay = (n) => ({
 // (which would follow the household size), because the Easy Start week is
 // portioned for one person — the amounts should not change with a setting.
 const m = (recipeId, servings = 1) => ({ recipeId, servings })
+
+// Same as `m`, but for a slot item whose ingredients are bought once via a
+// `batchCook` entry instead of every time it's eaten. It still shows up in
+// the day it's served (so the week reads correctly), but is marked so the
+// shopping list doesn't count its ingredients again on top of the batch.
+const mb = (recipeId, servings = 1) => ({ recipeId, servings, excludeFromShopping: true })
 
 export const STARTER_PLANS = [
   {
@@ -181,7 +197,7 @@ export const STARTER_PLANS = [
         name: 'Diabetes type 2 — Eksempeluke',
         description: 'Hver oppskrift denne uken har Fredheims diabetesvennlige merking — lite mettet fett, uten tilsatt sukker, uten raffinert mel, rik på fiber. Hentet fra alle tre oppskriftspakkene: Fredheim-samlingen, reverseringsprotokollen og noen lette retter fra fasteplanen.',
         notes: {
-          week: 'Bak havre- og potetrundstykkene én gang og ha dem klare — de dukker opp fire ganger denne uken. Porsjonert for én; 👥-kontrollen skalerer hele uken. Fullstendige næringsverdier vises bare for oppskriftene som har dem ennå — noen av de klassiske Fredheim-rettene (lasagnen, burgerne, middelhavssuppa) er ikke ferdig analysert ennå og mangler tall inntil videre.',
+          week: 'Havre- og potetrundstykkene ligger i Storkokking-kortet — bak hele oppskriften mandag, den dekker alle fire gangene de dukker opp denne uken, med noen til overs å fryse ned. De teller ikke med i handlelisten hver dag, kun én gang der. Porsjonert for én; 👥-kontrollen skalerer hele uken. Fullstendige næringsverdier vises bare for oppskriftene som har dem ennå — noen av de klassiske Fredheim-rettene (lasagnen, burgerne, middelhavssuppa) er ikke ferdig analysert ennå og mangler tall inntil videre.',
           days: {},
         },
       },
@@ -189,7 +205,7 @@ export const STARTER_PLANS = [
         name: 'Typ 2-diabetes — Exempelvecka',
         description: 'Varje recept denna vecka bär Fredheims diabetesvänliga märkning — lite mättat fett, utan tillsatt socker, utan raffinerat mjöl, fiberrikt. Hämtat från alla tre receptpaketen: Fredheim-samlingen, reverseringsprotokollet och några lätta rätter från fasteplanen.',
         notes: {
-          week: 'Baka havre- och potatisfrallorna en gång och ha dem redo — de dyker upp fyra gånger denna vecka. Portionerat för en; 👥-kontrollen skalar hela veckan. Fullständiga näringsvärden visas bara för recepten som har dem än — några av de klassiska Fredheim-rätterna (lasagnen, burgarna, medelhavssoppan) är inte färdiganalyserade än och saknar siffror tills vidare.',
+          week: 'Havre- och potatisfrallorna ligger i Storkokning-kortet — baka hela receptet på måndag, det täcker alla fyra gångerna de dyker upp denna vecka, med några över att frysa in. De räknas inte in i inköpslistan varje dag, bara en gång där. Portionerat för en; 👥-kontrollen skalar hela veckan. Fullständiga näringsvärden visas bara för recepten som har dem än — några av de klassiska Fredheim-rätterna (lasagnen, burgarna, medelhavssoppan) är inte färdiganalyserade än och saknar siffror tills vidare.',
           days: {},
         },
       },
@@ -201,23 +217,30 @@ export const STARTER_PLANS = [
     portions: 1,
     // Smart tips travel with the week and land in the planner's tips card.
     notes: {
-      week: "Bake the oat & potato bread rolls once and keep them on hand — they appear four times this week. Portioned for one; the 👥 control scales the whole week. Full nutrition figures are shown only for the recipes that carry them yet — a few of the classic Fredheim dishes (the lasagne, the burgers, the mediterranean soup) haven't been analysed yet and show no numbers until they are.",
+      week: "The oat & potato bread rolls live in the Batch cooking card — bake the full recipe on Monday and it covers all four times they appear this week, with a couple spare to freeze. They don't count toward the shopping list each day, only once there. Portioned for one; the 👥 control scales the whole week. Full nutrition figures are shown only for the recipes that carry them yet — a few of the classic Fredheim dishes (the lasagne, the burgers, the mediterranean soup) haven't been analysed yet and show no numbers until they are.",
       days: {},
     },
+    // Baked once, Monday, as a batch — one full recipe (8 rolls) covers all
+    // four appearances across the week with extras to spare. Each day below
+    // still shows the roll being eaten (via `mb`), but its ingredients are
+    // bought once here rather than four separate times.
+    batchCook: [
+      { id: 'diabetes-week-1-rolls', kind: 'recipe', recipeId: 'orn-17', servings: 8 },
+    ],
     plan: {
       monday: {
         Breakfast: [m('orn-1')],
-        Lunch: [m('orn-14'), m('orn-17')],
+        Lunch: [m('orn-14'), mb('orn-17')],
         Dinner: [m('fr-23'), m('steamed-small-potatoes')],
       },
       tuesday: {
         Breakfast: [m('orn-10')],
         Lunch: [m('mediterranean-soup')],
-        Dinner: [m('fmd-d2-dinner'), m('orn-17')],
+        Dinner: [m('fmd-d2-dinner'), mb('orn-17')],
       },
       wednesday: {
         Breakfast: [m('orn-18')],
-        Lunch: [m('orn-16'), m('orn-17')],
+        Lunch: [m('orn-16'), mb('orn-17')],
         Dinner: [m('chorizo-with-potato-taco'), m('orn-21')],
       },
       thursday: {
@@ -238,7 +261,7 @@ export const STARTER_PLANS = [
       sunday: {
         Breakfast: [m('fmd-d5-breakfast'), m('orn-13')],
         Lunch: [m('fmd-d5-lunch', 2)],
-        Dinner: [m('fmd-d3-dinner'), m('orn-17')],
+        Dinner: [m('fmd-d3-dinner'), mb('orn-17')],
       },
     },
   },
