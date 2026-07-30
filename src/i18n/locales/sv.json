@@ -236,7 +236,11 @@
     "scaleWeekHint": "Skala hela veckan — justerade portioner skalas med",
     "savedForPeople": "för {{count}} personer",
     "loadFor": "Ladda för",
-    "resetPortions": "Tillbaka till sparad storlek"
+    "resetPortions": "Tillbaka till sparad storlek",
+    "printWeek": "Skriv ut meny",
+    "weeklyMenu": "Veckomeny",
+    "printMeals": "måltider",
+    "printBatchTag": "storkok"
   },
   "categories": {
     "Breakfast": "Frukost",

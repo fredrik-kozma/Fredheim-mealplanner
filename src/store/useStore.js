@@ -730,6 +730,13 @@ const useStore = create(
       // the user's own text and stop following the language switch.
       activeStarterPlanId: null,
 
+      // Human-readable name of whatever week is currently loaded — a saved
+      // week's name, or an uploaded file's. Purely a label (the printout's
+      // title); nothing keys off it. Shipped sample weeks deliberately leave
+      // this null and are resolved from activeStarterPlanId instead, so
+      // their title follows the UI language like the rest of their text.
+      activeWeekName: null,
+
       setWeekNote: (text) => set((s) => ({
         weekNotes: { ...normalizeWeekNotes(s.weekNotes), week: text },
         activeStarterPlanId: null,
@@ -968,6 +975,7 @@ const useStore = create(
         weekNotes: emptyWeekNotes(),
         batchCook: [],
         activeStarterPlanId: null,
+        activeWeekName: null,
       })),
 
       // ── Settings ──
@@ -1272,6 +1280,8 @@ const useStore = create(
               mealCount,
             },
           ],
+          // The week on screen is now "this saved week" — give it that title.
+          activeWeekName: name,
         }
       }),
 
@@ -1300,6 +1310,9 @@ const useStore = create(
               mealCount,
             }
             : t),
+          // Updating in place doesn't rename anything, but the week on
+          // screen is now unambiguously that saved week.
+          activeWeekName: s.plannerTemplates.find(t => t.id === id)?.name ?? s.activeWeekName,
         }
       }),
 
@@ -1333,6 +1346,7 @@ const useStore = create(
           // A saved personal template isn't a STARTER_PLANS entry, so its
           // notes have no other-language text to follow.
           activeStarterPlanId: null,
+          activeWeekName: template.name || null,
         }
       }),
 
@@ -1386,6 +1400,11 @@ const useStore = create(
           // shipped STARTER_PLANS entries (see PlannerTemplates.jsx) — an
           // uploaded week-plan file has no id, so this is null for those.
           activeStarterPlanId: starterPlan.id || null,
+          // Shipped plans keep this null on purpose: their title is resolved
+          // live from activeStarterPlanId so it follows the UI language.
+          // Only an uploaded file — which has a name but no STARTER_PLANS
+          // entry to look up — records its name here.
+          activeWeekName: starterPlan.id ? null : (starterPlan.name || null),
           // Plans that carry fixed (non-null) servings were authored for a
           // specific household size — reset familySize to it so the people
           // control's next tap scales from that real baseline rather than

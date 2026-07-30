@@ -236,7 +236,11 @@
     "scaleWeekHint": "Scale the whole week — adjusted portions scale with it",
     "savedForPeople": "for {{count}} people",
     "loadFor": "Load for",
-    "resetPortions": "Back to saved size"
+    "resetPortions": "Back to saved size",
+    "printWeek": "Print menu",
+    "weeklyMenu": "Weekly Menu",
+    "printMeals": "meals",
+    "printBatchTag": "batch"
   },
   "categories": {
     "Breakfast": "Breakfast",
