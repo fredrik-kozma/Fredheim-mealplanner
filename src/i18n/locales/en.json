@@ -52,7 +52,8 @@
       "newest": "Newest",
       "oldest": "Oldest",
       "nameAZ": "A–Z",
-      "mostNutrient": "Most {{nutrient}}"
+      "mostNutrient": "Most {{nutrient}}",
+      "quickest": "Quickest first"
     },
     "allCategories": "All",
     "noRecipesYet": "No recipes yet",
@@ -65,7 +66,9 @@
     "allergenHidden_other": "{{count}} recipes hidden by your allergen filter.",
     "allergenPaused": "Allergen filter paused — showing all recipes.",
     "allergenShowAll": "Show anyway",
-    "allergenResume": "Re-apply"
+    "allergenResume": "Re-apply",
+    "noTimeHidden_one": "{{count}} recipe has no time listed and is not shown.",
+    "noTimeHidden_other": "{{count}} recipes have no time listed and are not shown."
   },
   "recipeDetail": {
     "back": "Back",

@@ -28,6 +28,17 @@ function nutrientValue(recipe, key) {
   return typeof v === 'number' ? v : null
 }
 
+// Prep + cook, in minutes. Returns null when a recipe carries neither, which
+// is how the "quickest first" sort knows to leave it out — only about a third
+// of the collection has times filled in so far, and a recipe with no time is
+// not the same claim as a recipe that takes zero minutes.
+function totalTime(recipe) {
+  const prep = typeof recipe?.prepTime === 'number' ? recipe.prepTime : 0
+  const cook = typeof recipe?.cookTime === 'number' ? recipe.cookTime : 0
+  const total = prep + cook
+  return total > 0 ? total : null
+}
+
 export default function RecipeList() {
   const { t, i18n } = useTranslation()
   const recipes = useStore(s => s.recipes)
@@ -123,7 +134,7 @@ export default function RecipeList() {
     return opts
   }, [recipes, installedPacks, currentLang, t])
 
-  const filtered = recipes
+  const matchesFilters = recipes
     .filter(r => !favoritesOnly || favSet.has(r.id))
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
     // AND across selected conditions: recipe must carry every chosen tag.
@@ -147,13 +158,24 @@ export default function RecipeList() {
       const v = nutrientValue(r, activeNutrient)
       return v != null && v > 0
     })
+
+  // Same rule for the time sort: a recipe with no prep/cook time recorded
+  // can't be ranked by how quick it is, so it drops out rather than sorting
+  // to a misleading pile at one end. Split out from the chain above so the
+  // "N have no time listed" notice can count exactly the recipes the user
+  // would otherwise be seeing right now.
+  const filtered = matchesFilters
+    .filter(r => sortBy !== 'time' || totalTime(r) != null)
     .sort((a, b) => {
       if (activeNutrient) return nutrientValue(b, activeNutrient) - nutrientValue(a, activeNutrient)
       if (sortBy === 'newest') return b.createdAt - a.createdAt
       if (sortBy === 'oldest') return a.createdAt - b.createdAt
       if (sortBy === 'name') return titleOf(a).localeCompare(titleOf(b))
+      if (sortBy === 'time') return totalTime(a) - totalTime(b)
       return 0
     })
+
+  const noTimeCount = sortBy === 'time' ? matchesFilters.length - filtered.length : 0
 
   // Allergen filter runs last so the "N hidden" count reflects recipes the
   // user would otherwise be seeing right now, given their other filters.
@@ -193,6 +215,7 @@ export default function RecipeList() {
             <option value="newest">{t('recipes.sort.newest')}</option>
             <option value="oldest">{t('recipes.sort.oldest')}</option>
             <option value="name">{t('recipes.sort.nameAZ')}</option>
+            <option value="time">{t('recipes.sort.quickest', { defaultValue: 'Quickest first' })}</option>
             {/* Rank by nutrient — "Most protein / calcium / zinc …" */}
             {NUTRIENT_SORT_GROUPS.map(g => (
               <optgroup key={g.key} label={t(`nutrition.groups.${g.key}`, { defaultValue: g.key })}>
@@ -249,6 +272,22 @@ export default function RecipeList() {
 
         {/* Allergen notice — so recipes never go missing without explanation,
             with a temporary override for cooking for someone else. */}
+        {/* Roughly two thirds of the collection has no prep/cook time filled
+            in yet, so those recipes can't be ranked and drop out. Say so
+            plainly — silently showing a third of the library looks like a
+            bug otherwise. */}
+        {sortBy === 'time' && noTimeCount > 0 && (
+          <div className="flex items-center gap-2 flex-wrap text-xs bg-amber-50 border border-amber-100 text-amber-800 rounded-lg px-3 py-2">
+            <span aria-hidden>⏱</span>
+            <span className="flex-1 min-w-0">
+              {t('recipes.noTimeHidden', {
+                count: noTimeCount,
+                defaultValue: '{{count}} recipes have no time listed and are not shown.',
+              })}
+            </span>
+          </div>
+        )}
+
         {avoidedAllergens.length > 0 && (
           <div className="flex items-center gap-2 flex-wrap text-xs bg-red-50 border border-red-100 text-red-800 rounded-lg px-3 py-2">
             <span aria-hidden>🚫</span>

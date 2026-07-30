@@ -52,7 +52,8 @@
       "newest": "Nyaste",
       "oldest": "Äldsta",
       "nameAZ": "A–Ö",
-      "mostNutrient": "Mest {{nutrient}}"
+      "mostNutrient": "Mest {{nutrient}}",
+      "quickest": "Snabbast först"
     },
     "allCategories": "Alla",
     "noRecipesYet": "Inga recept ännu",
@@ -65,7 +66,9 @@
     "allergenHidden_other": "{{count}} recept dolda av ditt allergenfilter.",
     "allergenPaused": "Allergenfiltret är pausat — visar alla recept.",
     "allergenShowAll": "Visa ändå",
-    "allergenResume": "Aktivera igen"
+    "allergenResume": "Aktivera igen",
+    "noTimeHidden_one": "{{count}} recept saknar tid och visas inte.",
+    "noTimeHidden_other": "{{count}} recept saknar tid och visas inte."
   },
   "recipeDetail": {
     "back": "Tillbaka",

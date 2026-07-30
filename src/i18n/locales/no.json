@@ -52,7 +52,8 @@
       "newest": "Nyeste",
       "oldest": "Eldste",
       "nameAZ": "A–Å",
-      "mostNutrient": "Mest {{nutrient}}"
+      "mostNutrient": "Mest {{nutrient}}",
+      "quickest": "Raskest først"
     },
     "allCategories": "Alle",
     "noRecipesYet": "Ingen oppskrifter ennå",
@@ -65,7 +66,9 @@
     "allergenHidden_other": "{{count}} oppskrifter skjult av allergenfilteret ditt.",
     "allergenPaused": "Allergenfilteret er satt på pause — viser alle oppskrifter.",
     "allergenShowAll": "Vis likevel",
-    "allergenResume": "Slå på igjen"
+    "allergenResume": "Slå på igjen",
+    "noTimeHidden_one": "{{count}} oppskrift mangler tid og vises ikke.",
+    "noTimeHidden_other": "{{count}} oppskrifter mangler tid og vises ikke."
   },
   "recipeDetail": {
     "back": "Tilbake",
