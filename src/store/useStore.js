@@ -667,7 +667,7 @@ const useStore = create(
       // Categories are stored as stable English keys. Their display name is
       // looked up through i18n (categories.<Key>) so they switch with the UI
       // language. Users can still add custom categories — those render as-is.
-      recipeCategories: ['Breakfast', 'Main', 'Side', 'Salad', 'Soup', 'Sauce', 'Spreads', 'Bread', 'Dessert', 'Snack', 'Drink', 'Jam', 'Other'],
+      recipeCategories: ['Breakfast', 'Lunch', 'Main', 'Side', 'Salad', 'Soup', 'Sauce', 'Spreads', 'Bread', 'Dessert', 'Snack', 'Drink', 'Jam', 'Other'],
 
       addRecipeCategory: (name) => set((s) => ({
         recipeCategories: s.recipeCategories.includes(name) ? s.recipeCategories : [...s.recipeCategories, name],
@@ -1538,8 +1538,24 @@ const useStore = create(
         const { allergenFilterPaused, ...persisted } = state
         return persisted
       },
-      version: 7,
+      version: 8,
       migrate: (persistedState, version) => {
+        // v8: the recipe-category filter/picker had "Middag" (Main) but no
+        // "Lunsj" (Lunch) option — Lunch was simply missing from the default
+        // list, not a translation bug. Backfill it for existing users so the
+        // fix isn't only visible on brand-new installs; slotted right after
+        // Breakfast to match the natural Breakfast → Lunch → Main ordering.
+        if (version < 8) {
+          if (Array.isArray(persistedState.recipeCategories) && !persistedState.recipeCategories.includes('Lunch')) {
+            const i = persistedState.recipeCategories.indexOf('Breakfast')
+            const at = i === -1 ? 0 : i + 1
+            persistedState.recipeCategories = [
+              ...persistedState.recipeCategories.slice(0, at),
+              'Lunch',
+              ...persistedState.recipeCategories.slice(at),
+            ]
+          }
+        }
         if (version < 2) {
           if (persistedState.recipes) {
             persistedState.recipes = persistedState.recipes.map(r => ({
