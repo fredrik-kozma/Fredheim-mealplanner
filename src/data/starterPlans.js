@@ -95,13 +95,13 @@ export const STARTER_PLANS = [
     description: 'A gentle first week for one person: seven different breakfasts, a salad or soup for lunch, and a light soup or bowl every evening. Nothing takes over 50 minutes. Averages about 1650 kcal a day, with protein and fibre well covered. Vitamin B12 and vitamin D must be supplemented — that is true of any whole-food plant-based diet, not just this week.',
     condition: 'starter',
     author: 'Fredheim Livsstilssenter',
-    version: '1.1.0',
+    version: '1.2.0',
     translations: {
       no: {
         name: 'Enkel start — Eksempeluke (1 person)',
         description: 'En rolig første uke for én person: sju forskjellige frokoster, salat eller suppe til lunsj, og en lett suppe eller bolle hver kveld. Ingenting tar over 50 minutter. Cirka 1650 kcal per dag, med protein og fiber godt dekket. Vitamin B12 og vitamin D må tas som tilskudd — det gjelder ethvert helmat-basert plantekosthold, ikke bare denne uken.',
         notes: {
-          week: 'Retter hentet fra fastekuren er doblet til lunsj, men står med én porsjon om kvelden. En fastedagsporsjon er bevisst liten: midt på dagen blir det for lite, men om kvelden er det nettopp poenget — kveldsmaten her skal være lett, og de fleste kveldene avsluttes med en varm byggkaffelatte i stedet for en ny porsjon. Bak havre- og potetrundstykkene én gang og frys dem — de går igjen fem dager. Lag hummusen i én omgang på søndag; den holder hele uken. Chiapuddingene og overnattshavren lages kvelden før, så morgenene går raskt. Ta tilskudd av vitamin B12 og vitamin D: ingen sammensetning av plantemat dekker dem. Kalsium ligger litt under målet denne uken — en skje tahini, ekstra grønt eller en beriket plantemelk tetter gapet.',
+          week: 'Retter hentet fra fastekuren er doblet til lunsj, men står med én porsjon om kvelden. En fastedagsporsjon er bevisst liten: midt på dagen blir det for lite, men om kvelden er det nettopp poenget — kveldsmaten her skal være lett, og de fleste kveldene avsluttes med en varm byggkaffelatte i stedet for en ny porsjon. Havre- og potetrundstykkene og hummusen ligger begge i Storkokking-kortet — bak rundstykkene og lag hummusen søndag eller mandag, én omgang av hver dekker resten av uken (rundstykkene fem ganger, hummusen tre; hummusen holder seg kjølt i fem dager). De teller ikke med i handlelisten hver dag, kun én gang der. Chiapuddingene og overnattshavren lages kvelden før, så morgenene går raskt. Ta tilskudd av vitamin B12 og vitamin D: ingen sammensetning av plantemat dekker dem. Kalsium ligger litt under målet denne uken — en skje tahini, ekstra grønt eller en beriket plantemelk tetter gapet.',
           days: {},
         },
       },
@@ -109,14 +109,14 @@ export const STARTER_PLANS = [
         name: 'Enkel start — Exempelvecka (1 person)',
         description: 'En lugn första vecka för en person: sju olika frukostar, sallad eller soppa till lunch, och en lätt soppa eller skål varje kväll. Inget tar över 50 minuter. Cirka 1650 kcal per dag, med protein och fiber väl täckta. Vitamin B12 och vitamin D måste tas som tillskott — det gäller all helmat-baserad växtbaserad kost, inte bara denna vecka.',
         notes: {
-          week: 'Rätter hämtade från fastekuren är dubblade till lunch men står kvar på en portion till kvällen. En fastedagsportion är medvetet liten: mitt på dagen blir det för lite, men på kvällen är det själva poängen — kvällsmaten här ska vara lätt, och de flesta kvällar avslutas med en varm kornkaffelatte i stället för en portion till. Baka havre- och potatisfrallorna en gång och frys dem — de återkommer fem dagar. Gör hummusen i en omgång på söndagen; den håller hela veckan. Chiapuddingarna och overnight-havren görs kvällen innan, så morgnarna går snabbt. Ta tillskott av vitamin B12 och vitamin D: ingen sammansättning av växtbaserad mat täcker dem. Kalcium ligger något under målet denna vecka — en sked tahini, extra grönt eller en berikad växtmjölk täpper till luckan.',
+          week: 'Rätter hämtade från fastekuren är dubblade till lunch men står kvar på en portion till kvällen. En fastedagsportion är medvetet liten: mitt på dagen blir det för lite, men på kvällen är det själva poängen — kvällsmaten här ska vara lätt, och de flesta kvällar avslutas med en varm kornkaffelatte i stället för en portion till. Havre- och potatisfrallorna och hummusen ligger båda i Storkokning-kortet — baka frallorna och gör hummusen på söndag eller måndag, en omgång av vardera täcker resten av veckan (frallorna fem gånger, hummusen tre; hummusen håller sig kyld i fem dagar). De räknas inte in i inköpslistan varje dag, bara en gång där. Chiapuddingarna och overnight-havren görs kvällen innan, så morgnarna går snabbt. Ta tillskott av vitamin B12 och vitamin D: ingen sammansättning av växtbaserad mat täcker dem. Kalcium ligger något under målet denna vecka — en sked tahini, extra grönt eller en berikad växtmjölk täpper till luckan.',
           days: {},
         },
       },
     },
     // Smart tips travel with the week and land in the planner's tips card.
     notes: {
-      week: 'Dishes borrowed from the fasting plan are doubled at lunch but kept to a single portion in the evening. A fasting-day serving is deliberately small: at midday that is too little, but in the evening it is exactly the point — suppers here are meant to be light, and most nights end with a warm barley latte rather than a second helping. Bake the oat & potato bread rolls once and freeze them — they appear on five days. Make the hummus in one go on Sunday; it keeps all week. The chia puddings and overnight oats are all made the night before, so mornings stay quick. Supplement vitamin B12 and vitamin D: no arrangement of plant foods covers them. Calcium runs a little under target this week — a spoon of tahini, extra greens or a fortified plant milk closes the gap.',
+      week: 'Dishes borrowed from the fasting plan are doubled at lunch but kept to a single portion in the evening. A fasting-day serving is deliberately small: at midday that is too little, but in the evening it is exactly the point — suppers here are meant to be light, and most nights end with a warm barley latte rather than a second helping. The oat & potato bread rolls and the hummus both live in the Batch cooking card — bake the rolls and make the hummus on Sunday or Monday, and one batch of each covers the rest of the week (rolls five times, hummus three; the hummus keeps refrigerated for five days). They don’t count toward the shopping list each day, only once there. The chia puddings and overnight oats are all made the night before, so mornings stay quick. Supplement vitamin B12 and vitamin D: no arrangement of plant foods covers them. Calcium runs a little under target this week — a spoon of tahini, extra greens or a fortified plant milk closes the gap.',
       days: {},
     },
     requiredPackIds: [FREDHEIM_PACK_ID, REVERSAL_PACK_ID, FMD_PACK_ID],
@@ -127,15 +127,26 @@ export const STARTER_PLANS = [
     // — otherwise its first tap scales against whatever household size was
     // left over from before, not against what these portions assume.
     portions: 1,
+    // Baked/made once, Monday, as a batch. The rolls: one full recipe (8
+    // rolls) covers all seven eaten across the week (1+2+2+1+1) with one
+    // spare. The hummus: one full recipe (6 servings) covers all three
+    // lunches (3 needed) with 3 to spare — its own steps say it keeps
+    // refrigerated for 5 days, which is exactly this week's use case. Each
+    // day below still shows the item being eaten (via `mb`), but its
+    // ingredients are bought once here rather than repeatedly.
+    batchCook: [
+      { id: 'easy-start-week-1-rolls', kind: 'recipe', recipeId: 'orn-17', servings: 8 },
+      { id: 'easy-start-week-1-hummus', kind: 'recipe', recipeId: 'roasted-red-pepper-hummus', servings: 6 },
+    ],
     plan: {
       monday: {
         Breakfast: [m('ginger-pear-overnight-oats')],
-        Lunch: [m('orn-14'), m('orn-17'), m('roasted-red-pepper-hummus')],
+        Lunch: [m('orn-14'), mb('orn-17'), mb('roasted-red-pepper-hummus')],
         Dinner: [m('fmd-d1-dinner'), m('orn-15')],
       },
       tuesday: {
         Breakfast: [m('orn-13')],
-        Lunch: [m('orn-11'), m('orn-17', 2), m('roasted-red-pepper-hummus')],
+        Lunch: [m('orn-11'), mb('orn-17', 2), mb('roasted-red-pepper-hummus')],
         Dinner: [m('fmd-d2-dinner'), m('orn-15')],
       },
       wednesday: {
@@ -145,17 +156,17 @@ export const STARTER_PLANS = [
       },
       thursday: {
         Breakfast: [m('orn-26')],
-        Lunch: [m('orn-16'), m('roasted-red-pepper-hummus'), m('orn-17', 2)],
+        Lunch: [m('orn-16'), mb('roasted-red-pepper-hummus'), mb('orn-17', 2)],
         Dinner: [m('fmd-d4-lunch'), m('orn-7')],
       },
       friday: {
         Breakfast: [m('orn-10')],
-        Lunch: [m('fmd-d3-lunch', 2), m('orn-17')],
+        Lunch: [m('fmd-d3-lunch', 2), mb('orn-17')],
         Dinner: [m('orn-20'), m('orn-19')],
       },
       saturday: {
         Breakfast: [m('orn-1'), m('carob-spread-almond')],
-        Lunch: [m('fmd-d5-dinner', 2), m('orn-17')],
+        Lunch: [m('fmd-d5-dinner', 2), mb('orn-17')],
         Dinner: [m('fmd-d3-dinner'), m('orn-15')],
       },
       sunday: {
