@@ -172,22 +172,75 @@ export const STARTER_PLANS = [
   {
     id: 'diabetes-week-1',
     name: 'Type 2 Diabetes — Sample Week',
-    description: 'Whole-food, plant-based meals built around legumes, whole grains, and non-starchy vegetables to support healthy blood sugar.',
+    description: "Every recipe this week carries Fredheim's diabetes-friendly tag — low saturated fat, no added sugar, no refined flour, fibre-forward. Drawn from all three packs: the core Fredheim collection, the reversal-protocol recipes, and a few light dishes borrowed from the fasting plan.",
     condition: 'diabetes',
     author: 'Fredheim Livsstilssenter',
-    version: '0.1.0',
+    version: '1.0.0',
     translations: {
       no: {
         name: 'Diabetes type 2 — Eksempeluke',
-        description: 'Helmat-basert, plantebasert kosthold bygget rundt belgfrukter, fullkorn og grønnsaker uten stivelse for å støtte sunt blodsukker.',
+        description: 'Hver oppskrift denne uken har Fredheims diabetesvennlige merking — lite mettet fett, uten tilsatt sukker, uten raffinert mel, rik på fiber. Hentet fra alle tre oppskriftspakkene: Fredheim-samlingen, reverseringsprotokollen og noen lette retter fra fasteplanen.',
+        notes: {
+          week: 'Bak havre- og potetrundstykkene én gang og ha dem klare — de dukker opp fire ganger denne uken. Porsjonert for én; 👥-kontrollen skalerer hele uken. Fullstendige næringsverdier vises bare for oppskriftene som har dem ennå — noen av de klassiske Fredheim-rettene (lasagnen, burgerne, middelhavssuppa) er ikke ferdig analysert ennå og mangler tall inntil videre.',
+          days: {},
+        },
       },
       sv: {
         name: 'Typ 2-diabetes — Exempelvecka',
-        description: 'Helmat-baserad, växtbaserad kost byggd kring baljväxter, fullkorn och stärkelsefria grönsaker för att stödja hälsosamt blodsocker.',
+        description: 'Varje recept denna vecka bär Fredheims diabetesvänliga märkning — lite mättat fett, utan tillsatt socker, utan raffinerat mjöl, fiberrikt. Hämtat från alla tre receptpaketen: Fredheim-samlingen, reverseringsprotokollet och några lätta rätter från fasteplanen.',
+        notes: {
+          week: 'Baka havre- och potatisfrallorna en gång och ha dem redo — de dyker upp fyra gånger denna vecka. Portionerat för en; 👥-kontrollen skalar hela veckan. Fullständiga näringsvärden visas bara för recepten som har dem än — några av de klassiska Fredheim-rätterna (lasagnen, burgarna, medelhavssoppan) är inte färdiganalyserade än och saknar siffror tills vidare.',
+          days: {},
+        },
       },
     },
-    requiredPackIds: [FREDHEIM_PACK_ID, REVERSAL_PACK_ID],
-    plan: {}, // ← drop in your authored week here
+    requiredPackIds: [FREDHEIM_PACK_ID, REVERSAL_PACK_ID, FMD_PACK_ID],
+    // As with Easy Start: every item below carries a fixed serving count, so
+    // this is the household size they were written for (see the schema note
+    // on `portions` above `easy-start-week-1`).
+    portions: 1,
+    // Smart tips travel with the week and land in the planner's tips card.
+    notes: {
+      week: "Bake the oat & potato bread rolls once and keep them on hand — they appear four times this week. Portioned for one; the 👥 control scales the whole week. Full nutrition figures are shown only for the recipes that carry them yet — a few of the classic Fredheim dishes (the lasagne, the burgers, the mediterranean soup) haven't been analysed yet and show no numbers until they are.",
+      days: {},
+    },
+    plan: {
+      monday: {
+        Breakfast: [m('orn-1')],
+        Lunch: [m('orn-14'), m('orn-17')],
+        Dinner: [m('fr-23'), m('steamed-small-potatoes')],
+      },
+      tuesday: {
+        Breakfast: [m('orn-10')],
+        Lunch: [m('mediterranean-soup')],
+        Dinner: [m('fmd-d2-dinner'), m('orn-17')],
+      },
+      wednesday: {
+        Breakfast: [m('orn-18')],
+        Lunch: [m('orn-16'), m('orn-17')],
+        Dinner: [m('chorizo-with-potato-taco'), m('orn-21')],
+      },
+      thursday: {
+        Breakfast: [m('fmd-d4-breakfast')],
+        Lunch: [m('potato-and-spinach-soup')],
+        Dinner: [m('fmd-d4-dinner'), m('fr-104')],
+      },
+      friday: {
+        Breakfast: [m('orn-9')],
+        Lunch: [m('fmd-d3-lunch')],
+        Dinner: [m('oat-burger'), m('lightly-cooked-broccoli')],
+      },
+      saturday: {
+        Breakfast: [m('orn-6')],
+        Lunch: [m('fr-148'), m('bean-pate')],
+        Dinner: [m('fr-94'), m('fr-190')],
+      },
+      sunday: {
+        Breakfast: [m('fmd-d5-breakfast'), m('orn-13')],
+        Lunch: [m('fmd-d5-lunch', 2)],
+        Dinner: [m('fmd-d3-dinner'), m('orn-17')],
+      },
+    },
   },
   {
     id: 'autoimmune-week-1',
