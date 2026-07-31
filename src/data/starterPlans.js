@@ -266,7 +266,10 @@ export const STARTER_PLANS = [
       },
       saturday: {
         Breakfast: [m('orn-6')],
-        Lunch: [m('fr-148'), m('bean-pate')],
+        // Roti (fr-148) was removed from the pack; the bread roll already
+        // batch-cooked elsewhere in this week works the same way as a base
+        // for the bean pâté, and it has nutrition data where Roti didn't.
+        Lunch: [mb('orn-17'), m('bean-pate')],
         Dinner: [m('fr-94'), m('fr-190')],
       },
       sunday: {
