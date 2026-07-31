@@ -1,11 +1,10 @@
 /* Hirseknekkebrød (millet crispbread) — three fixes.
  *
  *  1. Drop the coconut milk (author's request).
- *  2. Rewrite step 1 so the "900 g cooked porridge" shortcut scales. It was
- *     a hardcoded number followed by "multiply the amount with how many
- *     times you do the recipe" — the app does that itself now, so the value
- *     is marked {{900 g}} and scaleStepText keeps it in step with the
- *     serving count.
+ *  2. Drop the "or use 900 g cooked porridge (multiply the amount with how
+ *     many times you do the recipe)" aside from step 1. A hardcoded gram
+ *     figure that the reader was told to scale by hand; simply removing it
+ *     is the cleanest fix and the step reads fine without it.
  *  3. Compute nutrition properly and store it as nutrition.perServing, the
  *     only shape NutritionPanel reads. The recipe carried a legacy flat
  *     `nutrition` block plus nutritionPer100g/totalWeight/servingWeight,
@@ -15,11 +14,10 @@
  * Bread Rolls: servings = 8 = the rolls it makes): servings = the pieces
  * this makes, with nutrition given per piece.
  *
- * Yield corrected from the "1/11 of the dough" the steps used to say. At
- * the stated 0.5-1 cm thickness this batch of dough covers ~1970 cm2 —
- * about two full baking trays, not eleven. Eleven would mean a 13x14 cm
- * patch per tray and 2.3 g crackers; two trays give 18 squares each, 36
- * pieces at ~13 g, which is a normal crispbread. Confirmed with the author.
+ * Yield is 20 crackers, set by the author. The steps used to say "1/11 part
+ * of the dough" and "18 squares per tray", which gave 198 tiny 2.3 g pieces
+ * and never matched the amount of dough anyway — both counts are gone now,
+ * so the instructions no longer contradict the yield.
  *
  * Values are per 100 g edible portion, USDA SR Legacy / FoodData Central.
  */
@@ -136,9 +134,7 @@ const BATCH = {
 }
 // 1 L water carries no nutrients and all but a trace bakes off.
 const ADDED_WATER = 1000
-const TRAYS = 2
-const PER_TRAY = 18         // step 7: 2 cuts short side x 5 long = 3 x 6
-const PIECES = TRAYS * PER_TRAY
+const PIECES = 20           // yield set by the author
 const FINAL_MOISTURE = 0.04 // baked "dry and cooked all the way through"
 
 const KEYS = Object.keys(FOOD.millet).filter(k => k !== 'moisture')
@@ -174,17 +170,20 @@ const beforeNo = r.translations.no.ingredients.length
 r.translations.no.ingredients = r.translations.no.ingredients.filter(i => !isCoconut(i))
 
 // ── 2. make the porridge shortcut scale ───────────────────────────────────
-r.steps[0] = 'Cook the millet with 3/4 of the water into a thick porridge — at least forty minutes, until cooked all the way through. (If you already have cooked millet porridge on hand, use {{900 g}} of it instead and go straight to the next step.)'
-r.translations.no.steps[0] = 'Kok hirsen med 3/4 av vannet til en tykk grøt — minst førti minutter, til den er gjennomkokt. (Har du ferdigkokt hirsegrøt fra før, bruk {{900 g}} av den i stedet og gå rett videre til neste trinn.)'
+// The "or use 900 g of ready-made porridge, multiplied by however many
+// times you're doing the recipe" aside is dropped rather than scaled — the
+// simplest fix, and the step reads cleanly without it.
+r.steps[0] = 'Cook the millet with 3/4 of the water into a thick porridge — at least forty minutes, until cooked all the way through.'
+r.translations.no.steps[0] = 'Kok hirsen med 3/4 av vannet til en tykk grøt — minst førti minutter, til den er gjennomkokt.'
 
-// Step 6 said "1/11 part of the dough" — see the yield note at the top.
-r.steps[5] = 'Line the baking trays with baking paper. Spread half the dough onto each of two trays: put a sheet of plastic wrap over the dough and use a rolling pin to roll it out between the baking paper and the wrap, to an even layer about 0.5–1 cm thick. Peel the wrap off (the same sheet does both trays).'
-r.translations.no.steps[5] = 'Kle stekebrettene med bakepapir. Fordel halve deigen på hvert av to brett: legg plastfolie oppå deigen og bruk en kjevle til å kjevle den ut mellom bakepapiret og folien, til et jevnt lag på ca. 0,5–1 cm. Dra av folien (den samme folien holder til begge brettene).'
+// Was "1/11 part of the dough", with tray counts and cut counts that no
+// longer match the yield. Both steps now describe the technique and leave
+// the numbers out.
+r.steps[5] = 'Line the baking tray with baking paper and spread the dough into an even layer about 0.5 cm thick. A good trick is to wrap the rolling pin in plastic wrap and press the dough out with it.'
+r.translations.no.steps[5] = 'Kle stekebrettet med bakepapir og fordel deigen ut i et jevnt lag på ca. 0,5 cm. Et godt triks er å pakke kjevlen inn i plastfolie og presse deigen ut med den.'
 
-// Step 7 counts squares per tray — spell that out now that the tray count
-// is explicit, so 18 doesn't read as the whole batch.
-r.steps[6] = 'Cut the dough with a pizza wheel (or a large knife): twice across the short side and five times along the long side, giving 18 equal squares per tray — 36 crackers in all.'
-r.translations.no.steps[6] = 'Skjær deigen med pizzakutter (eller stor kniv): to ganger på kortsiden og fem ganger på langsiden, slik at du får 18 like store ruter per brett — 36 knekkebrød til sammen.'
+r.steps[6] = 'Score the dough into crackers before baking, using a pizza wheel or a large knife.'
+r.translations.no.steps[6] = 'Skjær deigen opp i knekkebrød før steking, med pizzakutter eller en stor kniv.'
 
 // ── 3. nutrition in the shape the app actually reads ──────────────────────
 r.servings = PIECES
