@@ -185,6 +185,49 @@ r.translations.no.steps[5] = 'Kle stekebrettet med bakepapir og fordel deigen ut
 r.steps[6] = 'Score the dough into crackers before baking, using a pizza wheel or a large knife.'
 r.translations.no.steps[6] = 'Skjær deigen opp i knekkebrød før steking, med pizzakutter eller en stor kniv.'
 
+// ── descriptions (all three were empty) ───────────────────────────────────
+r.description = 'A sturdy millet crispbread packed with almonds and seeds, baked long and low until completely dry and snappy. Keeps for weeks in an airtight tin.'
+r.translations.no.description = 'Et solid hirseknekkebrød fullt av mandler og frø, stekt lenge på lav varme til det er helt tørt og sprøtt. Holder seg i ukevis i en lufttett boks.'
+
+// ── Swedish translation (the recipe had none) ─────────────────────────────
+// Units stay canonical here; displayUnit renders them as tsk/msk in Swedish.
+r.translations.sv = {
+  title: 'Hirsknäckebröd',
+  description: 'Ett rejält hirsknäckebröd fullt av mandlar och frön, gräddat länge på låg värme tills det är helt torrt och sprött. Håller sig i veckor i en lufttät burk.',
+  ingredients: [
+    { quantity: 175, unit: 'g', name: 'Hirs, hel' },
+    { quantity: 1, unit: 'l', name: 'Vatten, dricksvatten' },
+    { quantity: 3, unit: 'dl', name: 'Mandlar' },
+    { quantity: 33, unit: 'g', name: 'Sesamfrön, med skal' },
+    { quantity: 33, unit: 'g', name: 'Solrosfrön' },
+    { quantity: 33, unit: 'g', name: 'Pumpafrön' },
+    { quantity: 2, unit: 'tbsp', name: 'Vitlökspulver' },
+    { quantity: 1, unit: 'tsp', name: 'Psylliumfröskal' },
+    { quantity: 0.75, unit: 'tsp', name: 'Havssalt' },
+    { quantity: 1, unit: 'tsp', name: 'Timjan, torkad' },
+  ],
+  steps: [
+    'Koka hirsen med 3/4 av vattnet till en tjock gröt — minst fyrtio minuter, tills den är helt genomkokt.',
+    'Låt gröten svalna tillräckligt för att kunna hanteras med händerna.',
+    'Kör mandlarna och 1/4 av vattnet i en högeffektsmixer tills mandlarna är krossade till små bitar.',
+    'Värm ugnen till 100 °C.',
+    'Lägg alla ingredienser i en metallskål och blanda ordentligt så att det inte blir några klumpar. Helst med händerna, använd handskar.',
+    'Klä plåten med bakplåtspapper och bred ut degen i ett jämnt lager på ca 0,5 cm. Ett bra knep är att linda in kaveln i plastfolie och trycka ut degen med den.',
+    'Skär upp degen i knäckebröd före gräddning, med pizzaskärare eller en stor kniv.',
+    'Grädda tills knäckebrödet är torrt och genomgräddat. Det tar minst 3 timmar.',
+    'Avsvalning: lägg en annan plåt ovanpå plåten med knäckebrödet och vänd runt, så att knäckebrödet ligger upp och ner på den andra plåten. Ta bort den ursprungliga plåten och dra av bakplåtspappret. Låt svalna på plåten innan du bryter det längs skårorna och lägger det i lufttäta burkar.',
+  ],
+}
+
+// The Norwegian list carried localized unit strings ('ss' / 'ts') while EN
+// and the new SV list use canonical keys. normalizeUnit maps them to the
+// same thing and displayUnit renders 'ss'/'ts' back out in Norwegian, so
+// this is display-identical — it just stops the three lists disagreeing.
+const CANON = { ss: 'tbsp', ts: 'tsp' }
+for (const ing of r.translations.no.ingredients) {
+  if (CANON[ing.unit]) ing.unit = CANON[ing.unit]
+}
+
 // ── 3. nutrition in the shape the app actually reads ──────────────────────
 r.servings = PIECES
 r.kcal = Math.round(perPiece.calories)
@@ -200,7 +243,10 @@ delete r.servingWeight
 r.prepTime = 30
 r.cookTime = 220
 
-pack.version = '1.13.0'
+// Bump on every content change: AutoInstallDefaultPack only reinstalls when
+// the version differs, so editing a recipe without moving this number means
+// existing users keep the old copy.
+pack.version = '1.14.0'
 fs.writeFileSync(PACK, JSON.stringify(pack, null, 2) + '\n', 'utf8')
 
 console.log('coconut milk removed — EN ingredients', beforeEn, '->', r.ingredients.length,
