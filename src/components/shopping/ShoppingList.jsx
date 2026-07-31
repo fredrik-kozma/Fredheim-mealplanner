@@ -229,6 +229,8 @@ export default function ShoppingList() {
       groups: printGroups,
       familySize,
       recipeTitles,
+      // Date follows the app's language, not the browser's.
+      locale: i18n.language || undefined,
       labels: {
         forPeople: t('shopping.printForPeople', { defaultValue: 'For' }),
         fromRecipes: t('shopping.fromRecipes'),

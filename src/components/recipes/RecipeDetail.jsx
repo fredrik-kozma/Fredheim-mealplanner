@@ -195,6 +195,8 @@ export default function RecipeDetail() {
       })),
       ingredients: printIngredients,
       steps: displaySteps || [],
+      // Date follows the app's language, not the browser's.
+      locale: i18n.language || undefined,
       labels: {
         ingredients: t('recipeDetail.ingredients'),
         instructions: t('recipeDetail.instructions'),

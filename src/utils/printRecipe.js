@@ -32,6 +32,9 @@ function escapeHtml(s) {
  * @param {string[]} opts.steps
  * @param {object} opts.labels  Localized UI strings:
  *   { ingredients, instructions, servings, prep, cook, category, printedOn }
+ * @param {string} [opts.locale]  BCP-47 tag for the printed date. Pass the
+ *   app's language so a Norwegian sheet doesn't date itself in English —
+ *   the browser locale (the default) is often not the app's.
  * @param {string} [opts.logoUrl='/fredheim-logo.svg']
  */
 export function printRecipe(opts) {
@@ -47,6 +50,7 @@ export function printRecipe(opts) {
     ingredients = [],
     steps = [],
     labels = {},
+    locale,
     logoUrl = '/fredheim-logo.svg',
   } = opts
 
@@ -94,7 +98,7 @@ export function printRecipe(opts) {
     )
     .join('')
 
-  const printedDate = new Date().toLocaleDateString(undefined, {
+  const printedDate = new Date().toLocaleDateString(locale || undefined, {
     year: 'numeric', month: 'short', day: 'numeric',
   })
 

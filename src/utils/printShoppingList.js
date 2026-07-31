@@ -25,6 +25,9 @@ function escapeHtml(s) {
  * @param {string[]} [opts.recipeTitles]       Recipes this list was generated from
  * @param {object} opts.labels                 Localized UI strings:
  *   { forPeople, fromRecipes, printedOn, totalItems }
+ * @param {string} [opts.locale]                BCP-47 tag for the printed date. Pass the
+ *   app's language so a Norwegian sheet doesn't date itself in English —
+ *   the browser locale (the default) is often not the app's.
  * @param {string} [opts.logoUrl='/fredheim-logo.svg']
  */
 export function printShoppingList(opts) {
@@ -34,6 +37,7 @@ export function printShoppingList(opts) {
     familySize,
     recipeTitles = [],
     labels = {},
+    locale,
     logoUrl = '/fredheim-logo.svg',
   } = opts
 
@@ -73,7 +77,7 @@ export function printShoppingList(opts) {
     .map((r) => `<span class="chip">${escapeHtml(r)}</span>`)
     .join('')
 
-  const printedDate = new Date().toLocaleDateString(undefined, {
+  const printedDate = new Date().toLocaleDateString(locale || undefined, {
     year: 'numeric', month: 'short', day: 'numeric',
   })
 
