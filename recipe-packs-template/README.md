@@ -92,7 +92,16 @@ Each ingredient:
 ```json
 { "quantity": 200, "unit": "g", "name": "rolled oats" }
 ```
-Use `quantity: 0` and `unit: ""` for ingredients with no measurable quantity (e.g. `"salt and pepper"`).
+For an ingredient with no measurable amount (a pinch of salt, a bay leaf),
+use `quantity: null`, `unit: ""`, and fold the amount into the name instead
+— e.g. `{ "quantity": null, "unit": "", "name": "Sea salt, to taste" }`.
+**Do not** use `quantity: 0` — it renders as no amount at all and is silently
+dropped from the shopping list.
+
+See **[INGREDIENT_UNITS.md](./INGREDIENT_UNITS.md)** for which unit to use
+for which ingredient (grams vs. dl vs. tsp/tbsp vs. countable), including a
+density reference table — the house rule, worked out converting ~450
+existing rows to be consistent.
 
 ---
 
