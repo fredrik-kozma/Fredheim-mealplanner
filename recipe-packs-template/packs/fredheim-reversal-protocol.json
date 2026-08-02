@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.13.0",
+  "version": "1.15.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -284,7 +284,7 @@
             },
             {
               "quantity": 1,
-              "unit": "pcs",
+              "unit": "clove",
               "name": "hvitløksfedd"
             },
             {
@@ -336,7 +336,7 @@
             },
             {
               "quantity": 1,
-              "unit": "pcs",
+              "unit": "clove",
               "name": "vitlöksklyfta"
             },
             {
@@ -386,7 +386,7 @@
         },
         {
           "quantity": 1,
-          "unit": "pcs",
+          "unit": "clove",
           "name": "garlic clove"
         },
         {
@@ -481,8 +481,8 @@
               "name": "svarte sennepsfrø"
             },
             {
-              "quantity": 10,
-              "unit": "pcs",
+              "quantity": 80,
+              "unit": "g",
               "name": "Deglet-dadler, utstenede (bløtlagt 20 min i varmt vann)"
             },
             {
@@ -535,8 +535,8 @@
               "name": "svarta senapsfrön"
             },
             {
-              "quantity": 10,
-              "unit": "pcs",
+              "quantity": 80,
+              "unit": "g",
               "name": "Deglet-dadlar, urkärnade (blötlagda 20 min i varmt vatten)"
             },
             {
@@ -587,8 +587,8 @@
           "name": "black mustard seeds"
         },
         {
-          "quantity": 10,
-          "unit": "pcs",
+          "quantity": 80,
+          "unit": "g",
           "name": "Deglet dates, pitted (soaked 20 min in warm water)"
         },
         {
@@ -703,13 +703,13 @@
               "name": "kokte cannellinibønner (avrent og skylt)"
             },
             {
-              "quantity": 4,
-              "unit": "pcs",
+              "quantity": 96,
+              "unit": "g",
               "name": "Medjool-dadler, utstenede"
             },
             {
               "quantity": 4,
-              "unit": "pcs",
+              "unit": "clove",
               "name": "hvitløksfedd"
             },
             {
@@ -755,13 +755,13 @@
               "name": "kokta cannellinibönor (avrunna och sköljda)"
             },
             {
-              "quantity": 4,
-              "unit": "pcs",
+              "quantity": 96,
+              "unit": "g",
               "name": "Medjool-dadlar, urkärnade"
             },
             {
               "quantity": 4,
-              "unit": "pcs",
+              "unit": "clove",
               "name": "vitlöksklyftor"
             },
             {
@@ -805,13 +805,13 @@
           "name": "cooked cannellini beans (drained and rinsed)"
         },
         {
-          "quantity": 4,
-          "unit": "pcs",
+          "quantity": 96,
+          "unit": "g",
           "name": "Medjool dates, pitted"
         },
         {
           "quantity": 4,
-          "unit": "pcs",
+          "unit": "clove",
           "name": "garlic cloves"
         },
         {
@@ -1643,8 +1643,8 @@
               "name": "kaldt filtrert vann (til blending)"
             },
             {
-              "quantity": 1,
-              "unit": "pcs",
+              "quantity": 24,
+              "unit": "g",
               "name": "Medjool-daddel, utstenet"
             },
             {
@@ -1681,8 +1681,8 @@
               "name": "kallt filtrerat vatten (för mixning)"
             },
             {
-              "quantity": 1,
-              "unit": "pcs",
+              "quantity": 24,
+              "unit": "g",
               "name": "Medjool-dadel, urkärnad"
             },
             {
@@ -1717,8 +1717,8 @@
           "name": "cold filtered water (for blending)"
         },
         {
-          "quantity": 1,
-          "unit": "pcs",
+          "quantity": 24,
+          "unit": "g",
           "name": "Medjool date, pitted"
         },
         {
@@ -2199,7 +2199,7 @@
             },
             {
               "quantity": 3,
-              "unit": "pcs",
+              "unit": "clove",
               "name": "hvitløksfedd, finhakket"
             },
             {
@@ -2281,7 +2281,7 @@
             },
             {
               "quantity": 3,
-              "unit": "pcs",
+              "unit": "clove",
               "name": "vitlöksklyftor, finhackade"
             },
             {
@@ -2361,7 +2361,7 @@
         },
         {
           "quantity": 3,
-          "unit": "pcs",
+          "unit": "clove",
           "name": "garlic cloves, minced"
         },
         {
@@ -2480,18 +2480,18 @@
           "description": "En rik, gyllen buljong med lavt natrium, bygget på sopp, søte aromater og betennelsesdempende gurkemeie. Dypt næringsrik og tarmvennlig — en kokebase eller en varmende drikk.",
           "ingredients": [
             {
-              "quantity": 1,
-              "unit": "pcs",
+              "quantity": 110,
+              "unit": "g",
               "name": "løk, grovhakket"
             },
             {
               "quantity": 4,
-              "unit": "pcs",
+              "unit": "clove",
               "name": "hvitløksfedd, knust"
             },
             {
-              "quantity": 3,
-              "unit": "pcs",
+              "quantity": 120,
+              "unit": "g",
               "name": "stilker selleri, grovhakket"
             },
             {
@@ -2500,24 +2500,24 @@
               "name": "sopp (valgfri type), halvert"
             },
             {
-              "quantity": 2,
-              "unit": "pcs",
+              "quantity": 200,
+              "unit": "g",
               "name": "tomater, i båter"
             },
             {
-              "quantity": 1,
-              "unit": "pcs",
+              "quantity": 150,
+              "unit": "g",
               "name": "rød eller gul paprika, grovhakket"
             },
             {
-              "quantity": 1,
-              "unit": "pcs",
+              "quantity": 200,
+              "unit": "g",
               "name": "søtpotet, grovhakket (med skall)"
             },
             {
-              "quantity": 2,
-              "unit": "pcs",
-              "name": "laurbærblad"
+              "quantity": null,
+              "unit": "",
+              "name": "laurbærblad (1–2 blader)"
             },
             {
               "quantity": 1,
@@ -2554,18 +2554,18 @@
           "description": "En rik, gyllene buljong med lågt natrium, byggd på svamp, söta aromater och antiinflammatorisk gurkmeja. Djupt näringsrik och tarmvänlig — en matlagningsbas eller en värmande dryck.",
           "ingredients": [
             {
-              "quantity": 1,
-              "unit": "pcs",
+              "quantity": 110,
+              "unit": "g",
               "name": "lök, grovhackad"
             },
             {
               "quantity": 4,
-              "unit": "pcs",
+              "unit": "clove",
               "name": "vitlöksklyftor, krossade"
             },
             {
-              "quantity": 3,
-              "unit": "pcs",
+              "quantity": 120,
+              "unit": "g",
               "name": "stjälkar selleri, grovhackade"
             },
             {
@@ -2574,24 +2574,24 @@
               "name": "svamp (valfri sort), halverad"
             },
             {
-              "quantity": 2,
-              "unit": "pcs",
+              "quantity": 200,
+              "unit": "g",
               "name": "tomater, i klyftor"
             },
             {
-              "quantity": 1,
-              "unit": "pcs",
+              "quantity": 150,
+              "unit": "g",
               "name": "röd eller gul paprika, grovhackad"
             },
             {
-              "quantity": 1,
-              "unit": "pcs",
+              "quantity": 200,
+              "unit": "g",
               "name": "sötpotatis, grovhackad (med skal)"
             },
             {
-              "quantity": 2,
-              "unit": "pcs",
-              "name": "lagerblad"
+              "quantity": null,
+              "unit": "",
+              "name": "lagerblad (1–2 blad)"
             },
             {
               "quantity": 1,
@@ -2626,18 +2626,18 @@
       },
       "ingredients": [
         {
-          "quantity": 1,
-          "unit": "pcs",
+          "quantity": 110,
+          "unit": "g",
           "name": "onion, roughly chopped"
         },
         {
           "quantity": 4,
-          "unit": "pcs",
+          "unit": "clove",
           "name": "garlic cloves, smashed"
         },
         {
-          "quantity": 3,
-          "unit": "pcs",
+          "quantity": 120,
+          "unit": "g",
           "name": "celery stalks, roughly chopped"
         },
         {
@@ -2646,23 +2646,23 @@
           "name": "mushrooms (any variety), halved"
         },
         {
-          "quantity": 2,
-          "unit": "pcs",
+          "quantity": 200,
+          "unit": "g",
           "name": "tomatoes, quartered"
         },
         {
-          "quantity": 1,
-          "unit": "pcs",
+          "quantity": 150,
+          "unit": "g",
           "name": "red or yellow bell pepper, roughly chopped"
         },
         {
-          "quantity": 1,
-          "unit": "pcs",
+          "quantity": 200,
+          "unit": "g",
           "name": "sweet potato, roughly chopped (skin on)"
         },
         {
-          "quantity": 2,
-          "unit": "pcs",
+          "quantity": null,
+          "unit": "",
           "name": "bay leaves"
         },
         {
@@ -4861,9 +4861,9 @@
               "name": "Ferske sjampinjonger, halvert"
             },
             {
-              "quantity": 2,
-              "unit": "pcs",
-              "name": "Laurbærblad"
+              "quantity": null,
+              "unit": "",
+              "name": "Laurbærblad (1–2 blader)"
             },
             {
               "quantity": 0.5,
@@ -4924,9 +4924,9 @@
               "name": "Färska champinjoner, halverade"
             },
             {
-              "quantity": 2,
-              "unit": "pcs",
-              "name": "Lagerblad"
+              "quantity": null,
+              "unit": "",
+              "name": "Lagerblad (1–2 blad)"
             },
             {
               "quantity": 0.5,
@@ -4984,8 +4984,8 @@
           "name": "Fresh champignon mushrooms, halved"
         },
         {
-          "quantity": 2,
-          "unit": "pcs",
+          "quantity": null,
+          "unit": "",
           "name": "Bay leaves"
         },
         {
