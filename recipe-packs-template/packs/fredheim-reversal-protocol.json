@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.11.3",
+  "version": "1.12.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -486,8 +486,8 @@
               "name": "Deglet-dadler, utstenede (bløtlagt 20 min i varmt vann)"
             },
             {
-              "quantity": 120,
-              "unit": "ml",
+              "quantity": 85,
+              "unit": "g",
               "name": "kokte cannellinibønner (hvite bønner)"
             },
             {
@@ -540,8 +540,8 @@
               "name": "Deglet-dadlar, urkärnade (blötlagda 20 min i varmt vatten)"
             },
             {
-              "quantity": 120,
-              "unit": "ml",
+              "quantity": 85,
+              "unit": "g",
               "name": "kokta cannellinibönor (vita bönor)"
             },
             {
@@ -592,8 +592,8 @@
           "name": "Deglet dates, pitted (soaked 20 min in warm water)"
         },
         {
-          "quantity": 120,
-          "unit": "ml",
+          "quantity": 85,
+          "unit": "g",
           "name": "cooked cannellini beans (white beans)"
         },
         {
