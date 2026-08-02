@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate, useParams, useLocation } from 'react-router-dom'
+import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { formatQuantity } from '../../utils/shoppingListGenerator'
@@ -28,6 +28,7 @@ export default function RecipeDetail() {
   // preserves all earlier back-button behaviour.
   const backTarget = location.state?.from === '/planner' ? '/planner' : '/'
   const recipe = useStore(s => s.recipes.find(r => r.id === id))
+  const allRecipes = useStore(s => s.recipes)
   const deleteRecipe = useStore(s => s.deleteRecipe)
   const setLastOpenedRecipeId = useStore(s => s.setLastOpenedRecipeId)
 
@@ -80,6 +81,17 @@ export default function RecipeDetail() {
   const displayIngredients = translation?.ingredients || recipe.ingredients
   const displaySteps = translation?.steps || recipe.steps
   const displayNotes = translation?.notes || recipe.notes
+
+  // Cross-links to other recipes (e.g. a bread recipe pointing at a
+  // separate "how to build a starter" reference). Stored as an array of
+  // ids on the recipe; resolved here against the live recipe list so the
+  // linked title always follows the current language and stays correct
+  // even if the target recipe is later edited. Ids that don't resolve
+  // (a pack installed without its companion recipe) are silently skipped
+  // rather than showing a dead link.
+  const relatedRecipes = (recipe.relatedRecipes || [])
+    .map(relId => allRecipes.find(r => r.id === relId))
+    .filter(Boolean)
 
   function handleDelete() {
     if (confirm(t('recipeDetail.deleteConfirm', { title: recipe.title }))) {
@@ -502,6 +514,34 @@ export default function RecipeDetail() {
                 </li>
               ))}
             </ol>
+          </section>
+        )}
+
+        {/* Related recipes — e.g. a bread recipe pointing at a separate
+            "how to build the starter" guide. Placed before Chef's notes so
+            it's visible before someone starts cooking, not buried after. */}
+        {relatedRecipes.length > 0 && (
+          <section className="rounded-2xl bg-indigo-50 border border-indigo-100 p-4">
+            <h2 className="text-sm font-semibold text-indigo-800 mb-2 flex items-center gap-1.5">
+              <span aria-hidden>🔗</span>{t('recipeDetail.relatedRecipes', { defaultValue: 'See also' })}
+            </h2>
+            <div className="flex flex-col gap-1.5">
+              {relatedRecipes.map(rel => {
+                const relTitle = rel.translations?.[currentLang]?.title || rel.title
+                return (
+                  <Link
+                    key={rel.id}
+                    to={`/recipes/${rel.id}`}
+                    className="text-sm font-medium text-indigo-700 hover:text-indigo-900 hover:underline inline-flex items-center gap-1"
+                  >
+                    {relTitle}
+                    <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                    </svg>
+                  </Link>
+                )
+              })}
+            </div>
           </section>
         )}
 
