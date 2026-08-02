@@ -28,11 +28,26 @@
 const fs = require('fs')
 const path = require('path')
 
+// Just the filenames. This script used to carry a hardcoded target version
+// per pack and write it unconditionally, which meant every time another
+// script bumped a pack, running this one with --write silently rolled the
+// version backwards — caught and hand-patched three separate times. Now the
+// version is derived from whatever the pack currently has (minor +1), and
+// only when tags actually changed, so it can never move backwards and never
+// churns a version for a no-op run.
 const PACKS = [
-  ['fredheim-recipes-with-pictures.json', '1.21.0'],
-  ['fredheim-reversal-protocol.json', '1.17.0'],
-  ['fredheim-fmd-5day.json', '1.6.0'],
+  'fredheim-recipes-with-pictures.json',
+  'fredheim-reversal-protocol.json',
+  'fredheim-fmd-5day.json',
 ]
+
+// '1.19.0' -> '1.20.0'. Falls back to appending a minor if the version
+// isn't the expected three-part shape.
+function bumpMinor(version) {
+  const m = /^(\d+)\.(\d+)\.(\d+)$/.exec(String(version || ''))
+  if (!m) throw new Error(`unexpected pack version format: ${version}`)
+  return `${m[1]}.${Number(m[2]) + 1}.0`
+}
 const CONDITION_TAGS = ['diabetes-friendly', 'blood-pressure-friendly', 'heart-healthy', 'weight-loss']
 const WRITE = process.argv.includes('--write')
 
@@ -144,9 +159,10 @@ function evaluate(recipe) {
 let totals = { 'diabetes-friendly': 0, 'blood-pressure-friendly': 0, 'heart-healthy': 0, 'weight-loss': 0 }
 const reviewRows = []
 
-for (const [file, newVersion] of PACKS) {
+for (const file of PACKS) {
   const p = path.join(__dirname, '..', 'recipe-packs-template', 'packs', file)
   const pack = JSON.parse(fs.readFileSync(p, 'utf8'))
+  let packChanged = false
   for (const r of pack.recipes) {
     const res = evaluate(r)
     for (const tg of res.tags) totals[tg]++
@@ -164,13 +180,20 @@ for (const [file, newVersion] of PACKS) {
     )
     if (WRITE) {
       const kept = (r.tags || []).filter(tg => !CONDITION_TAGS.includes(tg))
+      const before = (r.tags || []).slice().sort().join(',')
       r.tags = [...kept, ...res.tags]
+      if (r.tags.slice().sort().join(',') !== before) packChanged = true
     }
   }
   if (WRITE) {
-    pack.version = newVersion
-    fs.writeFileSync(p, JSON.stringify(pack, null, 2) + '\n', 'utf8')
-    console.log('WROTE', file, '->', newVersion)
+    if (!packChanged) {
+      console.log('unchanged', file, '(version left at', pack.version + ')')
+    } else {
+      const newVersion = bumpMinor(pack.version)
+      pack.version = newVersion
+      fs.writeFileSync(p, JSON.stringify(pack, null, 2) + '\n', 'utf8')
+      console.log('WROTE', file, '->', newVersion)
+    }
   }
 }
 
