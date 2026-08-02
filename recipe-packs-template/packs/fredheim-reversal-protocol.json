@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -233,7 +233,8 @@
           "niacin": 0.6,
           "choline": 12
         }
-      }
+      },
+      "createdAt": 1785531600000
     },
     {
       "id": "orn-2",
@@ -448,7 +449,8 @@
           "niacin": 0.46,
           "choline": 24
         }
-      }
+      },
+      "createdAt": 1785535200000
     },
     {
       "id": "orn-3",
@@ -667,7 +669,8 @@
           "niacin": 0.14,
           "choline": 3.8
         }
-      }
+      },
+      "createdAt": 1785538800000
     },
     {
       "id": "orn-4",
@@ -883,7 +886,8 @@
           "niacin": 0.64,
           "choline": 33
         }
-      }
+      },
+      "createdAt": 1785542400000
     },
     {
       "id": "orn-5",
@@ -1170,7 +1174,8 @@
           "niacin": 0.64,
           "choline": 16
         }
-      }
+      },
+      "createdAt": 1785546000000
     },
     {
       "id": "orn-6",
@@ -1372,7 +1377,8 @@
           "niacin": 2.4,
           "choline": 69
         }
-      }
+      },
+      "createdAt": 1785549600000
     },
     {
       "id": "orn-7",
@@ -1605,7 +1611,8 @@
           "niacin": 2.2,
           "choline": 54
         }
-      }
+      },
+      "createdAt": 1785553200000
     },
     {
       "id": "orn-8",
@@ -1777,7 +1784,8 @@
           "niacin": 0.11,
           "choline": 4.5
         }
-      }
+      },
+      "createdAt": 1785556800000
     },
     {
       "id": "orn-9",
@@ -1964,7 +1972,8 @@
           "niacin": 2.3,
           "choline": 58
         }
-      }
+      },
+      "createdAt": 1785560400000
     },
     {
       "id": "orn-10",
@@ -2147,7 +2156,8 @@
           "niacin": 2.8,
           "choline": 45
         }
-      }
+      },
+      "createdAt": 1785564000000
     },
     {
       "id": "orn-11",
@@ -2453,7 +2463,8 @@
           "niacin": 6.6,
           "choline": 60
         }
-      }
+      },
+      "createdAt": 1785567600000
     },
     {
       "id": "orn-12",
@@ -2732,7 +2743,8 @@
           "niacin": 2,
           "choline": 20
         }
-      }
+      },
+      "createdAt": 1785571200000
     },
     {
       "id": "orn-13",
@@ -2910,7 +2922,8 @@
             "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
           ]
         }
-      }
+      },
+      "createdAt": 1785574800000
     },
     {
       "id": "orn-14",
@@ -3172,7 +3185,8 @@
         "Combine the black beans, tomatoes, red pepper, red onion and finely chopped dates in a large bowl. Toss together.",
         "Sprinkle in the cumin, smoked paprika and salt. Squeeze over the lemon juice and toss well to coat everything.",
         "Scatter the cilantro and ground flaxseed over the top and toss gently. Let the salad rest 5 minutes before serving — the sweet-sour contrast deepens as it sits."
-      ]
+      ],
+      "createdAt": 1785578400000
     },
     {
       "id": "orn-15",
@@ -3346,7 +3360,8 @@
         "Pour the hot water into your mug, add the barley coffee powder and stir well until fully dissolved — no lumps.",
         "Warm the blended date-oat milk in a small saucepan over low-medium heat until steaming — do not boil. Froth it now if you have a frother.",
         "Pour the hot date-oat milk into the mug over the dissolved barley coffee, stir gently and dust with cinnamon on top."
-      ]
+      ],
+      "createdAt": 1785582000000
     },
     {
       "id": "orn-16",
@@ -3547,7 +3562,8 @@
         "Make the dressing: blend the dates, white miso and lemon juice with a splash of water until completely smooth and glossy.",
         "Put the shredded red cabbage and cooked edamame in a large bowl. Pour over the dressing and toss thoroughly to coat every strand.",
         "Fold in the chopped parsley and ground flaxseed. Serve straight away, or let it sit 10 minutes for the flavours to deepen."
-      ]
+      ],
+      "createdAt": 1785585600000
     },
     {
       "id": "orn-17",
@@ -3808,7 +3824,8 @@
         "Shape 8 round rolls with a wet hand on a lined baking tray. Cover loosely and let rise at room temperature 45–50 minutes until visibly puffed.",
         "Bake at 220°C for about 10 minutes, then reduce to 190°C and bake a further 18 minutes until light golden. The base should sound hollow.",
         "Cool on a rack for at least 60 minutes before eating — the crumb keeps setting as it cools."
-      ]
+      ],
+      "createdAt": 1785589200000
     },
     {
       "id": "orn-18",
@@ -4043,7 +4060,8 @@
         "Make the carob-date cream: blend the bloomed carob, the dates and about a quarter of the oat milk until completely silky, about 45 seconds.",
         "In a large bowl, combine the oats, chia, flaxseed and cinnamon. Pour in the remaining oat milk and the carob-date cream and stir thoroughly.",
         "Divide into 4 jars and refrigerate overnight. In the morning, stir and top each jar with sliced banana."
-      ]
+      ],
+      "createdAt": 1785592800000
     },
     {
       "id": "orn-19",
@@ -4251,7 +4269,8 @@
         "Stir in the ground flaxseed until evenly combined.",
         "Divide into 4 glasses or jars, cover and refrigerate at least 2 hours — ideally overnight. The pudding firms up as the psyllium gels.",
         "Serve cold, topped with a few fresh pineapple pieces or a pinch of cardamom."
-      ]
+      ],
+      "createdAt": 1785596400000
     },
     {
       "id": "orn-20",
@@ -4555,7 +4574,8 @@
         "Combine the toasted walnuts, mashed beans, onion-carrot-garlic, flax egg, tamari, smoked paprika, thyme, salt and parsley. Mix well and rest 10 minutes so the flax hydrates and the mix firms up.",
         "Form 8 patties about 1.5 cm thick on the tray and brush the tops lightly with the remaining olive oil — the thin brush is what lets them turn golden in dry oven heat.",
         "Bake 25 minutes, flipping at the halfway point so both faces brown. Pull them when deep golden and firm — they keep setting as they cool."
-      ]
+      ],
+      "createdAt": 1785600000000
     },
     {
       "id": "orn-21",
@@ -4762,7 +4782,8 @@
         "Heat a wide pan until quite hot, add the sauté water so it sizzles, then add the cabbage. Sauté 8–10 minutes, stirring, until wilted and slightly caramelised at the edges. Add a splash more water if it sticks.",
         "Reduce the heat, add the date paste, lemon juice and salt, and stir to coat every strand. Cook 2 more minutes until glossy and unified.",
         "Remove from the heat, scatter the lemon zest over the top and toss once — added off-heat, it keeps its bright, floral lift."
-      ]
+      ],
+      "createdAt": 1785603600000
     },
     {
       "id": "orn-23",
@@ -5009,7 +5030,8 @@
         "Add the mushrooms, bay leaves, turmeric and the water. Stir well.",
         "Bring to the boil and simmer covered for about 30 minutes (or pressure-cook on high 20 minutes with natural release).",
         "Strain through a fine sieve, pressing the solids gently to extract the liquid. Stir in salt to taste and serve hot."
-      ]
+      ],
+      "createdAt": 1785607200000
     },
     {
       "id": "orn-24",
@@ -5187,7 +5209,8 @@
             "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
           ]
         }
-      }
+      },
+      "createdAt": 1785610800000
     },
     {
       "id": "orn-25",
@@ -5365,7 +5388,8 @@
             "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
           ]
         }
-      }
+      },
+      "createdAt": 1785614400000
     },
     {
       "id": "orn-26",
@@ -5543,7 +5567,8 @@
             "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
           ]
         }
-      }
+      },
+      "createdAt": 1785618000000
     },
     {
       "id": "orn-27",
@@ -5721,7 +5746,8 @@
             "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
           ]
         }
-      }
+      },
+      "createdAt": 1785621600000
     },
     {
       "id": "orn-28",
@@ -5899,7 +5925,8 @@
             "Håller sig i kylen i upp till 3 dagar, så den är lätt att göra i större sats."
           ]
         }
-      }
+      },
+      "createdAt": 1785625200000
     },
     {
       "id": "orn-29",
@@ -6103,7 +6130,8 @@
             "Häll upp och drick direkt."
           ]
         }
-      }
+      },
+      "createdAt": 1785628800000
     },
     {
       "id": "orn-30",
@@ -6452,7 +6480,8 @@
           "niacin": 2.7,
           "choline": 63
         }
-      }
+      },
+      "createdAt": 1785632400000
     },
     {
       "id": "orn-31",
@@ -6801,7 +6830,8 @@
           "niacin": 2.7,
           "choline": 63
         }
-      }
+      },
+      "createdAt": 1785636000000
     },
     {
       "id": "orn-32",
@@ -7036,7 +7066,8 @@
           "niacin": 1.85,
           "choline": 17.2
         }
-      }
+      },
+      "createdAt": 1785639600000
     },
     {
       "id": "orn-33",
@@ -7293,7 +7324,8 @@
           "niacin": 0.84,
           "choline": 10.6
         }
-      }
+      },
+      "createdAt": 1785643200000
     },
     {
       "id": "orn-34",
@@ -7550,7 +7582,8 @@
           "niacin": 0.96,
           "choline": 13
         }
-      }
+      },
+      "createdAt": 1785646800000
     },
     {
       "id": "orn-35",
@@ -7841,7 +7874,8 @@
           "niacin": 2.7,
           "choline": 30
         }
-      }
+      },
+      "createdAt": 1785650400000
     },
     {
       "id": "orn-36",
@@ -8051,7 +8085,8 @@
           "niacin": 3.1,
           "choline": 32
         }
-      }
+      },
+      "createdAt": 1785654000000
     },
     {
       "id": "orn-37",
@@ -8141,7 +8176,8 @@
           "notes": "Du behöver bara fullkornsrågmjöl och vatten — rågsurdegar är de allra enklaste att etablera, eftersom kornet bär med sig gott om naturlig jäst och mjölksyrabakterier på egen hand. Släng inte avfallsdegen: rör ner den i gröt, eller bred ut den tunt på bakplåtspapper med frön och salt och grädda i 160 °C till knäckebröd."
         }
       },
-      "notes": "You need only wholegrain rye flour and water — rye starters are the easiest of all to establish, since the grain carries plenty of wild yeast and lactic bacteria on its own. Don't throw away the discard: stir it into porridge, or spread it thin on baking paper with seeds and salt and bake at 160°C into crackers."
+      "notes": "You need only wholegrain rye flour and water — rye starters are the easiest of all to establish, since the grain carries plenty of wild yeast and lactic bacteria on its own. Don't throw away the discard: stir it into porridge, or spread it thin on baking paper with seeds and salt and bake at 160°C into crackers.",
+      "createdAt": 1785657600000
     },
     {
       "id": "orn-38",
@@ -8400,7 +8436,8 @@
       },
       "relatedRecipes": [
         "orn-37"
-      ]
+      ],
+      "createdAt": 1785661200000
     },
     {
       "id": "orn-39",
@@ -8674,7 +8711,8 @@
       },
       "relatedRecipes": [
         "orn-37"
-      ]
+      ],
+      "createdAt": 1785664800000
     },
     {
       "id": "orn-40",
@@ -8996,7 +9034,8 @@
           "niacin": 2.9,
           "choline": 64
         }
-      }
+      },
+      "createdAt": 1785668400000
     },
     {
       "id": "orn-41",
@@ -9230,7 +9269,8 @@
           "niacin": 2.1,
           "choline": 31
         }
-      }
+      },
+      "createdAt": 1785672000000
     }
   ]
 }

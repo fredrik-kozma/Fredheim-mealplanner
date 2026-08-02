@@ -3,7 +3,7 @@
   "name": "Fasting Mimicking Plan — 5-Day Plan",
   "description": "A clinically structured 5-day Fasting Mimicking Diet (FMD) based on the research of Valter Longo, PhD (USC). Three small, fully plant-based, oil-free, caffeine-free meals a day, with a vegetable broth sipped freely throughout. Designed to trigger autophagy, suppress IGF-1 and mobilise stem cells — with evidence for metabolic syndrome, pre-diabetes, cardiovascular risk, autoimmune and inflammatory conditions, and healthy ageing. ⚠ Contraindicated in pregnancy or breastfeeding, type 1 / insulin-dependent diabetes, BMI under 18.5, any eating-disorder history, and under-18s.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "tags": [
     "fmd",
     "fasting-mimicking",
@@ -223,7 +223,8 @@
         "Reduce the heat and simmer uncovered for 40–50 minutes.",
         "Strain through a fine sieve and discard the solids.",
         "Season lightly with extra salt if needed. Keep in a flask or pot and drink warm throughout the day."
-      ]
+      ],
+      "createdAt": 1785474000000
     },
     {
       "id": "fmd-d1-breakfast",
@@ -435,7 +436,8 @@
         "Halve and stone the avocado, fan it onto one side of a plate, squeeze over the lemon juice and season with a little salt.",
         "Arrange the walnuts and olives alongside, and pile the blueberries in a small dish.",
         "Spoon the ground flaxseed over the avocado and berries and dust the cinnamon lightly over the berries. Serve immediately."
-      ]
+      ],
+      "createdAt": 1785477600000
     },
     {
       "id": "fmd-d1-lunch",
@@ -664,7 +666,8 @@
         "Slice the avocado and cucumber and halve the cherry tomatoes.",
         "Arrange the salad leaves in a wide bowl and add the sweet potato, avocado, tomatoes and cucumber.",
         "Squeeze the lemon juice over everything, scatter the pumpkin seeds and herbs, season and toss gently at the table."
-      ]
+      ],
+      "createdAt": 1785481200000
     },
     {
       "id": "fmd-d1-dinner",
@@ -930,7 +933,8 @@
         "Add the carrot, courgette and tomatoes, stir to break up the tomatoes, pour in the remaining broth and bring to a simmer.",
         "After 10 minutes add the kale and white beans and simmer a further 8–10 minutes until just tender. Season.",
         "Serve hot with the rye crispbreads and sliced avocado on the side."
-      ]
+      ],
+      "createdAt": 1785484800000
     },
     {
       "id": "fmd-d2-breakfast",
@@ -1127,7 +1131,8 @@
         "Slice the avocado, fan it onto a plate and add a tiny pinch of salt and the lemon juice.",
         "Arrange the almonds and olives alongside and pile the berries in a small dish.",
         "Spoon the ground flaxseed over the avocado and serve immediately."
-      ]
+      ],
+      "createdAt": 1785488400000
     },
     {
       "id": "fmd-d2-lunch",
@@ -1346,7 +1351,8 @@
         "Heat a little broth in a pot, add the rested garlic, grated ginger and cumin and stir over medium heat for 1–2 minutes.",
         "Add the roasted squash and remaining broth, stir, simmer 5 minutes, then blend completely smooth, adding more broth if too thick. Season.",
         "Pour into a bowl, top with diced avocado and scatter over the pumpkin seeds. Serve immediately."
-      ]
+      ],
+      "createdAt": 1785492000000
     },
     {
       "id": "fmd-d2-dinner",
@@ -1566,7 +1572,8 @@
         "Steam the spinach in the same basket for 60–90 seconds until just wilted, then squeeze out excess water gently.",
         "Add the rested garlic directly over the warm vegetables — the residual heat softens it without destroying the allicin.",
         "Lay sliced avocado over the top, squeeze the lemon juice over everything, scatter the sesame seeds and season. Serve with the rye crispbreads."
-      ]
+      ],
+      "createdAt": 1785495600000
     },
     {
       "id": "fmd-d3-breakfast",
@@ -1767,7 +1774,8 @@
         "In the morning, gently warm the set pudding in a small saucepan over low heat for 3–4 minutes, stirring — it should be warm, not hot.",
         "In a separate pan, heat the berries with a little water for 3–4 minutes until they burst into a loose sauce.",
         "Grind the flax fresh. Spoon the warm pudding into a bowl, pour over the berry sauce, top with the ground flax and dust with cardamom and cinnamon."
-      ]
+      ],
+      "createdAt": 1785499200000
     },
     {
       "id": "fmd-d3-lunch",
@@ -2061,7 +2069,8 @@
         "Add the tomatoes and celery, cook 3 minutes, then add the lentils and remaining broth. Bring to the boil, then simmer 20–25 minutes until the lentils are completely soft.",
         "Blend about half the soup, leaving some texture. Stir in the lemon juice and season.",
         "Serve topped with parsley, with the diced avocado and broken walnuts on the side."
-      ]
+      ],
+      "createdAt": 1785502800000
     },
     {
       "id": "fmd-d3-dinner",
@@ -2308,7 +2317,8 @@
         "Spread the vegetables in a single layer on a lined tray, scatter over the rosemary and thyme, season and roast dry for 30–35 minutes, turning once, until caramelised and tender.",
         "With 5 minutes to go, steam the kale over boiling water for 3–4 minutes until tender, then squeeze gently and dress with the lemon juice and a pinch of salt.",
         "Arrange the kale in a bowl, place the roasted roots on top and scatter over the walnuts and diced avocado. Serve immediately."
-      ]
+      ],
+      "createdAt": 1785506400000
     },
     {
       "id": "fmd-d4-breakfast",
@@ -2506,7 +2516,8 @@
         "Peel, core and dice the apple into 1 cm cubes.",
         "Place in a small saucepan with the water and spices, cover and cook over low-medium heat for 8–10 minutes, stirring occasionally, until completely soft and most of the liquid has absorbed. Add a splash more water if it dries out.",
         "Grind the flax fresh. Spoon the stewed apple into a bowl, scatter over the walnuts and spoon the ground flax on last. Serve warm."
-      ]
+      ],
+      "createdAt": 1785510000000
     },
     {
       "id": "fmd-d4-lunch",
@@ -2728,7 +2739,8 @@
         "Add the courgette, cauliflower and remaining broth, bring to a simmer and cook covered for 15–18 minutes until the cauliflower is completely tender.",
         "Add the parsley and nutmeg and blend completely smooth. Season with salt.",
         "Serve in a bowl with thin slices of avocado across the top."
-      ]
+      ],
+      "createdAt": 1785513600000
     },
     {
       "id": "fmd-d4-dinner",
@@ -2981,7 +2993,8 @@
         "Fill the pepper halves with the quinoa mixture and return to the oven for a further 10 minutes.",
         "Crush and chop the garlic and rest 10 minutes. Steam the spinach for 60–90 seconds until just wilted, then toss with the rested garlic and lemon juice.",
         "Serve the stuffed pepper alongside the dressed spinach."
-      ]
+      ],
+      "createdAt": 1785517200000
     },
     {
       "id": "fmd-d5-breakfast",
@@ -3178,7 +3191,8 @@
         "The evening before, combine the oats, chia and water in a jar, stir well, cover and refrigerate overnight.",
         "In the morning, serve at room temperature, or warm gently in a saucepan for 3–4 minutes with a splash of water if you prefer it hot.",
         "Spoon the almond butter over and stir in partially, add the berries, grind the flax fresh over the top and dust with cinnamon."
-      ]
+      ],
+      "createdAt": 1785520800000
     },
     {
       "id": "fmd-d5-lunch",
@@ -3397,7 +3411,8 @@
         "Heat a little broth in a pot, add the rested garlic and cook for 1 minute, then add all the roasted vegetables and remaining broth and simmer 5 minutes.",
         "Add the basil and blend completely smooth, adding more broth if too thick. Season.",
         "Serve in a bowl with thin slices of avocado on top."
-      ]
+      ],
+      "createdAt": 1785524400000
     },
     {
       "id": "fmd-d5-dinner",
@@ -3641,7 +3656,8 @@
         "Steam the spinach for 60 seconds until wilted, squeeze gently and add to the bowl.",
         "Slice the cucumber thickly, halve the cherry tomatoes and add to the bowl. Slice the avocado generously and fan over the top.",
         "Mix the tamari and lime juice and drizzle over the whole bowl, then scatter the sesame seeds and walnuts and season with salt if needed. Serve immediately."
-      ]
+      ],
+      "createdAt": 1785528000000
     }
   ]
 }
