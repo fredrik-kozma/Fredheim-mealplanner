@@ -3,7 +3,7 @@
   "name": "Fasting Mimicking Plan — 5-Day Plan",
   "description": "A clinically structured 5-day Fasting Mimicking Diet (FMD) based on the research of Valter Longo, PhD (USC). Three small, fully plant-based, oil-free, caffeine-free meals a day, with a vegetable broth sipped freely throughout. Designed to trigger autophagy, suppress IGF-1 and mobilise stem cells — with evidence for metabolic syndrome, pre-diabetes, cardiovascular risk, autoimmune and inflammatory conditions, and healthy ageing. ⚠ Contraindicated in pregnancy or breastfeeding, type 1 / insulin-dependent diabetes, BMI under 18.5, any eating-disorder history, and under-18s.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "tags": [
     "fmd",
     "fasting-mimicking",
@@ -308,8 +308,8 @@
               "name": "Friske eller frosne blåbær"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Hele linfrø, ferskmalt"
             },
             {
@@ -360,8 +360,8 @@
               "name": "Färska eller frysta blåbär"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Hela linfrön, färskmalda"
             },
             {
@@ -410,8 +410,8 @@
           "name": "Fresh or frozen blueberries"
         },
         {
-          "quantity": 1,
-          "unit": "tbsp",
+          "quantity": 8,
+          "unit": "g",
           "name": "Whole flaxseed, ground fresh"
         },
         {
@@ -527,8 +527,8 @@
               "name": "Agurk"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Gresskarkjerner"
             },
             {
@@ -584,8 +584,8 @@
               "name": "Gurka"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Pumpakärnor"
             },
             {
@@ -639,8 +639,8 @@
           "name": "Cucumber"
         },
         {
-          "quantity": 1,
-          "unit": "tbsp",
+          "quantity": 8,
+          "unit": "g",
           "name": "Pumpkin seeds"
         },
         {
@@ -1015,8 +1015,8 @@
               "name": "Friske eller frosne bringebær eller blåbær"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Hele linfrø, ferskmalt"
             },
             {
@@ -1062,8 +1062,8 @@
               "name": "Färska eller frysta hallon eller blåbär"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Hela linfrön, färskmalda"
             },
             {
@@ -1107,8 +1107,8 @@
           "name": "Fresh or frozen raspberries or blueberries"
         },
         {
-          "quantity": 1,
-          "unit": "tbsp",
+          "quantity": 8,
+          "unit": "g",
           "name": "Whole flaxseed, ground fresh"
         },
         {
@@ -1226,8 +1226,8 @@
               "name": "Malt spisskummen"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 3,
+              "unit": "g",
               "name": "Gresskarkjerner"
             },
             {
@@ -1279,8 +1279,8 @@
               "name": "Malen spiskummin"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 3,
+              "unit": "g",
               "name": "Pumpakärnor"
             },
             {
@@ -1330,8 +1330,8 @@
           "name": "Ground cumin"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 3,
+          "unit": "g",
           "name": "Pumpkin seeds"
         },
         {
@@ -1431,8 +1431,8 @@
               "name": "Moden avokado"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 3,
+              "unit": "g",
               "name": "Sesamfrø"
             },
             {
@@ -1484,8 +1484,8 @@
               "name": "Mogen avokado"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 3,
+              "unit": "g",
               "name": "Sesamfrön"
             },
             {
@@ -1535,8 +1535,8 @@
           "name": "Ripe avocado"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 3,
+          "unit": "g",
           "name": "Sesame seeds"
         },
         {
@@ -1635,8 +1635,8 @@
           "description": "Chia bløtlagt over natten i havremelk, lunet forsiktig og toppet med en løs varm bærsaus, linfrø og kardemomme.",
           "ingredients": [
             {
-              "quantity": 3,
-              "unit": "tbsp",
+              "quantity": 30,
+              "unit": "g",
               "name": "Chiafrø"
             },
             {
@@ -1655,8 +1655,8 @@
               "name": "Friske eller frosne bær (blåbær, bringebær)"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Hele linfrø, ferskmalt"
             },
             {
@@ -1682,8 +1682,8 @@
           "description": "Chia blötlagd över natten i havremjölk, försiktigt uppvärmd och toppad med en lös varm bärsås, linfrö och kardemumma.",
           "ingredients": [
             {
-              "quantity": 3,
-              "unit": "tbsp",
+              "quantity": 30,
+              "unit": "g",
               "name": "Chiafrön"
             },
             {
@@ -1702,8 +1702,8 @@
               "name": "Färska eller frysta bär (blåbär, hallon)"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Hela linfrön, färskmalda"
             },
             {
@@ -1727,8 +1727,8 @@
       },
       "ingredients": [
         {
-          "quantity": 3,
-          "unit": "tbsp",
+          "quantity": 30,
+          "unit": "g",
           "name": "Chia seeds"
         },
         {
@@ -1747,8 +1747,8 @@
           "name": "Fresh or frozen berries (blueberries, raspberries)"
         },
         {
-          "quantity": 1,
-          "unit": "tbsp",
+          "quantity": 8,
+          "unit": "g",
           "name": "Whole flaxseed, ground fresh"
         },
         {
@@ -2392,8 +2392,8 @@
               "name": "Valnøtter, grovt knust (ca. 8 halvdeler)"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Hele linfrø, ferskmalt"
             },
             {
@@ -2438,8 +2438,8 @@
               "name": "Valnötter, grovt krossade (ca 8 halvor)"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Hela linfrön, färskmalda"
             },
             {
@@ -2482,8 +2482,8 @@
           "name": "Walnuts, roughly broken (about 8 halves)"
         },
         {
-          "quantity": 1,
-          "unit": "tbsp",
+          "quantity": 8,
+          "unit": "g",
           "name": "Whole flaxseed, ground fresh"
         },
         {
@@ -3059,13 +3059,13 @@
               "name": "Vann"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 4,
+              "unit": "g",
               "name": "Chiafrø"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 5,
+              "unit": "g",
               "name": "Naturlig mandelsmør (uten tilsatt olje eller sukker)"
             },
             {
@@ -3074,8 +3074,8 @@
               "name": "Friske eller frosne bær"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Hele linfrø, ferskmalt"
             },
             {
@@ -3105,13 +3105,13 @@
               "name": "Vatten"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 4,
+              "unit": "g",
               "name": "Chiafrön"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 5,
+              "unit": "g",
               "name": "Naturligt mandelsmör (utan tillsatt olja eller socker)"
             },
             {
@@ -3120,8 +3120,8 @@
               "name": "Färska eller frysta bär"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 8,
+              "unit": "g",
               "name": "Hela linfrön, färskmalda"
             },
             {
@@ -3149,13 +3149,13 @@
           "name": "Water"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 4,
+          "unit": "g",
           "name": "Chia seeds"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 5,
+          "unit": "g",
           "name": "Natural almond butter (no added oil or sugar)"
         },
         {
@@ -3164,8 +3164,8 @@
           "name": "Fresh or frozen berries"
         },
         {
-          "quantity": 1,
-          "unit": "tbsp",
+          "quantity": 8,
+          "unit": "g",
           "name": "Whole flaxseed, ground fresh"
         },
         {
@@ -3494,8 +3494,8 @@
               "name": "Valnøtter, grovt knust"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 3,
+              "unit": "g",
               "name": "Sesamfrø"
             },
             {
@@ -3556,8 +3556,8 @@
               "name": "Valnötter, grovt krossade"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 3,
+              "unit": "g",
               "name": "Sesamfrön"
             },
             {
@@ -3616,8 +3616,8 @@
           "name": "Walnuts, roughly broken"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 3,
+          "unit": "g",
           "name": "Sesame seeds"
         },
         {

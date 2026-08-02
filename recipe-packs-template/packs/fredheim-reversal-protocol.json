@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -728,8 +728,8 @@
               "name": "fersk sitronsaft"
             },
             {
-              "quantity": 4,
-              "unit": "tbsp",
+              "quantity": 30,
+              "unit": "g",
               "name": "malt linfrø"
             },
             {
@@ -780,8 +780,8 @@
               "name": "färsk citronsaft"
             },
             {
-              "quantity": 4,
-              "unit": "tbsp",
+              "quantity": 30,
+              "unit": "g",
               "name": "malet linfrö"
             },
             {
@@ -830,8 +830,8 @@
           "name": "fresh lemon juice"
         },
         {
-          "quantity": 4,
-          "unit": "tbsp",
+          "quantity": 30,
+          "unit": "g",
           "name": "ground flaxseed"
         },
         {
@@ -2213,8 +2213,8 @@
               "name": "lys misopasta (lavt natrium)"
             },
             {
-              "quantity": 4,
-              "unit": "tsp",
+              "quantity": 14,
+              "unit": "g",
               "name": "chiafrø (til topping)"
             },
             {
@@ -2295,8 +2295,8 @@
               "name": "ljus misopasta (lågt natrium)"
             },
             {
-              "quantity": 4,
-              "unit": "tsp",
+              "quantity": 14,
+              "unit": "g",
               "name": "chiafrön (till topping)"
             },
             {
@@ -2375,8 +2375,8 @@
           "name": "white miso paste (low sodium)"
         },
         {
-          "quantity": 4,
-          "unit": "tsp",
+          "quantity": 14,
+          "unit": "g",
           "name": "chia seeds (for topping)"
         },
         {
