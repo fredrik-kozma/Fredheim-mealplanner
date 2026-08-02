@@ -29,9 +29,9 @@ const fs = require('fs')
 const path = require('path')
 
 const PACKS = [
-  ['fredheim-recipes-with-pictures.json', '1.15.0'],
-  ['fredheim-reversal-protocol.json', '1.11.3'],
-  ['fredheim-fmd-5day.json', '1.3.0'],
+  ['fredheim-recipes-with-pictures.json', '1.21.0'],
+  ['fredheim-reversal-protocol.json', '1.17.0'],
+  ['fredheim-fmd-5day.json', '1.6.0'],
 ]
 const CONDITION_TAGS = ['diabetes-friendly', 'blood-pressure-friendly', 'heart-healthy', 'weight-loss']
 const WRITE = process.argv.includes('--write')
