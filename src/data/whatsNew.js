@@ -22,6 +22,20 @@
 
 export const WHATS_NEW = [
   {
+    id: 'recipes-batch-2026-08',
+    icon: '🍲',
+    title: {
+      en: '12 new recipes added',
+      no: '12 nye oppskrifter lagt til',
+      sv: '12 nya recept tillagda',
+    },
+    body: {
+      en: 'Romanian bean soup two ways (stovetop and Instant Pot), a calcium-rich kale salad, two carob psyllium puddings, golden corn soup, tahini-almond chia pudding, broccoli salad, toasted buckwheat granola — plus two wholegrain rye loaves with their own guide to building a sourdough starter from scratch. All with full nutrition, in English, Norwegian and Swedish.',
+      no: 'Rumensk bønnesuppe på to måter (komfyr og Instant Pot), en kalsiumrik grønnkålsalat, to carob-psylliumpuddinger, gyllen maissuppe, tahini-mandel-chiapudding, brokkolisalat, ristet bokhvetegranola — pluss to sammalte rugbrød med sin egen guide til å bygge en surdeigsstarter fra bunnen. Alt med fullt næringsinnhold, på engelsk, norsk og svensk.',
+      sv: 'Rumänsk bönsoppa på två sätt (spis och Instant Pot), en kalciumrik grönkålssallad, två carob-psylliumpuddingar, gyllene majssoppa, tahini-mandel-chiapudding, broccolisallad, rostad bovetegranola — plus två fullkornsrågbröd med en egen guide till att bygga en surdegsgrund från grunden. Allt med fullständig näring, på engelska, norska och svenska.',
+    },
+  },
+  {
     id: 'fmd-plan-v1',
     icon: '🥑',
     title: {

@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -6314,6 +6314,102 @@
             "Øs opp i boller, dryss det malte linfrøet over hver porsjon utenfor varmen, og avslutt med en skje av den avrente syltede løken på toppen."
           ],
           "notes": "En lang, forsiktig småkoking er det som gir ciorbă de fasole sin klassiske fløyelsmyke kraft — ikke skynd deg. Den syltede løken gjør mye av smaksarbeidet her, så smak til før du griper etter mer salt. Passer utmerket til storkoking og frysing (tilsett linfrø og syltet løk ferskt ved servering, ikke før frysing)."
+        },
+        "sv": {
+          "title": "Ciorbă de Fasole med citronsyltad rödlök — på spisen",
+          "description": "En rik, sammetslen rumänsk bönsoppa byggd på borlottibönor, lagerblad och rökt paprika som ersättning för det traditionella rökta köttet — toppad med syrlig, citronsyltad rödlök för krispighet och friskhet.",
+          "ingredients": [
+            {
+              "quantity": 300,
+              "unit": "g",
+              "name": "torkade borlottibönor (cranberrybönor)"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "lök, tärnad"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "morot, tärnad"
+            },
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "stjälkselleri, tärnad"
+            },
+            {
+              "quantity": 3,
+              "unit": "clove",
+              "name": "vitlök, finhackad"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "tomatpuré, utan tillsatt salt"
+            },
+            {
+              "quantity": 2,
+              "unit": "tsp",
+              "name": "rökt paprikapulver"
+            },
+            {
+              "quantity": null,
+              "unit": "",
+              "name": "Lagerblad, torkade (2–3 blad)"
+            },
+            {
+              "quantity": 1,
+              "unit": "l",
+              "name": "grönsaksbuljong med låg natriumhalt"
+            },
+            {
+              "quantity": 500,
+              "unit": "ml",
+              "name": "vatten"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "name": "färsk citronsaft, till soppan"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "name": "färsk persilja, hackad"
+            },
+            {
+              "quantity": null,
+              "unit": "",
+              "name": "Fint havssalt, till de syltade löken, efter smak"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "malda linfrön (tillsätts utanför värmen, per portion)"
+            },
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "rödlök, tunt skivad"
+            },
+            {
+              "quantity": 3,
+              "unit": "tbsp",
+              "name": "färsk citronsaft, till syltningen"
+            }
+          ],
+          "steps": [
+            "Skölj de torkade borlottibönorna och blötlägg i rikligt med kallt vatten i minst 8 timmar, eller över natten. Häll av och skölj väl före kokning.",
+            "Skiva rödlöken tunt och blanda i en liten skål med citronsaften och saltet. Låt stå i rumstemperatur, rör om då och då, tills den är klarrosa och något mjukare. Ställ kallt tills det är dags att servera.",
+            "Fräs lök, morot och selleri i en stor gryta med några matskedar vatten över medelvärme, rör ofta, tills allt är mjukt och lätt gyllene.",
+            "Tillsätt vitlök, tomatpuré, rökt paprika och lagerblad. Rör i 1 minut tills det doftar.",
+            "Tillsätt de blötlagda, avrunna bönorna, buljongen och vattnet. Koka upp, sänk sedan till försiktig sjudning med locket på glänt, tills bönorna är krämiga och mjuka. Rör om då och då och fyll på med en skvätt vatten om det blir för tjockt.",
+            "Ta bort lagerbladen. Rör i citronsaften och persiljan. Smaka av och justera kryddningen vid behov.",
+            "Ös upp i skålar, strö de malda linfröna över varje portion utanför värmen, och avsluta med en sked av den avrunna syltade löken på toppen."
+          ],
+          "notes": "En lång, försiktig sjudning är det som ger ciorbă de fasole sin klassiska sammetslena buljong — stressa inte. Den syltade löken gör mycket av smakarbetet här, så smaka av innan du sträcker dig efter mer salt. Passar utmärkt för storkok och fryser fint (tillsätt linfrön och syltad lök färska vid servering, inte före infrysning)."
         }
       },
       "notes": "A long, gentle simmer is what gives ciorbă de fasole its classic velvety broth — don't rush it. The pickled onion is doing the seasoning work here, so taste before reaching for extra salt. Batch cooks and freezes beautifully (add flaxseed and pickled onion fresh at serving, not before freezing).",
@@ -6567,6 +6663,102 @@
             "Øs opp i boller, dryss det malte linfrøet over hver porsjon utenfor varmen, og avslutt med en skje av den avrente syltede løken på toppen."
           ],
           "notes": "Ubløtlagte bønner trenger den ekstra væsken og lengre tid for å bli fullt hydrerte — ikke kutt ned på trykktiden. Den syltede løken bærer mye av smaken her, så smak til før du tilsetter mer salt."
+        },
+        "sv": {
+          "title": "Ciorbă de Fasole med citronsyltad rödlök — Instant Pot, utan blötläggning",
+          "description": "Samma soppa, utan behov av blötläggning, toppad med citronsyltad rödlök.",
+          "ingredients": [
+            {
+              "quantity": 300,
+              "unit": "g",
+              "name": "torkade borlottibönor (cranberrybönor), oblötlagda"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "lök, tärnad"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "morot, tärnad"
+            },
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "stjälkselleri, tärnad"
+            },
+            {
+              "quantity": 3,
+              "unit": "clove",
+              "name": "vitlök, finhackad"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "tomatpuré, utan tillsatt salt"
+            },
+            {
+              "quantity": 2,
+              "unit": "tsp",
+              "name": "rökt paprikapulver"
+            },
+            {
+              "quantity": null,
+              "unit": "",
+              "name": "Lagerblad, torkade (2–3 blad)"
+            },
+            {
+              "quantity": 1,
+              "unit": "l",
+              "name": "grönsaksbuljong med låg natriumhalt"
+            },
+            {
+              "quantity": 300,
+              "unit": "ml",
+              "name": "vatten"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "name": "färsk citronsaft, till soppan"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "name": "färsk persilja, hackad"
+            },
+            {
+              "quantity": null,
+              "unit": "",
+              "name": "Fint havssalt, till de syltade löken, efter smak"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "malda linfrön (tillsätts utanför värmen, per portion)"
+            },
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "rödlök, tunt skivad"
+            },
+            {
+              "quantity": 3,
+              "unit": "tbsp",
+              "name": "färsk citronsaft, till syltningen"
+            }
+          ],
+          "steps": [
+            "Skölj de torkade borlottibönorna väl — ingen blötläggning behövs.",
+            "Skiva rödlöken tunt och blanda i en liten skål med citronsaften och saltet. Låt stå i rumstemperatur, rör om då och då, tills den är klarrosa och något mjukare. Ställ kallt tills det är dags att servera — det finns gott om tid medan bönorna tryckkokas.",
+            "Ställ in Instant Pot på Sauté. Fräs lök, morot och selleri med några matskedar vatten, rör ofta, tills allt är mjukt.",
+            "Tillsätt vitlök, tomatpuré, rökt paprika och lagerblad. Rör i 1 minut tills det doftar. Tryck Cancel för att avsluta Sauté-läget.",
+            "Tillsätt de sköljda bönorna, buljongen och vattnet. Stäng locket, ställ in på Pressure Cook på High i 40 minuter, och låt sedan trycket sjunka naturligt i minst 20 minuter innan du öppnar. Kontrollera en böna — den ska vara helt krämig utan kritig kärna.",
+            "Ta bort lagerbladen. Rör i citronsaften och persiljan. Smaka av och justera kryddningen vid behov.",
+            "Ös upp i skålar, strö de malda linfröna över varje portion utanför värmen, och avsluta med en sked av den avrunna syltade löken på toppen."
+          ],
+          "notes": "Oblötlagda bönor behöver den extra vätskan och längre tid för att bli helt hydrerade — korta inte ner trycktiden. Den syltade löken bär mycket av smaken här, så smaka av innan du tillsätter mer salt."
         }
       },
       "notes": "Unsoaked beans need the extra liquid and longer time to fully hydrate — don't shortcut the pressure time. The pickled onion carries the seasoning here, so taste before adding any extra salt.",
@@ -6744,6 +6936,64 @@
             "Dryss tørket fiken og chiafrø over toppen. Server med en gang, eller sett kaldt en stund til smakene får satt seg."
           ],
           "notes": "La den dressede salaten stå 10–15 min før servering — grønnkålen mykner videre og fikensøten fordeler seg jevnt. Erstatning: bytt tahini med solsikkekjernesmør hvis du ikke har sesam for hånden (kalsiuminnholdet synker noe, fettprofilen er lignende)."
+        },
+        "sv": {
+          "title": "Kalciumboost-sallad",
+          "description": "Masserad grönkål med en krämig tahini-vitbönsdressing, toppad med chia och torkad fikon — byggd för att maximera kalcium och samtidigt hålla sig Ornish GREEN.",
+          "ingredients": [
+            {
+              "quantity": 300,
+              "unit": "g",
+              "name": "grönkål, stjälkarna borttagna och finhackad"
+            },
+            {
+              "quantity": 200,
+              "unit": "g",
+              "name": "vita bönor (cannellini), kokta"
+            },
+            {
+              "quantity": 32,
+              "unit": "g",
+              "name": "tahini"
+            },
+            {
+              "quantity": 60,
+              "unit": "ml",
+              "name": "färsk citronsaft"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "name": "vitlök"
+            },
+            {
+              "quantity": 0.8,
+              "unit": "tsp",
+              "name": "rökt paprikapulver"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "torkade fikon, hackade"
+            },
+            {
+              "quantity": 18,
+              "unit": "g",
+              "name": "chiafrön"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "name": "fint salt"
+            }
+          ],
+          "steps": [
+            "Massera grönkålen med en skvätt av citronsaften i en stor skål, med händerna, tills den mjuknar och blir mörkare grön — cirka 2 minuter.",
+            "Mixa de vita bönorna, tahini, resten av citronsaften, vitlök, rökt paprika och salt med några matskedar vatten i en mixer. Kör tills det är slätt och krämigt, justera med vatten till önskad konsistens.",
+            "Häll dressingen över den masserade grönkålen och vänd tills alla blad är täckta.",
+            "Strö de torkade fikonen och chiafröna över toppen. Servera direkt, eller ställ kallt en stund så smakerna får sätta sig."
+          ],
+          "notes": "Låt den dressade salladen stå 10–15 min före servering — grönkålen mjuknar ytterligare och fikonsötman fördelar sig jämnt. Ersättning: byt tahini mot solrosfrösmör om du inte har sesam hemma (kalciumhalten sjunker något, fettprofilen är liknande)."
         }
       },
       "notes": "Let the dressed salad sit 10–15 min before serving — the kale softens further and the fig sweetness distributes evenly. Substitution: swap tahini for sunflower seed butter if sesame isn't on hand (calcium drops moderately, fat profile similar).",
@@ -6873,7 +7123,7 @@
       ],
       "translations": {
         "no": {
-          "title": "Vanilje-carob-chiapudding (vannbasert) med blåbær",
+          "title": "Vanilje-carob-psylliumpudding (vannbasert) med blåbær",
           "description": "En lett, silkemyk pudding bygget på gelert psylliumhusk i vann — rik på oppbløtt carob, Medjool-dadler og varm kanel, avsluttet med friske blåbær. Uten olje, uten tilsatt sukker. Slankere og mindre kremet enn havremelk-versjonen.",
           "ingredients": [
             {
@@ -6936,6 +7186,71 @@
             "Rett før servering, vend det malte linfrøet inn i hver porsjon, og topp med de friske blåbærene."
           ],
           "notes": "Uten havremelkens fett og protein setter puddingen seg litt tynnere — bland dadlene ekstra grundig så de emulgerer helt og gir litt mer kropp. Hastighet betyr fortsatt noe i psylliumtrinnet: dryss det i mens blenderen går, så det ikke klumper seg. Erstatning: bytt vann med usøtet havremelk (480 ml) når du vil ha en rikere, kremete versjon."
+        },
+        "sv": {
+          "title": "Vanilj-carob-psylliumpudding (vattenbaserad) med blåbär",
+          "description": "En lätt, silkeslen pudding byggd på gelade psylliumfröskal i vatten — rik på uppblött carob, Medjooldadlar och varm kanel, avslutad med färska blåbär. Utan olja, utan tillsatt socker. Magrare och mindre krämig än havremjölksversionen.",
+          "ingredients": [
+            {
+              "quantity": 480,
+              "unit": "ml",
+              "name": "vatten"
+            },
+            {
+              "quantity": 24,
+              "unit": "g",
+              "name": "carobpulver"
+            },
+            {
+              "quantity": 60,
+              "unit": "ml",
+              "name": "kokande vatten (för att blöta upp carobpulvret)"
+            },
+            {
+              "quantity": 88,
+              "unit": "g",
+              "name": "Medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "name": "vaniljextrakt"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "name": "malen kanel"
+            },
+            {
+              "quantity": null,
+              "unit": "",
+              "name": "Fint havssalt, nypa, efter smak"
+            },
+            {
+              "quantity": 16,
+              "unit": "g",
+              "name": "psylliumfröskal, pulver"
+            },
+            {
+              "quantity": 28,
+              "unit": "g",
+              "name": "malda linfrön (tillsätts per portion, utanför värmen)"
+            },
+            {
+              "quantity": 140,
+              "unit": "g",
+              "name": "färska blåbär (tillsätts per portion, på toppen)"
+            }
+          ],
+          "steps": [
+            "Vispa carobpulvret med det kokande vattnet tills du har en slät, blank pasta utan klumpar. Ställ åt sidan några minuter för att svalna något — detta steg tar bort den råa, kritiga smaken och fördjupar aromen.",
+            "Blanda vattnet, carobpastan, dadlar, vaniljextrakt, kanel och salt i mixern. Kör på hög hastighet tills det är helt slätt och dadlarna har försvunnit helt i vätskan, cirka 60–75 sekunder — lite längre än vanligt eftersom det inte finns någon havremjölk som hjälper till att emulgera.",
+            "Med mixern igång på låg hastighet, strö i psylliumfröskalen och kör bara 5–10 sekunder för att fördela jämnt. Det börjar gela nästan omedelbart, så arbeta snabbt och mixa inte för länge.",
+            "Häll omedelbart upp i serveringsglas eller burkar, och fördela jämnt innan det stelnar ytterligare.",
+            "Ställ kallt i minst 2 timmar, gärna över natten, tills det har stelnat helt.",
+            "Precis före servering, vänd ner de malda linfröna i varje portion, och toppa med de färska blåbären."
+          ],
+          "notes": "Utan havremjölkens fett och protein stelnar puddingen lite tunnare — mixa dadlarna extra noga så att de emulgerar helt och ger lite mer kropp. Hastighet spelar fortfarande roll i psylliumsteget: strö i det medan mixern går, så att det inte klumpar sig. Ersättning: byt vatten mot osötad havremjölk (480 ml) när du vill ha en rikare, krämigare version."
         }
       },
       "notes": "Without oat milk's fat and protein, the pudding sets a bit thinner — blend the dates extra thoroughly so they fully emulsify and give some body. Speed still matters at the psyllium stage: sprinkle it in with the blender running so it doesn't clump. Substitution: swap water for unsweetened oat milk (480 ml) any time you want a richer, creamier version.",
@@ -7065,7 +7380,7 @@
       ],
       "translations": {
         "no": {
-          "title": "Vanilje-carob-chiapudding med blåbær",
+          "title": "Vanilje-carob-psylliumpudding med blåbær",
           "description": "En silkemyk, skjebar pudding bygget på gelert psylliumhusk — rik på oppbløtt carob, Medjool-dadler og varm kanel, avsluttet med friske blåbær. Uten olje, uten tilsatt sukker.",
           "ingredients": [
             {
@@ -7128,6 +7443,71 @@
             "Rett før servering, vend det malte linfrøet inn i hver porsjon, og topp med de friske blåbærene."
           ],
           "notes": "Hastighet betyr noe i psylliumtrinnet — dryss det i mens blenderen allerede går, ikke la det ligge stille på toppen av væsken eller det klumper seg. La blåbærene være en frisk topping i stedet for å blende dem inn — det bevarer den rene, mørke carob-fargen og gir en fin teksturkontrast mot den glatte puddingen. Erstatning: bytt carob med rå kakaopulver (samme mengde) for en dypere, mer bitter «sjokolade»-versjon — fortsatt GREEN."
+        },
+        "sv": {
+          "title": "Vanilj-carob-psylliumpudding med blåbär",
+          "description": "En silkeslen, skedbar pudding byggd på gelade psylliumfröskal — rik på uppblött carob, Medjooldadlar och varm kanel, avslutad med färska blåbär. Utan olja, utan tillsatt socker.",
+          "ingredients": [
+            {
+              "quantity": 480,
+              "unit": "ml",
+              "name": "osötad havremjölk"
+            },
+            {
+              "quantity": 24,
+              "unit": "g",
+              "name": "carobpulver"
+            },
+            {
+              "quantity": 60,
+              "unit": "ml",
+              "name": "kokande vatten (för att blöta upp carobpulvret)"
+            },
+            {
+              "quantity": 88,
+              "unit": "g",
+              "name": "Medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "name": "vaniljextrakt"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "name": "malen kanel"
+            },
+            {
+              "quantity": null,
+              "unit": "",
+              "name": "Fint havssalt, nypa, efter smak"
+            },
+            {
+              "quantity": 16,
+              "unit": "g",
+              "name": "psylliumfröskal, pulver"
+            },
+            {
+              "quantity": 28,
+              "unit": "g",
+              "name": "malda linfrön (tillsätts per portion, utanför värmen)"
+            },
+            {
+              "quantity": 140,
+              "unit": "g",
+              "name": "färska blåbär (tillsätts per portion, på toppen)"
+            }
+          ],
+          "steps": [
+            "Vispa carobpulvret med det kokande vattnet tills du har en slät, blank pasta utan klumpar. Ställ åt sidan några minuter för att svalna något — detta steg tar bort den råa, kritiga smaken och fördjupar aromen.",
+            "Blanda havremjölken, carobpastan, dadlar, vaniljextrakt, kanel och salt i mixern. Kör på hög hastighet tills det är helt slätt och dadlarna har försvunnit helt i vätskan, cirka 45–60 sekunder.",
+            "Med mixern igång på låg hastighet, strö i psylliumfröskalen och kör bara 5–10 sekunder för att fördela jämnt. Det börjar gela nästan omedelbart, så arbeta snabbt och mixa inte för länge.",
+            "Häll omedelbart upp i serveringsglas eller burkar, och fördela jämnt innan det stelnar ytterligare.",
+            "Ställ kallt i minst 2 timmar, gärna över natten, tills det har stelnat till en tjock, silkeslen pudding.",
+            "Precis före servering, vänd ner de malda linfröna i varje portion, och toppa med de färska blåbären."
+          ],
+          "notes": "Hastighet spelar roll i psylliumsteget — strö i det medan mixern redan går, låt det inte ligga stilla ovanpå vätskan eller det klumpar sig. Låt blåbären vara en färsk topping i stället för att mixa ner dem — det bevarar den rena, mörka carobfärgen och ger en fin texturkontrast mot den släta puddingen. Ersättning: byt carob mot rått kakaopulver (samma mängd) för en djupare, beskare \"choklad\"-version — fortfarande GREEN."
         }
       },
       "notes": "Speed matters at the psyllium stage — sprinkle it in with the blender already running, don't let it sit on top of still liquid or it clumps. Keep the blueberries as a fresh topping rather than blending them in — this preserves the clean dark carob color and gives a nice textural contrast against the smooth pudding. Substitution: swap carob for raw cacao powder (same amount) for a deeper, more bitter 'chocolate' version — stays GREEN.",
@@ -7342,6 +7722,83 @@
             "Øs opp i boller. Topp hver porsjon med det malte linfrøet (tilsatt ferskt per porsjon, aldri kokt i) og litt gressløk eller persille."
           ],
           "notes": "Å blende bare halvparten gir det beste fra begge verdener — en silkemyk, cashewkremet base som bærer hele, tyggbare maiskorn gjennom hver skje. Passer godt til storkoking og fryser fint i opptil 3 måneder (tilsett linfrø og gressløk ferskt ved oppvarming). Erstatning: bytt cashewnøtter med kokte hvite bønner for en magrere versjon — litt mindre silkemykt, fortsatt kremet. Hvis karripulveret ditt inneholder salt, smak til før du tilsetter mer."
+        },
+        "sv": {
+          "title": "Gyllene majssoppa (silkeslen-tuggig curryversion)",
+          "description": "En gyllene majssoppa med gurkmeja-curry, delvis silkeslen och delvis tuggig, med värme från ingefära och en aning cashewkräm — legendarisk komfortmat med riktig textur.",
+          "ingredients": [
+            {
+              "quantity": 500,
+              "unit": "g",
+              "name": "frysta majskorn"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "gul lök, tärnad"
+            },
+            {
+              "quantity": 3,
+              "unit": "clove",
+              "name": "vitlök, finhackad"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "name": "färsk ingefära, riven"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "name": "currypulver"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "råa cashewnötter, blötlagda i varmt vatten 10 min"
+            },
+            {
+              "quantity": 800,
+              "unit": "ml",
+              "name": "grönsaksbuljong med låg natriumhalt"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "name": "näringsjäst"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "name": "färsk citronsaft"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "name": "salt"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "malda linfrön (tillsätts per portion, utanför värmen)"
+            },
+            {
+              "quantity": 8,
+              "unit": "g",
+              "name": "färsk gräslök eller persilja, hackad, till garnering"
+            }
+          ],
+          "steps": [
+            "Täck cashewnötterna med nykokt vatten och låt stå medan du förbereder resten.",
+            "Fräs lök, vitlök och ingefära i en gryta över medelhög värme med en skvätt av buljongen (2–3 msk), rör ofta, tills allt är mjukt och gyllene.",
+            "Rör i currypulvret och rosta i 30 sekunder tills det doftar.",
+            "Tillsätt majsen och resten av buljongen. Koka upp, sänk sedan värmen och låt sjuda.",
+            "Ös cirka hälften av soppan (vätska, majs och smaksättare) till en mixer tillsammans med de avrunna cashewnötterna. Mixa tills det är helt slätt och blankt gyllene, rör sedan tillbaka det i grytan med den omixade tuggiga hälften.",
+            "Rör i näringsjästen och saltet. Smaka av och justera.",
+            "Ta av värmen och rör i citronsaften — det håller citrusen fräsch i stället för att dämpas av kokningen.",
+            "Ös upp i skålar. Toppa varje portion med de malda linfröna (tillsatta färska per portion, aldrig nedkokta) och lite gräslök eller persilja."
+          ],
+          "notes": "Att mixa bara hälften ger det bästa av två världar — en silkeslen, cashewkrämig bas som bär hela, tuggiga majskorn genom varje sked. Passar bra för storkok och fryser fint i upp till 3 månader (tillsätt linfrön och gräslök färska vid uppvärmning). Ersättning: byt cashewnötter mot kokta vita bönor för en magrare version — lite mindre silkeslen, fortfarande krämig. Om ditt currypulver innehåller salt, smaka av innan du tillsätter mer."
         }
       },
       "notes": "Blending only half gives you the best of both worlds — a silky, cashew-creamed base carrying whole chewy kernels through every spoonful. Batch-cooks and freezes well for up to 3 months (add flaxseed and chives fresh at reheating). Substitution: swap cashews for cooked white beans for a lower-fat version — slightly less silky, still creamy. If your curry powder contains salt, taste before adding more.",
@@ -7502,6 +7959,56 @@
             "Rør en gang til, fordel i boller, og topp hver med de frosne blåbærene. Server med en gang mens bærene fortsatt er kalde og litt iskalde."
           ],
           "notes": "Den usilte mandelmelken er det som løfter kalsium og fiber — ikke sil bort fruktkjøttet. La blåbærene stå i romtemperatur noen minutter før servering så de mykner litt mot den kalde puddingen. Erstatning: bytt dadler med en veldig moden banan for en mildere sødme, eller bruk frosne blandede bær i stedet for blåbær for variasjon."
+        },
+        "sv": {
+          "title": "Tahini-mandel-chiapudding med bär",
+          "description": "En krämig, naturligt söt chiapudding byggd på hemmagjord, osilad mandelmjölk, virvlad med tahini och toppad med frysta blåbär — en genuint kalciumrik frukost.",
+          "ingredients": [
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "råa mandlar"
+            },
+            {
+              "quantity": 500,
+              "unit": "ml",
+              "name": "vatten"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "chiafrön"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "tahini"
+            },
+            {
+              "quantity": 80,
+              "unit": "g",
+              "name": "Medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "name": "malen kanel"
+            },
+            {
+              "quantity": 160,
+              "unit": "g",
+              "name": "frysta blåbär"
+            }
+          ],
+          "steps": [
+            "Mixa mandlarna och vattnet på hög hastighet tills det är helt slätt — detta är din färska, osilade mandelmjölk. Genom att inte sila bevarar du all fiber, kalcium och fett, så inget går till spillo.",
+            "Tillsätt dadlarna och kanelen i mixern. Mixa igen tills det är helt slätt och sött.",
+            "Tillsätt tahini och mixa kort, bara tills det är inblandat.",
+            "Häll blandningen över chiafröna i en burk eller skål. Vispa väl för att bryta upp klumpar.",
+            "Täck över och ställ kallt. Rör om en gång efter 4 timmar för att förhindra klumpning, låt sedan stå och stelna.",
+            "Rör om en gång till, fördela i skålar, och toppa varje med de frysta blåbären. Servera direkt medan bären fortfarande är kalla och lite isiga."
+          ],
+          "notes": "Den osilade mandelmjölken är det som lyfter kalcium och fiber — sila inte bort fruktköttet. Låt blåbären stå i rumstemperatur några minuter före servering så att de mjuknar lite mot den kalla puddingen. Ersättning: byt dadlar mot en mycket mogen banan om du vill ha en mildare sötma, eller använd frysta blandade bär i stället för blåbär för variation."
         }
       },
       "notes": "The unstrained almond milk is what pushes calcium and fiber up — don't strain out the pulp. Let the blueberries sit at room temperature for a few minutes before serving so they soften slightly against the cold pudding. Substitution: swap dates for a very ripe banana if you want a milder sweetness, or use frozen mixed berries instead of blueberries for variety.",
@@ -7607,6 +8114,31 @@
             "Vedlikehold: mat én gang i uken hvis den oppbevares i kjøleskapet (kast ned, mat med friskt mel og vann, la stå ute i 2 timer, sett deretter kaldt). Før baking, ta den ut og gi den to matinger i romtemperatur så den er helt våken."
           ],
           "notes": "Du trenger bare sammalt rugmel og vann — rugstartere er de aller enkleste å etablere, siden kornet bærer med seg rikelig med naturlig gjær og melkesyrebakterier på egen hånd. Ikke kast avfallsdeigen: rør den inn i grøt, eller smør den tynt ut på bakepapir med frø og salt og stek på 160°C til knekkebrød."
+        },
+        "sv": {
+          "title": "Rågsurdegsgrund — så bygger du en från grunden",
+          "description": "En steg-för-steg-guide till att etablera din egen rågsurdegsgrund med bara fullkornsrågmjöl och vatten — grunden för receptet på rågsurdegsbröd.",
+          "ingredients": [
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "fullkornsrågmjöl (per matning)"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "vatten, ljummet (per matning)"
+            }
+          ],
+          "steps": [
+            "Dag 1: Blanda fullkornsrågmjöl med ljummet vatten i en burk till en tjock pasta. Täck löst och låt stå i 24 timmar vid 24–28 °C (en avstängd ugn med lampan på fungerar bra).",
+            "Dag 2: Det kan finnas några bubblor, eller kanske ingenting än. Släng allt utom ett par matskedar, mata sedan med färskt mjöl och vatten i samma förhållande. Rör om väl.",
+            "Dag 3: Ofta den mest förvirrande dagen — mycket aktivitet, sedan blir det tyst och luktar lite ostigt eller obehagligt. Det är normalt: fel bakterier blommar först och konkurreras ut. Släng ner och mata igen som förut.",
+            "Dag 4: Lukten ska övergå till att bli rent syrlig, fräsch, nästan fruktig. Släng ner och mata igen.",
+            "Dag 5: Den ska nu ungefär fördubblas inom 4–6 timmar efter matning och vara tydligt kupolformad och luftig — det är en mogen surdegsgrund. Om den inte är där än, fortsätt mata dagligen; en långsam grund är vanlig i ett svalt kök och behöver oftast bara en varmare plats.",
+            "Underhåll: mata en gång i veckan om den förvaras i kylen (släng ner, mata med färskt mjöl och vatten, låt stå ute i 2 timmar, ställ sedan kallt). Före bak, ta ut den och ge den två matningar i rumstemperatur så att den är helt vaken."
+          ],
+          "notes": "Du behöver bara fullkornsrågmjöl och vatten — rågsurdegar är de allra enklaste att etablera, eftersom kornet bär med sig gott om naturlig jäst och mjölksyrabakterier på egen hand. Släng inte avfallsdegen: rör ner den i gröt, eller bred ut den tunt på bakplåtspapper med frön och salt och grädda i 160 °C till knäckebröd."
         }
       },
       "notes": "You need only wholegrain rye flour and water — rye starters are the easiest of all to establish, since the grain carries plenty of wild yeast and lactic bacteria on its own. Don't throw away the discard: stir it into porridge, or spread it thin on baking paper with seeds and salt and bake at 160°C into crackers."
@@ -7757,6 +8289,72 @@
             "Hvil i 24 timer: Ta ut, avkjøl helt på rist, pakk deretter inn i et rent kjøkkenhåndkle og vent en hel dag før du skjærer den første skiven. Krummen setter seg fortsatt i denne tiden. Å skjære for tidlig er den vanligste årsaken til at hjemmelaget rugbrød blir klissete."
           ],
           "notes": "Ta vare på litt av den ferdige levainen før du blander deigen — det blir din starter til neste gang. Mat den og sett kaldt. Syren i en ekte surdeig er det som gjør denne versjonen mer pålitelig enn gjærversjonen: den slår effektivt ned rugens amylase-enzym, så klissete krumme blir mye vanskeligere å få. For surt? Kort ned levainen til 10 timer og hold den kjøligere (20°C). Ikke surt nok? Forleng til 18 timer og hold den varm. Den ene variabelen er din viktigste smaksskrue. Holder seg en hel uke pakket i klut og blir genuint bedre på dag 2–3."
+        },
+        "sv": {
+          "title": "Rågsurdegsbröd",
+          "description": "Ett äkta rågsurdegsbröd — kompakt, saftigt, svagt syrligt, med rostade frön. Utan olja, utan sötning, utan jäst, utan knådning. Två dagar från levain till skiva.",
+          "ingredients": [
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "mogen rågsurdegsgrund"
+            },
+            {
+              "quantity": 200,
+              "unit": "g",
+              "name": "fullkornsrågmjöl (till levainen)"
+            },
+            {
+              "quantity": 200,
+              "unit": "ml",
+              "name": "vatten, ljummet (till levainen)"
+            },
+            {
+              "quantity": 300,
+              "unit": "g",
+              "name": "fullkornsrågmjöl (till huvuddegen)"
+            },
+            {
+              "quantity": 220,
+              "unit": "ml",
+              "name": "vatten, ljummet (till huvuddegen)"
+            },
+            {
+              "quantity": 8,
+              "unit": "g",
+              "name": "fint havssalt"
+            },
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "solrosfrön"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "pumpafrön"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "hela linfrön"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "name": "kummin- eller fänkålsfrön, lätt krossade"
+            }
+          ],
+          "steps": [
+            "Bygg levainen (kvällen före): Vispa ihop surdegsgrunden, rågmjölet och det ljumma vattnet till en jämn, tjock smet. Täck över och låt stå vid 22–24 °C i cirka 14 timmar. På morgonen ska den vara kupolformad, full av bubblor, och lukta skarpt syrligt och fruktigt. Om den redan har toppat och fallit ihop till en platt, alkohollukande smet är den överjäst — fortfarande användbar, men brödet blir kompaktare och surare.",
+            "Rosta fröna: Torrosta solrosfrön, pumpafrön och kummin- eller fänkålsfrön över medelvärme, skaka ofta, tills de doftar och är lätt färgade. Svalna på en tallrik. Låt linfröna vara orostade — värme oxiderar deras omega-3.",
+            "Blanda degen: Spara en del av levainen i en ren burk som nästa veckas surdegsgrund. Rör ner vatten och salt i resten av levainen tills den är lös, arbeta sedan in rågmjölet tills inget torrt mjöl återstår. Vänd ner de svalnade, rostade fröna och linfröna. Det är en tung, klibbig pasta, aldrig en knådbar deg — tillsätt inte mer mjöl.",
+            "Fyll formen: Skrapa ner i en 1 kg brödform klädd med bakplåtspapper. Fukta handen eller en slickepott och jämna till ytan helt, tryck ner i hörnen för att få bort luftfickor. Pudra rikligt med rågmjöl.",
+            "Jäs tills den spricker: Täck löst och låt stå vid 26–28 °C. Rågsurdeg jäser långt långsammare än jästbröd — räkna med 3 till 4 timmar. Den är klar när degen har jäst med ungefär en tredjedel och mjölet på ytan har spruckit i fina sprickor över hela ytan. Grädda omedelbart då; råg tål inte överjäsning.",
+            "Grädda hett, sedan lågt: Grädda i 250 °C i 70 minuter, sänk sedan till 180 °C utan att öppna luckan och grädda ytterligare 55–65 minuter. Rågsurdeg behöver något längre tid än jästversionen. Klar vid 96–98 °C innertemperatur — kontrollera med termometer, inte efter färg.",
+            "Vila i 24 timmar: Stjälp upp, svalna helt på galler, slå sedan in i en ren kökshandduk och vänta ett helt dygn före första skivan. Inkråmet sätter sig fortfarande under den tiden. Att skära för tidigt är det absolut vanligaste sättet att förstöra ett bra rågbröd."
+          ],
+          "notes": "Spara lite av den färdiga levainen innan du blandar degen — det blir din surdegsgrund till nästa gång. Mata den och ställ kallt. Syran i en äkta surdeg är det som gör den här versionen mer pålitlig än jästversionen: den slår effektivt ner rågens amylasenzym, så kladdig inkråm blir mycket svårare att få. För surt? Korta ner levainen till 10 timmar och håll den svalare (20 °C). Inte surt nog? Förläng till 18 timmar och håll den varm. Den enda variabeln är din viktigaste smakratt. Håller sig en hel vecka inslaget i duk och blir genuint bättre dag 2–3."
         }
       },
       "notes": "Reserve some of the finished levain before mixing the dough — that becomes your starter for next time. Feed it and refrigerate. The acidity of a true sourdough is what makes this version more reliable than the yeasted one: it shuts down rye's amylase enzyme properly, so gummy crumb becomes much harder to produce. Too sour? Shorten the levain to 10 hours and keep it cooler (20°C). Not sour enough? Extend to 18 hours and keep it warm. That single variable is your main flavor dial. Keeps a full week wrapped in cloth and genuinely improves on days 2–3.",
@@ -7960,6 +8558,77 @@
             "Hvil i 24 timer: Ta ut på rist og avkjøl helt, pakk deretter inn i et rent kjøkkenhåndkle og la stå en hel dag før du skjærer i det. Dette er trinnet alle hopper over, og grunnen til at de fleste hjemmelagde rugbrød blir klissete."
           ],
           "notes": "Surdeigsoppgradering: erstatt all gjæren med aktiv rugsurdeigsstarter (se guiden Rugsurdeigsstarter), bruk litt mindre vann, og forleng tiden for forgrøt og siste heving. Skarpere smak, bedre holdbarhet, og syren gir deg en reell sikkerhetsmargin mot klissenhet. Oppbevaring: pakk inn i en ren klut, med snittflaten ned, i romtemperatur. Det blir bedre i 2–3 dager og holder seg en uke. Fryser godt ferdig oppskåret. Hvorfor ingen sirup: nesten alle rugoppskrifter bruker det. Den natt-over forgrøten og de ristede frøene gir deg den samme mørke, maltaktige dybden uten noe tilsatt sukker."
+        },
+        "sv": {
+          "title": "Fullkornsrågbröd",
+          "description": "Ett kompakt, saftigt och djupt smakrikt 100 % fullkornsrågbröd med rostade frön — utan olja, utan sötning, utan knådning.",
+          "ingredients": [
+            {
+              "quantity": 250,
+              "unit": "g",
+              "name": "fullkornsrågmjöl (till fördegen)"
+            },
+            {
+              "quantity": 250,
+              "unit": "ml",
+              "name": "vatten, ljummet (till fördegen)"
+            },
+            {
+              "quantity": 1,
+              "unit": "g",
+              "name": "torrjäst (till fördegen)"
+            },
+            {
+              "quantity": 250,
+              "unit": "g",
+              "name": "fullkornsrågmjöl (till huvuddegen)"
+            },
+            {
+              "quantity": 200,
+              "unit": "ml",
+              "name": "vatten, ljummet (till huvuddegen)"
+            },
+            {
+              "quantity": 3,
+              "unit": "g",
+              "name": "torrjäst (till huvuddegen)"
+            },
+            {
+              "quantity": 8,
+              "unit": "g",
+              "name": "fint havssalt"
+            },
+            {
+              "quantity": 40,
+              "unit": "g",
+              "name": "solrosfrön"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "pumpafrön"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "hela linfrön"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "name": "kummin- eller fänkålsfrön, lätt krossade"
+            }
+          ],
+          "steps": [
+            "Fördeg (kvällen före): Vispa ihop rågmjölet, vattnet och jästen till en tjock, jämn smet. Täck över och låt stå i rumstemperatur över natten. Den ska lukta behagligt syrligt och fräscht på morgonen — den syran gör strukturellt arbete, inte bara smak.",
+            "Rosta fröna: Torrosta solrosfrön, pumpafrön och kummin- eller fänkålsfrön i en panna över medelvärme, skaka ofta, tills de doftar och är lätt färgade. Häll upp på en tallrik för att svalna. Rosta inte linfröna — värme skadar deras omega-3.",
+            "Blanda degen: Rör ner vatten, jäst och salt i fördegen, arbeta sedan in rågmjölet med en stadig sked eller blöta händer tills inget torrt mjöl återstår. Vänd ner de svalnade, rostade fröna och linfröna. Det blir en klibbig pasta, inte en deg — knåda inte och tillsätt inte mer mjöl för att fixa klibbigheten.",
+            "Forma i formen: Skrapa ner i en 1 kg brödform klädd med bakplåtspapper. Jämna till ytan med en blöt slickepott eller blöt hand tills den är jämn — vatten är ditt enda verktyg mot klibbighet. Pudra ytan med lite rågmjöl.",
+            "Jäs tills den spricker: Täck löst och låt stå på en varm plats tills degen har jäst med ungefär en tredjedel och fina sprickor syns över den mjölade ytan. Håll utkik efter sprickorna, inte klockan — och låt den inte överjäsa.",
+            "Grädda hett, sedan lågt: Grädda i 250 °C i 65 minuter, sänk sedan ugnen till 180 °C utan att öppna luckan och grädda ytterligare 50–60 minuter. Den är klar vid en innertemperatur på 96–98 °C — använd termometer, skorpan säger dig ingenting.",
+            "Vila i 24 timmar: Stjälp upp på ett galler och svalna helt, slå sedan in i en ren kökshandduk och låt stå ett helt dygn före du skär i det. Det här är steget alla hoppar över, och anledningen till att de flesta hemmagjorda rågbröd blir kladdiga."
+          ],
+          "notes": "Surdegsuppgradering: ersätt all jäst med aktiv rågsurdegsgrund (se guiden Rågsurdegsgrund), använd lite mindre vatten, och förläng tiderna för fördeg och slutjäsning. Skarpare smak, bättre hållbarhet, och syran ger dig en verklig säkerhetsmarginal mot kladdighet. Förvaring: slå in i en ren duk, med snittytan nedåt, i rumstemperatur. Det blir bättre i 2–3 dagar och håller sig en vecka. Fryser bra färdigskivat. Varför ingen sirap: nästan alla rågrecept använder det. Fördegen över natten och de rostade fröna ger dig samma mörka, maltiga djup utan något tillsatt socker."
         }
       },
       "notes": "Sourdough upgrade: replace all the yeast with active rye starter (see the Rye Sourdough Starter guide), use a little less water, and extend the sponge and final proof times. Sharper flavor, better keeping, and the acidity gives you a real safety margin against gumminess. Storage: wrap in a clean cloth, cut side down, at room temperature. It improves for 2–3 days and keeps for a week. Freezes well pre-sliced. Why no molasses: nearly every rye recipe calls for it. The overnight sponge and toasted seeds give you that same dark, malty depth without any added sugar.",
@@ -8198,6 +8867,93 @@
             "Avkjøl og avslutt: Sett kaldt i minst 30 minutter. Server kald eller i romtemperatur, dryss det malte linfrøet over hver porsjon rett før servering — aldri rørt inn på forhånd."
           ],
           "notes": "Den ristede tomatpuréen er det som erstatter soltørkede tomater — ikke hopp over den, og ikke skynd deg. Hvis den setter seg fast, spe med en spiseskje vann og skrap løs. Salt: 1 g er anbefalt nivå; du har rom opp til cirka 2,4 g totalt før du forlater GREEN, men det bruker opp mesteparten av dagens natriumbudsjett på én rett. Erstatninger: 15 g tørkede steinsopp (bløtlagt, hakket, bløtevæsken kastes) i stedet for puréen hvis du vil ha tyggbare biter; bruk hvite bønner til både dressing og salatkropp for å bare åpne én boks."
+        },
+        "sv": {
+          "title": "Broccolisallad med rostade valnötter och vitbönsdressing",
+          "description": "Broccolisallad med rostade valnötter och en krämig vitbönsdressing, byggd kring en djupt rostad tomatpuré i stället för soltorkade tomater. Utan olja, utan tillsatt socker — Ornish GREEN.",
+          "ingredients": [
+            {
+              "quantity": 600,
+              "unit": "g",
+              "name": "broccoli, i små buketter"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "svarta bönor, kokta, avrunna och sköljda (utan tillsatt salt)"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "tomatpuré, utan tillsatt salt"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "name": "rödlök, tunt skivad"
+            },
+            {
+              "quantity": 22,
+              "unit": "g",
+              "name": "valnötter"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "vita bönor (cannellini), kokta, avrunna och sköljda (utan tillsatt salt)"
+            },
+            {
+              "quantity": 45,
+              "unit": "ml",
+              "name": "färsk citronsaft"
+            },
+            {
+              "quantity": 8,
+              "unit": "g",
+              "name": "näringsjäst"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "name": "Medjooldadel, urkärnad"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "name": "vitlök"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "name": "rökt paprikapulver"
+            },
+            {
+              "quantity": 1,
+              "unit": "g",
+              "name": "fint havssalt"
+            },
+            {
+              "quantity": 70,
+              "unit": "ml",
+              "name": "vatten, till dressingen"
+            },
+            {
+              "quantity": 28,
+              "unit": "g",
+              "name": "malda linfrön, till garnering"
+            }
+          ],
+          "steps": [
+            "Rosta valnötterna: Värm ugnen till 170 °C. Sprid ut valnötterna på en plåt klädd med bakplåtspapper och rosta i 9 minuter tills de doftar. Ta ut direkt, svalna i rumstemperatur, och hacka sedan grovt.",
+            "Torrosta tomatpurén: Lägg tomatpurén i en torr panna över medelvärme. Rör konstant i 3 minuter tills den mörknar från klarröd till djupt tegelröd och luktar sött i stället för skarpt. Skrapa ner i en skål och svalna.",
+            "Blötlägg löken: Blötlägg den skivade rödlöken i kallt vatten i 10 minuter för att ta bort den råa skärpan, låt sedan rinna av ordentligt.",
+            "Blanchera broccolin: Koka upp en stor gryta med osaltat vatten till full kokning. Lägg i broccolibuketterna och blanchera i 1 minut, tills de är intensivt gröna och precis mjuka vid stjälken.",
+            "Chocka och torka: Häll av och skölj under kallt vatten i 2 minuter. Torka noggrant — salladsslunga, klappa sedan torrt med en handduk. Blöt broccoli späder ut dressingen.",
+            "Mixa dressingen: Mixa den rostade tomatpurén med de vita bönorna, citronsaft, näringsjäst, dadel, vitlök, rökt paprika, salt och vatten i mixern tills det är helt slätt — minst 60 sekunder. Den ska vara hällbar och blank.",
+            "Sätt ihop: Blanda broccoli, svarta bönor, lök och valnötter i en stor skål. Häll över dressingen och vänd tills alla buketter är täckta.",
+            "Kyl och avsluta: Ställ kallt i minst 30 minuter. Servera kall eller i rumstemperatur, och strö de malda linfröna över varje portion precis före servering — aldrig nedrörda i förväg."
+          ],
+          "notes": "Den rostade tomatpurén är det som ersätter soltorkade tomater — hoppa inte över den, och stressa inte. Om den fastnar, skvätt i en matsked vatten och skrapa loss. Salt: 1 g är rekommenderad nivå; du har utrymme upp till cirka 2,4 g totalt innan du lämnar GREEN, men det förbrukar större delen av dagens natriumbudget på en enda rätt. Ersättningar: 15 g torkad karljohansvamp (blötlagd, hackad, blötvattnet slängs) i stället för purén om du vill ha tuggiga bitar; använd vita bönor till både dressing och salladskropp för att bara öppna en burk."
         }
       },
       "notes": "The toasted tomato paste is what replaces sun-dried tomatoes — don't skip it, and don't rush it. If it catches, splash in a tablespoon of water and scrape. Salt: 1 g is the recommended level; you have headroom up to about 2.4 g total before leaving GREEN, but that spends most of the day's sodium budget on one dish. Substitutions: 15 g dried porcini (rehydrated, chopped, soaking liquid discarded) instead of the paste if you want chewy pieces; use white beans for both dressing and salad body to open only one tin.",
@@ -8374,6 +9130,64 @@
             "Rør inn linfrøet: Når den er helt avkjølt, rør det malte linfrøet inn i granolaen. Å tilsette det utenfor varmen beskytter ALA-omega-3-en mot oksidasjon. Oppbevar i en lufttett krukke i opptil 2 uker."
           ],
           "notes": "De to ufravikelige tingene er å presse platen hardt og avkjøle den helt urørt. Sammen er det forskjellen mellom klaser og smuler. Erstatninger: bokhvetegryn → quinoaflak eller puffet hirse (litt mindre sprøtt); Medjool-dadler → Deglet Noor-dadler pluss litt ekstra vann; kanel → halvt kardemomme, halvt kanel for et nordisk preg. Server med usøtet soyamelk og bær per porsjon — dette gir også vitamin C, som øker jernopptaket fra havren."
+        },
+        "sv": {
+          "title": "Fredriks rostade bovete- och daddelgranola",
+          "description": "Djuprostade havregryn, karamellik daddelpasta och bovetegryn bakade till riktiga knapriga klasar. Utan olja, utan tillsatt socker — Ornish GREEN.",
+          "ingredients": [
+            {
+              "quantity": 160,
+              "unit": "g",
+              "name": "havregryn (vanliga, inte snabbgryn)"
+            },
+            {
+              "quantity": 60,
+              "unit": "g",
+              "name": "råa bovetegryn"
+            },
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "Medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 100,
+              "unit": "ml",
+              "name": "kokande vatten"
+            },
+            {
+              "quantity": 2,
+              "unit": "tsp",
+              "name": "malen kanel"
+            },
+            {
+              "quantity": 2,
+              "unit": "tsp",
+              "name": "vaniljextrakt"
+            },
+            {
+              "quantity": null,
+              "unit": "",
+              "name": "Fint havssalt, efter smak"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "malda linfrön (tillsätts utanför värmen)"
+            }
+          ],
+          "steps": [
+            "Torrosta havregrynen: Värm en stor torr panna över medelvärme. Tillsätt havregrynen och rosta, rör ofta, tills de doftar nötigt och blir en nyans mörkare — cirka 6 minuter. Det är här större delen av smaken kommer från; stressa inte. Häll över i en stor skål.",
+            "Rosta bovetet: I samma torra panna, rosta bovetegrynen i 3 minuter tills de doftar och är lätt gyllene. Tillsätt i skålen med havregrynen.",
+            "Blöt upp dadlarna: Lägg dadlarna i en mixer med det kokande vattnet och låt dem mjukna i 5 minuter. Mixa till en helt slät, blank pasta — den ska se ut som karamell. Mixa i kanel, vaniljextrakt och salt.",
+            "Kombinera: Häll daddelpastan över de rostade havregrynen och bovetet. Blanda noggrant med en slickepott tills varje flinga är täckt och blandningen håller ihop när du kramar den i handen.",
+            "Pressa ut till en platta: Värm ugnen till 150 °C. Klä en plåt med bakplåtspapper. Häll ut blandningen och pressa ner den ordentligt till en jämn platta på cirka 1 cm tjocklek — hårt tryck är det som skapar klasar i stället för lösa smulor.",
+            "Grädda orörd: Grädda i 25 minuter utan att röra den.",
+            "Bryt och avsluta gräddningen: Bryt plattan i stora bitar med en slickepott, vänd dem, och grädda ytterligare 15 minuter tills de är torra och djupt gyllene.",
+            "Svalna helt: Dra över bakplåtspappret på ett galler och låt granolan stå helt orörd i minst 45 minuter. Den blir knaprig medan den svalnar — att flytta den medan den är varm är den absolut vanligaste anledningen till att granola blir mjuk.",
+            "Rör i linfröna: När den är helt sval, rör ner de malda linfröna i granolan. Att tillsätta dem utanför värmen skyddar ALA-omega-3 mot oxidation. Förvara i en lufttät burk i upp till 2 veckor."
+          ],
+          "notes": "De två oförhandlingsbara sakerna är att pressa plattan hårt och svalna den helt orörd. Tillsammans är det skillnaden mellan klasar och smulor. Ersättningar: bovetegryn → quinoaflingor eller puffad hirs (lite mindre knaprigt); Medjooldadlar → Deglet Noor-dadlar plus lite extra vatten; kanel → hälften kardemumma, hälften kanel för en nordisk profil. Servera med osötad sojamjölk och bär per portion — det ger också C-vitamin, som ökar järnupptaget från havren."
         }
       },
       "notes": "The two non-negotiables are pressing the slab hard and cooling it completely undisturbed. Together they're the difference between clusters and dust. Substitutions: buckwheat groats → quinoa flakes or puffed millet (slightly less crunch); Medjool dates → Deglet Noor dates plus a little extra water; cinnamon → half cardamom, half cinnamon for a Nordic profile. Serve with unsweetened soy milk and berries per bowl — this also brings vitamin C, which boosts the iron absorption from the oats.",
