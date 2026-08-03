@@ -1555,7 +1555,24 @@ const useStore = create(
       // silently surviving a restart is exactly the unsafe case.
       partialize: (state) => {
         const { allergenFilterPaused, ...persisted } = state
-        return persisted
+        return {
+          ...persisted,
+          // Pack recipes are deliberately NOT persisted. They carry ~34 MB of
+          // base64 photos, and persist rewrites the whole blob on every state
+          // change — so ticking one ingredient checkbox was serialising 34 MB
+          // and blocking the main thread for ~300 ms; typing five characters
+          // in the search box (filter state is persisted) cost ~1.9 s and
+          // 172 MB of writes.
+          //
+          // Nothing is lost by dropping them: they're rebuilt from the bundle
+          // on load by AutoInstallDefaultPack, and installPack already
+          // replaces every pack recipe wholesale on each pack update — so a
+          // persisted copy never outlives the next version bump anyway.
+          //
+          // User-created recipes have no sourcePackId and ARE persisted;
+          // they're the only recipe data that has to survive a reload.
+          recipes: (persisted.recipes || []).filter(r => !r.sourcePackId),
+        }
       },
       version: 8,
       migrate: (persistedState, version) => {

@@ -29,10 +29,31 @@ export default function AutoInstallDefaultPack() {
   const installedPacks = useStore((s) => s.installedPacks)
   const installPack = useStore((s) => s.installPack)
 
+  // Which built-in packs currently have no recipes in the store. Pack
+  // recipes aren't persisted (see partialize in useStore) — they're
+  // rebuilt here on every load — so after a reload the version record
+  // says "installed" while the recipes themselves are absent. Without
+  // this check the version comparison alone would short-circuit and
+  // leave the user with an empty app.
+  //
+  // Derived to a stable joined string rather than an array/Set so the
+  // effect re-runs only when the set of empty packs actually changes,
+  // not on every unrelated recipe edit.
+  const emptyPackIds = useStore((s) => {
+    const present = new Set()
+    for (const r of s.recipes) if (r.sourcePackId) present.add(r.sourcePackId)
+    return Object.values(BUILT_IN_PACKS)
+      .filter((p) => !present.has(p.id))
+      .map((p) => p.id)
+      .join(',')
+  })
+
   useEffect(() => {
+    const empty = new Set(emptyPackIds ? emptyPackIds.split(',') : [])
     for (const pack of Object.values(BUILT_IN_PACKS)) {
       const installed = installedPacks?.[pack.id]
-      const needsAction = !installed || installed.version !== pack.version
+      const needsAction =
+        !installed || installed.version !== pack.version || empty.has(pack.id)
       if (!needsAction) continue
       try {
         installPack(pack)
@@ -40,7 +61,7 @@ export default function AutoInstallDefaultPack() {
         console.warn('AutoInstallDefaultPack: failed to sync', pack.id, err)
       }
     }
-  }, [installedPacks, installPack])
+  }, [installedPacks, emptyPackIds, installPack])
 
   return null
 }
