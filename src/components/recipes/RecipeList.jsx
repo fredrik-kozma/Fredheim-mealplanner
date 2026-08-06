@@ -193,24 +193,27 @@ export default function RecipeList() {
       {/* Header area: search bar + clear-filters pill + filter chip strips.
           flex-shrink-0 locks this whole block so the recipe grid below
           can never push it up and compress the chip strips visually. */}
-      <div className="flex-shrink-0 px-4 pt-4 pb-2 space-y-3">
+      <div className="flex-shrink-0 px-4 pt-4 pb-2 space-y-2">
+        {/* Search gets its own full-width row — it's what people actually
+            type into, so it shouldn't have to fight the sort dropdown and
+            favorites toggle for space on narrow screens. */}
+        <div className="relative">
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+          <input
+            type="search"
+            placeholder={t('recipes.searchPlaceholder')}
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            className="input pl-9 w-full"
+          />
+        </div>
         <div className="flex gap-2">
-          <div className="relative flex-1">
-            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-            </svg>
-            <input
-              type="search"
-              placeholder={t('recipes.searchPlaceholder')}
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="input pl-9"
-            />
-          </div>
           <select
             value={sortBy}
             onChange={e => setSortBy(e.target.value)}
-            className="input w-auto pr-8 bg-white"
+            className="input flex-1 pr-8 bg-white"
           >
             <option value="newest">{t('recipes.sort.newest')}</option>
             <option value="oldest">{t('recipes.sort.oldest')}</option>
