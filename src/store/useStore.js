@@ -631,8 +631,19 @@ const useStore = create(
         recipes: [...s.recipes, { ...recipe, id: makeId(), createdAt: Date.now(), translations: recipe.translations || {} }],
       })),
 
+      // Editing a pack recipe stamps `userEdited` so the change survives a
+      // reload. Pack recipes are otherwise not persisted at all (see
+      // partialize) — they're rebuilt from the bundle each load — so
+      // without this an edit lived only in memory and was silently lost,
+      // which is exactly what happened to a batch of photos added in-app.
+      // The flag is cleared when the pack itself updates: a version bump
+      // means the new content supersedes the local edit.
       updateRecipe: (id, updates) => set((s) => ({
-        recipes: s.recipes.map(r => r.id === id ? { ...r, ...updates } : r),
+        recipes: s.recipes.map(r =>
+          r.id === id
+            ? { ...r, ...updates, ...(r.sourcePackId ? { userEdited: true } : {}) }
+            : r
+        ),
       })),
 
       deleteRecipe: (id) => set((s) => {
@@ -1434,7 +1445,16 @@ const useStore = create(
        * silently bumped the version number but did NOT refresh the
        * recipe content — bug fixes in updated packs never reached users.
        */
-      installPack: (pack) => set((s) => {
+      /*
+       * `preserveUserEdits` is for the reload path only. Pack recipes
+       * aren't persisted, so every load reinstalls them from the bundle —
+       * but a recipe the user edited in-app (typically to attach a photo)
+       * IS persisted, and rebuilding it from the bundle would throw that
+       * edit away. On a genuine version change the flag is left false:
+       * the newer pack content is meant to supersede local edits, which
+       * is how an in-app photo gets retired once it's baked into the JSON.
+       */
+      installPack: (pack, { preserveUserEdits = false } = {}) => set((s) => {
         const packRecipeIds = new Set(pack.recipes.map(r => r.id))
 
         // Keep everything that isn't this pack's content:
@@ -1449,18 +1469,25 @@ const useStore = create(
           !packRecipeIds.has(r.id) && r.sourcePackId !== pack.id
         )
 
-        const freshPackRecipes = pack.recipes.map(r => ({
-          ...r,
-          createdAt: r.createdAt || Date.now(),
-          translations: r.translations || {},
-          // Mark each recipe with the pack it came from so the UI can
-          // filter "Show only Fredheim Reversal Protocol", etc.
-          sourcePackId: pack.id,
-        }))
+        const userEditedRecipes = preserveUserEdits
+          ? s.recipes.filter(r => r.sourcePackId === pack.id && r.userEdited && packRecipeIds.has(r.id))
+          : []
+        const userEditedIds = new Set(userEditedRecipes.map(r => r.id))
+
+        const freshPackRecipes = pack.recipes
+          .filter(r => !userEditedIds.has(r.id))
+          .map(r => ({
+            ...r,
+            createdAt: r.createdAt || Date.now(),
+            translations: r.translations || {},
+            // Mark each recipe with the pack it came from so the UI can
+            // filter "Show only Fredheim Reversal Protocol", etc.
+            sourcePackId: pack.id,
+          }))
 
         const allRecipeIds = pack.recipes.map(r => r.id)
         return {
-          recipes: [...keptRecipes, ...freshPackRecipes],
+          recipes: [...keptRecipes, ...userEditedRecipes, ...freshPackRecipes],
           installedPacks: {
             ...s.installedPacks,
             [pack.id]: {
@@ -1569,9 +1596,12 @@ const useStore = create(
           // replaces every pack recipe wholesale on each pack update — so a
           // persisted copy never outlives the next version bump anyway.
           //
-          // User-created recipes have no sourcePackId and ARE persisted;
-          // they're the only recipe data that has to survive a reload.
-          recipes: (persisted.recipes || []).filter(r => !r.sourcePackId),
+          // User-created recipes (no sourcePackId) and pack recipes the
+          // user has edited in-app ARE persisted — those are the only
+          // recipe data that has to survive a reload. An edited pack
+          // recipe carries its photo, so this stays small: the 34 MB is
+          // the ~240 untouched ones, which never get written.
+          recipes: (persisted.recipes || []).filter(r => !r.sourcePackId || r.userEdited),
         }
       },
       version: 8,

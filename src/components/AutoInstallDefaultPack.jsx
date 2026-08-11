@@ -29,39 +29,46 @@ export default function AutoInstallDefaultPack() {
   const installedPacks = useStore((s) => s.installedPacks)
   const installPack = useStore((s) => s.installPack)
 
-  // Which built-in packs currently have no recipes in the store. Pack
-  // recipes aren't persisted (see partialize in useStore) — they're
-  // rebuilt here on every load — so after a reload the version record
-  // says "installed" while the recipes themselves are absent. Without
-  // this check the version comparison alone would short-circuit and
-  // leave the user with an empty app.
+  // Which built-in packs are missing recipes in the store. Pack recipes
+  // aren't persisted (see partialize in useStore) — they're rebuilt here
+  // on every load — so after a reload the version record says "installed"
+  // while the recipes themselves are absent. Without this check the
+  // version comparison alone would short-circuit and leave an empty app.
+  //
+  // This counts rather than merely asking "any at all?", because a pack
+  // recipe the user edited in-app IS persisted: one surviving recipe
+  // would make an otherwise-empty pack look present and strand the other
+  // few hundred.
   //
   // Derived to a stable joined string rather than an array/Set so the
-  // effect re-runs only when the set of empty packs actually changes,
-  // not on every unrelated recipe edit.
-  const emptyPackIds = useStore((s) => {
-    const present = new Set()
-    for (const r of s.recipes) if (r.sourcePackId) present.add(r.sourcePackId)
+  // effect re-runs only when the set actually changes, not on every
+  // unrelated recipe edit.
+  const incompletePackIds = useStore((s) => {
+    const counts = new Map()
+    for (const r of s.recipes) {
+      if (r.sourcePackId) counts.set(r.sourcePackId, (counts.get(r.sourcePackId) || 0) + 1)
+    }
     return Object.values(BUILT_IN_PACKS)
-      .filter((p) => !present.has(p.id))
+      .filter((p) => (counts.get(p.id) || 0) < p.recipes.length)
       .map((p) => p.id)
       .join(',')
   })
 
   useEffect(() => {
-    const empty = new Set(emptyPackIds ? emptyPackIds.split(',') : [])
+    const incomplete = new Set(incompletePackIds ? incompletePackIds.split(',') : [])
     for (const pack of Object.values(BUILT_IN_PACKS)) {
       const installed = installedPacks?.[pack.id]
-      const needsAction =
-        !installed || installed.version !== pack.version || empty.has(pack.id)
-      if (!needsAction) continue
+      const versionChanged = !installed || installed.version !== pack.version
+      if (!versionChanged && !incomplete.has(pack.id)) continue
       try {
-        installPack(pack)
+        // Refilling after a reload must not clobber an in-app edit; a real
+        // version change must, since the new pack content supersedes it.
+        installPack(pack, { preserveUserEdits: !versionChanged })
       } catch (err) {
         console.warn('AutoInstallDefaultPack: failed to sync', pack.id, err)
       }
     }
-  }, [installedPacks, emptyPackIds, installPack])
+  }, [installedPacks, incompletePackIds, installPack])
 
   return null
 }

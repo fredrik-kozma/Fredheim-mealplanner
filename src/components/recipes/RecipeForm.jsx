@@ -233,17 +233,27 @@ export default function RecipeForm() {
       const tr = transByLang[l]
       if (!tr) continue
       if (tr.title.trim()) {
-        translations[l] = {
-          title: tr.title.trim(),
-          ...(tr.description.trim() ? { description: tr.description.trim() } : {}),
-          ingredients: form.ingredients.map((ing, i) => ({
-            ...ing,
-            name: tr.ingNames[i]?.trim() || ing.name,
-          })),
-          // Index-matched to base steps; fall back to the base step text
-          // for any step the user left blank in this language.
-          steps: form.steps.map((s, i) => tr.steps[i]?.trim() || s),
-        }
+        // Start from whatever was already stored for this language so
+        // translated fields the form doesn't edit survive a save. `notes`
+        // is the one that matters today: it has no input here, and
+        // rebuilding this object from scratch silently dropped it, so
+        // editing a recipe (e.g. just to add a photo) reverted its
+        // chef's-note to English while every other field stayed
+        // translated.
+        const next = { ...(existingTranslations[l] || {}) }
+        next.title = tr.title.trim()
+        // Description is cleared rather than kept when the field is
+        // emptied — the spread above would otherwise resurrect the old one.
+        if (tr.description.trim()) next.description = tr.description.trim()
+        else delete next.description
+        next.ingredients = form.ingredients.map((ing, i) => ({
+          ...ing,
+          name: tr.ingNames[i]?.trim() || ing.name,
+        }))
+        // Index-matched to base steps; fall back to the base step text
+        // for any step the user left blank in this language.
+        next.steps = form.steps.map((s, i) => tr.steps[i]?.trim() || s)
+        translations[l] = next
       } else {
         // Title cleared → drop any previously-saved translation for it.
         delete translations[l]
