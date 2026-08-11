@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.30.0",
+  "version": "1.31.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -986,7 +986,8 @@
             "Rør inn det meste av valnøttene for hånd. Tilsett sitron- eller appelsinskallet hvis du bruker det. Spre i formen, glatt toppen, dryss over de resterende valnøttene.",
             "Stek i 20–22 minutter. Ta dem ut når midten fortsatt ser litt rå ut — de stivner i kjøleskapet.",
             "Avkjøl helt i formen, sett deretter i kjøleskap i minst 2 timer. Skjær med en varm kniv."
-          ]
+          ],
+          "notes": "Skall: appelsin er det du bør gripe etter. Carob er mildere og fruktigere enn kakao, og appelsin spiller på det i stedet for å gå imot — den skarpere kontrasten du får fra sitron kler mørk sjokolade bedre enn den kler carob. Sitron fungerer likevel godt hvis du vil ha et renere, friskere løft. Riv skallet rett over bollen så de aromatiske oljene som spruter ut havner i røren de også, og ta bare det fargede laget — den hvite margen under er bitter."
         },
         "sv": {
           "title": "Mjuka carob- och dadelbrownies",
@@ -1062,7 +1063,8 @@
             "Rör i större delen av valnötterna för hand. Tillsätt citron- eller apelsinskalet om du använder det. Bred ut i formen, jämna till ytan, strö resterande valnötter över.",
             "Grädda i 20–22 minuter. Ta ut när mitten fortfarande ser något ogräddad ut — de stelnar i kylen.",
             "Kyl helt i formen, sätt sedan i kylen i minst 2 timmar. Skär med en varm kniv."
-          ]
+          ],
+          "notes": "Skal: apelsin är det du ska ta. Carob är mildare och fruktigare än kakao, och apelsin spelar på det i stället för att gå emot — den skarpare kontrast du får från citron passar mörk choklad bättre än den passar carob. Citron fungerar ändå bra om du vill ha ett renare, friskare lyft. Riv skalet direkt över skålen så att de aromatiska oljorna som sprutar ut hamnar i smeten också, och ta bara det färgade lagret — det vita under är beskt."
         }
       },
       "ingredients": [
@@ -1175,7 +1177,8 @@
           "choline": 16
         }
       },
-      "createdAt": 1785520800000
+      "createdAt": 1785520800000,
+      "notes": "Zest: orange is the one to reach for. Carob is milder and fruitier than cocoa, and orange plays to that rather than cutting against it — the sharper contrast you get from lemon suits dark chocolate more than it suits carob. Lemon still works well if you want a cleaner, brighter lift. Grate the zest straight over the bowl so the aromatic oils that spray out land in the batter too, and take only the coloured layer — the white pith underneath is bitter."
     },
     {
       "id": "orn-6",
