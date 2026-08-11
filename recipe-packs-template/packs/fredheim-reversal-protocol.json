@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.28.0",
+  "version": "1.29.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -3634,9 +3634,14 @@
           "notes": "Hvorfor vannet er redusert til 300 ml: potetmosen tilfører fukt, så total væske reduseres litt fra 320 ml. Juster med 1–2 ss hvis deigen kjennes for stiv eller for våt — potetstørrelse og fuktighet varierer. Potettips: kok og mos poteten dagen før om det passer; kald mos fungerer fint. Malt linfrø går i den tørre blandingen (ikke den våte) for å hindre for tidlig gelling. Oppbevaring: holder 3–4 dager lufttett; fryser godt i opptil 1 måned — skjær i skiver før frysing.",
           "ingredients": [
             {
-              "quantity": 200,
+              "quantity": 175,
               "unit": "g",
               "name": "Glutenfritt havremel"
+            },
+            {
+              "quantity": 25,
+              "unit": "g",
+              "name": "Glutenfritt havremel til grøten"
             },
             {
               "quantity": 120,
@@ -3686,8 +3691,8 @@
           ],
           "steps": [
             "Kok en middels potet til den er helt myk, hell av og mos den helt glatt. Sett til side og la avkjøle til romtemperatur.",
-            "Lag en havregrøt: kok en liten mengde av havremelet med grøtvannet på middels varme mens du rører, til det tykner (2–3 minutter). Avkjøl til romtemperatur.",
-            "Visp sammen resten av havremelet, brunt rismel, psylliumhusk-pulver, malt linfrø, tørrgjær og salt i en stor bolle.",
+            "Lag en havregrøt: kok havremelet til grøten sammen med grøtvannet på middels varme mens du rører, til det tykner (2–3 minutter). Avkjøl til romtemperatur.",
+            "Visp sammen havremelet, brunt rismel, psylliumhusk-pulver, malt linfrø, tørrgjær og salt i en stor bolle.",
             "I en egen bolle blander du den avkjølte havregrøten, potetmosen, sitronsaften og det lunkne vannet. Bland til det er glatt.",
             "Hell de våte ingrediensene i de tørre og bland kraftig i 4–5 minutter til deigen er klissete men holder formen når du former den med våt hånd. Tilsett 1–2 ss vann om den er for stiv.",
             "Form 8 runde rundstykker med våt hånd på et brett med bakepapir. Dekk løst til og la heve i romtemperatur i 45–50 minutter til de er tydelig hevet.",
@@ -3701,9 +3706,14 @@
           "notes": "Varför vattnet minskas till 300 ml: potatismoset tillför fukt, så total vätska minskas något från 320 ml. Justera med 1–2 msk om degen känns för styv eller för blöt — potatisstorlek och fukt varierar. Potatistips: koka och mosa den dagen innan om det passar; kall mos fungerar bra. Malet linfrö går i den torra blandningen (inte den blöta) för att förhindra för tidig gelning. Förvaring: håller 3–4 dagar lufttätt; fryser bra i upp till 1 månad — skiva före frysning.",
           "ingredients": [
             {
-              "quantity": 200,
+              "quantity": 175,
               "unit": "g",
               "name": "Glutenfritt havremjöl"
+            },
+            {
+              "quantity": 25,
+              "unit": "g",
+              "name": "Glutenfritt havremjöl till gröten"
             },
             {
               "quantity": 120,
@@ -3753,8 +3763,8 @@
           ],
           "steps": [
             "Koka en medelstor potatis tills helt mjuk, häll av och mosa helt slät. Ställ åt sidan och låt svalna till rumstemperatur.",
-            "Gör en havregröt: koka en liten mängd av havremjölet med gröt-vattnet på medelvärme under omrörning tills det tjocknat (2–3 minuter). Svalna till rumstemperatur.",
-            "Vispa samman resten av havremjölet, brunt rismjöl, psylliumpulver, malet linfrö, torrjäst och salt i en stor skål.",
+            "Gör en havregröt: koka havremjölet till gröten tillsammans med gröt-vattnet på medelvärme under omrörning tills det tjocknat (2–3 minuter). Svalna till rumstemperatur.",
+            "Vispa samman havremjölet, brunt rismjöl, psylliumpulver, malet linfrö, torrjäst och salt i en stor skål.",
             "I en separat skål blandar du den svalnade havregröten, potatismoset, citronsaften och det ljumma vattnet. Blanda tills slätt.",
             "Häll de blöta ingredienserna i de torra och blanda kraftigt i 4–5 minuter tills degen är kladdig men håller formen när du formar den med blöt hand. Tillsätt 1–2 msk vatten om för styv.",
             "Forma 8 runda frallor med blöt hand på en plåt med bakplåtspapper. Täck löst och låt jäsa i rumstemperatur 45–50 minuter tills tydligt puffade.",
@@ -3765,9 +3775,14 @@
       },
       "ingredients": [
         {
-          "quantity": 200,
+          "quantity": 175,
           "unit": "g",
           "name": "Gluten-free oat flour"
+        },
+        {
+          "quantity": 25,
+          "unit": "g",
+          "name": "Gluten-free oat flour for the porridge"
         },
         {
           "quantity": 120,
@@ -3817,8 +3832,8 @@
       ],
       "steps": [
         "Boil a medium potato until fully soft, drain and mash completely smooth. Set aside to cool to room temperature.",
-        "Make an oat porridge: cook a small amount of the oat flour with the porridge water over medium heat, stirring, until thickened (2–3 minutes). Cool to room temperature.",
-        "Whisk together the remaining oat flour, brown rice flour, psyllium husk powder, ground flaxseed, dry yeast and salt in a large bowl.",
+        "Make an oat porridge: cook the oat flour for the porridge together with the porridge water over medium heat, stirring, until thickened (2–3 minutes). Cool to room temperature.",
+        "Whisk together the oat flour, brown rice flour, psyllium husk powder, ground flaxseed, dry yeast and salt in a large bowl.",
         "In a separate bowl combine the cooled oat porridge, mashed potato, lemon juice and lukewarm water. Mix until smooth.",
         "Pour the wet ingredients into the dry and mix vigorously for 4–5 minutes until the dough is sticky but holds shape when formed with a wet hand. Add 1–2 tbsp water if too stiff.",
         "Shape 8 round rolls with a wet hand on a lined baking tray. Cover loosely and let rise at room temperature 45–50 minutes until visibly puffed.",
