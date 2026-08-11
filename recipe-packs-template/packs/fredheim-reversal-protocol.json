@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.24.0",
+  "version": "1.27.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -234,7 +234,7 @@
           "choline": 12
         }
       },
-      "createdAt": 1785510000000
+      "createdAt": 1785506400000
     },
     {
       "id": "orn-2",
@@ -450,7 +450,7 @@
           "choline": 24
         }
       },
-      "createdAt": 1785513600000
+      "createdAt": 1785510000000
     },
     {
       "id": "orn-3",
@@ -670,7 +670,7 @@
           "choline": 3.8
         }
       },
-      "createdAt": 1785517200000
+      "createdAt": 1785513600000
     },
     {
       "id": "orn-4",
@@ -887,7 +887,7 @@
           "choline": 33
         }
       },
-      "createdAt": 1785520800000
+      "createdAt": 1785517200000
     },
     {
       "id": "orn-5",
@@ -1175,7 +1175,7 @@
           "choline": 16
         }
       },
-      "createdAt": 1785524400000
+      "createdAt": 1785520800000
     },
     {
       "id": "orn-6",
@@ -1378,7 +1378,7 @@
           "choline": 69
         }
       },
-      "createdAt": 1785528000000
+      "createdAt": 1785524400000
     },
     {
       "id": "orn-7",
@@ -1612,7 +1612,7 @@
           "choline": 54
         }
       },
-      "createdAt": 1785531600000
+      "createdAt": 1785528000000
     },
     {
       "id": "orn-8",
@@ -1785,7 +1785,7 @@
           "choline": 4.5
         }
       },
-      "createdAt": 1785535200000
+      "createdAt": 1785531600000
     },
     {
       "id": "orn-9",
@@ -1973,7 +1973,7 @@
           "choline": 58
         }
       },
-      "createdAt": 1785538800000
+      "createdAt": 1785535200000
     },
     {
       "id": "orn-10",
@@ -2157,7 +2157,7 @@
           "choline": 45
         }
       },
-      "createdAt": 1785542400000
+      "createdAt": 1785538800000
     },
     {
       "id": "orn-11",
@@ -2464,7 +2464,7 @@
           "choline": 60
         }
       },
-      "createdAt": 1785546000000
+      "createdAt": 1785542400000
     },
     {
       "id": "orn-12",
@@ -2744,7 +2744,7 @@
           "choline": 20
         }
       },
-      "createdAt": 1785549600000
+      "createdAt": 1785546000000
     },
     {
       "id": "orn-13",
@@ -2923,7 +2923,7 @@
           ]
         }
       },
-      "createdAt": 1785553200000
+      "createdAt": 1785549600000
     },
     {
       "id": "orn-14",
@@ -3186,7 +3186,7 @@
         "Sprinkle in the cumin, smoked paprika and salt. Squeeze over the lemon juice and toss well to coat everything.",
         "Scatter the cilantro and ground flaxseed over the top and toss gently. Let the salad rest 5 minutes before serving — the sweet-sour contrast deepens as it sits."
       ],
-      "createdAt": 1785556800000
+      "createdAt": 1785553200000
     },
     {
       "id": "orn-15",
@@ -3361,7 +3361,7 @@
         "Warm the blended date-oat milk in a small saucepan over low-medium heat until steaming — do not boil. Froth it now if you have a frother.",
         "Pour the hot date-oat milk into the mug over the dissolved barley coffee, stir gently and dust with cinnamon on top."
       ],
-      "createdAt": 1785560400000
+      "createdAt": 1785556800000
     },
     {
       "id": "orn-16",
@@ -3563,7 +3563,7 @@
         "Put the shredded red cabbage and cooked edamame in a large bowl. Pour over the dressing and toss thoroughly to coat every strand.",
         "Fold in the chopped parsley and ground flaxseed. Serve straight away, or let it sit 10 minutes for the flavours to deepen."
       ],
-      "createdAt": 1785564000000
+      "createdAt": 1785560400000
     },
     {
       "id": "orn-17",
@@ -3825,7 +3825,7 @@
         "Bake at 220°C for about 10 minutes, then reduce to 190°C and bake a further 18 minutes until light golden. The base should sound hollow.",
         "Cool on a rack for at least 60 minutes before eating — the crumb keeps setting as it cools."
       ],
-      "createdAt": 1785567600000
+      "createdAt": 1785564000000
     },
     {
       "id": "orn-18",
@@ -4061,7 +4061,7 @@
         "In a large bowl, combine the oats, chia, flaxseed and cinnamon. Pour in the remaining oat milk and the carob-date cream and stir thoroughly.",
         "Divide into 4 jars and refrigerate overnight. In the morning, stir and top each jar with sliced banana."
       ],
-      "createdAt": 1785571200000
+      "createdAt": 1785567600000
     },
     {
       "id": "orn-19",
@@ -4270,7 +4270,7 @@
         "Divide into 4 glasses or jars, cover and refrigerate at least 2 hours — ideally overnight. The pudding firms up as the psyllium gels.",
         "Serve cold, topped with a few fresh pineapple pieces or a pinch of cardamom."
       ],
-      "createdAt": 1785574800000
+      "createdAt": 1785571200000
     },
     {
       "id": "orn-20",
@@ -4575,7 +4575,7 @@
         "Form 8 patties about 1.5 cm thick on the tray and brush the tops lightly with the remaining olive oil — the thin brush is what lets them turn golden in dry oven heat.",
         "Bake 25 minutes, flipping at the halfway point so both faces brown. Pull them when deep golden and firm — they keep setting as they cool."
       ],
-      "createdAt": 1785578400000
+      "createdAt": 1785574800000
     },
     {
       "id": "orn-21",
@@ -4783,7 +4783,7 @@
         "Reduce the heat, add the date paste, lemon juice and salt, and stir to coat every strand. Cook 2 more minutes until glossy and unified.",
         "Remove from the heat, scatter the lemon zest over the top and toss once — added off-heat, it keeps its bright, floral lift."
       ],
-      "createdAt": 1785582000000
+      "createdAt": 1785578400000
     },
     {
       "id": "orn-23",
@@ -5031,7 +5031,7 @@
         "Bring to the boil and simmer covered for about 30 minutes (or pressure-cook on high 20 minutes with natural release).",
         "Strain through a fine sieve, pressing the solids gently to extract the liquid. Stir in salt to taste and serve hot."
       ],
-      "createdAt": 1785585600000
+      "createdAt": 1785582000000
     },
     {
       "id": "orn-24",
@@ -5210,7 +5210,7 @@
           ]
         }
       },
-      "createdAt": 1785589200000
+      "createdAt": 1785585600000
     },
     {
       "id": "orn-25",
@@ -5389,7 +5389,7 @@
           ]
         }
       },
-      "createdAt": 1785592800000
+      "createdAt": 1785589200000
     },
     {
       "id": "orn-26",
@@ -5568,7 +5568,7 @@
           ]
         }
       },
-      "createdAt": 1785596400000
+      "createdAt": 1785592800000
     },
     {
       "id": "orn-27",
@@ -5747,7 +5747,7 @@
           ]
         }
       },
-      "createdAt": 1785600000000
+      "createdAt": 1785596400000
     },
     {
       "id": "orn-28",
@@ -5926,7 +5926,7 @@
           ]
         }
       },
-      "createdAt": 1785603600000
+      "createdAt": 1785600000000
     },
     {
       "id": "orn-29",
@@ -6131,7 +6131,7 @@
           ]
         }
       },
-      "createdAt": 1785607200000
+      "createdAt": 1785603600000
     },
     {
       "id": "orn-30",
@@ -6481,7 +6481,7 @@
           "choline": 63
         }
       },
-      "createdAt": 1785610800000
+      "createdAt": 1785607200000
     },
     {
       "id": "orn-31",
@@ -6831,7 +6831,7 @@
           "choline": 63
         }
       },
-      "createdAt": 1785614400000
+      "createdAt": 1785610800000
     },
     {
       "id": "orn-32",
@@ -7067,7 +7067,7 @@
           "choline": 17.2
         }
       },
-      "createdAt": 1785618000000
+      "createdAt": 1785614400000
     },
     {
       "id": "orn-33",
@@ -7325,7 +7325,7 @@
           "choline": 10.6
         }
       },
-      "createdAt": 1785621600000
+      "createdAt": 1785618000000
     },
     {
       "id": "orn-34",
@@ -7583,7 +7583,7 @@
           "choline": 13
         }
       },
-      "createdAt": 1785625200000
+      "createdAt": 1785621600000
     },
     {
       "id": "orn-35",
@@ -7875,7 +7875,7 @@
           "choline": 30
         }
       },
-      "createdAt": 1785628800000
+      "createdAt": 1785625200000
     },
     {
       "id": "orn-36",
@@ -8086,7 +8086,7 @@
           "choline": 32
         }
       },
-      "createdAt": 1785632400000
+      "createdAt": 1785628800000
     },
     {
       "id": "orn-37",
@@ -8177,7 +8177,7 @@
         }
       },
       "notes": "You need only wholegrain rye flour and water — rye starters are the easiest of all to establish, since the grain carries plenty of wild yeast and lactic bacteria on its own. Don't throw away the discard: stir it into porridge, or spread it thin on baking paper with seeds and salt and bake at 160°C into crackers.",
-      "createdAt": 1785636000000
+      "createdAt": 1785632400000
     },
     {
       "id": "orn-38",
@@ -8437,7 +8437,7 @@
       "relatedRecipes": [
         "orn-37"
       ],
-      "createdAt": 1785639600000
+      "createdAt": 1785636000000
     },
     {
       "id": "orn-39",
@@ -8712,7 +8712,7 @@
       "relatedRecipes": [
         "orn-37"
       ],
-      "createdAt": 1785643200000
+      "createdAt": 1785639600000
     },
     {
       "id": "orn-40",
@@ -9035,7 +9035,7 @@
           "choline": 64
         }
       },
-      "createdAt": 1785646800000
+      "createdAt": 1785643200000
     },
     {
       "id": "orn-41",
@@ -9270,7 +9270,7 @@
           "choline": 31
         }
       },
-      "createdAt": 1785650400000
+      "createdAt": 1785646800000
     },
     {
       "id": "orn-42",
@@ -9586,7 +9586,7 @@
         }
       },
       "imageUrl": null,
-      "createdAt": 1785654000000
+      "createdAt": 1785650400000
     },
     {
       "id": "orn-43",
@@ -9757,7 +9757,7 @@
         }
       },
       "imageUrl": null,
-      "createdAt": 1785657600000
+      "createdAt": 1785654000000
     },
     {
       "id": "orn-44",
@@ -9948,7 +9948,7 @@
         }
       },
       "imageUrl": null,
-      "createdAt": 1785661200000
+      "createdAt": 1785657600000
     },
     {
       "id": "orn-45",
@@ -10241,7 +10241,7 @@
         }
       },
       "imageUrl": null,
-      "createdAt": 1785664800000
+      "createdAt": 1785661200000
     },
     {
       "id": "orn-46",
@@ -10529,7 +10529,7 @@
         }
       },
       "imageUrl": null,
-      "createdAt": 1785668400000
+      "createdAt": 1785664800000
     },
     {
       "id": "orn-47",
@@ -10703,6 +10703,341 @@
         }
       },
       "imageUrl": null,
+      "createdAt": 1785668400000
+    },
+    {
+      "id": "orn-48",
+      "title": "Zucchini & Walnut Cake, Gluten-Free (GREEN)",
+      "category": "Dessert",
+      "servings": 4,
+      "prepTime": 35,
+      "cookTime": 45,
+      "description": "Gluten-free GREEN version — oat and buckwheat flour blend in place of whole wheat, psyllium bumped slightly for binding.",
+      "tags": [
+        "ornish-green",
+        "dessert",
+        "vegan",
+        "oil-free",
+        "no-added-sugar",
+        "high-fiber",
+        "gluten-free",
+        "heart-healthy",
+        "diabetes-friendly",
+        "blood-pressure-friendly"
+      ],
+      "kcal": 291,
+      "servingWeightGrams": 128,
+      "imageUrl": null,
+      "ingredients": [
+        {
+          "quantity": 90,
+          "unit": "g",
+          "name": "oat flour (gluten-free)"
+        },
+        {
+          "quantity": 30,
+          "unit": "g",
+          "name": "buckwheat flour"
+        },
+        {
+          "quantity": 150,
+          "unit": "g",
+          "name": "zucchini, grated and squeezed"
+        },
+        {
+          "quantity": 100,
+          "unit": "g",
+          "name": "ripe banana, mashed"
+        },
+        {
+          "quantity": 100,
+          "unit": "g",
+          "name": "Medjool dates, pitted"
+        },
+        {
+          "quantity": 20,
+          "unit": "g",
+          "name": "walnuts, chopped"
+        },
+        {
+          "quantity": 35,
+          "unit": "g",
+          "name": "raisins"
+        },
+        {
+          "quantity": 2,
+          "unit": "tsp",
+          "name": "psyllium husk"
+        },
+        {
+          "quantity": 0.3,
+          "unit": "tsp",
+          "name": "baking soda"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "name": "baking powder"
+        },
+        {
+          "quantity": 0.1,
+          "unit": "tsp",
+          "name": "sea salt"
+        },
+        {
+          "quantity": 0.8,
+          "unit": "tsp",
+          "name": "Ceylon cinnamon"
+        },
+        {
+          "quantity": 0.3,
+          "unit": "tsp",
+          "name": "vanilla powder"
+        },
+        {
+          "quantity": 40,
+          "unit": "ml",
+          "name": "boiling water, for the date paste"
+        },
+        {
+          "quantity": 4,
+          "unit": "tsp",
+          "name": "ground flaxseed, for finishing"
+        }
+      ],
+      "steps": [
+        "Make the date paste: Blend the pitted dates with the boiling water in a blender until smooth and thick.",
+        "Mix the dry ingredients: Whisk together the oat flour, buckwheat flour, psyllium husk, baking soda, baking powder, sea salt, cinnamon and vanilla powder in a bowl.",
+        "Mix the wet ingredients: Stir the date paste, mashed banana and squeezed grated zucchini together in a separate bowl.",
+        "Combine: Fold the wet mixture into the dry. Fold in the chopped walnuts and raisins.",
+        "Rest the batter: Let the batter stand for 10–15 minutes before baking so the psyllium can bind properly — gluten-free batter needs this to develop structure.",
+        "Bake: Spread the batter into a loaf tin lined with baking paper. Bake at 180°C for about 40–45 minutes, until a skewer comes out clean.",
+        "Serve: Let the cake cool completely in the tin before slicing — a gluten-free crumb is more fragile and needs to set. Slice, then sprinkle the ground flaxseed over each slice just before serving."
+      ],
+      "notes": "Chef's note: check the oat flour is labeled certified gluten-free if you're baking for anyone with celiac disease — regular oats are often cross-contaminated with wheat. Substitution: for even more fat and fiber margin, swap to a 60/60 oat-buckwheat split (earthier flavor, more headroom); for the smoothest crumb closest to wheat you could go 100% oat flour, but that sits right at the fat ceiling.",
+      "nutrition": {
+        "perServing": {
+          "calories": 291,
+          "protein": 7.1,
+          "totalFat": 7.1,
+          "saturatedFat": 0.9,
+          "polyunsaturatedFat": 3.5,
+          "monounsaturatedFat": 1.4,
+          "omega3": 1.18,
+          "omega6": 2.93,
+          "cholesterol": 0,
+          "totalCarbs": 55,
+          "totalSugars": 26.4,
+          "addedSugar": 0,
+          "fiber": 7.8,
+          "calcium": 59,
+          "potassium": 584,
+          "copper": 0.38,
+          "iron": 2.1,
+          "magnesium": 101,
+          "manganese": 1.76,
+          "selenium": 9.3,
+          "phosphorus": 209,
+          "zinc": 1.45,
+          "sodium": 220,
+          "vitaminA": 4.6,
+          "vitaminB6": 0.32,
+          "vitaminB12": 0,
+          "vitaminC": 9.2,
+          "vitaminD": 0,
+          "vitaminE": 0.3,
+          "vitaminK": 3.6,
+          "folate": 35.2,
+          "thiamin": 0.26,
+          "riboflavin": 0.14,
+          "niacin": 1.48,
+          "choline": 26
+        }
+      },
+      "translations": {
+        "no": {
+          "title": "Squash- & valnøttkake, glutenfri (GREEN)",
+          "description": "Glutenfri GREEN-versjon — blanding av havremel og bokhvetemel i stedet for sammalt hvete, psyllium økt litt for binding.",
+          "ingredients": [
+            {
+              "quantity": 90,
+              "unit": "g",
+              "name": "havremel (glutenfritt)"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "bokhvetemel"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "squash (zucchini), revet og presset"
+            },
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "moden banan, most"
+            },
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "Medjool-dadler, uten stein"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "name": "valnøtter, hakket"
+            },
+            {
+              "quantity": 35,
+              "unit": "g",
+              "name": "rosiner"
+            },
+            {
+              "quantity": 2,
+              "unit": "tsp",
+              "name": "psylliumfrøskall"
+            },
+            {
+              "quantity": 0.3,
+              "unit": "tsp",
+              "name": "natron"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "name": "bakepulver"
+            },
+            {
+              "quantity": 0.1,
+              "unit": "tsp",
+              "name": "havsalt"
+            },
+            {
+              "quantity": 0.8,
+              "unit": "tsp",
+              "name": "Ceylon kanel"
+            },
+            {
+              "quantity": 0.3,
+              "unit": "tsp",
+              "name": "vaniljepulver"
+            },
+            {
+              "quantity": 40,
+              "unit": "ml",
+              "name": "kokende vann, til daddelpastaen"
+            },
+            {
+              "quantity": 4,
+              "unit": "tsp",
+              "name": "malt linfrø, til pynt"
+            }
+          ],
+          "steps": [
+            "Lag daddelpasta: Bland de urkjernede daddlene med det kokende vannet i en blender til en jevn, tykk pasta.",
+            "Bland det tørre: Bland havremel, bokhvetemel, psylliumfrøskall, natron, bakepulver, havsalt, Ceylon kanel og vaniljepulver i en bolle.",
+            "Bland det våte: Rør sammen daddelpastaen, moden mostet banan og revet, presset squash i en egen bolle.",
+            "Sett sammen røren: Vend den våte blandingen inn i den tørre. Vend inn hakkede valnøtter og rosiner.",
+            "La røren hvile: La røren stå i 10–15 minutter før steking, slik at psylliumet får bundet skikkelig — glutenfri røre trenger dette for å få struktur.",
+            "Stek: Ha røren i en avlang form kledd med bakepapir. Stek på 180°C i cirka 40–45 minutter, til en tannpirker kommer ren ut.",
+            "Server: La kaken avkjøles helt i formen før du skjærer — glutenfri krumme er mer skjør og trenger å sette seg. Skjær i skiver, dryss deretter malt linfrø over hver skive rett før servering."
+          ],
+          "notes": "Kokketips: sjekk at havremelet er merket sertifisert glutenfritt hvis du baker til noen med cøliaki — vanlig havre er ofte krysskontaminert med hvete. Erstatning: for enda bedre margin på fett og fiber, bytt til en 60/60-fordeling havre-bokhvete (jordaktig smak, mer slingringsmonn); for den glatteste krummen nærmest hvete kan du gå 100 % havremel, men da ligger du helt på fettgrensen."
+        },
+        "sv": {
+          "title": "Squash- & valnötskaka, glutenfri (GREEN)",
+          "description": "Glutenfri GREEN-version — blandning av havremjöl och bovetemjöl i stället för fullkornsvete, psyllium något höjt för bindning.",
+          "ingredients": [
+            {
+              "quantity": 90,
+              "unit": "g",
+              "name": "havremjöl (glutenfritt)"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "name": "bovetemjöl"
+            },
+            {
+              "quantity": 150,
+              "unit": "g",
+              "name": "squash (zucchini), riven och pressad"
+            },
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "mogen banan, mosad"
+            },
+            {
+              "quantity": 100,
+              "unit": "g",
+              "name": "Medjooldadlar, urkärnade"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "name": "valnötter, hackade"
+            },
+            {
+              "quantity": 35,
+              "unit": "g",
+              "name": "russin"
+            },
+            {
+              "quantity": 2,
+              "unit": "tsp",
+              "name": "psylliumfröskal"
+            },
+            {
+              "quantity": 0.3,
+              "unit": "tsp",
+              "name": "bikarbonat"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "name": "bakpulver"
+            },
+            {
+              "quantity": 0.1,
+              "unit": "tsp",
+              "name": "havssalt"
+            },
+            {
+              "quantity": 0.8,
+              "unit": "tsp",
+              "name": "Ceylonkanel"
+            },
+            {
+              "quantity": 0.3,
+              "unit": "tsp",
+              "name": "vaniljpulver"
+            },
+            {
+              "quantity": 40,
+              "unit": "ml",
+              "name": "kokande vatten, till dadelpastan"
+            },
+            {
+              "quantity": 4,
+              "unit": "tsp",
+              "name": "malda linfrön, till garnering"
+            }
+          ],
+          "steps": [
+            "Gör dadelpastan: Mixa de urkärnade dadlarna med det kokande vattnet i en mixer till en jämn, tjock pasta.",
+            "Blanda det torra: Blanda havremjöl, bovetemjöl, psylliumfröskal, bikarbonat, bakpulver, havssalt, Ceylonkanel och vaniljpulver i en skål.",
+            "Blanda det blöta: Rör ihop dadelpastan, mogen mosad banan och riven, pressad squash i en separat skål.",
+            "Sätt ihop smeten: Vänd ner den blöta blandningen i den torra. Vänd ner hackade valnötter och russin.",
+            "Låt smeten vila: Låt smeten stå i 10–15 minuter före gräddning så att psylliumet hinner binda ordentligt — glutenfri smet behöver detta för att få struktur.",
+            "Grädda: Häll smeten i en avlång form klädd med bakplåtspapper. Grädda i 180°C i cirka 40–45 minuter, tills en sticka kommer ren ut.",
+            "Servera: Låt kakan svalna helt i formen innan du skär — en glutenfri inkråm är skörare och behöver sätta sig. Skär i skivor, strö sedan malda linfrön över varje skiva precis före servering."
+          ],
+          "notes": "Kockens tips: kontrollera att havremjölet är märkt certifierat glutenfritt om du bakar till någon med celiaki — vanlig havre är ofta korskontaminerad med vete. Ersättning: för ännu bättre marginal på fett och fiber, byt till en 60/60-fördelning havre-bovete (jordigare smak, mer utrymme); för den slätaste inkråmen närmast vete kan du köra 100 % havremjöl, men då ligger du precis på fettaket."
+        }
+      },
       "createdAt": 1785672000000
     }
   ]
