@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.29.0",
+  "version": "1.30.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -972,9 +972,9 @@
               "name": "fint havsalt"
             },
             {
-              "quantity": 1,
-              "unit": "pcs",
-              "name": "sitronskall (valgfritt, anbefalt)"
+              "quantity": 2,
+              "unit": "tsp",
+              "name": "sitron- eller appelsinskall (valgfritt, anbefalt)"
             }
           ],
           "steps": [
@@ -983,7 +983,7 @@
             "Rist valnøttene i en tørr panne i 4 minutter til de dufter. Sett til side.",
             "Aktiver carobpulveret: pisk carobpulver med {{3 ss}} kokende vann til en tykk pasta. La det stå i 1 minutt. Ikke hopp over dette trinnet.",
             "Tilsett alt unntatt valnøttene i en foodprosessor. Blend i hele 2 minutter, skrap ned to ganger. Røren skal være helt jevn, tykk og blank.",
-            "Rør inn det meste av valnøttene for hånd. Tilsett sitronskall hvis du bruker det. Spre i formen, glatt toppen, dryss over de resterende valnøttene.",
+            "Rør inn det meste av valnøttene for hånd. Tilsett sitron- eller appelsinskallet hvis du bruker det. Spre i formen, glatt toppen, dryss over de resterende valnøttene.",
             "Stek i 20–22 minutter. Ta dem ut når midten fortsatt ser litt rå ut — de stivner i kjøleskapet.",
             "Avkjøl helt i formen, sett deretter i kjøleskap i minst 2 timer. Skjær med en varm kniv."
           ]
@@ -1048,9 +1048,9 @@
               "name": "fint havssalt"
             },
             {
-              "quantity": 1,
-              "unit": "pcs",
-              "name": "citronskal (valfritt, rekommenderas)"
+              "quantity": 2,
+              "unit": "tsp",
+              "name": "citron- eller apelsinskal (valfritt, rekommenderas)"
             }
           ],
           "steps": [
@@ -1059,7 +1059,7 @@
             "Rosta valnötterna i en torr panna i 4 minuter tills de doftar. Sätt åt sidan.",
             "Aktivera carobpulvret: vispa carobpulver med {{3 msk}} kokande vatten till en tjock pasta. Låt stå 1 minut. Hoppa inte över detta steg.",
             "Tillsätt allt utom valnötterna i en matberedare. Mixa i hela 2 minuter, skrapa ner två gånger. Smeten ska vara helt slät, tjock och blank.",
-            "Rör i större delen av valnötterna för hand. Tillsätt citronskal om du använder det. Bred ut i formen, jämna till ytan, strö resterande valnötter över.",
+            "Rör i större delen av valnötterna för hand. Tillsätt citron- eller apelsinskalet om du använder det. Bred ut i formen, jämna till ytan, strö resterande valnötter över.",
             "Grädda i 20–22 minuter. Ta ut när mitten fortfarande ser något ogräddad ut — de stelnar i kylen.",
             "Kyl helt i formen, sätt sedan i kylen i minst 2 timmar. Skär med en varm kniv."
           ]
@@ -1122,9 +1122,9 @@
           "name": "fine sea salt"
         },
         {
-          "quantity": 1,
-          "unit": "pcs",
-          "name": "lemon zest (optional, recommended)"
+          "quantity": 2,
+          "unit": "tsp",
+          "name": "lemon or orange zest (optional, recommended)"
         }
       ],
       "steps": [
@@ -1133,7 +1133,7 @@
         "Toast walnuts in a dry pan 4 minutes until fragrant. Set aside.",
         "Bloom the carob: whisk carob powder with {{3 tbsp}} boiling water into a thick paste. Let sit 1 minute. Do not skip this step.",
         "Add everything except the walnuts to a food processor. Blend a full 2 minutes, scraping down twice. The batter should be completely smooth, thick, and glossy.",
-        "Stir most of the walnuts in by hand. Add lemon zest if using. Spread into the tin, smooth the top, scatter remaining walnuts.",
+        "Stir most of the walnuts in by hand. Add the lemon or orange zest if using. Spread into the tin, smooth the top, scatter remaining walnuts.",
         "Bake 20–22 minutes. Pull when the centre still looks slightly underdone — it firms in the fridge.",
         "Cool completely in the tin, then refrigerate minimum 2 hours. Cut with a hot knife."
       ],
