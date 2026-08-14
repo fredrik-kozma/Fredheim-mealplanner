@@ -436,7 +436,11 @@
   "recipePicker": {
     "title": "Add Recipe to Slot",
     "searchPlaceholder": "Search recipes…",
-    "noResults": "No recipes found"
+    "noResults": "No recipes found",
+    "selectSeveral": "Select several",
+    "selectPrompt": "Select recipes to add",
+    "addCount_one": "Add {{count}} recipe",
+    "addCount_other": "Add {{count}} recipes"
   },
   "common": {
     "close": "Close",

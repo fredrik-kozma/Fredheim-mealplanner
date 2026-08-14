@@ -436,7 +436,11 @@
   "recipePicker": {
     "title": "Legg til oppskrift i plass",
     "searchPlaceholder": "Søk etter oppskrifter…",
-    "noResults": "Ingen oppskrifter funnet"
+    "noResults": "Ingen oppskrifter funnet",
+    "selectSeveral": "Velg flere",
+    "selectPrompt": "Velg oppskrifter å legge til",
+    "addCount_one": "Legg til {{count}} oppskrift",
+    "addCount_other": "Legg til {{count}} oppskrifter"
   },
   "common": {
     "close": "Lukk",

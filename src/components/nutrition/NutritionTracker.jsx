@@ -282,6 +282,11 @@ export default function NutritionTracker() {
         <RecipePicker
           title={t('nutritionTracker.pickTitle', { defaultValue: 'Log a food you ate' })}
           onSelect={(recipeId) => addNutritionEntry(selKey, recipeId, 1)}
+          // Logging a whole meal at once. A repeat of something already
+          // logged that day bumps its portions rather than duplicating.
+          onSelectMany={(recipeIds) => {
+            for (const recipeId of recipeIds) addNutritionEntry(selKey, recipeId, 1)
+          }}
           onClose={() => setPickerOpen(false)}
         />
       )}

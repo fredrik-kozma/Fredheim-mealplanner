@@ -354,6 +354,14 @@ export default function WeeklyPlanner() {
             if (picker.batch) addBatchRecipe(recipeId)
             else addRecipeToSlot(picker.day, picker.slot, recipeId)
           }}
+          // Both actions already ignore a recipe that's present, so adding a
+          // selection that overlaps what's in the slot is safe.
+          onSelectMany={(recipeIds) => {
+            for (const recipeId of recipeIds) {
+              if (picker.batch) addBatchRecipe(recipeId)
+              else addRecipeToSlot(picker.day, picker.slot, recipeId)
+            }
+          }}
           onClose={() => setPicker(null)}
         />
       )}

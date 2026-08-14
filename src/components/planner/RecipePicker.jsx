@@ -1,11 +1,24 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
 import { isFmdRecipe } from '../../utils/recipeFlags'
 import { recipeHasAvoidedAllergen } from '../../data/allergens'
 
-export default function RecipePicker({ onSelect, onClose, title }) {
+/*
+ * `onSelectMany` enables picking several recipes in one visit. Filling a
+ * Monday breakfast with three things otherwise meant opening this sheet
+ * three times, re-applying filters each round.
+ *
+ * Two ways in, because neither alone covers both input styles: a
+ * "Select several" button (visible, so desktop users can find it) and a
+ * long-press on any recipe (the gesture people expect on a phone, and it
+ * selects the recipe you were holding). Single tap is untouched — it
+ * still adds one recipe and closes — so the common case costs nothing.
+ *
+ * Callers without `onSelectMany` keep single-select only.
+ */
+export default function RecipePicker({ onSelect, onSelectMany, onClose, title }) {
   const { t, i18n } = useTranslation()
   const recipes = useStore(s => s.recipes)
   const recipeCategories = useStore(s => s.recipeCategories)
@@ -22,6 +35,46 @@ export default function RecipePicker({ onSelect, onClose, title }) {
   const [activeConditions, setActiveConditions] = useState([])
   const toggleCondition = (id) => setActiveConditions(prev =>
     prev.includes(id) ? prev.filter(c => c !== id) : [...prev, id])
+
+  // ── multi-select ────────────────────────────────────────────────────────
+  const canMulti = typeof onSelectMany === 'function'
+  const [multi, setMulti] = useState(false)
+  const [selected, setSelected] = useState([])
+  // A long-press fires on pointerup as a click too. This flag swallows that
+  // one click so holding a recipe doesn't also add-and-close it.
+  const longPressFired = useRef(false)
+  const pressTimer = useRef(null)
+
+  const toggleSelected = (id) => setSelected(prev =>
+    prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id])
+
+  const exitMulti = () => { setMulti(false); setSelected([]) }
+
+  const startPress = (id) => {
+    if (!canMulti || multi) return
+    longPressFired.current = false
+    clearTimeout(pressTimer.current)
+    pressTimer.current = setTimeout(() => {
+      longPressFired.current = true
+      setMulti(true)
+      setSelected([id])
+    }, 450)
+  }
+  const cancelPress = () => clearTimeout(pressTimer.current)
+  useEffect(() => () => clearTimeout(pressTimer.current), [])
+
+  const handleRowClick = (id) => {
+    if (longPressFired.current) { longPressFired.current = false; return }
+    if (multi) { toggleSelected(id); return }
+    onSelect(id)
+    onClose()
+  }
+
+  const confirmMany = () => {
+    if (selected.length === 0) return
+    onSelectMany(selected)
+    onClose()
+  }
 
   // Build the pack options once per render — only show packs that actually
   // have installed recipes, plus a "My recipes" bucket for non-pack ones.
@@ -87,13 +140,30 @@ export default function RecipePicker({ onSelect, onClose, title }) {
         </div>
 
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
-          <h2 className="text-base font-semibold text-slate-800">{pickerTitle}</h2>
-          <button onClick={onClose} className="btn-ghost p-1.5 -mr-1.5 text-slate-400">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </button>
+        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 gap-2">
+          <h2 className="text-base font-semibold text-slate-800 min-w-0 truncate">{pickerTitle}</h2>
+          <div className="flex items-center gap-1 flex-shrink-0">
+            {canMulti && (
+              <button
+                onClick={() => (multi ? exitMulti() : setMulti(true))}
+                className={`text-xs font-semibold rounded-lg px-2.5 py-1.5 transition-colors ${
+                  multi
+                    ? 'bg-indigo-600 text-white'
+                    : 'text-indigo-700 bg-indigo-50 hover:bg-indigo-100'
+                }`}
+                aria-pressed={multi}
+              >
+                {multi
+                  ? t('common.cancel', { defaultValue: 'Cancel' })
+                  : t('recipePicker.selectSeveral', { defaultValue: 'Select several' })}
+              </button>
+            )}
+            <button onClick={onClose} className="btn-ghost p-1.5 -mr-1.5 text-slate-400">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Search */}
@@ -217,12 +287,41 @@ export default function RecipePicker({ onSelect, onClose, title }) {
             <div className="text-center py-10 text-sm text-slate-400">{t('recipePicker.noResults')}</div>
           ) : (
             <div className="space-y-2">
-              {filtered.map(recipe => (
+              {filtered.map(recipe => {
+                const isSelected = multi && selected.includes(recipe.id)
+                return (
                 <button
                   key={recipe.id}
-                  onClick={() => { onSelect(recipe.id); onClose() }}
-                  className="w-full text-left card p-3 hover:border-indigo-200 hover:shadow-md transition-all duration-150 flex items-center gap-3"
+                  onClick={() => handleRowClick(recipe.id)}
+                  onPointerDown={() => startPress(recipe.id)}
+                  onPointerUp={cancelPress}
+                  onPointerLeave={cancelPress}
+                  onPointerCancel={cancelPress}
+                  // Holding a row must not start a text selection or fire the
+                  // OS text-selection callout on touch.
+                  onContextMenu={e => { if (canMulti) e.preventDefault() }}
+                  style={canMulti ? { userSelect: 'none', WebkitUserSelect: 'none', WebkitTouchCallout: 'none' } : undefined}
+                  aria-pressed={multi ? isSelected : undefined}
+                  className={`w-full text-left card p-3 transition-all duration-150 flex items-center gap-3 ${
+                    isSelected
+                      ? 'border-indigo-400 ring-2 ring-indigo-200 shadow-md'
+                      : 'hover:border-indigo-200 hover:shadow-md'
+                  }`}
                 >
+                  {multi && (
+                    <span
+                      className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
+                        isSelected ? 'bg-indigo-600 border-indigo-600' : 'border-slate-300'
+                      }`}
+                      aria-hidden
+                    >
+                      {isSelected && (
+                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                      )}
+                    </span>
+                  )}
                   {recipe.imageUrl ? (
                     <img src={recipe.imageUrl} alt="" className="w-12 h-12 rounded-xl object-cover flex-shrink-0" />
                   ) : (
@@ -244,14 +343,36 @@ export default function RecipePicker({ onSelect, onClose, title }) {
                       </span>
                     )}
                   </div>
-                  <svg className="w-4 h-4 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
+                  {!multi && (
+                    <svg className="w-4 h-4 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  )}
                 </button>
-              ))}
+                )
+              })}
             </div>
           )}
         </div>
+
+        {/* Confirm bar — only while selecting, so it never takes space from
+            the list in the ordinary single-tap flow. */}
+        {multi && (
+          <div className="flex-shrink-0 border-t border-slate-100 px-4 py-3 bg-white sm:rounded-b-2xl">
+            <button
+              onClick={confirmMany}
+              disabled={selected.length === 0}
+              className="btn-primary w-full justify-center disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              {selected.length === 0
+                ? t('recipePicker.selectPrompt', { defaultValue: 'Select recipes to add' })
+                : t('recipePicker.addCount', {
+                  count: selected.length,
+                  defaultValue: 'Add {{count}} recipes',
+                })}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )

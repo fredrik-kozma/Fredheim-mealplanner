@@ -436,7 +436,11 @@
   "recipePicker": {
     "title": "Lägg till recept i plats",
     "searchPlaceholder": "Sök recept…",
-    "noResults": "Inga recept hittades"
+    "noResults": "Inga recept hittades",
+    "selectSeveral": "Välj flera",
+    "selectPrompt": "Välj recept att lägga till",
+    "addCount_one": "Lägg till {{count}} recept",
+    "addCount_other": "Lägg till {{count}} recept"
   },
   "common": {
     "close": "Stäng",
