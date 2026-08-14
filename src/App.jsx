@@ -18,6 +18,7 @@ import { useSubscription } from './hooks/useSubscription'
 import UpgradeWall from './components/subscription/UpgradeWall'
 import PreviewBanner from './components/subscription/PreviewBanner'
 import AutoInstallDefaultPack from './components/AutoInstallDefaultPack'
+import ScrollManager from './components/ScrollManager'
 import TutorialModal from './components/onboarding/TutorialModal'
 import InstallBanner from './components/pwa/InstallBanner'
 import WhatsNewModal from './components/whatsnew/WhatsNewModal'
@@ -134,6 +135,9 @@ function AppShell() {
       {/* One-time install of the built-in pack so first-time visitors have
           recipes to browse immediately. */}
       <AutoInstallDefaultPack />
+
+      {/* Opens each page at the top; restores your place on long lists. */}
+      <ScrollManager />
 
       <Navigation />
 
