@@ -295,10 +295,13 @@ export default function RecipeDetail() {
         {/* Meta chips */}
         <div className="flex flex-wrap gap-2 mt-3 mb-5">
           <span className="badge bg-indigo-50 text-indigo-700">{t(`categories.${recipe.category}`, { defaultValue: recipe.category })}</span>
-          {recipe.prepTime && (
+          {/* `> 0`, not truthiness: a no-cook recipe stores cookTime 0, and
+              `{0 && …}` evaluates to 0 — which React happily renders as a
+              stray "0" chip next to the prep time. */}
+          {recipe.prepTime > 0 && (
             <span className="badge bg-slate-100 text-slate-600">⏱ {t('recipeDetail.prep', { time: recipe.prepTime })}</span>
           )}
-          {recipe.cookTime && (
+          {recipe.cookTime > 0 && (
             <span className="badge bg-slate-100 text-slate-600">🔥 {t('recipeDetail.cook', { time: recipe.cookTime })}</span>
           )}
           {/* Condition badges — which health conditions this recipe suits */}
