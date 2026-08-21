@@ -13,6 +13,7 @@ import FavoriteStar from './FavoriteStar'
 import { recipeConditions, CONDITION_BADGE } from '../../data/conditionTags'
 import { isFmdRecipe } from '../../utils/recipeFlags'
 import { renderStepText } from '../../utils/scaleStepText'
+import { formatDuration } from '../../utils/formatDuration'
 
 export default function RecipeDetail() {
   const { id } = useParams()
@@ -299,10 +300,10 @@ export default function RecipeDetail() {
               `{0 && …}` evaluates to 0 — which React happily renders as a
               stray "0" chip next to the prep time. */}
           {recipe.prepTime > 0 && (
-            <span className="badge bg-slate-100 text-slate-600">⏱ {t('recipeDetail.prep', { time: recipe.prepTime })}</span>
+            <span className="badge bg-slate-100 text-slate-600">⏱ {t('recipeDetail.prep', { time: formatDuration(recipe.prepTime) })}</span>
           )}
           {recipe.cookTime > 0 && (
-            <span className="badge bg-slate-100 text-slate-600">🔥 {t('recipeDetail.cook', { time: recipe.cookTime })}</span>
+            <span className="badge bg-slate-100 text-slate-600">🔥 {t('recipeDetail.cook', { time: formatDuration(recipe.cookTime) })}</span>
           )}
           {/* Condition badges — which health conditions this recipe suits */}
           {recipeConditions(recipe).map(c => (

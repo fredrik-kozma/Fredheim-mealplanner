@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAccess } from '../../hooks/useAccess'
 import { isFmdRecipe } from '../../utils/recipeFlags'
+import { formatDuration } from '../../utils/formatDuration'
 import FavoriteStar from './FavoriteStar'
 
 const CATEGORY_COLORS = {
@@ -24,12 +25,10 @@ function categoryColor(cat) {
 }
 
 function TimeChip({ minutes, label }) {
-  // Guard against 0, null, undefined, or empty string
-  const numMinutes = parseInt(minutes, 10)
-  if (!numMinutes || numMinutes <= 0) return null
-  const display = numMinutes >= 60
-    ? `${Math.floor(numMinutes / 60)}h ${numMinutes % 60 > 0 ? `${numMinutes % 60}m` : ''}`.trim()
-    : `${numMinutes}m`
+  // Shared with the detail page and printouts so a time never reads one
+  // way on the card and another way when you open the recipe.
+  const display = formatDuration(minutes)
+  if (!display) return null
   return (
     <span className="text-xs text-slate-500 flex items-center gap-0.5">
       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">

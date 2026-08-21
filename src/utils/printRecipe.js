@@ -8,6 +8,7 @@
  * view already computes the correct language-specific content and passes it
  * through here.
  */
+import { formatDuration } from './formatDuration'
 
 function escapeHtml(s) {
   if (s == null) return ''
@@ -68,8 +69,10 @@ export function printRecipe(opts) {
 
   const chips = []
   if (servings) chips.push(`<span class="chip">🍽 ${escapeHtml(L.servings)}: <b>${servings}</b></span>`)
-  if (prepTime) chips.push(`<span class="chip">⏱ ${escapeHtml(L.prep)}: <b>${prepTime}m</b></span>`)
-  if (cookTime) chips.push(`<span class="chip">🔥 ${escapeHtml(L.cook)}: <b>${cookTime}m</b></span>`)
+  // Same formatter as the card and the detail page — a 5-day starter
+  // printed as "7200m" is not something you can plan around.
+  if (formatDuration(prepTime)) chips.push(`<span class="chip">⏱ ${escapeHtml(L.prep)}: <b>${formatDuration(prepTime)}</b></span>`)
+  if (formatDuration(cookTime)) chips.push(`<span class="chip">🔥 ${escapeHtml(L.cook)}: <b>${formatDuration(cookTime)}</b></span>`)
   if (category) chips.push(`<span class="chip chip--accent">${escapeHtml(category)}</span>`)
 
   // "Good for" health-condition chips — so the printed sheet shows at a

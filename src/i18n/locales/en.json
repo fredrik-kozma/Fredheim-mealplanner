@@ -73,8 +73,8 @@
   "recipeDetail": {
     "back": "Back",
     "servings": "{{count}} servings",
-    "prep": "Prep {{time}}m",
-    "cook": "Cook {{time}}m",
+    "prep": "Prep {{time}}",
+    "cook": "Cook {{time}}",
     "scaledFor": "Scaled for {{count}} people (original: {{original}})",
     "ingredients": "Ingredients",
     "instructions": "Instructions",

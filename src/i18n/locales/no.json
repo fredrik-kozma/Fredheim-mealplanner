@@ -73,8 +73,8 @@
   "recipeDetail": {
     "back": "Tilbake",
     "servings": "{{count}} porsjoner",
-    "prep": "Forberedelse {{time}} min",
-    "cook": "Tilberedning {{time}} min",
+    "prep": "Forberedelse {{time}}",
+    "cook": "Tilberedning {{time}}",
     "scaledFor": "Skalert for {{count}} personer (original: {{original}})",
     "ingredients": "Ingredienser",
     "instructions": "Fremgangsmåte",
