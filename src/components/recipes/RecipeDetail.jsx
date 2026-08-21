@@ -146,10 +146,26 @@ export default function RecipeDetail() {
   // Active view system: user override (tap toggle) → Settings preference.
   const activeSystem = viewSystem || preferredSystem
 
-  function formatScaledQuantity(quantity, unit) {
+  /*
+   * `scalesLinearly: false` on an ingredient holds its amount at the
+   * recipe's own figure however the servings are changed. Some things
+   * genuinely don't scale with batch size — a yogurt starter is an
+   * inoculum, not an ingredient: it seeds the batch and the culture then
+   * grows on its own, so final density is set by time and temperature,
+   * not by how much went in. Doubling it doesn't double the result, it
+   * crowds the ferment and turns the set thin and grainy.
+   *
+   * Holding the base amount is the safe direction to be wrong in —
+   * under-seeding just ferments slower — and the row is marked in the UI
+   * so it's clear the number needs a human decision rather than looking
+   * like an oversight.
+   */
+  function formatScaledQuantity(quantity, unit, scalesLinearly = true) {
     if (quantity === null || quantity === undefined || quantity === 0) return unit || ''
 
-    const scaled = quantity * (displayServings / (recipe.servings || 4))
+    const scaled = scalesLinearly
+      ? quantity * (displayServings / (recipe.servings || 4))
+      : quantity
 
     // Convert into the active system if the unit is convertible.
     const normalized = normalizeUnit(unit)
@@ -191,8 +207,12 @@ export default function RecipeDetail() {
       defaultValue: recipe.category,
     })
     const printIngredients = (displayIngredients || []).map(ing => ({
-      name: ing.name,
-      quantityLabel: formatScaledQuantity(ing.quantity, ing.unit),
+      // A non-scaling ingredient prints its held amount and says so, since
+      // a printout can't show the on-screen marker.
+      name: ing.scalesLinearly === false && displayServings !== recipe.servings
+        ? `${ing.name} — ${t('recipeDetail.doesNotScale', { defaultValue: 'adjust manually' })}`
+        : ing.name,
+      quantityLabel: formatScaledQuantity(ing.quantity, ing.unit, ing.scalesLinearly !== false),
     }))
     printRecipe({
       title: displayTitle,
@@ -487,9 +507,18 @@ export default function RecipeDetail() {
                     </span>
                     <span className={`text-sm min-w-0 break-words flex-1 transition-colors ${isChecked ? 'text-slate-400 line-through' : 'text-slate-700'}`}>
                       {ing.name}
+                      {/* Only worth saying once the servings have actually
+                          been changed — at the recipe's own size the
+                          amount shown is simply correct. */}
+                      {ing.scalesLinearly === false && displayServings !== recipe.servings && (
+                        <span className="ml-1.5 inline-flex items-center gap-1 badge bg-amber-100 text-amber-800 text-[11px] font-semibold align-middle">
+                          <span aria-hidden>⚖️</span>
+                          {t('recipeDetail.doesNotScale', { defaultValue: 'adjust manually' })}
+                        </span>
+                      )}
                     </span>
                     <span className={`text-sm font-medium flex-shrink-0 tabular-nums whitespace-nowrap transition-colors ${isChecked ? 'text-slate-300 line-through' : 'text-slate-900'}`}>
-                      {formatScaledQuantity(ing.quantity, ing.unit)}
+                      {formatScaledQuantity(ing.quantity, ing.unit, ing.scalesLinearly !== false)}
                     </span>
                   </button>
                 )

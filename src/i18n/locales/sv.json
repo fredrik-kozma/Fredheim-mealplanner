@@ -105,7 +105,8 @@
     "goodFor": "Bra för",
     "relatedRecipes": "Se även",
     "fmdNoticeTitle": "Del av den 5-dagars fasteimiterande dieten (FMD)",
-    "fmdNoticeBody": "Dessa måltider är medvetet kalorisnåla och är inte kompletta, självständiga måltider. Följ hela FMD-planen för att den ska fungera som avsett."
+    "fmdNoticeBody": "Dessa måltider är medvetet kalorisnåla och är inte kompletta, självständiga måltider. Följ hela FMD-planen för att den ska fungera som avsett.",
+    "doesNotScale": "justera manuellt"
   },
   "recipeForm": {
     "addRecipe": "Lägg till recept",

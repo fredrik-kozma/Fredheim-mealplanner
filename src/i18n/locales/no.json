@@ -105,7 +105,8 @@
     "goodFor": "Bra for",
     "relatedRecipes": "Se også",
     "fmdNoticeTitle": "Del av den 5-dagers fasteimiterende dietten (FMD)",
-    "fmdNoticeBody": "Disse måltidene er bevisst kalorifattige og er ikke komplette, selvstendige måltider. Følg hele FMD-planen for at den skal virke som tiltenkt."
+    "fmdNoticeBody": "Disse måltidene er bevisst kalorifattige og er ikke komplette, selvstendige måltider. Følg hele FMD-planen for at den skal virke som tiltenkt.",
+    "doesNotScale": "juster manuelt"
   },
   "recipeForm": {
     "addRecipe": "Legg til oppskrift",
