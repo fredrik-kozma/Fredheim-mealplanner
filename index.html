@@ -22,6 +22,76 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Startup fallback.
+
+         If the bundle fails to load or parse, React never mounts and #root
+         stays empty — the page is then pure white with nothing on screen and
+         nothing in reach of a phone user. That is exactly what an older
+         device reports back as "it just opens white", with no way to tell a
+         crash apart from a slow load.
+
+         Deliberately written in ES5 with no module syntax so it still runs on
+         a browser too old for the app bundle itself — which is the case it
+         most needs to survive. -->
+    <script>
+      (function () {
+        var firstError = null
+        var shown = false
+
+        function note(msg) {
+          if (!firstError && msg) firstError = String(msg)
+        }
+        window.addEventListener('error', function (e) {
+          note((e && e.message) || 'Script error')
+        })
+        window.addEventListener('unhandledrejection', function (e) {
+          var r = e && e.reason
+          note('Promise: ' + ((r && r.message) || r || 'rejected'))
+        })
+
+        function show(title, detail) {
+          var root = document.getElementById('root')
+          if (shown || !root || root.childNodes.length > 0) return
+          shown = true
+          root.innerHTML =
+            '<div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;' +
+            'max-width:32rem;margin:0 auto;padding:2rem 1.25rem;color:#1e293b;line-height:1.5">' +
+            '<h1 style="font-size:1.125rem;margin:0 0 .5rem">' + title + '</h1>' +
+            '<p style="font-size:.875rem;color:#475569;margin:0 0 1rem">' + detail + '</p>' +
+            '<p style="font-size:.75rem;color:#94a3b8;word-break:break-word;margin:0 0 1.25rem">' +
+            (firstError ? 'Detail: ' + firstError + '<br>' : '') +
+            navigator.userAgent +
+            '</p>' +
+            '<button onclick="location.reload()" style="background:#4f46e5;color:#fff;border:0;' +
+            'border-radius:.5rem;padding:.625rem 1rem;font-size:.875rem;font-weight:600">' +
+            'Try again</button>' +
+            '</div>'
+        }
+
+        // An outright error is worth surfacing quickly; a slow start is not an
+        // error, so that message waits much longer and says something different.
+        window.addEventListener('error', function () {
+          setTimeout(function () {
+            show('This app could not start', 'Something failed while loading. Your browser may be too old for this version.')
+          }, 2500)
+        })
+        setTimeout(function () {
+          show('Still loading…', 'This is taking much longer than usual. The recipe library is large, so an older phone can need a while on first open.')
+        }, 30000)
+      })()
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Runs only on browsers with no ES-module support, which ignore the
+         module script above entirely and would otherwise show nothing. -->
+    <script nomodule>
+      document.getElementById('root').innerHTML =
+        '<div style="font-family:sans-serif;max-width:32rem;margin:0 auto;padding:2rem 1.25rem;color:#1e293b">' +
+        '<h1 style="font-size:1.125rem">Your browser is too old for this app</h1>' +
+        '<p style="font-size:.875rem;color:#475569">Fredheim Meal Planner needs a newer browser. ' +
+        'On Android, updating Chrome or Samsung Internet from the Play Store should fix this.</p></div>'
+    </script>
   </body>
 </html>
