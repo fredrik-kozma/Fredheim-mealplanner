@@ -13,9 +13,10 @@
  * alternative is one copy whose amounts are wrong for at least one of the
  * days, which defeats the point of printing it at all.
  *
- * Landscape, thumbnail beside the title, ingredients and steps side by
- * side — the same shape as the single-recipe sheet, so a page pulled out
- * of this book looks like one printed on its own.
+ * Portrait, thumbnail beside the title, ingredients and steps side by
+ * side. Portrait is what a recipe is normally printed on, and a stack of
+ * twenty-odd of them is a booklet rather than a wall chart — the week
+ * grid is the landscape one, because it is a calendar.
  *
  * Nutrition and chef's notes are left out by choice: this is the document
  * you cook from, and at ~21 meals a week including them roughly doubles
@@ -160,10 +161,10 @@ export function printMenuBook(opts) {
     print-color-adjust: exact;
   }
   .page {
-    width: 297mm;
-    min-height: 210mm;
+    width: 210mm;
+    min-height: 297mm;
     margin: 16px auto;
-    padding: 11mm 12mm 10mm 12mm;
+    padding: 13mm 14mm 12mm 14mm;
     background: #fff;
     box-shadow: 0 2px 18px rgba(15, 23, 42, .08);
     display: flex;
@@ -194,8 +195,9 @@ export function printMenuBook(opts) {
 
   h2.toc-h { font-size: 11px; text-transform: uppercase; letter-spacing: .9px; color: var(--brand-dark); margin: 0 0 8px; }
   /* Contents runs in columns so a full week stays on the cover instead of
-     spilling a few lines onto a page of its own. */
-  .toc { column-count: 3; column-gap: 16px; }
+     spilling a few lines onto a page of its own. Two on portrait — three
+     would leave each dish name about 55mm and wrap most of them. */
+  .toc { column-count: 2; column-gap: 16px; }
   .toc-day { break-inside: avoid; margin-bottom: 10px; }
   .toc-day-name {
     font-size: 10.5px; font-weight: 800; color: var(--ink);
@@ -268,7 +270,7 @@ export function printMenuBook(opts) {
       min-height: 0;
     }
     .page:last-child { break-after: auto; page-break-after: auto; }
-    @page { size: A4 landscape; margin: 12mm; }
+    @page { size: A4 portrait; margin: 14mm; }
     .ing li, .steps li, .toc-day { break-inside: avoid; page-break-inside: avoid; }
   }
 </style>
