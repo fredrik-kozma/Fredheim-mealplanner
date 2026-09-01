@@ -84,6 +84,7 @@ export default function WeeklyPlanner() {
   const weekPlan = useStore(s => s.weekPlan)
   const recipes = useStore(s => s.recipes)
   const addRecipeToSlot = useStore(s => s.addRecipeToSlot)
+  const addCustomToSlot = useStore(s => s.addCustomToSlot)
   const moveRecipeBetweenSlots = useStore(s => s.moveRecipeBetweenSlots)
   const clearWeekPlan = useStore(s => s.clearWeekPlan)
   const addPlannerDay = useStore(s => s.addPlannerDay)
@@ -119,6 +120,11 @@ export default function WeeklyPlanner() {
       .map(it => {
         const norm = normalizeSlotItem(it)
         if (!norm) return null
+        // A meal the user typed themselves still belongs on the menu; it
+        // just has no photo or servings behind it.
+        if (norm.kind === 'custom') {
+          return { title: norm.name, servings: null, imageUrl: null, batch: false }
+        }
         const recipe = recipes.find(r => r.id === norm.recipeId)
         if (!recipe) return null
         return {
@@ -220,6 +226,9 @@ export default function WeeklyPlanner() {
         for (const it of weekPlan[day]?.[slot] || []) {
           const norm = normalizeSlotItem(it)
           if (!norm) continue
+          // Custom meals have no ingredients or method, so there is no page
+          // to print for them. They still appear on the week grid.
+          if (norm.kind === 'custom') continue
           const recipe = recipes.find(r => r.id === norm.recipeId)
           if (!recipe) continue
           const tr = recipe.translations?.[currentLang]
@@ -483,6 +492,12 @@ export default function WeeklyPlanner() {
               if (picker.batch) addBatchRecipe(recipeId)
               else addRecipeToSlot(picker.day, picker.slot, recipeId)
             }
+          }}
+          // Only for meal slots. The batch column already has its own text
+          // entry, and that one is a prep reminder rather than something to
+          // buy, so the two shouldn't be merged.
+          onAddCustom={picker.batch ? undefined : (name, amount) => {
+            addCustomToSlot(picker.day, picker.slot, name, amount)
           }}
           onClose={() => setPicker(null)}
         />

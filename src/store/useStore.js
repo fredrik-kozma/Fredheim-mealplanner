@@ -42,8 +42,25 @@ export function getPlanDayKeys(plan) {
 // items from this function's output.
 export function normalizeSlotItem(item) {
   if (typeof item === 'string') return { recipeId: item, servings: null, excludeFromShopping: false }
+  // A slot can also hold something the user typed themselves — a meal with
+  // no recipe behind it (leftovers, takeaway, a salad they improvise). It
+  // still belongs on the menu and still needs buying, so it carries a name
+  // and a free-text amount and flows into the shopping list the way an
+  // item added with "Legg til vare" does.
+  if (item && typeof item === 'object' && item.kind === 'custom' && item.name) {
+    return {
+      kind: 'custom',
+      id: item.id,
+      name: item.name,
+      amount: item.amount || '',
+      excludeFromShopping: Boolean(item.excludeFromShopping),
+      recipeId: null,
+      servings: null,
+    }
+  }
   if (item && typeof item === 'object' && item.recipeId) {
     return {
+      kind: 'recipe',
       recipeId: item.recipeId,
       servings: item.servings ?? null,
       excludeFromShopping: Boolean(item.excludeFromShopping),
@@ -890,6 +907,42 @@ const useStore = create(
           [day]: {
             ...s.weekPlan[day],
             [slot]: (s.weekPlan[day]?.[slot] || []).filter(it => normalizeSlotItem(it)?.recipeId !== recipeId),
+          },
+        },
+      })),
+
+      // A meal the user typed themselves, with no recipe behind it. Not
+      // deduplicated the way recipes are — "Restemat" on three different
+      // days is three real meals, and even within one slot two custom
+      // lines can be two different things to buy.
+      addCustomToSlot: (day, slot, name, amount = '') => set((s) => {
+        const trimmed = (name || '').trim()
+        if (!trimmed) return {}
+        return {
+          weekPlan: {
+            ...s.weekPlan,
+            [day]: {
+              ...s.weekPlan[day],
+              [slot]: [
+                ...(s.weekPlan[day]?.[slot] || []),
+                { kind: 'custom', id: 'slot-' + makeId(), name: trimmed, amount: (amount || '').trim() },
+              ],
+            },
+          },
+        }
+      }),
+
+      // Matched on id rather than name, so two custom lines that happen to
+      // read the same don't remove each other.
+      removeCustomFromSlot: (day, slot, id) => set((s) => ({
+        weekPlan: {
+          ...s.weekPlan,
+          [day]: {
+            ...s.weekPlan[day],
+            [slot]: (s.weekPlan[day]?.[slot] || []).filter(it => {
+              const n = normalizeSlotItem(it)
+              return !(n?.kind === 'custom' && n.id === id)
+            }),
           },
         },
       })),

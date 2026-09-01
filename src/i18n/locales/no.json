@@ -446,7 +446,10 @@
     "selectSeveral": "Velg flere",
     "selectPrompt": "Velg oppskrifter å legge til",
     "addCount_one": "Legg til {{count}} oppskrift",
-    "addCount_other": "Legg til {{count}} oppskrifter"
+    "addCount_other": "Legg til {{count}} oppskrifter",
+    "addOwnHint": "Ikke blant oppskriftene? Legg den til som din egen rett — den havner på handlelisten også.",
+    "amountPlaceholder": "Mengde (valgfritt)",
+    "addOwn": "Legg til"
   },
   "common": {
     "close": "Lukk",

@@ -446,7 +446,10 @@
     "selectSeveral": "Välj flera",
     "selectPrompt": "Välj recept att lägga till",
     "addCount_one": "Lägg till {{count}} recept",
-    "addCount_other": "Lägg till {{count}} recept"
+    "addCount_other": "Lägg till {{count}} recept",
+    "addOwnHint": "Inte bland recepten? Lägg till den som din egen rätt — den hamnar på inköpslistan också.",
+    "amountPlaceholder": "Mängd (valfritt)",
+    "addOwn": "Lägg till"
   },
   "common": {
     "close": "Stäng",

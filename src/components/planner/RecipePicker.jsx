@@ -18,7 +18,7 @@ import { recipeHasAvoidedAllergen } from '../../data/allergens'
  *
  * Callers without `onSelectMany` keep single-select only.
  */
-export default function RecipePicker({ onSelect, onSelectMany, onClose, title }) {
+export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onClose, title }) {
   const { t, i18n } = useTranslation()
   const recipes = useStore(s => s.recipes)
   const recipeCategories = useStore(s => s.recipeCategories)
@@ -73,6 +73,20 @@ export default function RecipePicker({ onSelect, onSelectMany, onClose, title })
   const confirmMany = () => {
     if (selected.length === 0) return
     onSelectMany(selected)
+    onClose()
+  }
+
+  // ── your own item ───────────────────────────────────────────────────────
+  // Offered off the search box rather than as a separate screen: by the
+  // time you've typed "Pizza" and found nothing, you've already said what
+  // you want. The amount is a second, optional field so it can flow to the
+  // shopping list the way "Legg til vare" does.
+  const canAddCustom = typeof onAddCustom === 'function'
+  const [customAmount, setCustomAmount] = useState('')
+  const submitCustom = () => {
+    const name = search.trim()
+    if (!name) return
+    onAddCustom(name, customAmount.trim())
     onClose()
   }
 
@@ -283,6 +297,37 @@ export default function RecipePicker({ onSelect, onSelectMany, onClose, title })
           className="flex-1 overflow-y-auto px-4 pt-4 pb-4"
           style={{ scrollbarGutter: 'stable' }}
         >
+          {/* Add what you typed as your own meal. Sits above the results
+              rather than only appearing when there are none, because a
+              search for "salat" matches recipes and you may still mean the
+              improvised one. Hidden while multi-selecting — that mode is
+              about picking existing recipes. */}
+          {canAddCustom && !multi && search.trim() && (
+            <div className="mb-3 rounded-xl border border-indigo-200 bg-indigo-50/60 p-3">
+              <p className="text-xs text-slate-600 mb-2">
+                {t('recipePicker.addOwnHint', {
+                  defaultValue: 'Not in your recipes? Add it as your own meal — it goes on the shopping list too.',
+                })}
+              </p>
+              <div className="flex gap-2">
+                <span className="flex-1 min-w-0 inline-flex items-center px-3 h-9 rounded-lg bg-white border border-slate-200 text-sm font-medium text-slate-800 truncate">
+                  {search.trim()}
+                </span>
+                <input
+                  type="text"
+                  value={customAmount}
+                  onChange={e => setCustomAmount(e.target.value)}
+                  onKeyDown={e => { if (e.key === 'Enter') submitCustom() }}
+                  placeholder={t('recipePicker.amountPlaceholder', { defaultValue: 'Amount (optional)' })}
+                  className="input w-32 h-9 text-sm"
+                />
+                <button onClick={submitCustom} className="btn-primary h-9 px-3 text-sm whitespace-nowrap">
+                  {t('recipePicker.addOwn', { defaultValue: 'Add' })}
+                </button>
+              </div>
+            </div>
+          )}
+
           {filtered.length === 0 ? (
             <div className="text-center py-10 text-sm text-slate-400">{t('recipePicker.noResults')}</div>
           ) : (

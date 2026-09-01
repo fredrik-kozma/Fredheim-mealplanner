@@ -219,6 +219,40 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
   )
 }
 
+/**
+ * A meal the user typed in — no recipe, so nothing to open, scale or drag.
+ * Kept visually lighter than a recipe chip (dashed border, no thumbnail) so
+ * a glance at the week tells you which meals the app can actually cook from
+ * and which are just written down.
+ */
+function CustomSlotChip({ day, slot, item }) {
+  const { t } = useTranslation()
+  const removeCustomFromSlot = useStore(s => s.removeCustomFromSlot)
+
+  return (
+    <div className="group relative bg-white/90 border border-dashed border-slate-300 rounded-lg p-2 pr-7">
+      <div className="flex items-start gap-1.5 min-w-0">
+        <span className="text-sm leading-none mt-0.5 flex-shrink-0" aria-hidden>📝</span>
+        <div className="min-w-0">
+          <p className="text-xs font-medium text-slate-700 break-words">{item.name}</p>
+          {item.amount && (
+            <p className="text-[10px] text-slate-400 mt-0.5">{item.amount}</p>
+          )}
+        </div>
+      </div>
+      <button
+        onClick={() => removeCustomFromSlot(day, slot, item.id)}
+        className="absolute top-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-slate-300 hover:text-rose-500 hover:bg-rose-50 transition-colors"
+        title={t('common.remove', { defaultValue: 'Remove' })}
+      >
+        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  )
+}
+
 export default function MealSlot({ day, slot, onAdd }) {
   const { t, i18n } = useTranslation()
   const currentLang = i18n.language?.slice(0, 2) || 'en'
@@ -231,11 +265,14 @@ export default function MealSlot({ day, slot, onAdd }) {
     data: { day, slot },
   })
 
-  // Normalize items (handles any leftover string-form items just in case)
+  // Normalize items (handles any leftover string-form items just in case).
+  // A custom entry has no recipe behind it by definition, so it must not be
+  // filtered out by the recipe lookup the way a dangling recipe id is.
   const slotPairs = slotItems
     .map(it => {
       const norm = normalizeSlotItem(it)
       if (!norm) return null
+      if (norm.kind === 'custom') return { item: norm, recipe: null }
       const recipe = recipes.find(r => r.id === norm.recipeId)
       return recipe ? { item: norm, recipe } : null
     })
@@ -262,14 +299,18 @@ export default function MealSlot({ day, slot, onAdd }) {
       {/* Recipe chips in slot */}
       <div className="space-y-1.5">
         {slotPairs.map(({ item, recipe }) => (
-          <SlotItemChip
-            key={item.recipeId}
-            day={day}
-            slot={slot}
-            item={item}
-            recipe={recipe}
-            currentLang={currentLang}
-          />
+          item.kind === 'custom' ? (
+            <CustomSlotChip key={item.id} day={day} slot={slot} item={item} />
+          ) : (
+            <SlotItemChip
+              key={item.recipeId}
+              day={day}
+              slot={slot}
+              item={item}
+              recipe={recipe}
+              currentLang={currentLang}
+            />
+          )
         ))}
       </div>
 

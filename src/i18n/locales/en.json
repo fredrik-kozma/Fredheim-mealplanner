@@ -446,7 +446,10 @@
     "selectSeveral": "Select several",
     "selectPrompt": "Select recipes to add",
     "addCount_one": "Add {{count}} recipe",
-    "addCount_other": "Add {{count}} recipes"
+    "addCount_other": "Add {{count}} recipes",
+    "addOwnHint": "Not in your recipes? Add it as your own meal — it goes on the shopping list too.",
+    "amountPlaceholder": "Amount (optional)",
+    "addOwn": "Add"
   },
   "common": {
     "close": "Close",

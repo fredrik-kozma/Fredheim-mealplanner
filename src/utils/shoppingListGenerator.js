@@ -137,22 +137,37 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
     }
   }
 
+  // Meals the user typed in themselves. They have no ingredients to expand,
+  // so the name is the shopping line — the same thing "Legg til vare"
+  // produces, just reached from the planner.
+  const customPlanned = []
+
   for (const day of Object.values(weekPlan)) {
     for (const slotRecipes of Object.values(day)) {
       for (const item of slotRecipes) {
-        // Accept both legacy "id" strings and new { recipeId, servings } shape.
+        // Accept legacy "id" strings, { recipeId, servings }, and the
+        // user's own { kind: 'custom', name, amount } entries.
         const norm = typeof item === 'string'
           ? { recipeId: item, servings: null, excludeFromShopping: false }
-          : (item && item.recipeId
+          : (item && item.kind === 'custom' && item.name
             ? {
-              recipeId: item.recipeId,
-              servings: item.servings ?? null,
+              custom: true,
+              id: item.id,
+              name: item.name,
+              amount: item.amount || '',
               excludeFromShopping: Boolean(item.excludeFromShopping),
             }
-            : null)
+            : (item && item.recipeId
+              ? {
+                recipeId: item.recipeId,
+                servings: item.servings ?? null,
+                excludeFromShopping: Boolean(item.excludeFromShopping),
+              }
+              : null))
         if (!norm) continue
         // Meals covered by batch cooking or leftovers buy nothing.
         if (norm.excludeFromShopping) continue
+        if (norm.custom) { customPlanned.push(norm); continue }
         collect(allIngredients, norm.recipeId, norm.servings)
       }
     }
@@ -209,6 +224,26 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
     forcedCategory: BATCH_CATEGORY,
     idPrefix: 'batch__',
   })
+
+  // Custom planned meals join the aisles like anything else, so "Pizza"
+  // files under its keyword rather than in a bucket of its own. The amount
+  // stays free text — it was typed, not measured, so there is nothing to
+  // total up and nothing to convert.
+  for (const c of customPlanned) {
+    const cat = categoriseIngredient(c.name)
+    if (!byCat[cat]) byCat[cat] = []
+    byCat[cat].push({
+      // Namespaced by the slot item's own id: two identical names on
+      // different days stay two separate lines to tick off.
+      id: 'planned__' + c.id,
+      quantity: c.amount || '',
+      unit: '',
+      name: c.name,
+      category: cat,
+      recipeNames: [],
+      sources: [],
+    })
+  }
 
   // Sort categories and items within
   const categoryOrder = Object.keys(INGREDIENT_CATEGORIES)
