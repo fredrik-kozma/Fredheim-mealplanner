@@ -130,7 +130,9 @@ export default function WeeklyPlanner() {
         return {
           recipeId: recipe.id,
           title: titleOf(recipe),
-          servings: norm.servings,
+          // The effective count, not just an override — the slot chips on
+          // screen show it on every dish, so the printed grid should too.
+          servings: norm.servings ?? familySize ?? 4,
           imageUrl: recipe.imageUrl || null,
           // Flagged so the sheet shows at a glance which dishes are
           // already covered by the batch prep listed further down.
@@ -232,7 +234,12 @@ export default function WeeklyPlanner() {
           const recipe = recipes.find(r => r.id === norm.recipeId)
           if (!recipe) continue
           const tr = recipe.translations?.[currentLang]
-          const servings = norm.servings || recipe.servings || familySize || 4
+          // Same rule the slot chips and the shopping list use: a per-slot
+          // override wins, otherwise the household size chosen for the
+          // week. The recipe's own default must not come first — with a
+          // household of 6 and a recipe written for 4, the printed
+          // amounts would silently be for 4.
+          const servings = norm.servings ?? familySize ?? 4
           const ingredients = (tr?.ingredients || recipe.ingredients || []).map(ing => ({
             name: ing.name,
             quantityLabel: formatScaledQuantity({
