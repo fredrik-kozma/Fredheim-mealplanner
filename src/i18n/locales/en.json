@@ -245,7 +245,12 @@
     "printWeek": "Print menu",
     "weeklyMenu": "Weekly Menu",
     "printMeals": "meals",
-    "printBatchTag": "batch"
+    "printBatchTag": "batch",
+    "printServingsShort": "p",
+    "printMenuBook": "Print all recipes",
+    "printMenuBookHint": "Every recipe for the week, in one document",
+    "menuBookContents": "Contents",
+    "menuBookRecipes": "recipes"
   },
   "categories": {
     "Breakfast": "Breakfast",

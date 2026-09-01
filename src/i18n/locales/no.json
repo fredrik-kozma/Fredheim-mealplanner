@@ -245,7 +245,12 @@
     "printWeek": "Skriv ut meny",
     "weeklyMenu": "Ukemeny",
     "printMeals": "måltider",
-    "printBatchTag": "storkok"
+    "printBatchTag": "storkok",
+    "printServingsShort": "p",
+    "printMenuBook": "Skriv ut alle oppskrifter",
+    "printMenuBookHint": "Alle ukens oppskrifter i ett dokument",
+    "menuBookContents": "Innhold",
+    "menuBookRecipes": "oppskrifter"
   },
   "categories": {
     "Breakfast": "Frokost",
