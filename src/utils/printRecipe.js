@@ -129,11 +129,14 @@ export function printRecipe(opts) {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+  /* Landscape. A recipe is two lists side by side — ingredients you read
+     once and steps you work through — so the wide page puts them next to
+     each other instead of pushing the steps below the fold. */
   .sheet {
-    width: 210mm;
-    min-height: 297mm;
+    width: 297mm;
+    min-height: 210mm;
     margin: 16px auto;
-    padding: 14mm 14mm 12mm 14mm;
+    padding: 11mm 12mm 10mm 12mm;
     background: #fff;
     box-shadow: 0 2px 18px rgba(15, 23, 42, .08);
     display: flex;
@@ -155,7 +158,7 @@ export function printRecipe(opts) {
     margin-bottom: 14px;
   }
   .logo {
-    height: 140px;
+    height: 52px;
     width: auto;
     flex-shrink: 0;
   }
@@ -169,11 +172,24 @@ export function printRecipe(opts) {
   }
   .brand-strip b { color: var(--brand-dark); letter-spacing: 1px; }
 
-  .title-block { margin-bottom: 12px; }
+  /* Thumbnail beside the title rather than a banner across the page —
+     the same relationship the planner grid uses, and it leaves the width
+     for the two content columns. */
+  .title-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .title-thumb {
+    width: 30mm; height: 30mm; flex-shrink: 0;
+    object-fit: cover; border-radius: 8px; display: block;
+  }
+  .title-text { min-width: 0; flex: 1; }
   h1 {
-    font-size: 30px;
+    font-size: 26px;
     line-height: 1.15;
-    margin: 0 0 6px 0;
+    margin: 0 0 5px 0;
     color: var(--ink);
     font-weight: 800;
     letter-spacing: -0.3px;
@@ -371,7 +387,7 @@ export function printRecipe(opts) {
   /* @page margin lets every printed page (incl. pages 2+ in multi-page
      mode) start with proper white space at the top/sides. The on-screen
      preview keeps its own .sheet padding for the page-card look. */
-  @page { size: A4 portrait; margin: 14mm; }
+  @page { size: A4 landscape; margin: 12mm; }
   @media print {
     html, body { background: #fff; }
     .sheet {
@@ -395,11 +411,12 @@ export function printRecipe(opts) {
       </div>
 
       <div class="title-block">
-        <h1>${escapeHtml(title)}</h1>
-        ${description ? `<p class="desc">${escapeHtml(description)}</p>` : ''}
+        ${imageUrl ? `<img class="title-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)}" />` : ''}
+        <div class="title-text">
+          <h1>${escapeHtml(title)}</h1>
+          ${description ? `<p class="desc">${escapeHtml(description)}</p>` : ''}
+        </div>
       </div>
-
-      ${imageUrl ? `<div class="hero"><img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)}" /></div>` : ''}
 
       ${chips.length ? `<div class="chips">${chips.join('')}</div>` : ''}
 
@@ -477,12 +494,12 @@ export function printRecipe(opts) {
     }
   }
 
-  // Run once, and again after the hero image decodes (its height can shift).
+  // Run once, and again after the thumbnail decodes (its height can shift).
   layoutRecipe();
-  var heroImg = document.querySelector('.hero img');
-  if (heroImg && !heroImg.complete) {
-    heroImg.addEventListener('load', layoutRecipe);
-    heroImg.addEventListener('error', layoutRecipe);
+  var thumb = document.querySelector('.title-thumb');
+  if (thumb && !thumb.complete) {
+    thumb.addEventListener('load', layoutRecipe);
+    thumb.addEventListener('error', layoutRecipe);
   }
 
   // Open the print dialog automatically after images have had a chance to load.
