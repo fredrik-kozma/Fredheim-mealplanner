@@ -14,6 +14,7 @@ import { STARTER_PLANS } from '../../data/starterPlans'
 import { printWeekPlan } from '../../utils/printWeekPlan'
 import { printMenuBook } from '../../utils/printMenuBook'
 import { formatScaledQuantity } from '../../utils/scaleIngredient'
+import { recipeConditions } from '../../data/conditionTags'
 import MealSlot from './MealSlot'
 import RecipePicker from '../planner/RecipePicker'
 import PlannerTemplates from './PlannerTemplates'
@@ -242,6 +243,15 @@ export default function WeeklyPlanner() {
             title: titleOf(recipe),
             description: tr?.description || recipe.description || '',
             imageUrl: recipe.imageUrl || null,
+            // Same meta the standalone recipe sheet carries, so a page in
+            // the booklet is the same object as one printed on its own.
+            category: t(`categories.${recipe.category}`, { defaultValue: recipe.category }),
+            prepTime: recipe.prepTime ?? null,
+            cookTime: recipe.cookTime ?? null,
+            conditions: recipeConditions(recipe).map(c => ({
+              icon: c.icon,
+              label: t(`conditions.${c.id}`, { defaultValue: c.id }),
+            })),
             ingredients,
             steps: tr?.steps || recipe.steps || [],
           })
@@ -266,7 +276,10 @@ export default function WeeklyPlanner() {
         contents: t('planner.menuBookContents', { defaultValue: 'Contents' }),
         ingredients: t('recipeDetail.ingredients'),
         instructions: t('recipeDetail.instructions'),
-        servings: t('settings.people'),
+        servings: t('recipeDetail.servingsLabel', { defaultValue: 'Servings' }),
+        prep: t('recipeDetail.prepLabel', { defaultValue: 'Prep' }),
+        cook: t('recipeDetail.cookLabel', { defaultValue: 'Cook' }),
+        goodFor: t('recipeDetail.goodFor', { defaultValue: 'Good for' }),
         printedOn: t('recipeDetail.printedOn', { defaultValue: 'Printed' }),
         recipesCount: t('planner.menuBookRecipes', { defaultValue: 'recipes' }),
       },
