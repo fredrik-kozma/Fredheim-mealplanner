@@ -12,6 +12,8 @@ import { useTranslation } from 'react-i18next'
 import useStore, { getPlanDayKeys, normalizeSlotItem } from '../../store/useStore'
 import { STARTER_PLANS } from '../../data/starterPlans'
 import { printWeekPlan } from '../../utils/printWeekPlan'
+import { printMenuBook } from '../../utils/printMenuBook'
+import { formatScaledQuantity } from '../../utils/scaleIngredient'
 import MealSlot from './MealSlot'
 import RecipePicker from '../planner/RecipePicker'
 import PlannerTemplates from './PlannerTemplates'
@@ -90,6 +92,8 @@ export default function WeeklyPlanner() {
   const batchCook = useStore(s => s.batchCook) || []
   const activeStarterPlanId = useStore(s => s.activeStarterPlanId)
   const activeWeekName = useStore(s => s.activeWeekName)
+  // Printed amounts follow the same metric/US preference as the screen.
+  const units = useStore(s => s.units)
 
   const dayKeys = getPlanDayKeys(weekPlan)
   const currentLang = i18n.language?.slice(0, 2) || 'en'
@@ -100,36 +104,58 @@ export default function WeeklyPlanner() {
     0
   )
 
-  // Build the printable weekly menu from what's on screen. Days and slots
-  // with nothing in them are dropped rather than printed empty — a week
-  // that deliberately has no dinner (the intermittent-fasting plan) should
-  // read as two meals a day, not as three with a blank.
+  // Build the printable weekly menu from what's on screen.
+  //
+  // The sheet is a grid mirroring the planner, so unlike the old card
+  // layout it keeps empty cells: a column with a gap in it is what makes a
+  // calendar readable. Slot rows that are empty across every single day
+  // are still dropped — a week that deliberately has no dinner (the
+  // intermittent-fasting plan) should read as two meals a day rather than
+  // three with a blank row running the width of the page.
+  function buildPrintDays() {
+    const today = new Date().toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase()
+    const itemsFor = (day, slot) => (weekPlan[day]?.[slot] || [])
+      .map(it => {
+        const norm = normalizeSlotItem(it)
+        if (!norm) return null
+        const recipe = recipes.find(r => r.id === norm.recipeId)
+        if (!recipe) return null
+        return {
+          recipeId: recipe.id,
+          title: titleOf(recipe),
+          servings: norm.servings,
+          imageUrl: recipe.imageUrl || null,
+          // Flagged so the sheet shows at a glance which dishes are
+          // already covered by the batch prep listed further down.
+          batch: Boolean(norm.excludeFromShopping),
+        }
+      })
+      .filter(Boolean)
+
+    const usedSlots = mealSlots.filter(slot => dayKeys.some(day => itemsFor(day, slot).length > 0))
+    const days = dayKeys
+      .map(day => {
+        const slots = {}
+        for (const slot of usedSlots) {
+          slots[t(`planner.mealSlots.${slot}`, { defaultValue: slot })] = itemsFor(day, slot)
+        }
+        return {
+          label: t(`planner.days.${day}`, { defaultValue: day }),
+          isToday: day === today,
+          slots,
+          hasAny: usedSlots.some(slot => itemsFor(day, slot).length > 0),
+        }
+      })
+      .filter(d => d.hasAny)
+
+    return {
+      days,
+      slotLabels: usedSlots.map(slot => t(`planner.mealSlots.${slot}`, { defaultValue: slot })),
+    }
+  }
+
   function handlePrintWeek() {
-    const printDays = dayKeys
-      .map(day => ({
-        label: t(`planner.days.${day}`, { defaultValue: day }),
-        slots: mealSlots
-          .map(slot => ({
-            label: t(`planner.mealSlots.${slot}`, { defaultValue: slot }),
-            items: (weekPlan[day]?.[slot] || [])
-              .map(it => {
-                const norm = normalizeSlotItem(it)
-                if (!norm) return null
-                const recipe = recipes.find(r => r.id === norm.recipeId)
-                if (!recipe) return null
-                return {
-                  title: titleOf(recipe),
-                  servings: norm.servings,
-                  // Flagged so the sheet shows at a glance which dishes are
-                  // already covered by the batch prep listed further down.
-                  batch: Boolean(norm.excludeFromShopping),
-                }
-              })
-              .filter(Boolean),
-          }))
-          .filter(sl => sl.items.length > 0),
-      }))
-      .filter(d => d.slots.length > 0)
+    const { days: printDays, slotLabels } = buildPrintDays()
 
     const printBatch = batchCook
       .map(b => {
@@ -158,6 +184,7 @@ export default function WeeklyPlanner() {
     printWeekPlan({
       title,
       familySize,
+      slotLabels,
       days: printDays,
       batchCook: printBatch,
       notes: weekNotes?.week || '',
@@ -171,6 +198,77 @@ export default function WeeklyPlanner() {
         notesTitle: t('planner.weekNotesTitle', { defaultValue: 'Smart tips' }),
         printedOn: t('recipeDetail.printedOn', { defaultValue: 'Printed' }),
         batchTag: t('planner.printBatchTag', { defaultValue: 'batch' }),
+        // Grid cells are ~37mm wide, so the servings marker has to be a
+        // suffix rather than a word.
+        servingsShort: t('planner.printServingsShort', { defaultValue: 'p' }),
+      },
+    })
+  }
+
+  // The whole week as one document: a contents page, then every recipe in
+  // cooking order, each scaled to the servings planned for that day.
+  //
+  // Walks days and slots in planner order rather than deduplicating, so a
+  // dish cooked twice in a week prints twice — once per day, each with its
+  // own amounts. One shared copy could only carry the right numbers for
+  // one of the days.
+  function handlePrintMenuBook() {
+    const entries = []
+    for (const day of dayKeys) {
+      for (const slot of mealSlots) {
+        for (const it of weekPlan[day]?.[slot] || []) {
+          const norm = normalizeSlotItem(it)
+          if (!norm) continue
+          const recipe = recipes.find(r => r.id === norm.recipeId)
+          if (!recipe) continue
+          const tr = recipe.translations?.[currentLang]
+          const servings = norm.servings || recipe.servings || familySize || 4
+          const ingredients = (tr?.ingredients || recipe.ingredients || []).map(ing => ({
+            name: ing.name,
+            quantityLabel: formatScaledQuantity({
+              quantity: ing.quantity,
+              unit: ing.unit,
+              fromServings: recipe.servings,
+              toServings: servings,
+              system: units || 'metric',
+              lang: currentLang,
+              scalesLinearly: ing.scalesLinearly !== false,
+            }),
+          }))
+          entries.push({
+            dayLabel: t(`planner.days.${day}`, { defaultValue: day }),
+            slotLabel: t(`planner.mealSlots.${slot}`, { defaultValue: slot }),
+            servings,
+            title: titleOf(recipe),
+            description: tr?.description || recipe.description || '',
+            imageUrl: recipe.imageUrl || null,
+            ingredients,
+            steps: tr?.steps || recipe.steps || [],
+          })
+        }
+      }
+    }
+
+    if (entries.length === 0) return
+
+    const starter = activeStarterPlanId ? STARTER_PLANS.find(p => p.id === activeStarterPlanId) : null
+    const bookTitle =
+      activeWeekName ||
+      (starter && (starter.translations?.[currentLang]?.name || starter.name)) ||
+      t('planner.weeklyMenu', { defaultValue: 'Weekly Menu' })
+
+    printMenuBook({
+      title: bookTitle,
+      familySize,
+      entries,
+      locale: i18n.language || undefined,
+      labels: {
+        contents: t('planner.menuBookContents', { defaultValue: 'Contents' }),
+        ingredients: t('recipeDetail.ingredients'),
+        instructions: t('recipeDetail.instructions'),
+        servings: t('settings.people'),
+        printedOn: t('recipeDetail.printedOn', { defaultValue: 'Printed' }),
+        recipesCount: t('planner.menuBookRecipes', { defaultValue: 'recipes' }),
       },
     })
   }
@@ -260,6 +358,17 @@ export default function WeeklyPlanner() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
             </svg>
             {t('planner.printWeek', { defaultValue: 'Print menu' })}
+          </button>
+          <button
+            onClick={handlePrintMenuBook}
+            disabled={mealCount === 0}
+            className="btn-secondary py-2 px-3.5 inline-flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            title={t('planner.printMenuBookHint', { defaultValue: 'Every recipe for the week, in one document' })}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+            </svg>
+            {t('planner.printMenuBook', { defaultValue: 'Print all recipes' })}
           </button>
           <button
             onClick={() => { if (confirm(t('planner.clearWeekConfirm'))) clearWeekPlan() }}

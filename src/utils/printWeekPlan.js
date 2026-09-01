@@ -1,16 +1,28 @@
 /**
  * Open a printable weekly menu in a new window and trigger the browser's
  * print dialog — an at-a-glance overview of what gets served each day.
+ * "Save as PDF" in that dialog is how you get a PDF; no PDF library is
+ * bundled, which matters when the app already ships a large bundle.
  *
- * Laid out as one card per day rather than a 7-column grid on purpose: a
- * grid gives each day ~25mm of width on A4, which forces long dish names
- * ("Chiapudding med søt mandelmelk og skogsbær") to truncate or wrap to
- * shreds. Cards flowed through two columns give each name the full column
- * width, so titles always land intact — the whole point of this printout.
+ * Laid out as the planner's own grid — days across, meal slots down — so
+ * the sheet reads like the screen it came from, with a thumbnail and the
+ * complete dish name in every cell.
  *
- * The caller passes pre-resolved, already-translated strings so this module
- * stays free of i18n, exactly like printRecipe.js and printShoppingList.js,
- * and shares their brand styling so all three feel like one family.
+ * That grid only works on landscape. A4 portrait gives each of seven days
+ * about 25mm, which shreds a name like "Chiapudding med søt mandelmelk og
+ * skogsbær"; landscape gives ~37mm, enough for a thumbnail above a name
+ * wrapping to a few lines. Titles here average 21 characters, so most sit
+ * on one or two lines and only the longest run to three.
+ *
+ * Fitting one sheet is handled the same way printRecipe.js does it:
+ * measure, scale down to a readable floor, and past that let the sheet
+ * flow to a second page rather than shrink into illegibility. That is the
+ * answer to "what if there are more recipes" — it degrades by shrinking
+ * first and paginating second, never by truncating a name.
+ *
+ * The caller passes pre-resolved, already-translated strings so this
+ * module stays free of i18n, exactly like printRecipe.js and
+ * printShoppingList.js, and shares their brand styling.
  */
 
 function escapeHtml(s) {
@@ -27,23 +39,23 @@ function escapeHtml(s) {
  * @param {object} opts
  * @param {string} opts.title                Week title (plan name, or a generic fallback)
  * @param {number} [opts.familySize]
+ * @param {string[]} opts.slotLabels         Meal-slot names, in planner order — these are the grid's rows
  * @param {Array<{
  *   label: string,
- *   slots: Array<{ label: string, items: Array<{ title: string, servings: number|null, batch?: boolean }> }>
- * }>} opts.days                             Days that actually have meals; empty slots already filtered out
+ *   isToday?: boolean,
+ *   slots: Object<string, Array<{ title: string, servings: number|null, batch?: boolean, imageUrl?: string|null }>>
+ * }>} opts.days                             One entry per planner day, keyed by slot label
  * @param {Array<{ title: string, servings: number|null, isText?: boolean }>} [opts.batchCook]
  * @param {string} [opts.notes]              Week-level "smart tips" prose
- * @param {object} opts.labels               Localized UI strings:
- *   { forPeople, people, meals, batchCook, notesTitle, printedOn, batchTag }
- * @param {string} [opts.locale]             BCP-47 tag for the printed date. Pass the
- *   app's language so a Norwegian sheet doesn't date itself in English —
- *   the browser locale (the default) is often not the app's.
+ * @param {object} opts.labels               { forPeople, people, meals, batchCook, notesTitle, printedOn, batchTag, servingsShort }
+ * @param {string} [opts.locale]             BCP-47 tag for the printed date
  * @param {string} [opts.logoUrl='/fredheim-logo.svg']
  */
 export function printWeekPlan(opts) {
   const {
     title = 'Weekly Menu',
     familySize,
+    slotLabels = [],
     days = [],
     batchCook = [],
     notes = '',
@@ -60,75 +72,68 @@ export function printWeekPlan(opts) {
     notesTitle: 'Smart tips',
     printedOn: 'Printed',
     batchTag: 'batch',
+    servingsShort: 'p',
     ...labels,
   }
 
-  const totalMeals = days.reduce(
-    (sum, d) => sum + d.slots.reduce((s2, sl) => s2 + sl.items.length, 0),
-    0
-  )
-
-  // A serving count is only worth printing when it was explicitly set on the
-  // slot. Items left to follow the household size say nothing per-line — the
-  // header chip already states what the whole sheet is portioned for.
-  const servingBadge = (n) =>
-    n == null ? '' : `<span class="serv">👥&nbsp;${escapeHtml(String(n))}</span>`
-
-  const dayCards = days
-    .map(
-      (day) => `
-      <section class="day">
-        <div class="day-head">
-          <span class="day-name">${escapeHtml(day.label)}</span>
-        </div>
-        ${day.slots
-          .map(
-            (slot) => `
-          <div class="slot">
-            <div class="slot-label">${escapeHtml(slot.label)}</div>
-            <ul class="dishes">
-              ${slot.items
-                .map(
-                  (it) => `
-                <li>
-                  <span class="dish">${escapeHtml(it.title)}${
-                    it.batch ? `<span class="batch-tag">${escapeHtml(L.batchTag)}</span>` : ''
-                  }</span>
-                  ${servingBadge(it.servings)}
-                </li>`
-                )
-                .join('')}
-            </ul>
-          </div>`
-          )
-          .join('')}
-      </section>`
-    )
-    .join('')
-
-  const batchItems = batchCook
-    .map(
-      (b) => `
-      <li>
-        <span class="dish">${escapeHtml(b.title)}</span>
-        ${b.isText ? '' : servingBadge(b.servings)}
-      </li>`
-    )
-    .join('')
-
-  const printedDate = new Date().toLocaleDateString(locale || undefined, {
+  const printedOn = new Date().toLocaleDateString(locale || undefined, {
     year: 'numeric', month: 'long', day: 'numeric',
   })
 
+  let totalMeals = 0
+  for (const d of days) {
+    for (const slot of slotLabels) totalMeals += (d.slots?.[slot] || []).length
+  }
+
   const metaChips = []
   if (familySize) {
-    metaChips.push(
-      `<span class="chip chip--accent">👥 ${escapeHtml(L.forPeople)} <b>${familySize}</b> ${escapeHtml(L.people)}</span>`
-    )
+    metaChips.push(`<span class="chip chip--accent">${escapeHtml(L.forPeople)} <b>${familySize}</b> ${escapeHtml(L.people)}</span>`)
   }
   if (totalMeals) {
     metaChips.push(`<span class="chip">🍽 <b>${totalMeals}</b> ${escapeHtml(L.meals)}</span>`)
   }
+
+  function cell(items) {
+    if (!items || items.length === 0) return '<td class="cell cell--empty"></td>'
+    const dishes = items.map(it => `
+      <div class="dish">
+        ${it.imageUrl
+          ? `<img class="thumb" src="${escapeHtml(it.imageUrl)}" alt="" />`
+          : '<div class="thumb thumb--none">🍽</div>'}
+        <div class="dish-text">
+          <span class="dish-name">${escapeHtml(it.title)}</span>
+          ${it.servings ? `<span class="dish-serv">${it.servings}${escapeHtml(L.servingsShort)}</span>` : ''}
+          ${it.batch ? `<span class="dish-batch">${escapeHtml(L.batchTag)}</span>` : ''}
+        </div>
+      </div>`).join('')
+    return `<td class="cell">${dishes}</td>`
+  }
+
+  const headRow = `
+    <tr>
+      <th class="corner"></th>
+      ${days.map(d => `<th class="day-head${d.isToday ? ' day-head--today' : ''}">${escapeHtml(d.label)}</th>`).join('')}
+    </tr>`
+
+  const bodyRows = slotLabels.map(slot => `
+    <tr>
+      <th class="slot-head">${escapeHtml(slot)}</th>
+      ${days.map(d => cell(d.slots?.[slot])).join('')}
+    </tr>`).join('')
+
+  const batchBlock = batchCook.length ? `
+    <section class="extra">
+      <h2>${escapeHtml(L.batchCook)}</h2>
+      <ul class="batch">
+        ${batchCook.map(b => `<li>${escapeHtml(b.title)}${b.servings && !b.isText ? ` <span class="muted">· ${b.servings}${escapeHtml(L.servingsShort)}</span>` : ''}</li>`).join('')}
+      </ul>
+    </section>` : ''
+
+  const notesBlock = notes && notes.trim() ? `
+    <section class="extra">
+      <h2>${escapeHtml(L.notesTitle)}</h2>
+      <p class="notes">${escapeHtml(notes)}</p>
+    </section>` : ''
 
   const html = `<!doctype html>
 <html>
@@ -145,6 +150,10 @@ export function printWeekPlan(opts) {
     --line: #e2e8f0;
     --accent: #eef9f1;
     --accent-line: #bbe5c6;
+    --indigo: #4f46e5;
+    --indigo-soft: #eef2ff;
+    --amber: #92400e;
+    --amber-soft: #fef3c7;
   }
   * { box-sizing: border-box; }
   html, body {
@@ -155,318 +164,216 @@ export function printWeekPlan(opts) {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+  /* Landscape sheet — the grid needs the width. */
   .sheet {
-    width: 210mm;
-    min-height: 297mm;
+    width: 297mm;
+    min-height: 210mm;
     margin: 16px auto;
-    padding: 14mm 14mm 12mm 14mm;
+    padding: 10mm 10mm 9mm 10mm;
     background: #fff;
     box-shadow: 0 2px 18px rgba(15, 23, 42, .08);
     display: flex;
     flex-direction: column;
   }
-  .scale {
-    transform-origin: top left;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
+  .scale { transform-origin: top left; display: flex; flex-direction: column; flex: 1; }
+
   .header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 16px;
     border-bottom: 2px solid var(--brand);
-    padding-bottom: 10px;
-    margin-bottom: 14px;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
   }
-  .logo { height: 140px; width: auto; flex-shrink: 0; }
+  .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .logo { height: 46px; width: auto; flex-shrink: 0; }
+  h1 {
+    font-size: 20px; line-height: 1.15; margin: 0;
+    color: var(--ink); font-weight: 800; letter-spacing: -0.3px;
+  }
   .brand-strip {
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    text-align: right;
-    padding-top: 6px;
+    font-size: 9px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.4px; text-align: right;
   }
   .brand-strip b { color: var(--brand-dark); letter-spacing: 1px; }
 
-  .title-block { margin-bottom: 10px; }
-  h1 {
-    font-size: 26px;
-    line-height: 1.15;
-    margin: 0;
-    color: var(--ink);
-    font-weight: 800;
-    letter-spacing: -0.3px;
-  }
-
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
   .chip {
-    background: #f8fafc;
-    border: 1px solid var(--line);
-    color: var(--ink-soft);
-    font-size: 11px;
-    padding: 5px 10px;
-    border-radius: 999px;
-    line-height: 1;
+    background: #f8fafc; border: 1px solid var(--line); color: var(--ink-soft);
+    font-size: 10px; padding: 4px 9px; border-radius: 999px; line-height: 1;
   }
   .chip b { color: var(--ink); font-weight: 700; }
-  .chip--accent {
-    background: var(--accent);
-    border-color: var(--accent-line);
-    color: var(--brand-dark);
-    font-weight: 700;
-  }
+  .chip--accent { background: var(--accent); border-color: var(--accent-line); color: var(--brand-dark); font-weight: 700; }
 
-  /* Day cards flowed through two columns. Each card stays whole. */
-  .days { column-count: 2; column-gap: 14px; }
-  .day {
-    break-inside: avoid;
-    page-break-inside: avoid;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 12px;
-  }
+  /* ── the week grid ───────────────────────────────────────────────── */
+  table.week { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  .corner { width: 17mm; border: none; }
   .day-head {
-    background: var(--accent);
-    border-bottom: 1px solid var(--accent-line);
-    padding: 6px 10px;
+    font-size: 10.5px; font-weight: 700; color: var(--ink-soft);
+    padding: 4px 3px; text-align: center;
+    border-bottom: 1px solid var(--line);
   }
-  .day-name {
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--brand-dark);
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
+  /* Today is highlighted on screen; carry that through so the sheet and
+     the planner read the same. */
+  .day-head--today {
+    background: var(--indigo); color: #fff;
+    border-radius: 6px 6px 0 0; border-bottom-color: var(--indigo);
   }
-  .slot { padding: 6px 10px; border-bottom: 1px dotted var(--line); }
-  .slot:last-child { border-bottom: 0; }
-  .slot-label {
-    font-size: 8.5px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--muted);
-    font-weight: 800;
-    margin-bottom: 3px;
+  .slot-head {
+    font-size: 8.5px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .6px;
+    text-align: left; vertical-align: middle;
+    padding: 4px 6px 4px 0; white-space: nowrap;
   }
-  ul.dishes { list-style: none; padding: 0; margin: 0; }
-  ul.dishes li {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    padding: 2px 0;
-    font-size: 11px;
-    line-height: 1.35;
+  .cell {
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 3px;
+    vertical-align: top;
+    background: #fff;
   }
-  /* The dish name gets the whole column and wraps rather than truncating —
-     a printed menu with a clipped title is useless. */
-  .dish { flex: 1; color: var(--ink); min-width: 0; }
-  .serv {
-    color: var(--ink-soft);
-    font-weight: 600;
-    font-size: 9.5px;
-    white-space: nowrap;
-    font-variant-numeric: tabular-nums;
+  .cell--empty { background: #fafbfc; }
+
+  .dish { display: flex; gap: 4px; align-items: flex-start; padding: 2px; }
+  .dish + .dish { border-top: 1px dashed var(--line); margin-top: 3px; padding-top: 4px; }
+  .thumb {
+    width: 11mm; height: 11mm; flex-shrink: 0;
+    object-fit: cover; border-radius: 4px; display: block;
+    background: var(--indigo-soft);
   }
-  .batch-tag {
-    display: inline-block;
-    margin-left: 5px;
-    padding: 1px 5px;
-    border-radius: 999px;
-    background: #fef3c7;
-    color: #92400e;
-    font-size: 7.5px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    vertical-align: 1px;
+  .thumb--none {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: #a5b4fc;
+  }
+  .dish-text { min-width: 0; flex: 1; }
+  /* The whole point of the sheet: names are never truncated. They wrap,
+     and the fit pass below shrinks the page rather than clipping them. */
+  .dish-name {
+    display: block;
+    font-size: 8.5px; line-height: 1.2; font-weight: 600; color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+  .dish-serv { font-size: 7.5px; color: var(--muted); }
+  .dish-batch {
+    font-size: 6.5px; font-weight: 700; text-transform: uppercase;
+    background: var(--amber-soft); color: var(--amber);
+    padding: 1px 3px; border-radius: 3px; margin-left: 3px; white-space: nowrap;
   }
 
-  .block {
-    break-inside: avoid;
-    page-break-inside: avoid;
-    margin-top: 4px;
-    padding-top: 10px;
-    border-top: 1px solid var(--line);
+  /* ── below the grid ──────────────────────────────────────────────── */
+  .extras { display: flex; gap: 14px; margin-top: 10px; align-items: flex-start; }
+  .extra { flex: 1; break-inside: avoid; }
+  .extra h2 {
+    font-size: 9.5px; font-weight: 700; color: var(--brand-dark);
+    text-transform: uppercase; letter-spacing: .8px;
+    margin: 0 0 4px; padding-bottom: 3px; border-bottom: 1px solid var(--accent-line);
   }
-  .block h2 {
-    font-size: 11px;
-    margin: 0 0 6px 0;
-    color: var(--brand-dark);
-    text-transform: uppercase;
-    letter-spacing: 1.6px;
-    font-weight: 800;
-  }
-  .block ul.dishes { column-count: 2; column-gap: 14px; }
-  .block ul.dishes li { break-inside: avoid; }
-  .notes-text {
-    font-size: 10px;
-    line-height: 1.5;
-    color: var(--ink-soft);
-    margin: 0;
-    white-space: pre-wrap;
-  }
+  .batch { margin: 0; padding-left: 14px; }
+  .batch li { font-size: 9px; line-height: 1.45; color: var(--ink-soft); }
+  .muted { color: var(--muted); }
+  .notes { margin: 0; font-size: 9px; line-height: 1.45; color: var(--ink-soft); white-space: pre-line; }
 
   .footer {
-    margin-top: 12px;
-    padding-top: 8px;
+    margin-top: auto; padding-top: 8px;
     border-top: 1px solid var(--line);
-    text-align: center;
-    color: var(--muted);
-    font-size: 9.5px;
-    letter-spacing: 0.8px;
+    display: flex; justify-content: space-between;
+    font-size: 8.5px; color: var(--muted);
   }
-  .footer .coop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    margin-bottom: 6px;
-    font-size: 9px;
-    color: var(--ink-soft);
-    letter-spacing: 0.4px;
-  }
-  .footer .coop img { height: 16px; width: auto; object-fit: contain; }
-  .footer .coop .dot { color: var(--muted); padding: 0 2px; }
 
-  .print-btn {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    background: var(--brand);
-    color: #fff;
-    border: 0;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 13px;
-    padding: 10px 18px;
-    cursor: pointer;
-    box-shadow: 0 6px 18px rgba(34, 178, 76, .35);
-    z-index: 999;
-  }
-  .print-btn:hover { background: var(--brand-dark); }
-
-  /* ── Print break protections ────────────────────────────────────────── */
-  .header { break-after: avoid; page-break-after: avoid; }
-  .title-block { break-after: avoid; page-break-after: avoid; }
-  .chips { break-inside: avoid; page-break-inside: avoid; }
-  .footer { break-inside: avoid; page-break-inside: avoid; }
-
-  /* ── Multi-page mode ─────────────────────────────────────────────────
-     A very full week (many dishes per slot, or extra days) drops the scale
-     transform and flows across A4 sheets instead of shrinking to unreadable
-     type. Single-column there, so a card never straddles a page break. */
-  .sheet.multi-page { min-height: 0; height: auto; }
-  .sheet.multi-page .scale { flex: none; display: block; }
-  .sheet.multi-page .days { column-count: 1; }
-
-  @page { size: A4 portrait; margin: 14mm; }
   @media print {
     html, body { background: #fff; }
     .sheet {
-      margin: 0;
-      box-shadow: none;
-      width: auto;
-      min-height: 0;
-      padding: 0;
+      width: auto; min-height: 0; margin: 0;
+      padding: 0; box-shadow: none;
     }
-    .print-btn { display: none; }
+    @page { size: A4 landscape; margin: 10mm; }
+    .sheet.multi-page .scale { flex: none; display: block; }
+    tr, .dish, .extra { break-inside: avoid; page-break-inside: avoid; }
   }
 </style>
 </head>
 <body>
-  <button class="print-btn" onclick="window.print()">🖨 Print</button>
-  <div class="sheet">
+  <div class="sheet" id="sheet">
     <div class="scale" id="scale">
       <div class="header">
-        <img class="logo" src="${escapeHtml(logoUrl)}" alt="Fredheim Livsstilssenter" onerror="this.style.display='none'" />
-        <div class="brand-strip"><b>Fredheim</b> · Livsstilssenter</div>
-      </div>
-
-      <div class="title-block">
-        <h1>${escapeHtml(title)}</h1>
+        <div class="header-left">
+          <img class="logo" src="${escapeHtml(logoUrl)}" alt="" onerror="this.style.display='none'" />
+          <h1>${escapeHtml(title)}</h1>
+        </div>
+        <div class="brand-strip"><b>Fredheim</b><br />Livsstilssenter</div>
       </div>
 
       ${metaChips.length ? `<div class="chips">${metaChips.join('')}</div>` : ''}
 
-      <div class="days">${dayCards}</div>
+      <table class="week">
+        <thead>${headRow}</thead>
+        <tbody>${bodyRows}</tbody>
+      </table>
 
-      ${batchItems ? `
-        <div class="block">
-          <h2>${escapeHtml(L.batchCook)}</h2>
-          <ul class="dishes">${batchItems}</ul>
-        </div>` : ''}
-
-      ${notes && notes.trim() ? `
-        <div class="block">
-          <h2>${escapeHtml(L.notesTitle)}</h2>
-          <p class="notes-text">${escapeHtml(notes.trim())}</p>
-        </div>` : ''}
+      ${batchBlock || notesBlock ? `<div class="extras">${batchBlock}${notesBlock}</div>` : ''}
 
       <div class="footer">
-        <div class="coop">
-          <img src="/fredheim-logo.svg" alt="" onerror="this.style.display='none'" />
-          <span>Fredheim Livsstilssenter</span>
-          <span class="dot">·</span>
-          <img src="/Vivera_Health_logo.png" alt="" onerror="this.style.display='none'" />
-          <span>Vivera Health</span>
-        </div>
-        ${escapeHtml(L.printedOn)} ${escapeHtml(printedDate)} · fredheim.org
+        <span>${escapeHtml(L.printedOn)} ${escapeHtml(printedOn)}</span>
+        <span>fredheim.no</span>
       </div>
     </div>
   </div>
 
 <script>
-  // Same three-tier layout strategy as the recipe and shopping-list sheets:
-  //   - Fits naturally: no scaling
-  //   - Fits at >= 72%: shrink onto one page
-  //   - Longer: flow across A4 sheets rather than shrink past readability
-  var MIN_SCALE = 0.72;
+  // Same three-way strategy as the recipe sheet: fit naturally, else
+  // shrink to a readable floor, else paginate. A grid that shrank without
+  // limit would defeat the purpose — the names have to stay readable.
+  var MIN_SCALE = 0.62;
 
-  function layoutSheet() {
+  function layout() {
     var scale = document.getElementById('scale');
-    var sheet = scale.parentElement;
-
+    var sheet = document.getElementById('sheet');
     scale.style.transform = '';
     scale.style.width = '';
     sheet.classList.remove('multi-page');
 
     var cs = window.getComputedStyle(sheet);
-    var padTop = parseFloat(cs.paddingTop) || 0;
-    var padBottom = parseFloat(cs.paddingBottom) || 0;
-    var available = sheet.clientHeight - padTop - padBottom;
+    var available = sheet.clientHeight - (parseFloat(cs.paddingTop) || 0) - (parseFloat(cs.paddingBottom) || 0);
     var needed = scale.scrollHeight;
-
     if (needed <= available || available <= 100) return;
 
     var factor = available / needed;
     if (factor >= MIN_SCALE) {
       scale.style.transform = 'scale(' + factor + ')';
-      scale.style.transformOrigin = 'top left';
       scale.style.width = (100 / factor) + '%';
     } else {
       sheet.classList.add('multi-page');
     }
   }
-  layoutSheet();
+
+  function ready() {
+    // Thumbnails are data URLs, but decoding still lands after load on a
+    // big week — measuring first would size the page to a grid of empty
+    // boxes.
+    var imgs = Array.prototype.slice.call(document.images);
+    var pending = imgs.filter(function (i) { return !i.complete; }).length;
+    if (!pending) return layout();
+    imgs.forEach(function (i) {
+      if (i.complete) return;
+      i.addEventListener('load', done);
+      i.addEventListener('error', done);
+    });
+    function done() { if (--pending <= 0) layout(); }
+    setTimeout(layout, 2000);
+  }
 
   window.addEventListener('load', function () {
-    setTimeout(function () {
-      window.focus();
-      window.print();
-    }, 350);
+    ready();
+    setTimeout(function () { window.print(); }, 250);
   });
+  window.addEventListener('resize', layout);
 </script>
 </body>
 </html>`
 
   const win = window.open('', '_blank')
-  if (!win) {
-    alert('Please allow pop-ups to print the weekly menu.')
-    return
-  }
+  if (!win) return
   win.document.open()
   win.document.write(html)
   win.document.close()
