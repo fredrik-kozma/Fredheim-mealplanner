@@ -3,7 +3,7 @@
  * Uses unitNormalizer for proper unit handling and ingredientMatcher for grouping.
  */
 
-import { normalizeUnit, convertToBase, smartConvert, TO_BASE } from './unitNormalizer'
+import { normalizeUnit, convertToBase, smartConvert, roundForShopping, TO_BASE } from './unitNormalizer'
 import { groupIngredients } from './ingredientMatcher'
 
 // Rough ingredient categories for grouping. Keywords are matched against
@@ -101,6 +101,45 @@ function categoriseIngredient(name) {
 // user's custom "My items" section works.
 export const BATCH_CATEGORY = '__batch__'
 
+/*
+ * Water is a recipe instruction, not a shopping item. It was filling the
+ * list with lines nobody acts on — 42 distinct water names in English
+ * alone across the packs, appearing as "Water, drinking water",
+ * "Water for porridge", "boiling water (for blooming carob)" and so on,
+ * which at a 20-person week added up to litres of noise spread over two
+ * sections.
+ *
+ * Matched on the head noun rather than "contains the word water", because
+ * "olive water" is olive brine and "coconut water" would be a drink — both
+ * are real things you buy. So the qualifier words are stripped and the
+ * FIRST remaining word has to be water itself.
+ */
+const WATER_WORDS = new Set(['water', 'vann', 'vatten'])
+const WATER_QUALIFIERS = new Set([
+  // en
+  'cold', 'warm', 'hot', 'boiling', 'boiled', 'lukewarm', 'tepid', 'filtered',
+  'drinking', 'iced', 'ice', 'fresh', 'plain', 'still', 'room', 'temperature', 'extra',
+  // no
+  'kaldt', 'kald', 'varmt', 'varm', 'kokende', 'lunkent', 'lunken', 'filtrert',
+  'iskaldt', 'iskaldt', 'romtemperert', 'friskt', 'ekstra',
+  // sv
+  'kallt', 'kall', 'kokande', 'ljummet', 'ljummen', 'filtrerat', 'iskallt',
+  'rumstempererat',
+])
+
+export function isPlainWater(name) {
+  if (!name) return false
+  const head = String(name)
+    .split(',')[0]                 // "Water, drinking water" -> "Water"
+    .replace(/\([^)]*\)/g, ' ')    // drop "(for blooming carob)"
+    .toLowerCase()
+    .replace(/[^a-zà-öø-ÿ\s-]/g, ' ')
+    .split(/[\s-]+/)
+    .filter(Boolean)
+    .filter(w => !WATER_QUALIFIERS.has(w))
+  return head.length > 0 && WATER_WORDS.has(head[0])
+}
+
 export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en', batchCook = []) {
   const recipeMap = Object.fromEntries(recipes.map(r => [r.id, r]))
 
@@ -126,6 +165,7 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
     const recipeTitle = translation?.title || recipe.title
 
     for (const ing of ingredients) {
+      if (isPlainWater(ing.name)) continue
       const unit = normalizeUnit(ing.unit)
       const scaledQty = ing.quantity ? ing.quantity * scaleFactor : 0
       bucket.push({
@@ -268,11 +308,22 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
   ]
 }
 
+/**
+ * Formats a quantity for shopping rather than for cooking.
+ *
+ * Scaling a week to 20 people produced amounts like "533.3 g", "66.7 g",
+ * "28.3 ml" and "6.25 clove" — precision that is real arithmetic but
+ * useless at a shelf, and misleading besides, since the underlying figures
+ * are estimates scaled from a serving count.
+ *
+ * The rounding itself lives in unitNormalizer so the mixed-unit path in
+ * ingredientMatcher can apply exactly the same rule.
+ */
 export function formatQuantity(quantity, unit) {
   if (quantity === null || quantity === undefined || quantity === 0) return unit || ''
   if (typeof quantity === 'string') return quantity // pre-formatted mixed units
 
-  const rounded = Math.round(quantity * 100) / 100
-  const formatted = rounded % 1 === 0 ? rounded.toString() : rounded.toFixed(2).replace(/\.?0+$/, '')
+  const value = roundForShopping(quantity, unit)
+  const formatted = value % 1 === 0 ? value.toString() : String(value)
   return unit ? `${formatted} ${unit}` : formatted
 }

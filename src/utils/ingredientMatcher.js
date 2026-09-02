@@ -1,4 +1,4 @@
-import { normalizeUnit, convertToBase, smartConvert, TO_BASE } from './unitNormalizer'
+import { normalizeUnit, convertToBase, smartConvert, roundForShopping, TO_BASE } from './unitNormalizer'
 
 // Preparation words that describe the SAME whole food (a knife/pan/state
 // change), so they are stripped before matching — "crushed garlic" is
@@ -180,17 +180,20 @@ function buildMixedQuantityString(items) {
     }
   }
 
+  // Rounded for shopping here too. This path handles every count-only
+  // group (a lone "pcs" can't be summed into a base unit, so it defers to
+  // this string), which is where "2.5 pcs" of lemon came from.
   const parts = []
   for (const [u, q] of Object.entries(countByUnit)) {
-    parts.push(`${fmtNum(q)} ${u}`)
+    parts.push(`${fmtNum(roundForShopping(q, u))} ${u}`)
   }
   if (totalMass > 0) {
     const smart = smartConvert(totalMass, 'g')
-    parts.push(`${fmtNum(smart.quantity)} ${smart.unit}`)
+    parts.push(`${fmtNum(roundForShopping(smart.quantity, smart.unit))} ${smart.unit}`)
   }
   if (totalVolume > 0) {
     const smart = smartConvert(totalVolume, 'ml')
-    parts.push(`${fmtNum(smart.quantity)} ${smart.unit}`)
+    parts.push(`${fmtNum(roundForShopping(smart.quantity, smart.unit))} ${smart.unit}`)
   }
   return parts.join(' + ')
 }

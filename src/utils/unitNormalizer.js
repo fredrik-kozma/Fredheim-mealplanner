@@ -117,6 +117,42 @@ export function convertFromBase(quantity, baseUnit, preferredUnit) {
   return { quantity: quantity / targetFactor, unit: preferredUnit }
 }
 
+// Units you buy as whole things — a list asking for 6.25 cloves of garlic
+// is asking you to do arithmetic at the shelf.
+const COUNTABLE_UNITS = new Set(['pcs', 'clove', 'slice', 'handful', 'sprig', 'head', 'pinch', 'dash'])
+
+/**
+ * Rounds a quantity to something you can act on in a shop.
+ *
+ * Lives here rather than in the shopping list because two separate paths
+ * need it: the ordinary per-item format, and the mixed-unit string built
+ * in ingredientMatcher for groups that can't be summed into one unit
+ * (which includes every count-only group). Putting it in either of those
+ * files would mean importing one from the other, and the shopping list
+ * already imports the matcher.
+ *
+ * Countables round UP — you cannot buy a quarter clove, and coming home
+ * short is worse than coming home over. Bulk weights round to a step that
+ * matches the magnitude; spoons keep quarter steps, which are the marks
+ * that exist on the measure.
+ */
+export function roundForShopping(quantity, unitKey) {
+  if (typeof quantity !== 'number' || !isFinite(quantity)) return quantity
+  if (COUNTABLE_UNITS.has(unitKey)) return Math.ceil(quantity)
+  if (unitKey === 'g' || unitKey === 'ml') {
+    const abs = Math.abs(quantity)
+    if (abs < 10) return Math.round(quantity * 10) / 10
+    if (abs < 100) return Math.round(quantity / 5) * 5
+    return Math.round(quantity / 10) * 10
+  }
+  if (unitKey === 'tsp' || unitKey === 'tbsp' || unitKey === 'cup') {
+    return Math.round(quantity * 4) / 4
+  }
+  // kg, l, dl and anything unrecognised: two decimals reads fine at these
+  // magnitudes ("1.25 kg").
+  return Math.round(quantity * 100) / 100
+}
+
 // Picks a sensible metric unit given a quantity in ml or g.
 export function smartConvert(quantity, unitKey) {
   const base = convertToBase(quantity, unitKey)
