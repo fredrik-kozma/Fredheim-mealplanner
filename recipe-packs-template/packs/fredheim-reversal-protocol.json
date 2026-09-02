@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.48.0",
+  "version": "1.50.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -1632,7 +1632,6 @@
         "vegan",
         "oil-free",
         "no-added-sugar",
-        "blood-pressure-friendly",
         "weight-loss"
       ],
       "kcal": 48,
@@ -1663,7 +1662,7 @@
               "name": "vaniljepulver (usøtet)"
             },
             {
-              "quantity": 0.1,
+              "quantity": 0.4,
               "unit": "tsp",
               "name": "fint havsalt"
             }
@@ -1701,7 +1700,7 @@
               "name": "vaniljpulver (osötat)"
             },
             {
-              "quantity": 0.1,
+              "quantity": 0.4,
               "unit": "tsp",
               "name": "fint havssalt"
             }
@@ -1737,7 +1736,7 @@
           "name": "vanilla powder (unsweetened)"
         },
         {
-          "quantity": 0.1,
+          "quantity": 0.4,
           "unit": "tsp",
           "name": "fine sea salt"
         }
@@ -1773,7 +1772,7 @@
           "selenium": 3.3,
           "phosphorus": 59,
           "zinc": 0.5,
-          "sodium": 59,
+          "sodium": 236,
           "vitaminA": 0,
           "vitaminB6": 0.01,
           "vitaminB12": 0,
