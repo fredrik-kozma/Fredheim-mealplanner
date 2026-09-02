@@ -116,12 +116,16 @@ export function printRecipe(opts) {
      printouts cannot drift apart. */
   ${RECIPE_SHEET_CSS}
 
-  /* ── this sheet only: landscape geometry and the preview chrome ──── */
+  /* ── this sheet only: page geometry and the preview chrome ───────────
+     Portrait, matching the weekly recipe book page for page. The two are
+     the same sheet in every other respect (they share RECIPE_SHEET_CSS),
+     so a recipe printed on its own and the same recipe inside the book
+     now come out identical. */
   .sheet {
-    width: 297mm;
-    min-height: 210mm;
+    width: 210mm;
+    min-height: 297mm;
     margin: 16px auto;
-    padding: 11mm 12mm 10mm 12mm;
+    padding: 13mm 14mm 12mm 14mm;
     background: #fff;
     box-shadow: 0 2px 18px rgba(15, 23, 42, .08);
     display: flex;
@@ -163,7 +167,7 @@ export function printRecipe(opts) {
   /* @page margin lets every printed page (incl. pages 2+ in multi-page
      mode) start with proper white space at the top/sides. The on-screen
      preview keeps its own .sheet padding for the page-card look. */
-  @page { size: A4 landscape; margin: 12mm; }
+  @page { size: A4 portrait; margin: 14mm; }
   @media print {
     html, body { background: #fff; }
     .sheet {
