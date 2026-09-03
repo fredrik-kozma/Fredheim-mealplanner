@@ -322,7 +322,14 @@
     "removeContribution": "Ta bort detta bidrag",
     "removedItem": "Tog bort {{name}}",
     "undo": "Ångra",
-    "restoreAll": "Återställ alla"
+    "restoreAll": "Återställ alla",
+    "printOptionsTitle": "Vad ska skrivas ut?",
+    "printUnchecked": "Bara det som återstår",
+    "printUncheckedHint": "{{n}} varor — de du har bockat av utelämnas",
+    "printAll": "Hela listan",
+    "printAllHint": "Alla {{n}} varor, avbockade eller inte",
+    "printNothingLeft": "Inget kvar att skriva ut — allt är avbockat.",
+    "printNothingLeftShort": "Inget kvar — allt är avbockat"
   },
   "settings": {
     "title": "Inställningar",

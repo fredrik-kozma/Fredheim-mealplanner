@@ -322,7 +322,14 @@
     "removeContribution": "Remove this contribution",
     "removedItem": "Removed {{name}}",
     "undo": "Undo",
-    "restoreAll": "Restore all"
+    "restoreAll": "Restore all",
+    "printOptionsTitle": "What should be printed?",
+    "printUnchecked": "Only what is left",
+    "printUncheckedHint": "{{n}} items — the ones you've checked off are left out",
+    "printAll": "The whole list",
+    "printAllHint": "All {{n}} items, checked or not",
+    "printNothingLeft": "Nothing left to print — every item is checked off.",
+    "printNothingLeftShort": "Nothing left — everything is checked off"
   },
   "settings": {
     "title": "Settings",

@@ -35,6 +35,7 @@ export default function ShoppingList() {
 
   const [showChecked, setShowChecked] = useState(true)
   const [showSaveModal, setShowSaveModal] = useState(false)
+  const [showPrintModal, setShowPrintModal] = useState(false)
   const [showSavedLists, setShowSavedLists] = useState(false)
   const [listName, setListName] = useState('')
   const [saveToast, setSaveToast] = useState(null)
@@ -192,22 +193,30 @@ export default function ShoppingList() {
     setTimeout(() => setSaveToast(null), 3000)
   }
 
-  function handlePrint() {
+  // `skipChecked` leaves out everything already ticked off in the app, so
+  // the printed sheet is only what's still to buy. An aisle that empties
+  // out that way is dropped rather than printed as a bare heading.
+  function handlePrint(skipChecked = false) {
+    const keep = (it) => !skipChecked || !checkedItems[it.id]
+
     // Aisle category labels (e.g. "Produce") are stored in English on the
     // shopping list groups; translate them via i18n for the printout.
-    const printGroups = groups.map(({ category, items }) => ({
-      category: t(`aisles.${category}`, { defaultValue: category }),
-      items: items.map((it) => ({
-        name: it.name,
-        quantityLabel: formatQuantity(it.quantity, it.unit),
-      })),
-    }))
+    const printGroups = groups
+      .map(({ category, items }) => ({
+        category: t(`aisles.${category}`, { defaultValue: category }),
+        items: items.filter(keep).map((it) => ({
+          name: it.name,
+          quantityLabel: formatQuantity(it.quantity, it.unit),
+        })),
+      }))
+      .filter(g => g.items.length > 0)
 
     // Append the user's own items as their own aisle at the end.
-    if (customShoppingItems.length > 0) {
+    const customToPrint = customShoppingItems.filter(keep)
+    if (customToPrint.length > 0) {
       printGroups.push({
         category: t('shopping.myItems', { defaultValue: 'My items' }),
-        items: customShoppingItems.map((it) => ({ name: it.name, quantityLabel: it.amount || '' })),
+        items: customToPrint.map((it) => ({ name: it.name, quantityLabel: it.amount || '' })),
       })
     }
 
@@ -223,6 +232,13 @@ export default function ShoppingList() {
       if (!recipe) return null
       return recipe.translations?.[currentLang]?.title || recipe.title
     }).filter(Boolean)
+
+    // Everything was ticked off — printing would produce an empty sheet.
+    if (printGroups.length === 0) {
+      setSaveToast(t('shopping.printNothingLeft', { defaultValue: 'Nothing left to print — every item is checked off.' }))
+      setTimeout(() => setSaveToast(null), 3000)
+      return
+    }
 
     printShoppingList({
       title: t('shopping.title'),
@@ -336,7 +352,11 @@ export default function ShoppingList() {
           </div>
           <div className="flex gap-1.5 flex-shrink-0">
             <button
-              onClick={handlePrint}
+              onClick={() => {
+                // Nothing ticked off yet → no choice to make, just print.
+                if (checkedCount > 0) setShowPrintModal(true)
+                else handlePrint(false)
+              }}
               className="btn-secondary py-1.5 px-2.5 text-xs"
               title={t('shopping.print', { defaultValue: 'Print' })}
             >
@@ -583,6 +603,63 @@ export default function ShoppingList() {
           </div>
         )}
       </div>
+
+      {/* Print options — only shown when something is actually checked off,
+          so the common case stays a single tap. */}
+      {showPrintModal && (
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setShowPrintModal(false)} />
+          <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl p-5">
+            <div className="sm:hidden flex justify-center mb-3">
+              <div className="w-10 h-1 rounded-full bg-slate-200" />
+            </div>
+            <h2 className="text-base font-semibold text-slate-800 mb-1">
+              {t('shopping.printOptionsTitle', { defaultValue: 'What should be printed?' })}
+            </h2>
+            <p className="text-xs text-slate-500 mb-4">
+              {t('shopping.checkedOf', { checked: checkedCount, total: totalItems, people: familySize })}
+            </p>
+            <div className="space-y-2">
+              <button
+                onClick={() => { setShowPrintModal(false); handlePrint(true) }}
+                disabled={checkedCount >= totalItems}
+                className="w-full text-left px-4 py-3 rounded-xl border-2 border-indigo-500 bg-indigo-50/50 hover:bg-indigo-50 transition-colors disabled:opacity-40 disabled:border-slate-200 disabled:bg-transparent disabled:cursor-not-allowed"
+              >
+                <span className="block text-sm font-semibold text-slate-800">
+                  {t('shopping.printUnchecked', { defaultValue: 'Only what is left' })}
+                </span>
+                <span className="block text-xs text-slate-500 mt-0.5">
+                  {/* `n`, not `count` — `count` would send i18next down its
+                      plural-key lookup for a string that has no plural forms. */}
+                  {checkedCount >= totalItems
+                    ? t('shopping.printNothingLeftShort', { defaultValue: 'Nothing left — everything is checked off' })
+                    : t('shopping.printUncheckedHint', {
+                        n: totalItems - checkedCount,
+                        defaultValue: `${totalItems - checkedCount} items — checked ones are left out`,
+                      })}
+                </span>
+              </button>
+              <button
+                onClick={() => { setShowPrintModal(false); handlePrint(false) }}
+                className="w-full text-left px-4 py-3 rounded-xl border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors"
+              >
+                <span className="block text-sm font-semibold text-slate-800">
+                  {t('shopping.printAll', { defaultValue: 'The whole list' })}
+                </span>
+                <span className="block text-xs text-slate-500 mt-0.5">
+                  {t('shopping.printAllHint', {
+                    n: totalItems,
+                    defaultValue: `All ${totalItems} items, checked or not`,
+                  })}
+                </span>
+              </button>
+            </div>
+            <button onClick={() => setShowPrintModal(false)} className="btn-secondary w-full mt-3">
+              {t('common.cancel')}
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Save list modal */}
       {showSaveModal && (

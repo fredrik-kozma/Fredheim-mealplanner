@@ -322,7 +322,14 @@
     "removeContribution": "Fjern dette bidraget",
     "removedItem": "Fjernet {{name}}",
     "undo": "Angre",
-    "restoreAll": "Gjenopprett alle"
+    "restoreAll": "Gjenopprett alle",
+    "printOptionsTitle": "Hva skal skrives ut?",
+    "printUnchecked": "Bare det som gjenstår",
+    "printUncheckedHint": "{{n}} varer — de du har huket av blir utelatt",
+    "printAll": "Hele listen",
+    "printAllHint": "Alle {{n}} varer, avhuket eller ikke",
+    "printNothingLeft": "Ingenting igjen å skrive ut — alt er huket av.",
+    "printNothingLeftShort": "Ingenting igjen — alt er huket av"
   },
   "settings": {
     "title": "Innstillinger",
