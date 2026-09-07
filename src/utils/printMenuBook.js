@@ -284,14 +284,14 @@ export function printMenuBook(opts) {
     <div class="toc">${contentsRows}</div>
     <div class="foot">
       <span>${escapeHtml(L.printedOn)} ${escapeHtml(printedOn)}</span>
-      <span>fredheim.no</span>
+      <span>fredheim.org</span>
     </div>
   </section>
 
   ${recipePages}
 
 <script>
-  window.addEventListener('load', function () {
+  function start() {
     // Give the thumbnails a moment to decode so the first page isn't
     // measured (or printed) as a grid of empty boxes.
     var imgs = Array.prototype.slice.call(document.images);
@@ -306,14 +306,21 @@ export function printMenuBook(opts) {
       i.addEventListener('error', done);
     });
     setTimeout(function () { if (!fired) { fired = true; go(); } }, 4000);
-  });
+  }
+  // 'load' may already have fired in a reused print tab — see printWeekPlan.
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start);
 </script>
 </body>
 </html>`
 
-  const win = window.open('', '_blank')
+  // Named, not '_blank' — same reasoning as printWeekPlan: one reusable
+  // tab that always holds the current book, instead of a stack of
+  // identically-titled tabs where the older ones are silently out of date.
+  const win = window.open('', 'fredheim-menu-book')
   if (!win) return
   win.document.open()
   win.document.write(html)
   win.document.close()
+  try { win.focus() } catch { /* focus can be refused; the book is still correct */ }
 }

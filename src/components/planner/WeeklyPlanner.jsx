@@ -148,11 +148,18 @@ export default function WeeklyPlanner() {
         for (const slot of usedSlots) {
           slots[t(`planner.mealSlots.${slot}`, { defaultValue: slot })] = itemsFor(day, slot)
         }
+        // The day's own note from the planner's Notes row. A note is a
+        // reason to keep the day on the sheet in its own right — a Sunday
+        // with no meals but "soak the beans tonight" written on it still
+        // has to be printed, or the reminder is lost exactly when it
+        // matters.
+        const note = weekNotes?.days?.[day] || ''
         return {
           label: t(`planner.days.${day}`, { defaultValue: day }),
           isToday: day === today,
+          note,
           slots,
-          hasAny: usedSlots.some(slot => itemsFor(day, slot).length > 0),
+          hasAny: usedSlots.some(slot => itemsFor(day, slot).length > 0) || Boolean(note.trim()),
         }
       })
       .filter(d => d.hasAny)
@@ -205,6 +212,9 @@ export default function WeeklyPlanner() {
         meals: t('planner.printMeals', { defaultValue: 'meals' }),
         batchCook: t('planner.batchCook', { defaultValue: 'Batch cooking' }),
         notesTitle: t('planner.weekNotesTitle', { defaultValue: 'Smart tips' }),
+        // Row head for the per-day notes row — the same label the planner's
+        // own Notes row uses on screen.
+        notesRow: t('planner.notesRow', { defaultValue: 'Notes' }),
         printedOn: t('recipeDetail.printedOn', { defaultValue: 'Printed' }),
         batchTag: t('planner.printBatchTag', { defaultValue: 'batch' }),
         // Grid cells are ~37mm wide, so the servings marker has to be a

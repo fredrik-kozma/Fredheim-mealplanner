@@ -43,11 +43,12 @@ function escapeHtml(s) {
  * @param {Array<{
  *   label: string,
  *   isToday?: boolean,
+ *   note?: string,
  *   slots: Object<string, Array<{ title: string, servings: number|null, batch?: boolean, imageUrl?: string|null }>>
  * }>} opts.days                             One entry per planner day, keyed by slot label
  * @param {Array<{ title: string, servings: number|null, isText?: boolean }>} [opts.batchCook]
  * @param {string} [opts.notes]              Week-level "smart tips" prose
- * @param {object} opts.labels               { forPeople, people, meals, batchCook, notesTitle, printedOn, batchTag, servingsShort }
+ * @param {object} opts.labels               { forPeople, people, meals, batchCook, notesTitle, notesRow, printedOn, batchTag, servingsShort }
  * @param {string} [opts.locale]             BCP-47 tag for the printed date
  * @param {string} [opts.logoUrl='/fredheim-logo.svg']
  */
@@ -70,6 +71,7 @@ export function printWeekPlan(opts) {
     meals: 'meals',
     batchCook: 'Batch cooking',
     notesTitle: 'Smart tips',
+    notesRow: 'Notes',
     printedOn: 'Printed',
     batchTag: 'batch',
     servingsShort: 'p',
@@ -120,6 +122,19 @@ export function printWeekPlan(opts) {
       <th class="slot-head">${escapeHtml(slot)}</th>
       ${days.map(d => cell(d.slots?.[slot])).join('')}
     </tr>`).join('')
+
+  // The planner's own "Notes" row, carried onto the sheet: a per-day
+  // reminder ("soak the beans tonight") is part of the plan, not decoration,
+  // and it was the one thing on screen that the printout used to drop. Only
+  // rendered when at least one day actually carries a note, so a week that
+  // doesn't use them keeps the grid tight.
+  const noteRow = days.some(d => d.note && d.note.trim()) ? `
+    <tr>
+      <th class="slot-head">${escapeHtml(L.notesRow)}</th>
+      ${days.map(d => d.note && d.note.trim()
+        ? `<td class="cell cell--note">${escapeHtml(d.note)}</td>`
+        : '<td class="cell cell--empty"></td>').join('')}
+    </tr>` : ''
 
   const batchBlock = batchCook.length ? `
     <section class="extra">
@@ -234,6 +249,14 @@ export function printWeekPlan(opts) {
     background: #fff;
   }
   .cell--empty { background: #fafbfc; }
+  /* Day notes carry the same amber as the planner's note cells and the
+     recipe sheet's chef's notes, so the sheet reads like the screen. */
+  .cell--note {
+    background: var(--amber-soft);
+    border-color: #fcd68a;
+    font-size: 8px; line-height: 1.3; color: var(--amber);
+    padding: 4px 5px; white-space: pre-line; overflow-wrap: anywhere;
+  }
 
   .dish { display: flex; gap: 4px; align-items: flex-start; padding: 2px; }
   .dish + .dish { border-top: 1px dashed var(--line); margin-top: 3px; padding-top: 4px; }
@@ -308,14 +331,14 @@ export function printWeekPlan(opts) {
 
       <table class="week">
         <thead>${headRow}</thead>
-        <tbody>${bodyRows}</tbody>
+        <tbody>${bodyRows}${noteRow}</tbody>
       </table>
 
       ${batchBlock || notesBlock ? `<div class="extras">${batchBlock}${notesBlock}</div>` : ''}
 
       <div class="footer">
         <span>${escapeHtml(L.printedOn)} ${escapeHtml(printedOn)}</span>
-        <span>fredheim.no</span>
+        <span>fredheim.org</span>
       </div>
     </div>
   </div>
@@ -363,18 +386,38 @@ export function printWeekPlan(opts) {
     setTimeout(layout, 2000);
   }
 
-  window.addEventListener('load', function () {
+  // Don't hang the whole sheet off 'load'. When this document is written
+  // into a tab that already finished loading once (the reused print tab),
+  // that event can have come and gone before this script runs — and then
+  // nothing lays out and no dialog ever opens. Checking readyState first
+  // covers both cases.
+  function start() {
     ready();
-    setTimeout(function () { window.print(); }, 250);
-  });
+    setTimeout(function () { window.focus(); window.print(); }, 250);
+  }
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start);
   window.addEventListener('resize', layout);
 </script>
 </body>
 </html>`
 
-  const win = window.open('', '_blank')
+  // A *named* window rather than '_blank'.
+  //
+  // '_blank' spawns a fresh tab on every print, so a week printed three
+  // times leaves three tabs open, all titled the same and all but the last
+  // showing superseded content — pick the wrong one (or have the browser
+  // hand you back the one already open) and you print last week's notes
+  // over this week's plan. A stable name means every print reuses and
+  // rewrites the *same* tab, so what's on screen there is always the
+  // current plan. document.open() below wipes the previous document first.
+  const win = window.open('', 'fredheim-week-plan')
   if (!win) return
   win.document.open()
   win.document.write(html)
   win.document.close()
+  // A reused tab is usually behind the app, and the print dialog belongs to
+  // whatever is focused — without this the freshly written sheet can sit
+  // unseen while the dialog appears over the old tab.
+  try { win.focus() } catch { /* focus can be refused; the sheet is still correct */ }
 }
