@@ -712,6 +712,11 @@
     "minutesShort": "{{n}} min",
     "minutesPlaceholder": "Min",
     "labelPlaceholder": "Vad gäller det? (valfritt)",
-    "backgroundHint": "Fortsätter räkna medan du använder resten av appen. Ljudet kräver att appen är öppen på skärmen — en låst telefon kan tysta den."
+    "backgroundHint": "Fortsätter räkna medan du använder resten av appen. Ljudet kräver att appen är öppen på skärmen — en låst telefon kan tysta den.",
+    "notificationTitle": "Timern är klar",
+    "notificationBody": "Din kökstimer är klar.",
+    "notifyOn": "Aviseringar är på — du får besked även om appen ligger i bakgrunden.",
+    "notifyBlocked": "Aviseringar är blockerade för den här appen. Slå på dem igen i webbläsar- eller telefoninställningarna om du vill att larmet ska nå dig i bakgrunden.",
+    "notifyEnable": "Avisera mig även när appen ligger i bakgrunden"
   }
 }

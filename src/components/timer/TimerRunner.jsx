@@ -1,7 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import useTimerTick from './useTimerTick'
 import { startChime, stopChime } from '../../utils/timerChime'
+import { notifyTimerDone, clearTimerNotifications } from '../../utils/timerNotify'
 
 /**
  * Mounted once, app-wide. Watches every running timer for its deadline and
@@ -13,6 +15,7 @@ import { startChime, stopChime } from '../../utils/timerChime'
  * to whichever bit of chrome happens to be on screen.
  */
 export default function TimerRunner() {
+  const { t } = useTranslation()
   const timers = useStore(s => s.timers)
   const markTimerRinging = useStore(s => s.markTimerRinging)
   const reconcileTimers = useStore(s => s.reconcileTimers)
@@ -30,11 +33,33 @@ export default function TimerRunner() {
     }
   }, [now, timers, markTimerRinging])
 
-  const anyRinging = timers.some(t => t.ringing)
+  const ringing = timers.filter(tm => tm.ringing)
+  const anyRinging = ringing.length > 0
+
   useEffect(() => {
     if (anyRinging) startChime()
-    else stopChime()
+    else {
+      stopChime()
+      // Nothing is ringing any more, so nothing should be left in the tray.
+      clearTimerNotifications()
+    }
   }, [anyRinging])
+
+  // Post one notification per timer as it finishes — tracked by id so a
+  // re-render, or a second timer going off, can't repost the first one.
+  const notified = useRef(new Set())
+  useEffect(() => {
+    const live = new Set(timers.map(tm => tm.id))
+    for (const id of notified.current) if (!live.has(id)) notified.current.delete(id)
+    for (const tm of ringing) {
+      if (notified.current.has(tm.id)) continue
+      notified.current.add(tm.id)
+      notifyTimerDone(
+        t('timer.notificationTitle', { defaultValue: 'Timer done' }),
+        tm.label || t('timer.notificationBody', { defaultValue: 'Your kitchen timer has finished.' })
+      )
+    }
+  }, [ringing, timers, t])
 
   // A reload or navigation away shouldn't leave the oscillator looping.
   useEffect(() => () => stopChime(), [])

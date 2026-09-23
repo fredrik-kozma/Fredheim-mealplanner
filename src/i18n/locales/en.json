@@ -712,6 +712,11 @@
     "minutesShort": "{{n}} min",
     "minutesPlaceholder": "Min",
     "labelPlaceholder": "What for? (optional)",
-    "backgroundHint": "Keeps counting while you use the rest of the app. The chime needs the app open on screen — a locked phone may silence it."
+    "backgroundHint": "Keeps counting while you use the rest of the app. The chime needs the app open on screen — a locked phone may silence it.",
+    "notificationTitle": "Timer done",
+    "notificationBody": "Your kitchen timer has finished.",
+    "notifyOn": "Notifications on — you'll be told even if the app is in the background.",
+    "notifyBlocked": "Notifications are blocked for this app. Turn them back on in your browser or phone settings if you want the alarm to reach you in the background.",
+    "notifyEnable": "Also notify me when the app is in the background"
   }
 }

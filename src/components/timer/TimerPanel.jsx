@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import useTimerTick, { formatRemaining, remainingMs } from './useTimerTick'
 import { unlockAudio } from '../../utils/timerChime'
+import { notificationStatus, requestNotificationPermission } from '../../utils/timerNotify'
 
 // The lengths a kitchen actually reaches for. One tap, no typing — which
 // is the whole point when your hands are in dough.
@@ -19,6 +21,11 @@ export default function TimerPanel({ onClose }) {
 
   const [minutes, setMinutes] = useState('')
   const [label, setLabel] = useState('')
+  const [notifyState, setNotifyState] = useState(() => notificationStatus())
+
+  async function enableNotifications() {
+    setNotifyState(await requestNotificationPermission())
+  }
 
   const hasRunning = timers.some(tm => tm.endsAt != null)
   const now = useTimerTick(hasRunning)
@@ -30,6 +37,10 @@ export default function TimerPanel({ onClose }) {
     // purpose — see unlockAudio. Without it, iOS never lets the alarm
     // sound, because by expiry there is no gesture left to attach to.
     unlockAudio()
+    // Same gesture is also the only place the browser will accept a
+    // notification prompt — asked once, on the first timer, rather than
+    // ambushing anyone who merely opens the app.
+    if (notificationStatus() === 'default') enableNotifications()
     addTimer(label, Math.round(m * 60 * 1000))
     setMinutes('')
     setLabel('')
@@ -43,7 +54,15 @@ export default function TimerPanel({ onClose }) {
     return ra - rb
   })
 
-  return (
+  // Rendered through a portal to <body>, and it has to stay that way.
+  //
+  // The button that opens this lives in the header, and the header carries
+  // `backdrop-blur`. An ancestor with a backdrop-filter becomes the
+  // containing block for its fixed-position descendants, so left in place
+  // this overlay resolved `inset-0` against the 56px-tall header instead of
+  // the viewport: the panel was laid out at y = -356, entirely above the
+  // top of the screen. The clock appeared to do nothing when tapped.
+  return createPortal(
     <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
       <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl p-5 max-h-[85vh] overflow-y-auto">
@@ -184,12 +203,33 @@ export default function TimerPanel({ onClose }) {
           {t('timer.start', { defaultValue: 'Start' })}
         </button>
 
+        {/* Notifications — the only way the alarm reaches a locked phone,
+            so the state is worth showing rather than leaving silent. */}
+        {notifyState === 'granted' ? (
+          <p className="text-[11px] text-green-700 bg-green-50 border border-green-100 rounded-lg px-2.5 py-2 mt-3 inline-flex items-center gap-1.5">
+            <span aria-hidden>🔔</span>
+            {t('timer.notifyOn', { defaultValue: 'Notifications on — you\'ll be told even if the app is in the background.' })}
+          </p>
+        ) : notifyState === 'denied' ? (
+          <p className="text-[11px] text-slate-500 bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 mt-3">
+            {t('timer.notifyBlocked', { defaultValue: 'Notifications are blocked for this app. Turn them back on in your browser or phone settings if you want the alarm to reach you in the background.' })}
+          </p>
+        ) : notifyState === 'default' ? (
+          <button
+            onClick={enableNotifications}
+            className="w-full text-[11px] font-semibold text-indigo-700 bg-indigo-50 border border-indigo-100 hover:bg-indigo-100 rounded-lg px-2.5 py-2 mt-3 transition-colors"
+          >
+            🔔 {t('timer.notifyEnable', { defaultValue: 'Also notify me when the app is in the background' })}
+          </button>
+        ) : null}
+
         <p className="text-[11px] text-slate-400 mt-3 leading-relaxed">
           {t('timer.backgroundHint', {
             defaultValue: 'Keeps counting while you use the rest of the app. The chime needs the app open on screen — a locked phone may silence it.',
           })}
         </p>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
