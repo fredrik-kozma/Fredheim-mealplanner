@@ -3,7 +3,7 @@
   "name": "Fredheim recepies with pictures",
   "description": "A selection of Fredheim recipes bundled with photos.",
   "author": "Fredheim",
-  "version": "1.33.0",
+  "version": "1.34.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -34745,9 +34745,10 @@
         "gluten-free",
         "bread",
         "psyllium husk",
-        "tangzhong"
+        "tangzhong",
+        "no-added-sugar"
       ],
-      "kcal": null,
+      "kcal": 133,
       "ingredients": [
         {
           "quantity": 175,
@@ -34780,14 +34781,9 @@
           "name": "Instant dry yeast"
         },
         {
-          "quantity": 10,
+          "quantity": 5,
           "unit": "g",
           "name": "Salt"
-        },
-        {
-          "quantity": 20,
-          "unit": "g",
-          "name": "maple syrup"
         },
         {
           "quantity": 150,
@@ -34808,7 +34804,7 @@
       "steps": [
         "Make the porridge: Mix the oat flour for the porridge with the water for porridge in a small pot. Cook over medium heat, stirring constantly, until thickened, about 2-3 minutes. Cool to room temperature.",
         "Mix all dry ingredients in a large bowl: oat flour, rice flour, potato starch, psyllium husk powder, instant yeast and salt. Whisk well to combine.",
-        "In another bowl, combine the cooled porridge, maple syrup, lemon juice, and warm water (38-40°C).",
+        "In another bowl, combine the cooled porridge, lemon juice, and warm water (38-40°C).",
         "Pour wet ingredients into dry ingredients and mix vigorously for 4-5 minutes until sticky but scoopable. The dough should hold together and slowly relax when shaped, not spread flat.",
         "line a sheet with parchment paper. shape round balls with a wet hand.",
         "Cover loosely with plastic wrap or damp cloth and let rise at room temperature for 45-60 minutes until dough rises.",
@@ -34852,14 +34848,9 @@
               "name": "Tørrgjær"
             },
             {
-              "quantity": 10,
+              "quantity": 5,
               "unit": "g",
               "name": "Salt"
-            },
-            {
-              "quantity": 20,
-              "unit": "g",
-              "name": "Lønnesirup"
             },
             {
               "quantity": 150,
@@ -34880,7 +34871,7 @@
           "steps": [
             "Lag grøten. Bland havremelet til grøten med vannet til grøten i en liten kjele. Kok over middels varme, rør konstant, til det tykner, omtrent 2-3 minutter. Avkjøl til romtemperatur.",
             "Bland alle de tørre ingrediensene i en stor bolle: havremel, rismel, potetstivelse, psyllium husk pulver, tørrgjær og salt. Visp godt sammen.",
-            "I en annen bolle, bland den avkjølte grøten, lønnesirup, sitronsaft og lunkent vann (38-40°C).",
+            "I en annen bolle, bland den avkjølte grøten, sitronsaft og lunkent vann (38-40°C).",
             "Hell de våte ingrediensene i de tørre ingrediensene og bland kraftig i 4-5 minutter til deigen er klebrig, men formbar med en skje. Deigen skal holde formen og slappe sakte av når den formes, ikke renne utover.",
             "Dekk et stekebrett med bakepapir. Form runde boller med en våt hånd.",
             "Dekk løst med plastfolie eller et fuktig klede og la heve ved romtemperatur i 45-60 minutter til deigen hever.",
@@ -34892,80 +34883,46 @@
         }
       },
       "nutrition": {
-        "calories": 98,
-        "protein": 2.1,
-        "totalFat": 0.17,
-        "saturatedFat": 0,
-        "polyunsaturatedFat": 0,
-        "monounsaturatedFat": 0,
-        "omega3": 0,
-        "cholesterol": 0,
-        "totalCarbs": 22,
-        "totalSugars": 2,
-        "addedSugar": 1.7,
-        "fiber": 1.5,
-        "calcium": 0,
-        "potassium": 4.9,
-        "copper": 0,
-        "iron": 0.77,
-        "magnesium": 0,
-        "manganese": 0,
-        "selenium": 0,
-        "phosphorus": 0,
-        "zinc": 0,
-        "sodium": 323,
-        "vitaminA": 0,
-        "vitaminB6": 0,
-        "vitaminB12": 0,
-        "vitaminC": 0.64,
-        "vitaminD": 0,
-        "vitaminE": 0,
-        "vitaminK": 0,
-        "folate": 0,
-        "thiamin": 0,
-        "riboflavin": 0,
-        "niacin": 0,
-        "choline": 0
+        "perServing": {
+          "calories": 133,
+          "protein": 3.4,
+          "totalFat": 1.7,
+          "saturatedFat": 0.3,
+          "polyunsaturatedFat": 0.64,
+          "monounsaturatedFat": 0.57,
+          "omega3": 0.02,
+          "omega6": 0.6,
+          "cholesterol": 0,
+          "totalCarbs": 26.2,
+          "totalSugars": 0.2,
+          "addedSugar": 0,
+          "fiber": 2.4,
+          "calcium": 13,
+          "potassium": 82,
+          "copper": 0.09,
+          "iron": 0.89,
+          "magnesium": 28,
+          "manganese": 0.79,
+          "selenium": 7.2,
+          "phosphorus": 92,
+          "zinc": 0.69,
+          "sodium": 168,
+          "vitaminA": 0,
+          "vitaminB6": 0.07,
+          "vitaminB12": 0,
+          "vitaminC": 0.5,
+          "vitaminD": 0,
+          "vitaminE": 0.13,
+          "vitaminK": 0.3,
+          "folate": 25,
+          "thiamin": 0.22,
+          "riboflavin": 0.06,
+          "niacin": 0.85,
+          "choline": 6.3
+        }
       },
-      "nutritionPer100g": {
-        "calories": 121,
-        "protein": 2.5,
-        "totalFat": 0.21,
-        "saturatedFat": 0,
-        "polyunsaturatedFat": 0,
-        "monounsaturatedFat": 0,
-        "omega3": 0,
-        "cholesterol": 0,
-        "totalCarbs": 27,
-        "totalSugars": 2.5,
-        "addedSugar": 2.1,
-        "fiber": 1.9,
-        "calcium": 0,
-        "potassium": 6,
-        "copper": 0,
-        "iron": 0.95,
-        "magnesium": 0,
-        "manganese": 0,
-        "selenium": 0,
-        "phosphorus": 0,
-        "zinc": 0,
-        "sodium": 399,
-        "vitaminA": 0,
-        "vitaminB6": 0,
-        "vitaminB12": 0,
-        "vitaminC": 0.79,
-        "vitaminD": 0,
-        "vitaminE": 0,
-        "vitaminK": 0,
-        "folate": 0,
-        "thiamin": 0,
-        "riboflavin": 0,
-        "niacin": 0,
-        "choline": 0
-      },
-      "totalWeight": 972,
-      "servingWeight": 81,
-      "createdAt": 1785373200000
+      "createdAt": 1785373200000,
+      "servingWeightGrams": 67
     },
     {
       "id": "roasted-red-pepper-hummus",
