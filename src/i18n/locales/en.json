@@ -698,5 +698,20 @@
     "sesame": "Sesame",
     "mustard": "Mustard",
     "celery": "Celery"
+  },
+  "timer": {
+    "title": "Timer",
+    "newTimer": "New timer",
+    "start": "Start",
+    "done": "Done!",
+    "paused": "Paused",
+    "pause": "Pause",
+    "resume": "Resume",
+    "again": "Again",
+    "dismiss": "Stop",
+    "minutesShort": "{{n}} min",
+    "minutesPlaceholder": "Min",
+    "labelPlaceholder": "What for? (optional)",
+    "backgroundHint": "Keeps counting while you use the rest of the app. The chime needs the app open on screen — a locked phone may silence it."
   }
 }

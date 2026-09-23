@@ -698,5 +698,20 @@
     "sesame": "Sesam",
     "mustard": "Senap",
     "celery": "Selleri"
+  },
+  "timer": {
+    "title": "Timer",
+    "newTimer": "Ny timer",
+    "start": "Starta",
+    "done": "Klart!",
+    "paused": "Pausad",
+    "pause": "Pausa",
+    "resume": "Fortsätt",
+    "again": "Igen",
+    "dismiss": "Stäng av",
+    "minutesShort": "{{n}} min",
+    "minutesPlaceholder": "Min",
+    "labelPlaceholder": "Vad gäller det? (valfritt)",
+    "backgroundHint": "Fortsätter räkna medan du använder resten av appen. Ljudet kräver att appen är öppen på skärmen — en låst telefon kan tysta den."
   }
 }

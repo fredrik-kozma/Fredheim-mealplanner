@@ -782,6 +782,83 @@ const useStore = create(
 
       clearWeekNotes: () => set({ weekNotes: emptyWeekNotes(), activeStarterPlanId: null }),
 
+      // ── Kitchen timers ──
+      //
+      // Held as an absolute finish time (`endsAt`), never as a
+      // "seconds remaining" that something has to decrement. A phone
+      // throttles or suspends timers in a backgrounded tab, so a counter
+      // ticked by setInterval quietly runs slow exactly when you've put
+      // the phone down to knead — whereas a wall-clock deadline is still
+      // correct after any amount of sleep, and survives a reload.
+      //
+      // A paused timer holds `remainingMs` instead and has no deadline
+      // until it's resumed.
+      timers: [],
+
+      addTimer: (label, durationMs) => set((s) => ({
+        timers: [
+          ...s.timers,
+          {
+            id: makeId(),
+            label: (label || '').trim(),
+            durationMs,
+            endsAt: Date.now() + durationMs,
+            remainingMs: null,
+            ringing: false,
+          },
+        ],
+      })),
+
+      pauseTimer: (id) => set((s) => ({
+        timers: s.timers.map(tm => tm.id === id && tm.endsAt != null && !tm.ringing
+          ? { ...tm, remainingMs: Math.max(0, tm.endsAt - Date.now()), endsAt: null }
+          : tm),
+      })),
+
+      resumeTimer: (id) => set((s) => ({
+        timers: s.timers.map(tm => tm.id === id && tm.endsAt == null
+          ? { ...tm, endsAt: Date.now() + (tm.remainingMs ?? tm.durationMs), remainingMs: null }
+          : tm),
+      })),
+
+      // Called by the runner when a deadline passes. Separate from
+      // addTimer so the "is it finished" decision lives in one place.
+      markTimerRinging: (id) => set((s) => ({
+        timers: s.timers.map(tm => tm.id === id ? { ...tm, ringing: true, endsAt: null, remainingMs: 0 } : tm),
+      })),
+
+      removeTimer: (id) => set((s) => ({ timers: s.timers.filter(tm => tm.id !== id) })),
+
+      // Add the same length again — the "one more minute" case, and the
+      // reason a finished timer keeps its durationMs.
+      restartTimer: (id) => set((s) => ({
+        timers: s.timers.map(tm => tm.id === id
+          ? { ...tm, endsAt: Date.now() + tm.durationMs, remainingMs: null, ringing: false }
+          : tm),
+      })),
+
+      clearFinishedTimers: () => set((s) => ({ timers: s.timers.filter(tm => !tm.ringing) })),
+
+      /**
+       * Run once on startup. Timers are persisted, so the app can come back
+       * hours or days later holding deadlines that passed while it was
+       * closed. Anything that ran out within the last few minutes still
+       * rings — you probably just reloaded mid-bake. Anything older is
+       * dropped silently rather than greeting you with a chime for a loaf
+       * you took out on Tuesday.
+       */
+      reconcileTimers: () => set((s) => {
+        const now = Date.now()
+        const GRACE_MS = 5 * 60 * 1000
+        return {
+          timers: s.timers
+            .filter(tm => tm.endsAt == null || tm.endsAt > now - GRACE_MS)
+            .map(tm => (tm.endsAt != null && tm.endsAt <= now)
+              ? { ...tm, ringing: true, endsAt: null, remainingMs: 0 }
+              : tm),
+        }
+      }),
+
       // ── Batch cooking ──
       // Things prepped once for the whole week (bouillon, bread, spreads).
       // Recipe entries feed the shopping list; text entries are plain

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../contexts/AuthContext'
 import { useSubscription } from '../../hooks/useSubscription'
 import AuthModal from '../auth/AuthModal'
+import TimerButton from '../timer/TimerButton'
 
 export default function Header() {
   const location = useLocation()
@@ -101,6 +102,10 @@ export default function Header() {
           />
           <span className="font-semibold text-slate-800 text-base truncate">{title}</span>
         </button>
+
+        {/* Kitchen timer — sits next to the account area so it's reachable
+            from every page, and keeps counting as you move between them. */}
+        <TimerButton />
 
         {/* Trial badge */}
         {user && isTrial && (

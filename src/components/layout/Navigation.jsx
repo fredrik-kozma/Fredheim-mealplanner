@@ -5,6 +5,7 @@ import useStore from '../../store/useStore'
 import { useAuth } from '../../contexts/AuthContext'
 import { useSubscription } from '../../hooks/useSubscription'
 import AuthModal from '../auth/AuthModal'
+import TimerButton from '../timer/TimerButton'
 
 const NAV_ITEMS = [
   {
@@ -181,7 +182,10 @@ export default function Navigation() {
             alt=""
             className="w-9 h-9 rounded-full object-cover flex-shrink-0"
           />
-          <span className="font-bold text-slate-800 text-base">{t('app.name')}</span>
+          <span className="font-bold text-slate-800 text-base flex-1 min-w-0 truncate">{t('app.name')}</span>
+          {/* The top bar is mobile-only, so desktop gets the timer here —
+              same component, same running timers, just the other chrome. */}
+          <TimerButton className="-mr-2" />
         </div>
         <div className="flex-1 overflow-y-auto py-4 px-3">
           {NAV_ITEMS.map(({ key, to, icon }) => {

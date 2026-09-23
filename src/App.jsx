@@ -22,6 +22,7 @@ import ScrollManager from './components/ScrollManager'
 import TutorialModal from './components/onboarding/TutorialModal'
 import InstallBanner from './components/pwa/InstallBanner'
 import WhatsNewModal from './components/whatsnew/WhatsNewModal'
+import TimerRunner from './components/timer/TimerRunner'
 
 // Blocks rendering until the Zustand store has fully hydrated from IndexedDB.
 // Without this guard, useEffect hooks in child components fire before hydration
@@ -138,6 +139,11 @@ function AppShell() {
 
       {/* Opens each page at the top; restores your place on long lists. */}
       <ScrollManager />
+
+      {/* Watches kitchen timers and sounds the chime. Renders nothing, and
+          lives here rather than in the header so a running bake keeps its
+          alarm no matter which chrome is mounted. */}
+      <TimerRunner />
 
       <Navigation />
 
