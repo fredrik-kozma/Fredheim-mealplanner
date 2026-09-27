@@ -53,15 +53,21 @@ export async function requestNotificationPermission() {
  * actually been granted — we never prompt from here, because expiry is not
  * a user gesture.
  *
- * @param {string} title  e.g. "Timer done"
- * @param {string} body   the timer's label, or a generic line
+ * @param {string} title     e.g. "Timer done"
+ * @param {string} body      the timer's label, or a generic line
+ * @param {string} stopLabel text for the notification's Stop button
  */
-export async function notifyTimerDone(title, body) {
+export async function notifyTimerDone(title, body, stopLabel = 'Stop') {
   if (notificationStatus() !== 'granted') return
   const options = {
     body,
     icon: '/fredheim-logo.svg',
     badge: '/fredheim-logo.svg',
+    // Silences the alarm straight from the notification shade, without
+    // opening the app at all. Only honoured on notifications shown through
+    // a service worker — the plain-constructor fallback below ignores it,
+    // which is harmless.
+    actions: [{ action: 'stop', title: stopLabel }],
     // One notification per finished timer batch rather than a growing
     // stack — `renotify` still buzzes for each new one.
     tag: TAG,

@@ -56,10 +56,29 @@ export default function TimerRunner() {
       notified.current.add(tm.id)
       notifyTimerDone(
         t('timer.notificationTitle', { defaultValue: 'Timer done' }),
-        tm.label || t('timer.notificationBody', { defaultValue: 'Your kitchen timer has finished.' })
+        tm.label || t('timer.notificationBody', { defaultValue: 'Your kitchen timer has finished.' }),
+        t('timer.stopAlarm', { defaultValue: 'Stop' })
       )
     }
   }, [ringing, timers, t])
+
+  // "Stop" pressed on the notification itself. The service worker relays
+  // it here (see public/sw-timer.js) because the timer state lives in the
+  // app, not the worker — so the press silences the chime even though the
+  // app was never brought to the front.
+  const clearFinishedTimers = useStore(s => s.clearFinishedTimers)
+  useEffect(() => {
+    if (!('serviceWorker' in navigator)) return
+    function onMessage(event) {
+      if (event.data?.type !== 'fredheim-timer') return
+      if (event.data.action === 'stop') {
+        stopChime()
+        clearFinishedTimers()
+      }
+    }
+    navigator.serviceWorker.addEventListener('message', onMessage)
+    return () => navigator.serviceWorker.removeEventListener('message', onMessage)
+  }, [clearFinishedTimers])
 
   // A reload or navigation away shouldn't leave the oscillator looping.
   useEffect(() => () => stopChime(), [])

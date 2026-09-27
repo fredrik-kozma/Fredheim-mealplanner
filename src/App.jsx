@@ -23,6 +23,7 @@ import TutorialModal from './components/onboarding/TutorialModal'
 import InstallBanner from './components/pwa/InstallBanner'
 import WhatsNewModal from './components/whatsnew/WhatsNewModal'
 import TimerRunner from './components/timer/TimerRunner'
+import TimerAlarm from './components/timer/TimerAlarm'
 
 // Blocks rendering until the Zustand store has fully hydrated from IndexedDB.
 // Without this guard, useEffect hooks in child components fire before hydration
@@ -144,6 +145,11 @@ function AppShell() {
           lives here rather than in the header so a running bake keeps its
           alarm no matter which chrome is mounted. */}
       <TimerRunner />
+
+      {/* The "time's up" banner — appears over any page the moment a timer
+          finishes, so silencing it is one big button rather than a hunt
+          through the header. */}
+      <TimerAlarm />
 
       <Navigation />
 

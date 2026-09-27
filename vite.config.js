@@ -46,6 +46,11 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        // Adds the timer's notificationclick handler to the generated
+        // worker. generateSW writes the rest of this file itself, so an
+        // imported script is the only place to register a listener of our
+        // own short of moving the whole PWA to injectManifest.
+        importScripts: ['sw-timer.js'],
         // Built-in recipe packs bundle embedded photos (base64), which
         // pushes the main JS chunk past the default 2 MB precache cap.
         maximumFileSizeToCacheInBytes: 50 * 1024 * 1024,

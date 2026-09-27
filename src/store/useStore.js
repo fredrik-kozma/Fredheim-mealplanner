@@ -824,7 +824,9 @@ const useStore = create(
       // Called by the runner when a deadline passes. Separate from
       // addTimer so the "is it finished" decision lives in one place.
       markTimerRinging: (id) => set((s) => ({
-        timers: s.timers.map(tm => tm.id === id ? { ...tm, ringing: true, endsAt: null, remainingMs: 0 } : tm),
+        timers: s.timers.map(tm => tm.id === id
+          ? { ...tm, ringing: true, ringingSince: Date.now(), endsAt: null, remainingMs: 0 }
+          : tm),
       })),
 
       removeTimer: (id) => set((s) => ({ timers: s.timers.filter(tm => tm.id !== id) })),
@@ -833,7 +835,7 @@ const useStore = create(
       // reason a finished timer keeps its durationMs.
       restartTimer: (id) => set((s) => ({
         timers: s.timers.map(tm => tm.id === id
-          ? { ...tm, endsAt: Date.now() + tm.durationMs, remainingMs: null, ringing: false }
+          ? { ...tm, endsAt: Date.now() + tm.durationMs, remainingMs: null, ringing: false, ringingSince: null }
           : tm),
       })),
 
@@ -846,16 +848,28 @@ const useStore = create(
        * rings — you probably just reloaded mid-bake. Anything older is
        * dropped silently rather than greeting you with a chime for a loaf
        * you took out on Tuesday.
+       *
+       * The same cut-off applies to timers that were *already* ringing when
+       * the app closed, which is also what covers pressing Stop on the
+       * notification with no window open: the worker can't reach into this
+       * store to clear the flag, so the age of the alarm settles it here
+       * instead.
        */
       reconcileTimers: () => set((s) => {
         const now = Date.now()
         const GRACE_MS = 5 * 60 * 1000
+        const cutoff = now - GRACE_MS
         return {
           timers: s.timers
-            .filter(tm => tm.endsAt == null || tm.endsAt > now - GRACE_MS)
+            // Newly expired while we were away → ring, dated from when it
+            // actually finished rather than from launch.
             .map(tm => (tm.endsAt != null && tm.endsAt <= now)
-              ? { ...tm, ringing: true, endsAt: null, remainingMs: 0 }
-              : tm),
+              ? { ...tm, ringing: true, ringingSince: tm.endsAt, endsAt: null, remainingMs: 0 }
+              : tm)
+            .filter(tm => {
+              if (tm.ringing) return (tm.ringingSince ?? now) > cutoff
+              return true
+            }),
         }
       }),
 

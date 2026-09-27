@@ -717,6 +717,8 @@
     "notificationBody": "Your kitchen timer has finished.",
     "notifyOn": "Notifications on — you'll be told even if the app is in the background.",
     "notifyBlocked": "Notifications are blocked for this app. Turn them back on in your browser or phone settings if you want the alarm to reach you in the background.",
-    "notifyEnable": "Also notify me when the app is in the background"
+    "notifyEnable": "Also notify me when the app is in the background",
+    "stopAlarm": "Stop",
+    "stopAll": "Stop all"
   }
 }

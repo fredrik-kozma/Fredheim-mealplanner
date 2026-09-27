@@ -717,6 +717,8 @@
     "notificationBody": "Kjøkkentimeren din er ferdig.",
     "notifyOn": "Varsler er på — du får beskjed selv om appen ligger i bakgrunnen.",
     "notifyBlocked": "Varsler er blokkert for denne appen. Slå dem på igjen i nettleser- eller telefoninnstillingene hvis du vil at alarmen skal nå deg i bakgrunnen.",
-    "notifyEnable": "Varsle meg også når appen ligger i bakgrunnen"
+    "notifyEnable": "Varsle meg også når appen ligger i bakgrunnen",
+    "stopAlarm": "Stopp",
+    "stopAll": "Stopp alle"
   }
 }
