@@ -47,7 +47,7 @@
     "allPacks": "Alle pakker",
     "myRecipes": "Mine oppskrifter",
     "clearFilters": "Fjern filtre",
-    "searchPlaceholder": "Søk etter oppskrifter…",
+    "searchPlaceholder": "Søk etter oppskrifter eller ingredienser…",
     "sort": {
       "newest": "Nyeste",
       "oldest": "Eldste",
@@ -68,7 +68,8 @@
     "allergenShowAll": "Vis likevel",
     "allergenResume": "Slå på igjen",
     "noTimeHidden_one": "{{count}} oppskrift mangler tid og vises ikke.",
-    "noTimeHidden_other": "{{count}} oppskrifter mangler tid og vises ikke."
+    "noTimeHidden_other": "{{count}} oppskrifter mangler tid og vises ikke.",
+    "noResultsTitle": "Ingen treff"
   },
   "recipeDetail": {
     "back": "Tilbake",

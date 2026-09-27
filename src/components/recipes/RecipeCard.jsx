@@ -40,7 +40,7 @@ function TimeChip({ minutes, label }) {
   )
 }
 
-export default function RecipeCard({ recipe, compact = false, nutrientBadge = null }) {
+export default function RecipeCard({ recipe, compact = false, nutrientBadge = null, matchedIngredient = null }) {
   const navigate = useNavigate()
   const { t, i18n } = useTranslation()
   const { isLocked, isPreviewRecipe } = useAccess()
@@ -149,6 +149,20 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
           <span className="inline-flex items-center gap-1 badge bg-emerald-50 text-emerald-700 text-xs font-semibold">
             {nutrientBadge.label}
             <span className="tabular-nums">{nutrientBadge.value} {nutrientBadge.unit}</span>
+          </span>
+        </div>
+      )}
+
+      {/* Why this result is here — shown only when the recipe's own name
+          doesn't contain the search term, so a hit on an ingredient reads
+          as an answer rather than a stray result. */}
+      {matchedIngredient && (
+        <div className="mb-1">
+          <span className="inline-flex items-center gap-1 badge bg-indigo-50 text-indigo-700 text-xs font-medium">
+            <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+            </svg>
+            <span className="truncate max-w-[14rem]">{matchedIngredient}</span>
           </span>
         </div>
       )}

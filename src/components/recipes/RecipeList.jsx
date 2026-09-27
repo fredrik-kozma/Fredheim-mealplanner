@@ -6,6 +6,7 @@ import RecipeCard from './RecipeCard'
 import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
 import { NUTRITION_GROUPS, fmtNutrient } from '../../utils/nutritionData'
 import { recipeHasAvoidedAllergen } from '../../data/allergens'
+import { buildSearchEntry, matchSearchEntry } from '../../utils/recipeSearch'
 
 // Nutrients offered in the "Most …" sort — the ones you'd want more of.
 // The "less is better" fields (calories, fats, sugars, cholesterol, sodium)
@@ -134,6 +135,30 @@ export default function RecipeList() {
     return opts
   }, [recipes, installedPacks, currentLang, t])
 
+  // Search index, rebuilt only when the recipes or the language change —
+  // not on every keystroke. With ~260 recipes across three languages,
+  // re-walking every translation per character typed was the one part of
+  // this that could actually be felt.
+  const searchIndex = useMemo(() => {
+    const idx = new Map()
+    for (const r of recipes) idx.set(r.id, buildSearchEntry(r, currentLang))
+    return idx
+  }, [recipes, currentLang])
+
+  // id → { inTitle, ingredient }. Computed once per query rather than
+  // inside the filter *and* again inside the sort.
+  const searchMatches = useMemo(() => {
+    const out = new Map()
+    if (!search.trim()) return out
+    for (const r of recipes) {
+      const entry = searchIndex.get(r.id)
+      if (!entry) continue
+      const m = matchSearchEntry(entry, search)
+      if (m) out.set(r.id, m)
+    }
+    return out
+  }, [recipes, searchIndex, search])
+
   const matchesFilters = recipes
     .filter(r => !favoritesOnly || favSet.has(r.id))
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
@@ -144,11 +169,7 @@ export default function RecipeList() {
       if (activePack === '__user__') return !r.sourcePackId
       return r.sourcePackId === activePack
     })
-    .filter(r => {
-      if (!search) return true
-      const q = search.toLowerCase()
-      return titleOf(r).toLowerCase().includes(q) || r.title.toLowerCase().includes(q)
-    })
+    .filter(r => !search || searchMatches.has(r.id))
     // When ranking by a nutrient, keep only recipes that actually contain it
     // (a positive per-serving amount) — recipes without nutrition data, or
     // with none of that nutrient, drop out rather than sort to a confusing
@@ -167,6 +188,14 @@ export default function RecipeList() {
   const filtered = matchesFilters
     .filter(r => sortBy !== 'time' || totalTime(r) != null)
     .sort((a, b) => {
+      // A recipe actually *called* "Brokkolisuppe" belongs above the
+      // casserole that merely contains broccoli, whatever the chosen sort
+      // would otherwise say. Only applies while searching.
+      if (search.trim() && !activeNutrient) {
+        const at = searchMatches.get(a.id)?.inTitle ? 0 : 1
+        const bt = searchMatches.get(b.id)?.inTitle ? 0 : 1
+        if (at !== bt) return at - bt
+      }
       if (activeNutrient) return nutrientValue(b, activeNutrient) - nutrientValue(a, activeNutrient)
       if (sortBy === 'newest') return b.createdAt - a.createdAt
       if (sortBy === 'oldest') return a.createdAt - b.createdAt
@@ -413,7 +442,13 @@ export default function RecipeList() {
               <span className="text-5xl absolute left-0">🥑</span>
               <span className="text-5xl absolute left-6">🥑</span>
             </div>
-            <h3 className="text-lg font-semibold text-slate-700 mb-2">{t('recipes.noRecipesYet')}</h3>
+            {/* "No recipes yet" is wrong when you have 260 and simply
+                searched for something that isn't there. */}
+            <h3 className="text-lg font-semibold text-slate-700 mb-2">
+              {search
+                ? t('recipes.noResultsTitle', { defaultValue: 'Nothing found' })
+                : t('recipes.noRecipesYet')}
+            </h3>
             <p className="text-sm text-slate-500 mb-6 max-w-xs">
               {search ? t('recipes.noRecipesMatch') : t('recipes.addFirstRecipe')}
             </p>
@@ -437,6 +472,15 @@ export default function RecipeList() {
                   value: fmtNutrient(nutrientValue(recipe, activeNutrient)),
                   unit: NUTRIENT_META[activeNutrient]?.unit || '',
                 } : null}
+                // Only when the title doesn't already say it: a result
+                // whose name contains the word explains itself, but
+                // "Ovnsbakte rotgrønnsaker" appearing under a search for
+                // broccoli looks like a bug unless the card says why.
+                matchedIngredient={
+                  searchMatches.get(recipe.id)?.inTitle === false
+                    ? searchMatches.get(recipe.id)?.ingredient
+                    : null
+                }
               />
             ))}
           </div>

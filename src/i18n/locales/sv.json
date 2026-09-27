@@ -47,7 +47,7 @@
     "allPacks": "Alla paket",
     "myRecipes": "Mina recept",
     "clearFilters": "Rensa filter",
-    "searchPlaceholder": "Sök recept…",
+    "searchPlaceholder": "Sök efter recept eller ingredienser…",
     "sort": {
       "newest": "Nyaste",
       "oldest": "Äldsta",
@@ -68,7 +68,8 @@
     "allergenShowAll": "Visa ändå",
     "allergenResume": "Aktivera igen",
     "noTimeHidden_one": "{{count}} recept saknar tid och visas inte.",
-    "noTimeHidden_other": "{{count}} recept saknar tid och visas inte."
+    "noTimeHidden_other": "{{count}} recept saknar tid och visas inte.",
+    "noResultsTitle": "Inga träffar"
   },
   "recipeDetail": {
     "back": "Tillbaka",
