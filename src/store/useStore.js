@@ -1658,8 +1658,19 @@ const useStore = create(
       // false  → tutorial will auto-open on next AppShell mount.
       // true   → already seen / dismissed; stays out of the way until the
       //          user manually replays it from Settings.
+      // Despite the name, this is the "first run is over" flag: it gates
+      // the what's-new announcements so a brand-new user isn't met by a
+      // stack of modals. The tutorial no longer opens by itself (its
+      // content had gone stale), so the language picker is what sets it.
       hasSeenTutorial: false,
       setHasSeenTutorial: (value) => set(() => ({ hasSeenTutorial: !!value })),
+
+      // Whether the user has ever been asked which language they want.
+      // Existing installs are migrated to true (v9) — they already chose,
+      // or are happily running the default, and shouldn't be stopped by a
+      // question on next launch.
+      hasChosenLanguage: false,
+      setHasChosenLanguage: (value) => set(() => ({ hasChosenLanguage: !!value })),
 
       // ── Recipe favorites ──
       // Array of recipe ids the user has starred. Toggling is idempotent
@@ -1748,7 +1759,7 @@ const useStore = create(
           recipes: (persisted.recipes || []).filter(r => !r.sourcePackId || r.userEdited),
         }
       },
-      version: 8,
+      version: 9,
       migrate: (persistedState, version) => {
         // v8: the recipe-category filter/picker had "Middag" (Main) but no
         // "Lunsj" (Lunch) option — Lunch was simply missing from the default
@@ -1827,6 +1838,15 @@ const useStore = create(
               }
             }
             persistedState.weekPlan = newPlan
+          }
+        }
+        // v9: anyone already using the app has a language — either picked
+        // in Settings or the default they've been reading all along.
+        // Asking them now would interrupt, not help, so the first-run
+        // language question is marked answered for every existing install.
+        if (version < 9) {
+          if (typeof persistedState.hasChosenLanguage !== 'boolean') {
+            persistedState.hasChosenLanguage = true
           }
         }
         // v7: existing users have already discovered the app — silently

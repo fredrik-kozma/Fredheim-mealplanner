@@ -20,6 +20,7 @@ import PreviewBanner from './components/subscription/PreviewBanner'
 import AutoInstallDefaultPack from './components/AutoInstallDefaultPack'
 import ScrollManager from './components/ScrollManager'
 import TutorialModal from './components/onboarding/TutorialModal'
+import LanguagePicker from './components/onboarding/LanguagePicker'
 import InstallBanner from './components/pwa/InstallBanner'
 import WhatsNewModal from './components/whatsnew/WhatsNewModal'
 import TimerRunner from './components/timer/TimerRunner'
@@ -108,19 +109,20 @@ function AppShell() {
     return () => clearTimeout(t)
   }, [location.search, user?.id]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // ── Onboarding tutorial ──
-  // Auto-opens once for brand-new accounts (hasSeenTutorial=false from the
-  // default state). Existing users were migrated to true in store v7 so
-  // they don't get surprised. They can replay it any time from Settings,
-  // which dispatches the 'open-tutorial' event listened to below.
-  const hasSeenTutorial = useStore(s => s.hasSeenTutorial)
+  // ── First run ──
+  //
+  // A new visitor is asked which language they want, and nothing else. The
+  // onboarding tour that used to open here had gone out of date, and a
+  // tour of an app you haven't used — written in a language you may not
+  // read — is worse than no tour at all. It still exists and can be
+  // replayed from Settings; it just no longer greets anyone.
+  const hasChosenLanguage = useStore(s => s.hasChosenLanguage)
+  const setHasChosenLanguage = useStore(s => s.setHasChosenLanguage)
+  const setStoreLanguage = useStore(s => s.setLanguage)
   const setHasSeenTutorial = useStore(s => s.setHasSeenTutorial)
   const [showTutorial, setShowTutorial] = useState(false)
 
-  useEffect(() => {
-    if (!hasSeenTutorial) setShowTutorial(true)
-  }, [hasSeenTutorial])
-
+  // Settings' "replay the tour" button still fires this.
   useEffect(() => {
     function handleOpen() { setShowTutorial(true) }
     window.addEventListener('open-tutorial', handleOpen)
@@ -129,6 +131,15 @@ function AppShell() {
 
   function closeTutorial() {
     setShowTutorial(false)
+    setHasSeenTutorial(true)
+  }
+
+  function handleChooseLanguage(code) {
+    setStoreLanguage(code)
+    setHasChosenLanguage(true)
+    // Marks first run as over, which is what actually gates the
+    // what's-new announcements — otherwise a brand-new user would never
+    // pass that gate now that the tutorial doesn't open on its own.
     setHasSeenTutorial(true)
   }
 
@@ -173,12 +184,19 @@ function AppShell() {
         </div>
       </main>
 
+      {/* First-run language question. Nothing else is shown over the app
+          until it's answered. */}
+      {!hasChosenLanguage && <LanguagePicker onChoose={handleChooseLanguage} />}
+
       {showTutorial && <TutorialModal onClose={closeTutorial} />}
 
       {/* What's-new announcements — small modal that pops up once per
           unseen entry in src/data/whatsNew.js, after the tutorial has
           been acknowledged so the two never stack on top of each other. */}
-      <WhatsNewModal tutorialOpen={showTutorial} />
+      {/* `tutorialOpen` means "another first-run modal is up" — the
+          language question counts, or announcements would stack on top of
+          it the instant a new user arrives. */}
+      <WhatsNewModal tutorialOpen={showTutorial || !hasChosenLanguage} />
 
       {/* PWA install prompt — appears after a short delay on devices
           where installing is possible and the user hasn't already
