@@ -18,6 +18,7 @@ import { recipeConditions } from '../../data/conditionTags'
 import MealSlot from './MealSlot'
 import RecipePicker from '../planner/RecipePicker'
 import PlannerTemplates from './PlannerTemplates'
+import PrintDayPicker from './PrintDayPicker'
 import WeekNotes from './WeekNotes'
 import DayNote from './DayNote'
 import BatchCookColumn from './BatchCookColumn'
@@ -106,6 +107,56 @@ export default function WeeklyPlanner() {
     0
   )
 
+  // Which print is being set up: 'week' (the grid), 'book' (every recipe),
+  // or null when the picker is closed.
+  const [printMode, setPrintMode] = useState(null)
+
+  /**
+   * The days worth offering for a given printout, with what each would
+   * contribute. The two printouts disagree on purpose: a day carrying only
+   * a note belongs on the grid but has no page in the book, and a custom
+   * typed-in meal appears on the grid while having no recipe to print.
+   * Offering a day that would print nothing is how you get a blank page.
+   */
+  function printableDays(mode) {
+    return dayKeys
+      .map(day => {
+        let count = 0
+        for (const slot of mealSlots) {
+          for (const it of weekPlan[day]?.[slot] || []) {
+            const norm = normalizeSlotItem(it)
+            if (!norm) continue
+            if (mode === 'book') {
+              if (norm.kind === 'custom') continue
+              if (!recipes.find(r => r.id === norm.recipeId)) continue
+            }
+            count++
+          }
+        }
+        const hasNote = Boolean((weekNotes?.days?.[day] || '').trim())
+        return {
+          key: day,
+          label: t(`planner.days.${day}`, { defaultValue: day }),
+          count,
+          include: mode === 'book' ? count > 0 : (count > 0 || hasNote),
+        }
+      })
+      .filter(d => d.include)
+  }
+
+  // Opening a printout asks which days first — unless there's nothing to
+  // choose between, in which case the question is just an extra tap.
+  function startPrint(mode) {
+    const days = printableDays(mode)
+    if (days.length <= 1) {
+      const only = days.map(d => d.key)
+      if (mode === 'week') handlePrintWeek(only.length ? only : null)
+      else handlePrintMenuBook(only.length ? only : null)
+      return
+    }
+    setPrintMode(mode)
+  }
+
   // Build the printable weekly menu from what's on screen.
   //
   // The sheet is a grid mirroring the planner, so unlike the old card
@@ -114,8 +165,9 @@ export default function WeeklyPlanner() {
   // are still dropped — a week that deliberately has no dinner (the
   // intermittent-fasting plan) should read as two meals a day rather than
   // three with a blank row running the width of the page.
-  function buildPrintDays() {
+  function buildPrintDays(onlyDays = null) {
     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase()
+    const wanted = onlyDays ? new Set(onlyDays) : null
     const itemsFor = (day, slot) => (weekPlan[day]?.[slot] || [])
       .map(it => {
         const norm = normalizeSlotItem(it)
@@ -141,8 +193,12 @@ export default function WeeklyPlanner() {
       })
       .filter(Boolean)
 
-    const usedSlots = mealSlots.filter(slot => dayKeys.some(day => itemsFor(day, slot).length > 0))
-    const days = dayKeys
+    // Slot rows are decided by the days actually being printed: printing
+    // Monday alone shouldn't leave an empty Supper row running the width
+    // of the page just because Thursday has one.
+    const printDayKeys = wanted ? dayKeys.filter(d => wanted.has(d)) : dayKeys
+    const usedSlots = mealSlots.filter(slot => printDayKeys.some(day => itemsFor(day, slot).length > 0))
+    const days = printDayKeys
       .map(day => {
         const slots = {}
         for (const slot of usedSlots) {
@@ -170,8 +226,8 @@ export default function WeeklyPlanner() {
     }
   }
 
-  function handlePrintWeek() {
-    const { days: printDays, slotLabels } = buildPrintDays()
+  function handlePrintWeek(onlyDays = null) {
+    const { days: printDays, slotLabels } = buildPrintDays(onlyDays)
 
     const printBatch = batchCook
       .map(b => {
@@ -231,9 +287,10 @@ export default function WeeklyPlanner() {
   // dish cooked twice in a week prints twice — once per day, each with its
   // own amounts. One shared copy could only carry the right numbers for
   // one of the days.
-  function handlePrintMenuBook() {
+  function handlePrintMenuBook(onlyDays = null) {
+    const wanted = onlyDays ? new Set(onlyDays) : null
     const entries = []
-    for (const day of dayKeys) {
+    for (const day of (wanted ? dayKeys.filter(d => wanted.has(d)) : dayKeys)) {
       for (const slot of mealSlots) {
         for (const it of weekPlan[day]?.[slot] || []) {
           const norm = normalizeSlotItem(it)
@@ -389,7 +446,7 @@ export default function WeeklyPlanner() {
             {t('planner.saveAsTemplate')}
           </button>
           <button
-            onClick={handlePrintWeek}
+            onClick={() => startPrint('week')}
             disabled={mealCount === 0}
             className="btn-secondary py-2 px-3.5 inline-flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
@@ -399,7 +456,7 @@ export default function WeeklyPlanner() {
             {t('planner.printWeek', { defaultValue: 'Print menu' })}
           </button>
           <button
-            onClick={handlePrintMenuBook}
+            onClick={() => startPrint('book')}
             disabled={mealCount === 0}
             className="btn-secondary py-2 px-3.5 inline-flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
             title={t('planner.printMenuBookHint', { defaultValue: 'Every recipe for the week, in one document' })}
@@ -523,6 +580,24 @@ export default function WeeklyPlanner() {
       {/* Templates modal — opened directly to load or save */}
       {templatesMode && (
         <PlannerTemplates initialMode={templatesMode} onClose={() => setTemplatesMode(null)} />
+      )}
+
+      {/* "Which days?" — shown before either printout when there is more
+          than one day to choose between. */}
+      {printMode && (
+        <PrintDayPicker
+          days={printableDays(printMode)}
+          confirmLabel={printMode === 'week'
+            ? t('planner.printWeek', { defaultValue: 'Print menu' })
+            : t('planner.printMenuBook', { defaultValue: 'Print all recipes' })}
+          onCancel={() => setPrintMode(null)}
+          onConfirm={(days) => {
+            const mode = printMode
+            setPrintMode(null)
+            if (mode === 'week') handlePrintWeek(days)
+            else handlePrintMenuBook(days)
+          }}
+        />
       )}
     </DndContext>
   )

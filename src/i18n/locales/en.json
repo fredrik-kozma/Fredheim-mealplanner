@@ -251,7 +251,13 @@
     "printMenuBook": "Print all recipes",
     "printMenuBookHint": "Every recipe for the week, in one document",
     "menuBookContents": "Contents",
-    "menuBookRecipes": "recipes"
+    "menuBookRecipes": "recipes",
+    "printDaysTitle": "Which days?",
+    "printDaysHint": "Only the days you tick are printed.",
+    "printSelectAll": "Select all",
+    "printSelectNone": "Clear all",
+    "printMealsCount_one": "{{count}} meal",
+    "printMealsCount_other": "{{count}} meals"
   },
   "categories": {
     "Breakfast": "Breakfast",

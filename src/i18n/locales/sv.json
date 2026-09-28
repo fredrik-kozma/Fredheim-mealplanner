@@ -251,7 +251,13 @@
     "printMenuBook": "Skriv ut alla recept",
     "printMenuBookHint": "Alla veckans recept i ett dokument",
     "menuBookContents": "Innehåll",
-    "menuBookRecipes": "recept"
+    "menuBookRecipes": "recept",
+    "printDaysTitle": "Vilka dagar?",
+    "printDaysHint": "Bara dagarna du bockar av skrivs ut.",
+    "printSelectAll": "Välj alla",
+    "printSelectNone": "Rensa alla",
+    "printMealsCount_one": "{{count}} måltid",
+    "printMealsCount_other": "{{count}} måltider"
   },
   "categories": {
     "Breakfast": "Frukost",

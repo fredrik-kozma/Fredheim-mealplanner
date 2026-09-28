@@ -251,7 +251,13 @@
     "printMenuBook": "Skriv ut alle oppskrifter",
     "printMenuBookHint": "Alle ukens oppskrifter i ett dokument",
     "menuBookContents": "Innhold",
-    "menuBookRecipes": "oppskrifter"
+    "menuBookRecipes": "oppskrifter",
+    "printDaysTitle": "Hvilke dager?",
+    "printDaysHint": "Bare dagene du huker av blir skrevet ut.",
+    "printSelectAll": "Velg alle",
+    "printSelectNone": "Fjern alle",
+    "printMealsCount_one": "{{count}} måltid",
+    "printMealsCount_other": "{{count}} måltider"
   },
   "categories": {
     "Breakfast": "Frokost",
