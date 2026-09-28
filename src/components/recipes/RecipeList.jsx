@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
@@ -51,9 +51,6 @@ export default function RecipeList() {
   const setAllergenFilterPaused = useStore(s => s.setAllergenFilterPaused)
   const navigate = useNavigate()
 
-  // Local-only toggle for "show only my favorites". Not persisted because
-  // it's a fleeting browsing intent, not a long-term preference.
-  const [favoritesOnly, setFavoritesOnly] = useState(false)
   const favSet = useMemo(() => new Set(favoriteRecipes || []), [favoriteRecipes])
 
   // Filter / sort state lives in the Zustand store (persisted to
@@ -73,6 +70,9 @@ export default function RecipeList() {
     ?? (view.condition && view.condition !== 'All' ? [view.condition] : [])
   const search = view.search
   const sortBy = view.sortBy
+  // `?? false` rather than a migration: anyone with a persisted view from
+  // before this was a stored filter simply has the key missing.
+  const favoritesOnly = view.favoritesOnly ?? false
 
   // When sorting by a nutrient, sortBy is "nutrient:<key>". Otherwise it's one
   // of newest/oldest/name.
@@ -84,6 +84,11 @@ export default function RecipeList() {
   const setActivePack = (v) => setRecipesView({ pack: v })
   const setSearch = (v) => setRecipesView({ search: v })
   const setSortBy = (v) => setRecipesView({ sortBy: v })
+  // Takes a boolean, not useState's `prev => next` updater — passing a
+  // function here would store the function itself, which is truthy (so the
+  // filter still appears to work) but cannot be serialised, so it silently
+  // vanishes the moment the store is persisted.
+  const setFavoritesOnly = (v) => setRecipesView({ favoritesOnly: Boolean(v) })
   // Toggle one condition in/out of the AND-filter set. Reads the current
   // conditions from the store (not the render closure) so two quick taps
   // before a re-render don't clobber each other.
@@ -103,7 +108,11 @@ export default function RecipeList() {
     activePack !== 'All' ||
     activeConditions.length > 0 ||
     search !== '' ||
-    sortBy !== 'newest'
+    sortBy !== 'newest' ||
+    // Now that it survives navigation, it also has to be something
+    // "Clear filters" can get you out of — otherwise a persisted
+    // favourites-only view looks like half your recipes have vanished.
+    favoritesOnly
 
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const titleOf = (r) => r.translations?.[currentLang]?.title || r.title
@@ -266,7 +275,7 @@ export default function RecipeList() {
               becomes rose-filled (heart) when active — matching the
               FavoriteStar heart used on cards and the detail header. */}
           <button
-            onClick={() => setFavoritesOnly(v => !v)}
+            onClick={() => setFavoritesOnly(!favoritesOnly)}
             className={`flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${
               favoritesOnly
                 ? 'bg-rose-50 border-rose-300 text-rose-500'

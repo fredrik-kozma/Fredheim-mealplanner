@@ -1718,12 +1718,20 @@ const useStore = create(
         conditions: [],
         search: '',
         sortBy: 'newest',
+        // Belongs here with the rest of the filters, not in component
+        // state: it used to be local, so opening a favourite and pressing
+        // Back dropped you out of your own favourites list — the one
+        // filter that didn't survive the trip every other one did.
+        favoritesOnly: false,
       },
       setRecipesView: (partial) => set((s) => ({
         recipesView: { ...s.recipesView, ...partial },
       })),
       resetRecipesView: () => set(() => ({
-        recipesView: { category: 'All', pack: 'All', conditions: [], search: '', sortBy: 'newest' },
+        recipesView: {
+          category: 'All', pack: 'All', conditions: [], search: '',
+          sortBy: 'newest', favoritesOnly: false,
+        },
       })),
     }),
     {
