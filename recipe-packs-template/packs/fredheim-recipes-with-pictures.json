@@ -3,7 +3,7 @@
   "name": "Fredheim recepies with pictures",
   "description": "A selection of Fredheim recipes bundled with photos.",
   "author": "Fredheim",
-  "version": "1.35.0",
+  "version": "1.36.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -18083,7 +18083,7 @@
           "name": "Garlic, raw"
         },
         {
-          "quantity": 0.5,
+          "quantity": 0.25,
           "unit": "tsp",
           "name": "Sea salt"
         }
@@ -18112,7 +18112,7 @@
               "name": "Hvitløk, rå"
             },
             {
-              "quantity": 0.5,
+              "quantity": 0.25,
               "unit": "ts",
               "name": "Havsalt"
             }
@@ -18144,7 +18144,7 @@
         "selenium": 0,
         "phosphorus": 1.5,
         "zinc": 0,
-        "sodium": 388,
+        "sodium": 194,
         "vitaminA": 0,
         "vitaminB6": 0.01,
         "vitaminB12": 0,
@@ -18180,7 +18180,7 @@
         "selenium": 0,
         "phosphorus": 5,
         "zinc": 0,
-        "sodium": 1275,
+        "sodium": 638,
         "vitaminA": 0,
         "vitaminB6": 0.04,
         "vitaminB12": 0,
