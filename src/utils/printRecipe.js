@@ -51,6 +51,10 @@ export function printRecipe(opts) {
     conditions = [],
     ingredients = [],
     steps = [],
+    // "1 tsp = 5 ml · 1 tbsp = 15 ml", or empty when this recipe has no
+    // spoon or millilitre measures to explain. Pre-resolved by the caller
+    // like every other string here, so this module stays free of i18n.
+    spoonHint = '',
     labels = {},
     locale,
     logoUrl = '/fredheim-logo.svg',
@@ -206,6 +210,7 @@ export function printRecipe(opts) {
         <section>
           <h2>${escapeHtml(L.ingredients)}</h2>
           <ul class="ingredients">${ingredientItems}</ul>
+          ${spoonHint ? `<p class="spoon-hint">🥄 ${escapeHtml(spoonHint)}</p>` : ''}
         </section>
         <section>
           <h2>${escapeHtml(L.instructions)}</h2>

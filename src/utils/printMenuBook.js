@@ -158,6 +158,7 @@ export function printMenuBook(opts) {
           <ul class="ingredients">
             ${e.ingredients.map(i => `<li><span class="ing-name">${escapeHtml(i.name)}</span><span class="ing-qty">${escapeHtml(i.quantityLabel)}</span></li>`).join('')}
           </ul>
+          ${e.spoonHint ? `<p class="spoon-hint">🥄 ${escapeHtml(e.spoonHint)}</p>` : ''}
         </section>
         <section>
           <h2>${escapeHtml(L.instructions)}</h2>

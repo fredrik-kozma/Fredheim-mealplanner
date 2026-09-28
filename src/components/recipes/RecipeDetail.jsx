@@ -5,6 +5,7 @@ import useStore from '../../store/useStore'
 import { formatQuantity } from '../../utils/shoppingListGenerator'
 import { convertToSystem, displayUnit, normalizeUnit, CANONICAL_UNITS } from '../../utils/unitNormalizer'
 import { printRecipe } from '../../utils/printRecipe'
+import { spoonHint, needsSpoonHint } from '../../utils/spoonHint'
 import { useAccess } from '../../hooks/useAccess'
 import LockedOverlay from '../subscription/LockedOverlay'
 import NutritionPanel from './NutritionPanel'
@@ -227,6 +228,9 @@ export default function RecipeDetail() {
         label: t(`conditions.${c.id}`, { defaultValue: c.id }),
       })),
       ingredients: printIngredients,
+      // Same rule as on screen — only where there is a spoon or a
+      // millilitre to explain.
+      spoonHint: needsSpoonHint(displayIngredients) ? spoonHint(currentLang) : '',
       steps: displaySteps || [],
       // Date follows the app's language, not the browser's.
       locale: i18n.language || undefined,
@@ -524,6 +528,18 @@ export default function RecipeDetail() {
                 )
               })}
             </div>
+
+            {/* Spoon reminder, directly under the amounts it explains.
+                Scaling turns "0.25 tsp" into "1.7 ml", and nobody can
+                picture a millilitre of salt — this gets them back to a
+                spoon they own. Only on recipes that actually measure by
+                spoon or millilitre. */}
+            {needsSpoonHint(displayIngredients) && (
+              <p className="mt-3 text-xs text-slate-400 flex items-center gap-1.5">
+                <span aria-hidden>🥄</span>
+                {spoonHint(currentLang)}
+              </p>
+            )}
           </section>
           )
         })()}

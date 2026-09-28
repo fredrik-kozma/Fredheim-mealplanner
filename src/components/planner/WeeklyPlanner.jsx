@@ -14,6 +14,7 @@ import { STARTER_PLANS } from '../../data/starterPlans'
 import { printWeekPlan } from '../../utils/printWeekPlan'
 import { printMenuBook } from '../../utils/printMenuBook'
 import { formatScaledQuantity } from '../../utils/scaleIngredient'
+import { spoonHint, needsSpoonHint } from '../../utils/spoonHint'
 import { recipeConditions } from '../../data/conditionTags'
 import MealSlot from './MealSlot'
 import RecipePicker from '../planner/RecipePicker'
@@ -336,6 +337,11 @@ export default function WeeklyPlanner() {
               label: t(`conditions.${c.id}`, { defaultValue: c.id }),
             })),
             ingredients,
+            // Per page, not per book: a recipe weighed entirely in grams
+            // gets no reminder even when the one before it needed one.
+            spoonHint: needsSpoonHint(tr?.ingredients || recipe.ingredients)
+              ? spoonHint(currentLang)
+              : '',
             steps: tr?.steps || recipe.steps || [],
           })
         }
