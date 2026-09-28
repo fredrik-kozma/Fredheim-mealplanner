@@ -3,7 +3,7 @@
   "name": "Fredheim recepies with pictures",
   "description": "A selection of Fredheim recipes bundled with photos.",
   "author": "Fredheim",
-  "version": "1.34.0",
+  "version": "1.35.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -9849,7 +9849,10 @@
       },
       "totalWeight": 520,
       "servingWeight": 104,
-      "createdAt": 1784923200000
+      "createdAt": 1784923200000,
+      "relatedRecipes": [
+        "fr-173"
+      ]
     },
     {
       "id": "fr-50",
