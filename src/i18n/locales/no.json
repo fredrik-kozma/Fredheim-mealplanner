@@ -695,7 +695,12 @@
     "pickTitle": "Logg mat du spiste",
     "balanceTitle": "Sikt på balanse, ikke perfeksjon.",
     "balanceBody": "Du trenger ikke å nå 100 % av hvert næringsstoff hver eneste dag – noen dager blir høyere, andre lavere. Det som betyr noe, er at det jevner seg ut i løpet av uken. Disse tallene er estimater fra standard matvaredata, ikke medisinske råd.",
-    "noNutritionData": "ingen næringsdata"
+    "noNutritionData": "ingen næringsdata",
+    "importPlanned": "Fra ukeplanen ({{count}})",
+    "importPlannedHint": "Legg inn måltidene som er planlagt for denne dagen. Du kan justere porsjonene etterpå.",
+    "importedMeals_one": "La til {{count}} måltid",
+    "importedMeals_other": "La til {{count}} måltider",
+    "importNothingNew": "Allerede lagt inn"
   },
   "allergens": {
     "tree-nuts": "Nøtter",

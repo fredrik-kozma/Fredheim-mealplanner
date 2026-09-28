@@ -927,6 +927,39 @@ const useStore = create(
         return { nutritionLog: { ...s.nutritionLog, [date]: nextDay } }
       }),
 
+      /**
+       * Pull a planned day across into the food log: "I ate what I planned."
+       *
+       * Deliberately NOT addNutritionEntry in a loop. That one bumps the
+       * portions of a recipe already logged, which is right when you add
+       * the same dish twice by hand and wrong here — pressing this a
+       * second time would quietly turn one portion into two. Recipes
+       * already logged for the date are left exactly as they are, tweaks
+       * included, so the button is safe to press again.
+       *
+       * Portions default to 1, not to the planned serving count: the plan
+       * says the dish was cooked for four, not that one person ate four.
+       * The stepper is there for the rest.
+       *
+       * @returns {number} how many were actually added
+       */
+      importPlannedMeals: (date, recipeIds) => {
+        const existing = get().nutritionLog?.[date] || []
+        const already = new Set(existing.map(e => e.recipeId))
+        const toAdd = [...new Set(recipeIds)].filter(id => !already.has(id))
+        if (toAdd.length === 0) return 0
+        set((s) => ({
+          nutritionLog: {
+            ...s.nutritionLog,
+            [date]: [
+              ...(s.nutritionLog[date] || []),
+              ...toAdd.map(recipeId => ({ id: makeId(), recipeId, portions: 1 })),
+            ],
+          },
+        }))
+        return toAdd.length
+      },
+
       setNutritionPortions: (date, entryId, portions) => set((s) => {
         const clean = Math.max(0.5, Math.round(portions * 2) / 2)
         return {

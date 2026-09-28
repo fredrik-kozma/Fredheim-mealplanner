@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import useStore from '../../store/useStore'
+import useStore, { normalizeSlotItem } from '../../store/useStore'
 import RecipePicker from '../planner/RecipePicker'
 import NutritionCoverage from './NutritionCoverage'
 import { sumNutrition, scaleNutrition } from '../../utils/nutritionData'
@@ -23,6 +23,10 @@ function addDays(d, n) {
   out.setDate(out.getDate() + n)
   return out
 }
+// The planner's own day keys, in its own order — index 0 is Monday, which
+// is what (getDay() + 6) % 7 produces.
+const PLANNER_DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+
 // Monday as the first day, matching the planner's week.
 function startOfWeek(d) {
   const out = new Date(d)
@@ -99,12 +103,16 @@ export default function NutritionTracker() {
   const recipes = useStore(s => s.recipes)
   const nutritionLog = useStore(s => s.nutritionLog) || {}
   const addNutritionEntry = useStore(s => s.addNutritionEntry)
+  const weekPlan = useStore(s => s.weekPlan)
+  const mealSlots = useStore(s => s.mealSlots)
+  const importPlannedMeals = useStore(s => s.importPlannedMeals)
 
   const recipeMap = useMemo(() => Object.fromEntries(recipes.map(r => [r.id, r])), [recipes])
 
   const [selected, setSelected] = useState(() => new Date())
   const [view, setView] = useState('day') // 'day' | 'week'
   const [pickerOpen, setPickerOpen] = useState(false)
+  const [importToast, setImportToast] = useState(null)
 
   const selKey = dateKey(selected)
   const todayKey = dateKey(new Date())
@@ -118,6 +126,42 @@ export default function NutritionTracker() {
 
   const dayEntries = nutritionLog[selKey] || []
   const dayTotals = useMemo(() => sumNutrition(dayEntries, recipeMap), [dayEntries, recipeMap])
+
+  // ── What the week plan says about this date ────────────────────────────
+  //
+  // The planner is a repeating Mon–Sun week, the food log is real calendar
+  // dates, so the bridge is the weekday: Tuesday the 14th picks up whatever
+  // "Tuesday" holds in the plan. Custom typed-in meals are skipped — they
+  // have no recipe and so no nutrition to count.
+  const plannedRecipeIds = useMemo(() => {
+    const weekdayKey = PLANNER_DAYS[(selected.getDay() + 6) % 7]
+    const slots = weekPlan?.[weekdayKey] || {}
+    const ids = []
+    for (const slot of mealSlots || []) {
+      for (const item of slots[slot] || []) {
+        const norm = normalizeSlotItem(item)
+        if (!norm || norm.kind === 'custom') continue
+        if (!recipeMap[norm.recipeId]) continue
+        ids.push(norm.recipeId)
+      }
+    }
+    return [...new Set(ids)]
+  }, [selected, weekPlan, mealSlots, recipeMap])
+
+  // Only the ones not already logged — the button should say what pressing
+  // it will actually do, and disappear once there is nothing left to add.
+  const loggedIds = useMemo(() => new Set(dayEntries.map(e => e.recipeId)), [dayEntries])
+  const importableCount = plannedRecipeIds.filter(id => !loggedIds.has(id)).length
+
+  function handleImportPlanned() {
+    const n = importPlannedMeals(selKey, plannedRecipeIds)
+    setImportToast(
+      n > 0
+        ? t('nutritionTracker.importedMeals', { count: n, defaultValue: `Added ${n} meals` })
+        : t('nutritionTracker.importNothingNew', { defaultValue: 'Already logged' })
+    )
+    setTimeout(() => setImportToast(null), 2600)
+  }
 
   // Week (Mon–Sun) containing the selection.
   const weekDays = useMemo(() => {
@@ -191,6 +235,23 @@ export default function NutritionTracker() {
           <div className="card p-4 mb-4">
             <div className="flex items-center justify-between mb-1">
               <h2 className="text-sm font-semibold text-slate-800">{t('nutritionTracker.mealsEaten', { defaultValue: 'What you ate' })}</h2>
+              {/* Bring across what this weekday holds in the planner, so a
+                  day you actually cooked to plan takes one tap instead of
+                  re-picking every dish. Hidden once there's nothing left
+                  to bring — a button that would do nothing is worse than
+                  no button. */}
+              {importableCount > 0 && (
+                <button
+                  onClick={handleImportPlanned}
+                  className="btn-secondary py-1.5 px-3 text-xs inline-flex items-center gap-1.5 mr-auto ml-3"
+                  title={t('nutritionTracker.importPlannedHint', {
+                    defaultValue: 'Log the meals planned for this day. You can adjust the portions after.',
+                  })}
+                >
+                  <span aria-hidden>📅</span>
+                  {t('nutritionTracker.importPlanned', { count: importableCount, defaultValue: 'From the plan ({{count}})' })}
+                </button>
+              )}
               <button
                 onClick={() => setPickerOpen(true)}
                 className="btn-primary py-1.5 px-3 text-xs inline-flex items-center gap-1.5"
@@ -289,6 +350,15 @@ export default function NutritionTracker() {
           }}
           onClose={() => setPickerOpen(false)}
         />
+      )}
+
+      {importToast && (
+        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-xl">
+          <svg className="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
+          {importToast}
+        </div>
       )}
     </div>
   )

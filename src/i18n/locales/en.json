@@ -695,7 +695,12 @@
     "pickTitle": "Log a food you ate",
     "balanceTitle": "Aim for balance, not perfection.",
     "balanceBody": "You don't need to hit 100% of every nutrient every single day — some days run higher, others lower. What matters is that things even out across the week. These figures are estimates from standard food data, not medical advice.",
-    "noNutritionData": "no nutrition data"
+    "noNutritionData": "no nutrition data",
+    "importPlanned": "From the plan ({{count}})",
+    "importPlannedHint": "Log the meals planned for this day. You can adjust the portions after.",
+    "importedMeals_one": "Added {{count}} meal",
+    "importedMeals_other": "Added {{count}} meals",
+    "importNothingNew": "Already logged"
   },
   "allergens": {
     "tree-nuts": "Tree nuts",

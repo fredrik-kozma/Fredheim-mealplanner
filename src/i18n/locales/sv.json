@@ -695,7 +695,12 @@
     "pickTitle": "Logga mat du åt",
     "balanceTitle": "Sikta på balans, inte perfektion.",
     "balanceBody": "Du behöver inte nå 100 % av varje näringsämne varje dag – vissa dagar blir högre, andra lägre. Det som spelar roll är att det jämnar ut sig under veckan. Dessa siffror är uppskattningar från standardiserade livsmedelsdata, inte medicinsk rådgivning.",
-    "noNutritionData": "ingen näringsdata"
+    "noNutritionData": "ingen näringsdata",
+    "importPlanned": "Från veckoplanen ({{count}})",
+    "importPlannedHint": "Lägg in måltiderna som är planerade för den här dagen. Du kan justera portionerna efteråt.",
+    "importedMeals_one": "Lade till {{count}} måltid",
+    "importedMeals_other": "Lade till {{count}} måltider",
+    "importNothingNew": "Redan inlagt"
   },
   "allergens": {
     "tree-nuts": "Nötter",
