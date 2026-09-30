@@ -3,7 +3,7 @@
   "name": "Fredheim recepies with pictures",
   "description": "A selection of Fredheim recipes bundled with photos.",
   "author": "Fredheim",
-  "version": "1.41.0",
+  "version": "1.42.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -36240,7 +36240,7 @@
           "notes": "Mixa kikärtorna medan de fortfarande är varma för den slätaste konsistensen. Kokar du dem med en nypa bikarbonat blir de extra mjuka. Enkelt är bäst här: hemkokta kikärtor och deras kokvatten gör det mesta av jobbet. Saltet är satt till ungefär 1 tsk per sats, så tillsätt lite i taget och smaka av. Byten: malen chia i stället för linfrön; vita bönor i stället för kikärtor ger ett mildare resultat."
         }
       },
-      "createdAt": 1785394800000
+      "createdAt": 1785675600000
     },
     {
       "id": "carob-black-bean-mousse",
@@ -36275,7 +36275,7 @@
           "cholesterol": 0,
           "totalCarbs": 30.5,
           "totalSugars": 15,
-          "addedSugar": 0,
+          "addedSugar": 9,
           "fiber": 6.5,
           "calcium": 40,
           "potassium": 362.5,
@@ -36308,8 +36308,8 @@
           "name": "black beans, cooked"
         },
         {
-          "quantity": 5,
-          "unit": "pcs",
+          "quantity": 60,
+          "unit": "g",
           "name": "dates, pitted"
         },
         {
@@ -36346,7 +36346,7 @@
         "Taste, and add a little more maple syrup or an extra date if you want it sweeter.",
         "Chill for at least 1 hour before serving. The mousse firms up and turns silkier as it cools."
       ],
-      "notes": "Serving: top with fresh berries, sliced banana or grated sugar-free dark chocolate, and drizzle over a little extra maple syrup or carob sauce. For something more festive, layer the mousse with crushed raspberries in small glasses. Oat or cashew milk both work well; a thicker milk gives a richer result. Rinsing the beans properly is the step that decides whether this tastes like dessert or like beans, so do not rush it.",
+      "notes": "Serving: top with fresh berries, sliced banana or grated sugar-free dark chocolate, and drizzle over a little extra maple syrup or carob sauce. For something more festive, layer the mousse with crushed raspberries in small glasses. Oat or cashew milk both work well; a thicker milk gives a richer result. Rinsing the beans properly is the step that decides whether this tastes like dessert or like beans, so do not rush it. The dates are about 5 medium ones; weigh rather than count if yours are large Medjool.",
       "translations": {
         "no": {
           "title": "Karobmousse med svarte bønner",
@@ -36358,8 +36358,8 @@
               "name": "svarte bønner, kokte"
             },
             {
-              "quantity": 5,
-              "unit": "stk",
+              "quantity": 60,
+              "unit": "g",
               "name": "dadler, uten stein"
             },
             {
@@ -36396,7 +36396,7 @@
             "Smak til, og ha i litt mer lønnesirup eller en ekstra daddel hvis du vil ha den søtere.",
             "Sett den i kjøleskapet i minst 1 time før servering. Moussen blir fastere og enda mer silkemyk når den kjøles ned."
           ],
-          "notes": "Servering: topp med friske bær, bananskiver eller revet mørk sjokolade uten sukker, og drypp gjerne litt ekstra lønnesirup eller karobsaus over. For en luksusvariant: legg moussen lagvis med most bringebær i små glass. Både havre- og cashewmelk fungerer fint; en tykkere melk gir et fyldigere resultat. Det å skylle bønnene ordentlig er trinnet som avgjør om dette smaker dessert eller bønner, så ikke stress med det."
+          "notes": "Servering: topp med friske bær, bananskiver eller revet mørk sjokolade uten sukker, og drypp gjerne litt ekstra lønnesirup eller karobsaus over. For en luksusvariant: legg moussen lagvis med most bringebær i små glass. Både havre- og cashewmelk fungerer fint; en tykkere melk gir et fyldigere resultat. Det å skylle bønnene ordentlig er trinnet som avgjør om dette smaker dessert eller bønner, så ikke stress med det. Dadlene tilsvarer omtrent 5 middels store; vei dem heller enn å telle hvis du bruker store Medjool."
         },
         "sv": {
           "title": "Carobmousse med svarta bönor",
@@ -36408,8 +36408,8 @@
               "name": "svarta bönor, kokta"
             },
             {
-              "quantity": 5,
-              "unit": "st",
+              "quantity": 60,
+              "unit": "g",
               "name": "dadlar, urkärnade"
             },
             {
@@ -36446,10 +36446,10 @@
             "Smaka av, och tillsätt lite mer lönnsirap eller en extra dadel om du vill ha den sötare.",
             "Ställ den i kylen i minst 1 timme före servering. Moussen stelnar och blir ännu silkeslenare när den kyls."
           ],
-          "notes": "Servering: toppa med färska bär, bananskivor eller riven mörk choklad utan socker, och ringla gärna över lite extra lönnsirap eller carobsås. För en lyxvariant: varva moussen med mosade hallon i små glas. Både havre- och cashewmjölk fungerar bra; en tjockare mjölk ger ett fylligare resultat. Att skölja bönorna ordentligt är steget som avgör om det här smakar dessert eller bönor, så stressa inte med det."
+          "notes": "Servering: toppa med färska bär, bananskivor eller riven mörk choklad utan socker, och ringla gärna över lite extra lönnsirap eller carobsås. För en lyxvariant: varva moussen med mosade hallon i små glas. Både havre- och cashewmjölk fungerar bra; en tjockare mjölk ger ett fylligare resultat. Att skölja bönorna ordentligt är steget som avgör om det här smakar dessert eller bönor, så stressa inte med det. Dadlarna motsvarar ungefär 5 medelstora; väg dem hellre än att räkna om du använder stora Medjool."
         }
       },
-      "createdAt": 1785398400000
+      "createdAt": 1785679200000
     }
   ]
 }
