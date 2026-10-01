@@ -3,7 +3,7 @@
   "name": "Fredheim recepies with pictures",
   "description": "A selection of Fredheim recipes bundled with photos.",
   "author": "Fredheim",
-  "version": "1.42.0",
+  "version": "1.44.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -34880,8 +34880,77 @@
             "Dekk løst med plastfolie eller et fuktig klede og la heve ved romtemperatur i 45-60 minutter til deigen hever.",
             "Forvarm ovnen til 220°C. Stek i 8-10 minutter på høy varme, reduser deretter til 190°C og stek i 18 minutter til, til de er lyst gyllenbrune.",
             "Brødet er ferdig når det høres hult ut når du banker på bunnen. Kjernetemperaturen bør nå 96-98°C.",
-            "Ta ut av ovnen og avkjøl på rist i minst 1 time før du spiser. Innmatingen vil fortsette å sette seg mens det avkjøles.",
+            "Ta ut av ovnen og avkjøl på rist i minst 1 time før du spiser. Krummen fortsetter å sette seg mens det avkjøles.",
             "Oppbevar i en lufttett beholder; brødet holder seg mykt og saftig i 3-4 dager eller kan fryses i opptil 1 måned."
+          ],
+          "description": "Mykt, elastisk og saftig glutenfritt brød uten melk og egg, som holder seg ferskt i flere dager. Psylliumfrøskall gir struktur, og tangzhong-metoden gir en mykhet som på bakeri."
+        },
+        "sv": {
+          "title": "Luftigt glutenfritt bröd",
+          "description": "Mjukt, elastiskt och saftigt glutenfritt bröd utan mjölk och ägg, som håller sig färskt i flera dagar. Psylliumfröskal ger struktur, och tangzhong-metoden ger en mjukhet som på bageri.",
+          "ingredients": [
+            {
+              "quantity": 175,
+              "unit": "g",
+              "name": "glutenfritt havremjöl"
+            },
+            {
+              "quantity": 25,
+              "unit": "g",
+              "name": "glutenfritt havremjöl till gröten"
+            },
+            {
+              "quantity": 120,
+              "unit": "g",
+              "name": "rismjöl"
+            },
+            {
+              "quantity": 80,
+              "unit": "g",
+              "name": "potatisstärkelse"
+            },
+            {
+              "quantity": 12,
+              "unit": "g",
+              "name": "psylliumfröskal, pulver"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "name": "torrjäst"
+            },
+            {
+              "quantity": 5,
+              "unit": "g",
+              "name": "salt"
+            },
+            {
+              "quantity": 150,
+              "unit": "ml",
+              "name": "vatten till gröten"
+            },
+            {
+              "quantity": 15,
+              "unit": "ml",
+              "name": "citronjuice"
+            },
+            {
+              "quantity": 315,
+              "unit": "ml",
+              "name": "ljummet vatten"
+            }
+          ],
+          "steps": [
+            "Gör gröten: blanda havremjölet till gröten med vattnet till gröten i en liten kastrull. Koka på medelvärme under ständig omrörning tills det tjocknar, ungefär 2-3 minuter. Låt svalna till rumstemperatur.",
+            "Blanda alla torra ingredienser i en stor skål: havremjöl, rismjöl, potatisstärkelse, psylliumfröskal, torrjäst och salt. Vispa väl.",
+            "Blanda den svalnade gröten, citronjuicen och det ljumma vattnet (38-40°C) i en annan skål.",
+            "Häll de våta ingredienserna över de torra och blanda kraftigt i 4-5 minuter tills degen är kladdig men går att forma med en sked. Degen ska hålla formen och långsamt slappna av när den formas, inte rinna ut.",
+            "Klä en plåt med bakplåtspapper. Forma runda bullar med blöt hand.",
+            "Täck löst med plastfolie eller en fuktig handduk och låt jäsa i rumstemperatur i 45-60 minuter tills degen har jäst upp.",
+            "Värm ugnen till 220°C. Grädda i 8-10 minuter på hög värme, sänk sedan till 190°C och grädda i ytterligare 18 minuter tills de är ljust gyllenbruna.",
+            "Brödet är klart när det låter ihåligt om du knackar på undersidan. Innertemperaturen bör nå 96-98°C.",
+            "Ta ut ur ugnen och låt svalna på galler i minst 1 timme före servering. Inkråmet fortsätter att sätta sig medan det svalnar.",
+            "Förvara i en lufttät behållare; brödet håller sig mjukt och saftigt i 3-4 dagar, eller kan frysas i upp till 1 månad."
           ]
         }
       },
@@ -36260,45 +36329,45 @@
         "heart-healthy",
         "blood-pressure-friendly"
       ],
-      "kcal": 210,
-      "servingWeightGrams": 151,
+      "kcal": 203,
+      "servingWeightGrams": 136,
       "nutrition": {
         "perServing": {
-          "calories": 209.5,
-          "protein": 7,
-          "totalFat": 6.15,
-          "saturatedFat": 0.95,
-          "polyunsaturatedFat": 1.43,
-          "monounsaturatedFat": 3.35,
-          "omega3": 0.08,
-          "omega6": 1.35,
+          "calories": 203,
+          "protein": 6.7,
+          "totalFat": 0.96,
+          "saturatedFat": 0.16,
+          "polyunsaturatedFat": 0.35,
+          "monounsaturatedFat": 0.27,
+          "omega3": 0.06,
+          "omega6": 0.29,
           "cholesterol": 0,
-          "totalCarbs": 30.5,
-          "totalSugars": 15,
+          "totalCarbs": 47,
+          "totalSugars": 25,
           "addedSugar": 9,
-          "fiber": 6.5,
-          "calcium": 40,
-          "potassium": 362.5,
-          "copper": 0.53,
-          "iron": 2.15,
-          "magnesium": 75,
-          "manganese": 0.95,
-          "selenium": 7.5,
-          "phosphorus": 175,
-          "zinc": 1.73,
-          "sodium": 70,
-          "vitaminA": 1.5,
+          "fiber": 11,
+          "calcium": 77,
+          "potassium": 449,
+          "copper": 0.23,
+          "iron": 1.8,
+          "magnesium": 61,
+          "manganese": 0.9,
+          "selenium": 2.1,
+          "phosphorus": 115,
+          "zinc": 1.1,
+          "sodium": 59,
+          "vitaminA": 0.18,
           "vitaminB6": 0.11,
           "vitaminB12": 0,
-          "vitaminC": 2.5,
+          "vitaminC": 0.08,
           "vitaminD": 0,
-          "vitaminE": 0.33,
-          "vitaminK": 10,
-          "folate": 25,
-          "thiamin": 0.14,
-          "riboflavin": 0.09,
-          "niacin": 0.85,
-          "choline": 22.5
+          "vitaminE": 0.65,
+          "vitaminK": 2.6,
+          "folate": 100,
+          "thiamin": 0.18,
+          "riboflavin": 0.29,
+          "niacin": 0.78,
+          "choline": 24
         }
       },
       "ingredients": [
