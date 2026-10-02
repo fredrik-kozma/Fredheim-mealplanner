@@ -3,7 +3,7 @@
   "name": "Fredheim recepies with pictures",
   "description": "A selection of Fredheim recipes bundled with photos.",
   "author": "Fredheim",
-  "version": "1.44.0",
+  "version": "1.45.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -5057,9 +5057,9 @@
           "name": "Olive oil"
         },
         {
-          "quantity": null,
-          "unit": "",
-          "name": "Bay leaf, dried (1–2 leaves)"
+          "quantity": 2,
+          "unit": "pcs",
+          "name": "Bay leaves, dried"
         },
         {
           "quantity": 10,
@@ -5131,9 +5131,9 @@
               "name": "Olivenolje"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Laurbærblad, tørket (1–2 blader)"
+              "quantity": 2,
+              "unit": "stk",
+              "name": "Laurbærblad, tørket"
             },
             {
               "quantity": 10,
@@ -11477,9 +11477,9 @@
           "name": "Olive oil"
         },
         {
-          "quantity": null,
-          "unit": "",
-          "name": "Bay leaf, dried (1–2 leaves)"
+          "quantity": 2,
+          "unit": "pcs",
+          "name": "Bay leaves, dried"
         },
         {
           "quantity": 0.5,
@@ -11577,9 +11577,9 @@
               "name": "Olivenolje"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Laurbærblad, tørket (1–2 blader)"
+              "quantity": 2,
+              "unit": "stk",
+              "name": "Laurbærblad, tørket"
             },
             {
               "quantity": 0.5,
@@ -18232,9 +18232,9 @@
           "name": "Salt, table salt"
         },
         {
-          "quantity": null,
-          "unit": "",
-          "name": "Bay leaf, dried (1–2 leaves)"
+          "quantity": 2,
+          "unit": "pcs",
+          "name": "Bay leaves, dried"
         },
         {
           "quantity": 110,
@@ -18347,9 +18347,9 @@
               "name": "Salt, bordsalt"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Laurbærblad, tørket (1–2 blader)"
+              "quantity": 2,
+              "unit": "stk",
+              "name": "Laurbærblad, tørket"
             },
             {
               "quantity": 110,
@@ -19710,9 +19710,9 @@
           "name": "Tomato, canned"
         },
         {
-          "quantity": null,
-          "unit": "",
-          "name": "Bay leaf, dried (1–2 leaves)"
+          "quantity": 2,
+          "unit": "pcs",
+          "name": "Bay leaves, dried"
         },
         {
           "quantity": 8,
@@ -19782,9 +19782,9 @@
               "name": "Tomat, hermetisk"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Laurbærblad, tørket (1–2 blader)"
+              "quantity": 2,
+              "unit": "stk",
+              "name": "Laurbærblad, tørket"
             },
             {
               "quantity": 8,
@@ -32958,9 +32958,9 @@
           "name": "Onion, yellow, Norwegian, raw"
         },
         {
-          "quantity": null,
-          "unit": "",
-          "name": "Bay leaf, dried (1–2 leaves)"
+          "quantity": 2,
+          "unit": "pcs",
+          "name": "Bay leaves, dried"
         },
         {
           "quantity": 2,
@@ -33032,9 +33032,9 @@
               "name": "Løk, gul, norsk, rå"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Laurbærblad, tørket (1–2 blader)"
+              "quantity": 2,
+              "unit": "stk",
+              "name": "Laurbærblad, tørket"
             },
             {
               "quantity": 2,

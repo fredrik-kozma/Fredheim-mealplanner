@@ -3,7 +3,7 @@
   "name": "Fasting Mimicking Plan — 5-Day Plan",
   "description": "A clinically structured 5-day Fasting Mimicking Diet (FMD) based on the research of Valter Longo, PhD (USC). Three small, fully plant-based, oil-free, caffeine-free meals a day, with a vegetable broth sipped freely throughout. Designed to trigger autophagy, suppress IGF-1 and mobilise stem cells — with evidence for metabolic syndrome, pre-diabetes, cardiovascular risk, autoimmune and inflammatory conditions, and healthy ageing. ⚠ Contraindicated in pregnancy or breastfeeding, type 1 / insulin-dependent diabetes, BMI under 18.5, any eating-disorder history, and under-18s.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.14.0",
+  "version": "1.16.0",
   "tags": [
     "fmd",
     "fasting-mimicking",
@@ -291,7 +291,7 @@
             {
               "quantity": 70,
               "unit": "g",
-              "name": "Moden avokado (½ middels)"
+              "name": "Moden avokado"
             },
             {
               "quantity": 15,
@@ -343,7 +343,7 @@
             {
               "quantity": 70,
               "unit": "g",
-              "name": "Mogen avokado (½ medium)"
+              "name": "Mogen avokado"
             },
             {
               "quantity": 15,
@@ -393,7 +393,7 @@
         {
           "quantity": 70,
           "unit": "g",
-          "name": "Ripe avocado (½ medium)"
+          "name": "Ripe avocado"
         },
         {
           "quantity": 15,
@@ -1011,7 +1011,7 @@
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Moden avokado (¼ middels)"
+              "name": "Moden avokado"
             },
             {
               "quantity": 50,
@@ -1058,7 +1058,7 @@
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Mogen avokado (¼ medium)"
+              "name": "Mogen avokado"
             },
             {
               "quantity": 50,
@@ -1103,7 +1103,7 @@
         {
           "quantity": 40,
           "unit": "g",
-          "name": "Ripe avocado (¼ medium)"
+          "name": "Ripe avocado"
         },
         {
           "quantity": 50,
@@ -2812,7 +2812,7 @@
             {
               "quantity": 180,
               "unit": "g",
-              "name": "Rød paprika (1 stor)"
+              "name": "Rød paprika"
             },
             {
               "quantity": 40,
@@ -2876,7 +2876,7 @@
             {
               "quantity": 180,
               "unit": "g",
-              "name": "Röd paprika (1 stor)"
+              "name": "Röd paprika"
             },
             {
               "quantity": 40,
@@ -2938,7 +2938,7 @@
         {
           "quantity": 180,
           "unit": "g",
-          "name": "Red bell pepper (1 large)"
+          "name": "Red bell pepper"
         },
         {
           "quantity": 40,
@@ -3263,17 +3263,17 @@
             {
               "quantity": 300,
               "unit": "g",
-              "name": "Modne tomater (ca. 3 middels)"
+              "name": "Modne tomater"
             },
             {
               "quantity": 100,
               "unit": "g",
-              "name": "Fennikel (½ knoll)"
+              "name": "Fennikel"
             },
             {
               "quantity": 70,
               "unit": "g",
-              "name": "Gulrot (1 liten)"
+              "name": "Gulrot"
             },
             {
               "quantity": 300,
@@ -3316,17 +3316,17 @@
             {
               "quantity": 300,
               "unit": "g",
-              "name": "Mogna tomater (ca 3 medium)"
+              "name": "Mogna tomater"
             },
             {
               "quantity": 100,
               "unit": "g",
-              "name": "Fänkål (½ stånd)"
+              "name": "Fänkål"
             },
             {
               "quantity": 70,
               "unit": "g",
-              "name": "Morot (1 liten)"
+              "name": "Morot"
             },
             {
               "quantity": 300,
@@ -3367,17 +3367,17 @@
         {
           "quantity": 300,
           "unit": "g",
-          "name": "Ripe tomatoes (about 3 medium)"
+          "name": "Ripe tomatoes"
         },
         {
           "quantity": 100,
           "unit": "g",
-          "name": "Fennel bulb (½ bulb)"
+          "name": "Fennel bulb"
         },
         {
           "quantity": 70,
           "unit": "g",
-          "name": "Carrot (1 small)"
+          "name": "Carrot"
         },
         {
           "quantity": 300,
@@ -3496,12 +3496,12 @@
             {
               "quantity": 160,
               "unit": "g",
-              "name": "Agurk (1 middels)"
+              "name": "Agurk"
             },
             {
               "quantity": 90,
               "unit": "g",
-              "name": "Moden avokado (¾ middels)"
+              "name": "Moden avokado"
             },
             {
               "quantity": 10,
@@ -3558,12 +3558,12 @@
             {
               "quantity": 160,
               "unit": "g",
-              "name": "Gurka (1 medium)"
+              "name": "Gurka"
             },
             {
               "quantity": 90,
               "unit": "g",
-              "name": "Mogen avokado (¾ medium)"
+              "name": "Mogen avokado"
             },
             {
               "quantity": 10,
@@ -3618,12 +3618,12 @@
         {
           "quantity": 160,
           "unit": "g",
-          "name": "Cucumber (1 medium)"
+          "name": "Cucumber"
         },
         {
           "quantity": 90,
           "unit": "g",
-          "name": "Ripe avocado (¾ medium)"
+          "name": "Ripe avocado"
         },
         {
           "quantity": 10,

@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.50.0",
+  "version": "1.52.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -63,7 +63,7 @@
             {
               "quantity": 120,
               "unit": "g",
-              "name": "moden banan, most (~1 stor)"
+              "name": "moden banan, most"
             },
             {
               "quantity": 280,
@@ -114,7 +114,7 @@
             {
               "quantity": 120,
               "unit": "g",
-              "name": "mogen banan, mosad (~1 stor)"
+              "name": "mogen banan, mosad"
             },
             {
               "quantity": 280,
@@ -163,7 +163,7 @@
         {
           "quantity": 120,
           "unit": "g",
-          "name": "ripe banana, mashed (~1 large)"
+          "name": "ripe banana, mashed"
         },
         {
           "quantity": 280,
@@ -266,17 +266,17 @@
             {
               "quantity": 300,
               "unit": "g",
-              "name": "kokte cannellinibønner (1 boks, avrent og skylt)"
+              "name": "cannellinibønner, kokte"
             },
             {
               "quantity": 14,
               "unit": "g",
-              "name": "malt linfrø (2 ss)"
+              "name": "malt linfrø"
             },
             {
               "quantity": 20,
               "unit": "g",
-              "name": "utstenede Medjool-dadler (~1 stor)"
+              "name": "Medjool-dadler, utstenede"
             },
             {
               "quantity": 1,
@@ -306,7 +306,7 @@
           ],
           "steps": [
             "Hvis dadlene er faste, bløtlegg dem i de {{80 ml}} lett oppvarmet vann i 5 minutter slik at de blender helt jevnt uten klumper.",
-            "Tilsett alt i en blender.",
+            "Hell av og skyll bønnene, og ha alt i en blender.",
             "Blend på høy hastighet i 60–90 sekunder til det er silkemykt.",
             "Smak til og juster — mer sitron for friskhet, mer salt for å krydre."
           ]
@@ -318,17 +318,17 @@
             {
               "quantity": 300,
               "unit": "g",
-              "name": "kokta cannellinibönor (1 burk, avrunna och sköljda)"
+              "name": "cannellinibönor, kokta"
             },
             {
               "quantity": 14,
               "unit": "g",
-              "name": "malet linfrö (2 msk)"
+              "name": "malet linfrö"
             },
             {
               "quantity": 20,
               "unit": "g",
-              "name": "urkärnade Medjool-dadlar (~1 stor)"
+              "name": "Medjool-dadlar, urkärnade"
             },
             {
               "quantity": 1,
@@ -358,7 +358,7 @@
           ],
           "steps": [
             "Om dadlarna är hårda, blötlägg dem i de {{80 ml}} lätt uppvärmt vatten i 5 minuter så att de mixas helt slätt utan klumpar.",
-            "Tillsätt allt i en mixer.",
+            "Häll av och skölj bönorna, och lägg allt i en mixer.",
             "Mixa på hög hastighet i 60–90 sekunder tills silkeslent.",
             "Smaka av och justera — mer citron för friskhet, mer salt för smaksättning."
           ]
@@ -368,17 +368,17 @@
         {
           "quantity": 300,
           "unit": "g",
-          "name": "cooked cannellini beans (1 can, drained and rinsed)"
+          "name": "cannellini beans, cooked"
         },
         {
           "quantity": 14,
           "unit": "g",
-          "name": "ground flaxseed (2 tbsp)"
+          "name": "ground flaxseed"
         },
         {
           "quantity": 20,
           "unit": "g",
-          "name": "pitted Medjool dates (~1 large)"
+          "name": "Medjool dates, pitted"
         },
         {
           "quantity": 1,
@@ -408,7 +408,7 @@
       ],
       "steps": [
         "If your dates are firm, soak them in the {{80 ml}} of slightly warmed water for 5 minutes so they blend completely smooth without specks.",
-        "Add everything to a blender.",
+        "Drain and rinse the beans, then add everything to a blender.",
         "Blend on high for 60–90 seconds until silky.",
         "Taste and adjust — more lemon for brightness, more salt to season."
       ],
@@ -2528,9 +2528,9 @@
               "name": "søtpotet, grovhakket (med skall)"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "laurbærblad (1–2 blader)"
+              "quantity": 2,
+              "unit": "stk",
+              "name": "laurbærblad, tørket"
             },
             {
               "quantity": 1,
@@ -2602,9 +2602,9 @@
               "name": "sötpotatis, grovhackad (med skal)"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "lagerblad (1–2 blad)"
+              "quantity": 2,
+              "unit": "st",
+              "name": "lagerblad, torkade"
             },
             {
               "quantity": 1,
@@ -2674,9 +2674,9 @@
           "name": "sweet potato, roughly chopped (skin on)"
         },
         {
-          "quantity": null,
-          "unit": "",
-          "name": "bay leaves"
+          "quantity": 2,
+          "unit": "pcs",
+          "name": "bay leaves, dried"
         },
         {
           "quantity": 1,
@@ -4899,9 +4899,9 @@
               "name": "Ferske sjampinjonger, halvert"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Laurbærblad (1–2 blader)"
+              "quantity": 2,
+              "unit": "stk",
+              "name": "Laurbærblad, tørket"
             },
             {
               "quantity": 0.5,
@@ -4962,9 +4962,9 @@
               "name": "Färska champinjoner, halverade"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Lagerblad (1–2 blad)"
+              "quantity": 2,
+              "unit": "st",
+              "name": "Lagerblad, torkade"
             },
             {
               "quantity": 0.5,
@@ -5022,9 +5022,9 @@
           "name": "Fresh champignon mushrooms, halved"
         },
         {
-          "quantity": null,
-          "unit": "",
-          "name": "Bay leaves"
+          "quantity": 2,
+          "unit": "pcs",
+          "name": "Bay leaves, dried"
         },
         {
           "quantity": 0.5,
@@ -6041,7 +6041,7 @@
         {
           "quantity": 220,
           "unit": "ml",
-          "name": "Cold water (approx. 200–250 ml, one glass)"
+          "name": "Cold water"
         }
       ],
       "steps": [
@@ -6089,7 +6089,7 @@
             {
               "quantity": 220,
               "unit": "ml",
-              "name": "kaldt vann (ca. 200–250 ml, ett glass)"
+              "name": "kaldt vann"
             }
           ],
           "steps": [
@@ -6137,7 +6137,7 @@
             {
               "quantity": 220,
               "unit": "ml",
-              "name": "kallt vatten (ca 200–250 ml, ett glas)"
+              "name": "kallt vatten"
             }
           ],
           "steps": [
@@ -6209,9 +6209,9 @@
           "name": "smoked paprika"
         },
         {
-          "quantity": null,
-          "unit": "",
-          "name": "Bay leaf, dried (2–3 leaves)"
+          "quantity": 3,
+          "unit": "pcs",
+          "name": "Bay leaves, dried"
         },
         {
           "quantity": 1,
@@ -6304,9 +6304,9 @@
               "name": "røkt paprikapulver"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Laurbærblad, tørket (2–3 blader)"
+              "quantity": 3,
+              "unit": "stk",
+              "name": "Laurbærblad, tørket"
             },
             {
               "quantity": 1,
@@ -6400,9 +6400,9 @@
               "name": "rökt paprikapulver"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Lagerblad, torkade (2–3 blad)"
+              "quantity": 3,
+              "unit": "st",
+              "name": "Lagerblad, torkade"
             },
             {
               "quantity": 1,
@@ -6559,9 +6559,9 @@
           "name": "smoked paprika"
         },
         {
-          "quantity": null,
-          "unit": "",
-          "name": "Bay leaf, dried (2–3 leaves)"
+          "quantity": 3,
+          "unit": "pcs",
+          "name": "Bay leaves, dried"
         },
         {
           "quantity": 1,
@@ -6654,9 +6654,9 @@
               "name": "røkt paprikapulver"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Laurbærblad, tørket (2–3 blader)"
+              "quantity": 3,
+              "unit": "stk",
+              "name": "Laurbærblad, tørket"
             },
             {
               "quantity": 1,
@@ -6750,9 +6750,9 @@
               "name": "rökt paprikapulver"
             },
             {
-              "quantity": null,
-              "unit": "",
-              "name": "Lagerblad, torkade (2–3 blad)"
+              "quantity": 3,
+              "unit": "st",
+              "name": "Lagerblad, torkade"
             },
             {
               "quantity": 1,
