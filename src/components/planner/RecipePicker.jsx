@@ -24,6 +24,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
   const recipeCategories = useStore(s => s.recipeCategories)
   const installedPacks = useStore(s => s.installedPacks)
   const avoidedAllergens = useStore(s => s.avoidedAllergens) || []
+  const favoriteRecipes = useStore(s => s.favoriteRecipes)
   const allergenFilterPaused = useStore(s => s.allergenFilterPaused)
   const allergenActive = avoidedAllergens.length > 0 && !allergenFilterPaused
   const currentLang = i18n.language?.slice(0, 2) || 'en'
@@ -33,6 +34,8 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
   const [activePack, setActivePack] = useState('All')
   // Conditions AND-combined; empty = no filter.
   const [activeConditions, setActiveConditions] = useState([])
+  const [favoritesOnly, setFavoritesOnly] = useState(false)
+  const favSet = useMemo(() => new Set(favoriteRecipes || []), [favoriteRecipes])
   const toggleCondition = (id) => setActiveConditions(prev =>
     prev.includes(id) ? prev.filter(c => c !== id) : [...prev, id])
 
@@ -123,6 +126,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
   }, [onClose])
 
   const filtered = recipes
+    .filter(r => !favoritesOnly || favSet.has(r.id))
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
     .filter(r => activeConditions.every(c => (r.tags || []).includes(c)))
     // Allergen profile applies here too — you shouldn't be able to plan a
@@ -180,20 +184,50 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
           </div>
         </div>
 
-        {/* Search */}
+        {/* Search + favourites */}
         <div className="px-4 pt-3 pb-4">
-          <div className="relative">
-            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-            </svg>
-            <input
-              type="search"
-              placeholder={t('recipePicker.searchPlaceholder')}
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="input pl-9"
-              autoFocus
-            />
+          <div className="flex items-center gap-2">
+            <div className="relative flex-1 min-w-0">
+              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+              </svg>
+              <input
+                type="search"
+                placeholder={t('recipePicker.searchPlaceholder')}
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                className="input pl-9"
+                autoFocus
+              />
+            </div>
+            {/* Same heart as the recipes page, in the same place relative
+                to the search box — building a week from the dishes you
+                already like is the common case, and it was the one filter
+                this screen didn't offer. Local state, like every other
+                filter here: the picker is a modal you open, use and close,
+                not a view you come back to. */}
+            <button
+              onClick={() => setFavoritesOnly(v => !v)}
+              className={`flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${
+                favoritesOnly
+                  ? 'bg-rose-50 border-rose-300 text-rose-500'
+                  : 'bg-white border-slate-200 text-slate-400 hover:text-rose-400 hover:border-rose-200'
+              }`}
+              title={favoritesOnly
+                ? t('favorites.showAll', { defaultValue: 'Show all recipes' })
+                : t('favorites.showOnly', { defaultValue: 'Show favorites only' })}
+              aria-pressed={favoritesOnly}
+            >
+              {favoritesOnly ? (
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                  <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"/>
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
+                </svg>
+              )}
+            </button>
           </div>
         </div>
 
