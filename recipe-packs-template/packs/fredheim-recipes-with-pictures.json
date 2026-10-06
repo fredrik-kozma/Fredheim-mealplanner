@@ -3,7 +3,7 @@
   "name": "Fredheim recepies with pictures",
   "description": "A selection of Fredheim recipes bundled with photos.",
   "author": "Fredheim",
-  "version": "1.50.0",
+  "version": "1.51.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -37233,11 +37233,6 @@
           "quantity": 1,
           "unit": "tsp",
           "name": "sumac, optional"
-        },
-        {
-          "quantity": null,
-          "unit": "",
-          "name": "salt and pepper, to taste"
         }
       ],
       "steps": [
@@ -37327,11 +37322,6 @@
               "quantity": 1,
               "unit": "ts",
               "name": "sumak, valgfritt"
-            },
-            {
-              "quantity": null,
-              "unit": "",
-              "name": "salt og pepper, etter smak"
             }
           ],
           "steps": [
@@ -37421,11 +37411,6 @@
               "quantity": 1,
               "unit": "tsk",
               "name": "sumak, valfritt"
-            },
-            {
-              "quantity": null,
-              "unit": "",
-              "name": "salt och peppar, efter smak"
             }
           ],
           "steps": [
