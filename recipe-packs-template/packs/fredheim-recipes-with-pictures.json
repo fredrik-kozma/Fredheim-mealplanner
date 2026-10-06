@@ -3,7 +3,7 @@
   "name": "Fredheim recepies with pictures",
   "description": "A selection of Fredheim recipes bundled with photos.",
   "author": "Fredheim",
-  "version": "1.51.0",
+  "version": "1.52.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -37233,13 +37233,18 @@
           "quantity": 1,
           "unit": "tsp",
           "name": "sumac, optional"
+        },
+        {
+          "quantity": null,
+          "unit": "",
+          "name": "salt, to taste"
         }
       ],
       "steps": [
         "Rinse the vegetables. Dice the tomato, chop the pepper after removing stem and seeds, dice the onion, chop the olives and mince the parsley and garlic.",
         "Toast the bread and cut it into small pieces.",
         "Spread the hummus across a wide plate. Stir half the parsley, dried herbs, onion and garlic through it, and set it aside.",
-        "In a bowl, mix the tomato, pepper, capers, olives, sesame seeds and the remaining herbs, parsley, onion and garlic. Season with salt and pepper.",
+        "In a bowl, mix the tomato, pepper, capers, olives, sesame seeds and the remaining herbs, parsley, onion and garlic. Season with salt.",
         "Pile the vegetables over the hummus, drizzle the olive oil on top and serve with the bread alongside."
       ],
       "notes": "The hummus is the Classic Hummus in this collection — 240 g is most of a batch. Shop-bought works, but the nutrition here is calculated on ours. Za'atar is thyme, oregano, sesame and sumac; if you have a ready-made blend, about 1 tbsp replaces the dried herbs and seeds. The bread can be whole-grain or gluten-free. Sumac adds a sour, almost lemony note and is worth finding, but the plate works without it.",
@@ -37322,13 +37327,18 @@
               "quantity": 1,
               "unit": "ts",
               "name": "sumak, valgfritt"
+            },
+            {
+              "quantity": null,
+              "unit": "",
+              "name": "salt, etter smak"
             }
           ],
           "steps": [
             "Skyll grønnsakene. Skjær tomaten i terninger, rens og hakk paprikaen, skjær løken i terninger, hakk olivenene og finhakk persillen og hvitløken.",
             "Rist brødet og skjær det i små biter.",
             "Bre hummusen utover en stor tallerken. Rør inn halvparten av persillen, de tørkede urtene, løken og hvitløken, og sett den til side.",
-            "Bland tomat, paprika, kapers, oliven, sesamfrø og resten av urtene, persillen, løken og hvitløken i en bolle. Smak til med salt og pepper.",
+            "Bland tomat, paprika, kapers, oliven, sesamfrø og resten av urtene, persillen, løken og hvitløken i en bolle. Smak til med salt.",
             "Legg grønnsakene over hummusen, ringle olivenoljen over og server brødet ved siden av."
           ],
           "notes": "Hummusen er Klassisk hummus i denne samlingen — 240 g er det meste av en sats. Kjøpt hummus fungerer fint, men næringsinnholdet her er regnet ut på vår. Za'atar er timian, oregano, sesam og sumak; har du en ferdig blanding, erstatter omtrent 1 ss de tørkede urtene og frøene. Brødet kan være grovt eller glutenfritt. Sumak gir en syrlig, nesten sitronaktig tone og er verdt å lete opp, men tallerkenen fungerer uten."
@@ -37411,13 +37421,18 @@
               "quantity": 1,
               "unit": "tsk",
               "name": "sumak, valfritt"
+            },
+            {
+              "quantity": null,
+              "unit": "",
+              "name": "salt, efter smak"
             }
           ],
           "steps": [
             "Skölj grönsakerna. Tärna tomaten, kärna ur och hacka paprikan, tärna löken, hacka oliverna och finhacka persiljan och vitlöken.",
             "Rosta brödet och skär det i små bitar.",
             "Bred ut hummusen på en stor tallrik. Rör ner hälften av persiljan, de torkade örterna, löken och vitlöken, och ställ den åt sidan.",
-            "Blanda tomat, paprika, kapris, oliver, sesamfrön och resten av örterna, persiljan, löken och vitlöken i en skål. Smaka av med salt och peppar.",
+            "Blanda tomat, paprika, kapris, oliver, sesamfrön och resten av örterna, persiljan, löken och vitlöken i en skål. Smaka av med salt.",
             "Lägg grönsakerna över hummusen, ringla olivoljan över och servera brödet vid sidan av."
           ],
           "notes": "Hummusen är Klassisk hummus i den här samlingen — 240 g är det mesta av en sats. Köpt hummus fungerar bra, men näringsvärdet här är beräknat på vår. Za'atar är timjan, oregano, sesam och sumak; har du en färdig blandning ersätter ungefär 1 msk de torkade örterna och fröna. Brödet kan vara fullkorn eller glutenfritt. Sumak ger en syrlig, nästan citronaktig ton och är värd att leta upp, men tallriken fungerar utan."
