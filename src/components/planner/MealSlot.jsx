@@ -1,4 +1,4 @@
-import { useDroppable } from '@dnd-kit/core'
+import { useDroppable, useDraggable } from '@dnd-kit/core'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
@@ -31,6 +31,15 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
   const toggleSlotItemShopping = useStore(s => s.toggleSlotItemShopping)
   const pointerStartRef = useRef(null)
   const [showAdjuster, setShowAdjuster] = useState(false)
+
+  // Pick a planned meal up and drop it on another day or slot. The id is
+  // scoped by day and slot as well as recipe, because the same dish can
+  // legitimately sit in several places in one week and dnd-kit needs each
+  // of them to be a distinct draggable.
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
+    id: `planslot-${day}-${slot}-${item.recipeId}`,
+    data: { type: 'planslot', day, slot, recipeId: item.recipeId },
+  })
 
   // What's the effective serving count for this slot? Override → household → 4
   const effectiveServings = item.servings ?? familySize ?? 4
@@ -81,9 +90,12 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
 
   return (
     <div
+      ref={setNodeRef}
       role="button"
       tabIndex={0}
-      onPointerDown={handlePointerDown}
+      {...attributes}
+      {...listeners}
+      onPointerDown={(e) => { handlePointerDown(e); listeners?.onPointerDown?.(e) }}
       onClick={handleClick}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -91,7 +103,12 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
           navigate(`/recipes/${item.recipeId}`, { state: { from: '/planner', servings: effectiveServings } })
         }
       }}
-      className={`group rounded-lg shadow-sm border cursor-pointer transition-colors ${
+      // While it's being dragged the chip stays in place but fades, so the
+      // row doesn't reflow under the cursor — the DragOverlay is what
+      // follows the pointer.
+      className={`group rounded-lg shadow-sm border transition-colors touch-none cursor-grab active:cursor-grabbing ${
+        isDragging ? 'opacity-40' : ''
+      } ${
         isCovered
           ? 'bg-white/50 border-dashed border-slate-200 opacity-60 hover:opacity-90'
           : 'bg-white border-slate-100 hover:bg-slate-50 hover:border-indigo-200'
@@ -220,7 +237,8 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
 }
 
 /**
- * A meal the user typed in — no recipe, so nothing to open, scale or drag.
+ * A meal the user typed in — no recipe behind it, so nothing to open or
+ * scale, though it can still be dragged to another day.
  * Kept visually lighter than a recipe chip (dashed border, no thumbnail) so
  * a glance at the week tells you which meals the app can actually cook from
  * and which are just written down.
@@ -229,8 +247,22 @@ function CustomSlotChip({ day, slot, item }) {
   const { t } = useTranslation()
   const removeCustomFromSlot = useStore(s => s.removeCustomFromSlot)
 
+  // Typed-in meals drag too. A board where half the chips move and half
+  // don't would read as a bug rather than a limitation.
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
+    id: `plancustom-${day}-${slot}-${item.id}`,
+    data: { type: 'plancustom', day, slot, customId: item.id },
+  })
+
   return (
-    <div className="group relative bg-white/90 border border-dashed border-slate-300 rounded-lg p-2 pr-7">
+    <div
+      ref={setNodeRef}
+      {...attributes}
+      {...listeners}
+      className={`group relative bg-white/90 border border-dashed border-slate-300 rounded-lg p-2 pr-7 touch-none cursor-grab active:cursor-grabbing ${
+        isDragging ? 'opacity-40' : ''
+      }`}
+    >
       <div className="flex items-start gap-1.5 min-w-0">
         <span className="text-sm leading-none mt-0.5 flex-shrink-0" aria-hidden>📝</span>
         <div className="min-w-0">
@@ -241,7 +273,10 @@ function CustomSlotChip({ day, slot, item }) {
         </div>
       </div>
       <button
-        onClick={() => removeCustomFromSlot(day, slot, item.id)}
+        // Stops the drag sensor claiming the press, so the X still deletes
+        // rather than picking the chip up.
+        onPointerDown={(e) => e.stopPropagation()}
+        onClick={(e) => { e.stopPropagation(); removeCustomFromSlot(day, slot, item.id) }}
         className="absolute top-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-slate-300 hover:text-rose-500 hover:bg-rose-50 transition-colors"
         title={t('common.remove', { defaultValue: 'Remove' })}
       >

@@ -88,6 +88,7 @@ export default function WeeklyPlanner() {
   const addRecipeToSlot = useStore(s => s.addRecipeToSlot)
   const addCustomToSlot = useStore(s => s.addCustomToSlot)
   const moveRecipeBetweenSlots = useStore(s => s.moveRecipeBetweenSlots)
+  const moveCustomBetweenSlots = useStore(s => s.moveCustomBetweenSlots)
   const clearWeekPlan = useStore(s => s.clearWeekPlan)
   const addPlannerDay = useStore(s => s.addPlannerDay)
   const addBatchRecipe = useStore(s => s.addBatchRecipe)
@@ -378,6 +379,7 @@ export default function WeeklyPlanner() {
   // { day, slot } for a meal slot, or { batch: true } for the batch column.
   const [picker, setPicker] = useState(null)
   const [activeId, setActiveId] = useState(null)
+  const [activeDragData, setActiveDragData] = useState(null)
   const [templatesMode, setTemplatesMode] = useState(null) // null | 'list' | 'save'
 
   const sensors = useSensors(
@@ -387,10 +389,15 @@ export default function WeeklyPlanner() {
 
   function handleDragStart({ active }) {
     setActiveId(active.id)
+    // Kept so the overlay can describe a meal already on the board, which
+    // isn't findable from the recipe list by id the way a dragged search
+    // result is.
+    setActiveDragData(active.data.current || null)
   }
 
   function handleDragEnd({ active, over }) {
     setActiveId(null)
+    setActiveDragData(null)
     if (!over) return
     const overId = over.id
     if (!overId.includes('__')) return
@@ -405,12 +412,35 @@ export default function WeeklyPlanner() {
     if (active.data.current?.type === 'planslot') {
       const { day: fromDay, slot: fromSlot, recipeId } = active.data.current
       moveRecipeBetweenSlots(fromDay, fromSlot, toDay, toSlot, recipeId)
+      return
+    }
+
+    if (active.data.current?.type === 'plancustom') {
+      const { day: fromDay, slot: fromSlot, customId } = active.data.current
+      moveCustomBetweenSlots(fromDay, fromSlot, toDay, toSlot, customId)
     }
   }
 
+  // What the overlay shows while something is in the air. A result dragged
+  // from the picker is found by its id; a meal already on the board is
+  // described by the data it carries, since its draggable id is scoped by
+  // day and slot and won't match a recipe id.
   const draggedRecipe = activeId
     ? recipes.find(r => `recipe-${r.id}` === activeId)
     : null
+  const draggedLabel = draggedRecipe
+    ? titleOf(draggedRecipe)
+    : activeDragData?.type === 'planslot'
+      ? (() => {
+        const r = recipes.find(x => x.id === activeDragData.recipeId)
+        return r ? titleOf(r) : null
+      })()
+      : activeDragData?.type === 'plancustom'
+        ? (normalizeSlotItem(
+          (weekPlan[activeDragData.day]?.[activeDragData.slot] || [])
+            .find(it => normalizeSlotItem(it)?.id === activeDragData.customId)
+        )?.name || null)
+        : null
 
   // One CSS grid drives the whole board: a label column plus one column
   // per day. Because every meal-slot row shares a grid row across all
@@ -545,10 +575,10 @@ export default function WeeklyPlanner() {
 
       {/* Drag overlay */}
       <DragOverlay>
-        {draggedRecipe && (
+        {draggedLabel && (
           <div className="bg-white rounded-xl shadow-2xl px-3 py-2.5 border border-indigo-200 text-sm font-medium text-slate-800 flex items-center gap-2 max-w-[180px]">
-            <span>🍽</span>
-            <span className="truncate">{draggedRecipe.title}</span>
+            <span>{activeDragData?.type === 'plancustom' ? '📝' : '🍽'}</span>
+            <span className="truncate">{draggedLabel}</span>
           </div>
         )}
       </DragOverlay>

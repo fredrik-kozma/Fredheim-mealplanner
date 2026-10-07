@@ -1058,6 +1058,35 @@ const useStore = create(
 
       // Matched on id rather than name, so two custom lines that happen to
       // read the same don't remove each other.
+      /**
+       * Move a typed-in meal to another day or slot.
+       *
+       * Separate from moveRecipeBetweenSlots because custom entries are
+       * identified by their own `id`, not by a recipeId they don't have.
+       * Without this, half the chips on the board would drag and the
+       * other half wouldn't, which is a worse experience than neither.
+       */
+      moveCustomBetweenSlots: (fromDay, fromSlot, toDay, toSlot, customId) => set((s) => {
+        if (fromDay === toDay && fromSlot === toSlot) return {}
+        const fromList = s.weekPlan[fromDay]?.[fromSlot] || []
+        const moved = fromList
+          .map(normalizeSlotItem)
+          .find(it => it?.kind === 'custom' && it.id === customId)
+        if (!moved) return {}
+        const fromAfter = fromList.filter(it => {
+          const n = normalizeSlotItem(it)
+          return !(n?.kind === 'custom' && n.id === customId)
+        })
+        const toList = s.weekPlan[toDay]?.[toSlot] || []
+        return {
+          weekPlan: {
+            ...s.weekPlan,
+            [fromDay]: { ...s.weekPlan[fromDay], [fromSlot]: fromAfter },
+            [toDay]: { ...s.weekPlan[toDay], [toSlot]: [...toList, moved] },
+          },
+        }
+      }),
+
       removeCustomFromSlot: (day, slot, id) => set((s) => ({
         weekPlan: {
           ...s.weekPlan,
@@ -1072,6 +1101,14 @@ const useStore = create(
       })),
 
       moveRecipeBetweenSlots: (fromDay, fromSlot, toDay, toSlot, recipeId) => set((s) => {
+        // Dropping a meal back where it started must do nothing. Without
+        // this the "already in destination" branch below sees the item in
+        // its own slot, removes it from the source and adds it nowhere —
+        // the meal silently disappears. Harmless while nothing could drag
+        // a placed meal; the moment one could, it would be the first thing
+        // anyone hit by wobbling a chip and letting go.
+        if (fromDay === toDay && fromSlot === toSlot) return {}
+
         const fromList = s.weekPlan[fromDay]?.[fromSlot] || []
         const moved = fromList
           .map(normalizeSlotItem)
