@@ -166,7 +166,16 @@ function AppShell() {
       <Navigation />
 
       {/* Main content area */}
-      <main className="flex-1 flex flex-col lg:ml-60 min-h-dvh">
+      {/* min-w-0 is load-bearing. As a flex item <main> defaults to
+          min-width:auto, which refuses to shrink below its content — and
+          its content includes the planner board, which is deliberately
+          wider than the window. So main stretched to the board's width,
+          every wrapper inside inherited it, and the whole page scrolled
+          sideways instead of the board scrolling inside its own pane.
+          Anything the toolbar pushed right with justify-between then sat
+          beyond the edge of the screen: that is how the Share button
+          ended up unreachable. */}
+      <main className="flex-1 min-w-0 flex flex-col lg:ml-60 min-h-dvh">
         {/* Sticky CTA banner for anonymous visitors (auto-hidden if signed in) */}
         <PreviewBanner />
         <Header />
