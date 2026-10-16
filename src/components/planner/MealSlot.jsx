@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
 import useStore, { normalizeSlotItem } from '../../store/useStore'
 import EditableNumber from '../common/EditableNumber'
+import { stopDragPress } from '../../utils/dragGuard'
 
 const CATEGORY_BG = {
   Breakfast: 'bg-amber-50 border-amber-100',
@@ -106,7 +107,12 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
       // While it's being dragged the chip stays in place but fades, so the
       // row doesn't reflow under the cursor — the DragOverlay is what
       // follows the pointer.
-      className={`group rounded-lg shadow-sm border transition-colors touch-none cursor-grab active:cursor-grabbing ${
+      // touch-manipulation, not touch-none: the board scrolls both ways on
+      // a phone, and a finger that lands on a chip is usually trying to
+      // scroll rather than drag. Blocking the browser's pan would leave a
+      // swipe that starts on a chip doing nothing at all. Once the long
+      // press has armed the drag the sensor stops the scrolling itself.
+      className={`group rounded-lg shadow-sm border transition-colors touch-manipulation cursor-grab active:cursor-grabbing ${
         isDragging ? 'opacity-40' : ''
       } ${
         isCovered
@@ -125,7 +131,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
           {recipe.translations?.[currentLang]?.title || recipe.title}
         </span>
         <button
-          onPointerDown={(e) => e.stopPropagation()}
+          {...stopDragPress}
           onClick={(e) => {
             e.stopPropagation()
             removeRecipeFromSlot(day, slot, item.recipeId)
@@ -144,7 +150,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
         {showAdjuster ? (
           <div
             className="flex items-center gap-1"
-            onPointerDown={(e) => e.stopPropagation()}
+            {...stopDragPress}
             onClick={(e) => e.stopPropagation()}
             // Also contain keydown: without this, pressing Enter inside the
             // number input to confirm a value bubbles up to the chip's own
@@ -200,7 +206,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
         ) : (
           <div className="flex items-center gap-1">
             <button
-              onPointerDown={(e) => e.stopPropagation()}
+              {...stopDragPress}
               onClick={toggleAdjuster}
               className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
                 isOverridden
@@ -214,7 +220,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
 
             {/* Shopping-list toggle: 🛒 = counted, 🍲 = covered by batch prep */}
             <button
-              onPointerDown={(e) => e.stopPropagation()}
+              {...stopDragPress}
               onClick={toggleShopping}
               className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
                 isCovered
@@ -259,7 +265,7 @@ function CustomSlotChip({ day, slot, item }) {
       ref={setNodeRef}
       {...attributes}
       {...listeners}
-      className={`group relative bg-white/90 border border-dashed border-slate-300 rounded-lg p-2 pr-7 touch-none cursor-grab active:cursor-grabbing ${
+      className={`group relative bg-white/90 border border-dashed border-slate-300 rounded-lg p-2 pr-7 touch-manipulation cursor-grab active:cursor-grabbing ${
         isDragging ? 'opacity-40' : ''
       }`}
     >
@@ -275,7 +281,7 @@ function CustomSlotChip({ day, slot, item }) {
       <button
         // Stops the drag sensor claiming the press, so the X still deletes
         // rather than picking the chip up.
-        onPointerDown={(e) => e.stopPropagation()}
+        {...stopDragPress}
         onClick={(e) => { e.stopPropagation(); removeCustomFromSlot(day, slot, item.id) }}
         className="absolute top-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-slate-300 hover:text-rose-500 hover:bg-rose-50 transition-colors"
         title={t('common.remove', { defaultValue: 'Remove' })}

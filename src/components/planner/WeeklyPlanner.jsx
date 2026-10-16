@@ -2,7 +2,7 @@ import { useState, Fragment } from 'react'
 import {
   DndContext,
   DragOverlay,
-  PointerSensor,
+  MouseSensor,
   TouchSensor,
   useSensor,
   useSensors,
@@ -382,13 +382,27 @@ export default function WeeklyPlanner() {
   const [activeDragData, setActiveDragData] = useState(null)
   const [templatesMode, setTemplatesMode] = useState(null) // null | 'list' | 'save'
 
+  // Mouse and touch get their own sensor on purpose. PointerSensor would
+  // handle both, but a phone fires pointer events for touch too, so it
+  // claimed the press after 8px of movement and the touch delay below
+  // never got a chance to run — which is why a chip could be picked up and
+  // moved by what the user meant as a tap or a scroll.
+  //
+  // So: a mouse drags after 8px, which is immediate enough to feel direct
+  // and still survives the wobble of a click. A finger has to stay down for
+  // 450ms without wandering more than 6px, which no tap or scroll does.
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
-    useSensor(TouchSensor, { activationConstraint: { delay: 200, tolerance: 8 } })
+    useSensor(MouseSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 450, tolerance: 6 } })
   )
 
   function handleDragStart({ active }) {
     setActiveId(active.id)
+    // A short buzz the moment the hold registers. Without it a long press
+    // is a half-second of nothing, and the natural response to nothing is
+    // to press harder or give up. Android only — iOS Safari has no
+    // vibrate — so the chip fading out stays the signal that must carry.
+    if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(12)
     // Kept so the overlay can describe a meal already on the board, which
     // isn't findable from the recipe list by id the way a dragged search
     // result is.

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
+import { stopDragPress } from '../../utils/dragGuard'
 
 /**
  * Small star button that toggles a recipe's favourite state. Uses the
@@ -33,7 +34,7 @@ export default function FavoriteStar({ recipeId, size = 'md', variant = 'plain' 
   return (
     <button
       type="button"
-      onPointerDown={(e) => e.stopPropagation()}
+      {...stopDragPress}
       onClick={(e) => {
         e.stopPropagation()
         e.preventDefault()
