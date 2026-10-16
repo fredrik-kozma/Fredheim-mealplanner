@@ -107,7 +107,8 @@
     "relatedRecipes": "See also",
     "fmdNoticeTitle": "Part of the 5-Day Fasting Mimicking Diet",
     "fmdNoticeBody": "These meals are intentionally low-calorie and are not complete standalone meals. Follow the full FMD plan for it to work as intended.",
-    "doesNotScale": "adjust manually"
+    "doesNotScale": "adjust manually",
+    "share": "Share"
   },
   "recipeForm": {
     "addRecipe": "Add Recipe",
@@ -257,7 +258,9 @@
     "printSelectAll": "Select all",
     "printSelectNone": "Clear all",
     "printMealsCount_one": "{{count}} meal",
-    "printMealsCount_other": "{{count}} meals"
+    "printMealsCount_other": "{{count}} meals",
+    "shareWeek": "Share",
+    "shareWeekHint": "Send this menu to someone"
   },
   "categories": {
     "Breakfast": "Breakfast",
@@ -732,5 +735,42 @@
     "notifyEnable": "Also notify me when the app is in the background",
     "stopAlarm": "Stop",
     "stopAll": "Stop all"
+  },
+  "share": {
+    "servingsLabel": "Servings",
+    "titleWeek": "Share this menu",
+    "titleRecipe": "Share this recipe",
+    "viaSheet": "Share",
+    "viaCopy": "Copy",
+    "asLink": "as a link",
+    "asLinkHintWeek": "They tap it and the app offers to add the whole week",
+    "asLinkHintRecipe": "They tap it and the app opens the recipe",
+    "asText": "as text",
+    "asTextHint": "Readable by anyone, even without the app",
+    "asFile": "as a file",
+    "asFileHint": "Keeps the photo; they open it with Import",
+    "copied": "Copied — paste it anywhere",
+    "downloaded": "Saved to your downloads",
+    "failed": "Couldn't share that",
+    "opening": "Opening…",
+    "sharedWithYou": "Shared with you",
+    "aWeekMenu": "A week of meals",
+    "aRecipe": "A recipe",
+    "addWeek": "Add to my planner",
+    "openRecipe": "Open the recipe",
+    "saveRecipe": "Save to my recipes",
+    "noPhoto": "The photo was too big to send in a link — the recipe itself is complete.",
+    "needPack": "You don't have this recipe yet. It comes from a recipe pack — install it under Packs and open the link again.",
+    "goPacks": "Go to packs",
+    "goHome": "Go to recipes",
+    "badTitle": "This link didn't work",
+    "badLink": "It may have been cut short when it was sent. Ask for it again, as a complete link.",
+    "badVersion": "It was made by a newer version of the app. Update and try again.",
+    "weekSummary_one": "{{count}} meal planned",
+    "weekSummary_other": "{{count}} meals planned",
+    "recipeSummary_one": "{{count}} ingredient",
+    "recipeSummary_other": "{{count}} ingredients",
+    "replaceWarning_one": "This replaces the week you have now ({{count}} meal). Save it first if you want to keep it.",
+    "replaceWarning_other": "This replaces the week you have now ({{count}} meals). Save it first if you want to keep it."
   }
 }

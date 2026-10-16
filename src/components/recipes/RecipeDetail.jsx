@@ -14,6 +14,9 @@ import FavoriteStar from './FavoriteStar'
 import { recipeConditions, CONDITION_BADGE } from '../../data/conditionTags'
 import { isFmdRecipe } from '../../utils/recipeFlags'
 import { renderStepText } from '../../utils/scaleStepText'
+import ShareModal from '../share/ShareModal'
+import { buildRecipePayload } from '../../utils/sharePayload'
+import { recipeAsText } from '../../utils/shareText'
 import { formatDuration } from '../../utils/formatDuration'
 
 export default function RecipeDetail() {
@@ -63,6 +66,7 @@ export default function RecipeDetail() {
   // View override: null = follow the user's Settings preference. When the user
   // taps the metric/US toggle on this recipe we switch to that value.
   const [viewSystem, setViewSystem] = useState(null)
+  const [sharing, setSharing] = useState(null)
 
   if (!recipe) {
     return (
@@ -203,6 +207,61 @@ export default function RecipeDetail() {
     return m && m.system !== 'both'
   })
 
+  /**
+   * What the share sheet needs for this recipe.
+   *
+   * The text is written at the recipe's own serving count rather than
+   * whatever the slider is set to. A scaled copy is for cooking from
+   * tonight; a shared one is the recipe itself, and 2.67 eggs in a
+   * message helps nobody.
+   *
+   * The file branch only appears when a link genuinely can't do the job:
+   * a recipe this person wrote, carrying a photo too big for a URL. Pack
+   * recipes share as a pointer and the recipient already has the photo.
+   */
+  function buildShare() {
+    const isOwn = !recipe.sourcePackId || recipe.userEdited
+    const needsFile = isOwn && Boolean(recipe.imageUrl)
+    return {
+      payload: buildRecipePayload(recipe),
+      title: displayTitle,
+      text: recipeAsText({
+        recipe,
+        lang: currentLang,
+        labels: {
+          // Plain nouns, not the on-screen strings: recipeDetail.servings
+          // is "{{count}} servings" and would print its own placeholder
+          // when used as a heading.
+          servings: t('share.servingsLabel', { defaultValue: 'Servings' }),
+          ingredients: t('recipeDetail.ingredients', { defaultValue: 'Ingredients' }),
+          steps: t('recipeDetail.instructions', { defaultValue: 'Instructions' }),
+          notes: t('recipeDetail.notes', { defaultValue: "Chef's notes" }),
+        },
+        url: null,
+      }),
+      fileBuilder: needsFile
+        ? () => {
+          // A one-recipe pack, so the recipient opens it with the
+          // importer that already exists under Packs.
+          const pack = {
+            id: `shared-${recipe.id}`,
+            name: displayTitle,
+            description: '',
+            author: '',
+            version: '1.0.0',
+            tags: [],
+            recipes: [recipe],
+          }
+          const json = JSON.stringify(pack, null, 2)
+          return {
+            file: new File([json], 'recipe.json', { type: 'application/json' }),
+            filename: `${(displayTitle || 'recipe').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}.json`,
+          }
+        }
+        : null,
+    }
+  }
+
   function handlePrint() {
     const translatedCategory = t(`categories.${recipe.category}`, {
       defaultValue: recipe.category,
@@ -276,7 +335,11 @@ export default function RecipeDetail() {
         {/* Title row — title gets min-w-0 so long single words can wrap
             instead of pushing the icon buttons off the right edge on
             narrow / zoomed screens. */}
-        <div className="flex items-start justify-between gap-3 mb-1">
+        {/* Stacked on a phone, side by side from sm up. Five icon buttons
+            and a title cannot share 375px: the title was being squeezed
+            into about 95px and breaking mid-word. Giving it the full
+            width on small screens costs one row and reads properly. */}
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3 mb-1">
           <h1 className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight min-w-0 break-words flex-1">
             {displayTitle}
           </h1>
@@ -290,6 +353,15 @@ export default function RecipeDetail() {
                   previews, so visitors can build a wishlist while
                   browsing. */}
               <FavoriteStar recipeId={id} size="lg" />
+              <button
+                onClick={() => setSharing(buildShare())}
+                className="btn-secondary px-3 py-2"
+                title={t('recipeDetail.share', { defaultValue: 'Share' })}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+                </svg>
+              </button>
               <button
                 onClick={handlePrint}
                 className="btn-secondary px-3 py-2"
@@ -611,6 +683,17 @@ export default function RecipeDetail() {
         {/* end paywall wrapper */}
 
       </div>
+
+      {sharing && (
+        <ShareModal
+          kind="recipe"
+          payload={sharing.payload}
+          text={sharing.text}
+          title={sharing.title}
+          fileBuilder={sharing.fileBuilder}
+          onClose={() => setSharing(null)}
+        />
+      )}
     </div>
   )
 }

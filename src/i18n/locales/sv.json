@@ -107,7 +107,8 @@
     "relatedRecipes": "Se även",
     "fmdNoticeTitle": "Del av den 5-dagars fasteimiterande dieten (FMD)",
     "fmdNoticeBody": "Dessa måltider är medvetet kalorisnåla och är inte kompletta, självständiga måltider. Följ hela FMD-planen för att den ska fungera som avsett.",
-    "doesNotScale": "justera manuellt"
+    "doesNotScale": "justera manuellt",
+    "share": "Dela"
   },
   "recipeForm": {
     "addRecipe": "Lägg till recept",
@@ -257,7 +258,9 @@
     "printSelectAll": "Välj alla",
     "printSelectNone": "Rensa alla",
     "printMealsCount_one": "{{count}} måltid",
-    "printMealsCount_other": "{{count}} måltider"
+    "printMealsCount_other": "{{count}} måltider",
+    "shareWeek": "Dela",
+    "shareWeekHint": "Skicka den här menyn till någon"
   },
   "categories": {
     "Breakfast": "Frukost",
@@ -732,5 +735,42 @@
     "notifyEnable": "Avisera mig även när appen ligger i bakgrunden",
     "stopAlarm": "Stoppa",
     "stopAll": "Stoppa alla"
+  },
+  "share": {
+    "servingsLabel": "Portioner",
+    "titleWeek": "Dela den här menyn",
+    "titleRecipe": "Dela det här receptet",
+    "viaSheet": "Dela",
+    "viaCopy": "Kopiera",
+    "asLink": "som länk",
+    "asLinkHintWeek": "De trycker på den och appen erbjuder sig att lägga in hela veckan",
+    "asLinkHintRecipe": "De trycker på den och appen öppnar receptet",
+    "asText": "som text",
+    "asTextHint": "Läsbar för alla, även utan appen",
+    "asFile": "som fil",
+    "asFileHint": "Behåller bilden; de öppnar den med Importera",
+    "copied": "Kopierat — klistra in var du vill",
+    "downloaded": "Sparat bland dina nedladdningar",
+    "failed": "Kunde inte dela det här",
+    "opening": "Öppnar…",
+    "sharedWithYou": "Delat med dig",
+    "aWeekMenu": "En vecka med måltider",
+    "aRecipe": "Ett recept",
+    "addWeek": "Lägg in i min veckoplan",
+    "openRecipe": "Öppna receptet",
+    "saveRecipe": "Spara bland mina recept",
+    "noPhoto": "Bilden var för stor för att skickas i en länk — själva receptet är komplett.",
+    "needPack": "Du har inte det här receptet än. Det hör till ett receptpaket — installera det under Paket och öppna länken igen.",
+    "goPacks": "Gå till paket",
+    "goHome": "Gå till recept",
+    "badTitle": "Den här länken fungerade inte",
+    "badLink": "Den kan ha kapats när den skickades. Be om den igen, som en hel länk.",
+    "badVersion": "Den är gjord med en nyare version av appen. Uppdatera och försök igen.",
+    "weekSummary_one": "{{count}} måltid planerat",
+    "weekSummary_other": "{{count}} måltider planerade",
+    "recipeSummary_one": "{{count}} ingrediens",
+    "recipeSummary_other": "{{count}} ingredienser",
+    "replaceWarning_one": "Det här ersätter veckan du har nu ({{count}} måltid). Spara den först om du vill behålla den.",
+    "replaceWarning_other": "Det här ersätter veckan du har nu ({{count}} måltider). Spara den först om du vill behålla den."
   }
 }

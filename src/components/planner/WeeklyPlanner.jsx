@@ -13,6 +13,9 @@ import useStore, { getPlanDayKeys, normalizeSlotItem } from '../../store/useStor
 import { STARTER_PLANS } from '../../data/starterPlans'
 import { printWeekPlan } from '../../utils/printWeekPlan'
 import { printMenuBook } from '../../utils/printMenuBook'
+import ShareModal from '../share/ShareModal'
+import { buildWeekPayload } from '../../utils/sharePayload'
+import { weekAsText } from '../../utils/shareText'
 import { formatScaledQuantity } from '../../utils/scaleIngredient'
 import { spoonHint, needsSpoonHint } from '../../utils/spoonHint'
 import { recipeConditions } from '../../data/conditionTags'
@@ -112,6 +115,43 @@ export default function WeeklyPlanner() {
   // Which print is being set up: 'week' (the grid), 'book' (every recipe),
   // or null when the picker is closed.
   const [printMode, setPrintMode] = useState(null)
+  const [sharing, setSharing] = useState(null)
+
+  /**
+   * Everything the share sheet needs, built on demand rather than kept in
+   * state: the payload that goes in the link, and the same week written
+   * out as plain text for people who just want to read it in a message.
+   */
+  function buildShare() {
+    const days = dayKeys.map(day => ({
+      label: t(`planner.days.${day}`, { defaultValue: day }),
+      note: (weekNotes?.days?.[day] || '').trim(),
+      slots: mealSlots.map(slot => ({
+        label: t(`planner.mealSlots.${slot}`, { defaultValue: slot }),
+        items: (weekPlan[day]?.[slot] || [])
+          .map(normalizeSlotItem)
+          .filter(Boolean)
+          .map(n => {
+            if (n.kind === 'custom') return n.name
+            const r = recipes.find(x => x.id === n.recipeId)
+            return r ? titleOf(r) : null
+          })
+          .filter(Boolean),
+      })),
+    }))
+    const heading = activeWeekName || t('planner.title', { defaultValue: 'Weekly Planner' })
+    return {
+      payload: buildWeekPayload({
+        plan: weekPlan,
+        notes: weekNotes,
+        batchCook,
+        portions: familySize,
+        name: activeWeekName,
+      }),
+      text: weekAsText({ days, heading, url: null }),
+      title: heading,
+    }
+  }
 
   /**
    * The days worth offering for a given printout, with what each would
@@ -517,6 +557,17 @@ export default function WeeklyPlanner() {
             {t('planner.printMenuBook', { defaultValue: 'Print all recipes' })}
           </button>
           <button
+            onClick={() => setSharing(buildShare())}
+            disabled={mealCount === 0}
+            className="btn-secondary py-2 px-3.5 inline-flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            title={t('planner.shareWeekHint', { defaultValue: 'Send this menu to someone' })}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+            </svg>
+            {t('planner.shareWeek', { defaultValue: 'Share' })}
+          </button>
+          <button
             onClick={() => { if (confirm(t('planner.clearWeekConfirm'))) clearWeekPlan() }}
             className="btn-ghost text-xs text-slate-400 hover:text-red-500 py-2 px-2"
           >
@@ -628,6 +679,16 @@ export default function WeeklyPlanner() {
       )}
 
       {/* Templates modal — opened directly to load or save */}
+      {sharing && (
+        <ShareModal
+          kind="week"
+          payload={sharing.payload}
+          text={sharing.text}
+          title={sharing.title}
+          onClose={() => setSharing(null)}
+        />
+      )}
+
       {templatesMode && (
         <PlannerTemplates initialMode={templatesMode} onClose={() => setTemplatesMode(null)} />
       )}

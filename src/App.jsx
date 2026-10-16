@@ -7,6 +7,7 @@ import PlannerPage from './pages/PlannerPage'
 import ShoppingPage from './pages/ShoppingPage'
 import SettingsPage from './pages/SettingsPage'
 import PacksPage from './pages/PacksPage'
+import SharedImportPage from './pages/SharedImportPage'
 import NutritionPage from './pages/NutritionPage'
 import RecipeForm from './components/recipes/RecipeForm'
 import RecipeDetail from './components/recipes/RecipeDetail'
@@ -180,6 +181,9 @@ function AppShell() {
             <Route path="/shopping" element={<ShoppingPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/packs" element={<PacksPage />} />
+            {/* A shared menu or recipe. The code is the content — see
+                shareCodec.js — so this route needs no server of its own. */}
+            <Route path="/s/:code" element={<SharedImportPage />} />
           </Routes>
         </div>
       </main>

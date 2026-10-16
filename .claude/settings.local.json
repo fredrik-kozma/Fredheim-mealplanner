@@ -6,7 +6,10 @@
       "Bash(git commit -m ' *)",
       "Bash(node -e ' *)",
       "Bash(npm run *)",
-      "Bash(taskkill //PID 25380 //F)"
+      "Bash(taskkill //PID 25380 //F)",
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(node scripts/add_share_strings.cjs)",
+      "Bash(node scripts/fix_share_plurals.cjs)"
     ]
   }
 }
