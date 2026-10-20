@@ -51,13 +51,15 @@ export function buildRecipePayload(recipe) {
  * A shopping list travels in the same shape a saved list already uses,
  * minus two things.
  *
- * `sources` — the per-recipe breakdown behind each amount — is dropped.
- * It roughly doubles the payload and refers to the sender's recipes,
- * which the recipient may not have. The saved-list viewer re-scales from
- * a plain numeric quantity when no sources are present, so dropping it
- * costs only exactness of re-combination, not the ability to re-scale.
- * `weekPlanSnapshot` is dropped for the same reason: it is the sender's
- * week, not a shopping list.
+ * `sources` — the per-recipe breakdown behind each amount — travels,
+ * because "where did 320 g of almonds come from" is most of what makes
+ * a shared list usable rather than just a list of words. The titles are
+ * the sender's, in the sender's language: the recipient may not have
+ * those recipes at all, so there is nothing to look them up in.
+ *
+ * `weekPlanSnapshot` is dropped: it is the sender's week, not a
+ * shopping list, and the breakdown already carries the part of it that
+ * explains the amounts.
  *
  * Amounts stay as a number plus a unit rather than a formatted "400 g",
  * precisely so the recipient can view a list built for 4 at their own 6.
@@ -68,31 +70,66 @@ export function buildRecipePayload(recipe) {
  * says so rather than letting people assume otherwise.
  */
 export function buildShoppingPayload({ name, portions, groups }) {
+  // Recipe titles are pulled out into one table and referenced by index.
+  // The same handful of titles repeats across most items — six recipes
+  // behind forty-five ingredients — so writing each one once is the
+  // difference between the breakdown being affordable in a link and not.
+  const titles = []
+  const indexOf = (title) => {
+    const at = titles.indexOf(title)
+    return at === -1 ? titles.push(title) - 1 : at
+  }
+
+  const payloadGroups = groups.map(g => ({
+    c: g.category,
+    i: g.items.map(it => {
+      if (it.custom) return { n: it.name, q: it.quantity ?? '', x: 1 }
+      const item = { n: it.name, q: it.quantity ?? null, u: it.unit || '' }
+      // [recipeIndex, quantity, unit] — positional, because this is the
+      // part that repeats most and every key name is paid for per entry.
+      if (Array.isArray(it.sources) && it.sources.length > 0) {
+        item.s = it.sources.map(src => [indexOf(src.recipe), src.quantity ?? 0, src.unit || ''])
+      }
+      return item
+    }),
+  }))
+
   return {
     v: V,
     k: SHARE_SHOPPING,
     name: name || null,
     portions: portions ?? null,
-    groups: groups.map(g => ({
-      c: g.category,
-      i: g.items.map(it => (
-        it.custom
-          ? { n: it.name, q: it.quantity ?? '', x: 1 }
-          : { n: it.name, q: it.quantity ?? null, u: it.unit || '' }
-      )),
-    })),
+    r: titles,
+    groups: payloadGroups,
   }
 }
 
-/** Back to the saved-list item shape the viewer and store expect. */
+/**
+ * Back to the saved-list item shape the viewer and store expect.
+ *
+ * Restoring `sources` does double duty: it is what the recipient reads
+ * to see which recipe an amount came from, and it also puts re-scaling
+ * on its exact branch — the viewer scales each recipe's contribution
+ * and re-combines, instead of multiplying one already-summed number.
+ */
 export function shoppingPayloadToGroups(payload) {
+  const titles = payload.r || []
   return (payload.groups || []).map(g => ({
     category: g.c,
-    items: (g.i || []).map(it => (
-      it.x
-        ? { id: 'shared-' + Math.random().toString(36).slice(2, 10), name: it.n, quantity: it.q, unit: '', custom: true }
-        : { name: it.n, quantity: it.q, unit: it.u || '' }
-    )),
+    items: (g.i || []).map(it => {
+      if (it.x) {
+        return { id: 'shared-' + Math.random().toString(36).slice(2, 10), name: it.n, quantity: it.q, unit: '', custom: true }
+      }
+      const item = { name: it.n, quantity: it.q, unit: it.u || '' }
+      if (Array.isArray(it.s)) {
+        item.sources = it.s.map(([ri, q, u]) => ({
+          recipe: titles[ri] ?? '',
+          quantity: q,
+          unit: u || '',
+        }))
+      }
+      return item
+    }),
   }))
 }
 

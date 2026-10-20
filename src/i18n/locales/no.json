@@ -343,7 +343,10 @@
     "share": "Del",
     "shareOptionsTitle": "Hva skal deles?",
     "forPeople_one": "for {{count}} person",
-    "forPeople_other": "for {{count}} personer"
+    "forPeople_other": "for {{count}} personer",
+    "whichRecipes": "Hvilke oppskrifter?",
+    "clearChecks": "Fjern alle avkryssinger",
+    "checkedOfShort": "{{checked}} av {{total}} krysset av"
   },
   "settings": {
     "title": "Innstillinger",

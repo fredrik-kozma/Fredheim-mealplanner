@@ -1468,9 +1468,42 @@ const useStore = create(
         ],
       })),
 
-      deleteSavedShoppingList: (id) => set((s) => ({
-        savedShoppingLists: s.savedShoppingLists.filter(l => l.id !== id),
-      })),
+      /**
+       * Tick marks for saved lists, keyed by list id and then by item.
+       *
+       * Kept here rather than on the list itself so that re-scaling a
+       * list to a different number of portions — which rebuilds every
+       * item object — doesn't lose what has already been put in the
+       * basket. The item key is `category::name`, which survives that
+       * rebuild and is unique within one list.
+       *
+       * Separate from `checkedItems` on purpose: that map belongs to the
+       * live generated list, and a saved list ticked in parallel with it
+       * must not move its progress bar.
+       */
+      savedListChecks: {},
+      toggleSavedListItem: (listId, key) => set((s) => {
+        const forList = { ...(s.savedListChecks[listId] || {}) }
+        if (forList[key]) delete forList[key]
+        else forList[key] = true
+        return { savedListChecks: { ...s.savedListChecks, [listId]: forList } }
+      }),
+      clearSavedListChecks: (listId) => set((s) => {
+        const next = { ...s.savedListChecks }
+        delete next[listId]
+        return { savedListChecks: next }
+      }),
+
+      deleteSavedShoppingList: (id) => set((s) => {
+        // Drop the tick marks with the list, or they sit in storage
+        // forever keyed to a list that no longer exists.
+        const checks = { ...s.savedListChecks }
+        delete checks[id]
+        return {
+          savedShoppingLists: s.savedShoppingLists.filter(l => l.id !== id),
+          savedListChecks: checks,
+        }
+      }),
 
       loadSavedShoppingList: (id) => {
         const s = get()

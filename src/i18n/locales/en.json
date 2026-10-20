@@ -343,7 +343,10 @@
     "share": "Share",
     "shareOptionsTitle": "What should be shared?",
     "forPeople_one": "for {{count}} person",
-    "forPeople_other": "for {{count}} people"
+    "forPeople_other": "for {{count}} people",
+    "whichRecipes": "Which recipes?",
+    "clearChecks": "Clear all ticks",
+    "checkedOfShort": "{{checked}} of {{total}} checked"
   },
   "settings": {
     "title": "Settings",

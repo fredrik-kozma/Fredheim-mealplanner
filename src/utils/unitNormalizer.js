@@ -119,7 +119,7 @@ export function convertFromBase(quantity, baseUnit, preferredUnit) {
 
 // Units you buy as whole things — a list asking for 6.25 cloves of garlic
 // is asking you to do arithmetic at the shelf.
-const COUNTABLE_UNITS = new Set(['pcs', 'clove', 'slice', 'handful', 'sprig', 'head', 'pinch', 'dash'])
+export const COUNTABLE_UNITS = new Set(['pcs', 'clove', 'slice', 'handful', 'sprig', 'head', 'pinch', 'dash'])
 
 /**
  * Rounds a quantity to something you can act on in a shop.

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { formatQuantity } from '../../utils/shoppingListGenerator'
 import { combineQuantities } from '../../utils/ingredientMatcher'
+import { COUNTABLE_UNITS } from '../../utils/unitNormalizer'
 import { printShoppingList } from '../../utils/printShoppingList'
 import EditableNumber from '../common/EditableNumber'
 
@@ -11,10 +12,22 @@ export default function SavedShoppingLists({ onClose }) {
   const savedShoppingLists = useStore(s => s.savedShoppingLists)
   const deleteSavedShoppingList = useStore(s => s.deleteSavedShoppingList)
   const familySize = useStore(s => s.familySize)
+  const savedListChecks = useStore(s => s.savedListChecks) || {}
+  const toggleSavedListItem = useStore(s => s.toggleSavedListItem)
+  const clearSavedListChecks = useStore(s => s.clearSavedListChecks)
 
   // When set, we're viewing/reusing one saved list (scaled to `portions`).
   const [viewing, setViewing] = useState(null)
   const [portions, setPortions] = useState(4)
+  // Which item's recipe breakdown is open, by item key. One at a time.
+  const [openBreakdown, setOpenBreakdown] = useState(null)
+
+  // `category::name` rather than an array index, so a tick survives the
+  // list being re-scaled (which rebuilds every item object) and doesn't
+  // slide onto a different item if the ordering ever changes.
+  const itemKey = (category, name) => `${category}::${name}`
+
+  const checksFor = (listId) => savedListChecks[listId] || {}
 
   function openList(list) {
     setViewing(list)
@@ -56,6 +69,24 @@ export default function SavedShoppingLists({ onClose }) {
     return m[2] ? `${numStr} ${m[2]}` : numStr
   }
 
+  /**
+   * How one recipe's share of an amount is written.
+   *
+   * Not formatQuantity, which rounds countable things up: you buy three
+   * whole garlic cloves, so a 2.4-clove total is rightly shown as 3. But
+   * ceiling each contribution too turns 0.67 + 0.4 + 1.33 into 1 + 1 + 2,
+   * and a breakdown whose parts add up to more than the total it sits
+   * under reads as a bug. The breakdown's job is to explain where the
+   * total goes, not to say what to buy, so parts keep a decimal and the
+   * total above them keeps the rounding-up.
+   */
+  function breakdownQuantity(quantity, unit) {
+    if (typeof quantity !== 'number' || !isFinite(quantity)) return formatQuantity(quantity, unit)
+    if (!COUNTABLE_UNITS.has(unit)) return formatQuantity(quantity, unit)
+    const rounded = Math.round(quantity * 10) / 10
+    return unit ? `${rounded} ${unit}` : String(rounded)
+  }
+
   // Re-scale a saved list's quantities from the portions it was saved for
   // to the portions the user wants now. Generated items carry per-recipe
   // `sources`, which we scale and re-combine for an exact result; custom
@@ -70,7 +101,29 @@ export default function SavedShoppingLists({ onClose }) {
         if (Array.isArray(item.sources) && item.sources.length > 0) {
           const scaled = item.sources.map(s => ({ ...s, quantity: (s.quantity || 0) * ratio }))
           const c = combineQuantities(scaled)
-          return { name: item.name, label: formatQuantity(c.quantity, c.unit) }
+          // The per-recipe split comes back out alongside the total, so
+          // the list can answer "which recipe is this for?" — summed per
+          // recipe, since one recipe can contribute twice.
+          const byRecipe = {}
+          for (const s of scaled) (byRecipe[s.recipe] = byRecipe[s.recipe] || []).push(s)
+          return {
+            name: item.name,
+            label: formatQuantity(c.quantity, c.unit),
+            breakdown: Object.entries(byRecipe).map(([recipe, arr]) => {
+              // Summed here rather than by combineQuantities, which for a
+              // countable unit rounds each part up and hands back a
+              // finished string — the rounding this is trying to avoid,
+              // already applied. Mixed units within one recipe still go
+              // through it, since that is the case it exists for.
+              const units = new Set(arr.map(s => s.unit || ''))
+              if (units.size === 1) {
+                const total = arr.reduce((n, s) => n + (s.quantity || 0), 0)
+                return { recipe, label: breakdownQuantity(total, arr[0].unit || '') }
+              }
+              const sum = combineQuantities(arr)
+              return { recipe, label: formatQuantity(sum.quantity, sum.unit) }
+            }),
+          }
         }
         if (typeof item.quantity === 'number') {
           return { name: item.name, label: formatQuantity(item.quantity * ratio, item.unit) }
@@ -101,6 +154,18 @@ export default function SavedShoppingLists({ onClose }) {
   }
 
   const viewGroups = viewing ? scaledGroups(viewing, portions) : []
+
+  // Progress through the list being viewed. Counted from the rendered
+  // groups rather than from the stored map, so a tick left behind by an
+  // item that is no longer in the list can't push the count past the
+  // total.
+  const viewedTotal = viewGroups.reduce((n, g) => n + g.items.length, 0)
+  const viewedChecked = viewing
+    ? viewGroups.reduce(
+      (n, g) => n + g.items.filter(it => checksFor(viewing.id)[itemKey(g.category, it.name)]).length,
+      0,
+    )
+    : 0
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
@@ -178,6 +243,13 @@ export default function SavedShoppingLists({ onClose }) {
                 <p className="text-sm font-semibold text-slate-800 truncate">{viewing.name}</p>
                 <p className="text-xs text-slate-500">
                   {t('shopping.savedForPortions', { count: viewing.portions || '—', defaultValue: `Saved for ${viewing.portions || '—'}` })}
+                  {viewedTotal > 0 && (
+                    <> · {t('shopping.checkedOfShort', {
+                      checked: viewedChecked,
+                      total: viewedTotal,
+                      defaultValue: `${viewedChecked} of ${viewedTotal} checked`,
+                    })}</>
+                  )}
                 </p>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
@@ -209,12 +281,52 @@ export default function SavedShoppingLists({ onClose }) {
                     {categoryLabel(group.category)}
                   </h3>
                   <div className="card divide-y divide-slate-50">
-                    {group.items.map((item, ii) => (
-                      <div key={ii} className="flex items-center gap-3 px-4 py-2.5">
-                        <span className="flex-1 min-w-0 text-sm text-slate-700 break-words">{item.name}</span>
-                        <span className="text-sm font-medium text-slate-900 whitespace-nowrap">{item.label}</span>
-                      </div>
-                    ))}
+                    {group.items.map((item, ii) => {
+                      const key = itemKey(group.category, item.name)
+                      const done = Boolean(checksFor(viewing.id)[key])
+                      const hasBreakdown = item.breakdown?.length > 0
+                      return (
+                        <div key={ii} className="px-4 py-2.5">
+                          <div className="flex items-center gap-3">
+                            <input
+                              type="checkbox"
+                              checked={done}
+                              onChange={() => toggleSavedListItem(viewing.id, key)}
+                              className="w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-400 flex-shrink-0 cursor-pointer"
+                            />
+                            <span className={`flex-1 min-w-0 text-sm break-words ${done ? 'line-through text-slate-400' : 'text-slate-700'}`}>
+                              {item.name}
+                            </span>
+                            {hasBreakdown && (
+                              <button
+                                onClick={() => setOpenBreakdown(openBreakdown === key ? null : key)}
+                                className={`flex-shrink-0 w-5 h-5 rounded-full text-[11px] font-semibold transition-colors ${
+                                  openBreakdown === key
+                                    ? 'bg-indigo-100 text-indigo-700'
+                                    : 'text-slate-300 hover:text-indigo-500 hover:bg-indigo-50'
+                                }`}
+                                title={t('shopping.whichRecipes', { defaultValue: 'Which recipes?' })}
+                              >
+                                i
+                              </button>
+                            )}
+                            <span className={`text-sm font-medium whitespace-nowrap ${done ? 'text-slate-300' : 'text-slate-900'}`}>
+                              {item.label}
+                            </span>
+                          </div>
+                          {openBreakdown === key && (
+                            <div className="mt-2 ml-7 space-y-1">
+                              {item.breakdown.map((b, bi) => (
+                                <div key={bi} className="flex items-baseline justify-between gap-3 text-xs">
+                                  <span className="text-slate-500 min-w-0 break-words">{b.recipe}</span>
+                                  <span className="text-slate-400 whitespace-nowrap">{b.label}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
               ))}
@@ -222,6 +334,14 @@ export default function SavedShoppingLists({ onClose }) {
 
             {/* Footer actions */}
             <div className="px-5 py-3 border-t border-slate-100">
+              {viewedChecked > 0 && (
+                <button
+                  onClick={() => clearSavedListChecks(viewing.id)}
+                  className="btn-ghost w-full py-1.5 mb-2 text-xs text-slate-400 hover:text-slate-600"
+                >
+                  {t('shopping.clearChecks', { defaultValue: 'Clear all ticks' })}
+                </button>
+              )}
               <button onClick={handlePrintViewing} className="btn-primary w-full py-2 text-sm inline-flex items-center justify-center gap-2">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247" />

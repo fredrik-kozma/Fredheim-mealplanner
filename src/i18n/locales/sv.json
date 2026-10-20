@@ -343,7 +343,10 @@
     "share": "Dela",
     "shareOptionsTitle": "Vad ska delas?",
     "forPeople_one": "för {{count}} person",
-    "forPeople_other": "för {{count}} personer"
+    "forPeople_other": "för {{count}} personer",
+    "whichRecipes": "Vilka recept?",
+    "clearChecks": "Ta bort alla bockar",
+    "checkedOfShort": "{{checked}} av {{total}} avbockade"
   },
   "settings": {
     "title": "Inställningar",
