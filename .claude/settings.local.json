@@ -9,7 +9,8 @@
       "Bash(taskkill //PID 25380 //F)",
       "Bash(node --input-type=module -e ' *)",
       "Bash(node scripts/add_share_strings.cjs)",
-      "Bash(node scripts/fix_share_plurals.cjs)"
+      "Bash(node scripts/fix_share_plurals.cjs)",
+      "Bash(node scripts/add_shopping_share_strings.cjs)"
     ]
   }
 }

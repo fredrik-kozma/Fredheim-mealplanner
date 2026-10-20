@@ -3,7 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../store/useStore'
 import { decodeShare } from '../utils/shareCodec'
-import { validateSharePayload, countPayloadMeals, SHARE_WEEK, SHARE_RECIPE } from '../utils/sharePayload'
+import { validateSharePayload, countPayloadMeals, countShoppingItems, shoppingPayloadToGroups, SHARE_WEEK, SHARE_RECIPE, SHARE_SHOPPING } from '../utils/sharePayload'
+import { formatQuantity } from '../utils/shoppingListGenerator'
 
 /**
  * What a shared link opens.
@@ -23,6 +24,8 @@ export default function SharedImportPage() {
   const recipes = useStore(s => s.recipes)
   const installStarterPlan = useStore(s => s.installStarterPlan)
   const addRecipe = useStore(s => s.addRecipe)
+  const saveShoppingList = useStore(s => s.saveShoppingList)
+  const addCustomShoppingItem = useStore(s => s.addCustomShoppingItem)
   const weekPlan = useStore(s => s.weekPlan)
 
   const [state, setState] = useState({ status: 'loading' })
@@ -108,6 +111,81 @@ export default function SharedImportPage() {
             {t('common.cancel', { defaultValue: 'Cancel' })}
           </button>
         </div>
+      </Shell>
+    )
+  }
+
+  if (check.kind === SHARE_SHOPPING) {
+    const count = countShoppingItems(payload)
+    const groups = shoppingPayloadToGroups(payload)
+    return (
+      <Shell>
+        <p className="text-xs font-medium uppercase tracking-wide text-indigo-500 mb-1">
+          {t('share.sharedWithYou', { defaultValue: 'Shared with you' })}
+        </p>
+        <h1 className="text-lg font-semibold text-slate-800 mb-1">
+          {payload.name || t('share.aShoppingList', { defaultValue: 'A shopping list' })}
+        </h1>
+        <p className="text-sm text-slate-600 mb-1">
+          {t('share.shoppingSummary', { count, defaultValue: '{{count}} items' })}
+          {payload.portions ? ` · ${t('shopping.forPeople', { count: payload.portions, defaultValue: 'for {{count}} people' })}` : ''}
+        </p>
+        <p className="text-xs text-slate-400 mb-4">
+          {t('share.shoppingSnapshot', {
+            defaultValue: "This is a copy as it was when it was sent. It won't update if they change their week.",
+          })}
+        </p>
+
+        {/* A peek at the contents. Saving something unseen is how you end
+            up with lists nobody can identify a week later. */}
+        <div className="text-xs text-slate-600 bg-slate-50 border border-slate-100 rounded-lg px-3 py-2 mb-4 max-h-40 overflow-y-auto">
+          {groups.map(g => (
+            <div key={g.category} className="mb-1.5 last:mb-0">
+              <span className="font-semibold text-slate-700">
+                {g.category === '__custom__'
+                  ? t('shopping.myItems', { defaultValue: 'My items' })
+                  : t(`aisles.${g.category}`, { defaultValue: g.category })}
+              </span>
+              <span className="text-slate-500"> · {g.items.map(i => i.name).join(', ')}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-2">
+          <button
+            onClick={() => {
+              // Its own list, beside their own. Never replaces the live
+              // one — which is generated from their week plan anyway and
+              // would simply regenerate.
+              saveShoppingList(payload.name || t('share.aShoppingList', { defaultValue: 'A shopping list' }), groups, payload.portions)
+              navigate('/shopping')
+            }}
+            className="btn-primary px-4 py-2"
+          >
+            {t('share.saveShoppingList', { defaultValue: 'Save as its own list' })}
+          </button>
+          <button
+            onClick={() => {
+              // "Can you pick these up too" — the items join their live
+              // list under My items, with the amount kept as written.
+              for (const g of groups) {
+                for (const it of g.items) {
+                  const amount = it.custom
+                    ? (it.quantity || '')
+                    : formatQuantity(it.quantity, it.unit)
+                  addCustomShoppingItem(it.name, amount)
+                }
+              }
+              navigate('/shopping')
+            }}
+            className="btn-secondary px-4 py-2"
+          >
+            {t('share.mergeShoppingList', { defaultValue: 'Add to my list' })}
+          </button>
+        </div>
+        <button onClick={() => navigate('/shopping')} className="btn-ghost text-xs text-slate-400 mt-3">
+          {t('common.cancel', { defaultValue: 'Cancel' })}
+        </button>
       </Shell>
     )
   }

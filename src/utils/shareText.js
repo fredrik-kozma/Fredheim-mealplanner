@@ -53,6 +53,34 @@ export function recipeAsText({ recipe, lang = 'en', labels, url }) {
 }
 
 /**
+ * A shopping list as something you could read off a phone in a shop.
+ *
+ * Aisle headings are kept because that is the order you walk a shop in,
+ * and the amount leads each line because it is what you reach for first.
+ *
+ * @param groups  [{ category, items: [{ name, label }] }]
+ * @param heading list title
+ * @param subtitle e.g. "for 4 people", or null
+ * @param url     share link, or null
+ */
+export function shoppingListAsText({ groups, heading, subtitle, url }) {
+  const out = [heading]
+  if (subtitle) out.push(subtitle)
+  out.push('')
+  for (const group of groups) {
+    const items = (group.items || []).filter(it => it.name)
+    if (!items.length) continue
+    out.push(group.category)
+    for (const it of items) {
+      out.push(`· ${[it.label, it.name].filter(Boolean).join(' ')}`)
+    }
+    out.push('')
+  }
+  if (url) out.push(url)
+  return out.join('\n').trimEnd()
+}
+
+/**
  * @param days    [{ key, label, slots: [{ label, items: [name] }], note }]
  * @param heading week title
  * @param url     share link, or null

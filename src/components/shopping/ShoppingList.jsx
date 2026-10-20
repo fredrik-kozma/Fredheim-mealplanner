@@ -5,6 +5,9 @@ import { generateShoppingList, formatQuantity } from '../../utils/shoppingListGe
 import { combineQuantities } from '../../utils/ingredientMatcher'
 import { printShoppingList } from '../../utils/printShoppingList'
 import SavedShoppingLists from './SavedShoppingLists'
+import ShareModal from '../share/ShareModal'
+import { buildShoppingPayload } from '../../utils/sharePayload'
+import { shoppingListAsText } from '../../utils/shareText'
 
 export default function ShoppingList() {
   const { t, i18n } = useTranslation()
@@ -32,10 +35,17 @@ export default function ShoppingList() {
   const pruneDismissedShoppingSources = useStore(s => s.pruneDismissedShoppingSources)
   const restoreCustomShoppingItem = useStore(s => s.restoreCustomShoppingItem)
   const batchCook = useStore(s => s.batchCook) || []
+  // Names the shared list after the week it came from, when the week has
+  // a name — 'Uke 43' tells the recipient more than 'Handleliste'.
+  const activeWeekName = useStore(s => s.activeWeekName)
 
   const [showChecked, setShowChecked] = useState(true)
   const [showSaveModal, setShowSaveModal] = useState(false)
-  const [showPrintModal, setShowPrintModal] = useState(false)
+  // Which action is asking "whole list or only what's left?" — 'print',
+  // 'share', or null when nothing is asking. One dialog serves both
+  // because it is the same question with the same two answers.
+  const [scopeFor, setScopeFor] = useState(null)
+  const [sharing, setSharing] = useState(null)
   const [showSavedLists, setShowSavedLists] = useState(false)
   const [listName, setListName] = useState('')
   const [saveToast, setSaveToast] = useState(null)
@@ -191,6 +201,61 @@ export default function ShoppingList() {
     setShowSaveModal(false)
     setSaveToast(t('shopping.listSaved'))
     setTimeout(() => setSaveToast(null), 3000)
+  }
+
+  /**
+   * Hand the list to someone else. `skipChecked` means "only what's
+   * still to buy", the same choice the printout offers and filtered the
+   * same way, so the two can't disagree about what the list is.
+   *
+   * Two deliberate details:
+   *
+   * Aisle names go in the link as their raw English keys, not as the
+   * words on this screen. The recipient translates them through their
+   * own i18n, so a Norwegian list opens in Swedish as Swedish aisles.
+   *
+   * Amounts go as a number and a unit rather than the "400 g" shown
+   * here, because the saved-list viewer re-scales a numeric quantity.
+   * Send the rendered string and the recipient is stuck with portions
+   * for the sender's household.
+   */
+  function handleShare(skipChecked = false) {
+    const keep = (it) => !skipChecked || !checkedItems[it.id]
+
+    const payloadGroups = groups
+      .map(({ category, items }) => ({ category, items: items.filter(keep) }))
+      .filter(g => g.items.length > 0)
+
+    const customToShare = customShoppingItems.filter(keep)
+    if (customToShare.length > 0) {
+      payloadGroups.push({
+        category: '__custom__',
+        items: customToShare.map(i => ({ name: i.name, quantity: i.amount || '', custom: true })),
+      })
+    }
+
+    const name = activeWeekName || t('shopping.title', { defaultValue: 'Shopping list' })
+    const count = payloadGroups.reduce((n, g) => n + g.items.length, 0)
+
+    setSharing({
+      payload: buildShoppingPayload({ name, portions: familySize, groups: payloadGroups }),
+      title: name,
+      text: shoppingListAsText({
+        heading: name,
+        subtitle: t('shopping.forPeople', { count: familySize, defaultValue: 'for {{count}} people' }),
+        groups: payloadGroups.map(g => ({
+          category: g.category === '__custom__'
+            ? t('shopping.myItems', { defaultValue: 'My items' })
+            : t(`aisles.${g.category}`, { defaultValue: g.category }),
+          items: g.items.map(it => ({
+            name: it.name,
+            label: it.custom ? (it.quantity || '') : formatQuantity(it.quantity, it.unit),
+          })),
+        })),
+        url: null,
+      }),
+      count,
+    })
   }
 
   // `skipChecked` leaves out everything already ticked off in the app, so
@@ -354,7 +419,7 @@ export default function ShoppingList() {
             <button
               onClick={() => {
                 // Nothing ticked off yet → no choice to make, just print.
-                if (checkedCount > 0) setShowPrintModal(true)
+                if (checkedCount > 0) setScopeFor('print')
                 else handlePrint(false)
               }}
               className="btn-secondary py-1.5 px-2.5 text-xs"
@@ -364,6 +429,22 @@ export default function ShoppingList() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
               </svg>
               <span className="hidden sm:inline">{t('shopping.print', { defaultValue: 'Print' })}</span>
+            </button>
+            <button
+              onClick={() => {
+                // Same rule as printing: with nothing ticked there is no
+                // choice to make, so don't make them answer a question.
+                if (checkedCount > 0) setScopeFor('share')
+                else handleShare(false)
+              }}
+              disabled={totalItems === 0}
+              className="btn-secondary py-1.5 px-2.5 text-xs disabled:opacity-40 disabled:cursor-not-allowed"
+              title={t('shopping.share', { defaultValue: 'Share' })}
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+              </svg>
+              <span className="hidden sm:inline">{t('shopping.share', { defaultValue: 'Share' })}</span>
             </button>
             <button
               onClick={() => setShowSaveModal(true)}
@@ -604,24 +685,27 @@ export default function ShoppingList() {
         )}
       </div>
 
-      {/* Print options — only shown when something is actually checked off,
-          so the common case stays a single tap. */}
-      {showPrintModal && (
+      {/* Whole list or only what is left? Asked by printing and by sharing
+          alike, and only when something is actually ticked off, so the
+          common case stays a single tap. */}
+      {scopeFor && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setShowPrintModal(false)} />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setScopeFor(null)} />
           <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl p-5">
             <div className="sm:hidden flex justify-center mb-3">
               <div className="w-10 h-1 rounded-full bg-slate-200" />
             </div>
             <h2 className="text-base font-semibold text-slate-800 mb-1">
-              {t('shopping.printOptionsTitle', { defaultValue: 'What should be printed?' })}
+              {scopeFor === 'share'
+                ? t('shopping.shareOptionsTitle', { defaultValue: 'What should be shared?' })
+                : t('shopping.printOptionsTitle', { defaultValue: 'What should be printed?' })}
             </h2>
             <p className="text-xs text-slate-500 mb-4">
               {t('shopping.checkedOf', { checked: checkedCount, total: totalItems, people: familySize })}
             </p>
             <div className="space-y-2">
               <button
-                onClick={() => { setShowPrintModal(false); handlePrint(true) }}
+                onClick={() => { const run = scopeFor === 'share' ? handleShare : handlePrint; setScopeFor(null); run(true) }}
                 disabled={checkedCount >= totalItems}
                 className="w-full text-left px-4 py-3 rounded-xl border-2 border-indigo-500 bg-indigo-50/50 hover:bg-indigo-50 transition-colors disabled:opacity-40 disabled:border-slate-200 disabled:bg-transparent disabled:cursor-not-allowed"
               >
@@ -640,7 +724,7 @@ export default function ShoppingList() {
                 </span>
               </button>
               <button
-                onClick={() => { setShowPrintModal(false); handlePrint(false) }}
+                onClick={() => { const run = scopeFor === 'share' ? handleShare : handlePrint; setScopeFor(null); run(false) }}
                 className="w-full text-left px-4 py-3 rounded-xl border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors"
               >
                 <span className="block text-sm font-semibold text-slate-800">
@@ -654,7 +738,7 @@ export default function ShoppingList() {
                 </span>
               </button>
             </div>
-            <button onClick={() => setShowPrintModal(false)} className="btn-secondary w-full mt-3">
+            <button onClick={() => setScopeFor(null)} className="btn-secondary w-full mt-3">
               {t('common.cancel')}
             </button>
           </div>
@@ -699,6 +783,16 @@ export default function ShoppingList() {
 
       {/* Saved lists modal */}
       {showSavedLists && <SavedShoppingLists onClose={() => setShowSavedLists(false)} />}
+
+      {sharing && (
+        <ShareModal
+          kind="shopping"
+          payload={sharing.payload}
+          text={sharing.text}
+          title={sharing.title}
+          onClose={() => setSharing(null)}
+        />
+      )}
 
       {/* Toast */}
       {saveToast && (

@@ -339,7 +339,11 @@
     "printAll": "The whole list",
     "printAllHint": "All {{n}} items, checked or not",
     "printNothingLeft": "Nothing left to print — every item is checked off.",
-    "printNothingLeftShort": "Nothing left — everything is checked off"
+    "printNothingLeftShort": "Nothing left — everything is checked off",
+    "share": "Share",
+    "shareOptionsTitle": "What should be shared?",
+    "forPeople_one": "for {{count}} person",
+    "forPeople_other": "for {{count}} people"
   },
   "settings": {
     "title": "Settings",
@@ -771,6 +775,14 @@
     "recipeSummary_one": "{{count}} ingredient",
     "recipeSummary_other": "{{count}} ingredients",
     "replaceWarning_one": "This replaces the week you have now ({{count}} meal). Save it first if you want to keep it.",
-    "replaceWarning_other": "This replaces the week you have now ({{count}} meals). Save it first if you want to keep it."
+    "replaceWarning_other": "This replaces the week you have now ({{count}} meals). Save it first if you want to keep it.",
+    "titleShopping": "Share this shopping list",
+    "asLinkHintShopping": "They tap it and can tick it off in their own app",
+    "aShoppingList": "A shopping list",
+    "shoppingSummary_one": "{{count}} item",
+    "shoppingSummary_other": "{{count}} items",
+    "shoppingSnapshot": "This is a copy as it was when it was sent. It won't update if they change their week.",
+    "saveShoppingList": "Save as its own list",
+    "mergeShoppingList": "Add to my list"
   }
 }

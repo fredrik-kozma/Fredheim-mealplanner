@@ -83,7 +83,9 @@ export default function ShareModal({ kind, payload, text, title, fileBuilder, on
           <h2 className="text-base font-semibold text-slate-800">
             {kind === 'week'
               ? t('share.titleWeek', { defaultValue: 'Share this menu' })
-              : t('share.titleRecipe', { defaultValue: 'Share this recipe' })}
+              : kind === 'shopping'
+                ? t('share.titleShopping', { defaultValue: 'Share this shopping list' })
+                : t('share.titleRecipe', { defaultValue: 'Share this recipe' })}
           </h2>
           <button onClick={onClose} className="btn-ghost p-1.5 -mr-1.5 text-slate-400">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -100,7 +102,9 @@ export default function ShareModal({ kind, payload, text, title, fileBuilder, on
             label={`${sheetVerb} — ${t('share.asLink', { defaultValue: 'as a link' })}`}
             hint={kind === 'week'
               ? t('share.asLinkHintWeek', { defaultValue: 'They tap it and the app offers to add the whole week' })
-              : t('share.asLinkHintRecipe', { defaultValue: 'They tap it and the app opens the recipe' })}
+              : kind === 'shopping'
+                ? t('share.asLinkHintShopping', { defaultValue: 'They tap it and can tick it off in their own app' })
+                : t('share.asLinkHintRecipe', { defaultValue: 'They tap it and the app opens the recipe' })}
             trailing={url ? null : <Spinner />}
           />
           <Option

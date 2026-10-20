@@ -339,7 +339,11 @@
     "printAll": "Hela listan",
     "printAllHint": "Alla {{n}} varor, avbockade eller inte",
     "printNothingLeft": "Inget kvar att skriva ut — allt är avbockat.",
-    "printNothingLeftShort": "Inget kvar — allt är avbockat"
+    "printNothingLeftShort": "Inget kvar — allt är avbockat",
+    "share": "Dela",
+    "shareOptionsTitle": "Vad ska delas?",
+    "forPeople_one": "för {{count}} person",
+    "forPeople_other": "för {{count}} personer"
   },
   "settings": {
     "title": "Inställningar",
@@ -771,6 +775,14 @@
     "recipeSummary_one": "{{count}} ingrediens",
     "recipeSummary_other": "{{count}} ingredienser",
     "replaceWarning_one": "Det här ersätter veckan du har nu ({{count}} måltid). Spara den först om du vill behålla den.",
-    "replaceWarning_other": "Det här ersätter veckan du har nu ({{count}} måltider). Spara den först om du vill behålla den."
+    "replaceWarning_other": "Det här ersätter veckan du har nu ({{count}} måltider). Spara den först om du vill behålla den.",
+    "titleShopping": "Dela den här inköpslistan",
+    "asLinkHintShopping": "De trycker på den och kan bocka av i sin egen app",
+    "aShoppingList": "En inköpslista",
+    "shoppingSummary_one": "{{count}} vara",
+    "shoppingSummary_other": "{{count}} varor",
+    "shoppingSnapshot": "Det här är en kopia som den såg ut när den skickades. Den uppdateras inte om de ändrar sin vecka.",
+    "saveShoppingList": "Spara som egen lista",
+    "mergeShoppingList": "Lägg till i min lista"
   }
 }
