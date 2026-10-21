@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { generateShoppingList, formatQuantity } from '../../utils/shoppingListGenerator'
 import { combineQuantities } from '../../utils/ingredientMatcher'
+import { buildRecipeBreakdown } from '../../utils/recipeBreakdown'
 import { printShoppingList } from '../../utils/printShoppingList'
 import SavedShoppingLists from './SavedShoppingLists'
 import ShareModal from '../share/ShareModal'
@@ -171,16 +172,10 @@ export default function ShoppingList() {
 
   // Per-recipe breakdown for the little ⓘ popover: how much of this
   // ingredient came from each recipe (contributions summed per recipe).
-  function recipeBreakdown(item) {
-    const byRecipe = {}
-    for (const s of item.sources || []) {
-      (byRecipe[s.recipe] = byRecipe[s.recipe] || []).push(s)
-    }
-    return Object.entries(byRecipe).map(([recipe, arr]) => {
-      const c = combineQuantities(arr)
-      return { recipe, label: formatQuantity(c.quantity, c.unit) }
-    })
-  }
+  // Shared with the saved-list viewer so the two round identically —
+  // see recipeBreakdown.js for why parts are not rounded up the way the
+  // total above them is.
+  const recipeBreakdown = (item) => buildRecipeBreakdown(item.sources)
 
   function handleSaveList() {
     const name = listName.trim()

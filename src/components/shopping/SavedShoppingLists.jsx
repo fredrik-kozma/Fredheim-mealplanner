@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { formatQuantity } from '../../utils/shoppingListGenerator'
 import { combineQuantities } from '../../utils/ingredientMatcher'
-import { COUNTABLE_UNITS } from '../../utils/unitNormalizer'
+import { buildRecipeBreakdown } from '../../utils/recipeBreakdown'
 import { printShoppingList } from '../../utils/printShoppingList'
 import EditableNumber from '../common/EditableNumber'
 
@@ -69,24 +69,6 @@ export default function SavedShoppingLists({ onClose }) {
     return m[2] ? `${numStr} ${m[2]}` : numStr
   }
 
-  /**
-   * How one recipe's share of an amount is written.
-   *
-   * Not formatQuantity, which rounds countable things up: you buy three
-   * whole garlic cloves, so a 2.4-clove total is rightly shown as 3. But
-   * ceiling each contribution too turns 0.67 + 0.4 + 1.33 into 1 + 1 + 2,
-   * and a breakdown whose parts add up to more than the total it sits
-   * under reads as a bug. The breakdown's job is to explain where the
-   * total goes, not to say what to buy, so parts keep a decimal and the
-   * total above them keeps the rounding-up.
-   */
-  function breakdownQuantity(quantity, unit) {
-    if (typeof quantity !== 'number' || !isFinite(quantity)) return formatQuantity(quantity, unit)
-    if (!COUNTABLE_UNITS.has(unit)) return formatQuantity(quantity, unit)
-    const rounded = Math.round(quantity * 10) / 10
-    return unit ? `${rounded} ${unit}` : String(rounded)
-  }
-
   // Re-scale a saved list's quantities from the portions it was saved for
   // to the portions the user wants now. Generated items carry per-recipe
   // `sources`, which we scale and re-combine for an exact result; custom
@@ -102,27 +84,13 @@ export default function SavedShoppingLists({ onClose }) {
           const scaled = item.sources.map(s => ({ ...s, quantity: (s.quantity || 0) * ratio }))
           const c = combineQuantities(scaled)
           // The per-recipe split comes back out alongside the total, so
-          // the list can answer "which recipe is this for?" — summed per
-          // recipe, since one recipe can contribute twice.
-          const byRecipe = {}
-          for (const s of scaled) (byRecipe[s.recipe] = byRecipe[s.recipe] || []).push(s)
+          // the list can answer "which recipe is this for?" — built by
+          // the same helper the live list's ⓘ popover uses, scaled first
+          // so the split matches the portions on screen.
           return {
             name: item.name,
             label: formatQuantity(c.quantity, c.unit),
-            breakdown: Object.entries(byRecipe).map(([recipe, arr]) => {
-              // Summed here rather than by combineQuantities, which for a
-              // countable unit rounds each part up and hands back a
-              // finished string — the rounding this is trying to avoid,
-              // already applied. Mixed units within one recipe still go
-              // through it, since that is the case it exists for.
-              const units = new Set(arr.map(s => s.unit || ''))
-              if (units.size === 1) {
-                const total = arr.reduce((n, s) => n + (s.quantity || 0), 0)
-                return { recipe, label: breakdownQuantity(total, arr[0].unit || '') }
-              }
-              const sum = combineQuantities(arr)
-              return { recipe, label: formatQuantity(sum.quantity, sum.unit) }
-            }),
+            breakdown: buildRecipeBreakdown(scaled),
           }
         }
         if (typeof item.quantity === 'number') {
