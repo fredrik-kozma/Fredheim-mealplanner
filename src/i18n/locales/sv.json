@@ -401,7 +401,9 @@
     "allergens": "Allergener att undvika",
     "allergensDesc": "Recept som innehåller dessa döljs från receptlistan och veckoplaneraren.",
     "allergensClear": "Rensa alla",
-    "allergensWarning": "Upptäcks automatiskt från ingrediensnamn. Kontrollera alltid hela ingredienslistan själv — detta kan inte ta hänsyn till märkesskillnader eller ”kan innehålla spår av”."
+    "allergensWarning": "Upptäcks automatiskt från ingrediensnamn. Kontrollera alltid hela ingredienslistan själv — detta kan inte ta hänsyn till märkesskillnader eller ”kan innehålla spår av”.",
+    "packsDesc": "Installera samlingar med recept, eller gör ett eget paket att dela.",
+    "openPacks": "Öppna receptpaket"
   },
   "units": {
     "none": "— ingen —",

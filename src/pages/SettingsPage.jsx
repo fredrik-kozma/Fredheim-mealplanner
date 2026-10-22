@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../store/useStore'
 import { translateRecipe } from '../utils/translator'
@@ -220,6 +221,7 @@ function SubscriptionSection() {
 
 export default function SettingsPage() {
   const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
   const language = useStore(s => s.language)
   const setLanguage = useStore(s => s.setLanguage)
 
@@ -691,6 +693,23 @@ export default function SettingsPage() {
           </SectionCard>
         )}
         {showInstallIOSHelp && <IOSInstallInstructions onClose={() => setShowInstallIOSHelp(false)} />}
+
+        {/* Recipe packs — no longer a nav tab, since installing one is a
+            rare job. This is how the page is reached now. */}
+        <SectionCard title={t('packs.title', { defaultValue: 'Recipe packs' })}>
+          <p className="text-sm text-slate-500 mb-3">
+            {t('settings.packsDesc', { defaultValue: 'Install collections of recipes, or build a pack of your own to share.' })}
+          </p>
+          <button
+            onClick={() => navigate('/packs')}
+            className="btn-secondary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            {t('settings.openPacks', { defaultValue: 'Open recipe packs' })}
+          </button>
+        </SectionCard>
 
         {/* Tutorial */}
         <SectionCard title={t('settings.tutorial', { defaultValue: 'App tutorial' })}>

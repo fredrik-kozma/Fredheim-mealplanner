@@ -401,7 +401,9 @@
     "allergens": "Allergener å unngå",
     "allergensDesc": "Oppskrifter som inneholder disse skjules fra oppskriftslisten og ukeplanen.",
     "allergensClear": "Nullstill alle",
-    "allergensWarning": "Oppdages automatisk fra ingrediensnavn. Sjekk alltid hele ingredienslisten selv — dette kan ikke ta høyde for merkeforskjeller eller «kan inneholde spor av»."
+    "allergensWarning": "Oppdages automatisk fra ingrediensnavn. Sjekk alltid hele ingredienslisten selv — dette kan ikke ta høyde for merkeforskjeller eller «kan inneholde spor av».",
+    "packsDesc": "Installer samlinger med oppskrifter, eller lag din egen pakke å dele.",
+    "openPacks": "Åpne oppskriftspakker"
   },
   "units": {
     "none": "— ingen —",
