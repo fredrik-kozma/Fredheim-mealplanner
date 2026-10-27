@@ -1,4 +1,5 @@
 import React from 'react'
+import { buildBackup, downloadBackup, readPersistedState } from '../utils/dataBackup'
 
 /**
  * Catches render errors so a crash shows something readable instead of a
@@ -11,14 +12,22 @@ import React from 'react'
  *
  * The reset button clears the persisted store. A render error caused by
  * malformed saved data would otherwise reproduce on every launch, and a
- * phone user has no other way out of that loop. It is destructive enough
- * to sit behind a confirm, and it only removes local data — the recipe
- * packs reinstall from the bundle on next load.
+ * phone user has no other way out of that loop.
+ *
+ * It is also the most destructive button in the app: the built-in
+ * recipes come back from the bundle, but the user's own recipes, weeks
+ * and logs are gone for good. So the wording says that plainly, and the
+ * export sits next to it — someone reaching this screen is exactly the
+ * person who never made a backup.
+ *
+ * That export reads IndexedDB directly rather than going through the
+ * store, for the same reason the reset does: on this screen the store
+ * may be precisely what is broken.
  */
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { error: null }
+    this.state = { error: null, exportState: null }
   }
 
   static getDerivedStateFromError(error) {
@@ -34,8 +43,27 @@ export default class ErrorBoundary extends React.Component {
   // Raw indexedDB rather than the idb-keyval helper the store uses: an
   // error path should depend on as little as possible, and this still
   // works if that module is itself part of the problem.
+  handleExport = async () => {
+    this.setState({ exportState: 'working' })
+    try {
+      const state = await readPersistedState()
+      if (!state) { this.setState({ exportState: 'empty' }); return }
+      downloadBackup(buildBackup(state))
+      this.setState({ exportState: 'done' })
+    } catch (err) {
+      console.error('Could not export data', err)
+      this.setState({ exportState: 'failed' })
+    }
+  }
+
   handleReset = () => {
-    if (!confirm('Reset the app and delete locally saved data? Your recipes will be reinstalled.')) return
+    const warning =
+      'Delete everything saved in this browser?\n\n' +
+      'The built-in recipes will come back automatically. Your own recipes, ' +
+      'your week plans, saved weeks, shopping lists and nutrition log will be ' +
+      'deleted permanently and cannot be recovered.\n\n' +
+      'Use "Export my data first" if you have not saved a copy.'
+    if (!confirm(warning)) return
     try {
       const req = indexedDB.deleteDatabase('menu-planner-db')
       req.onsuccess = req.onerror = req.onblocked = () => location.reload()
@@ -63,10 +91,38 @@ export default class ErrorBoundary extends React.Component {
           <button onClick={() => location.reload()} className="btn-primary">
             Reload
           </button>
+          <button
+            onClick={this.handleExport}
+            disabled={this.state.exportState === 'working'}
+            className="btn-secondary disabled:opacity-50"
+          >
+            {this.state.exportState === 'working' ? 'Saving…' : 'Export my data first'}
+          </button>
           <button onClick={this.handleReset} className="btn-ghost text-slate-500">
             Reset app data
           </button>
         </div>
+
+        {this.state.exportState === 'done' && (
+          <p className="text-xs text-green-700 mt-3">
+            Saved. Keep that file somewhere safe — Settings → Your data brings it back.
+          </p>
+        )}
+        {this.state.exportState === 'empty' && (
+          <p className="text-xs text-slate-500 mt-3">
+            There was no saved data to export.
+          </p>
+        )}
+        {this.state.exportState === 'failed' && (
+          <p className="text-xs text-red-600 mt-3">
+            Could not read the saved data to export it.
+          </p>
+        )}
+
+        <p className="text-xs text-slate-400 mt-4">
+          Resetting brings the built-in recipes back, but permanently deletes your
+          own recipes, week plans and logs.
+        </p>
       </div>
     )
   }

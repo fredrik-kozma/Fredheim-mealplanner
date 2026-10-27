@@ -789,5 +789,31 @@
     "shoppingSnapshot": "This is a copy as it was when it was sent. It won't update if they change their week.",
     "saveShoppingList": "Save as its own list",
     "mergeShoppingList": "Add to my list"
+  },
+  "backup": {
+    "title": "Your data",
+    "desc": "Everything you make is stored in this browser only. Save a copy you can keep, and bring it back on a new phone or after clearing your browser.",
+    "export": "Export my data",
+    "import": "Import data",
+    "exported": "Saved as {{file}}",
+    "exportFailed": "Couldn't save the file.",
+    "imported_one": "Restored — {{count}} of your recipes is back.",
+    "imported_other": "Restored — {{count}} of your recipes are back.",
+    "importFailed": "Couldn't restore that backup.",
+    "errNotBackup": "That file is not a Fredheim backup.",
+    "errNewer": "That backup was made by a newer version of the app. Update the app and try again.",
+    "errEmpty": "That backup has nothing in it.",
+    "errUnreadable": "That file couldn't be read. It may be damaged.",
+    "confirmTitle": "Restore this backup?",
+    "madeOn": "Made on {{date}}",
+    "sumRecipes": "Your recipes",
+    "sumMeals": "Planned meals",
+    "sumTemplates": "Saved weeks",
+    "sumFavourites": "Favourites",
+    "sumNutrition": "Days of nutrition log",
+    "sumShopping": "Saved shopping lists",
+    "someDropped": "Some parts of this file were damaged and will not be restored: {{fields}}",
+    "replaceWarning": "This replaces what is in the app now. The built-in recipes are not affected.",
+    "confirmRestore": "Restore"
   }
 }

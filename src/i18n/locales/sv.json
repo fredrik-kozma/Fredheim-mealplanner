@@ -789,5 +789,31 @@
     "shoppingSnapshot": "Det här är en kopia som den såg ut när den skickades. Den uppdateras inte om de ändrar sin vecka.",
     "saveShoppingList": "Spara som egen lista",
     "mergeShoppingList": "Lägg till i min lista"
+  },
+  "backup": {
+    "title": "Dina data",
+    "desc": "Allt du gör sparas bara i den här webbläsaren. Spara en kopia du kan behålla, och hämta tillbaka den på en ny telefon eller efter att du rensat webbläsaren.",
+    "export": "Exportera mina data",
+    "import": "Importera data",
+    "exported": "Sparad som {{file}}",
+    "exportFailed": "Kunde inte spara filen.",
+    "imported_one": "Återställt — {{count}} av dina recept är tillbaka.",
+    "imported_other": "Återställt — {{count}} av dina recept är tillbaka.",
+    "importFailed": "Kunde inte återställa den säkerhetskopian.",
+    "errNotBackup": "Den filen är inte en Fredheim-säkerhetskopia.",
+    "errNewer": "Den säkerhetskopian är gjord med en nyare version av appen. Uppdatera appen och försök igen.",
+    "errEmpty": "Den säkerhetskopian är tom.",
+    "errUnreadable": "Filen kunde inte läsas. Den kan vara skadad.",
+    "confirmTitle": "Återställa den här säkerhetskopian?",
+    "madeOn": "Gjord {{date}}",
+    "sumRecipes": "Dina recept",
+    "sumMeals": "Planerade måltider",
+    "sumTemplates": "Sparade veckor",
+    "sumFavourites": "Favoriter",
+    "sumNutrition": "Dagar med näringslogg",
+    "sumShopping": "Sparade inköpslistor",
+    "someDropped": "Delar av den här filen var skadade och återställs inte: {{fields}}",
+    "replaceWarning": "Det här ersätter det som finns i appen nu. De inbyggda recepten påverkas inte.",
+    "confirmRestore": "Återställ"
   }
 }

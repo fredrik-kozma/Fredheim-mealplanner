@@ -110,6 +110,31 @@ function AppShell() {
     return () => clearTimeout(t)
   }, [location.search, user?.id]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Ask the browser to keep our data ──
+  //
+  // Everything this app holds lives in one browser's IndexedDB with no
+  // account behind it. Under the default "best effort" policy a browser
+  // may reclaim that storage on its own — Safari clears it after a few
+  // weeks without a visit — and the user loses their recipes and plans
+  // with no warning and no way back. Marking the origin persistent asks
+  // it not to.
+  //
+  // Asked once per load, after the first paint so it never delays one.
+  // It may be granted silently, refused, or prompt, depending on the
+  // browser and how "installed" the app looks; a refusal is not an error
+  // and there is nothing useful to tell the user about it. Older
+  // browsers have no storage manager at all, hence the guard.
+  useEffect(() => {
+    const id = setTimeout(async () => {
+      try {
+        if (navigator.storage?.persist && navigator.storage?.persisted) {
+          if (!(await navigator.storage.persisted())) await navigator.storage.persist()
+        }
+      } catch { /* not supported, or refused — neither is actionable */ }
+    }, 2000)
+    return () => clearTimeout(id)
+  }, [])
+
   // ── First run ──
   //
   // A new visitor is asked which language they want, and nothing else. The

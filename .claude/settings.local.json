@@ -10,7 +10,9 @@
       "Bash(node --input-type=module -e ' *)",
       "Bash(node scripts/add_share_strings.cjs)",
       "Bash(node scripts/fix_share_plurals.cjs)",
-      "Bash(node scripts/add_shopping_share_strings.cjs)"
+      "Bash(node scripts/add_shopping_share_strings.cjs)",
+      "Bash(git push *)",
+      "Bash(grep -nE \"^      [a-zA-Z][a-zA-Z0-9_]*: \\(DEFAULT|emptyWeek|normalize|\\\\{ *\\\\.\\\\.\\\\.|[0-9]+,\\)\" src/store/useStore.js)"
     ]
   }
 }

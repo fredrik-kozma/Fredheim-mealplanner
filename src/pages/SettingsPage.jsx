@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../store/useStore'
@@ -10,6 +10,7 @@ import EditableNumber from '../components/common/EditableNumber'
 import useInstallPWA from '../hooks/useInstallPWA'
 import IOSInstallInstructions from '../components/pwa/IOSInstallInstructions'
 import { ALLERGENS } from '../data/allergens'
+import { buildBackup, downloadBackup, validateBackup, mergeRecipes } from '../utils/dataBackup'
 
 function SectionCard({ title, children }) {
   return (
@@ -222,6 +223,12 @@ function SubscriptionSection() {
 export default function SettingsPage() {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
+  const importInputRef = useRef(null)
+  // { text, bad } — the outcome of the last export or import.
+  const [backupMessage, setBackupMessage] = useState(null)
+  // Set once a chosen file has validated: what the user is about to
+  // replace, shown before anything is touched.
+  const [pendingImport, setPendingImport] = useState(null)
   const language = useStore(s => s.language)
   const setLanguage = useStore(s => s.setLanguage)
 
@@ -268,6 +275,72 @@ export default function SettingsPage() {
   const [bulkProgress, setBulkProgress] = useState({ done: 0, total: 0 })
   const [bulkStatus, setBulkStatus] = useState(null)
   const [showDeleteAllModal, setShowDeleteAllModal] = useState(false)
+
+  function handleExport() {
+    try {
+      const filename = downloadBackup(buildBackup(useStore.getState()))
+      setBackupMessage({ text: t('backup.exported', { file: filename, defaultValue: `Saved as ${filename}` }) })
+    } catch (err) {
+      console.error('Export failed', err)
+      setBackupMessage({ text: t('backup.exportFailed', { defaultValue: "Couldn't save the file." }), bad: true })
+    }
+  }
+
+  /**
+   * Read and check a chosen file. Nothing is replaced here — this only
+   * works out what the file holds so the user can be shown it first.
+   */
+  async function handleImportFile(e) {
+    const file = e.target.files?.[0]
+    // Clear the input straight away, or choosing the same file twice in
+    // a row fires no change event the second time.
+    e.target.value = ''
+    if (!file) return
+    setBackupMessage(null)
+    try {
+      const result = validateBackup(JSON.parse(await file.text()))
+      if (!result.ok) {
+        const reasons = {
+          notBackup: t('backup.errNotBackup', { defaultValue: 'That file is not a Fredheim backup.' }),
+          newerVersion: t('backup.errNewer', { defaultValue: 'That backup was made by a newer version of the app. Update the app and try again.' }),
+          empty: t('backup.errEmpty', { defaultValue: 'That backup has nothing in it.' }),
+        }
+        setBackupMessage({ text: reasons[result.reason] || reasons.notBackup, bad: true })
+        return
+      }
+      setPendingImport(result)
+    } catch {
+      setBackupMessage({ text: t('backup.errUnreadable', { defaultValue: "That file couldn't be read. It may be damaged." }), bad: true })
+    }
+  }
+
+  /** Confirmed: replace the current data with the file's. */
+  function applyImport() {
+    const result = pendingImport
+    setPendingImport(null)
+    if (!result) return
+    try {
+      const current = useStore.getState()
+      const next = { ...result.data }
+      // Pack recipes aren't in a backup — they're rebuilt from the
+      // bundle — so they're carried over from what's loaded now rather
+      // than being wiped by an import that never contained them.
+      next.recipes = mergeRecipes(current.recipes, result.data.recipes)
+      useStore.setState(next)
+      // i18n follows its own copy of the language, so a restored
+      // language has to be handed over or the UI keeps the old one.
+      if (next.language && next.language !== i18n.language) i18n.changeLanguage(next.language)
+      setBackupMessage({
+        text: t('backup.imported', {
+          count: result.summary.recipes,
+          defaultValue: `Restored — ${result.summary.recipes} of your recipes are back.`,
+        }),
+      })
+    } catch (err) {
+      console.error('Import failed', err)
+      setBackupMessage({ text: t('backup.importFailed', { defaultValue: "Couldn't restore that backup." }), bad: true })
+    }
+  }
 
   function handleChangeLanguage(lang) {
     setLanguage(lang)
@@ -694,6 +767,46 @@ export default function SettingsPage() {
         )}
         {showInstallIOSHelp && <IOSInstallInstructions onClose={() => setShowInstallIOSHelp(false)} />}
 
+        {/* Your data — the only copy of any of this is in this browser,
+            so there has to be a way to get it out and back in. */}
+        <SectionCard title={t('backup.title', { defaultValue: 'Your data' })}>
+          <p className="text-sm text-slate-500 mb-3">
+            {t('backup.desc', { defaultValue: 'Everything you make is stored in this browser only. Save a copy you can keep, and bring it back on a new phone or after clearing your browser.' })}
+          </p>
+          <div className="space-y-2">
+            <button
+              onClick={handleExport}
+              className="btn-secondary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              {t('backup.export', { defaultValue: 'Export my data' })}
+            </button>
+            <button
+              onClick={() => importInputRef.current?.click()}
+              className="btn-secondary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M7.5 7.5 12 3m0 0 4.5 4.5M12 3v13.5" />
+              </svg>
+              {t('backup.import', { defaultValue: 'Import data' })}
+            </button>
+            <input
+              ref={importInputRef}
+              type="file"
+              accept="application/json,.json"
+              className="hidden"
+              onChange={handleImportFile}
+            />
+          </div>
+          {backupMessage && (
+            <p className={`text-xs mt-3 ${backupMessage.bad ? 'text-red-600' : 'text-green-700'}`}>
+              {backupMessage.text}
+            </p>
+          )}
+        </SectionCard>
+
         {/* Recipe packs — no longer a nav tab, since installing one is a
             rare job. This is how the page is reached now. */}
         <SectionCard title={t('packs.title', { defaultValue: 'Recipe packs' })}>
@@ -777,6 +890,68 @@ export default function SettingsPage() {
           </div>
         </div>
       </div>
+
+      {/* Import confirmation. Restoring replaces what is here now, which
+          is not something to do on a single tap of a file picker, so the
+          file's contents are spelled out first. */}
+      {pendingImport && (
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setPendingImport(null)} />
+          <div className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl shadow-2xl p-5 max-h-[85vh] overflow-y-auto">
+            <h2 className="text-base font-semibold text-slate-800 mb-1">
+              {t('backup.confirmTitle', { defaultValue: 'Restore this backup?' })}
+            </h2>
+            {pendingImport.summary.exportedAt && (
+              <p className="text-xs text-slate-400 mb-3">
+                {t('backup.madeOn', {
+                  date: new Date(pendingImport.summary.exportedAt).toLocaleDateString(),
+                  defaultValue: `Made on ${new Date(pendingImport.summary.exportedAt).toLocaleDateString()}`,
+                })}
+              </p>
+            )}
+
+            <ul className="text-sm text-slate-600 space-y-1 mb-4">
+              <SummaryRow label={t('backup.sumRecipes', { defaultValue: 'Your recipes' })} value={pendingImport.summary.recipes} />
+              <SummaryRow label={t('backup.sumMeals', { defaultValue: 'Planned meals' })} value={pendingImport.summary.meals} />
+              <SummaryRow label={t('backup.sumTemplates', { defaultValue: 'Saved weeks' })} value={pendingImport.summary.weekTemplates} />
+              <SummaryRow label={t('backup.sumFavourites', { defaultValue: 'Favourites' })} value={pendingImport.summary.favourites} />
+              <SummaryRow label={t('backup.sumNutrition', { defaultValue: 'Days of nutrition log' })} value={pendingImport.summary.nutritionDays} />
+              <SummaryRow label={t('backup.sumShopping', { defaultValue: 'Saved shopping lists' })} value={pendingImport.summary.shoppingLists} />
+            </ul>
+
+            {pendingImport.dropped.length > 0 && (
+              <p className="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-3">
+                {t('backup.someDropped', {
+                  fields: pendingImport.dropped.join(', '),
+                  defaultValue: `Some parts of this file were damaged and will not be restored: ${pendingImport.dropped.join(', ')}`,
+                })}
+              </p>
+            )}
+
+            <p className="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-4">
+              {t('backup.replaceWarning', { defaultValue: 'This replaces what is in the app now. The built-in recipes are not affected.' })}
+            </p>
+
+            <div className="flex gap-2">
+              <button onClick={applyImport} className="btn-primary flex-1 py-2.5 text-sm font-medium">
+                {t('backup.confirmRestore', { defaultValue: 'Restore' })}
+              </button>
+              <button onClick={() => setPendingImport(null)} className="btn-secondary flex-1 py-2.5 text-sm">
+                {t('common.cancel')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
+  )
+}
+
+function SummaryRow({ label, value }) {
+  return (
+    <li className="flex items-baseline justify-between gap-3">
+      <span className="text-slate-500">{label}</span>
+      <span className="font-semibold text-slate-800 tabular-nums">{value}</span>
+    </li>
   )
 }

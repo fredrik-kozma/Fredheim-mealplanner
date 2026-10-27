@@ -789,5 +789,31 @@
     "shoppingSnapshot": "Dette er en kopi slik den var da den ble sendt. Den oppdateres ikke om de endrer uken sin.",
     "saveShoppingList": "Lagre som egen liste",
     "mergeShoppingList": "Legg til i min liste"
+  },
+  "backup": {
+    "title": "Dataene dine",
+    "desc": "Alt du lager lagres bare i denne nettleseren. Lagre en kopi du kan ta vare på, og hent den tilbake på en ny telefon eller etter at du har tømt nettleseren.",
+    "export": "Eksporter dataene mine",
+    "import": "Importer data",
+    "exported": "Lagret som {{file}}",
+    "exportFailed": "Kunne ikke lagre filen.",
+    "imported_one": "Gjenopprettet — {{count}} av oppskriftene dine er tilbake.",
+    "imported_other": "Gjenopprettet — {{count}} av oppskriftene dine er tilbake.",
+    "importFailed": "Kunne ikke gjenopprette den sikkerhetskopien.",
+    "errNotBackup": "Den filen er ikke en Fredheim-sikkerhetskopi.",
+    "errNewer": "Den sikkerhetskopien er laget med en nyere versjon av appen. Oppdater appen og prøv igjen.",
+    "errEmpty": "Den sikkerhetskopien er tom.",
+    "errUnreadable": "Filen kunne ikke leses. Den kan være ødelagt.",
+    "confirmTitle": "Gjenopprette denne sikkerhetskopien?",
+    "madeOn": "Laget {{date}}",
+    "sumRecipes": "Dine oppskrifter",
+    "sumMeals": "Planlagte måltider",
+    "sumTemplates": "Lagrede uker",
+    "sumFavourites": "Favoritter",
+    "sumNutrition": "Dager med ernæringslogg",
+    "sumShopping": "Lagrede handlelister",
+    "someDropped": "Deler av denne filen var ødelagt og blir ikke gjenopprettet: {{fields}}",
+    "replaceWarning": "Dette erstatter det som ligger i appen nå. De innebygde oppskriftene berøres ikke.",
+    "confirmRestore": "Gjenopprett"
   }
 }
