@@ -18,6 +18,8 @@
  *    when you opened it.
  */
 
+import { resolveIngredientId, standardName, ingredientSynonyms } from './ingredientDictionary.js'
+
 const LANGS = ['no', 'sv']
 
 /** Shortest query that searches ingredients as well as titles. */
@@ -47,9 +49,22 @@ export function buildSearchEntry(recipe, currentLang = 'en') {
   const ingredients = base.map((ing, i) => {
     const names = []
     if (ing?.name) names.push(ing.name)
+    // Migrated rows keep leftover wording ("rocket, spinach, lamb's lettuce")
+    // in `note`; searching it keeps those recipes findable.
+    if (ing?.note) names.push(ing.note)
     for (const lang of LANGS) {
-      const n = recipe.translations?.[lang]?.ingredients?.[i]?.name
-      if (n) names.push(n)
+      const row = recipe.translations?.[lang]?.ingredients?.[i]
+      if (row?.name) names.push(row.name)
+      if (row?.note) names.push(row.note)
+    }
+    // Standard names are plural ("Gulrøtter", "Morötter"), which the
+    // singular someone types ("gulrot", "morot") is not a substring of.
+    // The dictionary's synonyms in the UI language cover that.
+    const id = resolveIngredientId(ing)
+    if (id) {
+      const std = standardName(id, currentLang)
+      if (std) names.push(std)
+      names.push(...ingredientSynonyms(id, currentLang))
     }
     // What the user would see on the recipe itself, so the chip matches
     // the page it sends them to.

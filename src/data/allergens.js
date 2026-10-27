@@ -121,15 +121,27 @@ export const ALLERGENS = [
 
 export const ALLERGEN_IDS = ALLERGENS.map(a => a.id)
 
-/** Every ingredient name on a recipe, across EN + NO + SV. */
+/**
+ * One ingredient's searchable text: the standard name plus its leftover
+ * `note` ("Plant-based yogurt, soy"). Migrated rows keep allergen-bearing
+ * variants in the note, so the note must be read or the flag is lost.
+ */
+function rowText(ing) {
+  if (!ing?.name) return ''
+  return ing.note ? `${ing.name}, ${ing.note}` : ing.name
+}
+
+/** Every ingredient name (and note) on a recipe, across EN + NO + SV. */
 function allIngredientNames(recipe) {
   const names = []
   for (const ing of recipe?.ingredients || []) {
-    if (ing?.name) names.push(ing.name)
+    const t = rowText(ing)
+    if (t) names.push(t)
   }
   for (const lang of ['no', 'sv']) {
     for (const ing of recipe?.translations?.[lang]?.ingredients || []) {
-      if (ing?.name) names.push(ing.name)
+      const t = rowText(ing)
+      if (t) names.push(t)
     }
   }
   return names.map(n => String(n).toLowerCase())

@@ -16,7 +16,7 @@ import { printMenuBook } from '../../utils/printMenuBook'
 import ShareModal from '../share/ShareModal'
 import { buildWeekPayload } from '../../utils/sharePayload'
 import { weekAsText } from '../../utils/shareText'
-import { formatScaledQuantity } from '../../utils/scaleIngredient'
+import { formatScaledIngredient } from '../../utils/scaleIngredient'
 import { spoonHint, needsSpoonHint } from '../../utils/spoonHint'
 import { recipeConditions } from '../../data/conditionTags'
 import MealSlot from './MealSlot'
@@ -350,16 +350,14 @@ export default function WeeklyPlanner() {
           // amounts would silently be for 4.
           const servings = norm.servings ?? familySize ?? 4
           const ingredients = (tr?.ingredients || recipe.ingredients || []).map(ing => ({
-            name: ing.name,
-            quantityLabel: formatScaledQuantity({
-              quantity: ing.quantity,
-              unit: ing.unit,
+            ...formatScaledIngredient(ing, {
               fromServings: recipe.servings,
               toServings: servings,
               system: units || 'metric',
               lang: currentLang,
               scalesLinearly: ing.scalesLinearly !== false,
             }),
+            note: ing.note || '',
           }))
           entries.push({
             dayLabel: t(`planner.days.${day}`, { defaultValue: day }),

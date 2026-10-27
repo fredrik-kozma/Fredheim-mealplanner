@@ -4,6 +4,19 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { compressImage } from '../../utils/imageCompressor'
 import UnitSelect from './UnitSelect'
+import { ingredientLabel } from '../../utils/ingredientDictionary'
+
+/*
+ * Pack rows carry a dictionary id and a separate `note`. The form has no
+ * fields for either: it shows "name, note" as one editable name, keeps the
+ * row exactly as it was while that text is untouched, and turns it into a
+ * plain user row (no id, no note) once it is edited — so a renamed row
+ * can't keep shopping as the ingredient it used to be.
+ */
+function asPlainRow(row, name) {
+  const { ingredient: _id, note: _note, ...rest } = row
+  return { ...rest, name }
+}
 
 function IngredientRow({ ing, onChange, onRemove, t }) {
   return (
@@ -24,8 +37,8 @@ function IngredientRow({ ing, onChange, onRemove, t }) {
       <input
         className="input flex-1"
         placeholder={t('recipeForm.ingredientName')}
-        value={ing.name || ''}
-        onChange={e => onChange({ ...ing, name: e.target.value })}
+        value={ingredientLabel(ing)}
+        onChange={e => onChange(asPlainRow(ing, e.target.value))}
       />
       <button type="button" onClick={onRemove} className="btn-ghost p-2 text-slate-400 hover:text-red-500">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -133,7 +146,10 @@ export default function RecipeForm() {
       init[l] = {
         title: ex.title || '',
         description: ex.description || '',
-        ingNames: baseIngs.map((_, i) => ex.ingredients?.[i]?.name || ''),
+        ingNames: baseIngs.map((_, i) => ingredientLabel(ex.ingredients?.[i])),
+        // The stored rows behind ingNames, kept index-aligned with them, so
+        // an untouched name can be saved back with its own note.
+        ingRows: baseIngs.map((_, i) => ex.ingredients?.[i] || null),
         steps: baseSteps.map((_, i) => ex.steps?.[i] || ''),
       }
     }
@@ -186,7 +202,7 @@ export default function RecipeForm() {
 
   function addIngredient() {
     set('ingredients', [...form.ingredients, { quantity: 0, unit: '', name: '' }])
-    syncTransArrays(rec => ({ ...rec, ingNames: [...rec.ingNames, ''] }))
+    syncTransArrays(rec => ({ ...rec, ingNames: [...rec.ingNames, ''], ingRows: [...(rec.ingRows || []), null] }))
   }
 
   function updateIngredient(i, val) {
@@ -197,7 +213,11 @@ export default function RecipeForm() {
 
   function removeIngredient(i) {
     set('ingredients', form.ingredients.filter((_, idx) => idx !== i))
-    syncTransArrays(rec => ({ ...rec, ingNames: rec.ingNames.filter((_, idx) => idx !== i) }))
+    syncTransArrays(rec => ({
+      ...rec,
+      ingNames: rec.ingNames.filter((_, idx) => idx !== i),
+      ingRows: (rec.ingRows || []).filter((_, idx) => idx !== i),
+    }))
   }
 
   function addStep() {
@@ -246,10 +266,19 @@ export default function RecipeForm() {
         // emptied — the spread above would otherwise resurrect the old one.
         if (tr.description.trim()) next.description = tr.description.trim()
         else delete next.description
-        next.ingredients = form.ingredients.map((ing, i) => ({
-          ...ing,
-          name: tr.ingNames[i]?.trim() || ing.name,
-        }))
+        // Built from the base row, so it must not inherit the base row's
+        // note: that is in the base language. A name left as it was keeps
+        // this language's own name and note; anything else is plain text.
+        next.ingredients = form.ingredients.map((ing, i) => {
+          const text = tr.ingNames[i]?.trim()
+          const orig = tr.ingRows?.[i]
+          const { note: _baseNote, ...base } = ing
+          if (ing.ingredient && orig && orig.ingredient === ing.ingredient && text === ingredientLabel(orig).trim()) {
+            return orig.note ? { ...base, name: orig.name, note: orig.note } : { ...base, name: orig.name }
+          }
+          if (text) return asPlainRow(ing, text)
+          return base
+        })
         // Index-matched to base steps; fall back to the base step text
         // for any step the user left blank in this language.
         next.steps = form.steps.map((s, i) => tr.steps[i]?.trim() || s)

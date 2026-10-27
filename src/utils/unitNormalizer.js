@@ -28,6 +28,17 @@ export const CANONICAL_UNITS = {
   none:  { en: '—',          no: '—',          sv: '—',     group: 'count',   system: 'both' },
 }
 
+// Unit words that change with the amount ("3 klyftor", "2 cloves"). Only
+// the ones that do; abbreviations (ts, ss, stk, st, g, ml) never change and
+// "fedd" is the same in both numbers.
+export const PLURAL_UNITS = {
+  clove:   { en: 'cloves',   no: 'fedd',       sv: 'klyftor' },
+  pinch:   { en: 'pinches',  no: 'klyper',     sv: 'nypor' },
+  dash:    { en: 'dashes',   no: 'skvetter',   sv: 'skvättar' },
+  handful: { en: 'handfuls', no: 'håndfuller', sv: 'handfullar' },
+  cup:     { en: 'cups',     no: 'kopper',     sv: 'koppar' },
+}
+
 // Maps any variant string → canonical key. Case-insensitive, trimmed.
 export const UNIT_ALIASES = {
   // tsp
@@ -59,15 +70,16 @@ export const UNIT_ALIASES = {
   'deciliter': 'dl', 'deciliters': 'dl', 'decilitre': 'dl', 'decilitres': 'dl', 'dl': 'dl',
   'liter': 'l', 'liters': 'l', 'litre': 'l', 'litres': 'l', 'l': 'l',
   // cup
-  'kopp': 'cup', 'cups': 'cup', 'cup': 'cup',
+  'kopp': 'cup', 'cups': 'cup', 'cup': 'cup', 'kopper': 'cup', 'koppar': 'cup',
   // fluid ounces
   'fl oz': 'fl_oz', 'floz': 'fl_oz', 'fl_oz': 'fl_oz', 'fluid ounce': 'fl_oz', 'fluid ounces': 'fl_oz',
   // pinch / dash / handful
-  'klype': 'pinch', 'nypa': 'pinch', 'pinch': 'pinch',
-  'dash': 'dash', 'skvett': 'dash', 'skvätt': 'dash',
+  'klype': 'pinch', 'nypa': 'pinch', 'pinch': 'pinch', 'pinches': 'pinch', 'klyper': 'pinch', 'nypor': 'pinch',
+  'dash': 'dash', 'skvett': 'dash', 'skvätt': 'dash', 'dashes': 'dash', 'skvetter': 'dash', 'skvättar': 'dash',
   'handful': 'handful', 'håndfull': 'handful', 'handfull': 'handful',
+  'handfuls': 'handful', 'håndfuller': 'handful', 'handfullar': 'handful',
   // clove
-  'clove': 'clove', 'cloves': 'clove', 'fedd': 'clove', 'klyfta': 'clove',
+  'clove': 'clove', 'cloves': 'clove', 'fedd': 'clove', 'klyfta': 'clove', 'klyftor': 'clove',
   // oz / lb
   'ounce': 'oz', 'ounces': 'oz', 'oz': 'oz',
   'lb': 'lb', 'lbs': 'lb', 'pound': 'lb', 'pounds': 'lb',
@@ -117,67 +129,39 @@ export function convertFromBase(quantity, baseUnit, preferredUnit) {
   return { quantity: quantity / targetFactor, unit: preferredUnit }
 }
 
-// Units you buy as whole things — a list asking for 6.25 cloves of garlic
-// is asking you to do arithmetic at the shelf.
-export const COUNTABLE_UNITS = new Set(['pcs', 'clove', 'slice', 'handful', 'sprig', 'head', 'pinch', 'dash'])
-
-/**
- * Rounds a quantity to something you can act on in a shop.
- *
- * Lives here rather than in the shopping list because two separate paths
- * need it: the ordinary per-item format, and the mixed-unit string built
- * in ingredientMatcher for groups that can't be summed into one unit
- * (which includes every count-only group). Putting it in either of those
- * files would mean importing one from the other, and the shopping list
- * already imports the matcher.
- *
- * Countables round UP — you cannot buy a quarter clove, and coming home
- * short is worse than coming home over. Bulk weights round to a step that
- * matches the magnitude; spoons keep quarter steps, which are the marks
- * that exist on the measure.
- */
-export function roundForShopping(quantity, unitKey) {
-  if (typeof quantity !== 'number' || !isFinite(quantity)) return quantity
-  if (COUNTABLE_UNITS.has(unitKey)) return Math.ceil(quantity)
-  if (unitKey === 'g' || unitKey === 'ml') {
-    const abs = Math.abs(quantity)
-    if (abs < 10) return Math.round(quantity * 10) / 10
-    if (abs < 100) return Math.round(quantity / 5) * 5
-    return Math.round(quantity / 10) * 10
-  }
-  if (unitKey === 'tsp' || unitKey === 'tbsp' || unitKey === 'cup') {
-    return Math.round(quantity * 4) / 4
-  }
-  // kg, l, dl and anything unrecognised: two decimals reads fine at these
-  // magnitudes ("1.25 kg").
-  return Math.round(quantity * 100) / 100
-}
-
 // Picks a sensible metric unit given a quantity in ml or g.
-export function smartConvert(quantity, unitKey) {
+//
+// Only the unit is decided here; the quantity comes back unrounded so
+// formatQuantity can round it once, the same way on every screen.
+//
+// `preferSpoons` is for ingredients measured by the spoon (spices, salt,
+// powders — the dictionary's tsp/tbsp entries): a small volume stays in
+// teaspoons or tablespoons even when it doesn't land on a clean spoon, so
+// 7 ml of cumin reads "1 ½ ts" rather than "7 ml".
+export function smartConvert(quantity, unitKey, { preferSpoons = false } = {}) {
   const base = convertToBase(quantity, unitKey)
   if (!base) return { quantity, unit: unitKey }
 
   if (base.unit === 'g') {
     if (base.quantity >= 1000) {
-      return { quantity: round(base.quantity / 1000, 2), unit: 'kg' }
+      return { quantity: base.quantity / 1000, unit: 'kg' }
     }
-    return { quantity: round(base.quantity, 1), unit: 'g' }
+    return { quantity: base.quantity, unit: 'g' }
   }
 
   if (base.unit === 'ml') {
     if (base.quantity >= 1000) {
-      return { quantity: round(base.quantity / 1000, 2), unit: 'l' }
+      return { quantity: base.quantity / 1000, unit: 'l' }
     }
     if (base.quantity >= 100) {
-      return { quantity: round(base.quantity / 100, 1), unit: 'dl' }
+      return { quantity: base.quantity / 100, unit: 'dl' }
     }
     const ml = base.quantity
-    // Half-decilitre amounts read naturally in Nordic cooking ("0,5 dl"),
+    // Half-decilitre amounts read naturally in Nordic cooking ("½ dl"),
     // and are far more practical than the 10 teaspoons the spoon branch
     // below would otherwise produce for 50 ml.
     if (ml >= 50 && Math.abs(ml / 100 - Math.round(ml / 50) / 2) < 0.001) {
-      return { quantity: round(ml / 100, 1), unit: 'dl' }
+      return { quantity: ml / 100, unit: 'dl' }
     }
     // Small volumes: use tsp / tbsp when they map cleanly — nobody
     // measures 5 ml or 15 ml with a graduated cylinder while cooking, and
@@ -190,17 +174,22 @@ export function smartConvert(quantity, unitKey) {
       const asTsp = ml / 5
       // Prefer tbsp if it rounds to a clean number (whole or .5)
       if (ml >= 15 && (Math.abs(asTbsp - Math.round(asTbsp * 2) / 2) < 0.05)) {
-        return { quantity: round(Math.round(asTbsp * 2) / 2, 1), unit: 'tbsp' }
+        return { quantity: asTbsp, unit: 'tbsp' }
       }
       // Spoons stop being a practical measure past about 4 of them — "10 tsp"
       // of water is nobody's idea of a useful instruction — so beyond that
       // cap we fall through to plain millilitres.
       const MAX_PRACTICAL_TSP = 4
       if (asTsp <= MAX_PRACTICAL_TSP && Math.abs(asTsp - Math.round(asTsp * 4) / 4) < 0.03) {
-        return { quantity: round(Math.round(asTsp * 4) / 4, 2), unit: 'tsp' }
+        return { quantity: asTsp, unit: 'tsp' }
+      }
+      // Below the half-decilitre a spice is still a spoon job. (Under a
+      // teaspoon, formatQuantity already shows quarter teaspoons.)
+      if (preferSpoons && ml >= TO_BASE.tsp && ml < 50) {
+        return ml >= 15 ? { quantity: asTbsp, unit: 'tbsp' } : { quantity: asTsp, unit: 'tsp' }
       }
     }
-    return { quantity: round(base.quantity, 1), unit: 'ml' }
+    return { quantity: base.quantity, unit: 'ml' }
   }
 
   return { quantity, unit: unitKey }
@@ -209,7 +198,8 @@ export function smartConvert(quantity, unitKey) {
 // Converts a quantity + unit into the user's preferred system.
 // System is 'metric' | 'us'. Returns { quantity, unit } in canonical form.
 // Non-convertible units (pcs, pinch, clove, …) are returned unchanged.
-export function convertToSystem(quantity, unitKey, system) {
+// `options` go to smartConvert (see preferSpoons there).
+export function convertToSystem(quantity, unitKey, system, options = {}) {
   const normalized = normalizeUnit(unitKey)
   const meta = CANONICAL_UNITS[normalized]
 
@@ -220,45 +210,42 @@ export function convertToSystem(quantity, unitKey, system) {
 
   // Already in target system → just tidy the magnitude for metric.
   if (meta.system === system) {
-    if (system === 'metric') return smartConvert(quantity, normalized)
-    return { quantity: round(quantity, 2), unit: normalized }
+    if (system === 'metric') return smartConvert(quantity, normalized, options)
+    return { quantity, unit: normalized }
   }
 
   const base = convertToBase(quantity, normalized)
   if (!base) return { quantity, unit: normalized || unitKey }
 
-  if (system === 'metric') return smartConvert(base.quantity, base.unit)
+  if (system === 'metric') return smartConvert(base.quantity, base.unit, options)
 
   // Target = US. Pick the friendliest US unit.
   if (base.unit === 'g') {
     const inLb = base.quantity / TO_BASE.lb
-    if (inLb >= 1) return { quantity: round(inLb, 2), unit: 'lb' }
-    return { quantity: round(base.quantity / TO_BASE.oz, 2), unit: 'oz' }
+    if (inLb >= 1) return { quantity: inLb, unit: 'lb' }
+    return { quantity: base.quantity / TO_BASE.oz, unit: 'oz' }
   }
 
   if (base.unit === 'ml') {
     const ml = base.quantity
     // Big volumes → cups; medium → tbsp; tiny → tsp.
-    if (ml >= TO_BASE.cup) return { quantity: round(ml / TO_BASE.cup, 2), unit: 'cup' }
-    if (ml >= TO_BASE.tbsp) return { quantity: round(ml / TO_BASE.tbsp, 1), unit: 'tbsp' }
-    return { quantity: round(ml / TO_BASE.tsp, 1), unit: 'tsp' }
+    if (ml >= TO_BASE.cup) return { quantity: ml / TO_BASE.cup, unit: 'cup' }
+    if (ml >= TO_BASE.tbsp) return { quantity: ml / TO_BASE.tbsp, unit: 'tbsp' }
+    return { quantity: ml / TO_BASE.tsp, unit: 'tsp' }
   }
 
   return { quantity, unit: normalized }
 }
 
-function round(n, decimals) {
-  const factor = Math.pow(10, decimals)
-  return Math.round(n * factor) / factor
-}
-
 // Formatted label for a canonical key in a given language. Falls back to the
-// key itself so custom user units still render.
-export function displayUnit(canonicalKey, lang = 'en') {
+// key itself so custom user units still render. `plural` asks for the
+// form used with more than one ("klyftor"); units without one ignore it.
+export function displayUnit(canonicalKey, lang = 'en', { plural = false } = {}) {
   const entry = CANONICAL_UNITS[canonicalKey]
   if (!entry) return canonicalKey === 'none' ? '' : (canonicalKey || '')
   if (canonicalKey === 'none') return ''
-  return entry[lang] || entry.en || canonicalKey
+  const forms = plural ? PLURAL_UNITS[canonicalKey] : null
+  return forms?.[lang] || entry[lang] || entry.en || canonicalKey
 }
 
 // Returns canonical keys grouped for the dropdown UI, filtered by the user's

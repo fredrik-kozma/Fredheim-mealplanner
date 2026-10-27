@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../store/useStore'
 import { decodeShare } from '../utils/shareCodec'
 import { validateSharePayload, countPayloadMeals, countShoppingItems, shoppingPayloadToGroups, SHARE_WEEK, SHARE_RECIPE, SHARE_SHOPPING } from '../utils/sharePayload'
-import { formatQuantity } from '../utils/shoppingListGenerator'
+import { formatQuantity } from '../utils/formatQuantity'
+import { nameForAmount } from '../utils/ingredientDictionary'
 
 /**
  * What a shared link opens.
@@ -172,8 +173,8 @@ export default function SharedImportPage() {
                 for (const it of g.items) {
                   const amount = it.custom
                     ? (it.quantity || '')
-                    : formatQuantity(it.quantity, it.unit)
-                  addCustomShoppingItem(it.name, amount)
+                    : formatQuantity(it.quantity, it.unit, lang, { roundUpWhole: true })
+                  addCustomShoppingItem(it.custom ? it.name : nameForAmount(it, lang, it.quantity, it.unit, { roundUpWhole: true }), amount)
                 }
               }
               navigate('/shopping')

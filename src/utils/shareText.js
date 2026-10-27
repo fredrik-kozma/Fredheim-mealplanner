@@ -13,12 +13,11 @@
  * serves both: readable to anyone, importable by anyone who has the app.
  */
 
-import { displayUnit } from './unitNormalizer'
+import { formatQuantity } from './formatQuantity.js'
+import { ingredientLabel } from './ingredientDictionary.js'
 
 function qty(ing, lang) {
-  const amount = ing.quantity ?? ''
-  const unit = ing.unit ? displayUnit(ing.unit, lang) : ''
-  return [amount, unit].filter(Boolean).join(' ')
+  return formatQuantity(ing.quantity, ing.unit, lang)
 }
 
 /**
@@ -40,7 +39,7 @@ export function recipeAsText({ recipe, lang = 'en', labels, url }) {
   out.push(`${labels.ingredients}:`)
   for (const ing of ingredients || []) {
     const left = qty(ing, lang)
-    out.push(`· ${[left, ing.name].filter(Boolean).join(' ')}`)
+    out.push(`· ${[left, ingredientLabel(ing)].filter(Boolean).join(' ')}`)
   }
 
   if (steps?.length) {

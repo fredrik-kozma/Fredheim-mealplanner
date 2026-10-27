@@ -56,7 +56,7 @@ function escapeHtml(s) {
  *   prepTime?: number|null,
  *   cookTime?: number|null,
  *   conditions?: Array<{ icon?: string, label: string }>,
- *   ingredients: Array<{ name: string, quantityLabel: string }>,
+ *   ingredients: Array<{ name: string, note?: string, quantityLabel: string }>,
  *   steps: string[]
  * }>} opts.entries                    Already in cooking order, already scaled
  * @param {object} opts.labels         { contents, ingredients, instructions, servings, prep, cook, goodFor, printedOn, recipesCount }
@@ -156,7 +156,7 @@ export function printMenuBook(opts) {
         <section>
           <h2>${escapeHtml(L.ingredients)}</h2>
           <ul class="ingredients">
-            ${e.ingredients.map(i => `<li><span class="ing-name">${escapeHtml(i.name)}</span><span class="ing-qty">${escapeHtml(i.quantityLabel)}</span></li>`).join('')}
+            ${e.ingredients.map(i => `<li><span class="ing-name">${escapeHtml(i.name)}${i.note ? `<span class="ing-note">, ${escapeHtml(i.note)}</span>` : ''}</span><span class="ing-qty">${escapeHtml(i.quantityLabel)}</span></li>`).join('')}
           </ul>
           ${e.spoonHint ? `<p class="spoon-hint">🥄 ${escapeHtml(e.spoonHint)}</p>` : ''}
         </section>

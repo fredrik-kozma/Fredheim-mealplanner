@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
-import { formatQuantity } from '../../utils/shoppingListGenerator'
-import { convertToSystem, displayUnit, normalizeUnit, CANONICAL_UNITS } from '../../utils/unitNormalizer'
+import { normalizeUnit, CANONICAL_UNITS } from '../../utils/unitNormalizer'
+import { formatScaledQuantity as scaleAndFormat, formatScaledIngredient as scaleIngredientRow } from '../../utils/scaleIngredient'
 import { printRecipe } from '../../utils/printRecipe'
 import { spoonHint, needsSpoonHint } from '../../utils/spoonHint'
 import { useAccess } from '../../hooks/useAccess'
@@ -106,48 +106,6 @@ export default function RecipeDetail() {
     }
   }
 
-  // Intelligently round quantities to common cooking fractions
-  function smartRound(num) {
-    if (num === null || num === undefined || num === 0) return 0
-
-    // Common fractions and their decimal values
-    const fractions = [
-      { val: 0.25, display: '0.25' },
-      { val: 0.33, display: '0.33' },
-      { val: 0.5, display: '0.5' },
-      { val: 0.67, display: '0.67' },
-      { val: 0.75, display: '0.75' },
-    ]
-
-    // For values < 1, try to match common fractions
-    if (num < 1) {
-      let closest = fractions[0]
-      let minDiff = Math.abs(num - closest.val)
-      for (const frac of fractions) {
-        const diff = Math.abs(num - frac.val)
-        if (diff < minDiff) {
-          minDiff = diff
-          closest = frac
-        }
-      }
-      if (minDiff < 0.1) return parseFloat(closest.display)
-    }
-
-    // For whole numbers, keep them whole
-    if (Math.abs(num - Math.round(num)) < 0.05) {
-      return Math.round(num)
-    }
-
-    // For .5 endings, keep them
-    const decimal = num % 1
-    if (Math.abs(decimal - 0.5) < 0.05) {
-      return Math.floor(num) + 0.5
-    }
-
-    // Otherwise round to 2 decimal places
-    return Math.round(num * 100) / 100
-  }
-
   // Active view system: user override (tap toggle) → Settings preference.
   const activeSystem = viewSystem || preferredSystem
 
@@ -166,37 +124,27 @@ export default function RecipeDetail() {
    * like an oversight.
    */
   function formatScaledQuantity(quantity, unit, scalesLinearly = true) {
-    if (quantity === null || quantity === undefined || quantity === 0) return unit || ''
-
-    const scaled = scalesLinearly
-      ? quantity * (displayServings / (recipe.servings || 4))
-      : quantity
-
-    // Convert into the active system if the unit is convertible.
-    const normalized = normalizeUnit(unit)
-    const meta = CANONICAL_UNITS[normalized]
-    let finalQty = scaled
-    let finalUnitKey = normalized || unit
-
-    if (meta && meta.system !== 'both') {
-      const converted = convertToSystem(scaled, normalized, activeSystem)
-      finalQty = converted.quantity
-      finalUnitKey = converted.unit
-    }
-
-    const rounded = smartRound(finalQty)
-    if (rounded === 0) return displayUnitLabel(finalUnitKey) || ''
-    const formatted = rounded.toString()
-    const unitLabel = displayUnitLabel(finalUnitKey)
-    return unitLabel ? `${formatted} ${unitLabel}` : formatted
+    return scaleAndFormat({
+      quantity,
+      unit,
+      fromServings: recipe.servings,
+      toServings: displayServings,
+      system: activeSystem,
+      lang: currentLang,
+      scalesLinearly,
+    })
   }
 
-  // Prefer a translated canonical label; fall back to the raw string for
-  // custom or unknown units.
-  function displayUnitLabel(unitKey) {
-    if (!unitKey) return ''
-    if (CANONICAL_UNITS[unitKey]) return displayUnit(unitKey, currentLang)
-    return unitKey
+  // A whole row: name in the singular for "½ Sitron", and the amount,
+  // kept in spoons for a spice.
+  function scaledRow(ing) {
+    return scaleIngredientRow(ing, {
+      fromServings: recipe.servings,
+      toServings: displayServings,
+      system: activeSystem,
+      lang: currentLang,
+      scalesLinearly: ing.scalesLinearly !== false,
+    })
   }
 
   // Does this recipe contain any unit that could be converted between
@@ -266,14 +214,20 @@ export default function RecipeDetail() {
     const translatedCategory = t(`categories.${recipe.category}`, {
       defaultValue: recipe.category,
     })
-    const printIngredients = (displayIngredients || []).map(ing => ({
+    const printIngredients = (displayIngredients || []).map(ing => {
       // A non-scaling ingredient prints its held amount and says so, since
-      // a printout can't show the on-screen marker.
-      name: ing.scalesLinearly === false && displayServings !== recipe.servings
-        ? `${ing.name} — ${t('recipeDetail.doesNotScale', { defaultValue: 'adjust manually' })}`
-        : ing.name,
-      quantityLabel: formatScaledQuantity(ing.quantity, ing.unit, ing.scalesLinearly !== false),
-    }))
+      // a printout can't show the on-screen marker. The remark goes at the
+      // very end, after the note when there is one.
+      const held = ing.scalesLinearly === false && displayServings !== recipe.servings
+        ? ` — ${t('recipeDetail.doesNotScale', { defaultValue: 'adjust manually' })}`
+        : ''
+      const { name, quantityLabel } = scaledRow(ing)
+      return {
+        name: ing.note ? name : name + held,
+        note: ing.note ? ing.note + held : '',
+        quantityLabel,
+      }
+    })
     printRecipe({
       title: displayTitle,
       description: displayDescription || '',
@@ -563,6 +517,7 @@ export default function RecipeDetail() {
             <div className="card divide-y divide-slate-50">
               {displayIngredients.map((ing, i) => {
                 const isChecked = Boolean(checkedForRecipe[i])
+                const row = scaledRow(ing)
                 return (
                   <button
                     key={i}
@@ -582,7 +537,10 @@ export default function RecipeDetail() {
                       )}
                     </span>
                     <span className={`text-sm min-w-0 break-words flex-1 transition-colors ${isChecked ? 'text-slate-400 line-through' : 'text-slate-700'}`}>
-                      {ing.name}
+                      {row.name}
+                      {ing.note && (
+                        <span className={`text-xs ${isChecked ? 'text-slate-300' : 'text-slate-400'}`}>, {ing.note}</span>
+                      )}
                       {/* Only worth saying once the servings have actually
                           been changed — at the recipe's own size the
                           amount shown is simply correct. */}
@@ -594,7 +552,7 @@ export default function RecipeDetail() {
                       )}
                     </span>
                     <span className={`text-sm font-medium flex-shrink-0 tabular-nums whitespace-nowrap transition-colors ${isChecked ? 'text-slate-300 line-through' : 'text-slate-900'}`}>
-                      {formatScaledQuantity(ing.quantity, ing.unit, ing.scalesLinearly !== false)}
+                      {row.quantityLabel}
                     </span>
                   </button>
                 )

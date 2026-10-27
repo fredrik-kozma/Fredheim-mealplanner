@@ -1,7 +1,9 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
-import { generateShoppingList, formatQuantity } from '../../utils/shoppingListGenerator'
+import { generateShoppingList, totalOptionsFor } from '../../utils/shoppingListGenerator'
+import { formatQuantity } from '../../utils/formatQuantity'
+import { nameForAmount } from '../../utils/ingredientDictionary'
 import { combineQuantities } from '../../utils/ingredientMatcher'
 import { buildRecipeBreakdown } from '../../utils/recipeBreakdown'
 import { printShoppingList } from '../../utils/printShoppingList'
@@ -61,6 +63,10 @@ export default function ShoppingList() {
 
   const srcKey = (itemId, recipe) => `${itemId}::${recipe}`
 
+  // "1 Sitron", not "1 Sitroner". Only for display: ids and ticked-off
+  // state stay keyed on the item's own name.
+  const shownName = (it) => nameForAmount(it, currentLang, it.quantity, it.unit, { roundUpWhole: true })
+
   // Apply per-item and per-source removals. An item whose every source was
   // removed disappears; an item with some sources removed keeps a total
   // recomputed from what's left. This is what we display / count / save.
@@ -75,7 +81,7 @@ export default function ShoppingList() {
           const sources = allSources.filter(s => !dismissedShoppingSources[srcKey(i.id, s.recipe)])
           if (sources.length === 0) return null // all contributions removed
           if (sources.length === allSources.length) return { ...i, sources }
-          const c = combineQuantities(sources)
+          const c = combineQuantities(sources, totalOptionsFor(i.ingredientId))
           return { ...i, sources, quantity: c.quantity, unit: c.unit || '' }
         })
         .filter(Boolean),
@@ -175,7 +181,7 @@ export default function ShoppingList() {
   // Shared with the saved-list viewer so the two round identically —
   // see recipeBreakdown.js for why parts are not rounded up the way the
   // total above them is.
-  const recipeBreakdown = (item) => buildRecipeBreakdown(item.sources)
+  const recipeBreakdown = (item) => buildRecipeBreakdown(item.sources, currentLang)
 
   function handleSaveList() {
     const name = listName.trim()
@@ -243,8 +249,8 @@ export default function ShoppingList() {
             ? t('shopping.myItems', { defaultValue: 'My items' })
             : t(`aisles.${g.category}`, { defaultValue: g.category }),
           items: g.items.map(it => ({
-            name: it.name,
-            label: it.custom ? (it.quantity || '') : formatQuantity(it.quantity, it.unit),
+            name: it.custom ? it.name : shownName(it),
+            label: it.custom ? (it.quantity || '') : formatQuantity(it.quantity, it.unit, currentLang, { roundUpWhole: true }),
           })),
         })),
         url: null,
@@ -265,8 +271,8 @@ export default function ShoppingList() {
       .map(({ category, items }) => ({
         category: t(`aisles.${category}`, { defaultValue: category }),
         items: items.filter(keep).map((it) => ({
-          name: it.name,
-          quantityLabel: formatQuantity(it.quantity, it.unit),
+          name: shownName(it),
+          quantityLabel: formatQuantity(it.quantity, it.unit, currentLang, { roundUpWhole: true }),
         })),
       }))
       .filter(g => g.items.length > 0)
@@ -501,11 +507,11 @@ export default function ShoppingList() {
                           className="w-4.5 h-4.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer flex-shrink-0"
                         />
                         <span className={`flex-1 min-w-0 text-sm text-slate-700 ${isChecked ? 'line-through' : ''}`}>
-                          {item.name}
+                          {shownName(item)}
                         </span>
                       </label>
                       <span className={`text-sm font-medium whitespace-nowrap ${isChecked ? 'text-slate-400 line-through' : 'text-slate-900'}`}>
-                        {formatQuantity(item.quantity, item.unit)}
+                        {formatQuantity(item.quantity, item.unit, currentLang, { roundUpWhole: true })}
                       </span>
 
                       {/* ⓘ breakdown — which recipes contributed how much */}
@@ -531,7 +537,10 @@ export default function ShoppingList() {
                                 <div className="space-y-1">
                                   {recipeBreakdown(item).map((r, idx) => (
                                     <div key={idx} className="flex items-center justify-between gap-2 text-xs py-0.5">
-                                      <span className="text-slate-600 min-w-0 break-words flex-1">{r.recipe}</span>
+                                      <span className="text-slate-600 min-w-0 break-words flex-1">
+                                        {r.recipe}
+                                        {r.note && <span className="block text-[11px] text-slate-400">{r.note}</span>}
+                                      </span>
                                       <span className="text-slate-900 font-medium whitespace-nowrap">{r.label}</span>
                                       {item.sources.length > 1 && (
                                         <button
@@ -549,7 +558,7 @@ export default function ShoppingList() {
                                   ))}
                                   <div className="flex items-baseline justify-between gap-3 text-xs pt-1.5 mt-1 border-t border-slate-100">
                                     <span className="text-slate-500">{t('shopping.total', { defaultValue: 'Total' })}</span>
-                                    <span className="text-slate-900 font-semibold whitespace-nowrap">{formatQuantity(item.quantity, item.unit)}</span>
+                                    <span className="text-slate-900 font-semibold whitespace-nowrap">{formatQuantity(item.quantity, item.unit, currentLang, { roundUpWhole: true })}</span>
                                   </div>
                                 </div>
                                 <button

@@ -1,0 +1,3992 @@
+{
+  "version": "v1-final",
+  "description": "Canonical ingredient dictionary. One entry per real ingredient; `id` is the stable key stored on recipe rows (`ingredient`). Names are the standard shopping-list wording per language.",
+  "aisles": [
+    "Produce",
+    "Meat & Fish",
+    "Dairy",
+    "Bakery & Grains",
+    "Canned & Dried",
+    "Oils & Condiments",
+    "Frozen",
+    "Beverages",
+    "Other"
+  ],
+  "entries": [
+    {
+      "id": "apples",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Apples",
+        "no": "Epler",
+        "sv": "Äpplen"
+      },
+      "singular": {
+        "en": "Apple",
+        "no": "Eple",
+        "sv": "Äpple"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "arugula",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Arugula (rocket)",
+        "no": "Ruccola",
+        "sv": "Ruccola"
+      },
+      "synonyms": {
+        "en": [
+          "rocket",
+          "rucola"
+        ],
+        "no": [
+          "rucola",
+          "rukkola"
+        ],
+        "sv": [
+          "rucola",
+          "rocket"
+        ]
+      }
+    },
+    {
+      "id": "avocados",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Avocados",
+        "no": "Avokado",
+        "sv": "Avokado"
+      },
+      "singular": {
+        "en": "Avocado",
+        "no": "Avokado",
+        "sv": "Avokado"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "bananas",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Bananas",
+        "no": "Bananer",
+        "sv": "Bananer"
+      },
+      "singular": {
+        "en": "Banana",
+        "no": "Banan",
+        "sv": "Banan"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "basil",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Basil",
+        "no": "Basilikum",
+        "sv": "Basilika"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "bean-sprouts",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Bean sprouts",
+        "no": "Bønnespirer",
+        "sv": "Mungbönsgroddar"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "beetroot",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Beetroot",
+        "no": "Rødbeter",
+        "sv": "Rödbetor"
+      },
+      "singular": {
+        "en": "Beetroot",
+        "no": "Rødbete",
+        "sv": "Rödbeta"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "bell-peppers",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Bell peppers",
+        "no": "Paprika",
+        "sv": "Paprika"
+      },
+      "singular": {
+        "en": "Bell pepper",
+        "no": "Paprika",
+        "sv": "Paprika"
+      },
+      "synonyms": {
+        "en": [
+          "capsicum",
+          "red pepper",
+          "sweet pepper"
+        ],
+        "no": [
+          "paprika, rød",
+          "paprika, gul"
+        ],
+        "sv": [
+          "paprika, röd",
+          "paprika, gul"
+        ]
+      }
+    },
+    {
+      "id": "blackberries",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Blackberries",
+        "no": "Bjørnebær",
+        "sv": "Björnbär"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "blueberries",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Blueberries",
+        "no": "Blåbær",
+        "sv": "Blåbär"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "broccoli",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Broccoli",
+        "no": "Brokkoli",
+        "sv": "Broccoli"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "butternut-squash",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Butternut squash",
+        "no": "Butternutgresskar",
+        "sv": "Butternutpumpa"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "cabbage",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Cabbage",
+        "no": "Hodekål",
+        "sv": "Vitkål"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "carrots",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Carrots",
+        "no": "Gulrøtter",
+        "sv": "Morötter"
+      },
+      "singular": {
+        "en": "Carrot",
+        "no": "Gulrot",
+        "sv": "Morot"
+      },
+      "synonyms": {
+        "en": [
+          "carrot"
+        ],
+        "no": [
+          "gulrot"
+        ],
+        "sv": [
+          "morot"
+        ]
+      }
+    },
+    {
+      "id": "cauliflower",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Cauliflower",
+        "no": "Blomkål",
+        "sv": "Blomkål"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "celeriac",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Celeriac",
+        "no": "Sellerirot",
+        "sv": "Rotselleri"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "celery",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Celery stalks",
+        "no": "Stangselleri",
+        "sv": "Stjälkselleri"
+      },
+      "singular": {
+        "en": "Celery stalk",
+        "no": "Stangselleri",
+        "sv": "Stjälkselleri"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "cherry-tomatoes",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Cherry tomatoes",
+        "no": "Cherrytomater",
+        "sv": "Körsbärstomater"
+      },
+      "singular": {
+        "en": "Cherry tomato",
+        "no": "Cherrytomat",
+        "sv": "Körsbärstomat"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "chinese-cabbage",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Chinese cabbage",
+        "no": "Kinakål",
+        "sv": "Kinakål"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "chives",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Chives",
+        "no": "Gressløk",
+        "sv": "Gräslök"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "cucumber",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Cucumber",
+        "no": "Agurk",
+        "sv": "Gurka"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "dill",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Dill",
+        "no": "Dill",
+        "sv": "Dill"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "eggplant",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Eggplant (aubergine)",
+        "no": "Aubergine",
+        "sv": "Aubergine"
+      },
+      "synonyms": {
+        "en": [
+          "aubergine"
+        ],
+        "no": [
+          "eggplante"
+        ],
+        "sv": [
+          "äggplanta"
+        ]
+      }
+    },
+    {
+      "id": "fennel",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Fennel",
+        "no": "Fennikel",
+        "sv": "Fänkål"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "chili-fresh",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Fresh chili",
+        "no": "Chili",
+        "sv": "Chili"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "coriander-fresh",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Fresh coriander (cilantro)",
+        "no": "Fersk koriander",
+        "sv": "Färsk koriander"
+      },
+      "synonyms": {
+        "en": [
+          "cilantro",
+          "coriander leaves"
+        ],
+        "no": [
+          "koriander",
+          "korianderblader"
+        ],
+        "sv": [
+          "koriander",
+          "korianderblad"
+        ]
+      }
+    },
+    {
+      "id": "ginger-fresh",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Fresh ginger",
+        "no": "Fersk ingefær",
+        "sv": "Färsk ingefära"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "herbs-fresh-mixed",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Fresh herbs (mixed)",
+        "no": "Friske urter",
+        "sv": "Färska örter"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "garlic",
+      "aisle": "Produce",
+      "preferredUnit": "clove",
+      "names": {
+        "en": "Garlic",
+        "no": "Hvitløk",
+        "sv": "Vitlök"
+      },
+      "synonyms": {
+        "en": [
+          "garlic cloves",
+          "minced garlic",
+          "garlic clove"
+        ],
+        "no": [
+          "hvitløksfedd"
+        ],
+        "sv": [
+          "vitlöksklyftor",
+          "vitlöksklyfta"
+        ]
+      }
+    },
+    {
+      "id": "grapes",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Grapes",
+        "no": "Druer",
+        "sv": "Vindruvor"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "green-peas",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Green peas",
+        "no": "Grønne erter",
+        "sv": "Gröna ärtor"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "horseradish",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Horseradish",
+        "no": "Pepperrot",
+        "sv": "Pepparrot"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "kale",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Kale",
+        "no": "Grønnkål",
+        "sv": "Grönkål"
+      },
+      "synonyms": {
+        "en": [
+          "curly kale"
+        ],
+        "no": [
+          "grønnkål",
+          "krusekål"
+        ],
+        "sv": [
+          "grönkål",
+          "kruskål"
+        ]
+      }
+    },
+    {
+      "id": "leeks",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Leeks",
+        "no": "Purre",
+        "sv": "Purjolök"
+      },
+      "singular": {
+        "en": "Leek",
+        "no": "Purre",
+        "sv": "Purjolök"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "lemon-juice",
+      "aisle": "Produce",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Lemon juice",
+        "no": "Sitronsaft",
+        "sv": "Citronsaft"
+      },
+      "synonyms": {
+        "en": [
+          "fresh lemon juice",
+          "bottled lemon juice"
+        ],
+        "no": [
+          "fersk sitronsaft"
+        ],
+        "sv": [
+          "färsk citronsaft",
+          "citronjuice"
+        ]
+      }
+    },
+    {
+      "id": "lemons",
+      "aisle": "Produce",
+      "preferredUnit": "pcs",
+      "names": {
+        "en": "Lemons",
+        "no": "Sitroner",
+        "sv": "Citroner"
+      },
+      "singular": {
+        "en": "Lemon",
+        "no": "Sitron",
+        "sv": "Citron"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "lime-juice",
+      "aisle": "Produce",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Lime juice",
+        "no": "Limesaft",
+        "sv": "Limejuice"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "limes",
+      "aisle": "Produce",
+      "preferredUnit": "pcs",
+      "names": {
+        "en": "Limes",
+        "no": "Lime",
+        "sv": "Lime"
+      },
+      "singular": {
+        "en": "Lime",
+        "no": "Lime",
+        "sv": "Lime"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "lingonberries",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Lingonberries",
+        "no": "Tyttebær",
+        "sv": "Lingon"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "melon",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Melon (honeydew)",
+        "no": "Honningmelon",
+        "sv": "Honungsmelon"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "mint",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Mint",
+        "no": "Mynte",
+        "sv": "Mynta"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "berries-mixed",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Mixed berries",
+        "no": "Blandede bær",
+        "sv": "Blandade bär"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "mushrooms",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Mushrooms",
+        "no": "Sopp",
+        "sv": "Svamp"
+      },
+      "singular": {
+        "en": "Mushroom",
+        "no": "Sopp",
+        "sv": "Svamp"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "onions",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Onions",
+        "no": "Løk",
+        "sv": "Lök"
+      },
+      "singular": {
+        "en": "Onion",
+        "no": "Løk",
+        "sv": "Lök"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "oranges",
+      "aisle": "Produce",
+      "preferredUnit": "pcs",
+      "names": {
+        "en": "Oranges",
+        "no": "Appelsiner",
+        "sv": "Apelsiner"
+      },
+      "singular": {
+        "en": "Orange",
+        "no": "Appelsin",
+        "sv": "Apelsin"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "parsley",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Parsley",
+        "no": "Persille",
+        "sv": "Persilja"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "parsnips",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Parsnips",
+        "no": "Pastinakk",
+        "sv": "Palsternacka"
+      },
+      "singular": {
+        "en": "Parsnip",
+        "no": "Pastinakk",
+        "sv": "Palsternacka"
+      },
+      "synonyms": {
+        "en": [
+          "parsnip"
+        ],
+        "no": [
+          "pastinakk"
+        ],
+        "sv": [
+          "palsternacka"
+        ]
+      }
+    },
+    {
+      "id": "pears",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Pears",
+        "no": "Pærer",
+        "sv": "Päron"
+      },
+      "singular": {
+        "en": "Pear",
+        "no": "Pære",
+        "sv": "Päron"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "pineapple",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Pineapple",
+        "no": "Ananas",
+        "sv": "Ananas"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "plums",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Plums",
+        "no": "Plommer",
+        "sv": "Plommon"
+      },
+      "singular": {
+        "en": "Plum",
+        "no": "Plomme",
+        "sv": "Plommon"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "pomegranate",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Pomegranate",
+        "no": "Granateple",
+        "sv": "Granatäpple"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "potatoes",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Potatoes",
+        "no": "Poteter",
+        "sv": "Potatis"
+      },
+      "singular": {
+        "en": "Potato",
+        "no": "Potet",
+        "sv": "Potatis"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "pumpkin",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Pumpkin",
+        "no": "Gresskar",
+        "sv": "Pumpa"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "radishes",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Radishes",
+        "no": "Reddiker",
+        "sv": "Rädisor"
+      },
+      "singular": {
+        "en": "Radish",
+        "no": "Reddik",
+        "sv": "Rädisa"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "raspberries",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Raspberries",
+        "no": "Bringebær",
+        "sv": "Hallon"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "red-cabbage",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Red cabbage",
+        "no": "Rødkål",
+        "sv": "Rödkål"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "red-onions",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Red onions",
+        "no": "Rødløk",
+        "sv": "Rödlök"
+      },
+      "singular": {
+        "en": "Red onion",
+        "no": "Rødløk",
+        "sv": "Rödlök"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "romaine-lettuce",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Romaine lettuce",
+        "no": "Romanosalat",
+        "sv": "Romansallad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "rosemary",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Rosemary",
+        "no": "Rosmarin",
+        "sv": "Rosmarin"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "salad-leaves",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Salad leaves (mixed)",
+        "no": "Blandede salatblader",
+        "sv": "Blandade salladsblad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "shallots",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Shallots",
+        "no": "Sjalottløk",
+        "sv": "Schalottenlök"
+      },
+      "singular": {
+        "en": "Shallot",
+        "no": "Sjalottløk",
+        "sv": "Schalottenlök"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "snow-peas",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Snow peas",
+        "no": "Snøerter",
+        "sv": "Sockerärtor"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "sour-cherries",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Sour cherries",
+        "no": "Surkirsebær",
+        "sv": "Sura körsbär"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "spinach",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Spinach",
+        "no": "Spinat",
+        "sv": "Spenat"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "spring-onions",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Spring onions",
+        "no": "Vårløk",
+        "sv": "Salladslök"
+      },
+      "singular": {
+        "en": "Spring onion",
+        "no": "Vårløk",
+        "sv": "Salladslök"
+      },
+      "synonyms": {
+        "en": [
+          "scallion",
+          "green onion",
+          "salad onion"
+        ],
+        "no": [
+          "vårløk",
+          "grønn løk"
+        ],
+        "sv": [
+          "vårlök"
+        ]
+      }
+    },
+    {
+      "id": "strawberries",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Strawberries",
+        "no": "Jordbær",
+        "sv": "Jordgubbar"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "sweet-potatoes",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Sweet potatoes",
+        "no": "Søtpoteter",
+        "sv": "Sötpotatis"
+      },
+      "singular": {
+        "en": "Sweet potato",
+        "no": "Søtpotet",
+        "sv": "Sötpotatis"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "thyme",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Thyme",
+        "no": "Timian",
+        "sv": "Timjan"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "tomatoes",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Tomatoes",
+        "no": "Tomater",
+        "sv": "Tomater"
+      },
+      "singular": {
+        "en": "Tomato",
+        "no": "Tomat",
+        "sv": "Tomat"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "watermelon",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Watermelon",
+        "no": "Vannmelon",
+        "sv": "Vattenmelon"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "zucchini",
+      "aisle": "Produce",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Zucchini (courgette)",
+        "no": "Squash",
+        "sv": "Squash"
+      },
+      "synonyms": {
+        "en": [
+          "courgette",
+          "summer squash"
+        ],
+        "no": [
+          "zucchini"
+        ],
+        "sv": [
+          "zucchini"
+        ]
+      }
+    },
+    {
+      "id": "almond-milk",
+      "aisle": "Dairy",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Almond milk",
+        "no": "Mandelmelk",
+        "sv": "Mandelmjölk"
+      },
+      "synonyms": {
+        "en": [
+          "almond drink"
+        ],
+        "no": [
+          "mandeldrikk"
+        ],
+        "sv": [
+          "mandeldryck"
+        ]
+      }
+    },
+    {
+      "id": "cashew-milk",
+      "aisle": "Dairy",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Cashew milk",
+        "no": "Cashewmelk",
+        "sv": "Cashewmjölk"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "cashew-sour-cream",
+      "aisle": "Dairy",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Cashew sour cream",
+        "no": "Cashewrømme",
+        "sv": "Cashewgräddfil"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      },
+      "homemade": true
+    },
+    {
+      "id": "hummus",
+      "aisle": "Dairy",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Hummus",
+        "no": "Hummus",
+        "sv": "Hummus"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "oat-milk",
+      "aisle": "Dairy",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Oat milk",
+        "no": "Havremelk",
+        "sv": "Havremjölk"
+      },
+      "synonyms": {
+        "en": [
+          "oat drink"
+        ],
+        "no": [
+          "havredrikk"
+        ],
+        "sv": [
+          "havredryck"
+        ]
+      }
+    },
+    {
+      "id": "plant-milk",
+      "aisle": "Dairy",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Plant milk",
+        "no": "Plantemelk",
+        "sv": "Växtmjölk"
+      },
+      "synonyms": {
+        "en": [
+          "non-dairy milk",
+          "plant drink"
+        ],
+        "no": [
+          "plantedrikk"
+        ],
+        "sv": [
+          "växtdryck"
+        ]
+      }
+    },
+    {
+      "id": "plant-yogurt",
+      "aisle": "Dairy",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Plant-based yogurt",
+        "no": "Plantebasert yoghurt",
+        "sv": "Växtbaserad yoghurt"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "soy-milk",
+      "aisle": "Dairy",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Soy milk",
+        "no": "Soyamelk",
+        "sv": "Sojamjölk"
+      },
+      "synonyms": {
+        "en": [
+          "soya milk",
+          "soy drink"
+        ],
+        "no": [
+          "soyadrikk"
+        ],
+        "sv": [
+          "sojadryck"
+        ]
+      }
+    },
+    {
+      "id": "tofu",
+      "aisle": "Dairy",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Tofu",
+        "no": "Tofu",
+        "sv": "Tofu"
+      },
+      "synonyms": {
+        "en": [
+          "firm tofu",
+          "soy bean curd"
+        ],
+        "no": [
+          "soyaostmasse"
+        ],
+        "sv": [
+          "sojaost"
+        ]
+      }
+    },
+    {
+      "id": "agar-agar",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Agar-agar",
+        "no": "Agar-agar",
+        "sv": "Agar-agar"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "baking-powder",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Baking powder",
+        "no": "Bakepulver",
+        "sv": "Bakpulver"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "baking-soda",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Baking soda",
+        "no": "Natron",
+        "sv": "Bikarbonat"
+      },
+      "synonyms": {
+        "en": [
+          "bicarbonate of soda",
+          "bicarb"
+        ],
+        "no": [
+          "bikarbonat"
+        ],
+        "sv": [
+          "natron"
+        ]
+      }
+    },
+    {
+      "id": "bean-noodles",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Bean noodles",
+        "no": "Bønnenudler",
+        "sv": "Glasnudlar"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "bread",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Bread",
+        "no": "Brød",
+        "sv": "Bröd"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "bread-crumbs",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Bread crumbs",
+        "no": "Brødsmuler",
+        "sv": "Ströbröd"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "brown-rice",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Brown rice",
+        "no": "Fullkornsris",
+        "sv": "Fullkornsris"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "buckwheat-flour",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Buckwheat flour",
+        "no": "Bokhvetemel",
+        "sv": "Bovetemjöl"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "buckwheat-groats",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Buckwheat groats",
+        "no": "Bokhvetegryn",
+        "sv": "Bovetegryn"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "bulgur",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Bulgur",
+        "no": "Bulgur",
+        "sv": "Bulgur"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "carob-powder",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Carob powder",
+        "no": "Karobpulver",
+        "sv": "Carobpulver"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "chickpea-flour",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Chickpea flour",
+        "no": "Kikertmel",
+        "sv": "Kikärtsmjöl"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "cornmeal-polenta",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Cornmeal (polenta)",
+        "no": "Maismel (polenta)",
+        "sv": "Majsmjöl (polenta)"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "cornstarch",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Cornstarch",
+        "no": "Maisstivelse",
+        "sv": "Majsstärkelse"
+      },
+      "synonyms": {
+        "en": [
+          "cornflour (UK)",
+          "maizena"
+        ],
+        "no": [
+          "maizena",
+          "maisenna"
+        ],
+        "sv": [
+          "maizena"
+        ]
+      }
+    },
+    {
+      "id": "dry-yeast",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Dry yeast",
+        "no": "Tørrgjær",
+        "sv": "Torrjäst"
+      },
+      "synonyms": {
+        "en": [
+          "instant yeast",
+          "active dry yeast"
+        ],
+        "no": [
+          "gjær",
+          "instantgjær"
+        ],
+        "sv": [
+          "jäst",
+          "instantjäst"
+        ]
+      }
+    },
+    {
+      "id": "gluten-flour",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Gluten flour",
+        "no": "Glutenmel",
+        "sv": "Vetegluten"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "gluten-free-flour-mix",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Gluten-free flour mix",
+        "no": "Glutenfritt melmiks",
+        "sv": "Glutenfri mjölmix"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "lasagne-sheets",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Lasagne sheets",
+        "no": "Lasagneplater",
+        "sv": "Lasagneplattor"
+      },
+      "singular": {
+        "en": "Lasagne sheet",
+        "no": "Lasagneplate",
+        "sv": "Lasagneplatta"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "millet",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Millet",
+        "no": "Hirse",
+        "sv": "Hirs"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "oat-flour",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Oat flour",
+        "no": "Havremel",
+        "sv": "Havremjöl"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "potato-starch",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Potato starch",
+        "no": "Potetmel",
+        "sv": "Potatismjöl"
+      },
+      "synonyms": {
+        "en": [
+          "potato flour"
+        ],
+        "no": [
+          "potetstivelse"
+        ],
+        "sv": [
+          "potatisstärkelse"
+        ]
+      }
+    },
+    {
+      "id": "psyllium-husk",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Psyllium husk",
+        "no": "Psylliumfrøskall",
+        "sv": "Psylliumfröskal"
+      },
+      "synonyms": {
+        "en": [
+          "fibre husk",
+          "fiber husk",
+          "psyllium"
+        ],
+        "no": [
+          "fiberskall",
+          "psyllium"
+        ],
+        "sv": [
+          "fiberskal",
+          "psyllium"
+        ]
+      }
+    },
+    {
+      "id": "quinoa",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Quinoa",
+        "no": "Quinoa",
+        "sv": "Quinoa"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "rice-flour",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Rice flour",
+        "no": "Rismel",
+        "sv": "Rismjöl"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "rice-noodles",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Rice noodles",
+        "no": "Risnudler",
+        "sv": "Risnudlar"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "rolled-oats",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Rolled oats",
+        "no": "Havregryn",
+        "sv": "Havregryn"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "crispbread",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Rye crispbread",
+        "no": "Rugknekkebrød",
+        "sv": "Rågknäckebröd"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "rye-flour",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Rye flour, wholegrain",
+        "no": "Sammalt rugmel",
+        "sv": "Fullkornsrågmjöl"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "small-oats",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Small oats",
+        "no": "Små havregryn",
+        "sv": "Småflingade havregryn"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "sourdough-starter",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Sourdough starter",
+        "no": "Surdeigsstarter",
+        "sv": "Surdegsgrund"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      },
+      "homemade": true
+    },
+    {
+      "id": "spelt-flour",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Spelt flour",
+        "no": "Speltmel",
+        "sv": "Dinkelmjöl"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "tapioca-starch",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Tapioca starch",
+        "no": "Tapiokastivelse",
+        "sv": "Tapiokastärkelse"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "white-flour",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "White flour",
+        "no": "Hvetemel",
+        "sv": "Vetemjöl"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "wholewheat-flour",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Whole wheat flour",
+        "no": "Sammalt hvetemel",
+        "sv": "Fullkornsvetemjöl"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "almonds",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Almonds",
+        "no": "Mandler",
+        "sv": "Mandlar"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "aquafaba",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Aquafaba (chickpea liquid)",
+        "no": "Aquafaba (kikertvann)",
+        "sv": "Aquafaba (kikärtsvätska)"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      },
+      "homemade": true
+    },
+    {
+      "id": "black-beans-canned",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Black beans, canned",
+        "no": "Svarte bønner, hermetiske",
+        "sv": "Svarta bönor på burk"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "borlotti-beans-dry",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Borlotti beans, dry",
+        "no": "Borlotti-bønner, tørkede",
+        "sv": "Borlottibönor, torkade"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "canned-tomatoes",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Canned tomatoes",
+        "no": "Hermetiske tomater",
+        "sv": "Tomater på burk"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "capers",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Capers",
+        "no": "Kapers",
+        "sv": "Kapris"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "cashews",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Cashews",
+        "no": "Cashewnøtter",
+        "sv": "Cashewnötter"
+      },
+      "synonyms": {
+        "en": [
+          "cashew nuts",
+          "raw cashews"
+        ],
+        "no": [
+          "cashew",
+          "rå cashewnøtter"
+        ],
+        "sv": [
+          "cashew",
+          "råa cashewnötter"
+        ]
+      }
+    },
+    {
+      "id": "chia-seeds",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Chia seeds",
+        "no": "Chiafrø",
+        "sv": "Chiafrön"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "chickpeas-canned",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Chickpeas, canned",
+        "no": "Kikerter, hermetiske",
+        "sv": "Kikärtor på burk"
+      },
+      "synonyms": {
+        "en": [
+          "garbanzo beans"
+        ],
+        "no": [
+          "kikerter"
+        ],
+        "sv": [
+          "kikärter"
+        ]
+      }
+    },
+    {
+      "id": "chickpeas-dry",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Chickpeas, dry",
+        "no": "Kikerter, tørre",
+        "sv": "Kikärtor, torra"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "coconut-cream",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Coconut cream",
+        "no": "Kokosfløte",
+        "sv": "Kokosgrädde"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "coconut-milk",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Coconut milk",
+        "no": "Kokosmelk",
+        "sv": "Kokosmjölk"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "date-paste",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Date paste",
+        "no": "Daddelpuré",
+        "sv": "Dadelpuré"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      },
+      "homemade": true
+    },
+    {
+      "id": "dried-apricots",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Dried apricots",
+        "no": "Tørkede aprikoser",
+        "sv": "Torkade aprikoser"
+      },
+      "singular": {
+        "en": "Dried apricot",
+        "no": "Tørket aprikos",
+        "sv": "Torkad aprikos"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "dried-cranberries",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Dried cranberries",
+        "no": "Tørkede tranebær",
+        "sv": "Torkade tranbär"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "dates-dried",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Dried dates",
+        "no": "Tørkede dadler",
+        "sv": "Torkade dadlar"
+      },
+      "singular": {
+        "en": "Dried date",
+        "no": "Tørket daddel",
+        "sv": "Torkad dadel"
+      },
+      "synonyms": {
+        "en": [
+          "dates",
+          "Deglet Noor dates"
+        ],
+        "no": [
+          "dadler",
+          "daddel"
+        ],
+        "sv": [
+          "dadlar",
+          "dadel"
+        ]
+      }
+    },
+    {
+      "id": "dried-figs",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Dried figs",
+        "no": "Tørkede fikener",
+        "sv": "Torkade fikon"
+      },
+      "singular": {
+        "en": "Dried fig",
+        "no": "Tørket fiken",
+        "sv": "Torkat fikon"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "flaxseed-ground",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Flaxseed, ground",
+        "no": "Linfrø, malt",
+        "sv": "Linfrön, malda"
+      },
+      "synonyms": {
+        "en": [
+          "ground flax",
+          "flax meal"
+        ],
+        "no": [
+          "malt linfrø"
+        ],
+        "sv": [
+          "malet linfrö"
+        ]
+      }
+    },
+    {
+      "id": "flaxseed-whole",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Flaxseed, whole",
+        "no": "Linfrø, hele",
+        "sv": "Linfrön, hela"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "lentils-green-brown",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Green/brown lentils",
+        "no": "Grønne/brune linser",
+        "sv": "Gröna/bruna linser"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "hazelnuts",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Hazelnuts",
+        "no": "Hasselnøtter",
+        "sv": "Hasselnötter"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "kidney-beans-canned",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Kidney beans, canned",
+        "no": "Kidneybønner, hermetiske",
+        "sv": "Kidneybönor på burk"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "medjool-dates",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Medjool dates",
+        "no": "Medjool-dadler",
+        "sv": "Medjooldadlar"
+      },
+      "singular": {
+        "en": "Medjool date",
+        "no": "Medjool-daddel",
+        "sv": "Medjooldadel"
+      },
+      "synonyms": {
+        "en": [
+          "Medjool date"
+        ],
+        "no": [
+          "medjooldadler"
+        ],
+        "sv": [
+          "medjooldadlar"
+        ]
+      }
+    },
+    {
+      "id": "nori",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "pcs",
+      "names": {
+        "en": "Nori sheets",
+        "no": "Nori",
+        "sv": "Nori"
+      },
+      "singular": {
+        "en": "Nori sheet",
+        "no": "Nori",
+        "sv": "Nori"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "nutritional-yeast",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Nutritional yeast",
+        "no": "Næringsgjær",
+        "sv": "Näringsjäst"
+      },
+      "synonyms": {
+        "en": [
+          "savory yeast flakes"
+        ],
+        "no": [
+          "gjærflak"
+        ],
+        "sv": [
+          "jästflingor"
+        ]
+      }
+    },
+    {
+      "id": "olive-brine",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Olive brine",
+        "no": "Olivenlake",
+        "sv": "Olivlag"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      },
+      "homemade": true
+    },
+    {
+      "id": "olives",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Olives",
+        "no": "Oliven",
+        "sv": "Oliver"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "peanuts",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Peanuts",
+        "no": "Peanøtter",
+        "sv": "Jordnötter"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "pecans",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Pecans",
+        "no": "Pekannøtter",
+        "sv": "Pekannötter"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "pistachios",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Pistachios",
+        "no": "Pistasjnøtter",
+        "sv": "Pistaschnötter"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "prunes",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Prunes",
+        "no": "Svisker",
+        "sv": "Katrinplommon"
+      },
+      "singular": {
+        "en": "Prune",
+        "no": "Sviske",
+        "sv": "Katrinplommon"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "pumpkin-seeds",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Pumpkin seeds",
+        "no": "Gresskarkjerner",
+        "sv": "Pumpakärnor"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "raisins",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Raisins",
+        "no": "Rosiner",
+        "sv": "Russin"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "lentils-red",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Red lentils",
+        "no": "Røde linser",
+        "sv": "Röda linser"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "sesame-seeds",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Sesame seeds",
+        "no": "Sesamfrø",
+        "sv": "Sesamfrön"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "shredded-coconut",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Shredded coconut",
+        "no": "Kokosmasse",
+        "sv": "Riven kokos"
+      },
+      "synonyms": {
+        "en": [
+          "desiccated coconut",
+          "coconut flakes"
+        ],
+        "no": [
+          "kokosmasse",
+          "revet kokos"
+        ],
+        "sv": [
+          "kokosflingor"
+        ]
+      }
+    },
+    {
+      "id": "sun-dried-tomatoes",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Sun-dried tomatoes",
+        "no": "Soltørkede tomater",
+        "sv": "Soltorkade tomater"
+      },
+      "singular": {
+        "en": "Sun-dried tomato",
+        "no": "Soltørket tomat",
+        "sv": "Soltorkad tomat"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "sunflower-seeds",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Sunflower seeds",
+        "no": "Solsikkefrø",
+        "sv": "Solrosfrön"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "tahini",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Tahini",
+        "no": "Tahini",
+        "sv": "Tahini"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "tomato-puree",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Tomato purée",
+        "no": "Tomatpuré",
+        "sv": "Tomatpuré"
+      },
+      "synonyms": {
+        "en": [
+          "tomato paste",
+          "concentrated tomato puree"
+        ],
+        "no": [
+          "tomatpasta"
+        ],
+        "sv": [
+          "tomatpasta"
+        ]
+      }
+    },
+    {
+      "id": "vegetable-bouillon",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Vegetable bouillon (powder/cube)",
+        "no": "Grønnsaksbuljong (pulver/terning)",
+        "sv": "Grönsaksbuljong (pulver/tärning)"
+      },
+      "synonyms": {
+        "en": [
+          "vegetable stock cube",
+          "bouillon powder"
+        ],
+        "no": [
+          "grønnsaksterning",
+          "buljongterning"
+        ],
+        "sv": [
+          "grönsaksbuljongtärning",
+          "buljongtärning"
+        ]
+      }
+    },
+    {
+      "id": "vegetable-broth",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Vegetable broth",
+        "no": "Grønnsakskraft",
+        "sv": "Grönsakskraft"
+      },
+      "synonyms": {
+        "en": [
+          "vegetable stock"
+        ],
+        "no": [
+          "grønnsaksbuljong",
+          "grønnsaksfond"
+        ],
+        "sv": [
+          "grönsaksbuljong",
+          "grönsaksfond"
+        ]
+      }
+    },
+    {
+      "id": "walnuts",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Walnuts",
+        "no": "Valnøtter",
+        "sv": "Valnötter"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "white-beans-canned",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "White beans (cannellini), canned",
+        "no": "Hvite bønner (cannellini), hermetiske",
+        "sv": "Vita bönor (cannellini) på burk"
+      },
+      "synonyms": {
+        "en": [
+          "cannellini beans",
+          "navy beans",
+          "butter beans"
+        ],
+        "no": [
+          "cannellinibønner"
+        ],
+        "sv": [
+          "cannellinibönor"
+        ]
+      }
+    },
+    {
+      "id": "white-beans-dry",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "White beans, dry",
+        "no": "Hvite bønner, tørre",
+        "sv": "Vita bönor, torra"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "yellow-peas-cooked",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Yellow peas, cooked",
+        "no": "Gule erter, kokte",
+        "sv": "Gula ärtor, kokta"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "almond-butter",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Almond butter",
+        "no": "Mandelsmør",
+        "sv": "Mandelsmör"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "amla-powder",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Amla powder",
+        "no": "Amlapulver",
+        "sv": "Amlapulver"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "basil-dried",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Basil, dried",
+        "no": "Basilikum, tørket",
+        "sv": "Basilika, torkad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "bay-leaves",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "pcs",
+      "names": {
+        "en": "Bay leaves",
+        "no": "Laurbærblad",
+        "sv": "Lagerblad"
+      },
+      "singular": {
+        "en": "Bay leaf",
+        "no": "Laurbærblad",
+        "sv": "Lagerblad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "black-pepper",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Black pepper",
+        "no": "Svart pepper",
+        "sv": "Svartpeppar"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "black-salt",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Black salt (kala namak)",
+        "no": "Svart salt (kala namak)",
+        "sv": "Svart salt (kala namak)"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "caraway-seeds",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Caraway seeds",
+        "no": "Karve",
+        "sv": "Kummin"
+      },
+      "synonyms": {
+        "en": [
+          "caraway"
+        ],
+        "no": [
+          "kumin"
+        ],
+        "sv": [
+          "kummin"
+        ]
+      }
+    },
+    {
+      "id": "cardamom-ground",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Cardamom, ground",
+        "no": "Kardemomme, malt",
+        "sv": "Kardemumma, malen"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "cayenne-pepper",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Cayenne pepper",
+        "no": "Kajennepepper",
+        "sv": "Cayennepeppar"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "chili-flakes",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Chili flakes",
+        "no": "Chiliflak",
+        "sv": "Chiliflingor"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "chili-powder",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Chili powder",
+        "no": "Chilipulver",
+        "sv": "Chilipulver"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "cinnamon-ground",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Cinnamon, ground",
+        "no": "Kanel, malt",
+        "sv": "Kanel, malen"
+      },
+      "synonyms": {
+        "en": [
+          "Ceylon cinnamon",
+          "cinnamon powder"
+        ],
+        "no": [
+          "ceylonkanel"
+        ],
+        "sv": [
+          "ceylonkanel"
+        ]
+      }
+    },
+    {
+      "id": "cloves-ground",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Cloves, ground",
+        "no": "Nellik, malt",
+        "sv": "Kryddnejlika, malen"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "coconut-oil",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Coconut oil",
+        "no": "Kokosolje",
+        "sv": "Kokosolja"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "coriander-seeds",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Coriander seeds",
+        "no": "Korianderfrø",
+        "sv": "Korianderfrön"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "coriander-ground",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Coriander, ground",
+        "no": "Koriander, malt",
+        "sv": "Koriander, malen"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "cumin-ground",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Cumin, ground",
+        "no": "Spisskummen, malt",
+        "sv": "Spiskummin, malen"
+      },
+      "synonyms": {
+        "en": [
+          "cumin powder",
+          "ground cumin"
+        ],
+        "no": [
+          "kummin"
+        ],
+        "sv": [
+          "spiskummin"
+        ]
+      }
+    },
+    {
+      "id": "curry-powder",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Curry powder",
+        "no": "Karri",
+        "sv": "Currypulver"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "fenugreek-seeds",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Fenugreek seeds",
+        "no": "Bukkehornfrø",
+        "sv": "Bockhornsklöverfrön"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "garam-masala",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Garam masala",
+        "no": "Garam masala",
+        "sv": "Garam masala"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "garlic-powder",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Garlic powder",
+        "no": "Hvitløkspulver",
+        "sv": "Vitlökspulver"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "ginger-ground",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Ginger, ground",
+        "no": "Ingefær, malt",
+        "sv": "Ingefära, malen"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "herb-salt",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Herb salt",
+        "no": "Urtesalt",
+        "sv": "Örtsalt"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "honey",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Honey",
+        "no": "Honning",
+        "sv": "Honung"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "hot-sauce",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Hot sauce",
+        "no": "Chilisaus",
+        "sv": "Chilisås"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "ketchup",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Ketchup",
+        "no": "Ketchup",
+        "sv": "Ketchup"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "maple-syrup",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Maple syrup",
+        "no": "Lønnesirup",
+        "sv": "Lönnsirap"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "marjoram-dried",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Marjoram, dried",
+        "no": "Merian, tørket",
+        "sv": "Mejram, torkad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "miso-paste",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Miso paste",
+        "no": "Misopasta",
+        "sv": "Misopasta"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "mustard-seeds",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Mustard seeds",
+        "no": "Sennepsfrø",
+        "sv": "Senapsfrön"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "nigella-seeds",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Nigella seeds",
+        "no": "Svartkarve",
+        "sv": "Svartkummin"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "nutmeg-ground",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Nutmeg, ground",
+        "no": "Muskatnøtt, malt",
+        "sv": "Muskot, malen"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "olive-oil",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Olive oil",
+        "no": "Olivenolje",
+        "sv": "Olivolja"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "onion-powder",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Onion powder",
+        "no": "Løkpulver",
+        "sv": "Lökpulver"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "oregano-dried",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Oregano, dried",
+        "no": "Oregano, tørket",
+        "sv": "Oregano, torkad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "paprika-powder",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Paprika powder",
+        "no": "Paprikapulver",
+        "sv": "Paprikapulver"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "parsley-dried",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Parsley, dried",
+        "no": "Persille, tørket",
+        "sv": "Persilja, torkad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "peanut-butter",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Peanut butter",
+        "no": "Peanøttsmør",
+        "sv": "Jordnötssmör"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "rapeseed-oil",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Rapeseed (canola) oil",
+        "no": "Rapsolje",
+        "sv": "Rapsolja"
+      },
+      "synonyms": {
+        "en": [
+          "canola oil"
+        ],
+        "no": [
+          "rapsolje"
+        ],
+        "sv": [
+          "rapsolja"
+        ]
+      }
+    },
+    {
+      "id": "rosemary-dried",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Rosemary, dried",
+        "no": "Rosmarin, tørket",
+        "sv": "Rosmarin, torkad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "sage-dried",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Sage, dried",
+        "no": "Salvie, tørket",
+        "sv": "Salvia, torkad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "salt",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Salt",
+        "no": "Salt",
+        "sv": "Salt"
+      },
+      "synonyms": {
+        "en": [
+          "sea salt",
+          "fine sea salt",
+          "table salt",
+          "kosher salt"
+        ],
+        "no": [
+          "havsalt",
+          "bordsalt"
+        ],
+        "sv": [
+          "havssalt",
+          "bordssalt"
+        ]
+      }
+    },
+    {
+      "id": "sesame-oil",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Sesame oil",
+        "no": "Sesamolje",
+        "sv": "Sesamolja"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "smoked-paprika",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Smoked paprika",
+        "no": "Røkt paprika",
+        "sv": "Rökt paprika"
+      },
+      "synonyms": {
+        "en": [
+          "smoked paprika powder",
+          "pimentón"
+        ],
+        "no": [
+          "røkt paprikapulver"
+        ],
+        "sv": [
+          "rökt paprikapulver"
+        ]
+      }
+    },
+    {
+      "id": "soy-mayonnaise",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Soy mayonnaise",
+        "no": "Soyamajones",
+        "sv": "Sojamajonnäs"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "soy-sauce",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Soy sauce",
+        "no": "Soyasaus",
+        "sv": "Sojasås"
+      },
+      "synonyms": {
+        "en": [
+          "shoyu"
+        ],
+        "no": [
+          "soya",
+          "shoyu"
+        ],
+        "sv": [
+          "soja",
+          "shoyu"
+        ]
+      }
+    },
+    {
+      "id": "sugar",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Sugar (raw cane)",
+        "no": "Rørsukker",
+        "sv": "Råsocker"
+      },
+      "synonyms": {
+        "en": [
+          "cane sugar",
+          "raw cane sugar"
+        ],
+        "no": [
+          "sukker"
+        ],
+        "sv": [
+          "socker"
+        ]
+      }
+    },
+    {
+      "id": "sukrin",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Sukrin (erythritol sweetener)",
+        "no": "Sukrin (erytritol)",
+        "sv": "Sukrin (erytritol)"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "sumac",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Sumac",
+        "no": "Sumak",
+        "sv": "Sumak"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "tamari",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Tamari (gluten-free soy sauce)",
+        "no": "Tamari (glutenfri soyasaus)",
+        "sv": "Tamari (glutenfri sojasås)"
+      },
+      "synonyms": {
+        "en": [
+          "wheat-free soy sauce"
+        ],
+        "no": [
+          "tamarisaus"
+        ],
+        "sv": [
+          "tamarisås"
+        ]
+      }
+    },
+    {
+      "id": "tandoori-masala",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Tandoori masala",
+        "no": "Tandoori masala",
+        "sv": "Tandoori masala"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "tarragon-dried",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Tarragon, dried",
+        "no": "Estragon, tørket",
+        "sv": "Dragon, torkad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "thyme-dried",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Thyme, dried",
+        "no": "Timian, tørket",
+        "sv": "Timjan, torkad"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "turmeric-ground",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Turmeric, ground",
+        "no": "Gurkemeie, malt",
+        "sv": "Gurkmeja, malen"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "vanilla-extract",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Vanilla extract",
+        "no": "Vaniljeekstrakt",
+        "sv": "Vaniljextrakt"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "vanilla-powder",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "Vanilla powder",
+        "no": "Vaniljepulver",
+        "sv": "Vaniljpulver"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "white-cashew-sauce",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "White cashew sauce",
+        "no": "Hvit cashewsaus",
+        "sv": "Vit cashewsås"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      },
+      "homemade": true
+    },
+    {
+      "id": "white-pepper",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "names": {
+        "en": "White pepper",
+        "no": "Hvit pepper",
+        "sv": "Vitpeppar"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "blueberries-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Blueberries, frozen",
+        "no": "Blåbær, frosne",
+        "sv": "Blåbär, frysta"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "brussels-sprouts-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Brussels sprouts, frozen",
+        "no": "Rosenkål, frossen",
+        "sv": "Brysselkål, fryst"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "edamame-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Edamame, frozen",
+        "no": "Edamame, frossen",
+        "sv": "Edamame, fryst"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "asparagus-beans-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Asparagus beans, frozen",
+        "no": "Aspargesbønner, frosne",
+        "sv": "Sparrisbönor, frysta"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "mango-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Mango, frozen",
+        "no": "Mango, frossen",
+        "sv": "Mango, fryst"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "berries-mixed-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Mixed berries, frozen",
+        "no": "Blandede bær, frosne",
+        "sv": "Blandade bär, frysta"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "pineapple-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Pineapple, frozen",
+        "no": "Ananas, frossen",
+        "sv": "Ananas, fryst"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "raspberries-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Raspberries, frozen",
+        "no": "Bringebær, frosne",
+        "sv": "Hallon, frysta"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "spinach-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Spinach, frozen",
+        "no": "Spinat, frossen",
+        "sv": "Spenat, fryst"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "strawberries-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Strawberries, frozen",
+        "no": "Jordbær, frosne",
+        "sv": "Jordgubbar, frysta"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "sweetcorn-frozen",
+      "aisle": "Frozen",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Sweetcorn, frozen",
+        "no": "Mais, frossen",
+        "sv": "Majs, fryst"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "barley-coffee",
+      "aisle": "Beverages",
+      "preferredUnit": "tbsp",
+      "names": {
+        "en": "Barley coffee",
+        "no": "Byggkaffe",
+        "sv": "Kornkaffe"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "orange-juice",
+      "aisle": "Beverages",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Orange juice",
+        "no": "Appelsinjuice",
+        "sv": "Apelsinjuice"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "pineapple-juice",
+      "aisle": "Beverages",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Pineapple juice",
+        "no": "Ananasjuice",
+        "sv": "Ananasjuice"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "water",
+      "aisle": "Beverages",
+      "preferredUnit": "ml",
+      "names": {
+        "en": "Water",
+        "no": "Vann",
+        "sv": "Vatten"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    }
+  ],
+  "correction_note": "233rd entry asparagus-beans-frozen added after verification: asparagus beans (yardlong beans) are not edamame/soy, so they must not be merged (it would add a soy flag to fr-77)."
+}

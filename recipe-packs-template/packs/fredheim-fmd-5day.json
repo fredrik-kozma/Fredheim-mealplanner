@@ -3,7 +3,7 @@
   "name": "Fasting Mimicking Plan — 5-Day Plan",
   "description": "A clinically structured 5-day Fasting Mimicking Diet (FMD) based on the research of Valter Longo, PhD (USC). Three small, fully plant-based, oil-free, caffeine-free meals a day, with a vegetable broth sipped freely throughout. Designed to trigger autophagy, suppress IGF-1 and mobilise stem cells — with evidence for metabolic syndrome, pre-diabetes, cardiovascular risk, autoimmune and inflammatory conditions, and healthy ageing. ⚠ Contraindicated in pregnancy or breastfeeding, type 1 / insulin-dependent diabetes, BMI under 18.5, any eating-disorder history, and under-18s.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "tags": [
     "fmd",
     "fasting-mimicking",
@@ -63,47 +63,60 @@
             {
               "quantity": 1500,
               "unit": "ml",
+              "ingredient": "water",
               "name": "Vann"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Selleristilker"
+              "ingredient": "celery",
+              "name": "Stangselleri"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Gulrot"
+              "ingredient": "carrots",
+              "name": "Gulrøtter"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Løk, halvert, med skall"
+              "ingredient": "onions",
+              "name": "Løk",
+              "note": "halvert, med skall"
             },
             {
-              "quantity": 9,
-              "unit": "g",
-              "name": "Hvitløksfedd, hele, uskrelte"
+              "quantity": 3,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk",
+              "note": "hele, uskrelte"
             },
             {
               "quantity": 10,
               "unit": "g",
-              "name": "Frisk ingefær"
+              "ingredient": "ginger-fresh",
+              "name": "Fersk ingefær"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Gurkemeie"
+              "ingredient": "turmeric-ground",
+              "name": "Gurkemeie, malt"
             },
             {
               "quantity": 5,
               "unit": "g",
-              "name": "Frisk persille eller timian, valgfritt"
+              "ingredient": "parsley",
+              "name": "Persille",
+              "note": "eller timian, valgfritt"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -120,47 +133,60 @@
             {
               "quantity": 1500,
               "unit": "ml",
+              "ingredient": "water",
               "name": "Vatten"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Selleristjälkar"
+              "ingredient": "celery",
+              "name": "Stjälkselleri"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Morot"
+              "ingredient": "carrots",
+              "name": "Morötter"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Lök, halverad, med skal"
+              "ingredient": "onions",
+              "name": "Lök",
+              "note": "halverad, med skal"
             },
             {
-              "quantity": 9,
-              "unit": "g",
-              "name": "Vitlöksklyftor, hela, oskalade"
+              "quantity": 3,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök",
+              "note": "hela, oskalade"
             },
             {
               "quantity": 10,
               "unit": "g",
+              "ingredient": "ginger-fresh",
               "name": "Färsk ingefära"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Gurkmeja"
+              "ingredient": "turmeric-ground",
+              "name": "Gurkmeja, malen"
             },
             {
               "quantity": 5,
               "unit": "g",
-              "name": "Färsk persilja eller timjan, valfritt"
+              "ingredient": "parsley",
+              "name": "Persilja",
+              "note": "eller timjan, valfritt"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -175,47 +201,60 @@
         {
           "quantity": 1500,
           "unit": "ml",
+          "ingredient": "water",
           "name": "Water"
         },
         {
           "quantity": 80,
           "unit": "g",
+          "ingredient": "celery",
           "name": "Celery stalks"
         },
         {
           "quantity": 80,
           "unit": "g",
-          "name": "Carrot"
+          "ingredient": "carrots",
+          "name": "Carrots"
         },
         {
           "quantity": 60,
           "unit": "g",
-          "name": "Onion, halved, skin on"
+          "ingredient": "onions",
+          "name": "Onions",
+          "note": "halved, skin on"
         },
         {
-          "quantity": 9,
-          "unit": "g",
-          "name": "Garlic cloves, whole, unpeeled"
+          "quantity": 3,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic",
+          "note": "whole, unpeeled"
         },
         {
           "quantity": 10,
           "unit": "g",
-          "name": "Fresh ginger root"
+          "ingredient": "ginger-fresh",
+          "name": "Fresh ginger"
         },
         {
           "quantity": 0.25,
           "unit": "tsp",
-          "name": "Turmeric powder"
+          "ingredient": "turmeric-ground",
+          "name": "Turmeric, ground"
         },
         {
           "quantity": 5,
           "unit": "g",
-          "name": "Fresh parsley or thyme, optional"
+          "ingredient": "parsley",
+          "name": "Parsley",
+          "note": "or thyme, optional"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -291,42 +330,56 @@
             {
               "quantity": 70,
               "unit": "g",
-              "name": "Moden avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "moden"
             },
             {
               "quantity": 15,
               "unit": "g",
-              "name": "Valnøtthalvdeler (ca. 10)"
+              "ingredient": "walnuts",
+              "name": "Valnøtter",
+              "note": "ca. 10"
             },
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Kalamata- eller grønne oliven, uten stein"
+              "ingredient": "olives",
+              "name": "Oliven",
+              "note": "kalamata- eller grønne, uten stein"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Friske eller frosne blåbær"
+              "ingredient": "blueberries",
+              "name": "Blåbær",
+              "note": "friske eller frosne"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Hele linfrø, ferskmalt"
+              "ingredient": "flaxseed-ground",
+              "name": "Linfrø, malt",
+              "note": "ferskmalt"
             },
             {
               "quantity": 5,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Sitronsaft"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Ceylonkanel"
+              "ingredient": "cinnamon-ground",
+              "name": "Kanel, malt"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -343,42 +396,56 @@
             {
               "quantity": 70,
               "unit": "g",
-              "name": "Mogen avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "mogen"
             },
             {
               "quantity": 15,
               "unit": "g",
-              "name": "Valnötshalvor (ca 10)"
+              "ingredient": "walnuts",
+              "name": "Valnötter",
+              "note": "ca 10"
             },
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Kalamata- eller gröna oliver, urkärnade"
+              "ingredient": "olives",
+              "name": "Oliver",
+              "note": "kalamata- eller gröna, urkärnade"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Färska eller frysta blåbär"
+              "ingredient": "blueberries",
+              "name": "Blåbär",
+              "note": "färska eller frysta"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Hela linfrön, färskmalda"
+              "ingredient": "flaxseed-ground",
+              "name": "Linfrön, malda",
+              "note": "färskmalda"
             },
             {
               "quantity": 5,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Citronsaft"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Ceylonkanel"
+              "ingredient": "cinnamon-ground",
+              "name": "Kanel, malen"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -393,42 +460,56 @@
         {
           "quantity": 70,
           "unit": "g",
-          "name": "Ripe avocado"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "ripe"
         },
         {
           "quantity": 15,
           "unit": "g",
-          "name": "Walnut halves (about 10)"
+          "ingredient": "walnuts",
+          "name": "Walnuts",
+          "note": "halves, about 10"
         },
         {
           "quantity": 40,
           "unit": "g",
-          "name": "Kalamata or green olives, pitted"
+          "ingredient": "olives",
+          "name": "Olives",
+          "note": "kalamata or green, pitted"
         },
         {
           "quantity": 60,
           "unit": "g",
-          "name": "Fresh or frozen blueberries"
+          "ingredient": "blueberries",
+          "name": "Blueberries",
+          "note": "fresh or frozen"
         },
         {
           "quantity": 8,
           "unit": "g",
-          "name": "Whole flaxseed, ground fresh"
+          "ingredient": "flaxseed-ground",
+          "name": "Flaxseed, ground",
+          "note": "freshly ground"
         },
         {
           "quantity": 5,
           "unit": "ml",
+          "ingredient": "lemon-juice",
           "name": "Lemon juice"
         },
         {
           "quantity": 0.25,
           "unit": "tsp",
-          "name": "Ceylon cinnamon"
+          "ingredient": "cinnamon-ground",
+          "name": "Cinnamon, ground"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -506,47 +587,60 @@
             {
               "quantity": 200,
               "unit": "g",
-              "name": "Søtpotet"
+              "ingredient": "sweet-potatoes",
+              "name": "Søtpoteter"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Blandede salatblader (ruccola, spinat, vårsalat)"
+              "ingredient": "salad-leaves",
+              "name": "Blandede salatblader",
+              "note": "ruccola, spinat, vårsalat"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Moden avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "moden"
             },
             {
               "quantity": 100,
               "unit": "g",
+              "ingredient": "cherry-tomatoes",
               "name": "Cherrytomater"
             },
             {
               "quantity": 60,
               "unit": "g",
+              "ingredient": "cucumber",
               "name": "Agurk"
             },
             {
               "quantity": 8,
               "unit": "g",
+              "ingredient": "pumpkin-seeds",
               "name": "Gresskarkjerner"
             },
             {
               "quantity": 15,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Sitronsaft"
             },
             {
               "quantity": 5,
               "unit": "g",
-              "name": "Friske urter (persille, dill eller basilikum)"
+              "ingredient": "herbs-fresh-mixed",
+              "name": "Friske urter",
+              "note": "persille, dill eller basilikum"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -563,47 +657,60 @@
             {
               "quantity": 200,
               "unit": "g",
+              "ingredient": "sweet-potatoes",
               "name": "Sötpotatis"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Blandade salladsblad (ruccola, spenat, vintersallat)"
+              "ingredient": "salad-leaves",
+              "name": "Blandade salladsblad",
+              "note": "ruccola, spenat, vintersallat"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Mogen avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "mogen"
             },
             {
               "quantity": 100,
               "unit": "g",
+              "ingredient": "cherry-tomatoes",
               "name": "Körsbärstomater"
             },
             {
               "quantity": 60,
               "unit": "g",
+              "ingredient": "cucumber",
               "name": "Gurka"
             },
             {
               "quantity": 8,
               "unit": "g",
+              "ingredient": "pumpkin-seeds",
               "name": "Pumpakärnor"
             },
             {
               "quantity": 15,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Citronsaft"
             },
             {
               "quantity": 5,
               "unit": "g",
-              "name": "Färska örter (persilja, dill eller basilika)"
+              "ingredient": "herbs-fresh-mixed",
+              "name": "Färska örter",
+              "note": "persilja, dill eller basilika"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -618,47 +725,60 @@
         {
           "quantity": 200,
           "unit": "g",
-          "name": "Sweet potato"
+          "ingredient": "sweet-potatoes",
+          "name": "Sweet potatoes"
         },
         {
           "quantity": 80,
           "unit": "g",
-          "name": "Mixed salad leaves (rocket, spinach, lamb's lettuce)"
+          "ingredient": "salad-leaves",
+          "name": "Salad leaves (mixed)",
+          "note": "rocket, spinach, lamb's lettuce"
         },
         {
           "quantity": 60,
           "unit": "g",
-          "name": "Ripe avocado"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "ripe"
         },
         {
           "quantity": 100,
           "unit": "g",
+          "ingredient": "cherry-tomatoes",
           "name": "Cherry tomatoes"
         },
         {
           "quantity": 60,
           "unit": "g",
+          "ingredient": "cucumber",
           "name": "Cucumber"
         },
         {
           "quantity": 8,
           "unit": "g",
+          "ingredient": "pumpkin-seeds",
           "name": "Pumpkin seeds"
         },
         {
           "quantity": 15,
           "unit": "ml",
+          "ingredient": "lemon-juice",
           "name": "Lemon juice"
         },
         {
           "quantity": 5,
           "unit": "g",
-          "name": "Fresh herbs (parsley, dill or basil)"
+          "ingredient": "herbs-fresh-mixed",
+          "name": "Fresh herbs (mixed)",
+          "note": "parsley, dill or basil"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -737,57 +857,76 @@
             {
               "quantity": 400,
               "unit": "ml",
-              "name": "Grønnsaksbuljong (fra den daglige buljongen)"
+              "ingredient": "vegetable-broth",
+              "name": "Grønnsakskraft",
+              "note": "fra den daglige buljongen"
             },
             {
               "quantity": 80,
               "unit": "g",
+              "ingredient": "zucchini",
               "name": "Squash"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Gulrot"
+              "ingredient": "carrots",
+              "name": "Gulrøtter"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Grønnkål eller savoykål, finstrimlet"
+              "ingredient": "kale",
+              "name": "Grønnkål",
+              "note": "eller savoykål, finstrimlet"
             },
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Hermetiske hvite bønner (cannellini), avrent og skylt"
+              "ingredient": "white-beans-canned",
+              "name": "Hvite bønner (cannellini), hermetiske",
+              "note": "avrent og skylt"
             },
             {
               "quantity": 100,
               "unit": "g",
-              "name": "Hele hermetiske tomater"
+              "ingredient": "canned-tomatoes",
+              "name": "Hermetiske tomater",
+              "note": "hele"
             },
             {
-              "quantity": 6,
-              "unit": "g",
-              "name": "Hvitløksfedd"
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
             },
             {
               "quantity": 2,
               "unit": "g",
-              "name": "Frisk rosmarin eller timian"
+              "ingredient": "rosemary",
+              "name": "Rosmarin",
+              "note": "eller timian"
             },
             {
               "quantity": 16,
               "unit": "g",
-              "name": "Mørkt rugknekkebrød (2)"
+              "ingredient": "crispbread",
+              "name": "Rugknekkebrød",
+              "note": "mørkt, 2"
             },
             {
               "quantity": 30,
               "unit": "g",
-              "name": "Moden avokado, i skiver, til servering"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "moden, i skiver, til servering"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -806,57 +945,76 @@
             {
               "quantity": 400,
               "unit": "ml",
-              "name": "Grönsaksbuljong (från den dagliga buljongen)"
+              "ingredient": "vegetable-broth",
+              "name": "Grönsakskraft",
+              "note": "från den dagliga buljongen"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Zucchini"
+              "ingredient": "zucchini",
+              "name": "Squash"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Morot"
+              "ingredient": "carrots",
+              "name": "Morötter"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Grönkål eller savojkål, strimlad"
+              "ingredient": "kale",
+              "name": "Grönkål",
+              "note": "eller savojkål, strimlad"
             },
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Vita bönor på burk (cannellini), avrunna och sköljda"
+              "ingredient": "white-beans-canned",
+              "name": "Vita bönor (cannellini) på burk",
+              "note": "avrunna och sköljda"
             },
             {
               "quantity": 100,
               "unit": "g",
-              "name": "Hela tomater på burk"
+              "ingredient": "canned-tomatoes",
+              "name": "Tomater på burk",
+              "note": "hela"
             },
             {
-              "quantity": 6,
-              "unit": "g",
-              "name": "Vitlöksklyftor"
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
             },
             {
               "quantity": 2,
               "unit": "g",
-              "name": "Färsk rosmarin eller timjan"
+              "ingredient": "rosemary",
+              "name": "Rosmarin",
+              "note": "eller timjan"
             },
             {
               "quantity": 16,
               "unit": "g",
-              "name": "Mörkt rågknäckebröd (2)"
+              "ingredient": "crispbread",
+              "name": "Rågknäckebröd",
+              "note": "mörkt, 2"
             },
             {
               "quantity": 30,
               "unit": "g",
-              "name": "Mogen avokado, skivad, till servering"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "mogen, skivad, till servering"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -873,57 +1031,76 @@
         {
           "quantity": 400,
           "unit": "ml",
-          "name": "Vegetable broth (from the daily broth)"
+          "ingredient": "vegetable-broth",
+          "name": "Vegetable broth",
+          "note": "from the daily broth"
         },
         {
           "quantity": 80,
           "unit": "g",
-          "name": "Courgette"
+          "ingredient": "zucchini",
+          "name": "Zucchini (courgette)"
         },
         {
           "quantity": 60,
           "unit": "g",
-          "name": "Carrot"
+          "ingredient": "carrots",
+          "name": "Carrots"
         },
         {
           "quantity": 60,
           "unit": "g",
-          "name": "Kale or savoy cabbage, shredded"
+          "ingredient": "kale",
+          "name": "Kale",
+          "note": "or savoy cabbage, shredded"
         },
         {
           "quantity": 40,
           "unit": "g",
-          "name": "Canned white beans (cannellini), drained and rinsed"
+          "ingredient": "white-beans-canned",
+          "name": "White beans (cannellini), canned",
+          "note": "drained and rinsed"
         },
         {
           "quantity": 100,
           "unit": "g",
-          "name": "Canned whole tomatoes"
+          "ingredient": "canned-tomatoes",
+          "name": "Canned tomatoes",
+          "note": "whole"
         },
         {
-          "quantity": 6,
-          "unit": "g",
-          "name": "Garlic cloves"
+          "quantity": 2,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
         },
         {
           "quantity": 2,
           "unit": "g",
-          "name": "Fresh rosemary or thyme"
+          "ingredient": "rosemary",
+          "name": "Rosemary",
+          "note": "or thyme"
         },
         {
           "quantity": 16,
           "unit": "g",
-          "name": "Dark rye crispbreads (2)"
+          "ingredient": "crispbread",
+          "name": "Rye crispbread",
+          "note": "dark, 2"
         },
         {
           "quantity": 30,
           "unit": "g",
-          "name": "Ripe avocado, sliced, to serve"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "ripe, sliced, to serve"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -1001,37 +1178,49 @@
             {
               "quantity": 15,
               "unit": "g",
-              "name": "Rå mandler"
+              "ingredient": "almonds",
+              "name": "Mandler"
             },
             {
               "quantity": 32,
               "unit": "g",
-              "name": "Kalamata- eller grønne oliven, uten stein (8)"
+              "ingredient": "olives",
+              "name": "Oliven",
+              "note": "kalamata- eller grønne, uten stein (8)"
             },
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Moden avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "moden"
             },
             {
               "quantity": 50,
               "unit": "g",
-              "name": "Friske eller frosne bringebær eller blåbær"
+              "ingredient": "raspberries",
+              "name": "Bringebær",
+              "note": "friske eller frosne eller blåbær"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Hele linfrø, ferskmalt"
+              "ingredient": "flaxseed-ground",
+              "name": "Linfrø, malt",
+              "note": "ferskmalt"
             },
             {
               "quantity": 2,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Sitronsaft"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -1048,37 +1237,50 @@
             {
               "quantity": 15,
               "unit": "g",
-              "name": "Råa mandlar"
+              "ingredient": "almonds",
+              "name": "Mandlar",
+              "note": "råa"
             },
             {
               "quantity": 32,
               "unit": "g",
-              "name": "Kalamata- eller gröna oliver, urkärnade (8)"
+              "ingredient": "olives",
+              "name": "Oliver",
+              "note": "kalamata- eller gröna, urkärnade (8)"
             },
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Mogen avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "mogen"
             },
             {
               "quantity": 50,
               "unit": "g",
-              "name": "Färska eller frysta hallon eller blåbär"
+              "ingredient": "raspberries",
+              "name": "Hallon",
+              "note": "färska eller frysta eller blåbär"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Hela linfrön, färskmalda"
+              "ingredient": "flaxseed-ground",
+              "name": "Linfrön, malda",
+              "note": "färskmalda"
             },
             {
               "quantity": 2,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Citronsaft"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -1093,37 +1295,49 @@
         {
           "quantity": 15,
           "unit": "g",
-          "name": "Raw almonds"
+          "ingredient": "almonds",
+          "name": "Almonds"
         },
         {
           "quantity": 32,
           "unit": "g",
-          "name": "Kalamata or green olives, pitted (8)"
+          "ingredient": "olives",
+          "name": "Olives",
+          "note": "kalamata or green, pitted (8)"
         },
         {
           "quantity": 40,
           "unit": "g",
-          "name": "Ripe avocado"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "ripe"
         },
         {
           "quantity": 50,
           "unit": "g",
-          "name": "Fresh or frozen raspberries or blueberries"
+          "ingredient": "raspberries",
+          "name": "Raspberries",
+          "note": "fresh or frozen or blueberries"
         },
         {
           "quantity": 8,
           "unit": "g",
-          "name": "Whole flaxseed, ground fresh"
+          "ingredient": "flaxseed-ground",
+          "name": "Flaxseed, ground",
+          "note": "freshly ground"
         },
         {
           "quantity": 2,
           "unit": "ml",
+          "ingredient": "lemon-juice",
           "name": "Lemon juice"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -1203,42 +1417,55 @@
             {
               "quantity": 300,
               "unit": "g",
-              "name": "Butternutsquash eller gresskar"
+              "ingredient": "butternut-squash",
+              "name": "Butternutgresskar",
+              "note": "eller gresskar"
             },
             {
               "quantity": 300,
               "unit": "ml",
-              "name": "Grønnsaksbuljong (fra den daglige buljongen)"
+              "ingredient": "vegetable-broth",
+              "name": "Grønnsakskraft",
+              "note": "fra den daglige buljongen"
             },
             {
               "quantity": 35,
               "unit": "g",
-              "name": "Moden avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "moden"
             },
             {
-              "quantity": 6,
-              "unit": "g",
-              "name": "Hvitløksfedd"
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
             },
             {
               "quantity": 5,
               "unit": "g",
-              "name": "Frisk ingefær, revet"
+              "ingredient": "ginger-fresh",
+              "name": "Fersk ingefær",
+              "note": "revet"
             },
             {
               "quantity": 0.5,
               "unit": "tsp",
-              "name": "Malt spisskummen"
+              "ingredient": "cumin-ground",
+              "name": "Spisskummen, malt"
             },
             {
               "quantity": 3,
               "unit": "g",
+              "ingredient": "pumpkin-seeds",
               "name": "Gresskarkjerner"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -1256,42 +1483,55 @@
             {
               "quantity": 300,
               "unit": "g",
-              "name": "Butternutpumpa eller pumpa"
+              "ingredient": "butternut-squash",
+              "name": "Butternutpumpa",
+              "note": "eller pumpa"
             },
             {
               "quantity": 300,
               "unit": "ml",
-              "name": "Grönsaksbuljong (från den dagliga buljongen)"
+              "ingredient": "vegetable-broth",
+              "name": "Grönsakskraft",
+              "note": "från den dagliga buljongen"
             },
             {
               "quantity": 35,
               "unit": "g",
-              "name": "Mogen avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "mogen"
             },
             {
-              "quantity": 6,
-              "unit": "g",
-              "name": "Vitlöksklyftor"
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
             },
             {
               "quantity": 5,
               "unit": "g",
-              "name": "Färsk ingefära, riven"
+              "ingredient": "ginger-fresh",
+              "name": "Färsk ingefära",
+              "note": "riven"
             },
             {
               "quantity": 0.5,
               "unit": "tsp",
-              "name": "Malen spiskummin"
+              "ingredient": "cumin-ground",
+              "name": "Spiskummin, malen"
             },
             {
               "quantity": 3,
               "unit": "g",
+              "ingredient": "pumpkin-seeds",
               "name": "Pumpakärnor"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -1307,42 +1547,55 @@
         {
           "quantity": 300,
           "unit": "g",
-          "name": "Butternut squash or pumpkin"
+          "ingredient": "butternut-squash",
+          "name": "Butternut squash",
+          "note": "or pumpkin"
         },
         {
           "quantity": 300,
           "unit": "ml",
-          "name": "Vegetable broth (from the daily broth)"
+          "ingredient": "vegetable-broth",
+          "name": "Vegetable broth",
+          "note": "from the daily broth"
         },
         {
           "quantity": 35,
           "unit": "g",
-          "name": "Ripe avocado"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "ripe"
         },
         {
-          "quantity": 6,
-          "unit": "g",
-          "name": "Garlic cloves"
+          "quantity": 2,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
         },
         {
           "quantity": 5,
           "unit": "g",
-          "name": "Fresh ginger root, grated"
+          "ingredient": "ginger-fresh",
+          "name": "Fresh ginger",
+          "note": "grated"
         },
         {
           "quantity": 0.5,
           "unit": "tsp",
-          "name": "Ground cumin"
+          "ingredient": "cumin-ground",
+          "name": "Cumin, ground"
         },
         {
           "quantity": 3,
           "unit": "g",
+          "ingredient": "pumpkin-seeds",
           "name": "Pumpkin seeds"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -1424,42 +1677,53 @@
             {
               "quantity": 150,
               "unit": "g",
-              "name": "Brokkolibuketter"
+              "ingredient": "broccoli",
+              "name": "Brokkoli"
             },
             {
               "quantity": 100,
               "unit": "g",
-              "name": "Frisk spinat"
+              "ingredient": "spinach",
+              "name": "Spinat"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Moden avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "moden"
             },
             {
               "quantity": 3,
               "unit": "g",
+              "ingredient": "sesame-seeds",
               "name": "Sesamfrø"
             },
             {
               "quantity": 15,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Sitronsaft"
             },
             {
-              "quantity": 3,
-              "unit": "g",
-              "name": "Hvitløksfedd"
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
             },
             {
               "quantity": 16,
               "unit": "g",
-              "name": "Mørkt rugknekkebrød (2)"
+              "ingredient": "crispbread",
+              "name": "Rugknekkebrød",
+              "note": "mørkt, 2"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -1477,42 +1741,53 @@
             {
               "quantity": 150,
               "unit": "g",
-              "name": "Broccolibuketter"
+              "ingredient": "broccoli",
+              "name": "Broccoli"
             },
             {
               "quantity": 100,
               "unit": "g",
-              "name": "Färsk spenat"
+              "ingredient": "spinach",
+              "name": "Spenat"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Mogen avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "mogen"
             },
             {
               "quantity": 3,
               "unit": "g",
+              "ingredient": "sesame-seeds",
               "name": "Sesamfrön"
             },
             {
               "quantity": 15,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Citronsaft"
             },
             {
-              "quantity": 3,
-              "unit": "g",
-              "name": "Vitlöksklyfta"
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
             },
             {
               "quantity": 16,
               "unit": "g",
-              "name": "Mörkt rågknäckebröd (2)"
+              "ingredient": "crispbread",
+              "name": "Rågknäckebröd",
+              "note": "mörkt, 2"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -1528,42 +1803,54 @@
         {
           "quantity": 150,
           "unit": "g",
-          "name": "Broccoli florets"
+          "ingredient": "broccoli",
+          "name": "Broccoli",
+          "note": "florets"
         },
         {
           "quantity": 100,
           "unit": "g",
-          "name": "Fresh spinach"
+          "ingredient": "spinach",
+          "name": "Spinach"
         },
         {
           "quantity": 60,
           "unit": "g",
-          "name": "Ripe avocado"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "ripe"
         },
         {
           "quantity": 3,
           "unit": "g",
+          "ingredient": "sesame-seeds",
           "name": "Sesame seeds"
         },
         {
           "quantity": 15,
           "unit": "ml",
+          "ingredient": "lemon-juice",
           "name": "Lemon juice"
         },
         {
-          "quantity": 3,
-          "unit": "g",
-          "name": "Garlic clove"
+          "quantity": 1,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
         },
         {
           "quantity": 16,
           "unit": "g",
-          "name": "Dark rye crispbreads (2)"
+          "ingredient": "crispbread",
+          "name": "Rye crispbread",
+          "note": "dark, 2"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -1644,37 +1931,47 @@
             {
               "quantity": 30,
               "unit": "g",
+              "ingredient": "chia-seeds",
               "name": "Chiafrø"
             },
             {
               "quantity": 180,
               "unit": "ml",
-              "name": "Usøtet havremelk"
+              "ingredient": "oat-milk",
+              "name": "Havremelk",
+              "note": "usøtet"
             },
             {
               "quantity": 50,
               "unit": "ml",
+              "ingredient": "water",
               "name": "Vann"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Friske eller frosne bær (blåbær, bringebær)"
+              "ingredient": "berries-mixed",
+              "name": "Blandede bær",
+              "note": "friske eller frosne, blåbær, bringebær"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Hele linfrø, ferskmalt"
+              "ingredient": "flaxseed-ground",
+              "name": "Linfrø, malt",
+              "note": "ferskmalt"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Malt kardemomme"
+              "ingredient": "cardamom-ground",
+              "name": "Kardemomme, malt"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Ceylonkanel"
+              "ingredient": "cinnamon-ground",
+              "name": "Kanel, malt"
             }
           ],
           "steps": [
@@ -1691,37 +1988,47 @@
             {
               "quantity": 30,
               "unit": "g",
+              "ingredient": "chia-seeds",
               "name": "Chiafrön"
             },
             {
               "quantity": 180,
               "unit": "ml",
-              "name": "Osötad havremjölk"
+              "ingredient": "oat-milk",
+              "name": "Havremjölk",
+              "note": "osötad"
             },
             {
               "quantity": 50,
               "unit": "ml",
+              "ingredient": "water",
               "name": "Vatten"
             },
             {
               "quantity": 60,
               "unit": "g",
-              "name": "Färska eller frysta bär (blåbär, hallon)"
+              "ingredient": "berries-mixed",
+              "name": "Blandade bär",
+              "note": "färska eller frysta, blåbär, hallon"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Hela linfrön, färskmalda"
+              "ingredient": "flaxseed-ground",
+              "name": "Linfrön, malda",
+              "note": "färskmalda"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Malen kardemumma"
+              "ingredient": "cardamom-ground",
+              "name": "Kardemumma, malen"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Ceylonkanel"
+              "ingredient": "cinnamon-ground",
+              "name": "Kanel, malen"
             }
           ],
           "steps": [
@@ -1736,37 +2043,47 @@
         {
           "quantity": 30,
           "unit": "g",
+          "ingredient": "chia-seeds",
           "name": "Chia seeds"
         },
         {
           "quantity": 180,
           "unit": "ml",
-          "name": "Unsweetened oat milk"
+          "ingredient": "oat-milk",
+          "name": "Oat milk",
+          "note": "unsweetened"
         },
         {
           "quantity": 50,
           "unit": "ml",
+          "ingredient": "water",
           "name": "Water"
         },
         {
           "quantity": 60,
           "unit": "g",
-          "name": "Fresh or frozen berries (blueberries, raspberries)"
+          "ingredient": "berries-mixed",
+          "name": "Mixed berries",
+          "note": "fresh or frozen, blueberries, raspberries"
         },
         {
           "quantity": 8,
           "unit": "g",
-          "name": "Whole flaxseed, ground fresh"
+          "ingredient": "flaxseed-ground",
+          "name": "Flaxseed, ground",
+          "note": "freshly ground"
         },
         {
           "quantity": 0.25,
           "unit": "tsp",
-          "name": "Ground cardamom"
+          "ingredient": "cardamom-ground",
+          "name": "Cardamom, ground"
         },
         {
           "quantity": 0.25,
           "unit": "tsp",
-          "name": "Ceylon cinnamon"
+          "ingredient": "cinnamon-ground",
+          "name": "Cinnamon, ground"
         }
       ],
       "steps": [
@@ -1846,67 +2163,86 @@
             {
               "quantity": 30,
               "unit": "g",
-              "name": "Røde linser (tørrvekt)"
+              "ingredient": "lentils-red",
+              "name": "Røde linser",
+              "note": "tørrvekt"
             },
             {
               "quantity": 400,
               "unit": "ml",
-              "name": "Grønnsaksbuljong (fra den daglige buljongen)"
+              "ingredient": "vegetable-broth",
+              "name": "Grønnsakskraft",
+              "note": "fra den daglige buljongen"
             },
             {
               "quantity": 200,
               "unit": "g",
-              "name": "Modne tomater"
+              "ingredient": "tomatoes",
+              "name": "Tomater",
+              "note": "modne"
             },
             {
               "quantity": 50,
               "unit": "g",
-              "name": "Selleristilk"
+              "ingredient": "celery",
+              "name": "Stangselleri"
             },
             {
-              "quantity": 6,
-              "unit": "g",
-              "name": "Hvitløksfedd"
-            },
-            {
-              "quantity": 0.5,
-              "unit": "tsp",
-              "name": "Malt spisskummen"
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
             },
             {
               "quantity": 0.5,
               "unit": "tsp",
-              "name": "Malt koriander"
+              "ingredient": "cumin-ground",
+              "name": "Spisskummen, malt"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "coriander-ground",
+              "name": "Koriander, malt"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
+              "ingredient": "smoked-paprika",
               "name": "Røkt paprika"
             },
             {
               "quantity": 15,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Sitronsaft"
             },
             {
               "quantity": 5,
               "unit": "g",
-              "name": "Frisk persille"
+              "ingredient": "parsley",
+              "name": "Persille"
             },
             {
               "quantity": 50,
               "unit": "g",
-              "name": "Avokado, i terninger, til servering"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "i terninger, til servering"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Valnøtter, knust, til servering"
+              "ingredient": "walnuts",
+              "name": "Valnøtter",
+              "note": "knust, til servering"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -1924,67 +2260,86 @@
             {
               "quantity": 30,
               "unit": "g",
-              "name": "Röda linser (torrvikt)"
+              "ingredient": "lentils-red",
+              "name": "Röda linser",
+              "note": "torrvikt"
             },
             {
               "quantity": 400,
               "unit": "ml",
-              "name": "Grönsaksbuljong (från den dagliga buljongen)"
+              "ingredient": "vegetable-broth",
+              "name": "Grönsakskraft",
+              "note": "från den dagliga buljongen"
             },
             {
               "quantity": 200,
               "unit": "g",
-              "name": "Mogna tomater"
+              "ingredient": "tomatoes",
+              "name": "Tomater",
+              "note": "mogna"
             },
             {
               "quantity": 50,
               "unit": "g",
-              "name": "Selleristjälk"
+              "ingredient": "celery",
+              "name": "Stjälkselleri"
             },
             {
-              "quantity": 6,
-              "unit": "g",
-              "name": "Vitlöksklyftor"
-            },
-            {
-              "quantity": 0.5,
-              "unit": "tsp",
-              "name": "Malen spiskummin"
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
             },
             {
               "quantity": 0.5,
               "unit": "tsp",
-              "name": "Malen koriander"
+              "ingredient": "cumin-ground",
+              "name": "Spiskummin, malen"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "coriander-ground",
+              "name": "Koriander, malen"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
+              "ingredient": "smoked-paprika",
               "name": "Rökt paprika"
             },
             {
               "quantity": 15,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Citronsaft"
             },
             {
               "quantity": 5,
               "unit": "g",
-              "name": "Färsk persilja"
+              "ingredient": "parsley",
+              "name": "Persilja"
             },
             {
               "quantity": 50,
               "unit": "g",
-              "name": "Avokado, tärnad, till servering"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "tärnad, till servering"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Valnötter, krossade, till servering"
+              "ingredient": "walnuts",
+              "name": "Valnötter",
+              "note": "krossade, till servering"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -2000,67 +2355,86 @@
         {
           "quantity": 30,
           "unit": "g",
-          "name": "Red lentils (dry weight)"
+          "ingredient": "lentils-red",
+          "name": "Red lentils",
+          "note": "dry weight"
         },
         {
           "quantity": 400,
           "unit": "ml",
-          "name": "Vegetable broth (from the daily broth)"
+          "ingredient": "vegetable-broth",
+          "name": "Vegetable broth",
+          "note": "from the daily broth"
         },
         {
           "quantity": 200,
           "unit": "g",
-          "name": "Ripe tomatoes"
+          "ingredient": "tomatoes",
+          "name": "Tomatoes",
+          "note": "ripe"
         },
         {
           "quantity": 50,
           "unit": "g",
-          "name": "Celery stalk"
+          "ingredient": "celery",
+          "name": "Celery stalks"
         },
         {
-          "quantity": 6,
-          "unit": "g",
-          "name": "Garlic cloves"
-        },
-        {
-          "quantity": 0.5,
-          "unit": "tsp",
-          "name": "Ground cumin"
+          "quantity": 2,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
         },
         {
           "quantity": 0.5,
           "unit": "tsp",
-          "name": "Ground coriander"
+          "ingredient": "cumin-ground",
+          "name": "Cumin, ground"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "coriander-ground",
+          "name": "Coriander, ground"
         },
         {
           "quantity": 0.25,
           "unit": "tsp",
+          "ingredient": "smoked-paprika",
           "name": "Smoked paprika"
         },
         {
           "quantity": 15,
           "unit": "ml",
+          "ingredient": "lemon-juice",
           "name": "Lemon juice"
         },
         {
           "quantity": 5,
           "unit": "g",
-          "name": "Fresh parsley"
+          "ingredient": "parsley",
+          "name": "Parsley"
         },
         {
           "quantity": 50,
           "unit": "g",
-          "name": "Avocado, diced, to serve"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "diced, to serve"
         },
         {
           "quantity": 8,
           "unit": "g",
-          "name": "Walnuts, broken, to serve"
+          "ingredient": "walnuts",
+          "name": "Walnuts",
+          "note": "broken, to serve"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -2142,52 +2516,66 @@
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Gulrot"
+              "ingredient": "carrots",
+              "name": "Gulrøtter"
             },
             {
               "quantity": 70,
               "unit": "g",
-              "name": "Rødbete (rå)"
+              "ingredient": "beetroot",
+              "name": "Rødbeter"
             },
             {
               "quantity": 60,
               "unit": "g",
+              "ingredient": "parsnips",
               "name": "Pastinakk"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Grønnkål, stilker fjernet"
+              "ingredient": "kale",
+              "name": "Grønnkål",
+              "note": "stilker fjernet"
             },
             {
               "quantity": 12,
               "unit": "g",
-              "name": "Valnøtter, grovt knust"
+              "ingredient": "walnuts",
+              "name": "Valnøtter",
+              "note": "grovt knust"
             },
             {
               "quantity": 30,
               "unit": "g",
-              "name": "Avokado, i terninger"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "i terninger"
             },
             {
               "quantity": 15,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Sitronsaft"
             },
             {
               "quantity": 2,
               "unit": "g",
-              "name": "Frisk rosmarin"
+              "ingredient": "rosemary",
+              "name": "Rosmarin"
             },
             {
               "quantity": 2,
               "unit": "g",
-              "name": "Frisk timian"
+              "ingredient": "thyme",
+              "name": "Timian"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -2204,52 +2592,66 @@
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Morot"
+              "ingredient": "carrots",
+              "name": "Morötter"
             },
             {
               "quantity": 70,
               "unit": "g",
-              "name": "Rödbeta (rå)"
+              "ingredient": "beetroot",
+              "name": "Rödbetor"
             },
             {
               "quantity": 60,
               "unit": "g",
+              "ingredient": "parsnips",
               "name": "Palsternacka"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Grönkål, stjälkar borttagna"
+              "ingredient": "kale",
+              "name": "Grönkål",
+              "note": "stjälkar borttagna"
             },
             {
               "quantity": 12,
               "unit": "g",
-              "name": "Valnötter, grovt krossade"
+              "ingredient": "walnuts",
+              "name": "Valnötter",
+              "note": "grovt krossade"
             },
             {
               "quantity": 30,
               "unit": "g",
-              "name": "Avokado, tärnad"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "tärnad"
             },
             {
               "quantity": 15,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Citronsaft"
             },
             {
               "quantity": 2,
               "unit": "g",
-              "name": "Färsk rosmarin"
+              "ingredient": "rosemary",
+              "name": "Rosmarin"
             },
             {
               "quantity": 2,
               "unit": "g",
-              "name": "Färsk timjan"
+              "ingredient": "thyme",
+              "name": "Timjan"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -2264,52 +2666,66 @@
         {
           "quantity": 80,
           "unit": "g",
-          "name": "Carrot"
+          "ingredient": "carrots",
+          "name": "Carrots"
         },
         {
           "quantity": 70,
           "unit": "g",
-          "name": "Beetroot (raw)"
+          "ingredient": "beetroot",
+          "name": "Beetroot"
         },
         {
           "quantity": 60,
           "unit": "g",
-          "name": "Parsnip"
+          "ingredient": "parsnips",
+          "name": "Parsnips"
         },
         {
           "quantity": 80,
           "unit": "g",
-          "name": "Kale, stems removed"
+          "ingredient": "kale",
+          "name": "Kale",
+          "note": "stems removed"
         },
         {
           "quantity": 12,
           "unit": "g",
-          "name": "Walnuts, roughly broken"
+          "ingredient": "walnuts",
+          "name": "Walnuts",
+          "note": "roughly broken"
         },
         {
           "quantity": 30,
           "unit": "g",
-          "name": "Avocado, diced"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "diced"
         },
         {
           "quantity": 15,
           "unit": "ml",
+          "ingredient": "lemon-juice",
           "name": "Lemon juice"
         },
         {
           "quantity": 2,
           "unit": "g",
-          "name": "Fresh rosemary"
+          "ingredient": "rosemary",
+          "name": "Rosemary"
         },
         {
           "quantity": 2,
           "unit": "g",
-          "name": "Fresh thyme"
+          "ingredient": "thyme",
+          "name": "Thyme"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -2389,37 +2805,48 @@
             {
               "quantity": 150,
               "unit": "g",
-              "name": "Eple (fast sort — Granny Smith eller Cox)"
+              "ingredient": "apples",
+              "name": "Epler",
+              "note": "fast sort, Granny Smith eller Cox"
             },
             {
               "quantity": 60,
               "unit": "ml",
+              "ingredient": "water",
               "name": "Vann"
             },
             {
               "quantity": 12,
               "unit": "g",
-              "name": "Valnøtter, grovt knust (ca. 8 halvdeler)"
+              "ingredient": "walnuts",
+              "name": "Valnøtter",
+              "note": "grovt knust (ca. 8 halvdeler)"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Hele linfrø, ferskmalt"
+              "ingredient": "flaxseed-ground",
+              "name": "Linfrø, malt",
+              "note": "ferskmalt"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Ceylonkanel"
+              "ingredient": "cinnamon-ground",
+              "name": "Kanel, malt"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Malt kardemomme"
+              "ingredient": "cardamom-ground",
+              "name": "Kardemomme, malt"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Malt nellik, en liten klype"
+              "ingredient": "cloves-ground",
+              "name": "Nellik, malt",
+              "note": "en liten klype"
             }
           ],
           "steps": [
@@ -2435,37 +2862,48 @@
             {
               "quantity": 150,
               "unit": "g",
-              "name": "Äpple (fast sort — Granny Smith eller Cox)"
+              "ingredient": "apples",
+              "name": "Äpplen",
+              "note": "fast sort, Granny Smith eller Cox"
             },
             {
               "quantity": 60,
               "unit": "ml",
+              "ingredient": "water",
               "name": "Vatten"
             },
             {
               "quantity": 12,
               "unit": "g",
-              "name": "Valnötter, grovt krossade (ca 8 halvor)"
+              "ingredient": "walnuts",
+              "name": "Valnötter",
+              "note": "grovt krossade (ca 8 halvor)"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Hela linfrön, färskmalda"
+              "ingredient": "flaxseed-ground",
+              "name": "Linfrön, malda",
+              "note": "färskmalda"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Ceylonkanel"
+              "ingredient": "cinnamon-ground",
+              "name": "Kanel, malen"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Malen kardemumma"
+              "ingredient": "cardamom-ground",
+              "name": "Kardemumma, malen"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Malen kryddnejlika, en liten nypa"
+              "ingredient": "cloves-ground",
+              "name": "Kryddnejlika, malen",
+              "note": "en liten nypa"
             }
           ],
           "steps": [
@@ -2479,37 +2917,48 @@
         {
           "quantity": 150,
           "unit": "g",
-          "name": "Apple (firm variety — Granny Smith or Cox)"
+          "ingredient": "apples",
+          "name": "Apples",
+          "note": "firm variety, Granny Smith or Cox"
         },
         {
           "quantity": 60,
           "unit": "ml",
+          "ingredient": "water",
           "name": "Water"
         },
         {
           "quantity": 12,
           "unit": "g",
-          "name": "Walnuts, roughly broken (about 8 halves)"
+          "ingredient": "walnuts",
+          "name": "Walnuts",
+          "note": "roughly broken (about 8 halves)"
         },
         {
           "quantity": 8,
           "unit": "g",
-          "name": "Whole flaxseed, ground fresh"
+          "ingredient": "flaxseed-ground",
+          "name": "Flaxseed, ground",
+          "note": "freshly ground"
         },
         {
           "quantity": 0.25,
           "unit": "tsp",
-          "name": "Ceylon cinnamon"
+          "ingredient": "cinnamon-ground",
+          "name": "Cinnamon, ground"
         },
         {
           "quantity": 0.25,
           "unit": "tsp",
-          "name": "Ground cardamom"
+          "ingredient": "cardamom-ground",
+          "name": "Cardamom, ground"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Ground cloves, tiny pinch"
+          "ingredient": "cloves-ground",
+          "name": "Cloves, ground",
+          "note": "tiny pinch"
         }
       ],
       "steps": [
@@ -2588,42 +3037,55 @@
             {
               "quantity": 150,
               "unit": "g",
+              "ingredient": "zucchini",
               "name": "Squash"
             },
             {
               "quantity": 120,
               "unit": "g",
-              "name": "Blomkålbuketter"
+              "ingredient": "cauliflower",
+              "name": "Blomkål"
             },
             {
               "quantity": 350,
               "unit": "ml",
-              "name": "Grønnsaksbuljong (fra den daglige buljongen)"
+              "ingredient": "vegetable-broth",
+              "name": "Grønnsakskraft",
+              "note": "fra den daglige buljongen"
             },
             {
-              "quantity": 6,
-              "unit": "g",
-              "name": "Hvitløksfedd"
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Frisk bladpersille"
+              "ingredient": "parsley",
+              "name": "Persille",
+              "note": "bladpersille"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Malt muskat, en liten klype"
+              "ingredient": "nutmeg-ground",
+              "name": "Muskatnøtt, malt",
+              "note": "en liten klype"
             },
             {
               "quantity": 35,
               "unit": "g",
-              "name": "Moden avokado, i skiver, til servering"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "moden, i skiver, til servering"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -2642,42 +3104,55 @@
             {
               "quantity": 150,
               "unit": "g",
-              "name": "Zucchini"
+              "ingredient": "zucchini",
+              "name": "Squash"
             },
             {
               "quantity": 120,
               "unit": "g",
-              "name": "Blomkålsbuketter"
+              "ingredient": "cauliflower",
+              "name": "Blomkål"
             },
             {
               "quantity": 350,
               "unit": "ml",
-              "name": "Grönsaksbuljong (från den dagliga buljongen)"
+              "ingredient": "vegetable-broth",
+              "name": "Grönsakskraft",
+              "note": "från den dagliga buljongen"
             },
             {
-              "quantity": 6,
-              "unit": "g",
-              "name": "Vitlöksklyftor"
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Färsk slätbladig persilja"
+              "ingredient": "parsley",
+              "name": "Persilja",
+              "note": "slätbladig"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Malen muskot, en liten nypa"
+              "ingredient": "nutmeg-ground",
+              "name": "Muskot, malen",
+              "note": "en liten nypa"
             },
             {
               "quantity": 35,
               "unit": "g",
-              "name": "Mogen avokado, skivad, till servering"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "mogen, skivad, till servering"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -2694,42 +3169,56 @@
         {
           "quantity": 150,
           "unit": "g",
-          "name": "Courgette"
+          "ingredient": "zucchini",
+          "name": "Zucchini (courgette)"
         },
         {
           "quantity": 120,
           "unit": "g",
-          "name": "Cauliflower florets"
+          "ingredient": "cauliflower",
+          "name": "Cauliflower",
+          "note": "florets"
         },
         {
           "quantity": 350,
           "unit": "ml",
-          "name": "Vegetable broth (from the daily broth)"
+          "ingredient": "vegetable-broth",
+          "name": "Vegetable broth",
+          "note": "from the daily broth"
         },
         {
-          "quantity": 6,
-          "unit": "g",
-          "name": "Garlic cloves"
+          "quantity": 2,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
         },
         {
           "quantity": 8,
           "unit": "g",
-          "name": "Fresh flat-leaf parsley"
+          "ingredient": "parsley",
+          "name": "Parsley",
+          "note": "flat-leaf"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Ground nutmeg, tiny pinch"
+          "ingredient": "nutmeg-ground",
+          "name": "Nutmeg, ground",
+          "note": "tiny pinch"
         },
         {
           "quantity": 35,
           "unit": "g",
-          "name": "Ripe avocado, sliced, to serve"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "ripe, sliced, to serve"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -2812,52 +3301,66 @@
             {
               "quantity": 180,
               "unit": "g",
-              "name": "Rød paprika"
+              "ingredient": "bell-peppers",
+              "name": "Paprika",
+              "note": "rød"
             },
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Quinoa (tørrvekt)"
+              "ingredient": "quinoa",
+              "name": "Quinoa",
+              "note": "tørrvekt"
             },
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Hermetiske sorte bønner, avrent og skylt"
+              "ingredient": "black-beans-canned",
+              "name": "Svarte bønner, hermetiske",
+              "note": "sorte, avrent og skylt"
             },
             {
               "quantity": 60,
               "unit": "g",
+              "ingredient": "cherry-tomatoes",
               "name": "Cherrytomater"
             },
             {
               "quantity": 100,
               "unit": "g",
-              "name": "Frisk spinat"
+              "ingredient": "spinach",
+              "name": "Spinat"
             },
             {
-              "quantity": 3,
-              "unit": "g",
-              "name": "Hvitløksfedd"
-            },
-            {
-              "quantity": 0.5,
-              "unit": "tsp",
-              "name": "Malt spisskummen"
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
             },
             {
               "quantity": 0.5,
               "unit": "tsp",
-              "name": "Malt koriander"
+              "ingredient": "cumin-ground",
+              "name": "Spisskummen, malt"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "coriander-ground",
+              "name": "Koriander, malt"
             },
             {
               "quantity": 15,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Sitronsaft"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -2876,52 +3379,66 @@
             {
               "quantity": 180,
               "unit": "g",
-              "name": "Röd paprika"
+              "ingredient": "bell-peppers",
+              "name": "Paprika",
+              "note": "röd"
             },
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Quinoa (torrvikt)"
+              "ingredient": "quinoa",
+              "name": "Quinoa",
+              "note": "torrvikt"
             },
             {
               "quantity": 40,
               "unit": "g",
-              "name": "Svarta bönor på burk, avrunna och sköljda"
+              "ingredient": "black-beans-canned",
+              "name": "Svarta bönor på burk",
+              "note": "avrunna och sköljda"
             },
             {
               "quantity": 60,
               "unit": "g",
+              "ingredient": "cherry-tomatoes",
               "name": "Körsbärstomater"
             },
             {
               "quantity": 100,
               "unit": "g",
-              "name": "Färsk spenat"
+              "ingredient": "spinach",
+              "name": "Spenat"
             },
             {
-              "quantity": 3,
-              "unit": "g",
-              "name": "Vitlöksklyfta"
-            },
-            {
-              "quantity": 0.5,
-              "unit": "tsp",
-              "name": "Malen spiskummin"
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
             },
             {
               "quantity": 0.5,
               "unit": "tsp",
-              "name": "Malen koriander"
+              "ingredient": "cumin-ground",
+              "name": "Spiskummin, malen"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "coriander-ground",
+              "name": "Koriander, malen"
             },
             {
               "quantity": 15,
               "unit": "ml",
+              "ingredient": "lemon-juice",
               "name": "Citronsaft"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -2938,52 +3455,66 @@
         {
           "quantity": 180,
           "unit": "g",
-          "name": "Red bell pepper"
+          "ingredient": "bell-peppers",
+          "name": "Bell peppers",
+          "note": "red"
         },
         {
           "quantity": 40,
           "unit": "g",
-          "name": "Quinoa (dry weight)"
+          "ingredient": "quinoa",
+          "name": "Quinoa",
+          "note": "dry weight"
         },
         {
           "quantity": 40,
           "unit": "g",
-          "name": "Canned black beans, drained and rinsed"
+          "ingredient": "black-beans-canned",
+          "name": "Black beans, canned",
+          "note": "drained and rinsed"
         },
         {
           "quantity": 60,
           "unit": "g",
+          "ingredient": "cherry-tomatoes",
           "name": "Cherry tomatoes"
         },
         {
           "quantity": 100,
           "unit": "g",
-          "name": "Fresh spinach"
+          "ingredient": "spinach",
+          "name": "Spinach"
         },
         {
-          "quantity": 3,
-          "unit": "g",
-          "name": "Garlic clove"
-        },
-        {
-          "quantity": 0.5,
-          "unit": "tsp",
-          "name": "Ground cumin"
+          "quantity": 1,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
         },
         {
           "quantity": 0.5,
           "unit": "tsp",
-          "name": "Ground coriander"
+          "ingredient": "cumin-ground",
+          "name": "Cumin, ground"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "coriander-ground",
+          "name": "Coriander, ground"
         },
         {
           "quantity": 15,
           "unit": "ml",
+          "ingredient": "lemon-juice",
           "name": "Lemon juice"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -3064,37 +3595,48 @@
             {
               "quantity": 30,
               "unit": "g",
-              "name": "Havregryn (tørrvekt)"
+              "ingredient": "rolled-oats",
+              "name": "Havregryn",
+              "note": "tørrvekt"
             },
             {
               "quantity": 100,
               "unit": "ml",
+              "ingredient": "water",
               "name": "Vann"
             },
             {
               "quantity": 4,
               "unit": "g",
+              "ingredient": "chia-seeds",
               "name": "Chiafrø"
             },
             {
               "quantity": 5,
               "unit": "g",
-              "name": "Naturlig mandelsmør (uten tilsatt olje eller sukker)"
+              "ingredient": "almond-butter",
+              "name": "Mandelsmør",
+              "note": "naturlig, uten tilsatt olje eller sukker"
             },
             {
               "quantity": 50,
               "unit": "g",
-              "name": "Friske eller frosne bær"
+              "ingredient": "berries-mixed",
+              "name": "Blandede bær",
+              "note": "friske eller frosne"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Hele linfrø, ferskmalt"
+              "ingredient": "flaxseed-ground",
+              "name": "Linfrø, malt",
+              "note": "ferskmalt"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Ceylonkanel"
+              "ingredient": "cinnamon-ground",
+              "name": "Kanel, malt"
             }
           ],
           "steps": [
@@ -3110,37 +3652,48 @@
             {
               "quantity": 30,
               "unit": "g",
-              "name": "Havregryn (torrvikt)"
+              "ingredient": "rolled-oats",
+              "name": "Havregryn",
+              "note": "torrvikt"
             },
             {
               "quantity": 100,
               "unit": "ml",
+              "ingredient": "water",
               "name": "Vatten"
             },
             {
               "quantity": 4,
               "unit": "g",
+              "ingredient": "chia-seeds",
               "name": "Chiafrön"
             },
             {
               "quantity": 5,
               "unit": "g",
-              "name": "Naturligt mandelsmör (utan tillsatt olja eller socker)"
+              "ingredient": "almond-butter",
+              "name": "Mandelsmör",
+              "note": "naturligt, utan tillsatt olja eller socker"
             },
             {
               "quantity": 50,
               "unit": "g",
-              "name": "Färska eller frysta bär"
+              "ingredient": "berries-mixed",
+              "name": "Blandade bär",
+              "note": "färska eller frysta"
             },
             {
               "quantity": 8,
               "unit": "g",
-              "name": "Hela linfrön, färskmalda"
+              "ingredient": "flaxseed-ground",
+              "name": "Linfrön, malda",
+              "note": "färskmalda"
             },
             {
               "quantity": 0.25,
               "unit": "tsp",
-              "name": "Ceylonkanel"
+              "ingredient": "cinnamon-ground",
+              "name": "Kanel, malen"
             }
           ],
           "steps": [
@@ -3154,37 +3707,48 @@
         {
           "quantity": 30,
           "unit": "g",
-          "name": "Rolled oats (dry weight)"
+          "ingredient": "rolled-oats",
+          "name": "Rolled oats",
+          "note": "dry weight"
         },
         {
           "quantity": 100,
           "unit": "ml",
+          "ingredient": "water",
           "name": "Water"
         },
         {
           "quantity": 4,
           "unit": "g",
+          "ingredient": "chia-seeds",
           "name": "Chia seeds"
         },
         {
           "quantity": 5,
           "unit": "g",
-          "name": "Natural almond butter (no added oil or sugar)"
+          "ingredient": "almond-butter",
+          "name": "Almond butter",
+          "note": "natural, no added oil or sugar"
         },
         {
           "quantity": 50,
           "unit": "g",
-          "name": "Fresh or frozen berries"
+          "ingredient": "berries-mixed",
+          "name": "Mixed berries",
+          "note": "fresh or frozen"
         },
         {
           "quantity": 8,
           "unit": "g",
-          "name": "Whole flaxseed, ground fresh"
+          "ingredient": "flaxseed-ground",
+          "name": "Flaxseed, ground",
+          "note": "freshly ground"
         },
         {
           "quantity": 0.25,
           "unit": "tsp",
-          "name": "Ceylon cinnamon"
+          "ingredient": "cinnamon-ground",
+          "name": "Cinnamon, ground"
         }
       ],
       "steps": [
@@ -3263,42 +3827,54 @@
             {
               "quantity": 300,
               "unit": "g",
-              "name": "Modne tomater"
+              "ingredient": "tomatoes",
+              "name": "Tomater",
+              "note": "modne"
             },
             {
               "quantity": 100,
               "unit": "g",
+              "ingredient": "fennel",
               "name": "Fennikel"
             },
             {
               "quantity": 70,
               "unit": "g",
-              "name": "Gulrot"
+              "ingredient": "carrots",
+              "name": "Gulrøtter"
             },
             {
               "quantity": 300,
               "unit": "ml",
-              "name": "Grønnsaksbuljong (fra den daglige buljongen)"
+              "ingredient": "vegetable-broth",
+              "name": "Grønnsakskraft",
+              "note": "fra den daglige buljongen"
+            },
+            {
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
             },
             {
               "quantity": 6,
               "unit": "g",
-              "name": "Hvitløksfedd"
-            },
-            {
-              "quantity": 6,
-              "unit": "g",
-              "name": "Friske basilikumblader"
+              "ingredient": "basil",
+              "name": "Basilikum"
             },
             {
               "quantity": 35,
               "unit": "g",
-              "name": "Moden avokado, i skiver, til servering"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "moden, i skiver, til servering"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -3316,42 +3892,54 @@
             {
               "quantity": 300,
               "unit": "g",
-              "name": "Mogna tomater"
+              "ingredient": "tomatoes",
+              "name": "Tomater",
+              "note": "mogna"
             },
             {
               "quantity": 100,
               "unit": "g",
+              "ingredient": "fennel",
               "name": "Fänkål"
             },
             {
               "quantity": 70,
               "unit": "g",
-              "name": "Morot"
+              "ingredient": "carrots",
+              "name": "Morötter"
             },
             {
               "quantity": 300,
               "unit": "ml",
-              "name": "Grönsaksbuljong (från den dagliga buljongen)"
+              "ingredient": "vegetable-broth",
+              "name": "Grönsakskraft",
+              "note": "från den dagliga buljongen"
+            },
+            {
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
             },
             {
               "quantity": 6,
               "unit": "g",
-              "name": "Vitlöksklyftor"
-            },
-            {
-              "quantity": 6,
-              "unit": "g",
-              "name": "Färska basilikablad"
+              "ingredient": "basil",
+              "name": "Basilika"
             },
             {
               "quantity": 35,
               "unit": "g",
-              "name": "Mogen avokado, skivad, till servering"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "mogen, skivad, till servering"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -3367,42 +3955,55 @@
         {
           "quantity": 300,
           "unit": "g",
-          "name": "Ripe tomatoes"
+          "ingredient": "tomatoes",
+          "name": "Tomatoes",
+          "note": "ripe"
         },
         {
           "quantity": 100,
           "unit": "g",
-          "name": "Fennel bulb"
+          "ingredient": "fennel",
+          "name": "Fennel",
+          "note": "bulb"
         },
         {
           "quantity": 70,
           "unit": "g",
-          "name": "Carrot"
+          "ingredient": "carrots",
+          "name": "Carrots"
         },
         {
           "quantity": 300,
           "unit": "ml",
-          "name": "Vegetable broth (from the daily broth)"
+          "ingredient": "vegetable-broth",
+          "name": "Vegetable broth",
+          "note": "from the daily broth"
+        },
+        {
+          "quantity": 2,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
         },
         {
           "quantity": 6,
           "unit": "g",
-          "name": "Garlic cloves"
-        },
-        {
-          "quantity": 6,
-          "unit": "g",
-          "name": "Fresh basil leaves"
+          "ingredient": "basil",
+          "name": "Basil"
         },
         {
           "quantity": 35,
           "unit": "g",
-          "name": "Ripe avocado, sliced, to serve"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "ripe, sliced, to serve"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -3481,52 +4082,67 @@
             {
               "quantity": 150,
               "unit": "g",
-              "name": "Brokkolibuketter"
+              "ingredient": "broccoli",
+              "name": "Brokkoli"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Frisk spinat"
+              "ingredient": "spinach",
+              "name": "Spinat"
             },
             {
               "quantity": 100,
               "unit": "g",
+              "ingredient": "cherry-tomatoes",
               "name": "Cherrytomater"
             },
             {
               "quantity": 160,
               "unit": "g",
+              "ingredient": "cucumber",
               "name": "Agurk"
             },
             {
               "quantity": 90,
               "unit": "g",
-              "name": "Moden avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "moden"
             },
             {
               "quantity": 10,
               "unit": "g",
-              "name": "Valnøtter, grovt knust"
+              "ingredient": "walnuts",
+              "name": "Valnøtter",
+              "note": "grovt knust"
             },
             {
               "quantity": 3,
               "unit": "g",
+              "ingredient": "sesame-seeds",
               "name": "Sesamfrø"
             },
             {
               "quantity": 5,
               "unit": "ml",
-              "name": "Tamari (hvetefri soyasaus)"
+              "ingredient": "tamari",
+              "name": "Tamari (glutenfri soyasaus)",
+              "note": "hvetefri soyasaus"
             },
             {
               "quantity": 15,
               "unit": "ml",
-              "name": "Limesaft (ca. ½ lime)"
+              "ingredient": "lime-juice",
+              "name": "Limesaft",
+              "note": "ca. ½ lime"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havsalt, etter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -3543,52 +4159,67 @@
             {
               "quantity": 150,
               "unit": "g",
-              "name": "Broccolibuketter"
+              "ingredient": "broccoli",
+              "name": "Broccoli"
             },
             {
               "quantity": 80,
               "unit": "g",
-              "name": "Färsk spenat"
+              "ingredient": "spinach",
+              "name": "Spenat"
             },
             {
               "quantity": 100,
               "unit": "g",
+              "ingredient": "cherry-tomatoes",
               "name": "Körsbärstomater"
             },
             {
               "quantity": 160,
               "unit": "g",
+              "ingredient": "cucumber",
               "name": "Gurka"
             },
             {
               "quantity": 90,
               "unit": "g",
-              "name": "Mogen avokado"
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "mogen"
             },
             {
               "quantity": 10,
               "unit": "g",
-              "name": "Valnötter, grovt krossade"
+              "ingredient": "walnuts",
+              "name": "Valnötter",
+              "note": "grovt krossade"
             },
             {
               "quantity": 3,
               "unit": "g",
+              "ingredient": "sesame-seeds",
               "name": "Sesamfrön"
             },
             {
               "quantity": 5,
               "unit": "ml",
-              "name": "Tamari (vetefri soja)"
+              "ingredient": "tamari",
+              "name": "Tamari (glutenfri sojasås)",
+              "note": "vetefri soja"
             },
             {
               "quantity": 15,
               "unit": "ml",
-              "name": "Limejuice (ca ½ lime)"
+              "ingredient": "lime-juice",
+              "name": "Limejuice",
+              "note": "ca ½ lime"
             },
             {
               "quantity": null,
               "unit": "",
-              "name": "Havssalt, efter smak"
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -3603,52 +4234,67 @@
         {
           "quantity": 150,
           "unit": "g",
-          "name": "Broccoli florets"
+          "ingredient": "broccoli",
+          "name": "Broccoli",
+          "note": "florets"
         },
         {
           "quantity": 80,
           "unit": "g",
-          "name": "Fresh spinach"
+          "ingredient": "spinach",
+          "name": "Spinach"
         },
         {
           "quantity": 100,
           "unit": "g",
+          "ingredient": "cherry-tomatoes",
           "name": "Cherry tomatoes"
         },
         {
           "quantity": 160,
           "unit": "g",
+          "ingredient": "cucumber",
           "name": "Cucumber"
         },
         {
           "quantity": 90,
           "unit": "g",
-          "name": "Ripe avocado"
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "ripe"
         },
         {
           "quantity": 10,
           "unit": "g",
-          "name": "Walnuts, roughly broken"
+          "ingredient": "walnuts",
+          "name": "Walnuts",
+          "note": "roughly broken"
         },
         {
           "quantity": 3,
           "unit": "g",
+          "ingredient": "sesame-seeds",
           "name": "Sesame seeds"
         },
         {
           "quantity": 5,
           "unit": "ml",
-          "name": "Tamari (wheat-free soy sauce)"
+          "ingredient": "tamari",
+          "name": "Tamari (gluten-free soy sauce)"
         },
         {
           "quantity": 15,
           "unit": "ml",
-          "name": "Lime juice (about ½ lime)"
+          "ingredient": "lime-juice",
+          "name": "Lime juice",
+          "note": "about ½ lime"
         },
         {
           "quantity": null,
           "unit": "",
-          "name": "Sea salt, to taste"
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [

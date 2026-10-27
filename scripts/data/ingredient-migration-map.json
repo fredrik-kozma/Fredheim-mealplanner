@@ -1,0 +1,5761 @@
+{
+  "version": "v1-final",
+  "note": "Maps each pre-migration ingredient name (lowercased, whitespace-collapsed) to its dictionary id (`i`) and leftover prep/usage text (`n`).",
+  "names": {
+    "en": {
+      "agar-agar": {
+        "i": "agar-agar"
+      },
+      "almonds": {
+        "i": "almonds"
+      },
+      "amla powder": {
+        "i": "amla-powder"
+      },
+      "apple (firm variety — granny smith or cox)": {
+        "i": "apples",
+        "n": "firm variety, Granny Smith or Cox"
+      },
+      "apple, granny smith, golden delicious, raw": {
+        "i": "apples",
+        "n": "Granny Smith, Golden Delicious"
+      },
+      "apple, imported, raw": {
+        "i": "apples"
+      },
+      "apple, norwegian, unspecified, raw": {
+        "i": "apples"
+      },
+      "apple, red aroma, raw": {
+        "i": "apples",
+        "n": "Red aroma"
+      },
+      "apple, unspecified, raw": {
+        "i": "apples"
+      },
+      "apples, peeled, cored and quartered": {
+        "i": "apples",
+        "n": "peeled, cored and quartered"
+      },
+      "apricots, dried": {
+        "i": "dried-apricots"
+      },
+      "aquafaba (reserved bean liquid)": {
+        "i": "aquafaba",
+        "n": "reserved bean liquid"
+      },
+      "arugula": {
+        "i": "arugula"
+      },
+      "asparagus beans, frozen": {
+        "i": "asparagus-beans-frozen"
+      },
+      "avocado, diced": {
+        "i": "avocados",
+        "n": "diced"
+      },
+      "avocado, diced, to serve": {
+        "i": "avocados",
+        "n": "diced, to serve"
+      },
+      "avocado, raw": {
+        "i": "avocados"
+      },
+      "baby spinach": {
+        "i": "spinach",
+        "n": "baby"
+      },
+      "baking potatoes": {
+        "i": "potatoes",
+        "n": "baking"
+      },
+      "baking powder": {
+        "i": "baking-powder"
+      },
+      "baking soda": {
+        "i": "baking-soda"
+      },
+      "banana, raw": {
+        "i": "bananas"
+      },
+      "banana, sliced fresh in the morning": {
+        "i": "bananas",
+        "n": "sliced fresh in the morning"
+      },
+      "barley coffee": {
+        "i": "barley-coffee"
+      },
+      "barley coffee powder (e.g. inka, caro)": {
+        "i": "barley-coffee",
+        "n": "powder, e.g. Inka, Caro"
+      },
+      "basil": {
+        "i": "basil"
+      },
+      "basil, dried": {
+        "i": "basil-dried"
+      },
+      "basil, raw": {
+        "i": "basil"
+      },
+      "bay leaves, dried": {
+        "i": "bay-leaves",
+        "n": "dried"
+      },
+      "bean noodles, dry": {
+        "i": "bean-noodles",
+        "n": "dry"
+      },
+      "bean sprouts, mung bean sprouts, raw": {
+        "i": "bean-sprouts"
+      },
+      "beetroot (raw)": {
+        "i": "beetroot"
+      },
+      "beetroot, norwegian, raw": {
+        "i": "beetroot"
+      },
+      "bell pepper, green, raw": {
+        "i": "bell-peppers",
+        "n": "green"
+      },
+      "bell pepper, raw": {
+        "i": "bell-peppers"
+      },
+      "bell pepper, red, cooked": {
+        "i": "bell-peppers",
+        "n": "red, cooked"
+      },
+      "bell pepper, red, raw": {
+        "i": "bell-peppers",
+        "n": "red"
+      },
+      "bell pepper, yellow/orange, raw": {
+        "i": "bell-peppers",
+        "n": "yellow/orange"
+      },
+      "black beans": {
+        "i": "black-beans-canned"
+      },
+      "black beans, cooked": {
+        "i": "black-beans-canned"
+      },
+      "black beans, cooked, drained and rinsed (no added salt)": {
+        "i": "black-beans-canned",
+        "n": "drained and rinsed (no added salt)"
+      },
+      "black beans, cooked, drained, rinsed": {
+        "i": "black-beans-canned",
+        "n": "drained, rinsed"
+      },
+      "black mustard seeds": {
+        "i": "mustard-seeds",
+        "n": "black"
+      },
+      "black salt": {
+        "i": "black-salt"
+      },
+      "blackberries, raw": {
+        "i": "blackberries"
+      },
+      "blueberries, raw": {
+        "i": "blueberries"
+      },
+      "boiling water": {
+        "i": "water",
+        "n": "boiling"
+      },
+      "boiling water (for blooming carob)": {
+        "i": "water",
+        "n": "boiling, for blooming carob"
+      },
+      "boiling water, for blooming the carob": {
+        "i": "water",
+        "n": "boiling, for blooming the carob"
+      },
+      "boiling water, for blooming the dates": {
+        "i": "water",
+        "n": "boiling, for blooming the dates"
+      },
+      "boiling water, for the date paste": {
+        "i": "water",
+        "n": "boiling, for the date paste"
+      },
+      "bread crumbs": {
+        "i": "bread-crumbs"
+      },
+      "bread crumbs, gluten free": {
+        "i": "bread-crumbs",
+        "n": "gluten free"
+      },
+      "bread, extra coarse (75-100%), purchased, wholemeal bread without whole grains": {
+        "i": "bread",
+        "n": "extra coarse (75-100%), purchased, Wholemeal bread without whole grains"
+      },
+      "bread, extra coarse, 75% wholemeal, home-baked": {
+        "i": "bread",
+        "n": "extra coarse, 75% wholemeal, home-baked"
+      },
+      "bread, toasted": {
+        "i": "bread",
+        "n": "toasted"
+      },
+      "broccoli florets": {
+        "i": "broccoli",
+        "n": "florets"
+      },
+      "broccoli, cut into small florets": {
+        "i": "broccoli",
+        "n": "cut into small florets"
+      },
+      "broccoli, norwegian, raw": {
+        "i": "broccoli"
+      },
+      "broccoli, unspecified, raw": {
+        "i": "broccoli"
+      },
+      "brown rice flour": {
+        "i": "rice-flour",
+        "n": "brown"
+      },
+      "brussels sprouts, frozen": {
+        "i": "brussels-sprouts-frozen"
+      },
+      "buckwheat flour": {
+        "i": "buckwheat-flour"
+      },
+      "buckwheat groats": {
+        "i": "buckwheat-groats"
+      },
+      "buckwheat, whole grain": {
+        "i": "buckwheat-groats",
+        "n": "whole grain"
+      },
+      "bulgur groats, dry": {
+        "i": "bulgur",
+        "n": "dry"
+      },
+      "butternut squash or pumpkin": {
+        "i": "butternut-squash",
+        "n": "or pumpkin"
+      },
+      "canned black beans, drained and rinsed": {
+        "i": "black-beans-canned",
+        "n": "drained and rinsed"
+      },
+      "canned white beans (cannellini), drained and rinsed": {
+        "i": "white-beans-canned",
+        "n": "drained and rinsed"
+      },
+      "canned whole tomatoes": {
+        "i": "canned-tomatoes",
+        "n": "whole"
+      },
+      "cannellini beans, cooked": {
+        "i": "white-beans-canned"
+      },
+      "canola oil": {
+        "i": "rapeseed-oil"
+      },
+      "capers": {
+        "i": "capers"
+      },
+      "caraway or fennel seeds, lightly crushed": {
+        "i": "caraway-seeds",
+        "n": "or fennel, lightly crushed"
+      },
+      "caraway, cumin, whole": {
+        "i": "caraway-seeds",
+        "n": "whole"
+      },
+      "carob powder": {
+        "i": "carob-powder"
+      },
+      "carrot": {
+        "i": "carrots"
+      },
+      "carrot, cooked": {
+        "i": "carrots",
+        "n": "cooked"
+      },
+      "carrot, diced": {
+        "i": "carrots",
+        "n": "diced"
+      },
+      "carrot, grated": {
+        "i": "carrots",
+        "n": "grated"
+      },
+      "carrot, imported, raw": {
+        "i": "carrots"
+      },
+      "carrot, left whole (or halved lengthwise)": {
+        "i": "carrots",
+        "n": "left whole (or halved lengthwise)"
+      },
+      "carrot, norwegian, raw": {
+        "i": "carrots"
+      },
+      "carrot, unspecified, raw": {
+        "i": "carrots"
+      },
+      "carrots, diced": {
+        "i": "carrots",
+        "n": "diced"
+      },
+      "carrots, finely grated": {
+        "i": "carrots",
+        "n": "finely grated"
+      },
+      "carrots, sliced": {
+        "i": "carrots",
+        "n": "sliced"
+      },
+      "cashew milk": {
+        "i": "cashew-milk"
+      },
+      "cashew sour cream": {
+        "i": "cashew-sour-cream"
+      },
+      "cashew, unsalted": {
+        "i": "cashews",
+        "n": "unsalted"
+      },
+      "cashews, soaked 12 hours": {
+        "i": "cashews",
+        "n": "soaked 12 hours"
+      },
+      "cauliflower florets": {
+        "i": "cauliflower",
+        "n": "florets"
+      },
+      "cauliflower, norwegian, raw": {
+        "i": "cauliflower"
+      },
+      "celery root, norwegian, raw": {
+        "i": "celeriac"
+      },
+      "celery stalk": {
+        "i": "celery"
+      },
+      "celery stalks": {
+        "i": "celery"
+      },
+      "celery stalks, diced": {
+        "i": "celery",
+        "n": "diced"
+      },
+      "celery stalks, norwegian, raw": {
+        "i": "celery"
+      },
+      "celery stalks, roughly chopped": {
+        "i": "celery",
+        "n": "roughly chopped"
+      },
+      "celery stalks, sliced": {
+        "i": "celery",
+        "n": "sliced"
+      },
+      "celery, broken into large chunks": {
+        "i": "celery",
+        "n": "broken into large chunks"
+      },
+      "ceylon cinnamon": {
+        "i": "cinnamon-ground"
+      },
+      "ceylon cinnamon, ground": {
+        "i": "cinnamon-ground"
+      },
+      "cherry tomato, imported, raw": {
+        "i": "cherry-tomatoes"
+      },
+      "cherry tomatoes": {
+        "i": "cherry-tomatoes"
+      },
+      "chia seeds": {
+        "i": "chia-seeds"
+      },
+      "chia seeds (for topping)": {
+        "i": "chia-seeds",
+        "n": "for topping"
+      },
+      "chia seeds, dried": {
+        "i": "chia-seeds",
+        "n": "dried"
+      },
+      "chia seeds, for the crust": {
+        "i": "chia-seeds",
+        "n": "for the crust"
+      },
+      "chia seeds, for the filling": {
+        "i": "chia-seeds",
+        "n": "for the filling"
+      },
+      "chickpea cooking liquid": {
+        "i": "aquafaba"
+      },
+      "chickpea flour": {
+        "i": "chickpea-flour"
+      },
+      "chickpea flour (besan)": {
+        "i": "chickpea-flour",
+        "n": "besan"
+      },
+      "chickpeas, cooked": {
+        "i": "chickpeas-canned"
+      },
+      "chickpeas, dry": {
+        "i": "chickpeas-dry"
+      },
+      "chili powder": {
+        "i": "chili-powder"
+      },
+      "chili, red, raw": {
+        "i": "chili-fresh",
+        "n": "red"
+      },
+      "chilli flakes": {
+        "i": "chili-flakes"
+      },
+      "chinese cabbage, norwegian, raw": {
+        "i": "chinese-cabbage"
+      },
+      "chives, raw": {
+        "i": "chives"
+      },
+      "cinnamon": {
+        "i": "cinnamon-ground"
+      },
+      "cinnamon, ground": {
+        "i": "cinnamon-ground"
+      },
+      "cloves, ground": {
+        "i": "cloves-ground"
+      },
+      "coconut cream": {
+        "i": "coconut-cream"
+      },
+      "coconut milk": {
+        "i": "coconut-milk"
+      },
+      "coconut oil": {
+        "i": "coconut-oil"
+      },
+      "coconut oil, for the base": {
+        "i": "coconut-oil",
+        "n": "for the base"
+      },
+      "coconut oil, melted, for the filling": {
+        "i": "coconut-oil",
+        "n": "melted, for the filling"
+      },
+      "coconut, shredded": {
+        "i": "shredded-coconut"
+      },
+      "cold filtered water (for blending)": {
+        "i": "water",
+        "n": "cold filtered, for blending"
+      },
+      "cold water": {
+        "i": "water",
+        "n": "cold"
+      },
+      "cold water, to adjust": {
+        "i": "water",
+        "n": "cold, to adjust"
+      },
+      "cooked black beans (rinsed if canned)": {
+        "i": "black-beans-canned",
+        "n": "rinsed if canned"
+      },
+      "cooked cannellini (white) beans, drained": {
+        "i": "white-beans-canned",
+        "n": "drained"
+      },
+      "cooked cannellini beans (drained and rinsed)": {
+        "i": "white-beans-canned",
+        "n": "drained and rinsed"
+      },
+      "cooked cannellini beans (white beans)": {
+        "i": "white-beans-canned"
+      },
+      "cooked cannellini beans, drained and rinsed": {
+        "i": "white-beans-canned",
+        "n": "drained and rinsed"
+      },
+      "cooked chickpeas, drained": {
+        "i": "chickpeas-canned",
+        "n": "drained"
+      },
+      "cooked chickpeas, unsalted or well-rinsed": {
+        "i": "chickpeas-canned",
+        "n": "unsalted or well-rinsed"
+      },
+      "cooked white (cannellini) beans, drained and rinsed": {
+        "i": "white-beans-canned",
+        "n": "drained and rinsed"
+      },
+      "cooked white (cannellini) beans, rinsed": {
+        "i": "white-beans-canned",
+        "n": "rinsed"
+      },
+      "coriander powder": {
+        "i": "coriander-ground"
+      },
+      "coriander seeds": {
+        "i": "coriander-seeds"
+      },
+      "coriander, dried": {
+        "i": "coriander-ground",
+        "n": "dried"
+      },
+      "coriander, raw": {
+        "i": "coriander-fresh"
+      },
+      "corn flour, polenta": {
+        "i": "cornmeal-polenta"
+      },
+      "corn, frozen": {
+        "i": "sweetcorn-frozen"
+      },
+      "cornstarch": {
+        "i": "cornstarch"
+      },
+      "courgette": {
+        "i": "zucchini"
+      },
+      "cranberries dried": {
+        "i": "dried-cranberries"
+      },
+      "crushed tomatoes": {
+        "i": "canned-tomatoes",
+        "n": "crushed"
+      },
+      "cucumber": {
+        "i": "cucumber"
+      },
+      "cucumber, norwegian, raw": {
+        "i": "cucumber"
+      },
+      "cucumber, peeled and grated": {
+        "i": "cucumber",
+        "n": "peeled and grated"
+      },
+      "cumin powder": {
+        "i": "cumin-ground"
+      },
+      "curry powder": {
+        "i": "curry-powder"
+      },
+      "curry, ground": {
+        "i": "curry-powder"
+      },
+      "dark rye crispbreads (2)": {
+        "i": "crispbread",
+        "n": "dark, 2"
+      },
+      "date paste": {
+        "i": "date-paste"
+      },
+      "date, dried": {
+        "i": "dates-dried"
+      },
+      "dates, dried": {
+        "i": "dates-dried"
+      },
+      "dates, pitted": {
+        "i": "dates-dried",
+        "n": "pitted"
+      },
+      "deglet dates, pitted (soaked 20 min in warm water)": {
+        "i": "dates-dried",
+        "n": "pitted (soaked 20 min in warm water)"
+      },
+      "desiccated coconut": {
+        "i": "shredded-coconut"
+      },
+      "dill, raw": {
+        "i": "dill"
+      },
+      "dill, raw, to taste": {
+        "i": "dill",
+        "n": "to taste"
+      },
+      "dried basil": {
+        "i": "basil-dried"
+      },
+      "dried borlotti (cranberry) beans": {
+        "i": "borlotti-beans-dry",
+        "n": "cranberry"
+      },
+      "dried borlotti (cranberry) beans, unsoaked": {
+        "i": "borlotti-beans-dry",
+        "n": "cranberry, unsoaked"
+      },
+      "dried dates, pitted": {
+        "i": "dates-dried",
+        "n": "pitted"
+      },
+      "dried figs, chopped": {
+        "i": "dried-figs",
+        "n": "chopped"
+      },
+      "dried marjoram": {
+        "i": "marjoram-dried"
+      },
+      "dried oregano": {
+        "i": "oregano-dried"
+      },
+      "dried plums (pitted prunes, no added sugar)": {
+        "i": "prunes",
+        "n": "pitted, no added sugar"
+      },
+      "dried sage": {
+        "i": "sage-dried"
+      },
+      "dried thyme": {
+        "i": "thyme-dried"
+      },
+      "dry yeast": {
+        "i": "dry-yeast"
+      },
+      "edamame beans, soybeans, frozen": {
+        "i": "edamame-frozen"
+      },
+      "eggplant, raw": {
+        "i": "eggplant"
+      },
+      "extra virgin olive oil": {
+        "i": "olive-oil",
+        "n": "extra virgin"
+      },
+      "feld salad": {
+        "i": "salad-leaves",
+        "n": "feld"
+      },
+      "fennel bulb": {
+        "i": "fennel",
+        "n": "bulb"
+      },
+      "fennel, raw": {
+        "i": "fennel"
+      },
+      "fenugreek seeds": {
+        "i": "fenugreek-seeds"
+      },
+      "fibre husk": {
+        "i": "psyllium-husk"
+      },
+      "figs, dried": {
+        "i": "dried-figs"
+      },
+      "filtered water": {
+        "i": "water",
+        "n": "filtered"
+      },
+      "filtered water, lukewarm": {
+        "i": "water",
+        "n": "filtered, lukewarm"
+      },
+      "fine salt": {
+        "i": "salt"
+      },
+      "fine sea salt": {
+        "i": "salt"
+      },
+      "fine sea salt, for the pickled onions, to taste": {
+        "i": "salt",
+        "n": "for the pickled onions, to taste"
+      },
+      "fine sea salt, level": {
+        "i": "salt",
+        "n": "level"
+      },
+      "fine sea salt, pinch, to taste": {
+        "i": "salt",
+        "n": "pinch, to taste"
+      },
+      "fine sea salt, to taste": {
+        "i": "salt",
+        "n": "to taste"
+      },
+      "flat-leaf parsley, chopped": {
+        "i": "parsley",
+        "n": "flat-leaf, chopped"
+      },
+      "flaxseeds": {
+        "i": "flaxseed-whole"
+      },
+      "flour, gluten-free, jyttemel original": {
+        "i": "gluten-free-flour-mix"
+      },
+      "fresh basil leaves": {
+        "i": "basil"
+      },
+      "fresh blueberries (added per serving, on top)": {
+        "i": "blueberries",
+        "n": "added per serving, on top"
+      },
+      "fresh champignon mushrooms, halved": {
+        "i": "mushrooms",
+        "n": "champignon, halved"
+      },
+      "fresh chives or parsley, chopped, for garnish": {
+        "i": "chives",
+        "n": "or parsley, chopped, for garnish"
+      },
+      "fresh chives, chopped": {
+        "i": "chives",
+        "n": "chopped"
+      },
+      "fresh cilantro, chopped": {
+        "i": "coriander-fresh",
+        "n": "chopped"
+      },
+      "fresh dill (small handful)": {
+        "i": "dill",
+        "n": "small handful"
+      },
+      "fresh dill, chopped": {
+        "i": "dill",
+        "n": "chopped"
+      },
+      "fresh flat-leaf parsley": {
+        "i": "parsley",
+        "n": "flat-leaf"
+      },
+      "fresh flat-leaf parsley, chopped": {
+        "i": "parsley",
+        "n": "flat-leaf, chopped"
+      },
+      "fresh ginger root": {
+        "i": "ginger-fresh"
+      },
+      "fresh ginger root, grated": {
+        "i": "ginger-fresh",
+        "n": "grated"
+      },
+      "fresh ginger, grated": {
+        "i": "ginger-fresh",
+        "n": "grated"
+      },
+      "fresh ginger, sliced": {
+        "i": "ginger-fresh",
+        "n": "sliced"
+      },
+      "fresh herbs (parsley, dill or basil)": {
+        "i": "herbs-fresh-mixed",
+        "n": "parsley, dill or basil"
+      },
+      "fresh lemon juice": {
+        "i": "lemon-juice"
+      },
+      "fresh lemon juice (added at finish)": {
+        "i": "lemon-juice",
+        "n": "added at finish"
+      },
+      "fresh lemon juice, for the pickle": {
+        "i": "lemon-juice",
+        "n": "for the pickle"
+      },
+      "fresh lemon juice, for the soup": {
+        "i": "lemon-juice",
+        "n": "for the soup"
+      },
+      "fresh lime juice": {
+        "i": "lime-juice"
+      },
+      "fresh or frozen berries": {
+        "i": "berries-mixed",
+        "n": "fresh or frozen"
+      },
+      "fresh or frozen berries (blueberries, raspberries)": {
+        "i": "berries-mixed",
+        "n": "fresh or frozen, blueberries, raspberries"
+      },
+      "fresh or frozen blueberries": {
+        "i": "blueberries",
+        "n": "fresh or frozen"
+      },
+      "fresh or frozen pineapple chunks": {
+        "i": "pineapple",
+        "n": "fresh or frozen chunks"
+      },
+      "fresh or frozen raspberries or blueberries": {
+        "i": "raspberries",
+        "n": "fresh or frozen or blueberries"
+      },
+      "fresh parsley": {
+        "i": "parsley"
+      },
+      "fresh parsley or thyme, optional": {
+        "i": "parsley",
+        "n": "or thyme, optional"
+      },
+      "fresh parsley, chopped": {
+        "i": "parsley",
+        "n": "chopped"
+      },
+      "fresh parsley, chopped (optional)": {
+        "i": "parsley",
+        "n": "chopped (optional)"
+      },
+      "fresh rosemary": {
+        "i": "rosemary"
+      },
+      "fresh rosemary or thyme": {
+        "i": "rosemary",
+        "n": "or thyme"
+      },
+      "fresh spinach": {
+        "i": "spinach"
+      },
+      "fresh thyme": {
+        "i": "thyme"
+      },
+      "frozen banana": {
+        "i": "bananas",
+        "n": "frozen"
+      },
+      "frozen blueberries": {
+        "i": "blueberries-frozen"
+      },
+      "frozen blueberries to fold in at the end": {
+        "i": "blueberries-frozen",
+        "n": "to fold in at the end"
+      },
+      "frozen blueberries, for blending": {
+        "i": "blueberries-frozen",
+        "n": "for blending"
+      },
+      "frozen corn kernels": {
+        "i": "sweetcorn-frozen",
+        "n": "kernels"
+      },
+      "frozen forest berries, for blending": {
+        "i": "berries-mixed-frozen",
+        "n": "forest, for blending"
+      },
+      "frozen mango chunks": {
+        "i": "mango-frozen",
+        "n": "chunks"
+      },
+      "frozen mango, for blending": {
+        "i": "mango-frozen",
+        "n": "for blending"
+      },
+      "frozen mixed berries (blueberries, raspberries, blackberries)": {
+        "i": "berries-mixed-frozen",
+        "n": "blueberries, raspberries, blackberries"
+      },
+      "frozen pineapple, for blending": {
+        "i": "pineapple-frozen",
+        "n": "for blending"
+      },
+      "frozen raspberries, for blending": {
+        "i": "raspberries-frozen",
+        "n": "for blending"
+      },
+      "frozen strawberries, for blending": {
+        "i": "strawberries-frozen",
+        "n": "for blending"
+      },
+      "garam masala": {
+        "i": "garam-masala"
+      },
+      "garlic": {
+        "i": "garlic"
+      },
+      "garlic clove": {
+        "i": "garlic"
+      },
+      "garlic cloves": {
+        "i": "garlic"
+      },
+      "garlic cloves, minced": {
+        "i": "garlic"
+      },
+      "garlic cloves, smashed": {
+        "i": "garlic",
+        "n": "smashed"
+      },
+      "garlic cloves, whole, unpeeled": {
+        "i": "garlic",
+        "n": "whole, unpeeled"
+      },
+      "garlic powder": {
+        "i": "garlic-powder"
+      },
+      "garlic, minced": {
+        "i": "garlic"
+      },
+      "garlic, raw": {
+        "i": "garlic"
+      },
+      "garlic, roasted": {
+        "i": "garlic",
+        "n": "roasted"
+      },
+      "garlic, sliced": {
+        "i": "garlic",
+        "n": "sliced"
+      },
+      "ginger, powder": {
+        "i": "ginger-ground"
+      },
+      "ginger, raw": {
+        "i": "ginger-fresh"
+      },
+      "gluten flour": {
+        "i": "gluten-flour"
+      },
+      "gluten-free oat flour": {
+        "i": "oat-flour",
+        "n": "gluten-free"
+      },
+      "gluten-free oat flour for the porridge": {
+        "i": "oat-flour",
+        "n": "gluten-free for the porridge"
+      },
+      "grape, blue, raw": {
+        "i": "grapes",
+        "n": "blue"
+      },
+      "grape, unspecified, raw": {
+        "i": "grapes"
+      },
+      "grated courgette, pressed down (not loose and airy)": {
+        "i": "zucchini",
+        "n": "grated, pressed down (not loose and airy)"
+      },
+      "green peas, fresh or unsalted frozen": {
+        "i": "green-peas",
+        "n": "fresh or unsalted frozen"
+      },
+      "ground cardamom": {
+        "i": "cardamom-ground"
+      },
+      "ground cinnamon": {
+        "i": "cinnamon-ground"
+      },
+      "ground cloves, tiny pinch": {
+        "i": "cloves-ground",
+        "n": "tiny pinch"
+      },
+      "ground coriander": {
+        "i": "coriander-ground"
+      },
+      "ground cumin": {
+        "i": "cumin-ground"
+      },
+      "ground cumin, toasted": {
+        "i": "cumin-ground",
+        "n": "toasted"
+      },
+      "ground flaxseed": {
+        "i": "flaxseed-ground"
+      },
+      "ground flaxseed (added off-heat)": {
+        "i": "flaxseed-ground",
+        "n": "added off-heat"
+      },
+      "ground flaxseed (added off-heat, per bowl)": {
+        "i": "flaxseed-ground",
+        "n": "added off-heat, per bowl"
+      },
+      "ground flaxseed (added per serving, off-heat)": {
+        "i": "flaxseed-ground",
+        "n": "added per serving, off-heat"
+      },
+      "ground flaxseed, for finishing": {
+        "i": "flaxseed-ground",
+        "n": "for finishing"
+      },
+      "ground flaxseed, stirred in at serving": {
+        "i": "flaxseed-ground",
+        "n": "stirred in at serving"
+      },
+      "ground ginger": {
+        "i": "ginger-ground"
+      },
+      "ground nutmeg, tiny pinch": {
+        "i": "nutmeg-ground",
+        "n": "tiny pinch"
+      },
+      "ground turmeric": {
+        "i": "turmeric-ground"
+      },
+      "hazelnuts": {
+        "i": "hazelnuts"
+      },
+      "head cabbage, raw": {
+        "i": "cabbage"
+      },
+      "herb salt": {
+        "i": "herb-salt"
+      },
+      "homemade oat milk": {
+        "i": "oat-milk",
+        "n": "homemade"
+      },
+      "honey": {
+        "i": "honey"
+      },
+      "honeydew melon, raw": {
+        "i": "melon"
+      },
+      "horseradish, raw": {
+        "i": "horseradish"
+      },
+      "hot sauce": {
+        "i": "hot-sauce"
+      },
+      "hot water": {
+        "i": "water",
+        "n": "hot"
+      },
+      "hot water, for soaking the dates": {
+        "i": "water",
+        "n": "hot, for soaking the dates"
+      },
+      "hummus": {
+        "i": "hummus"
+      },
+      "ice-cold water or reserved bean liquid": {
+        "i": "water",
+        "n": "ice-cold or reserved bean liquid"
+      },
+      "instant dry yeast": {
+        "i": "dry-yeast"
+      },
+      "instant dry yeast (for the final dough)": {
+        "i": "dry-yeast",
+        "n": "for the final dough"
+      },
+      "instant dry yeast (for the sponge)": {
+        "i": "dry-yeast",
+        "n": "for the sponge"
+      },
+      "just-boiled water (for blooming the carob)": {
+        "i": "water",
+        "n": "just-boiled, for blooming the carob"
+      },
+      "kalamata olives": {
+        "i": "olives",
+        "n": "kalamata"
+      },
+      "kalamata or green olives, pitted": {
+        "i": "olives",
+        "n": "kalamata or green, pitted"
+      },
+      "kalamata or green olives, pitted (8)": {
+        "i": "olives",
+        "n": "kalamata or green, pitted (8)"
+      },
+      "kale or savoy cabbage, shredded": {
+        "i": "kale",
+        "n": "or savoy cabbage, shredded"
+      },
+      "kale, raw": {
+        "i": "kale"
+      },
+      "kale, stems removed": {
+        "i": "kale",
+        "n": "stems removed"
+      },
+      "kale, stems removed and finely chopped": {
+        "i": "kale",
+        "n": "stems removed and finely chopped"
+      },
+      "ketchup, tomato ketchup": {
+        "i": "ketchup"
+      },
+      "kidney beans, red, canned": {
+        "i": "kidney-beans-canned",
+        "n": "red"
+      },
+      "large carrot, diced": {
+        "i": "carrots",
+        "n": "large, diced"
+      },
+      "lasagne sheets": {
+        "i": "lasagne-sheets"
+      },
+      "leeks, norwegian, raw": {
+        "i": "leeks"
+      },
+      "lemon": {
+        "i": "lemons"
+      },
+      "lemon juice": {
+        "i": "lemon-juice"
+      },
+      "lemon juice, bottled": {
+        "i": "lemon-juice"
+      },
+      "lemon juice, fresh": {
+        "i": "lemon-juice"
+      },
+      "lemon or orange zest (optional, recommended)": {
+        "i": "lemons",
+        "n": "or orange zest, optional, recommended"
+      },
+      "lemon peel": {
+        "i": "lemons",
+        "n": "peel"
+      },
+      "lemon zest": {
+        "i": "lemons",
+        "n": "zest"
+      },
+      "lemon — all the juice + the zest": {
+        "i": "lemons",
+        "n": "all the juice + the zest"
+      },
+      "lemon — juice, plus the zest if using": {
+        "i": "lemons",
+        "n": "juice, plus the zest if using"
+      },
+      "lemon, juice": {
+        "i": "lemon-juice"
+      },
+      "lemon, juice of": {
+        "i": "lemons",
+        "n": "juice of"
+      },
+      "lemon, juice only": {
+        "i": "lemon-juice",
+        "n": "juice only"
+      },
+      "lemon, juiced": {
+        "i": "lemons",
+        "n": "juiced"
+      },
+      "lemon, raw": {
+        "i": "lemons"
+      },
+      "lemon, zest only": {
+        "i": "lemons",
+        "n": "zest only"
+      },
+      "lemon, zested and juiced": {
+        "i": "lemons",
+        "n": "zested and juiced"
+      },
+      "lentils, green and brown, dry": {
+        "i": "lentils-green-brown",
+        "n": "green and brown, dry"
+      },
+      "lentils, red/pink, dry": {
+        "i": "lentils-red",
+        "n": "red/pink, dry"
+      },
+      "lime juice": {
+        "i": "lime-juice"
+      },
+      "lime juice (about ½ lime)": {
+        "i": "lime-juice",
+        "n": "about ½ lime"
+      },
+      "lime zest, grated, for the base": {
+        "i": "limes",
+        "n": "zest, grated, for the base"
+      },
+      "lime zest, grated, for the filling": {
+        "i": "limes",
+        "n": "zest, grated, for the filling"
+      },
+      "lingoberries, raw": {
+        "i": "lingonberries"
+      },
+      "live plant-based yogurt, unsweetened — starter": {
+        "i": "plant-yogurt",
+        "n": "live, unsweetened, starter"
+      },
+      "low-sodium vegetable broth": {
+        "i": "vegetable-broth",
+        "n": "low-sodium"
+      },
+      "lukewarm water (38–40°c)": {
+        "i": "water",
+        "n": "lukewarm, 38–40°C"
+      },
+      "maple syrup": {
+        "i": "maple-syrup"
+      },
+      "marjoram, dried": {
+        "i": "marjoram-dried"
+      },
+      "mature rye sourdough starter": {
+        "i": "sourdough-starter",
+        "n": "mature rye"
+      },
+      "medium onion, finely chopped": {
+        "i": "onions",
+        "n": "medium, finely chopped"
+      },
+      "medjool date, pitted": {
+        "i": "medjool-dates",
+        "n": "pitted"
+      },
+      "medjool dates, pitted": {
+        "i": "medjool-dates",
+        "n": "pitted"
+      },
+      "medjool dates, pitted and chopped": {
+        "i": "medjool-dates",
+        "n": "pitted and chopped"
+      },
+      "medjool dates, pitted and finely chopped": {
+        "i": "medjool-dates",
+        "n": "pitted and finely chopped"
+      },
+      "medjool dates, pitted and roughly chopped": {
+        "i": "medjool-dates",
+        "n": "pitted and roughly chopped"
+      },
+      "medjool dates, pitted, for the crust": {
+        "i": "medjool-dates",
+        "n": "pitted, for the crust"
+      },
+      "medjool dates, pitted, for the filling": {
+        "i": "medjool-dates",
+        "n": "pitted, for the filling"
+      },
+      "millet": {
+        "i": "millet"
+      },
+      "millet, whole grai": {
+        "i": "millet",
+        "n": "whole grain"
+      },
+      "mint, fresh": {
+        "i": "mint"
+      },
+      "mixed salad leaves (rocket, spinach, lamb's lettuce)": {
+        "i": "salad-leaves",
+        "n": "rocket, spinach, lamb's lettuce"
+      },
+      "mushrooms (any variety), halved": {
+        "i": "mushrooms",
+        "n": "any variety, halved"
+      },
+      "mustard seeds": {
+        "i": "mustard-seeds"
+      },
+      "natural almond butter (no added oil or sugar)": {
+        "i": "almond-butter",
+        "n": "natural, no added oil or sugar"
+      },
+      "nigella sativa (black seed)": {
+        "i": "nigella-seeds",
+        "n": "black seed"
+      },
+      "non-diary milk": {
+        "i": "plant-milk"
+      },
+      "nori, dried seaweed": {
+        "i": "nori",
+        "n": "dried seaweed"
+      },
+      "nutmeg, ground": {
+        "i": "nutmeg-ground"
+      },
+      "nutmeg, ground, to taste": {
+        "i": "nutmeg-ground",
+        "n": "to taste"
+      },
+      "nutritional yeast": {
+        "i": "nutritional-yeast"
+      },
+      "nutritional yeast (fortified)": {
+        "i": "nutritional-yeast",
+        "n": "fortified"
+      },
+      "nutritional yeast (unfortified)": {
+        "i": "nutritional-yeast",
+        "n": "unfortified"
+      },
+      "nutritional yeast, for the batter": {
+        "i": "nutritional-yeast",
+        "n": "for the batter"
+      },
+      "nutritional yeast, for the finishing dust": {
+        "i": "nutritional-yeast",
+        "n": "for the finishing dust"
+      },
+      "oat flakes, oat flakes": {
+        "i": "rolled-oats"
+      },
+      "oat flour": {
+        "i": "oat-flour"
+      },
+      "oat flour (gluten-free)": {
+        "i": "oat-flour",
+        "n": "gluten-free"
+      },
+      "oat milk": {
+        "i": "oat-milk"
+      },
+      "oats, big": {
+        "i": "rolled-oats",
+        "n": "big"
+      },
+      "olive oil": {
+        "i": "olive-oil"
+      },
+      "olive oil (to sauté + brush)": {
+        "i": "olive-oil",
+        "n": "to sauté + brush"
+      },
+      "olive oil, extra virgin, virgin oil": {
+        "i": "olive-oil",
+        "n": "extra virgin"
+      },
+      "olive water": {
+        "i": "olive-brine"
+      },
+      "olive, black, canned": {
+        "i": "olives",
+        "n": "black, canned"
+      },
+      "olives, greens, pickles": {
+        "i": "olives",
+        "n": "green"
+      },
+      "onion powder": {
+        "i": "onion-powder"
+      },
+      "onion, diced": {
+        "i": "onions",
+        "n": "diced"
+      },
+      "onion, finely chopped": {
+        "i": "onions",
+        "n": "finely chopped"
+      },
+      "onion, finely diced": {
+        "i": "onions",
+        "n": "finely diced"
+      },
+      "onion, halved, skin on": {
+        "i": "onions",
+        "n": "halved, skin on"
+      },
+      "onion, quartered, skin on": {
+        "i": "onions",
+        "n": "quartered, skin on"
+      },
+      "onion, red, norwegian, raw": {
+        "i": "red-onions"
+      },
+      "onion, roughly chopped": {
+        "i": "onions",
+        "n": "roughly chopped"
+      },
+      "onion, yellow": {
+        "i": "onions"
+      },
+      "onion, yellow, norwegian, raw": {
+        "i": "onions"
+      },
+      "orange juice": {
+        "i": "orange-juice"
+      },
+      "orange, raw": {
+        "i": "oranges"
+      },
+      "oregano, dried": {
+        "i": "oregano-dried"
+      },
+      "oregano, dried, to taste": {
+        "i": "oregano-dried",
+        "n": "to taste"
+      },
+      "oyster mushrooms (or 25 g dried shiitake)": {
+        "i": "mushrooms",
+        "n": "oyster, or 25 g dried shiitake"
+      },
+      "paprika powder": {
+        "i": "paprika-powder"
+      },
+      "parsley, dried": {
+        "i": "parsley-dried"
+      },
+      "parsley, fresh": {
+        "i": "parsley"
+      },
+      "parsley, norwegian, raw": {
+        "i": "parsley"
+      },
+      "parsley, norwegian, raw, to taste": {
+        "i": "parsley",
+        "n": "to taste"
+      },
+      "parsnip": {
+        "i": "parsnips"
+      },
+      "parsnip, raw": {
+        "i": "parsnips"
+      },
+      "peanut butter": {
+        "i": "peanut-butter"
+      },
+      "peanuts": {
+        "i": "peanuts"
+      },
+      "pear, imported, raw": {
+        "i": "pears"
+      },
+      "pears": {
+        "i": "pears"
+      },
+      "pecans": {
+        "i": "pecans"
+      },
+      "pepper, black": {
+        "i": "black-pepper"
+      },
+      "pepper, cayenne, red": {
+        "i": "cayenne-pepper"
+      },
+      "pepper, cayenne, red, to taste": {
+        "i": "cayenne-pepper",
+        "n": "to taste"
+      },
+      "pepper, white": {
+        "i": "white-pepper"
+      },
+      "pineapple juice": {
+        "i": "pineapple-juice"
+      },
+      "pineapple, canned, with its own juice": {
+        "i": "pineapple",
+        "n": "canned, with its own juice"
+      },
+      "pistachios, crushed, to decorate": {
+        "i": "pistachios",
+        "n": "crushed, to decorate"
+      },
+      "plain cooked mashed potato (no additions)": {
+        "i": "potatoes",
+        "n": "plain cooked mashed, no additions"
+      },
+      "plant milk": {
+        "i": "plant-milk"
+      },
+      "plum, raw": {
+        "i": "plums"
+      },
+      "pomegranate, raw": {
+        "i": "pomegranate"
+      },
+      "potato flour": {
+        "i": "potato-starch"
+      },
+      "potato starch": {
+        "i": "potato-starch"
+      },
+      "potato, raw": {
+        "i": "potatoes"
+      },
+      "prunes": {
+        "i": "prunes"
+      },
+      "psyllium husk": {
+        "i": "psyllium-husk"
+      },
+      "psyllium husk powder": {
+        "i": "psyllium-husk"
+      },
+      "pumpkin seeds": {
+        "i": "pumpkin-seeds"
+      },
+      "pumpkin, raw": {
+        "i": "pumpkin"
+      },
+      "pure vanilla extract": {
+        "i": "vanilla-extract",
+        "n": "pure"
+      },
+      "quinoa": {
+        "i": "quinoa"
+      },
+      "quinoa (dry weight)": {
+        "i": "quinoa",
+        "n": "dry weight"
+      },
+      "quinoa, white, dry": {
+        "i": "quinoa",
+        "n": "white, dry"
+      },
+      "radish, norwegian, raw": {
+        "i": "radishes"
+      },
+      "raisins": {
+        "i": "raisins"
+      },
+      "rapeseed (canola) oil": {
+        "i": "rapeseed-oil"
+      },
+      "rapeseed oil": {
+        "i": "rapeseed-oil"
+      },
+      "raspberries, raw": {
+        "i": "raspberries"
+      },
+      "raw almonds": {
+        "i": "almonds"
+      },
+      "raw buckwheat groats": {
+        "i": "buckwheat-groats"
+      },
+      "raw cane sugar (see notes for lighter swaps)": {
+        "i": "sugar",
+        "n": "see notes for lighter swaps"
+      },
+      "raw cashews (unsalted, unroasted)": {
+        "i": "cashews",
+        "n": "unsalted, unroasted"
+      },
+      "raw cashews for milk": {
+        "i": "cashews",
+        "n": "for milk"
+      },
+      "raw cashews, soaked": {
+        "i": "cashews",
+        "n": "soaked"
+      },
+      "raw cashews, soaked 10-20 minutes": {
+        "i": "cashews",
+        "n": "soaked 10-20 minutes"
+      },
+      "raw cashews, soaked in hot water 10 min": {
+        "i": "cashews",
+        "n": "soaked in hot water 10 min"
+      },
+      "raw cashews, unsalted": {
+        "i": "cashews",
+        "n": "unsalted"
+      },
+      "raw unsalted cashews": {
+        "i": "cashews",
+        "n": "unsalted"
+      },
+      "red beet, raw": {
+        "i": "beetroot"
+      },
+      "red bell pepper": {
+        "i": "bell-peppers",
+        "n": "red"
+      },
+      "red bell pepper, diced": {
+        "i": "bell-peppers",
+        "n": "red, diced"
+      },
+      "red cabbage, finely shredded": {
+        "i": "red-cabbage",
+        "n": "finely shredded"
+      },
+      "red cabbage, raw": {
+        "i": "red-cabbage"
+      },
+      "red lentils (dry weight)": {
+        "i": "lentils-red",
+        "n": "dry weight"
+      },
+      "red lentils (dry, rinsed)": {
+        "i": "lentils-red",
+        "n": "dry, rinsed"
+      },
+      "red lentils, rinsed": {
+        "i": "lentils-red",
+        "n": "rinsed"
+      },
+      "red onion": {
+        "i": "red-onions"
+      },
+      "red onion, thinly sliced": {
+        "i": "red-onions",
+        "n": "thinly sliced"
+      },
+      "red or yellow bell pepper, roughly chopped": {
+        "i": "bell-peppers",
+        "n": "red or yellow, roughly chopped"
+      },
+      "reduced-sodium tamari / soy sauce": {
+        "i": "tamari",
+        "n": "reduced-sodium"
+      },
+      "rice flour": {
+        "i": "rice-flour"
+      },
+      "rice noodles, dry": {
+        "i": "rice-noodles",
+        "n": "dry"
+      },
+      "ripe avocado": {
+        "i": "avocados",
+        "n": "ripe"
+      },
+      "ripe avocado, sliced, to serve": {
+        "i": "avocados",
+        "n": "ripe, sliced, to serve"
+      },
+      "ripe banana, mashed": {
+        "i": "bananas",
+        "n": "ripe, mashed"
+      },
+      "ripe tomatoes": {
+        "i": "tomatoes",
+        "n": "ripe"
+      },
+      "ripe tomatoes, chopped": {
+        "i": "tomatoes",
+        "n": "ripe, chopped"
+      },
+      "roasted red bell peppers, drained": {
+        "i": "bell-peppers",
+        "n": "roasted red, drained"
+      },
+      "rolled oats": {
+        "i": "rolled-oats"
+      },
+      "rolled oats (dry weight)": {
+        "i": "rolled-oats",
+        "n": "dry weight"
+      },
+      "rolled oats (not instant)": {
+        "i": "rolled-oats",
+        "n": "not instant"
+      },
+      "rolled oats (old-fashioned, not instant)": {
+        "i": "rolled-oats",
+        "n": "old-fashioned, not instant"
+      },
+      "romaine lettuce, raw": {
+        "i": "romaine-lettuce"
+      },
+      "rosemary, dried": {
+        "i": "rosemary-dried"
+      },
+      "rosemary, raw": {
+        "i": "rosemary"
+      },
+      "ruccola lettuce, raw": {
+        "i": "arugula"
+      },
+      "sage, dry": {
+        "i": "sage-dried",
+        "n": "dry"
+      },
+      "salt": {
+        "i": "salt"
+      },
+      "salt (added at the end, to taste)": {
+        "i": "salt",
+        "n": "added at the end, to taste"
+      },
+      "salt, table salt": {
+        "i": "salt"
+      },
+      "salt, to taste": {
+        "i": "salt",
+        "n": "to taste"
+      },
+      "salt-free vegetable broth or water": {
+        "i": "vegetable-broth",
+        "n": "salt-free or water"
+      },
+      "sea salt": {
+        "i": "salt"
+      },
+      "sea salt, to taste": {
+        "i": "salt",
+        "n": "to taste"
+      },
+      "sesame oil": {
+        "i": "sesame-oil"
+      },
+      "sesame seeds": {
+        "i": "sesame-seeds"
+      },
+      "sesame seeds, with shell": {
+        "i": "sesame-seeds",
+        "n": "with shell"
+      },
+      "sesame seeds, without shell": {
+        "i": "sesame-seeds",
+        "n": "without shell"
+      },
+      "shallot, finely chopped": {
+        "i": "shallots",
+        "n": "finely chopped"
+      },
+      "shelled edamame (cooked from frozen)": {
+        "i": "edamame-frozen",
+        "n": "shelled, cooked from frozen"
+      },
+      "small oats": {
+        "i": "small-oats"
+      },
+      "small potatoes, diced": {
+        "i": "potatoes",
+        "n": "small, diced"
+      },
+      "smoked paprika": {
+        "i": "smoked-paprika"
+      },
+      "smoked paprika powder": {
+        "i": "smoked-paprika"
+      },
+      "smoked paprika powder, to taste": {
+        "i": "smoked-paprika",
+        "n": "to taste"
+      },
+      "smoked paprika, for the finishing dust": {
+        "i": "smoked-paprika",
+        "n": "for the finishing dust"
+      },
+      "snow peas": {
+        "i": "snow-peas"
+      },
+      "sour cherries, pitted (fresh or thawed frozen)": {
+        "i": "sour-cherries",
+        "n": "pitted (fresh or thawed frozen)"
+      },
+      "soy mayonnaise": {
+        "i": "soy-mayonnaise"
+      },
+      "soy milk": {
+        "i": "soy-milk"
+      },
+      "soy sauce": {
+        "i": "soy-sauce"
+      },
+      "soy yogurt": {
+        "i": "plant-yogurt",
+        "n": "soy"
+      },
+      "spelt flour": {
+        "i": "spelt-flour"
+      },
+      "spinach": {
+        "i": "spinach"
+      },
+      "spinach, frozen, raw": {
+        "i": "spinach-frozen"
+      },
+      "spinach, raw": {
+        "i": "spinach"
+      },
+      "spring onions, raw": {
+        "i": "spring-onions"
+      },
+      "squash seeds, pumpkin seeds": {
+        "i": "pumpkin-seeds"
+      },
+      "squash, zucchini, raw": {
+        "i": "zucchini"
+      },
+      "strawberries, raw": {
+        "i": "strawberries"
+      },
+      "sukrin": {
+        "i": "sukrin"
+      },
+      "sumac": {
+        "i": "sumac"
+      },
+      "sumac, optional": {
+        "i": "sumac",
+        "n": "optional"
+      },
+      "sunflower seeds": {
+        "i": "sunflower-seeds"
+      },
+      "sweet potato": {
+        "i": "sweet-potatoes"
+      },
+      "sweet potato, peeled and diced": {
+        "i": "sweet-potatoes",
+        "n": "peeled and diced"
+      },
+      "sweet potato, raw": {
+        "i": "sweet-potatoes"
+      },
+      "sweet potato, roughly chopped (skin on)": {
+        "i": "sweet-potatoes",
+        "n": "roughly chopped (skin on)"
+      },
+      "tahini": {
+        "i": "tahini"
+      },
+      "tahini (unsalted, hulled)": {
+        "i": "tahini",
+        "n": "unsalted, hulled"
+      },
+      "tamari (wheat-free soy sauce)": {
+        "i": "tamari"
+      },
+      "tandoori masala": {
+        "i": "tandoori-masala"
+      },
+      "tapioca starch": {
+        "i": "tapioca-starch"
+      },
+      "tarragon, dried": {
+        "i": "tarragon-dried"
+      },
+      "thyme": {
+        "i": "thyme"
+      },
+      "thyme, dried": {
+        "i": "thyme-dried"
+      },
+      "thyme, dried, to taste": {
+        "i": "thyme-dried",
+        "n": "to taste"
+      },
+      "thyme, raw": {
+        "i": "thyme"
+      },
+      "tofu, soyabønneprodukt": {
+        "i": "tofu"
+      },
+      "tomato": {
+        "i": "tomatoes"
+      },
+      "tomato paste, no salt added": {
+        "i": "tomato-puree",
+        "n": "no salt added"
+      },
+      "tomato puree": {
+        "i": "tomato-puree"
+      },
+      "tomato puree, canned": {
+        "i": "tomato-puree",
+        "n": "canned"
+      },
+      "tomato, canned": {
+        "i": "canned-tomatoes"
+      },
+      "tomato, chopped, tetrapak": {
+        "i": "canned-tomatoes",
+        "n": "chopped, tetrapak"
+      },
+      "tomato, imported, raw": {
+        "i": "tomatoes"
+      },
+      "tomato, norwegian, raw": {
+        "i": "tomatoes"
+      },
+      "tomato, unspecified, raw": {
+        "i": "tomatoes"
+      },
+      "tomatoes, quartered": {
+        "i": "tomatoes",
+        "n": "quartered"
+      },
+      "tomatoes, sun-dried, dry": {
+        "i": "sun-dried-tomatoes",
+        "n": "dry"
+      },
+      "turmeric": {
+        "i": "turmeric-ground"
+      },
+      "turmeric powder": {
+        "i": "turmeric-ground"
+      },
+      "turmeric, ground": {
+        "i": "turmeric-ground"
+      },
+      "turmeric, ground, to taste": {
+        "i": "turmeric-ground",
+        "n": "to taste"
+      },
+      "unsweetened almond milk (homemade)": {
+        "i": "almond-milk",
+        "n": "unsweetened, homemade"
+      },
+      "unsweetened almond milk (homemade, unstrained)": {
+        "i": "almond-milk",
+        "n": "unsweetened, homemade, unstrained"
+      },
+      "unsweetened oat milk": {
+        "i": "oat-milk",
+        "n": "unsweetened"
+      },
+      "unsweetened oat milk (or water for lower fat)": {
+        "i": "oat-milk",
+        "n": "unsweetened, or water for lower fat"
+      },
+      "unsweetened plant milk": {
+        "i": "plant-milk",
+        "n": "unsweetened"
+      },
+      "unsweetened vegan yogurt": {
+        "i": "plant-yogurt",
+        "n": "unsweetened vegan"
+      },
+      "vanilla extract": {
+        "i": "vanilla-extract"
+      },
+      "vanilla extract (alcohol-free)": {
+        "i": "vanilla-extract",
+        "n": "alcohol-free"
+      },
+      "vanilla powder": {
+        "i": "vanilla-powder"
+      },
+      "vanilla powder (unsweetened)": {
+        "i": "vanilla-powder",
+        "n": "unsweetened"
+      },
+      "vanilla powder, to taste": {
+        "i": "vanilla-powder",
+        "n": "to taste"
+      },
+      "vegetable bouillon, fresh": {
+        "i": "vegetable-bouillon"
+      },
+      "vegetable bouillon, powder": {
+        "i": "vegetable-bouillon"
+      },
+      "vegetable broth": {
+        "i": "vegetable-broth"
+      },
+      "vegetable broth (from the daily broth)": {
+        "i": "vegetable-broth",
+        "n": "from the daily broth"
+      },
+      "walnut halves": {
+        "i": "walnuts",
+        "n": "halves"
+      },
+      "walnut halves (about 10)": {
+        "i": "walnuts",
+        "n": "halves, about 10"
+      },
+      "walnuts": {
+        "i": "walnuts"
+      },
+      "walnuts, broken, to serve": {
+        "i": "walnuts",
+        "n": "broken, to serve"
+      },
+      "walnuts, chopped": {
+        "i": "walnuts",
+        "n": "chopped"
+      },
+      "walnuts, roughly broken": {
+        "i": "walnuts",
+        "n": "roughly broken"
+      },
+      "walnuts, roughly broken (about 8 halves)": {
+        "i": "walnuts",
+        "n": "roughly broken (about 8 halves)"
+      },
+      "walnuts, toasted, roughly chopped": {
+        "i": "walnuts",
+        "n": "toasted, roughly chopped"
+      },
+      "warm water": {
+        "i": "water",
+        "n": "warm"
+      },
+      "water": {
+        "i": "water"
+      },
+      "water (for sautéing)": {
+        "i": "water",
+        "n": "for sautéing"
+      },
+      "water (for the almond milk)": {
+        "i": "water",
+        "n": "for the almond milk"
+      },
+      "water (for the cashew milk)": {
+        "i": "water",
+        "n": "for the cashew milk"
+      },
+      "water (for the date paste)": {
+        "i": "water",
+        "n": "for the date paste"
+      },
+      "water (for the flax egg)": {
+        "i": "water",
+        "n": "for the flax egg"
+      },
+      "water (for the oat porridge)": {
+        "i": "water",
+        "n": "for the oat porridge"
+      },
+      "water (plus soaking liquid from dates)": {
+        "i": "water",
+        "n": "plus soaking liquid from dates"
+      },
+      "water for milk": {
+        "i": "water",
+        "n": "for milk"
+      },
+      "water for porridge": {
+        "i": "water",
+        "n": "for porridge"
+      },
+      "water, cold": {
+        "i": "water",
+        "n": "cold"
+      },
+      "water, drinking water": {
+        "i": "water",
+        "n": "drinking water"
+      },
+      "water, for the crust": {
+        "i": "water",
+        "n": "for the crust"
+      },
+      "water, for the dressing": {
+        "i": "water",
+        "n": "for the dressing"
+      },
+      "water, lukewarm (for the final dough)": {
+        "i": "water",
+        "n": "lukewarm (for the final dough)"
+      },
+      "water, lukewarm (for the levain)": {
+        "i": "water",
+        "n": "lukewarm (for the levain)"
+      },
+      "water, lukewarm (for the sponge)": {
+        "i": "water",
+        "n": "lukewarm (for the sponge)"
+      },
+      "water, lukewarm (per feeding)": {
+        "i": "water",
+        "n": "lukewarm (per feeding)"
+      },
+      "watermelon, raw": {
+        "i": "watermelon"
+      },
+      "white (cannellini) beans, cooked": {
+        "i": "white-beans-canned"
+      },
+      "white (cannellini) beans, cooked, drained and rinsed (no added salt)": {
+        "i": "white-beans-canned",
+        "n": "drained and rinsed (no added salt)"
+      },
+      "white beans (cannellini), cooked and drained": {
+        "i": "white-beans-canned",
+        "n": "cooked and drained"
+      },
+      "white beans, dry": {
+        "i": "white-beans-dry"
+      },
+      "white beans, large, canned": {
+        "i": "white-beans-canned",
+        "n": "large"
+      },
+      "white cashew sauce": {
+        "i": "white-cashew-sauce"
+      },
+      "white flour, fine": {
+        "i": "white-flour",
+        "n": "fine"
+      },
+      "white miso (shiro)": {
+        "i": "miso-paste",
+        "n": "white, shiro"
+      },
+      "white miso (shiro), dissolved at finish": {
+        "i": "miso-paste",
+        "n": "white, shiro, dissolved at finish"
+      },
+      "white miso paste": {
+        "i": "miso-paste",
+        "n": "white"
+      },
+      "white miso paste (low sodium)": {
+        "i": "miso-paste",
+        "n": "white, low sodium"
+      },
+      "whole buckwheat groats (raw, rinsed)": {
+        "i": "buckwheat-groats",
+        "n": "whole, raw, rinsed"
+      },
+      "whole flaxseed": {
+        "i": "flaxseed-whole"
+      },
+      "whole flaxseed, ground fresh": {
+        "i": "flaxseed-ground",
+        "n": "freshly ground"
+      },
+      "whole grain rice": {
+        "i": "brown-rice",
+        "n": "whole grain"
+      },
+      "whole wheat flour": {
+        "i": "wholewheat-flour"
+      },
+      "whole wheat flour, course": {
+        "i": "wholewheat-flour",
+        "n": "course"
+      },
+      "whole wheat flour, fine": {
+        "i": "wholewheat-flour",
+        "n": "fine"
+      },
+      "whole wheat flour, wholemeal": {
+        "i": "wholewheat-flour"
+      },
+      "wholegrain rye flour (for the final dough)": {
+        "i": "rye-flour",
+        "n": "for the final dough"
+      },
+      "wholegrain rye flour (for the levain)": {
+        "i": "rye-flour",
+        "n": "for the levain"
+      },
+      "wholegrain rye flour (for the sponge)": {
+        "i": "rye-flour",
+        "n": "for the sponge"
+      },
+      "wholegrain rye flour (per feeding)": {
+        "i": "rye-flour",
+        "n": "per feeding"
+      },
+      "yeast, dry yeast": {
+        "i": "dry-yeast"
+      },
+      "yellow onion, diced": {
+        "i": "onions",
+        "n": "diced"
+      },
+      "yellow peas, cooked": {
+        "i": "yellow-peas-cooked"
+      },
+      "zucchini, coarsely grated": {
+        "i": "zucchini",
+        "n": "coarsely grated"
+      },
+      "zucchini, grated and squeezed": {
+        "i": "zucchini",
+        "n": "grated and squeezed"
+      }
+    },
+    "no": {
+      "agar-agar": {
+        "i": "agar-agar"
+      },
+      "agurk": {
+        "i": "cucumber"
+      },
+      "agurk, norsk, rå": {
+        "i": "cucumber"
+      },
+      "agurk, skrelt og revet": {
+        "i": "cucumber",
+        "n": "skrelt og revet"
+      },
+      "amlapulver": {
+        "i": "amla-powder"
+      },
+      "ananas, hermetisk, i egen kraft": {
+        "i": "pineapple",
+        "n": "hermetisk, i egen kraft"
+      },
+      "ananasjuice": {
+        "i": "pineapple-juice"
+      },
+      "appelsin, rå": {
+        "i": "oranges"
+      },
+      "appelsinjuice": {
+        "i": "orange-juice"
+      },
+      "aprikoser, tørkede": {
+        "i": "dried-apricots"
+      },
+      "aquafaba (bønnevannet du holdt av)": {
+        "i": "aquafaba",
+        "n": "bønnevannet du holdt av"
+      },
+      "aspargesbønner, frosne": {
+        "i": "asparagus-beans-frozen"
+      },
+      "aubergine, rå": {
+        "i": "eggplant"
+      },
+      "avokado, i terninger": {
+        "i": "avocados",
+        "n": "i terninger"
+      },
+      "avokado, i terninger, til servering": {
+        "i": "avocados",
+        "n": "i terninger, til servering"
+      },
+      "avokado, rå": {
+        "i": "avocados"
+      },
+      "babyspinat": {
+        "i": "spinach",
+        "n": "babyspinat"
+      },
+      "bakepoteter": {
+        "i": "potatoes",
+        "n": "bakepoteter"
+      },
+      "bakepulver": {
+        "i": "baking-powder"
+      },
+      "banan, rå": {
+        "i": "bananas"
+      },
+      "banan, skåret ferskt om morgenen": {
+        "i": "bananas",
+        "n": "skåret ferskt om morgenen"
+      },
+      "basilikum": {
+        "i": "basil"
+      },
+      "basilikum, fersk": {
+        "i": "basil"
+      },
+      "basilikum, tørket": {
+        "i": "basil-dried"
+      },
+      "bjørnebær, rå": {
+        "i": "blackberries"
+      },
+      "bladpersille, hakket": {
+        "i": "parsley",
+        "n": "bladpersille, hakket"
+      },
+      "blandede salatblader (ruccola, spinat, vårsalat)": {
+        "i": "salad-leaves",
+        "n": "ruccola, spinat, vårsalat"
+      },
+      "blomkål, norsk, rå": {
+        "i": "cauliflower"
+      },
+      "blomkålbuketter": {
+        "i": "cauliflower"
+      },
+      "blåbær, rå": {
+        "i": "blueberries"
+      },
+      "bokhvete, hel": {
+        "i": "buckwheat-groats",
+        "n": "hel"
+      },
+      "bokhvete-mel": {
+        "i": "buckwheat-flour"
+      },
+      "bokhvetegryn": {
+        "i": "buckwheat-groats"
+      },
+      "bokhvetemel": {
+        "i": "buckwheat-flour"
+      },
+      "bringebær, rå": {
+        "i": "raspberries"
+      },
+      "brokkoli, i små buketter": {
+        "i": "broccoli",
+        "n": "i små buketter"
+      },
+      "brokkoli, norsk, rå": {
+        "i": "broccoli"
+      },
+      "brokkoli, uspesifisert, rå": {
+        "i": "broccoli"
+      },
+      "brokkolibuketter": {
+        "i": "broccoli"
+      },
+      "brunt rismel": {
+        "i": "rice-flour",
+        "n": "brunt"
+      },
+      "brød, ekstra grovt (75–100 %), kjøpt, grovbrød uten hele korn": {
+        "i": "bread",
+        "n": "ekstra grovt (75–100 %), kjøpt, grovbrød uten hele korn"
+      },
+      "brød, ekstra grovt, 75 % grovt, hjemmebakt": {
+        "i": "bread",
+        "n": "ekstra grovt, 75 % grovt, hjemmebakt"
+      },
+      "brød, ristet": {
+        "i": "bread",
+        "n": "ristet"
+      },
+      "brødsmuler": {
+        "i": "bread-crumbs"
+      },
+      "brødsmuler, glutenfrie": {
+        "i": "bread-crumbs",
+        "n": "glutenfrie"
+      },
+      "bukkehornfrø": {
+        "i": "fenugreek-seeds"
+      },
+      "bulgurgryn, tørre": {
+        "i": "bulgur",
+        "n": "tørre"
+      },
+      "butternutsquash eller gresskar": {
+        "i": "butternut-squash",
+        "n": "eller gresskar"
+      },
+      "byggkaffe": {
+        "i": "barley-coffee"
+      },
+      "byggkaffepulver (f.eks. inka, caro)": {
+        "i": "barley-coffee",
+        "n": "f.eks. Inka, Caro"
+      },
+      "bønnenudler, tørre": {
+        "i": "bean-noodles",
+        "n": "tørre"
+      },
+      "bønnespirer, mungbønnespirer, rå": {
+        "i": "bean-sprouts"
+      },
+      "cannellinibønner, kokte": {
+        "i": "white-beans-canned"
+      },
+      "carobpulver": {
+        "i": "carob-powder"
+      },
+      "cashewmelk": {
+        "i": "cashew-milk"
+      },
+      "cashewnøtter, bløtlagt i 12 timer": {
+        "i": "cashews",
+        "n": "bløtlagt i 12 timer"
+      },
+      "cashewnøtter, usaltet": {
+        "i": "cashews",
+        "n": "usaltet"
+      },
+      "cashewrømme": {
+        "i": "cashew-sour-cream"
+      },
+      "ceylon kanel": {
+        "i": "cinnamon-ground"
+      },
+      "ceylon-kanel, malt": {
+        "i": "cinnamon-ground"
+      },
+      "ceylonkanel": {
+        "i": "cinnamon-ground"
+      },
+      "cherrytomat, importert, rå": {
+        "i": "cherry-tomatoes"
+      },
+      "cherrytomater": {
+        "i": "cherry-tomatoes"
+      },
+      "chiafrø": {
+        "i": "chia-seeds"
+      },
+      "chiafrø (til topping)": {
+        "i": "chia-seeds",
+        "n": "til topping"
+      },
+      "chiafrø, til bunnen": {
+        "i": "chia-seeds",
+        "n": "til bunnen"
+      },
+      "chiafrø, til fyllet": {
+        "i": "chia-seeds",
+        "n": "til fyllet"
+      },
+      "chiafrø, tørkede": {
+        "i": "chia-seeds",
+        "n": "tørkede"
+      },
+      "chili, rød, rå": {
+        "i": "chili-fresh",
+        "n": "rød"
+      },
+      "chiliflak": {
+        "i": "chili-flakes"
+      },
+      "chilipulver": {
+        "i": "chili-powder"
+      },
+      "daddelpuré": {
+        "i": "date-paste"
+      },
+      "dadler, tørkede": {
+        "i": "dates-dried"
+      },
+      "dadler, uten stein": {
+        "i": "dates-dried",
+        "n": "uten stein"
+      },
+      "deglet-dadler, utstenede (bløtlagt 20 min i varmt vann)": {
+        "i": "dates-dried",
+        "n": "deglet-dadler, utstenede (bløtlagt 20 min i varmt vann)"
+      },
+      "dill, fersk": {
+        "i": "dill"
+      },
+      "dill, fersk, etter smak": {
+        "i": "dill",
+        "n": "etter smak"
+      },
+      "druer, blå, rå": {
+        "i": "grapes",
+        "n": "blå"
+      },
+      "druer, uspesifisert, rå": {
+        "i": "grapes"
+      },
+      "edamamebønner, frosne": {
+        "i": "edamame-frozen"
+      },
+      "eple": {
+        "i": "apples"
+      },
+      "eple (fast sort — granny smith eller cox)": {
+        "i": "apples",
+        "n": "fast sort, Granny Smith eller Cox"
+      },
+      "eple, granny smith / golden delicious, rått": {
+        "i": "apples",
+        "n": "Granny Smith / Golden Delicious"
+      },
+      "eple, importert, rått": {
+        "i": "apples"
+      },
+      "eple, norsk, uspesifisert, rått": {
+        "i": "apples"
+      },
+      "eple, red aroma, rått": {
+        "i": "apples",
+        "n": "Red Aroma"
+      },
+      "epler, skrelt, uten kjernehus og delt i fire": {
+        "i": "apples",
+        "n": "skrelt, uten kjernehus og delt i fire"
+      },
+      "estragon, tørket": {
+        "i": "tarragon-dried"
+      },
+      "extra virgin olivenolje": {
+        "i": "olive-oil",
+        "n": "extra virgin"
+      },
+      "feldsalat": {
+        "i": "salad-leaves",
+        "n": "feldsalat"
+      },
+      "fennikel": {
+        "i": "fennel"
+      },
+      "fennikel, rå": {
+        "i": "fennel"
+      },
+      "fersk dill (liten håndfull)": {
+        "i": "dill",
+        "n": "liten håndfull"
+      },
+      "fersk dill, hakket": {
+        "i": "dill",
+        "n": "hakket"
+      },
+      "fersk eller frossen ananas i biter": {
+        "i": "pineapple",
+        "n": "fersk eller frossen i biter"
+      },
+      "fersk gressløk eller persille, hakket, til pynt": {
+        "i": "chives",
+        "n": "eller persille, hakket, til pynt"
+      },
+      "fersk gressløk, hakket": {
+        "i": "chives",
+        "n": "hakket"
+      },
+      "fersk ingefær, i skiver": {
+        "i": "ginger-fresh",
+        "n": "i skiver"
+      },
+      "fersk ingefær, revet": {
+        "i": "ginger-fresh",
+        "n": "revet"
+      },
+      "fersk koriander, hakket": {
+        "i": "coriander-fresh",
+        "n": "hakket"
+      },
+      "fersk limesaft": {
+        "i": "lime-juice"
+      },
+      "fersk persille, hakket": {
+        "i": "parsley",
+        "n": "hakket"
+      },
+      "fersk sitronsaft": {
+        "i": "lemon-juice"
+      },
+      "fersk sitronsaft (tilsettes til slutt)": {
+        "i": "lemon-juice",
+        "n": "tilsettes til slutt"
+      },
+      "fersk sitronsaft, til suppen": {
+        "i": "lemon-juice",
+        "n": "til suppen"
+      },
+      "fersk sitronsaft, til syltingen": {
+        "i": "lemon-juice",
+        "n": "til syltingen"
+      },
+      "ferske sjampinjonger, halvert": {
+        "i": "mushrooms",
+        "n": "sjampinjonger, halvert"
+      },
+      "fiberskall": {
+        "i": "psyllium-husk"
+      },
+      "fikener, tørkede": {
+        "i": "dried-figs"
+      },
+      "filtrert vann": {
+        "i": "water",
+        "n": "filtrert"
+      },
+      "filtrert vann, lunkent": {
+        "i": "water",
+        "n": "filtrert, lunkent"
+      },
+      "fint havsalt": {
+        "i": "salt",
+        "n": "fint"
+      },
+      "fint havsalt, etter smak": {
+        "i": "salt",
+        "n": "fint, etter smak"
+      },
+      "fint havsalt, klype, etter smak": {
+        "i": "salt",
+        "n": "fint, klype, etter smak"
+      },
+      "fint havsalt, strøkent": {
+        "i": "salt",
+        "n": "fint, strøkent"
+      },
+      "fint havsalt, til de syltede løkringene, etter smak": {
+        "i": "salt",
+        "n": "fint, til de syltede løkringene, etter smak"
+      },
+      "fint salt": {
+        "i": "salt",
+        "n": "fint"
+      },
+      "frisk bladpersille": {
+        "i": "parsley",
+        "n": "bladpersille"
+      },
+      "frisk bladpersille, hakket": {
+        "i": "parsley",
+        "n": "bladpersille, hakket"
+      },
+      "frisk ingefær": {
+        "i": "ginger-fresh"
+      },
+      "frisk ingefær, revet": {
+        "i": "ginger-fresh",
+        "n": "revet"
+      },
+      "frisk koriander, hakket": {
+        "i": "coriander-fresh",
+        "n": "hakket"
+      },
+      "frisk persille": {
+        "i": "parsley"
+      },
+      "frisk persille eller timian, valgfritt": {
+        "i": "parsley",
+        "n": "eller timian, valgfritt"
+      },
+      "frisk persille, hakket (valgfritt)": {
+        "i": "parsley",
+        "n": "hakket (valgfritt)"
+      },
+      "frisk rosmarin": {
+        "i": "rosemary"
+      },
+      "frisk rosmarin eller timian": {
+        "i": "rosemary",
+        "n": "eller timian"
+      },
+      "frisk spinat": {
+        "i": "spinach"
+      },
+      "frisk timian": {
+        "i": "thyme"
+      },
+      "friske basilikumblader": {
+        "i": "basil"
+      },
+      "friske blåbær (tilsettes per porsjon, på toppen)": {
+        "i": "blueberries",
+        "n": "tilsettes per porsjon, på toppen"
+      },
+      "friske eller frosne blåbær": {
+        "i": "blueberries",
+        "n": "friske eller frosne"
+      },
+      "friske eller frosne bringebær eller blåbær": {
+        "i": "raspberries",
+        "n": "friske eller frosne eller blåbær"
+      },
+      "friske eller frosne bær": {
+        "i": "berries-mixed",
+        "n": "friske eller frosne"
+      },
+      "friske eller frosne bær (blåbær, bringebær)": {
+        "i": "berries-mixed",
+        "n": "friske eller frosne, blåbær, bringebær"
+      },
+      "friske urter (persille, dill eller basilikum)": {
+        "i": "herbs-fresh-mixed",
+        "n": "persille, dill eller basilikum"
+      },
+      "frosne blandede bær (blåbær, bringebær, bjørnebær)": {
+        "i": "berries-mixed-frozen",
+        "n": "blåbær, bringebær, bjørnebær"
+      },
+      "frosne blåbær": {
+        "i": "blueberries-frozen"
+      },
+      "frosne blåbær til å vende inn til slutt": {
+        "i": "blueberries-frozen",
+        "n": "til å vende inn til slutt"
+      },
+      "frosne blåbær, til blending": {
+        "i": "blueberries-frozen",
+        "n": "til blending"
+      },
+      "frosne bringebær, til blending": {
+        "i": "raspberries-frozen",
+        "n": "til blending"
+      },
+      "frosne jordbær, til blending": {
+        "i": "strawberries-frozen",
+        "n": "til blending"
+      },
+      "frosne maiskorn": {
+        "i": "sweetcorn-frozen"
+      },
+      "frosne mangobiter": {
+        "i": "mango-frozen"
+      },
+      "frosne skogsbær, til blending": {
+        "i": "berries-mixed-frozen",
+        "n": "skogsbær, til blending"
+      },
+      "frossen ananas, til blending": {
+        "i": "pineapple-frozen",
+        "n": "til blending"
+      },
+      "frossen banan": {
+        "i": "bananas",
+        "n": "frossen"
+      },
+      "frossen mango, til blending": {
+        "i": "mango-frozen",
+        "n": "til blending"
+      },
+      "fullkornsris": {
+        "i": "brown-rice"
+      },
+      "garam masala": {
+        "i": "garam-masala"
+      },
+      "gjær, tørrgjær": {
+        "i": "dry-yeast"
+      },
+      "glutenfritt havremel": {
+        "i": "oat-flour",
+        "n": "glutenfritt"
+      },
+      "glutenfritt havremel til grøten": {
+        "i": "oat-flour",
+        "n": "glutenfritt til grøten"
+      },
+      "glutenmel": {
+        "i": "gluten-flour"
+      },
+      "granateple, rått": {
+        "i": "pomegranate"
+      },
+      "gresskar, rått": {
+        "i": "pumpkin"
+      },
+      "gresskarfrø": {
+        "i": "pumpkin-seeds"
+      },
+      "gresskarkjerner": {
+        "i": "pumpkin-seeds"
+      },
+      "gressløk, fersk": {
+        "i": "chives"
+      },
+      "grønne erter, ferske eller frosne uten salt": {
+        "i": "green-peas",
+        "n": "ferske eller frosne uten salt"
+      },
+      "grønne oliven, sylteagurk": {
+        "i": "olives",
+        "n": "grønne"
+      },
+      "grønnkål eller savoykål, finstrimlet": {
+        "i": "kale",
+        "n": "eller savoykål, finstrimlet"
+      },
+      "grønnkål, rå": {
+        "i": "kale"
+      },
+      "grønnkål, stilker fjernet": {
+        "i": "kale",
+        "n": "stilker fjernet"
+      },
+      "grønnkål, uten stilk og finhakket": {
+        "i": "kale",
+        "n": "uten stilk og finhakket"
+      },
+      "grønnsaksbuljong": {
+        "i": "vegetable-broth"
+      },
+      "grønnsaksbuljong (fra den daglige buljongen)": {
+        "i": "vegetable-broth",
+        "n": "fra den daglige buljongen"
+      },
+      "grønnsaksbuljong med lavt natrium": {
+        "i": "vegetable-broth",
+        "n": "med lavt natrium"
+      },
+      "grønnsaksbuljong, fersk": {
+        "i": "vegetable-bouillon"
+      },
+      "grønnsaksbuljong, pulver": {
+        "i": "vegetable-bouillon"
+      },
+      "gul løk": {
+        "i": "onions"
+      },
+      "gul løk, i terninger": {
+        "i": "onions",
+        "n": "i terninger"
+      },
+      "gule erter, kokte": {
+        "i": "yellow-peas-cooked"
+      },
+      "gulrot": {
+        "i": "carrots"
+      },
+      "gulrot, hel (eller halvert på langs)": {
+        "i": "carrots",
+        "n": "hel (eller halvert på langs)"
+      },
+      "gulrot, i terninger": {
+        "i": "carrots",
+        "n": "i terninger"
+      },
+      "gulrot, importert, rå": {
+        "i": "carrots"
+      },
+      "gulrot, kokt": {
+        "i": "carrots",
+        "n": "kokt"
+      },
+      "gulrot, norsk, rå": {
+        "i": "carrots"
+      },
+      "gulrot, revet": {
+        "i": "carrots",
+        "n": "revet"
+      },
+      "gulrot, uspesifisert, rå": {
+        "i": "carrots"
+      },
+      "gulrøtter, fint revet": {
+        "i": "carrots",
+        "n": "fint revet"
+      },
+      "gulrøtter, i skiver": {
+        "i": "carrots",
+        "n": "i skiver"
+      },
+      "gulrøtter, ternet": {
+        "i": "carrots",
+        "n": "ternet"
+      },
+      "gurkemeie": {
+        "i": "turmeric-ground"
+      },
+      "gurkemeie, malt": {
+        "i": "turmeric-ground"
+      },
+      "gurkemeie, malt, etter smak": {
+        "i": "turmeric-ground",
+        "n": "etter smak"
+      },
+      "hasselnøtter": {
+        "i": "hazelnuts"
+      },
+      "havregryn": {
+        "i": "rolled-oats"
+      },
+      "havregryn (ikke hurtighavre)": {
+        "i": "rolled-oats",
+        "n": "ikke hurtighavre"
+      },
+      "havregryn (tørrvekt)": {
+        "i": "rolled-oats",
+        "n": "tørrvekt"
+      },
+      "havregryn (vanlige, ikke hurtiggryn)": {
+        "i": "rolled-oats",
+        "n": "vanlige, ikke hurtiggryn"
+      },
+      "havregryn, store": {
+        "i": "rolled-oats",
+        "n": "store"
+      },
+      "havremel": {
+        "i": "oat-flour"
+      },
+      "havremel (glutenfritt)": {
+        "i": "oat-flour",
+        "n": "glutenfritt"
+      },
+      "havremelk": {
+        "i": "oat-milk"
+      },
+      "havsalt": {
+        "i": "salt"
+      },
+      "havsalt, etter smak": {
+        "i": "salt",
+        "n": "etter smak"
+      },
+      "hele bokhvetegryn (rå, skylt)": {
+        "i": "buckwheat-groats",
+        "n": "hele, rå, skylt"
+      },
+      "hele hermetiske tomater": {
+        "i": "canned-tomatoes",
+        "n": "hele"
+      },
+      "hele linfrø": {
+        "i": "flaxseed-whole"
+      },
+      "hele linfrø, ferskmalt": {
+        "i": "flaxseed-ground",
+        "n": "ferskmalt"
+      },
+      "hermetiske hvite bønner (cannellini), avrent og skylt": {
+        "i": "white-beans-canned",
+        "n": "avrent og skylt"
+      },
+      "hermetiske sorte bønner, avrent og skylt": {
+        "i": "black-beans-canned",
+        "n": "sorte, avrent og skylt"
+      },
+      "hirse": {
+        "i": "millet"
+      },
+      "hirse, hel": {
+        "i": "millet",
+        "n": "hel"
+      },
+      "hjemmelaget havremelk": {
+        "i": "oat-milk",
+        "n": "hjemmelaget"
+      },
+      "hodekål, rå": {
+        "i": "cabbage"
+      },
+      "honning": {
+        "i": "honey"
+      },
+      "honningmelon, rå": {
+        "i": "melon"
+      },
+      "hummus": {
+        "i": "hummus"
+      },
+      "hvetemel, fint": {
+        "i": "white-flour",
+        "n": "fint"
+      },
+      "hvit cashewsaus": {
+        "i": "white-cashew-sauce"
+      },
+      "hvit miso (shiro)": {
+        "i": "miso-paste",
+        "n": "hvit, shiro"
+      },
+      "hvit misopasta": {
+        "i": "miso-paste",
+        "n": "hvit"
+      },
+      "hvite bønner (cannellini), kokte": {
+        "i": "white-beans-canned"
+      },
+      "hvite bønner (cannellini), kokte og avrent": {
+        "i": "white-beans-canned",
+        "n": "kokte og avrent"
+      },
+      "hvite bønner (cannellini), kokte, avrent og skylt (uten tilsatt salt)": {
+        "i": "white-beans-canned",
+        "n": "avrent og skylt (uten tilsatt salt)"
+      },
+      "hvite bønner, store, hermetiske": {
+        "i": "white-beans-canned",
+        "n": "store"
+      },
+      "hvite bønner, tørre": {
+        "i": "white-beans-dry"
+      },
+      "hvitløk": {
+        "i": "garlic"
+      },
+      "hvitløk, finhakket": {
+        "i": "garlic",
+        "n": "finhakket"
+      },
+      "hvitløk, i skiver": {
+        "i": "garlic",
+        "n": "i skiver"
+      },
+      "hvitløk, ristet": {
+        "i": "garlic",
+        "n": "ristet"
+      },
+      "hvitløk, rå": {
+        "i": "garlic"
+      },
+      "hvitløksfedd": {
+        "i": "garlic"
+      },
+      "hvitløksfedd, finhakkede": {
+        "i": "garlic",
+        "n": "finhakkede"
+      },
+      "hvitløksfedd, finhakket": {
+        "i": "garlic",
+        "n": "finhakket"
+      },
+      "hvitløksfedd, hele, uskrelte": {
+        "i": "garlic",
+        "n": "hele, uskrelte"
+      },
+      "hvitløksfedd, knust": {
+        "i": "garlic",
+        "n": "knust"
+      },
+      "hvitløkspulver": {
+        "i": "garlic-powder"
+      },
+      "ingefær, fersk": {
+        "i": "ginger-fresh"
+      },
+      "ingefær, pulver": {
+        "i": "ginger-ground"
+      },
+      "ingefær, rå": {
+        "i": "ginger-fresh"
+      },
+      "iskaldt vann eller spart bønnevæske": {
+        "i": "water",
+        "n": "iskaldt eller spart bønnevæske"
+      },
+      "jordbær, rå": {
+        "i": "strawberries"
+      },
+      "kajennepepper": {
+        "i": "cayenne-pepper"
+      },
+      "kajennepepper, etter smak": {
+        "i": "cayenne-pepper",
+        "n": "etter smak"
+      },
+      "kajennepepper, rød, etter smak": {
+        "i": "cayenne-pepper",
+        "n": "etter smak"
+      },
+      "kalamata- eller grønne oliven, uten stein": {
+        "i": "olives",
+        "n": "kalamata- eller grønne, uten stein"
+      },
+      "kalamata- eller grønne oliven, uten stein (8)": {
+        "i": "olives",
+        "n": "kalamata- eller grønne, uten stein (8)"
+      },
+      "kalamata-oliven": {
+        "i": "olives",
+        "n": "kalamata"
+      },
+      "kaldt filtrert vann (til blending)": {
+        "i": "water",
+        "n": "kaldt filtrert, til blending"
+      },
+      "kaldt vann": {
+        "i": "water",
+        "n": "kaldt"
+      },
+      "kaldt vann, til justering": {
+        "i": "water",
+        "n": "kaldt, til justering"
+      },
+      "kanel": {
+        "i": "cinnamon-ground"
+      },
+      "kanel, malt": {
+        "i": "cinnamon-ground"
+      },
+      "kapers": {
+        "i": "capers"
+      },
+      "karobpulver": {
+        "i": "carob-powder"
+      },
+      "karri, malt": {
+        "i": "curry-powder"
+      },
+      "karripulver": {
+        "i": "curry-powder"
+      },
+      "karve, hel": {
+        "i": "caraway-seeds",
+        "n": "hel"
+      },
+      "karve- eller fennikelfrø, lett knust": {
+        "i": "caraway-seeds",
+        "n": "eller fennikelfrø, lett knust"
+      },
+      "ketchup": {
+        "i": "ketchup"
+      },
+      "kidneybønner, røde, hermetiske": {
+        "i": "kidney-beans-canned",
+        "n": "røde"
+      },
+      "kikerter, kokte": {
+        "i": "chickpeas-canned"
+      },
+      "kikerter, tørre": {
+        "i": "chickpeas-dry"
+      },
+      "kikertmel": {
+        "i": "chickpea-flour"
+      },
+      "kikertmel (besan)": {
+        "i": "chickpea-flour",
+        "n": "besan"
+      },
+      "kinakål, norsk, rå": {
+        "i": "chinese-cabbage"
+      },
+      "knuste tomater": {
+        "i": "canned-tomatoes",
+        "n": "knuste"
+      },
+      "kokende vann": {
+        "i": "water",
+        "n": "kokende"
+      },
+      "kokende vann (til oppbløtning av carob)": {
+        "i": "water",
+        "n": "kokende, til oppbløtning av carob"
+      },
+      "kokende vann, til bløtlegging av daddelen": {
+        "i": "water",
+        "n": "kokende, til bløtlegging av daddelen"
+      },
+      "kokende vann, til daddelpastaen": {
+        "i": "water",
+        "n": "kokende, til daddelpastaen"
+      },
+      "kokende vann, til å røre ut caroben": {
+        "i": "water",
+        "n": "kokende, til å røre ut caroben"
+      },
+      "kokevann fra kikerter": {
+        "i": "aquafaba"
+      },
+      "kokos, revet": {
+        "i": "shredded-coconut"
+      },
+      "kokosfløte": {
+        "i": "coconut-cream"
+      },
+      "kokosmasse": {
+        "i": "shredded-coconut"
+      },
+      "kokosmelk": {
+        "i": "coconut-milk"
+      },
+      "kokosolje": {
+        "i": "coconut-oil"
+      },
+      "kokosolje, smeltet, til kremen": {
+        "i": "coconut-oil",
+        "n": "smeltet, til kremen"
+      },
+      "kokosolje, til bunnen": {
+        "i": "coconut-oil",
+        "n": "til bunnen"
+      },
+      "kokt potet, most (uten tilsetninger)": {
+        "i": "potatoes",
+        "n": "kokt, most (uten tilsetninger)"
+      },
+      "kokte cannellini (hvite) bønner, avrent": {
+        "i": "white-beans-canned",
+        "n": "avrent"
+      },
+      "kokte cannellinibønner (avrent og skylt)": {
+        "i": "white-beans-canned",
+        "n": "avrent og skylt"
+      },
+      "kokte cannellinibønner (hvite bønner)": {
+        "i": "white-beans-canned"
+      },
+      "kokte cannellinibønner, avrent og skylt": {
+        "i": "white-beans-canned",
+        "n": "avrent og skylt"
+      },
+      "kokte hvite bønner (cannellini), avrent og skylt": {
+        "i": "white-beans-canned",
+        "n": "avrent og skylt"
+      },
+      "kokte hvite bønner (cannellini), skylt": {
+        "i": "white-beans-canned",
+        "n": "skylt"
+      },
+      "kokte kikerter, avrent": {
+        "i": "chickpeas-canned",
+        "n": "avrent"
+      },
+      "kokte kikerter, usaltede eller godt skylt": {
+        "i": "chickpeas-canned",
+        "n": "usaltede eller godt skylt"
+      },
+      "kokte sorte bønner (skylt hvis hermetiske)": {
+        "i": "black-beans-canned",
+        "n": "sorte, skylt hvis hermetiske"
+      },
+      "koriander, fersk": {
+        "i": "coriander-fresh"
+      },
+      "koriander, malt": {
+        "i": "coriander-ground"
+      },
+      "koriander, rå": {
+        "i": "coriander-fresh"
+      },
+      "koriander, tørket": {
+        "i": "coriander-ground",
+        "n": "tørket"
+      },
+      "korianderfrø": {
+        "i": "coriander-seeds"
+      },
+      "korianderpulver": {
+        "i": "coriander-ground"
+      },
+      "lasagneplater": {
+        "i": "lasagne-sheets"
+      },
+      "laurbærblad, tørket": {
+        "i": "bay-leaves",
+        "n": "tørket"
+      },
+      "lettkokte havregryn": {
+        "i": "small-oats",
+        "n": "lettkokte"
+      },
+      "levende plantebasert yoghurt, usøtet — starter": {
+        "i": "plant-yogurt",
+        "n": "levende, usøtet, starter"
+      },
+      "lime juice": {
+        "i": "lime-juice"
+      },
+      "limejuice": {
+        "i": "lime-juice"
+      },
+      "limesaft": {
+        "i": "lime-juice"
+      },
+      "limesaft (ca. ½ lime)": {
+        "i": "lime-juice",
+        "n": "ca. ½ lime"
+      },
+      "limeskall, revet, til bunnen": {
+        "i": "limes",
+        "n": "skall, revet, til bunnen"
+      },
+      "limeskall, revet, til kremen": {
+        "i": "limes",
+        "n": "skall, revet, til kremen"
+      },
+      "linfrø": {
+        "i": "flaxseed-whole"
+      },
+      "linser, grønne og brune, tørre": {
+        "i": "lentils-green-brown",
+        "n": "grønne og brune, tørre"
+      },
+      "linser, røde/rosa, tørre": {
+        "i": "lentils-red",
+        "n": "tørre"
+      },
+      "lunkent vann": {
+        "i": "water",
+        "n": "lunkent"
+      },
+      "lunkent vann (38–40°c)": {
+        "i": "water",
+        "n": "lunkent, 38–40°C"
+      },
+      "lys miso (shiro), løses opp til slutt": {
+        "i": "miso-paste",
+        "n": "lys, shiro, løses opp til slutt"
+      },
+      "lys misopasta (lavt natrium)": {
+        "i": "miso-paste",
+        "n": "lys, lavt natrium"
+      },
+      "løk, finhakket": {
+        "i": "onions",
+        "n": "finhakket"
+      },
+      "løk, grovhakket": {
+        "i": "onions",
+        "n": "grovhakket"
+      },
+      "løk, gul, norsk, rå": {
+        "i": "onions"
+      },
+      "løk, halvert, med skall": {
+        "i": "onions",
+        "n": "halvert, med skall"
+      },
+      "løk, i båter, med skall": {
+        "i": "onions",
+        "n": "i båter, med skall"
+      },
+      "løk, i terninger": {
+        "i": "onions",
+        "n": "i terninger"
+      },
+      "løk, rød, norsk, rå": {
+        "i": "red-onions"
+      },
+      "løkpulver": {
+        "i": "onion-powder"
+      },
+      "lønnesirup": {
+        "i": "maple-syrup"
+      },
+      "mais, frossen": {
+        "i": "sweetcorn-frozen"
+      },
+      "maismel, polenta": {
+        "i": "cornmeal-polenta"
+      },
+      "maisstivelse": {
+        "i": "cornstarch"
+      },
+      "malt gurkemeie": {
+        "i": "turmeric-ground"
+      },
+      "malt ingefær": {
+        "i": "ginger-ground"
+      },
+      "malt kanel": {
+        "i": "cinnamon-ground"
+      },
+      "malt kardemomme": {
+        "i": "cardamom-ground"
+      },
+      "malt koriander": {
+        "i": "coriander-ground"
+      },
+      "malt linfrø": {
+        "i": "flaxseed-ground"
+      },
+      "malt linfrø (tilsettes per porsjon, utenfor varmen)": {
+        "i": "flaxseed-ground",
+        "n": "tilsettes per porsjon, utenfor varmen"
+      },
+      "malt linfrø (tilsettes utenfor varmen)": {
+        "i": "flaxseed-ground",
+        "n": "tilsettes utenfor varmen"
+      },
+      "malt linfrø (tilsettes utenfor varmen, per porsjon)": {
+        "i": "flaxseed-ground",
+        "n": "tilsettes utenfor varmen, per porsjon"
+      },
+      "malt linfrø, røres inn ved servering": {
+        "i": "flaxseed-ground",
+        "n": "røres inn ved servering"
+      },
+      "malt linfrø, til pynt": {
+        "i": "flaxseed-ground",
+        "n": "til pynt"
+      },
+      "malt muskat, en liten klype": {
+        "i": "nutmeg-ground",
+        "n": "en liten klype"
+      },
+      "malt nellik, en liten klype": {
+        "i": "cloves-ground",
+        "n": "en liten klype"
+      },
+      "malt spisskummen": {
+        "i": "cumin-ground"
+      },
+      "malt spisskummen, ristet": {
+        "i": "cumin-ground",
+        "n": "ristet"
+      },
+      "mandel": {
+        "i": "almonds"
+      },
+      "mandler": {
+        "i": "almonds"
+      },
+      "medjool-daddel, uten stein": {
+        "i": "medjool-dates",
+        "n": "uten stein"
+      },
+      "medjool-daddel, utstenet": {
+        "i": "medjool-dates",
+        "n": "utstenet"
+      },
+      "medjool-dadler, uten stein": {
+        "i": "medjool-dates",
+        "n": "uten stein"
+      },
+      "medjool-dadler, uten stein og hakket": {
+        "i": "medjool-dates",
+        "n": "uten stein og hakket"
+      },
+      "medjool-dadler, uten stein, til bunnen": {
+        "i": "medjool-dates",
+        "n": "uten stein, til bunnen"
+      },
+      "medjool-dadler, uten stein, til fyllet": {
+        "i": "medjool-dates",
+        "n": "uten stein, til fyllet"
+      },
+      "medjool-dadler, utstenede": {
+        "i": "medjool-dates",
+        "n": "utstenede"
+      },
+      "medjool-dadler, utstenede og grovhakket": {
+        "i": "medjool-dates",
+        "n": "utstenede og grovhakket"
+      },
+      "medjooldadler, uten stein": {
+        "i": "medjool-dates",
+        "n": "uten stein"
+      },
+      "medjooldadler, uten stein og finhakket": {
+        "i": "medjool-dates",
+        "n": "uten stein og finhakket"
+      },
+      "mel, glutenfritt, jyttemel original": {
+        "i": "gluten-free-flour-mix"
+      },
+      "merian, tørket": {
+        "i": "marjoram-dried"
+      },
+      "middels løk, finhakket": {
+        "i": "onions",
+        "n": "middels, finhakket"
+      },
+      "moden avokado": {
+        "i": "avocados",
+        "n": "moden"
+      },
+      "moden avokado, i skiver, til servering": {
+        "i": "avocados",
+        "n": "moden, i skiver, til servering"
+      },
+      "moden banan, most": {
+        "i": "bananas",
+        "n": "moden, most"
+      },
+      "moden rugsurdeigsstarter": {
+        "i": "sourdough-starter",
+        "n": "moden, rug"
+      },
+      "modne tomater": {
+        "i": "tomatoes",
+        "n": "modne"
+      },
+      "modne tomater, hakket": {
+        "i": "tomatoes",
+        "n": "modne, hakket"
+      },
+      "muskatnøtt, malt": {
+        "i": "nutmeg-ground"
+      },
+      "muskatnøtt, malt, etter smak": {
+        "i": "nutmeg-ground",
+        "n": "etter smak"
+      },
+      "mynte, fersk": {
+        "i": "mint"
+      },
+      "mørkt rugknekkebrød (2)": {
+        "i": "crispbread",
+        "n": "mørkt, 2"
+      },
+      "natron": {
+        "i": "baking-soda"
+      },
+      "naturlig mandelsmør (uten tilsatt olje eller sukker)": {
+        "i": "almond-butter",
+        "n": "naturlig, uten tilsatt olje eller sukker"
+      },
+      "nellik, malt": {
+        "i": "cloves-ground"
+      },
+      "nori, tørket tang": {
+        "i": "nori",
+        "n": "tørket tang"
+      },
+      "nykokt vann (til å bløtlegge karoben)": {
+        "i": "water",
+        "n": "nykokt, til å bløtlegge karoben"
+      },
+      "næringsgjær": {
+        "i": "nutritional-yeast"
+      },
+      "næringsgjær (beriket)": {
+        "i": "nutritional-yeast",
+        "n": "beriket"
+      },
+      "næringsgjær (uberiket)": {
+        "i": "nutritional-yeast",
+        "n": "uberiket"
+      },
+      "næringsgjær, til drysset": {
+        "i": "nutritional-yeast",
+        "n": "til drysset"
+      },
+      "næringsgjær, til røren": {
+        "i": "nutritional-yeast",
+        "n": "til røren"
+      },
+      "oliven, sorte, hermetiske": {
+        "i": "olives",
+        "n": "sorte, hermetiske"
+      },
+      "olivenolje": {
+        "i": "olive-oil"
+      },
+      "olivenolje (til steking + pensling)": {
+        "i": "olive-oil",
+        "n": "til steking + pensling"
+      },
+      "olivenolje, ekstra virgin": {
+        "i": "olive-oil",
+        "n": "ekstra virgin"
+      },
+      "olivenvann (saltlake)": {
+        "i": "olive-brine"
+      },
+      "oregano, tørket": {
+        "i": "oregano-dried"
+      },
+      "oregano, tørket, etter smak": {
+        "i": "oregano-dried",
+        "n": "etter smak"
+      },
+      "ovnsbakt rød paprika, avrent": {
+        "i": "bell-peppers",
+        "n": "ovnsbakt rød, avrent"
+      },
+      "paprika, grønn, rå": {
+        "i": "bell-peppers",
+        "n": "grønn"
+      },
+      "paprika, gul/oransje, rå": {
+        "i": "bell-peppers",
+        "n": "gul/oransje"
+      },
+      "paprika, rå": {
+        "i": "bell-peppers"
+      },
+      "paprika, rød, kokt": {
+        "i": "bell-peppers",
+        "n": "rød, kokt"
+      },
+      "paprika, rød, rå": {
+        "i": "bell-peppers",
+        "n": "rød"
+      },
+      "paprikapulver": {
+        "i": "paprika-powder"
+      },
+      "pastinakk": {
+        "i": "parsnips"
+      },
+      "pastinakk, rå": {
+        "i": "parsnips"
+      },
+      "peanøtter": {
+        "i": "peanuts"
+      },
+      "peanøttsmør": {
+        "i": "peanut-butter"
+      },
+      "pekannøtter": {
+        "i": "pecans"
+      },
+      "pepper, hvit": {
+        "i": "white-pepper"
+      },
+      "pepper, sort": {
+        "i": "black-pepper"
+      },
+      "pepperrot, fersk": {
+        "i": "horseradish"
+      },
+      "persille, fersk": {
+        "i": "parsley"
+      },
+      "persille, norsk, fersk": {
+        "i": "parsley"
+      },
+      "persille, norsk, fersk, etter smak": {
+        "i": "parsley",
+        "n": "etter smak"
+      },
+      "persille, norsk, rå": {
+        "i": "parsley"
+      },
+      "persille, tørket": {
+        "i": "parsley-dried"
+      },
+      "pistasjnøtter, knuste, til pynt": {
+        "i": "pistachios",
+        "n": "knuste, til pynt"
+      },
+      "plantemelk": {
+        "i": "plant-milk"
+      },
+      "plomme, rå": {
+        "i": "plums"
+      },
+      "potet, rå": {
+        "i": "potatoes"
+      },
+      "potetmel": {
+        "i": "potato-starch"
+      },
+      "potetstivelse": {
+        "i": "potato-starch"
+      },
+      "psyllium husk": {
+        "i": "psyllium-husk"
+      },
+      "psyllium husk, pulver": {
+        "i": "psyllium-husk"
+      },
+      "psylliumfrøskall": {
+        "i": "psyllium-husk"
+      },
+      "psylliumfrøskall, pulver": {
+        "i": "psyllium-husk"
+      },
+      "psylliumhusk-pulver": {
+        "i": "psyllium-husk"
+      },
+      "psylliumhuskpulver": {
+        "i": "psyllium-husk"
+      },
+      "purre, norsk, rå": {
+        "i": "leeks"
+      },
+      "pære, importert, rå": {
+        "i": "pears"
+      },
+      "pærer": {
+        "i": "pears"
+      },
+      "quinoa": {
+        "i": "quinoa"
+      },
+      "quinoa (tørrvekt)": {
+        "i": "quinoa",
+        "n": "tørrvekt"
+      },
+      "quinoa, hvit, tørr": {
+        "i": "quinoa",
+        "n": "hvit, tørr"
+      },
+      "rapsolje": {
+        "i": "rapeseed-oil"
+      },
+      "reddik, norsk, rå": {
+        "i": "radishes"
+      },
+      "ren vaniljeekstrakt": {
+        "i": "vanilla-extract",
+        "n": "ren"
+      },
+      "revet squash, presset ned (ikke løs og luftig)": {
+        "i": "zucchini",
+        "n": "revet, presset ned (ikke løs og luftig)"
+      },
+      "rismel": {
+        "i": "rice-flour"
+      },
+      "risnudler, tørre": {
+        "i": "rice-noodles",
+        "n": "tørre"
+      },
+      "romanosalat, rå": {
+        "i": "romaine-lettuce"
+      },
+      "rosenkål, frossen": {
+        "i": "brussels-sprouts-frozen"
+      },
+      "rosiner": {
+        "i": "raisins"
+      },
+      "rosmarin, fersk": {
+        "i": "rosemary"
+      },
+      "rosmarin, tørket": {
+        "i": "rosemary-dried"
+      },
+      "ruccola": {
+        "i": "arugula"
+      },
+      "ruccola, rå": {
+        "i": "arugula"
+      },
+      "rå bokhvetegryn": {
+        "i": "buckwheat-groats"
+      },
+      "rå cashewnøtter (usaltede, uristede)": {
+        "i": "cashews",
+        "n": "usaltede, uristede"
+      },
+      "rå cashewnøtter til melk": {
+        "i": "cashews",
+        "n": "til melk"
+      },
+      "rå cashewnøtter, bløtlagt 10-20 minutter": {
+        "i": "cashews",
+        "n": "bløtlagt 10-20 minutter"
+      },
+      "rå cashewnøtter, bløtlagt i varmt vann i 10 min": {
+        "i": "cashews",
+        "n": "bløtlagt i varmt vann i 10 min"
+      },
+      "rå cashewnøtter, bløtlagte": {
+        "i": "cashews",
+        "n": "bløtlagte"
+      },
+      "rå cashewnøtter, usaltede": {
+        "i": "cashews",
+        "n": "usaltede"
+      },
+      "rå mandler": {
+        "i": "almonds"
+      },
+      "rå usaltede cashewnøtter": {
+        "i": "cashews",
+        "n": "usaltede"
+      },
+      "rød eller gul paprika, grovhakket": {
+        "i": "bell-peppers",
+        "n": "rød eller gul, grovhakket"
+      },
+      "rød paprika": {
+        "i": "bell-peppers",
+        "n": "rød"
+      },
+      "rød paprika, i terninger": {
+        "i": "bell-peppers",
+        "n": "rød, i terninger"
+      },
+      "rød paprika, rå": {
+        "i": "bell-peppers",
+        "n": "rød"
+      },
+      "rødbete (rå)": {
+        "i": "beetroot"
+      },
+      "rødbete, norsk, rå": {
+        "i": "beetroot"
+      },
+      "rødbete, rå": {
+        "i": "beetroot"
+      },
+      "røde linser (tørre, skylt)": {
+        "i": "lentils-red",
+        "n": "tørre, skylt"
+      },
+      "røde linser (tørrvekt)": {
+        "i": "lentils-red",
+        "n": "tørrvekt"
+      },
+      "røde linser, skylt": {
+        "i": "lentils-red",
+        "n": "skylt"
+      },
+      "rødkål, finstrimlet": {
+        "i": "red-cabbage",
+        "n": "finstrimlet"
+      },
+      "rødkål, rå": {
+        "i": "red-cabbage"
+      },
+      "rødløk": {
+        "i": "red-onions"
+      },
+      "rødløk, tynne skiver": {
+        "i": "red-onions",
+        "n": "tynne skiver"
+      },
+      "rødløk, tynt skivet": {
+        "i": "red-onions",
+        "n": "tynt skivet"
+      },
+      "røkt paprika": {
+        "i": "smoked-paprika"
+      },
+      "røkt paprikapulver": {
+        "i": "smoked-paprika"
+      },
+      "røkt paprikapulver, etter smak": {
+        "i": "smoked-paprika",
+        "n": "etter smak"
+      },
+      "røkt paprikapulver, til drysset": {
+        "i": "smoked-paprika",
+        "n": "til drysset"
+      },
+      "rørsukker (se tips for lettere bytter)": {
+        "i": "sugar",
+        "n": "se tips for lettere bytter"
+      },
+      "salt": {
+        "i": "salt"
+      },
+      "salt (tilsatt til slutt, etter smak)": {
+        "i": "salt",
+        "n": "tilsatt til slutt, etter smak"
+      },
+      "salt, bordsalt": {
+        "i": "salt"
+      },
+      "salt, etter smak": {
+        "i": "salt",
+        "n": "etter smak"
+      },
+      "saltfri grønnsakskraft eller vann": {
+        "i": "vegetable-broth",
+        "n": "saltfri eller vann"
+      },
+      "salvie, tørket": {
+        "i": "sage-dried"
+      },
+      "sammalt hvetemel": {
+        "i": "wholewheat-flour"
+      },
+      "sammalt hvetemel, fint": {
+        "i": "wholewheat-flour",
+        "n": "fint"
+      },
+      "sammalt hvetemel, grovt": {
+        "i": "wholewheat-flour",
+        "n": "grovt"
+      },
+      "sammalt rugmel (per mating)": {
+        "i": "rye-flour",
+        "n": "per mating"
+      },
+      "sammalt rugmel (til forgrødet)": {
+        "i": "rye-flour",
+        "n": "til forgrødet"
+      },
+      "sammalt rugmel (til hoveddeigen)": {
+        "i": "rye-flour",
+        "n": "til hoveddeigen"
+      },
+      "sammalt rugmel (til levain)": {
+        "i": "rye-flour",
+        "n": "til levain"
+      },
+      "selleri, brukket i store biter": {
+        "i": "celery",
+        "n": "brukket i store biter"
+      },
+      "sellerirot, norsk, rå": {
+        "i": "celeriac"
+      },
+      "selleristilk": {
+        "i": "celery"
+      },
+      "selleristilker": {
+        "i": "celery"
+      },
+      "sennepsfrø": {
+        "i": "mustard-seeds"
+      },
+      "sesamfrø": {
+        "i": "sesame-seeds"
+      },
+      "sesamfrø, med skall": {
+        "i": "sesame-seeds",
+        "n": "med skall"
+      },
+      "sesamfrø, uten skall": {
+        "i": "sesame-seeds",
+        "n": "uten skall"
+      },
+      "sesamolje": {
+        "i": "sesame-oil"
+      },
+      "sitron": {
+        "i": "lemons"
+      },
+      "sitron — all saften + skallet": {
+        "i": "lemons",
+        "n": "all saften + skallet"
+      },
+      "sitron — saften, og skallet om du bruker det": {
+        "i": "lemons",
+        "n": "saften, og skallet om du bruker det"
+      },
+      "sitron, fersk": {
+        "i": "lemons"
+      },
+      "sitron, kun saften": {
+        "i": "lemon-juice",
+        "n": "kun saften"
+      },
+      "sitron, kun skallet": {
+        "i": "lemons",
+        "n": "kun skallet"
+      },
+      "sitron, presset": {
+        "i": "lemons",
+        "n": "presset"
+      },
+      "sitron, saften av": {
+        "i": "lemons",
+        "n": "saften av"
+      },
+      "sitron, skall og saft": {
+        "i": "lemons",
+        "n": "skall og saft"
+      },
+      "sitron- eller appelsinskall (valgfritt, anbefalt)": {
+        "i": "lemons",
+        "n": "eller appelsinskall, valgfritt, anbefalt"
+      },
+      "sitronsaft": {
+        "i": "lemon-juice"
+      },
+      "sitronsaft, fersk": {
+        "i": "lemon-juice"
+      },
+      "sitronsaft, på flaske": {
+        "i": "lemon-juice",
+        "n": "på flaske"
+      },
+      "sitronskall": {
+        "i": "lemons",
+        "n": "skall"
+      },
+      "sjalottløk, finhakket": {
+        "i": "shallots",
+        "n": "finhakket"
+      },
+      "skallet edamame (kokt fra frossen)": {
+        "i": "edamame-frozen",
+        "n": "skallet, kokt fra frossen"
+      },
+      "små havregryn": {
+        "i": "small-oats"
+      },
+      "små poteter, i terninger": {
+        "i": "potatoes",
+        "n": "små, i terninger"
+      },
+      "snøerter": {
+        "i": "snow-peas"
+      },
+      "solsikkefrø": {
+        "i": "sunflower-seeds"
+      },
+      "sopp (valgfri type), halvert": {
+        "i": "mushrooms",
+        "n": "valgfri type, halvert"
+      },
+      "sorte bønner, kokte, avrent, skylt": {
+        "i": "black-beans-canned",
+        "n": "sorte, avrent, skylt"
+      },
+      "soyamajones": {
+        "i": "soy-mayonnaise"
+      },
+      "soyamelk": {
+        "i": "soy-milk"
+      },
+      "soyasaus": {
+        "i": "soy-sauce"
+      },
+      "soyayoghurt": {
+        "i": "plant-yogurt",
+        "n": "soya"
+      },
+      "speltmel": {
+        "i": "spelt-flour"
+      },
+      "spinat": {
+        "i": "spinach"
+      },
+      "spinat, fersk": {
+        "i": "spinach"
+      },
+      "spinat, frossen": {
+        "i": "spinach-frozen"
+      },
+      "spinat, rå": {
+        "i": "spinach"
+      },
+      "spisskummen, malt": {
+        "i": "cumin-ground"
+      },
+      "squash": {
+        "i": "zucchini"
+      },
+      "squash (zucchini), grovt revet": {
+        "i": "zucchini",
+        "n": "grovt revet"
+      },
+      "squash (zucchini), revet og presset": {
+        "i": "zucchini",
+        "n": "revet og presset"
+      },
+      "squash, zucchini, rå": {
+        "i": "zucchini"
+      },
+      "stangselleri, i skiver": {
+        "i": "celery",
+        "n": "i skiver"
+      },
+      "stangselleri, i terninger": {
+        "i": "celery",
+        "n": "i terninger"
+      },
+      "stangselleri, norsk, rå": {
+        "i": "celery"
+      },
+      "sterk saus": {
+        "i": "hot-sauce"
+      },
+      "stilker selleri, grovhakket": {
+        "i": "celery",
+        "n": "grovhakket"
+      },
+      "stor gulrot, i terninger": {
+        "i": "carrots",
+        "n": "stor, i terninger"
+      },
+      "sukrin": {
+        "i": "sukrin"
+      },
+      "sumak": {
+        "i": "sumac"
+      },
+      "sumak, valgfritt": {
+        "i": "sumac",
+        "n": "valgfritt"
+      },
+      "surkirsebær, uten stein (ferske eller tinte frosne)": {
+        "i": "sour-cherries",
+        "n": "uten stein (ferske eller tinte frosne)"
+      },
+      "svart salt (kala namak)": {
+        "i": "black-salt"
+      },
+      "svarte bønner": {
+        "i": "black-beans-canned"
+      },
+      "svarte bønner, kokte": {
+        "i": "black-beans-canned"
+      },
+      "svarte bønner, kokte, avrent og skylt (uten tilsatt salt)": {
+        "i": "black-beans-canned",
+        "n": "avrent og skylt (uten tilsatt salt)"
+      },
+      "svarte sennepsfrø": {
+        "i": "mustard-seeds",
+        "n": "svarte"
+      },
+      "svartkarve (nigella sativa)": {
+        "i": "nigella-seeds",
+        "n": "nigella sativa"
+      },
+      "svisker": {
+        "i": "prunes"
+      },
+      "søtpotet": {
+        "i": "sweet-potatoes"
+      },
+      "søtpotet, grovhakket (med skall)": {
+        "i": "sweet-potatoes",
+        "n": "grovhakket (med skall)"
+      },
+      "søtpotet, rå": {
+        "i": "sweet-potatoes"
+      },
+      "søtpotet, skrelt og ternet": {
+        "i": "sweet-potatoes",
+        "n": "skrelt og ternet"
+      },
+      "tahin": {
+        "i": "tahini"
+      },
+      "tahini": {
+        "i": "tahini"
+      },
+      "tahini (usaltet, av skrelt sesam)": {
+        "i": "tahini",
+        "n": "usaltet, av skrelt sesam"
+      },
+      "tamari (hvetefri soyasaus)": {
+        "i": "tamari",
+        "n": "hvetefri soyasaus"
+      },
+      "tamari / soyasaus med lavt natriuminnhold": {
+        "i": "tamari",
+        "n": "med lavt natriuminnhold"
+      },
+      "tandoori masala": {
+        "i": "tandoori-masala"
+      },
+      "tapiokastivelse": {
+        "i": "tapioca-starch"
+      },
+      "timian": {
+        "i": "thyme"
+      },
+      "timian, fersk": {
+        "i": "thyme"
+      },
+      "timian, tørket": {
+        "i": "thyme-dried"
+      },
+      "timian, tørket, etter smak": {
+        "i": "thyme-dried",
+        "n": "etter smak"
+      },
+      "tofu (soyabønneprodukt)": {
+        "i": "tofu"
+      },
+      "tofu, soyabønneprodukt": {
+        "i": "tofu"
+      },
+      "tomat": {
+        "i": "tomatoes"
+      },
+      "tomat, hakket, tetrapakk": {
+        "i": "canned-tomatoes",
+        "n": "hakket, tetrapakk"
+      },
+      "tomat, hermetisk": {
+        "i": "canned-tomatoes"
+      },
+      "tomat, importert, rå": {
+        "i": "tomatoes"
+      },
+      "tomat, norsk, rå": {
+        "i": "tomatoes"
+      },
+      "tomat, uspesifisert, rå": {
+        "i": "tomatoes"
+      },
+      "tomater, i båter": {
+        "i": "tomatoes",
+        "n": "i båter"
+      },
+      "tomater, soltørkede, tørre": {
+        "i": "sun-dried-tomatoes",
+        "n": "tørre"
+      },
+      "tomatpuré": {
+        "i": "tomato-puree"
+      },
+      "tomatpuré, hermetisk": {
+        "i": "tomato-puree",
+        "n": "hermetisk"
+      },
+      "tomatpuré, uten tilsatt salt": {
+        "i": "tomato-puree",
+        "n": "uten tilsatt salt"
+      },
+      "tranebær, tørkede": {
+        "i": "dried-cranberries"
+      },
+      "tyttebær, rå": {
+        "i": "lingonberries"
+      },
+      "tørkede borlotti-bønner (cranberrybønner)": {
+        "i": "borlotti-beans-dry",
+        "n": "cranberrybønner"
+      },
+      "tørkede borlotti-bønner (cranberrybønner), ubløtlagte": {
+        "i": "borlotti-beans-dry",
+        "n": "cranberrybønner, ubløtlagte"
+      },
+      "tørkede dadler, uten stein": {
+        "i": "dates-dried",
+        "n": "uten stein"
+      },
+      "tørkede fikener, hakket": {
+        "i": "dried-figs",
+        "n": "hakket"
+      },
+      "tørkede plommer (svisker, uten tilsatt sukker)": {
+        "i": "prunes",
+        "n": "uten tilsatt sukker"
+      },
+      "tørket basilikum": {
+        "i": "basil-dried"
+      },
+      "tørket merian": {
+        "i": "marjoram-dried"
+      },
+      "tørket oregano": {
+        "i": "oregano-dried"
+      },
+      "tørket salvie": {
+        "i": "sage-dried"
+      },
+      "tørket timian": {
+        "i": "thyme-dried"
+      },
+      "tørrgjær": {
+        "i": "dry-yeast"
+      },
+      "tørrgjær (til forgrødet)": {
+        "i": "dry-yeast",
+        "n": "til forgrødet"
+      },
+      "tørrgjær (til hoveddeigen)": {
+        "i": "dry-yeast",
+        "n": "til hoveddeigen"
+      },
+      "urtesalt": {
+        "i": "herb-salt"
+      },
+      "usøtet havremelk": {
+        "i": "oat-milk",
+        "n": "usøtet"
+      },
+      "usøtet havremelk (eller vann for lavere fett)": {
+        "i": "oat-milk",
+        "n": "usøtet, eller vann for lavere fett"
+      },
+      "usøtet mandelmelk (hjemmelaget)": {
+        "i": "almond-milk",
+        "n": "usøtet, hjemmelaget"
+      },
+      "usøtet mandelmelk (hjemmelaget, usilt)": {
+        "i": "almond-milk",
+        "n": "usøtet, hjemmelaget, usilt"
+      },
+      "usøtet plantemelk": {
+        "i": "plant-milk",
+        "n": "usøtet"
+      },
+      "usøtet vegansk yoghurt": {
+        "i": "plant-yogurt",
+        "n": "usøtet vegansk"
+      },
+      "valnøtter": {
+        "i": "walnuts"
+      },
+      "valnøtter, grovt knust": {
+        "i": "walnuts",
+        "n": "grovt knust"
+      },
+      "valnøtter, grovt knust (ca. 8 halvdeler)": {
+        "i": "walnuts",
+        "n": "grovt knust (ca. 8 halvdeler)"
+      },
+      "valnøtter, hakket": {
+        "i": "walnuts",
+        "n": "hakket"
+      },
+      "valnøtter, knust, til servering": {
+        "i": "walnuts",
+        "n": "knust, til servering"
+      },
+      "valnøtter, ristede, grovhakket": {
+        "i": "walnuts",
+        "n": "ristede, grovhakket"
+      },
+      "valnøtthalvdeler": {
+        "i": "walnuts"
+      },
+      "valnøtthalvdeler (ca. 10)": {
+        "i": "walnuts",
+        "n": "ca. 10"
+      },
+      "vaniljeekstrakt": {
+        "i": "vanilla-extract"
+      },
+      "vaniljeekstrakt (alkoholfri)": {
+        "i": "vanilla-extract",
+        "n": "alkoholfri"
+      },
+      "vaniljepulver": {
+        "i": "vanilla-powder"
+      },
+      "vaniljepulver (usøtet)": {
+        "i": "vanilla-powder",
+        "n": "usøtet"
+      },
+      "vaniljepulver, etter smak": {
+        "i": "vanilla-powder",
+        "n": "etter smak"
+      },
+      "vann": {
+        "i": "water"
+      },
+      "vann (pluss bløtleggingsvann fra dadlene)": {
+        "i": "water",
+        "n": "pluss bløtleggingsvann fra dadlene"
+      },
+      "vann (til cashewmelken)": {
+        "i": "water",
+        "n": "til cashewmelken"
+      },
+      "vann (til dadelpastaen)": {
+        "i": "water",
+        "n": "til dadelpastaen"
+      },
+      "vann (til havregrøten)": {
+        "i": "water",
+        "n": "til havregrøten"
+      },
+      "vann (til linfrø-egget)": {
+        "i": "water",
+        "n": "til linfrø-egget"
+      },
+      "vann (til mandelmelken)": {
+        "i": "water",
+        "n": "til mandelmelken"
+      },
+      "vann (til surring)": {
+        "i": "water",
+        "n": "til surring"
+      },
+      "vann til grøt": {
+        "i": "water",
+        "n": "til grøt"
+      },
+      "vann til melk": {
+        "i": "water",
+        "n": "til melk"
+      },
+      "vann, drikkevann": {
+        "i": "water",
+        "n": "drikkevann"
+      },
+      "vann, kaldt": {
+        "i": "water",
+        "n": "kaldt"
+      },
+      "vann, lunkent (per mating)": {
+        "i": "water",
+        "n": "lunkent (per mating)"
+      },
+      "vann, lunkent (til forgrødet)": {
+        "i": "water",
+        "n": "lunkent (til forgrødet)"
+      },
+      "vann, lunkent (til hoveddeigen)": {
+        "i": "water",
+        "n": "lunkent (til hoveddeigen)"
+      },
+      "vann, lunkent (til levain)": {
+        "i": "water",
+        "n": "lunkent (til levain)"
+      },
+      "vann, til bunnen": {
+        "i": "water",
+        "n": "til bunnen"
+      },
+      "vann, til dressingen": {
+        "i": "water",
+        "n": "til dressingen"
+      },
+      "vannmelon, rå": {
+        "i": "watermelon"
+      },
+      "varmt vann": {
+        "i": "water",
+        "n": "varmt"
+      },
+      "varmt vann, til bløtlegging av daddlene": {
+        "i": "water",
+        "n": "varmt, til bløtlegging av daddlene"
+      },
+      "vårløk, fersk": {
+        "i": "spring-onions"
+      },
+      "vårløk, rå": {
+        "i": "spring-onions"
+      },
+      "østerssopp (eller 25 g tørket shiitake)": {
+        "i": "mushrooms",
+        "n": "østerssopp, eller 25 g tørket shiitake"
+      }
+    },
+    "sv": {
+      "amlapulver": {
+        "i": "amla-powder"
+      },
+      "aquafaba (sparat bönvätska)": {
+        "i": "aquafaba",
+        "n": "sparat bönvätska"
+      },
+      "avokado, tärnad": {
+        "i": "avocados",
+        "n": "tärnad"
+      },
+      "avokado, tärnad, till servering": {
+        "i": "avocados",
+        "n": "tärnad, till servering"
+      },
+      "babyspenat": {
+        "i": "spinach",
+        "n": "babyspenat"
+      },
+      "bakpulver": {
+        "i": "baking-powder"
+      },
+      "banan, skivad färsk på morgonen": {
+        "i": "bananas",
+        "n": "skivad färsk på morgonen"
+      },
+      "bikarbonat": {
+        "i": "baking-soda"
+      },
+      "bladpersilja, hackad": {
+        "i": "parsley",
+        "n": "bladpersilja, hackad"
+      },
+      "blandade salladsblad (ruccola, spenat, vintersallat)": {
+        "i": "salad-leaves",
+        "n": "ruccola, spenat, vintersallat"
+      },
+      "blomkålsbuketter": {
+        "i": "cauliflower"
+      },
+      "bovetegryn": {
+        "i": "buckwheat-groats"
+      },
+      "bovetemjöl": {
+        "i": "buckwheat-flour"
+      },
+      "broccoli, i små buketter": {
+        "i": "broccoli",
+        "n": "i små buketter"
+      },
+      "broccolibuketter": {
+        "i": "broccoli"
+      },
+      "brunt rismjöl": {
+        "i": "rice-flour",
+        "n": "brunt"
+      },
+      "bröd, rostat": {
+        "i": "bread",
+        "n": "rostat"
+      },
+      "butternutpumpa eller pumpa": {
+        "i": "butternut-squash",
+        "n": "eller pumpa"
+      },
+      "cannellinibönor, kokta": {
+        "i": "white-beans-canned"
+      },
+      "carobpulver": {
+        "i": "carob-powder"
+      },
+      "cashewnötter, blötlagda i 12 timmar": {
+        "i": "cashews",
+        "n": "blötlagda i 12 timmar"
+      },
+      "ceylonkanel": {
+        "i": "cinnamon-ground"
+      },
+      "ceylonkanel, malen": {
+        "i": "cinnamon-ground"
+      },
+      "chiafrön": {
+        "i": "chia-seeds"
+      },
+      "chiafrön (till topping)": {
+        "i": "chia-seeds",
+        "n": "till topping"
+      },
+      "chiafrön, till botten": {
+        "i": "chia-seeds",
+        "n": "till botten"
+      },
+      "chiafrön, till fyllningen": {
+        "i": "chia-seeds",
+        "n": "till fyllningen"
+      },
+      "citron — all saft + skalet": {
+        "i": "lemons",
+        "n": "all saft + skalet"
+      },
+      "citron — saften, och skalet om du använder det": {
+        "i": "lemons",
+        "n": "saften, och skalet om du använder det"
+      },
+      "citron, endast saften": {
+        "i": "lemon-juice",
+        "n": "endast saften"
+      },
+      "citron, endast skalet": {
+        "i": "lemons",
+        "n": "endast skalet"
+      },
+      "citron, pressad": {
+        "i": "lemons",
+        "n": "pressad"
+      },
+      "citron, saften av": {
+        "i": "lemons",
+        "n": "saften av"
+      },
+      "citron, skal och saft": {
+        "i": "lemons",
+        "n": "skal och saft"
+      },
+      "citron- eller apelsinskal (valfritt, rekommenderas)": {
+        "i": "lemons",
+        "n": "eller apelsinskal, valfritt, rekommenderas"
+      },
+      "citronjuice": {
+        "i": "lemon-juice"
+      },
+      "citronsaft": {
+        "i": "lemon-juice"
+      },
+      "citronskal": {
+        "i": "lemons",
+        "n": "skal"
+      },
+      "currypulver": {
+        "i": "curry-powder"
+      },
+      "dadlar, torkade": {
+        "i": "dates-dried"
+      },
+      "dadlar, urkärnade": {
+        "i": "dates-dried",
+        "n": "urkärnade"
+      },
+      "deglet-dadlar, urkärnade (blötlagda 20 min i varmt vatten)": {
+        "i": "dates-dried",
+        "n": "deglet-dadlar, urkärnade (blötlagda 20 min i varmt vatten)"
+      },
+      "extra virgin olivolja": {
+        "i": "olive-oil",
+        "n": "extra virgin"
+      },
+      "filtrerat vatten": {
+        "i": "water",
+        "n": "filtrerat"
+      },
+      "filtrerat vatten, ljummet": {
+        "i": "water",
+        "n": "filtrerat, ljummet"
+      },
+      "fint havssalt": {
+        "i": "salt",
+        "n": "fint"
+      },
+      "fint havssalt, efter smak": {
+        "i": "salt",
+        "n": "fint, efter smak"
+      },
+      "fint havssalt, nypa, efter smak": {
+        "i": "salt",
+        "n": "fint, nypa, efter smak"
+      },
+      "fint havssalt, struket": {
+        "i": "salt",
+        "n": "fint, struket"
+      },
+      "fint havssalt, till de syltade löken, efter smak": {
+        "i": "salt",
+        "n": "fint, till de syltade löken, efter smak"
+      },
+      "fint salt": {
+        "i": "salt",
+        "n": "fint"
+      },
+      "fryst ananas, till mixning": {
+        "i": "pineapple-frozen",
+        "n": "till mixning"
+      },
+      "fryst banan": {
+        "i": "bananas",
+        "n": "fryst"
+      },
+      "fryst mango, till mixning": {
+        "i": "mango-frozen",
+        "n": "till mixning"
+      },
+      "frysta blandade bär (blåbär, hallon, björnbär)": {
+        "i": "berries-mixed-frozen",
+        "n": "blåbär, hallon, björnbär"
+      },
+      "frysta blåbär": {
+        "i": "blueberries-frozen"
+      },
+      "frysta blåbär att vända ner på slutet": {
+        "i": "blueberries-frozen",
+        "n": "att vända ner på slutet"
+      },
+      "frysta blåbär, till mixning": {
+        "i": "blueberries-frozen",
+        "n": "till mixning"
+      },
+      "frysta hallon, till mixning": {
+        "i": "raspberries-frozen",
+        "n": "till mixning"
+      },
+      "frysta jordgubbar, till mixning": {
+        "i": "strawberries-frozen",
+        "n": "till mixning"
+      },
+      "frysta majskorn": {
+        "i": "sweetcorn-frozen"
+      },
+      "frysta mangobitar": {
+        "i": "mango-frozen"
+      },
+      "frysta skogsbär, till mixning": {
+        "i": "berries-mixed-frozen",
+        "n": "skogsbär, till mixning"
+      },
+      "fullkornsrågmjöl (per matning)": {
+        "i": "rye-flour",
+        "n": "per matning"
+      },
+      "fullkornsrågmjöl (till fördegen)": {
+        "i": "rye-flour",
+        "n": "till fördegen"
+      },
+      "fullkornsrågmjöl (till huvuddegen)": {
+        "i": "rye-flour",
+        "n": "till huvuddegen"
+      },
+      "fullkornsrågmjöl (till levainen)": {
+        "i": "rye-flour",
+        "n": "till levainen"
+      },
+      "fullkornsvetemjöl": {
+        "i": "wholewheat-flour"
+      },
+      "fänkål": {
+        "i": "fennel"
+      },
+      "färsk citronjuice": {
+        "i": "lemon-juice"
+      },
+      "färsk citronsaft": {
+        "i": "lemon-juice"
+      },
+      "färsk citronsaft (tillsätts på slutet)": {
+        "i": "lemon-juice",
+        "n": "tillsätts på slutet"
+      },
+      "färsk citronsaft, till soppan": {
+        "i": "lemon-juice",
+        "n": "till soppan"
+      },
+      "färsk citronsaft, till syltningen": {
+        "i": "lemon-juice",
+        "n": "till syltningen"
+      },
+      "färsk dill (liten näve)": {
+        "i": "dill",
+        "n": "liten näve"
+      },
+      "färsk dill, hackad": {
+        "i": "dill",
+        "n": "hackad"
+      },
+      "färsk eller fryst ananas i bitar": {
+        "i": "pineapple",
+        "n": "färsk eller fryst i bitar"
+      },
+      "färsk gräslök eller persilja, hackad, till garnering": {
+        "i": "chives",
+        "n": "eller persilja, hackad, till garnering"
+      },
+      "färsk ingefära": {
+        "i": "ginger-fresh"
+      },
+      "färsk ingefära, i skivor": {
+        "i": "ginger-fresh",
+        "n": "i skivor"
+      },
+      "färsk ingefära, riven": {
+        "i": "ginger-fresh",
+        "n": "riven"
+      },
+      "färsk koriander, hackad": {
+        "i": "coriander-fresh",
+        "n": "hackad"
+      },
+      "färsk limejuice": {
+        "i": "lime-juice"
+      },
+      "färsk persilja": {
+        "i": "parsley"
+      },
+      "färsk persilja eller timjan, valfritt": {
+        "i": "parsley",
+        "n": "eller timjan, valfritt"
+      },
+      "färsk persilja, hackad": {
+        "i": "parsley",
+        "n": "hackad"
+      },
+      "färsk persilja, hackad (valfritt)": {
+        "i": "parsley",
+        "n": "hackad (valfritt)"
+      },
+      "färsk rosmarin": {
+        "i": "rosemary"
+      },
+      "färsk rosmarin eller timjan": {
+        "i": "rosemary",
+        "n": "eller timjan"
+      },
+      "färsk slätbladig persilja": {
+        "i": "parsley",
+        "n": "slätbladig"
+      },
+      "färsk slätbladig persilja, hackad": {
+        "i": "parsley",
+        "n": "slätbladig, hackad"
+      },
+      "färsk spenat": {
+        "i": "spinach"
+      },
+      "färsk timjan": {
+        "i": "thyme"
+      },
+      "färska basilikablad": {
+        "i": "basil"
+      },
+      "färska blåbär (tillsätts per portion, på toppen)": {
+        "i": "blueberries",
+        "n": "tillsätts per portion, på toppen"
+      },
+      "färska champinjoner, halverade": {
+        "i": "mushrooms",
+        "n": "champinjoner, halverade"
+      },
+      "färska eller frysta blåbär": {
+        "i": "blueberries",
+        "n": "färska eller frysta"
+      },
+      "färska eller frysta bär": {
+        "i": "berries-mixed",
+        "n": "färska eller frysta"
+      },
+      "färska eller frysta bär (blåbär, hallon)": {
+        "i": "berries-mixed",
+        "n": "färska eller frysta, blåbär, hallon"
+      },
+      "färska eller frysta hallon eller blåbär": {
+        "i": "raspberries",
+        "n": "färska eller frysta eller blåbär"
+      },
+      "färska örter (persilja, dill eller basilika)": {
+        "i": "herbs-fresh-mixed",
+        "n": "persilja, dill eller basilika"
+      },
+      "glutenfritt havremjöl": {
+        "i": "oat-flour",
+        "n": "glutenfritt"
+      },
+      "glutenfritt havremjöl till gröten": {
+        "i": "oat-flour",
+        "n": "glutenfritt till gröten"
+      },
+      "gröna ärter, färska eller frysta utan salt": {
+        "i": "green-peas",
+        "n": "färska eller frysta utan salt"
+      },
+      "grönkål eller savojkål, strimlad": {
+        "i": "kale",
+        "n": "eller savojkål, strimlad"
+      },
+      "grönkål, stjälkar borttagna": {
+        "i": "kale",
+        "n": "stjälkar borttagna"
+      },
+      "grönkål, stjälkarna borttagna och finhackad": {
+        "i": "kale",
+        "n": "stjälkarna borttagna och finhackad"
+      },
+      "grönsaksbuljong (från den dagliga buljongen)": {
+        "i": "vegetable-broth",
+        "n": "från den dagliga buljongen"
+      },
+      "grönsaksbuljong med låg natriumhalt": {
+        "i": "vegetable-broth",
+        "n": "med låg natriumhalt"
+      },
+      "grönsaksbuljong med lågt natrium": {
+        "i": "vegetable-broth",
+        "n": "med lågt natrium"
+      },
+      "gul lök, tärnad": {
+        "i": "onions",
+        "n": "tärnad"
+      },
+      "gurka": {
+        "i": "cucumber"
+      },
+      "gurka, skalad och riven": {
+        "i": "cucumber",
+        "n": "skalad och riven"
+      },
+      "gurkmeja": {
+        "i": "turmeric-ground"
+      },
+      "hasselnötter": {
+        "i": "hazelnuts"
+      },
+      "havregryn": {
+        "i": "rolled-oats"
+      },
+      "havregryn (inte snabbhavre)": {
+        "i": "rolled-oats",
+        "n": "inte snabbhavre"
+      },
+      "havregryn (torrvikt)": {
+        "i": "rolled-oats",
+        "n": "torrvikt"
+      },
+      "havregryn (vanliga, inte snabbgryn)": {
+        "i": "rolled-oats",
+        "n": "vanliga, inte snabbgryn"
+      },
+      "havremjöl (glutenfritt)": {
+        "i": "oat-flour",
+        "n": "glutenfritt"
+      },
+      "havssalt": {
+        "i": "salt"
+      },
+      "havssalt, efter smak": {
+        "i": "salt",
+        "n": "efter smak"
+      },
+      "hela bovetegryn (råa, sköljda)": {
+        "i": "buckwheat-groats",
+        "n": "hela, råa, sköljda"
+      },
+      "hela linfrön": {
+        "i": "flaxseed-whole"
+      },
+      "hela linfrön, färskmalda": {
+        "i": "flaxseed-ground",
+        "n": "färskmalda"
+      },
+      "hela tomater på burk": {
+        "i": "canned-tomatoes",
+        "n": "hela"
+      },
+      "hemgjord havremjölk": {
+        "i": "oat-milk",
+        "n": "hemgjord"
+      },
+      "hett vatten": {
+        "i": "water",
+        "n": "hett"
+      },
+      "hirs": {
+        "i": "millet"
+      },
+      "hirs, hel": {
+        "i": "millet",
+        "n": "hel"
+      },
+      "hummus": {
+        "i": "hummus"
+      },
+      "iskallt vatten eller sparad bönvätska": {
+        "i": "water",
+        "n": "iskallt eller sparad bönvätska"
+      },
+      "kalamata- eller gröna oliver, urkärnade": {
+        "i": "olives",
+        "n": "kalamata- eller gröna, urkärnade"
+      },
+      "kalamata- eller gröna oliver, urkärnade (8)": {
+        "i": "olives",
+        "n": "kalamata- eller gröna, urkärnade (8)"
+      },
+      "kalamataoliver": {
+        "i": "olives",
+        "n": "kalamata"
+      },
+      "kallt filtrerat vatten (för mixning)": {
+        "i": "water",
+        "n": "kallt filtrerat, för mixning"
+      },
+      "kallt vatten": {
+        "i": "water",
+        "n": "kallt"
+      },
+      "kallt vatten, för att justera": {
+        "i": "water",
+        "n": "kallt, för att justera"
+      },
+      "kanel": {
+        "i": "cinnamon-ground"
+      },
+      "kanel, malen": {
+        "i": "cinnamon-ground"
+      },
+      "kapris": {
+        "i": "capers"
+      },
+      "karobpulver": {
+        "i": "carob-powder"
+      },
+      "kikärtor, kokta": {
+        "i": "chickpeas-canned"
+      },
+      "kikärtsmjöl (besan)": {
+        "i": "chickpea-flour",
+        "n": "besan"
+      },
+      "kokande vatten": {
+        "i": "water",
+        "n": "kokande"
+      },
+      "kokande vatten (för att blöta upp carobpulvret)": {
+        "i": "water",
+        "n": "kokande, för att blöta upp carobpulvret"
+      },
+      "kokande vatten, för att röra ut caroben": {
+        "i": "water",
+        "n": "kokande, för att röra ut caroben"
+      },
+      "kokande vatten, till blötläggning av dadlarna": {
+        "i": "water",
+        "n": "kokande, till blötläggning av dadlarna"
+      },
+      "kokande vatten, till dadelpastan": {
+        "i": "water",
+        "n": "kokande, till dadelpastan"
+      },
+      "kokos, riven": {
+        "i": "shredded-coconut"
+      },
+      "kokosgrädde": {
+        "i": "coconut-cream"
+      },
+      "kokosolja, smält, till krämen": {
+        "i": "coconut-oil",
+        "n": "smält, till krämen"
+      },
+      "kokosolja, till botten": {
+        "i": "coconut-oil",
+        "n": "till botten"
+      },
+      "kokt potatis, mosad (utan tillsatser)": {
+        "i": "potatoes",
+        "n": "kokt, mosad (utan tillsatser)"
+      },
+      "kokta cannellini (vita) bönor, avrunna": {
+        "i": "white-beans-canned",
+        "n": "avrunna"
+      },
+      "kokta cannellinibönor (avrunna och sköljda)": {
+        "i": "white-beans-canned",
+        "n": "avrunna och sköljda"
+      },
+      "kokta cannellinibönor (vita bönor)": {
+        "i": "white-beans-canned"
+      },
+      "kokta cannellinibönor, avrunna och sköljda": {
+        "i": "white-beans-canned",
+        "n": "avrunna och sköljda"
+      },
+      "kokta kikärter, osaltade eller väl sköljda": {
+        "i": "chickpeas-canned",
+        "n": "osaltade eller väl sköljda"
+      },
+      "kokta kikärtor, avrunna": {
+        "i": "chickpeas-canned",
+        "n": "avrunna"
+      },
+      "kokta svarta bönor (sköljda om burk)": {
+        "i": "black-beans-canned",
+        "n": "sköljda om burk"
+      },
+      "kokta vita bönor (cannellini), avrunna och sköljda": {
+        "i": "white-beans-canned",
+        "n": "avrunna och sköljda"
+      },
+      "kokta vita bönor (cannellini), sköljda": {
+        "i": "white-beans-canned",
+        "n": "sköljda"
+      },
+      "kokvatten från kikärtor": {
+        "i": "aquafaba"
+      },
+      "kornkaffe": {
+        "i": "barley-coffee"
+      },
+      "kornkaffepulver (t.ex. inka, caro)": {
+        "i": "barley-coffee",
+        "n": "t.ex. Inka, Caro"
+      },
+      "kummin- eller fänkålsfrön, lätt krossade": {
+        "i": "caraway-seeds",
+        "n": "eller fänkålsfrön, lätt krossade"
+      },
+      "körsbärstomater": {
+        "i": "cherry-tomatoes"
+      },
+      "lagerblad, torkade": {
+        "i": "bay-leaves",
+        "n": "torkade"
+      },
+      "levande växtbaserad yoghurt, osötad — starter": {
+        "i": "plant-yogurt",
+        "n": "levande, osötad, starter"
+      },
+      "limejuice": {
+        "i": "lime-juice"
+      },
+      "limejuice (ca ½ lime)": {
+        "i": "lime-juice",
+        "n": "ca ½ lime"
+      },
+      "limeskal, rivet, till botten": {
+        "i": "limes",
+        "n": "skal, rivet, till botten"
+      },
+      "limeskal, rivet, till krämen": {
+        "i": "limes",
+        "n": "skal, rivet, till krämen"
+      },
+      "ljummet vatten": {
+        "i": "water",
+        "n": "ljummet"
+      },
+      "ljummet vatten (38–40°c)": {
+        "i": "water",
+        "n": "ljummet, 38–40°C"
+      },
+      "ljus miso (shiro), löses upp på slutet": {
+        "i": "miso-paste",
+        "n": "ljus, shiro, löses upp på slutet"
+      },
+      "ljus misopasta (lågt natrium)": {
+        "i": "miso-paste",
+        "n": "ljus, lågt natrium"
+      },
+      "lök, finhackad": {
+        "i": "onions",
+        "n": "finhackad"
+      },
+      "lök, grovhackad": {
+        "i": "onions",
+        "n": "grovhackad"
+      },
+      "lök, halverad, med skal": {
+        "i": "onions",
+        "n": "halverad, med skal"
+      },
+      "lök, i klyftor, med skal": {
+        "i": "onions",
+        "n": "i klyftor, med skal"
+      },
+      "lök, tärnad": {
+        "i": "onions",
+        "n": "tärnad"
+      },
+      "lökpulver": {
+        "i": "onion-powder"
+      },
+      "lönnsirap": {
+        "i": "maple-syrup"
+      },
+      "malda linfrön": {
+        "i": "flaxseed-ground"
+      },
+      "malda linfrön (tillsätts per portion, utanför värmen)": {
+        "i": "flaxseed-ground",
+        "n": "tillsätts per portion, utanför värmen"
+      },
+      "malda linfrön (tillsätts utanför värmen)": {
+        "i": "flaxseed-ground",
+        "n": "tillsätts utanför värmen"
+      },
+      "malda linfrön (tillsätts utanför värmen, per portion)": {
+        "i": "flaxseed-ground",
+        "n": "tillsätts utanför värmen, per portion"
+      },
+      "malda linfrön, rörs i vid servering": {
+        "i": "flaxseed-ground",
+        "n": "rörs i vid servering"
+      },
+      "malda linfrön, till garnering": {
+        "i": "flaxseed-ground",
+        "n": "till garnering"
+      },
+      "malen gurkmeja": {
+        "i": "turmeric-ground"
+      },
+      "malen ingefära": {
+        "i": "ginger-ground"
+      },
+      "malen kanel": {
+        "i": "cinnamon-ground"
+      },
+      "malen kardemumma": {
+        "i": "cardamom-ground"
+      },
+      "malen koriander": {
+        "i": "coriander-ground"
+      },
+      "malen kryddnejlika, en liten nypa": {
+        "i": "cloves-ground",
+        "n": "en liten nypa"
+      },
+      "malen muskot, en liten nypa": {
+        "i": "nutmeg-ground",
+        "n": "en liten nypa"
+      },
+      "malen spiskummin": {
+        "i": "cumin-ground"
+      },
+      "malen spiskummin, rostad": {
+        "i": "cumin-ground",
+        "n": "rostad"
+      },
+      "malet linfrö": {
+        "i": "flaxseed-ground"
+      },
+      "mandlar": {
+        "i": "almonds"
+      },
+      "medjool-dadel, urkärnad": {
+        "i": "medjool-dates",
+        "n": "urkärnad"
+      },
+      "medjool-dadlar, urkärnade": {
+        "i": "medjool-dates",
+        "n": "urkärnade"
+      },
+      "medjool-dadlar, urkärnade och grovhackade": {
+        "i": "medjool-dates",
+        "n": "urkärnade och grovhackade"
+      },
+      "medjooldadel, urkärnad": {
+        "i": "medjool-dates",
+        "n": "urkärnad"
+      },
+      "medjooldadlar, urkärnade": {
+        "i": "medjool-dates",
+        "n": "urkärnade"
+      },
+      "medjooldadlar, urkärnade och finhackade": {
+        "i": "medjool-dates",
+        "n": "urkärnade och finhackade"
+      },
+      "medjooldadlar, urkärnade och hackade": {
+        "i": "medjool-dates",
+        "n": "urkärnade och hackade"
+      },
+      "medjooldadlar, urkärnade, till botten": {
+        "i": "medjool-dates",
+        "n": "urkärnade, till botten"
+      },
+      "medjooldadlar, urkärnade, till fyllningen": {
+        "i": "medjool-dates",
+        "n": "urkärnade, till fyllningen"
+      },
+      "mogen avokado": {
+        "i": "avocados",
+        "n": "mogen"
+      },
+      "mogen avokado, skivad, till servering": {
+        "i": "avocados",
+        "n": "mogen, skivad, till servering"
+      },
+      "mogen banan, mosad": {
+        "i": "bananas",
+        "n": "mogen, mosad"
+      },
+      "mogen rågsurdegsgrund": {
+        "i": "sourdough-starter",
+        "n": "mogen, råg"
+      },
+      "mogna tomater": {
+        "i": "tomatoes",
+        "n": "mogna"
+      },
+      "mogna tomater, hackade": {
+        "i": "tomatoes",
+        "n": "mogna, hackade"
+      },
+      "morot": {
+        "i": "carrots"
+      },
+      "morot, hel (eller halverad på längden)": {
+        "i": "carrots",
+        "n": "hel (eller halverad på längden)"
+      },
+      "morot, riven": {
+        "i": "carrots",
+        "n": "riven"
+      },
+      "morot, tärnad": {
+        "i": "carrots",
+        "n": "tärnad"
+      },
+      "morötter, fint rivna": {
+        "i": "carrots",
+        "n": "fint rivna"
+      },
+      "morötter, skivade": {
+        "i": "carrots",
+        "n": "skivade"
+      },
+      "morötter, tärnade": {
+        "i": "carrots",
+        "n": "tärnade"
+      },
+      "mörkt rågknäckebröd (2)": {
+        "i": "crispbread",
+        "n": "mörkt, 2"
+      },
+      "naturligt mandelsmör (utan tillsatt olja eller socker)": {
+        "i": "almond-butter",
+        "n": "naturligt, utan tillsatt olja eller socker"
+      },
+      "nykokt vatten (för att blötlägga karoben)": {
+        "i": "water",
+        "n": "nykokt, för att blötlägga karoben"
+      },
+      "näringsjäst": {
+        "i": "nutritional-yeast"
+      },
+      "näringsjäst (berikad)": {
+        "i": "nutritional-yeast",
+        "n": "berikad"
+      },
+      "näringsjäst (oberikad)": {
+        "i": "nutritional-yeast",
+        "n": "oberikad"
+      },
+      "näringsjäst, till smeten": {
+        "i": "nutritional-yeast",
+        "n": "till smeten"
+      },
+      "näringsjäst, till strösslet": {
+        "i": "nutritional-yeast",
+        "n": "till strösslet"
+      },
+      "olivolja": {
+        "i": "olive-oil"
+      },
+      "olivolja (till stekning + pensling)": {
+        "i": "olive-oil",
+        "n": "till stekning + pensling"
+      },
+      "ostronskivling (eller 25 g torkad shiitake)": {
+        "i": "mushrooms",
+        "n": "ostronskivling, eller 25 g torkad shiitake"
+      },
+      "osötad havremjölk": {
+        "i": "oat-milk",
+        "n": "osötad"
+      },
+      "osötad havremjölk (eller vatten för lägre fett)": {
+        "i": "oat-milk",
+        "n": "osötad, eller vatten för lägre fett"
+      },
+      "osötad mandelmjölk (hemgjord)": {
+        "i": "almond-milk",
+        "n": "osötad, hemgjord"
+      },
+      "osötad mandelmjölk (hemgjord, osilad)": {
+        "i": "almond-milk",
+        "n": "osötad, hemgjord, osilad"
+      },
+      "osötad vegansk yoghurt": {
+        "i": "plant-yogurt",
+        "n": "osötad vegansk"
+      },
+      "osötad växtmjölk": {
+        "i": "plant-milk",
+        "n": "osötad"
+      },
+      "palsternacka": {
+        "i": "parsnips"
+      },
+      "persilja, färsk": {
+        "i": "parsley"
+      },
+      "pistaschnötter, krossade, till garnering": {
+        "i": "pistachios",
+        "n": "krossade, till garnering"
+      },
+      "potatisstärkelse": {
+        "i": "potato-starch"
+      },
+      "psylliumfrö-pulver": {
+        "i": "psyllium-husk"
+      },
+      "psylliumfröskal": {
+        "i": "psyllium-husk"
+      },
+      "psylliumfröskal, pulver": {
+        "i": "psyllium-husk"
+      },
+      "pumpafrön": {
+        "i": "pumpkin-seeds"
+      },
+      "pumpakärnor": {
+        "i": "pumpkin-seeds"
+      },
+      "päron": {
+        "i": "pears"
+      },
+      "quinoa": {
+        "i": "quinoa"
+      },
+      "quinoa (torrvikt)": {
+        "i": "quinoa",
+        "n": "torrvikt"
+      },
+      "rapsolja": {
+        "i": "rapeseed-oil"
+      },
+      "ren vaniljextrakt": {
+        "i": "vanilla-extract",
+        "n": "ren"
+      },
+      "rent vaniljextrakt": {
+        "i": "vanilla-extract",
+        "n": "rent"
+      },
+      "rismjöl": {
+        "i": "rice-flour"
+      },
+      "riven squash, nedpressad (inte lös och luftig)": {
+        "i": "zucchini",
+        "n": "riven, nedpressad (inte lös och luftig)"
+      },
+      "rostad röd paprika, avrunnen": {
+        "i": "bell-peppers",
+        "n": "rostad röd, avrunnen"
+      },
+      "russin": {
+        "i": "raisins"
+      },
+      "rå cashewnötter, blötlagda 10-20 minuter": {
+        "i": "cashews",
+        "n": "blötlagda 10-20 minuter"
+      },
+      "råa bovetegryn": {
+        "i": "buckwheat-groats",
+        "n": "råa"
+      },
+      "råa cashewnötter (osaltade, orostade)": {
+        "i": "cashews",
+        "n": "osaltade, orostade"
+      },
+      "råa cashewnötter, blötlagda i varmt vatten 10 min": {
+        "i": "cashews",
+        "n": "blötlagda i varmt vatten 10 min"
+      },
+      "råa cashewnötter, osaltade": {
+        "i": "cashews",
+        "n": "osaltade"
+      },
+      "råa mandlar": {
+        "i": "almonds",
+        "n": "råa"
+      },
+      "råa osaltade cashewnötter": {
+        "i": "cashews",
+        "n": "osaltade"
+      },
+      "råsocker (se tips för lättare byten)": {
+        "i": "sugar",
+        "n": "se tips för lättare byten"
+      },
+      "röd eller gul paprika, grovhackad": {
+        "i": "bell-peppers",
+        "n": "röd eller gul, grovhackad"
+      },
+      "röd paprika": {
+        "i": "bell-peppers",
+        "n": "röd"
+      },
+      "röd paprika, tärnad": {
+        "i": "bell-peppers",
+        "n": "röd, tärnad"
+      },
+      "röda linser (torra, sköljda)": {
+        "i": "lentils-red",
+        "n": "torra, sköljda"
+      },
+      "röda linser (torrvikt)": {
+        "i": "lentils-red",
+        "n": "torrvikt"
+      },
+      "rödbeta (rå)": {
+        "i": "beetroot"
+      },
+      "rödkål, fint strimlad": {
+        "i": "red-cabbage",
+        "n": "fint strimlad"
+      },
+      "rödlök": {
+        "i": "red-onions"
+      },
+      "rödlök, tunt skivad": {
+        "i": "red-onions",
+        "n": "tunt skivad"
+      },
+      "rökt paprika": {
+        "i": "smoked-paprika"
+      },
+      "rökt paprikapulver": {
+        "i": "smoked-paprika"
+      },
+      "rökt paprikapulver, till strösslet": {
+        "i": "smoked-paprika",
+        "n": "till strösslet"
+      },
+      "salt": {
+        "i": "salt"
+      },
+      "salt (tillsatt på slutet, efter smak)": {
+        "i": "salt",
+        "n": "tillsatt på slutet, efter smak"
+      },
+      "salt, efter smak": {
+        "i": "salt",
+        "n": "efter smak"
+      },
+      "saltfri grönsaksbuljong eller vatten": {
+        "i": "vegetable-broth",
+        "n": "saltfri eller vatten"
+      },
+      "schalottenlök, finhackad": {
+        "i": "shallots",
+        "n": "finhackad"
+      },
+      "selleri, bruten i stora bitar": {
+        "i": "celery",
+        "n": "bruten i stora bitar"
+      },
+      "selleristjälk": {
+        "i": "celery"
+      },
+      "selleristjälkar": {
+        "i": "celery"
+      },
+      "sesamfrön": {
+        "i": "sesame-seeds"
+      },
+      "sesamfrön, med skal": {
+        "i": "sesame-seeds",
+        "n": "med skal"
+      },
+      "skalad edamame (kokt från fryst)": {
+        "i": "edamame-frozen",
+        "n": "skalad, kokt från fryst"
+      },
+      "solrosfrön": {
+        "i": "sunflower-seeds"
+      },
+      "spenat": {
+        "i": "spinach"
+      },
+      "squash (zucchini), grovt riven": {
+        "i": "zucchini",
+        "n": "grovt riven"
+      },
+      "squash (zucchini), riven och pressad": {
+        "i": "zucchini",
+        "n": "riven och pressad"
+      },
+      "stjälkar selleri, grovhackade": {
+        "i": "celery",
+        "n": "grovhackade"
+      },
+      "stjälkselleri, skivad": {
+        "i": "celery",
+        "n": "skivad"
+      },
+      "stjälkselleri, tärnad": {
+        "i": "celery",
+        "n": "tärnad"
+      },
+      "sumak": {
+        "i": "sumac"
+      },
+      "sumak, valfritt": {
+        "i": "sumac",
+        "n": "valfritt"
+      },
+      "sura körsbär, urkärnade (färska eller tinade frysta)": {
+        "i": "sour-cherries",
+        "n": "urkärnade (färska eller tinade frysta)"
+      },
+      "svamp (valfri sort), halverad": {
+        "i": "mushrooms",
+        "n": "valfri sort, halverad"
+      },
+      "svarta bönor på burk, avrunna och sköljda": {
+        "i": "black-beans-canned",
+        "n": "avrunna och sköljda"
+      },
+      "svarta bönor, kokta": {
+        "i": "black-beans-canned"
+      },
+      "svarta bönor, kokta, avrunna och sköljda (utan tillsatt salt)": {
+        "i": "black-beans-canned",
+        "n": "avrunna och sköljda (utan tillsatt salt)"
+      },
+      "svarta bönor, kokta, avrunna, sköljda": {
+        "i": "black-beans-canned",
+        "n": "avrunna, sköljda"
+      },
+      "svarta senapsfrön": {
+        "i": "mustard-seeds",
+        "n": "svarta"
+      },
+      "svartkummin (nigella sativa)": {
+        "i": "nigella-seeds",
+        "n": "nigella sativa"
+      },
+      "sötpotatis": {
+        "i": "sweet-potatoes"
+      },
+      "sötpotatis, grovhackad (med skal)": {
+        "i": "sweet-potatoes",
+        "n": "grovhackad (med skal)"
+      },
+      "sötpotatis, skalad och tärnad": {
+        "i": "sweet-potatoes",
+        "n": "skalad och tärnad"
+      },
+      "tahini": {
+        "i": "tahini"
+      },
+      "tahini (osaltad, av skalad sesam)": {
+        "i": "tahini",
+        "n": "osaltad, av skalad sesam"
+      },
+      "tamari (vetefri soja)": {
+        "i": "tamari",
+        "n": "vetefri soja"
+      },
+      "tamari / soja med låg natriumhalt": {
+        "i": "tamari",
+        "n": "med låg natriumhalt"
+      },
+      "timjan, torkad": {
+        "i": "thyme-dried"
+      },
+      "tomat": {
+        "i": "tomatoes"
+      },
+      "tomater, i klyftor": {
+        "i": "tomatoes",
+        "n": "i klyftor"
+      },
+      "tomatpuré, utan tillsatt salt": {
+        "i": "tomato-puree",
+        "n": "utan tillsatt salt"
+      },
+      "torkad basilika": {
+        "i": "basil-dried"
+      },
+      "torkad mejram": {
+        "i": "marjoram-dried"
+      },
+      "torkad oregano": {
+        "i": "oregano-dried"
+      },
+      "torkad salvia": {
+        "i": "sage-dried"
+      },
+      "torkad timjan": {
+        "i": "thyme-dried"
+      },
+      "torkade borlottibönor (cranberrybönor)": {
+        "i": "borlotti-beans-dry",
+        "n": "cranberrybönor"
+      },
+      "torkade borlottibönor (cranberrybönor), oblötlagda": {
+        "i": "borlotti-beans-dry",
+        "n": "cranberrybönor, oblötlagda"
+      },
+      "torkade dadlar, urkärnade": {
+        "i": "dates-dried",
+        "n": "urkärnade"
+      },
+      "torkade fikon, hackade": {
+        "i": "dried-figs",
+        "n": "hackade"
+      },
+      "torkade plommon (katrinplommon, utan tillsatt socker)": {
+        "i": "prunes",
+        "n": "utan tillsatt socker"
+      },
+      "torrjäst": {
+        "i": "dry-yeast"
+      },
+      "torrjäst (till fördegen)": {
+        "i": "dry-yeast",
+        "n": "till fördegen"
+      },
+      "torrjäst (till huvuddegen)": {
+        "i": "dry-yeast",
+        "n": "till huvuddegen"
+      },
+      "valnötshalvor": {
+        "i": "walnuts"
+      },
+      "valnötshalvor (ca 10)": {
+        "i": "walnuts",
+        "n": "ca 10"
+      },
+      "valnötter": {
+        "i": "walnuts"
+      },
+      "valnötter, grovt krossade": {
+        "i": "walnuts",
+        "n": "grovt krossade"
+      },
+      "valnötter, grovt krossade (ca 8 halvor)": {
+        "i": "walnuts",
+        "n": "grovt krossade (ca 8 halvor)"
+      },
+      "valnötter, hackade": {
+        "i": "walnuts",
+        "n": "hackade"
+      },
+      "valnötter, krossade, till servering": {
+        "i": "walnuts",
+        "n": "krossade, till servering"
+      },
+      "valnötter, rostade, grovhackade": {
+        "i": "walnuts",
+        "n": "rostade, grovhackade"
+      },
+      "vaniljextrakt": {
+        "i": "vanilla-extract"
+      },
+      "vaniljextrakt (alkoholfritt)": {
+        "i": "vanilla-extract",
+        "n": "alkoholfritt"
+      },
+      "vaniljpulver": {
+        "i": "vanilla-powder"
+      },
+      "vaniljpulver (osötat)": {
+        "i": "vanilla-powder",
+        "n": "osötat"
+      },
+      "vaniljpulver, efter smak": {
+        "i": "vanilla-powder",
+        "n": "efter smak"
+      },
+      "varmt vatten, till blötläggning av dadlarna": {
+        "i": "water",
+        "n": "varmt, till blötläggning av dadlarna"
+      },
+      "vatten": {
+        "i": "water"
+      },
+      "vatten (plus blötläggningsvatten från dadlarna)": {
+        "i": "water",
+        "n": "plus blötläggningsvatten från dadlarna"
+      },
+      "vatten (till cashewmjölken)": {
+        "i": "water",
+        "n": "till cashewmjölken"
+      },
+      "vatten (till dadelpastan)": {
+        "i": "water",
+        "n": "till dadelpastan"
+      },
+      "vatten (till havregröten)": {
+        "i": "water",
+        "n": "till havregröten"
+      },
+      "vatten (till linfrö-ägget)": {
+        "i": "water",
+        "n": "till linfrö-ägget"
+      },
+      "vatten (till mandelmjölken)": {
+        "i": "water",
+        "n": "till mandelmjölken"
+      },
+      "vatten (till stekning)": {
+        "i": "water",
+        "n": "till stekning"
+      },
+      "vatten till gröten": {
+        "i": "water",
+        "n": "till gröten"
+      },
+      "vatten, dricksvatten": {
+        "i": "water",
+        "n": "dricksvatten"
+      },
+      "vatten, kallt": {
+        "i": "water",
+        "n": "kallt"
+      },
+      "vatten, ljummet (per matning)": {
+        "i": "water",
+        "n": "ljummet (per matning)"
+      },
+      "vatten, ljummet (till fördegen)": {
+        "i": "water",
+        "n": "ljummet (till fördegen)"
+      },
+      "vatten, ljummet (till huvuddegen)": {
+        "i": "water",
+        "n": "ljummet (till huvuddegen)"
+      },
+      "vatten, ljummet (till levainen)": {
+        "i": "water",
+        "n": "ljummet (till levainen)"
+      },
+      "vatten, till botten": {
+        "i": "water",
+        "n": "till botten"
+      },
+      "vatten, till dressingen": {
+        "i": "water",
+        "n": "till dressingen"
+      },
+      "vit miso (shiro)": {
+        "i": "miso-paste",
+        "n": "vit, shiro"
+      },
+      "vit misopasta": {
+        "i": "miso-paste",
+        "n": "vit"
+      },
+      "vita bönor (cannellini), kokta": {
+        "i": "white-beans-canned"
+      },
+      "vita bönor (cannellini), kokta och avrunna": {
+        "i": "white-beans-canned",
+        "n": "kokta och avrunna"
+      },
+      "vita bönor (cannellini), kokta, avrunna och sköljda (utan tillsatt salt)": {
+        "i": "white-beans-canned",
+        "n": "avrunna och sköljda (utan tillsatt salt)"
+      },
+      "vita bönor på burk (cannellini), avrunna och sköljda": {
+        "i": "white-beans-canned",
+        "n": "avrunna och sköljda"
+      },
+      "vitlök": {
+        "i": "garlic"
+      },
+      "vitlök, finhackad": {
+        "i": "garlic",
+        "n": "finhackad"
+      },
+      "vitlök, i skivor": {
+        "i": "garlic",
+        "n": "i skivor"
+      },
+      "vitlök, rostad": {
+        "i": "garlic",
+        "n": "rostad"
+      },
+      "vitlöksklyfta": {
+        "i": "garlic"
+      },
+      "vitlöksklyftor": {
+        "i": "garlic"
+      },
+      "vitlöksklyftor, finhackade": {
+        "i": "garlic",
+        "n": "finhackade"
+      },
+      "vitlöksklyftor, hela, oskalade": {
+        "i": "garlic",
+        "n": "hela, oskalade"
+      },
+      "vitlöksklyftor, krossade": {
+        "i": "garlic",
+        "n": "krossade"
+      },
+      "vitlökspulver": {
+        "i": "garlic-powder"
+      },
+      "växtmjölk": {
+        "i": "plant-milk"
+      },
+      "zucchini": {
+        "i": "zucchini"
+      },
+      "äpple (fast sort — granny smith eller cox)": {
+        "i": "apples",
+        "n": "fast sort, Granny Smith eller Cox"
+      },
+      "äpplen, skalade, urkärnade och delade i fyra": {
+        "i": "apples",
+        "n": "skalade, urkärnade och delade i fyra"
+      }
+    }
+  }
+}

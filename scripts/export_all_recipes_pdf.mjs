@@ -7,19 +7,17 @@
  * Output: an .html file (self-contained) that is then rendered to PDF with
  * headless Chrome/Edge (--print-to-pdf) — see the companion Bash command.
  *
- * Faithful to the app: quantity formatting reuses the real unit-conversion
- * code (metric system, Norwegian unit labels) at scale factor 1 (standard
- * servings), mirroring RecipeDetail.formatScaledQuantity + smartRound.
+ * Faithful to the app: quantity formatting calls the app's own
+ * formatScaledQuantity (metric system, Norwegian unit labels) at scale
+ * factor 1 (standard servings).
  */
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import {
-  normalizeUnit,
-  CANONICAL_UNITS,
-  convertToSystem,
-  displayUnit,
-} from '../src/utils/unitNormalizer.js'
+// The scaler reads the ingredient dictionary (a .json import, the Vite
+// way), so the same loader the tests use goes in first.
+import '../tests/support/json-loader.mjs'
+const { formatScaledIngredient } = await import('../src/utils/scaleIngredient.js')
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.join(__dirname, '..')
@@ -50,47 +48,15 @@ const dataUri = (file, mime) =>
 const FREDHEIM_LOGO = dataUri('fredheim-logo.png', 'image/png')
 const VIVERA_LOGO = dataUri('Vivera_Health_logo.png', 'image/png')
 
-// ── Faithful quantity formatting (mirrors RecipeDetail) ──────────────────────
-function smartRound(num) {
-  if (num === null || num === undefined || num === 0) return 0
-  const fractions = [0.25, 0.33, 0.5, 0.67, 0.75]
-  if (num < 1) {
-    let closest = fractions[0]
-    let minDiff = Math.abs(num - closest)
-    for (const f of fractions) {
-      const d = Math.abs(num - f)
-      if (d < minDiff) { minDiff = d; closest = f }
-    }
-    if (minDiff < 0.1) return closest
-  }
-  if (Math.abs(num - Math.round(num)) < 0.05) return Math.round(num)
-  const decimal = num % 1
-  if (Math.abs(decimal - 0.5) < 0.05) return Math.floor(num) + 0.5
-  return Math.round(num * 100) / 100
-}
-
-function displayUnitLabel(unitKey) {
-  if (!unitKey) return ''
-  if (CANONICAL_UNITS[unitKey]) return displayUnit(unitKey, 'no')
-  return unitKey
-}
-
+// ── Quantity formatting: the app's own helper, so the PDF matches the screen ─
 // Standard portions → scale factor 1. Metric system, Norwegian labels.
-function formatQty(quantity, unit) {
-  if (quantity === null || quantity === undefined || quantity === 0) return unit || ''
-  const normalized = normalizeUnit(unit)
-  const meta = CANONICAL_UNITS[normalized]
-  let finalQty = quantity
-  let finalUnitKey = normalized || unit
-  if (meta && meta.system !== 'both') {
-    const c = convertToSystem(quantity, normalized, 'metric')
-    finalQty = c.quantity
-    finalUnitKey = c.unit
-  }
-  const rounded = smartRound(finalQty)
-  if (rounded === 0) return displayUnitLabel(finalUnitKey) || ''
-  const label = displayUnitLabel(finalUnitKey)
-  return label ? `${rounded} ${label}` : `${rounded}`
+function formatRow(ing) {
+  return formatScaledIngredient(ing, {
+    fromServings: 1,
+    toServings: 1,
+    system: 'metric',
+    lang: 'no',
+  })
 }
 
 function esc(s) {
@@ -150,11 +116,14 @@ function sheetHtml(rec) {
   if (rec.cookTime) chips.push(`<span class="chip">🔥 ${esc(LABELS.cook)}: <b>${rec.cookTime}m</b></span>`)
   if (rec.categoryLabel) chips.push(`<span class="chip chip--accent">${esc(rec.categoryLabel)}</span>`)
 
-  const ings = rec.ingredients.map((ing) => `
+  const ings = rec.ingredients.map((ing) => {
+    const { name, quantityLabel } = formatRow(ing)
+    return `
         <li>
-          <span class="ing-name">${esc(ing.name)}</span>
-          <span class="ing-qty">${esc(formatQty(ing.quantity, ing.unit))}</span>
-        </li>`).join('')
+          <span class="ing-name">${esc(name)}${ing.note ? `<span class="ing-note">, ${esc(ing.note)}</span>` : ''}</span>
+          <span class="ing-qty">${esc(quantityLabel)}</span>
+        </li>`
+  }).join('')
 
   const steps = rec.steps.map((s, i) => `
         <li><span class="step-num">${i + 1}</span><span class="step-text">${esc(s)}</span></li>`).join('')
@@ -241,6 +210,7 @@ const CSS = `
   ul.ingredients{list-style:none;padding:0;margin:0;}
   ul.ingredients li{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding:5px 0;border-bottom:1px dotted var(--line);font-size:11.5px;break-inside:avoid;page-break-inside:avoid;}
   .ing-name{color:var(--ink);}
+  .ing-note{color:var(--ink-soft);font-size:.9em;}
   .ing-qty{color:var(--ink-soft);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;}
   ol.steps{list-style:none;padding:0;margin:0;}
   ol.steps li{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;font-size:11.5px;line-height:1.55;color:var(--ink);break-inside:avoid;page-break-inside:avoid;}

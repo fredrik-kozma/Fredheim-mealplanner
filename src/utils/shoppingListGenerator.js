@@ -3,98 +3,13 @@
  * Uses unitNormalizer for proper unit handling and ingredientMatcher for grouping.
  */
 
-import { normalizeUnit, convertToBase, smartConvert, roundForShopping, TO_BASE } from './unitNormalizer'
-import { groupIngredients } from './ingredientMatcher'
+import { normalizeUnit } from './unitNormalizer.js'
+import { groupIngredients } from './ingredientMatcher.js'
+import { AISLES, categoriseIngredient } from './ingredientCategorizer.js'
+import { resolveIngredientId, standardName, dictionaryAisle, prefersSpoons } from './ingredientDictionary.js'
 
-// Rough ingredient categories for grouping. Keywords are matched against
-// the ingredient name in the *active language*, so each category carries
-// English + Norwegian + Swedish terms. Longest match wins (see
-// categoriseIngredient), so compound names like "gresskarkjerner"
-// (pumpkin seeds) beat the shorter "gresskar" (squash).
-const INGREDIENT_CATEGORIES = {
-  Produce: ['apple', 'eple', 'äpple', 'banana', 'banan', 'lemon', 'sitron', 'citron', 'lime', 'orange',
-    'strawberr', 'jordbær', 'blueberr', 'raspberr', 'mango', 'avocado', 'avokado',
-    'tomato', 'tomat', 'onion', 'løk', 'lök', 'garlic', 'hvitløk', 'vitlök', 'ginger', 'ingefær', 'ingefära',
-    'carrot', 'gulrot', 'morot', 'potato', 'potet', 'sweet potato', 'søtpotet', 'sötpotat',
-    'celery', 'selleri', 'broccoli', 'brokkoli', 'spinach', 'spinat', 'spenat', 'lettuce', 'salat', 'sallad',
-    'cucumber', 'agurk', 'gurka', 'pepper', 'paprika', 'zucchini', 'squash', 'courgette',
-    'cauliflower', 'blomkål', 'pumpkin', 'gresskar', 'pumpa', 'butternut',
-    'mushroom', 'sopp', 'pea', 'corn', 'mais', 'kale', 'grønnkål', 'grönkål', 'cabbage', 'kål', 'savoy',
-    'leek', 'purre', 'herb', 'basil', 'basilikum', 'basilika', 'parsley', 'persille', 'persilja',
-    'cilantro', 'dill', 'thyme', 'timian', 'timjan', 'rosemary', 'rosmarin', 'oregano',
-    'mint', 'chive', 'gressløk', 'fennel', 'fennikel', 'fänkål', 'beetroot', 'beet', 'rødbete', 'rödbeta',
-    'parsnip', 'pastinakk', 'palsternacka', 'radish', 'reddik', 'spring onion', 'vårløk',
-    'edamame', 'sugar snap',
-    // Win over Dairy's "egg" substring match — eggplant is produce.
-    'eggplant', 'aubergine'],
-  'Meat & Fish': ['chicken', 'kylling', 'beef', 'biff', 'pork', 'svin', 'lamb', 'lam', 'turkey', 'kalkun',
-    'bacon', 'sausage', 'pølse', 'ham', 'salmon', 'laks', 'tuna', 'tunfisk', 'cod', 'torsk', 'shrimp', 'reke',
-    'fish', 'fisk', 'mince', 'kjøttdeig', 'steak', 'sea bass', 'havabbor', 'pollock', 'sei', 'mince'],
-  Dairy: ['milk', 'melk', 'cream', 'fløte', 'yogurt', 'yoghurt', 'butter', 'smør', 'cheese', 'ost',
-    'egg', 'sour cream', 'rømme', 'crème fraîche', 'mozzarella', 'parmesan', 'cheddar', 'feta', 'ricotta',
-    'greek yogurt', 'granola'],
-  'Bakery & Grains': ['flour', 'mel', 'bread', 'brød', 'bröd', 'pasta', 'rice', 'ris', 'oat', 'havre', 'barley',
-    'bygg', 'quinoa', 'noodle', 'tortilla', 'cracker', 'crispbread', 'knekkebrød', 'knäckebröd',
-    'breadcrumb', 'panko', 'yeast', 'gjær',
-    'baking powder', 'bakepulver', 'baking soda', 'natron', 'cornstarch', 'maizena', 'potetmel',
-    'bulgur', 'couscous', 'flatbread', 'pitta', 'rye', 'rug'],
-  'Canned & Dried': ['bean', 'bønne', 'bönor', 'lentil', 'linse', 'linser', 'chickpea', 'kikerter', 'tomato sauce', 'tomatsaus',
-    'coconut milk', 'kokosmjølk', 'stock', 'kraft', 'broth', 'buljong', 'bouillon', 'soup', 'suppe',
-    'canned', 'hermetisk', 'chopped tomatoes', 'tahini', 'olives', 'oliven', 'oliver', 'pickled',
-    // Nuts, seeds and other dry-store staples.
-    'walnut', 'valnøtt', 'valnött', 'almond', 'mandel', 'mandl', 'cashew', 'peanut', 'hazelnut', 'nut', 'nøtt', 'nött',
-    'pumpkin seed', 'gresskarkjern', 'pumpakärn', 'sunflower seed', 'sesame seed', 'sesamfrø', 'sesamfrö',
-    'chia', 'flaxseed', 'linfrø', 'linfrö', 'sunflower'],
-  'Oils & Condiments': ['oil', 'olje', 'olive oil', 'oliveolje', 'vinegar', 'eddik', 'soy sauce', 'soyasaus',
-    'mustard', 'sennep', 'ketchup', 'mayonnaise', 'hot sauce', 'sriracha', 'worcestershire', 'tamari',
-    'honey', 'honning', 'maple syrup', 'ahornsirup', 'sugar', 'sukker', 'salt', 'pepper',
-    'spice', 'krydder', 'cumin', 'spisskummen', 'spiskummin', 'turmeric', 'gurkemeie', 'gurkmeja',
-    'coriander', 'koriander', 'garam masala', 'chilli', 'cinnamon', 'kanel', 'cardamom', 'kardemom', 'kardemumma',
-    'clove', 'nellik', 'nejlika', 'nutmeg', 'muskat', 'muskot', 'smoked paprika', 'røkt paprika', 'rökt paprika',
-    'sumac', 'sumak', 'almond butter', 'mandelsmør', 'mandelsmör', 'peanut butter',
-    'sesame', 'sesamolje', 'soy', 'soya', 'fish sauce', 'oyster sauce'],
-  Frozen: ['frozen', 'frosne', 'frysta', 'ice cream', 'iskrem'],
-  Beverages: ['water', 'vann', 'vatten', 'juice', 'coffee', 'kaffe', 'tea', 'te', 'wine', 'vin', 'beer', 'øl',
-    'oat milk', 'havremelk', 'havremjölk', 'almond milk', 'mandelmelk', 'plant milk', 'plantemelk',
-    'soy milk', 'soyamelk', 'soya milk', 'rice milk', 'rismelk', 'cashew milk', 'hazelnut milk'],
-  Other: [],
-}
-
-// A few keywords are too short to match safely as substrings: Norwegian
-// "te" (tea) hides inside tomaTEr / bukeTTEr / liTEn, and "ris" (rice)
-// hides inside fRISk / selleRIStilker. These must match as standalone
-// words only. Longer keywords keep substring matching so compound nouns
-// (grønnkål, havremel, gresskarkjerner) still resolve correctly.
-const WHOLE_WORD_KEYWORDS = new Set(['te', 'tea', 'øl', 'ris', 'is'])
-const LETTER = 'a-zæøåäöéü'
-
-function keywordHit(haystack, kw) {
-  if (!WHOLE_WORD_KEYWORDS.has(kw)) return haystack.includes(kw)
-  return new RegExp(`(^|[^${LETTER}])${kw}(?![${LETTER}])`).test(haystack)
-}
-
-function categoriseIngredient(name) {
-  const lower = name.toLowerCase()
-
-  // Pick the LONGEST matching keyword across all categories. This way:
-  //   "oat milk"        → Beverages ("oat milk", 8) beats Dairy ("milk", 4)
-  //   "coconut milk"    → Canned & Dried ("coconut milk", 12) beats Dairy ("milk", 4)
-  //   "gresskarkjerner" → Canned & Dried ("gresskarkjern") beats Produce ("gresskar")
-  //   "røkt paprika"    → Oils & Condiments beats Produce ("paprika")
-  // Ties resolve to whichever category is declared first.
-  let bestCat = 'Other'
-  let bestLen = 0
-  for (const [cat, keywords] of Object.entries(INGREDIENT_CATEGORIES)) {
-    if (cat === 'Other') continue
-    for (const kw of keywords) {
-      if (kw.length > bestLen && keywordHit(lower, kw)) {
-        bestCat = cat
-        bestLen = kw.length
-      }
-    }
-  }
-  return bestCat
-}
+// A spice's total stays in spoons; see smartConvert's preferSpoons.
+export const totalOptionsFor = (id) => ({ preferSpoons: prefersSpoons(id) })
 
 // Category key for the "Batch cooking" section. Kept distinct from the aisle
 // categories so the UI can label it via its own i18n key, the same way the
@@ -165,13 +80,17 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
     const recipeTitle = translation?.title || recipe.title
 
     for (const ing of ingredients) {
-      if (isPlainWater(ing.name)) continue
+      if (ing.ingredient === 'water' || isPlainWater(ing.name)) continue
       const unit = normalizeUnit(ing.unit)
       const scaledQty = ing.quantity ? ing.quantity * scaleFactor : 0
       bucket.push({
         quantity: scaledQty,
         unit,
         name: ing.name,
+        note: ing.note || '',
+        // Pack rows carry their dictionary id; a user's own row gets one
+        // only when its name is exactly a standard name or synonym.
+        ingredientId: resolveIngredientId(ing),
         recipeTitle,
       })
     }
@@ -228,15 +147,19 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
   // one silently affect the other.
   function buildItems(bucket, { forcedCategory = null, idPrefix = '' } = {}) {
     const byCat = {}
-    for (const group of groupIngredients(bucket)) {
-      const cat = forcedCategory || categoriseIngredient(group.displayName)
+    for (const group of groupIngredients(bucket, id => standardName(id, lang), totalOptionsFor)) {
+      // The dictionary knows where its ingredients are shelved; the
+      // keyword matcher is for names it doesn't know.
+      const cat = forcedCategory
+        || (group.ingredientId && dictionaryAisle(group.ingredientId))
+        || categoriseIngredient(group.displayName)
       if (!byCat[cat]) byCat[cat] = []
 
       const qty = group.totalQuantity
       const unit = group.totalUnit
 
       let formattedUnit = unit || ''
-      // If quantity is already a formatted string (mixed units), qty is the string
+      // Mixed units come back as an array of parts with unit ''.
       const id = idPrefix + group.normalizedName + '__' + formattedUnit
 
       // Raw per-occurrence contributions (already scaled to the plan's
@@ -244,13 +167,16 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
       // a saved list can be re-scaled to a different portion count.
       const sources = group.items
         .filter(it => it.quantity && it.quantity > 0)
-        .map(it => ({ recipe: it.recipeTitle, quantity: it.quantity, unit: it.unit }))
+        .map(it => ({ recipe: it.recipeTitle, quantity: it.quantity, unit: it.unit, ...(it.note ? { note: it.note } : {}) }))
 
       byCat[cat].push({
         id,
         quantity: qty,
         unit: formattedUnit,
         name: group.displayName,
+        // Lets the list say "1 Sitron" and keep a spice in spoons when a
+        // contribution is removed and the total is worked out again.
+        ...(group.ingredientId ? { ingredientId: group.ingredientId } : {}),
         category: cat,
         recipeNames: [...new Set(group.items.map(i => i.recipeTitle))],
         sources,
@@ -286,7 +212,7 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
   }
 
   // Sort categories and items within
-  const categoryOrder = Object.keys(INGREDIENT_CATEGORIES)
+  const categoryOrder = AISLES
   const sortedGroups = Object.entries(byCat).sort(([a], [b]) => {
     const ia = categoryOrder.indexOf(a)
     const ib = categoryOrder.indexOf(b)
@@ -306,24 +232,4 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
     ...Object.entries(batchByCat).map(sortItems),
     ...sortedGroups.map(sortItems),
   ]
-}
-
-/**
- * Formats a quantity for shopping rather than for cooking.
- *
- * Scaling a week to 20 people produced amounts like "533.3 g", "66.7 g",
- * "28.3 ml" and "6.25 clove" — precision that is real arithmetic but
- * useless at a shelf, and misleading besides, since the underlying figures
- * are estimates scaled from a serving count.
- *
- * The rounding itself lives in unitNormalizer so the mixed-unit path in
- * ingredientMatcher can apply exactly the same rule.
- */
-export function formatQuantity(quantity, unit) {
-  if (quantity === null || quantity === undefined || quantity === 0) return unit || ''
-  if (typeof quantity === 'string') return quantity // pre-formatted mixed units
-
-  const value = roundForShopping(quantity, unit)
-  const formatted = value % 1 === 0 ? value.toString() : String(value)
-  return unit ? `${formatted} ${unit}` : formatted
 }

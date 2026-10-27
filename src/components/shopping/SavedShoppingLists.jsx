@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
-import { formatQuantity } from '../../utils/shoppingListGenerator'
+import { formatQuantity } from '../../utils/formatQuantity'
 import { combineQuantities } from '../../utils/ingredientMatcher'
+import { nameForAmount, resolveIngredientId } from '../../utils/ingredientDictionary'
+import { totalOptionsFor } from '../../utils/shoppingListGenerator'
 import { buildRecipeBreakdown } from '../../utils/recipeBreakdown'
 import { printShoppingList } from '../../utils/printShoppingList'
 import EditableNumber from '../common/EditableNumber'
 
 export default function SavedShoppingLists({ onClose }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const currentLang = i18n.language?.slice(0, 2) || 'en'
   const savedShoppingLists = useStore(s => s.savedShoppingLists)
   const deleteSavedShoppingList = useStore(s => s.deleteSavedShoppingList)
   const familySize = useStore(s => s.familySize)
@@ -64,9 +67,7 @@ export default function SavedShoppingLists({ onClose }) {
     if (!m) return amount
     const num = parseFloat(m[1].replace(',', '.'))
     if (isNaN(num)) return amount
-    const scaled = Math.round(num * ratio * 100) / 100
-    const numStr = scaled % 1 === 0 ? String(scaled) : scaled.toFixed(2).replace(/\.?0+$/, '')
-    return m[2] ? `${numStr} ${m[2]}` : numStr
+    return formatQuantity(num * ratio, m[2], currentLang, { roundUpWhole: true })
   }
 
   // Re-scale a saved list's quantities from the portions it was saved for
@@ -79,24 +80,26 @@ export default function SavedShoppingLists({ onClose }) {
     return (list.items || []).map(group => ({
       category: group.category,
       items: (group.items || []).map(item => {
-        if (item.custom) return { name: item.name, label: scaleAmountString(item.quantity, ratio) }
+        if (item.custom) return { name: item.name, shownName: item.name, label: scaleAmountString(item.quantity, ratio) }
+        // `name` stays the key ticked-off state is stored under;
+        // `shownName` is what's read ("1 Sitron").
+        const shown = (quantity, unit) => ({
+          name: item.name,
+          shownName: nameForAmount(item, currentLang, quantity, unit, { roundUpWhole: true }),
+          label: formatQuantity(quantity, unit, currentLang, { roundUpWhole: true }),
+        })
         if (Array.isArray(item.sources) && item.sources.length > 0) {
           const scaled = item.sources.map(s => ({ ...s, quantity: (s.quantity || 0) * ratio }))
-          const c = combineQuantities(scaled)
+          // Lists saved before items carried their id find it by name.
+          const c = combineQuantities(scaled, totalOptionsFor(item.ingredientId || resolveIngredientId(item)))
           // The per-recipe split comes back out alongside the total, so
           // the list can answer "which recipe is this for?" — built by
           // the same helper the live list's ⓘ popover uses, scaled first
           // so the split matches the portions on screen.
-          return {
-            name: item.name,
-            label: formatQuantity(c.quantity, c.unit),
-            breakdown: buildRecipeBreakdown(scaled),
-          }
+          return { ...shown(c.quantity, c.unit), breakdown: buildRecipeBreakdown(scaled, currentLang) }
         }
-        if (typeof item.quantity === 'number') {
-          return { name: item.name, label: formatQuantity(item.quantity * ratio, item.unit) }
-        }
-        return { name: item.name, label: formatQuantity(item.quantity, item.unit) }
+        if (typeof item.quantity === 'number') return shown(item.quantity * ratio, item.unit)
+        return shown(item.quantity, item.unit)
       }),
     }))
   }
@@ -104,7 +107,7 @@ export default function SavedShoppingLists({ onClose }) {
   function handlePrintViewing() {
     const groups = scaledGroups(viewing, portions).map(g => ({
       category: categoryLabel(g.category),
-      items: g.items.map(it => ({ name: it.name, quantityLabel: it.label })),
+      items: g.items.map(it => ({ name: it.shownName, quantityLabel: it.label })),
     }))
     printShoppingList({
       title: viewing.name || t('shopping.title'),
@@ -263,7 +266,7 @@ export default function SavedShoppingLists({ onClose }) {
                               className="w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-400 flex-shrink-0 cursor-pointer"
                             />
                             <span className={`flex-1 min-w-0 text-sm break-words ${done ? 'line-through text-slate-400' : 'text-slate-700'}`}>
-                              {item.name}
+                              {item.shownName}
                             </span>
                             {hasBreakdown && (
                               <button
@@ -286,7 +289,10 @@ export default function SavedShoppingLists({ onClose }) {
                             <div className="mt-2 ml-7 space-y-1">
                               {item.breakdown.map((b, bi) => (
                                 <div key={bi} className="flex items-baseline justify-between gap-3 text-xs">
-                                  <span className="text-slate-500 min-w-0 break-words">{b.recipe}</span>
+                                  <span className="text-slate-500 min-w-0 break-words">
+                                    {b.recipe}
+                                    {b.note && <span className="block text-[11px] text-slate-400">{b.note}</span>}
+                                  </span>
                                   <span className="text-slate-400 whitespace-nowrap">{b.label}</span>
                                 </div>
                               ))}

@@ -1,4 +1,4 @@
-import { normalizeUnit, convertToBase, smartConvert, roundForShopping, TO_BASE } from './unitNormalizer'
+import { normalizeUnit, convertToBase, smartConvert, BASE_UNIT_TYPE } from './unitNormalizer.js'
 
 // Preparation words that describe the SAME whole food (a knife/pan/state
 // change), so they are stripped before matching — "crushed garlic" is
@@ -106,7 +106,13 @@ export function ingredientSimilarity(a, b) {
   const wordsB = nb.split(' ')
   const bothSingleWord = wordsA.length === 1 && wordsB.length === 1
   const sameQualifier = wordsA[0] === wordsB[0]
-  if (bothSingleWord || sameQualifier) {
+  // A typo or plural keeps the first letter of the word it changes. Two
+  // short words a couple of edits apart that start differently are
+  // different foods: kale/salt, potatoes/tomatoes, oats/dates,
+  // natron/sitron, and "coconut oil"/"coconut milk" (oil vs milk).
+  const firstDiff = wordsA.findIndex((w, i) => w !== wordsB[i])
+  const sameStart = firstDiff === -1 || (wordsA[firstDiff]?.[0] && wordsA[firstDiff][0] === wordsB[firstDiff]?.[0])
+  if ((bothSingleWord || sameQualifier) && sameStart) {
     const dist = levenshtein(na, nb)
     const maxLen = Math.max(na.length, nb.length)
     if (dist <= 2 && maxLen > 3) return 0.8
@@ -145,26 +151,20 @@ function sumQuantitiesInBase(items) {
   return { quantity: total, unit: baseType }
 }
 
-// Format a number for human display: integer if whole, otherwise up to
-// 2 decimals with trailing zeros stripped.
-function fmtNum(n) {
-  if (n === 0 || !isFinite(n)) return '0'
-  const rounded = Math.round(n * 100) / 100
-  return rounded % 1 === 0 ? rounded.toString() : rounded.toFixed(2).replace(/\.?0+$/, '')
-}
-
 /**
- * Build a clean display string for a group of ingredient quantities that
- * cannot all be combined into one base unit.
+ * Split a group of ingredient quantities that cannot all be combined into
+ * one base unit into one raw total per kind.
  *
- *   [ {5,clove}, {2,tsp}, {1,tbsp}, {10,g} ]   →   "5 clove + 20 ml + 10 g"
+ *   [ {5,clove}, {2,tsp}, {1,tbsp}, {10,g} ]
+ *     →  [ {5,clove}, {10,g}, {25,ml} ]   — shown as "5 clove + 10 g + 25 ml"
  *
  * Strategy: bucket items by base type (weight / volume / count). Weight
- * and volume buckets each get summed in their base unit and re-rendered
+ * and volume buckets each get summed in their base unit and given a unit
  * via smartConvert. Count units stay separate per unit type (clove vs
- * pcs vs head) so the user always sees an honest number.
+ * pcs vs head) so the user always sees an honest number. Nothing is
+ * rounded here; formatQuantity does that when the parts are shown.
  */
-function buildMixedQuantityString(items) {
+function buildMixedQuantityParts(items, options) {
   let totalMass = 0     // grams
   let totalVolume = 0   // ml
   const countByUnit = {}
@@ -180,58 +180,121 @@ function buildMixedQuantityString(items) {
     }
   }
 
-  // Rounded for shopping here too. This path handles every count-only
-  // group (a lone "pcs" can't be summed into a base unit, so it defers to
-  // this string), which is where "2.5 pcs" of lemon came from.
+  // This path also handles every count-only group (a lone "pcs" can't be
+  // summed into a base unit, so it defers to here).
   const parts = []
   for (const [u, q] of Object.entries(countByUnit)) {
-    parts.push(`${fmtNum(roundForShopping(q, u))} ${u}`)
+    parts.push({ quantity: q, unit: u })
   }
-  if (totalMass > 0) {
-    const smart = smartConvert(totalMass, 'g')
-    parts.push(`${fmtNum(roundForShopping(smart.quantity, smart.unit))} ${smart.unit}`)
-  }
-  if (totalVolume > 0) {
-    const smart = smartConvert(totalVolume, 'ml')
-    parts.push(`${fmtNum(roundForShopping(smart.quantity, smart.unit))} ${smart.unit}`)
-  }
-  return parts.join(' + ')
+  if (totalMass > 0) parts.push(smartConvert(totalMass, 'g'))
+  if (totalVolume > 0) parts.push(smartConvert(totalVolume, 'ml', options))
+  return parts
 }
 
 /**
- * Combine a set of { quantity, unit } entries into a single display
- * quantity, using the same base-unit summing + smart formatting the
- * shopping list uses. Returns { quantity, unit } where quantity is a
- * number for combinable units, or a pre-formatted string (unit '') when
- * the entries span more than one base type. Exported so the shopping
- * list can reuse it for per-recipe breakdowns and portion re-scaling.
+ * Combine a set of { quantity, unit } entries into a single raw total,
+ * using the same base-unit summing the shopping list uses. Returns
+ * { quantity, unit } where quantity is a number for combinable units, or
+ * an array of { quantity, unit } parts (unit '') when the entries span
+ * more than one kind — both of which formatQuantity knows how to show.
+ * Exported so the shopping list can reuse it for per-recipe breakdowns
+ * and portion re-scaling. `options` go to smartConvert ({ preferSpoons }
+ * for a spice, so its total reads in spoons).
  */
-export function combineQuantities(items) {
+export function combineQuantities(items, options = {}) {
   const withQty = (items || []).filter(g => g.quantity && g.quantity > 0)
   if (withQty.length === 0) return { quantity: null, unit: null }
   const base = sumQuantitiesInBase(withQty)
   if (base) {
-    const smart = smartConvert(base.quantity, base.unit)
+    const smart = smartConvert(base.quantity, base.unit, options)
     return { quantity: smart.quantity, unit: smart.unit }
   }
-  return { quantity: buildMixedQuantityString(withQty), unit: '' }
+  // Even a single part stays an array with unit '': the shopping list
+  // builds item ids from the unit, and ticked-off state is keyed on them.
+  return { quantity: buildMixedQuantityParts(withQty, options), unit: '' }
 }
 
-export function groupIngredients(ingredientList) {
-  // ingredientList: array of { quantity, unit, name, recipeTitle }
-  const groups = []
-  const matched = new Set()
+/*
+ * Which amounts of one ingredient can share a shopping line: weights with
+ * weights, volumes with volumes, and each counted unit on its own
+ * (2 pcs and 3 cloves are not one number). Rows without an amount
+ * ("salt, to taste") have no family and join whatever line exists.
+ */
+function unitFamily(item) {
+  if (!item.quantity) return null
+  const u = normalizeUnit(item.unit)
+  const base = BASE_UNIT_TYPE[u]
+  if (base === 'g') return 'weight'
+  if (base === 'ml') return 'volume'
+  return 'count:' + (!u || u === 'none' ? 'pcs' : u)
+}
 
-  for (let i = 0; i < ingredientList.length; i++) {
+function finishGroup(normalizedName, displayName, items, ingredientId = null, options = {}) {
+  // Sum quantities into one clean display total (numbers where units
+  // combine, otherwise a "5 clove + 20 ml"-style honest string).
+  const { quantity: totalQuantity, unit: totalUnit } = combineQuantities(items, options)
+  return { normalizedName, displayName, items, totalQuantity, totalUnit, ingredientId }
+}
+
+/**
+ * Group a week's ingredient occurrences into shopping lines.
+ *
+ * ingredientList: [{ quantity, unit, name, recipeTitle, ingredientId? }]
+ * displayNameFor: id -> the name to show for a dictionary ingredient
+ * optionsFor:     id -> combineQuantities options for that ingredient
+ *
+ * Occurrences that carry a dictionary id are grouped by that id and unit
+ * family, and nothing else: two different ids never share a line, however
+ * alike their names look. Only occurrences without an id (a user's own
+ * recipe the dictionary doesn't recognise) go through name matching.
+ */
+export function groupIngredients(ingredientList, displayNameFor = () => null, optionsFor = () => ({})) {
+  const groups = []
+  const byId = new Map()      // id -> Map(family -> items)
+  const looseById = new Map() // id -> items with no amount
+  const unnamed = []
+
+  for (const item of ingredientList) {
+    const id = item.ingredientId
+    if (!id) { unnamed.push(item); continue }
+    const fam = unitFamily(item)
+    if (!fam) { (looseById.get(id) || looseById.set(id, []).get(id)).push(item); continue }
+    if (!byId.has(id)) byId.set(id, new Map())
+    const fams = byId.get(id)
+    if (!fams.has(fam)) fams.set(fam, [])
+    fams.get(fam).push(item)
+  }
+  for (const id of looseById.keys()) if (!byId.has(id)) byId.set(id, new Map())
+
+  for (const [id, fams] of byId) {
+    const loose = looseById.get(id) || []
+    const name = displayNameFor(id) || ingredientList.find(i => i.ingredientId === id).name
+    const options = optionsFor(id)
+    if (fams.size === 0) {
+      groups.push(finishGroup(`#${id}`, name, loose, id, options))
+      continue
+    }
+    let first = true
+    for (const [fam, items] of fams) {
+      // An amount-less "to taste" row rides along on the first line, so it
+      // still shows which recipe wants it without adding a line of its own.
+      const all = first ? [...items, ...loose] : items
+      first = false
+      groups.push(finishGroup(`#${id}|${fam}`, name, all, id, options))
+    }
+  }
+
+  const matched = new Set()
+  for (let i = 0; i < unnamed.length; i++) {
     if (matched.has(i)) continue
 
-    const pivot = ingredientList[i]
+    const pivot = unnamed[i]
     const group = [pivot]
     matched.add(i)
 
-    for (let j = i + 1; j < ingredientList.length; j++) {
+    for (let j = i + 1; j < unnamed.length; j++) {
       if (matched.has(j)) continue
-      const candidate = ingredientList[j]
+      const candidate = unnamed[j]
       const sim = ingredientSimilarity(pivot.name, candidate.name)
       if (sim >= 0.8) {
         group.push(candidate)
@@ -239,25 +302,18 @@ export function groupIngredients(ingredientList) {
       }
     }
 
-    // Determine displayName: most common original name
+    // Determine displayName: most common name, spelled the way it was
+    // first written.
     const nameCount = {}
+    const spelling = {}
     for (const item of group) {
       const n = item.name.toLowerCase().trim()
       nameCount[n] = (nameCount[n] || 0) + 1
+      if (!spelling[n]) spelling[n] = item.name.trim()
     }
-    const displayName = Object.entries(nameCount).sort((a, b) => b[1] - a[1])[0][0]
+    const top = Object.entries(nameCount).sort((a, b) => b[1] - a[1])[0][0]
 
-    // Sum quantities into one clean display total (numbers where units
-    // combine, otherwise a "5 clove + 20 ml"-style honest string).
-    const { quantity: totalQuantity, unit: totalUnit } = combineQuantities(group)
-
-    groups.push({
-      normalizedName: normalizeIngredientName(pivot.name),
-      displayName,
-      items: group,
-      totalQuantity,
-      totalUnit,
-    })
+    groups.push(finishGroup(normalizeIngredientName(pivot.name), spelling[top], group))
   }
 
   return groups

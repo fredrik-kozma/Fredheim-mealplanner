@@ -150,6 +150,7 @@ export const RECIPE_SHEET_CSS = `
     page-break-inside: avoid;
   }
   .ing-name { color: var(--ink); }
+  .ing-note { color: var(--ink-soft); font-size: 0.9em; }
   .ing-qty { color: var(--ink-soft); font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
   /* Spoon reminder under the amounts. Printed sheets are read at the
      counter with no app to tap, so "1.7 ml of salt" has to be decodable

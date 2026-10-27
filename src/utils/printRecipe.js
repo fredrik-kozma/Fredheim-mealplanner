@@ -30,7 +30,7 @@ function escapeHtml(s) {
  * @param {number|null} [opts.prepTime]   Minutes
  * @param {number|null} [opts.cookTime]   Minutes
  * @param {number|null} [opts.servings]
- * @param {Array<{name:string, quantityLabel:string}>} opts.ingredients
+ * @param {Array<{name:string, note?:string, quantityLabel:string}>} opts.ingredients
  * @param {string[]} opts.steps
  * @param {object} opts.labels  Localized UI strings:
  *   { ingredients, instructions, servings, prep, cook, category, printedOn }
@@ -90,7 +90,7 @@ export function printRecipe(opts) {
     .map(
       (ing) => `
       <li>
-        <span class="ing-name">${escapeHtml(ing.name)}</span>
+        <span class="ing-name">${escapeHtml(ing.name)}${ing.note ? `<span class="ing-note">, ${escapeHtml(ing.note)}</span>` : ''}</span>
         <span class="ing-qty">${escapeHtml(ing.quantityLabel || '')}</span>
       </li>`
     )

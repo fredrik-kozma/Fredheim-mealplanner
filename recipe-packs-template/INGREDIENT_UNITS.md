@@ -108,6 +108,9 @@ check a USDA weight in cups and divide by 2.4 to get g/dl.
 | Apple / pear / plum | 60 | | | |
 | Grated courgette | 90 | | | |
 
+Spoon-measured powders, for turning a gram row into the spoons §1.2 asks
+for: **nutritional yeast flakes, 1 tbsp = 5 g** (about 33 g/dl).
+
 ## 3. Countable-produce table (grams per piece)
 
 For whole vegetables/fruit a recipe names by count (`1 onion`, `2 carrots`).
@@ -143,6 +146,14 @@ Single-size items (no size word needed in practice):
 
 Fresh herbs sold/used "by the handful": parsley & coriander 15 g, basil &
 chives 10 g, spinach 30 g.
+
+Juice per fruit — a "juice of ½ lemon" row is written as lemon **juice** in
+spoons, not as lemons in pieces, so it adds up with the other juice rows:
+
+| Juice of | ml | spoons |
+|---|---:|---:|
+| 1 lemon | 45 | 3 tbsp |
+| 1 lime | 30 | 2 tbsp |
 
 ## 4. The "to taste" convention
 
