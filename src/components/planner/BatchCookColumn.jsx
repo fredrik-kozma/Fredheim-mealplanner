@@ -41,7 +41,7 @@ function BatchRecipeChip({ entry, recipe, currentLang }) {
         </button>
         <button
           onClick={() => removeBatchItem(entry.id)}
-          className="text-slate-400 hover:text-red-500 transition-colors flex-shrink-0"
+          className="tap-target text-slate-400 hover:text-red-500 transition-colors flex-shrink-0"
           title={t('common.remove')}
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -56,7 +56,7 @@ function BatchRecipeChip({ entry, recipe, currentLang }) {
             <button
               onClick={() => setBatchServings(entry.id, Math.max(1, effectiveServings - 1))}
               disabled={effectiveServings <= 1}
-              className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 text-xs font-bold flex items-center justify-center"
+              className="tap-target w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 text-xs font-bold flex items-center justify-center"
             >
               −
             </button>
@@ -69,11 +69,11 @@ function BatchRecipeChip({ entry, recipe, currentLang }) {
             />
             <button
               onClick={() => setBatchServings(entry.id, effectiveServings + 1)}
-              className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center"
+              className="tap-target w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center"
             >
               +
             </button>
-            <button onClick={() => setShowAdjuster(false)} className="text-slate-300 hover:text-slate-500 ml-0.5">
+            <button onClick={() => setShowAdjuster(false)} className="tap-target text-slate-300 hover:text-slate-500 ml-0.5">
               <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
               </svg>
@@ -82,7 +82,7 @@ function BatchRecipeChip({ entry, recipe, currentLang }) {
         ) : (
           <button
             onClick={() => setShowAdjuster(true)}
-            className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
+            className={`tap-target text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
               isOverridden
                 ? 'bg-orange-100 text-orange-700 hover:bg-orange-200'
                 : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
@@ -144,7 +144,7 @@ function BatchTextChip({ entry }) {
       </button>
       <button
         onClick={() => removeBatchItem(entry.id)}
-        className="text-slate-300 hover:text-red-500 transition-colors flex-shrink-0"
+        className="tap-target text-slate-300 hover:text-red-500 transition-colors flex-shrink-0"
         title={t('common.remove')}
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -164,6 +164,12 @@ export default function BatchCookColumn({ onAddRecipe }) {
 
   const [addingText, setAddingText] = useState(false)
   const [textDraft, setTextDraft] = useState('')
+  // On a phone the full column plus the row labels take most of the
+  // screen before Monday even starts, so there it opens folded into a
+  // narrow strip. From sm up it is always open and the toggle is hidden.
+  const [collapsed, setCollapsed] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia?.('(max-width: 639px)').matches
+  )
   const textRef = useRef(null)
 
   useEffect(() => { if (addingText) textRef.current?.focus() }, [addingText])
@@ -174,14 +180,45 @@ export default function BatchCookColumn({ onAddRecipe }) {
     setAddingText(false)
   }
 
+  const batchLabel = t('planner.batchCook', { defaultValue: 'Batch cooking' })
+
   return (
-    <div className="flex-shrink-0 w-40 sm:w-44 flex flex-col gap-2">
-      {/* Header — matches the day-header height so the column tops align */}
-      <div className="text-center py-2 rounded-xl font-semibold text-sm bg-orange-100 text-orange-800">
+    <>
+    {/* Folded strip — phones only. */}
+    {collapsed && (
+      <button
+        onClick={() => setCollapsed(false)}
+        className="sm:hidden flex-shrink-0 w-10 flex flex-col items-center gap-2 py-2 rounded-xl bg-orange-100 text-orange-800 hover:bg-orange-200 transition-colors"
+        title={t('planner.batchShow', { defaultValue: 'Show batch cooking' })}
+        aria-label={t('planner.batchShow', { defaultValue: 'Show batch cooking' })}
+        aria-expanded={false}
+      >
+        <span aria-hidden>🍲</span>
+        {batchCook.length > 0 && (
+          <span className="text-[10px] font-bold bg-white/80 rounded-full px-1.5">{batchCook.length}</span>
+        )}
+        <span className="text-xs font-semibold [writing-mode:vertical-rl]">{batchLabel}</span>
+      </button>
+    )}
+    <div className={`flex-shrink-0 w-40 sm:w-44 flex-col gap-2 ${collapsed ? 'hidden sm:flex' : 'flex'}`}>
+      {/* Header — matches the day-header height so the column tops align.
+          The right padding on phones leaves room for the fold button. */}
+      <div className="relative text-center py-2 px-6 sm:px-0 rounded-xl font-semibold text-sm bg-orange-100 text-orange-800">
         <span className="inline-flex items-center gap-1">
           <span aria-hidden>🍲</span>
-          {t('planner.batchCook', { defaultValue: 'Batch cooking' })}
+          {batchLabel}
         </span>
+        <button
+          onClick={() => setCollapsed(true)}
+          className="tap-target sm:hidden absolute right-1.5 top-1/2 -translate-y-1/2 p-1 text-orange-700/70 hover:text-orange-900"
+          title={t('planner.batchHide', { defaultValue: 'Hide batch cooking' })}
+          aria-label={t('planner.batchHide', { defaultValue: 'Hide batch cooking' })}
+          aria-expanded={true}
+        >
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </button>
       </div>
 
       <div className="flex-1 min-h-[120px] rounded-xl border border-orange-100 bg-orange-50/60 p-2">
@@ -234,5 +271,6 @@ export default function BatchCookColumn({ onAddRecipe }) {
         </button>
       </div>
     </div>
+    </>
   )
 }

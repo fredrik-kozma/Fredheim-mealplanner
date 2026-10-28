@@ -33,7 +33,8 @@ function PackCard({ pack, onInstall, installing }) {
   const installedVersion = installedPacks[pack.id]?.version ?? null
   const hasUpdate = isInstalled && installedVersion !== pack.version
 
-  // Use translated description if available, otherwise fall back to English
+  // Use translated name/description if available, otherwise fall back to English
+  const displayName = pack.translations?.[currentLang]?.name || pack.name
   const displayDescription = pack.translations?.[currentLang]?.description || pack.description
 
   return (
@@ -41,7 +42,7 @@ function PackCard({ pack, onInstall, installing }) {
       <div className="flex items-start justify-between gap-3 mb-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-1">
-            <h3 className="text-base font-semibold text-slate-800">{pack.name}</h3>
+            <h3 className="text-base font-semibold text-slate-800">{displayName}</h3>
             <span className="badge bg-slate-100 text-slate-500 text-xs">v{pack.version}</span>
           </div>
           <p className="text-xs text-slate-500">{t('packs.by')} {pack.author}</p>

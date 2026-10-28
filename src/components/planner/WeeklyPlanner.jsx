@@ -71,7 +71,7 @@ function DayHeader({ day }) {
       {isExtra && (
         <button
           onClick={handleRemove}
-          className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-red-500 transition-colors"
+          className="tap-target absolute right-1.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-red-500 transition-colors"
           title={t('planner.removeDay', { defaultValue: 'Remove this day' })}
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -116,6 +116,8 @@ export default function WeeklyPlanner() {
   // or null when the picker is closed.
   const [printMode, setPrintMode] = useState(null)
   const [sharing, setSharing] = useState(null)
+  // The phone-only "⋯" toolbar menu.
+  const [moreOpen, setMoreOpen] = useState(false)
 
   /**
    * Everything the share sheet needs, built on demand rather than kept in
@@ -521,7 +523,7 @@ export default function WeeklyPlanner() {
             out of sight; the toolbar grows downwards instead. */}
         <div className="px-4 pt-4 pb-3 flex items-center justify-between gap-2 flex-wrap">
           <WeekScale />
-          <div className="w-full sm:w-auto grid grid-cols-2 sm:flex sm:flex-wrap items-center sm:justify-end gap-2 min-w-0">
+          <div className="w-full sm:w-auto grid grid-cols-[1fr_1fr_auto] sm:flex sm:flex-wrap items-center sm:justify-end gap-2 min-w-0">
           <button
             onClick={() => setTemplatesMode('list')}
             className="btn-secondary py-2 px-3.5 inline-flex items-center justify-center gap-1.5"
@@ -543,7 +545,7 @@ export default function WeeklyPlanner() {
           <button
             onClick={() => startPrint('week')}
             disabled={mealCount === 0}
-            className="btn-secondary py-2 px-3.5 inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="btn-secondary py-2 px-3.5 hidden sm:inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
@@ -553,7 +555,7 @@ export default function WeeklyPlanner() {
           <button
             onClick={() => startPrint('book')}
             disabled={mealCount === 0}
-            className="btn-secondary py-2 px-3.5 inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="btn-secondary py-2 px-3.5 hidden sm:inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
             title={t('planner.printMenuBookHint', { defaultValue: 'Every recipe for the week, in one document' })}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -564,7 +566,7 @@ export default function WeeklyPlanner() {
           <button
             onClick={() => setSharing(buildShare())}
             disabled={mealCount === 0}
-            className="btn-secondary py-2 px-3.5 inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="btn-secondary py-2 px-3.5 hidden sm:inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
             title={t('planner.shareWeekHint', { defaultValue: 'Send this menu to someone' })}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -572,9 +574,48 @@ export default function WeeklyPlanner() {
             </svg>
             {t('planner.shareWeek', { defaultValue: 'Share' })}
           </button>
+          {/* Phones: Print, Print all and Share fold into this menu, so
+              the toolbar is one row of Load / Save / ⋯ instead of three
+              rows of half-width buttons with wrapping labels. */}
+          <div className="relative sm:hidden">
+            <button
+              onClick={() => setMoreOpen(v => !v)}
+              className="btn-secondary py-2 px-3 h-full"
+              aria-label={t('planner.moreActions', { defaultValue: 'More' })}
+              title={t('planner.moreActions', { defaultValue: 'More' })}
+              aria-haspopup="menu"
+              aria-expanded={moreOpen}
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <circle cx="5" cy="12" r="1.75" /><circle cx="12" cy="12" r="1.75" /><circle cx="19" cy="12" r="1.75" />
+              </svg>
+            </button>
+            {moreOpen && (
+              <>
+                <div className="fixed inset-0 z-20" onClick={() => setMoreOpen(false)} />
+                <div role="menu" className="absolute right-0 top-full mt-1 z-30 w-56 bg-white rounded-xl shadow-lg border border-slate-100 py-1">
+                  {[
+                    { label: t('planner.printWeek', { defaultValue: 'Print menu' }), run: () => startPrint('week') },
+                    { label: t('planner.printMenuBook', { defaultValue: 'Print all recipes' }), run: () => startPrint('book') },
+                    { label: t('planner.shareWeek', { defaultValue: 'Share' }), run: () => setSharing(buildShare()) },
+                  ].map(item => (
+                    <button
+                      key={item.label}
+                      role="menuitem"
+                      disabled={mealCount === 0}
+                      onClick={() => { setMoreOpen(false); item.run() }}
+                      className="w-full text-left px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
           <button
             onClick={() => { if (confirm(t('planner.clearWeekConfirm'))) clearWeekPlan() }}
-            className="btn-ghost text-xs text-slate-400 hover:text-red-500 py-2 px-2 col-span-2 sm:col-auto"
+            className="btn-ghost text-xs text-slate-400 hover:text-red-500 py-2 px-2 col-span-3 sm:col-auto"
           >
             {t('planner.clearWeek')}
           </button>
@@ -584,8 +625,14 @@ export default function WeeklyPlanner() {
         {/* Week-level "smart tips" — batch-prep guidance for the whole week */}
         <WeekNotes />
 
-        {/* Scrollable planner grid */}
-        <div className="flex-1 overflow-x-auto overflow-y-auto px-4 pb-24 lg:pb-8">
+        {/* Scrollable planner grid. Nothing above it has a fixed height
+            (the page grows with its content), so on desktop the board is
+            capped at the window's height instead: it then scrolls on its
+            own, and its sideways scrollbar sits at most one screen down
+            rather than under the last row of a long week. Phones keep
+            plain page scrolling — a nested vertical scroller fights the
+            finger there, and sideways is a swipe anyway. */}
+        <div className="flex-1 overflow-x-auto overflow-y-auto px-4 pb-24 lg:pb-8 lg:max-h-[calc(100vh-4rem)]">
           <div className="flex gap-3 min-w-max">
             {/* Batch cooking — what gets prepped once for the whole week */}
             <BatchCookColumn onAddRecipe={() => setPicker({ batch: true })} />
@@ -601,7 +648,11 @@ export default function WeeklyPlanner() {
               {/* One row per meal slot — label cell then a slot per day */}
               {mealSlots.map(slot => (
                 <Fragment key={slot}>
-                  <div className="flex items-center justify-end text-xs font-semibold text-slate-500 uppercase tracking-wide pr-1">
+                  {/* Sticky so the row stays named while the days scroll past
+                      under it; opaque and above the slots so nothing shows
+                      through. Drops are unaffected: dnd-kit matches by the
+                      slots' measured rects, not by what is on top. */}
+                  <div className="sticky left-0 z-10 bg-slate-50 flex items-center justify-end text-xs font-semibold text-slate-500 uppercase tracking-wide pr-1">
                     {t(`planner.mealSlots.${slot}`, { defaultValue: slot })}
                   </div>
                   {dayKeys.map(day => (
@@ -617,7 +668,7 @@ export default function WeeklyPlanner() {
 
               {/* Notes row — one short reminder per day, aligned to the
                   day columns like any meal-slot row. */}
-              <div className="flex items-start justify-end text-xs font-semibold text-slate-500 uppercase tracking-wide pr-1 pt-1.5">
+              <div className="sticky left-0 z-10 bg-slate-50 flex items-start justify-end text-xs font-semibold text-slate-500 uppercase tracking-wide pr-1 pt-1.5">
                 {t('planner.notesRow', { defaultValue: 'Notes' })}
               </div>
               {dayKeys.map(day => (

@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
+import { BUILT_IN_PACKS } from '../../data/installedPacks'
 import RecipeCard from './RecipeCard'
 import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
 import { NUTRITION_GROUPS, fmtNutrient } from '../../utils/nutritionData'
@@ -129,7 +130,9 @@ export default function RecipeList() {
     const opts = []
     for (const [packId, info] of Object.entries(installedPacks || {})) {
       if (!counts[packId]) continue
-      const pack = info
+      // Built-in packs: read the name from the shipped pack, not the copy
+      // stored at install time, so renames and translations reach existing users.
+      const pack = BUILT_IN_PACKS[packId] || info
       const localized = pack?.translations?.[currentLang]?.name
       opts.push({
         id: packId,

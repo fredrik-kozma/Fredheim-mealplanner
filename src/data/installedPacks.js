@@ -41,6 +41,7 @@ export const BUILT_IN_REGISTRY = [
     author: FREDHEIM_RECIPES_WITH_PICTURES_PACK.author,
     version: FREDHEIM_RECIPES_WITH_PICTURES_PACK.version,
     tags: FREDHEIM_RECIPES_WITH_PICTURES_PACK.tags,
+    translations: FREDHEIM_RECIPES_WITH_PICTURES_PACK.translations,
     recipeCount: FREDHEIM_RECIPES_WITH_PICTURES_PACK.recipes.length,
   },
   {

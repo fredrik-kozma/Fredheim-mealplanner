@@ -109,7 +109,7 @@ export default function WeekScale() {
       <button
         onClick={() => step(-1)}
         disabled={value <= 1}
-        className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
+        className="tap-target w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
         aria-label={t('planner.scaleDown', { defaultValue: 'Fewer people' })}
       >
         −
@@ -123,7 +123,7 @@ export default function WeekScale() {
       />
       <button
         onClick={() => step(1)}
-        className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
+        className="tap-target w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
         aria-label={t('planner.scaleUp', { defaultValue: 'More people' })}
       >
         +

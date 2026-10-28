@@ -5,6 +5,7 @@ import useStore from '../../store/useStore'
 import { compressImage } from '../../utils/imageCompressor'
 import UnitSelect from './UnitSelect'
 import { ingredientLabel } from '../../utils/ingredientDictionary'
+import NotFoundPage from '../../pages/NotFoundPage'
 
 /*
  * Pack rows carry a dictionary id and a separate `note`. The form has no
@@ -326,6 +327,11 @@ export default function RecipeForm() {
       )
     }
   }
+
+  // An edit link to a recipe that doesn't exist (deleted, or a typo) must
+  // not fall through to a blank form — saving that would quietly create a
+  // brand-new recipe. After every hook above, so hook order never changes.
+  if (id && !existing) return <NotFoundPage />
 
   return (
     <div className="max-w-2xl mx-auto pb-24 lg:pb-8">

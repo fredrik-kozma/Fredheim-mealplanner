@@ -30,7 +30,7 @@ export default function PreviewBanner() {
 
   return (
     <>
-      <div className="sticky top-0 z-30 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white shadow-sm">
+      <div className="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white shadow-sm">
         <div className="flex items-center justify-center gap-3 px-3 py-2 max-w-5xl mx-auto">
           <span className="text-xs sm:text-sm font-medium flex-1 text-center">
             ✨ {t('preview.bannerText')}

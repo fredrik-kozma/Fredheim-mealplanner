@@ -180,7 +180,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl max-h-[85vh] flex flex-col shadow-2xl">
+      <div className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl sheet-max-h pb-[env(safe-area-inset-bottom)] flex flex-col shadow-2xl">
         {/* Handle (mobile) */}
         <div className="sm:hidden flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 rounded-full bg-slate-200" />
@@ -411,7 +411,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
                             <button
                               onClick={() => setLoadPortions(p => ({ ...p, [tmpl.id]: Math.max(1, (target ?? base) - 1) }))}
                               disabled={(target ?? base) <= 1}
-                              className="w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 text-xs font-bold flex items-center justify-center"
+                              className="tap-target w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 text-xs font-bold flex items-center justify-center"
                             >
                               −
                             </button>
@@ -420,7 +420,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
                             </span>
                             <button
                               onClick={() => setLoadPortions(p => ({ ...p, [tmpl.id]: (target ?? base) + 1 }))}
-                              className="w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center"
+                              className="tap-target w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center"
                             >
                               +
                             </button>

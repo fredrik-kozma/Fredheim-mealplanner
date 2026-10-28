@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
+import { BUILT_IN_PACKS } from '../../data/installedPacks'
 import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
 import { isFmdRecipe } from '../../utils/recipeFlags'
 import { recipeHasAvoidedAllergen } from '../../data/allergens'
@@ -105,8 +106,9 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
     const opts = []
     for (const [packId, info] of Object.entries(installedPacks || {})) {
       if (!counts[packId]) continue
-      const localized = info?.translations?.[currentLang]?.name
-      opts.push({ id: packId, label: localized || info?.name || packId, count: counts[packId] })
+      const pack = BUILT_IN_PACKS[packId] || info
+      const localized = pack?.translations?.[currentLang]?.name
+      opts.push({ id: packId, label: localized || pack?.name || packId, count: counts[packId] })
     }
     opts.sort((a, b) => a.label.localeCompare(b.label))
     if (userRecipeCount > 0) {
@@ -151,7 +153,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
 
       {/* Sheet */}
-      <div className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl max-h-[85vh] flex flex-col shadow-2xl">
+      <div className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl sheet-max-h pb-[env(safe-area-inset-bottom)] flex flex-col shadow-2xl">
         {/* Handle (mobile) */}
         <div className="sm:hidden flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 rounded-full bg-slate-200" />

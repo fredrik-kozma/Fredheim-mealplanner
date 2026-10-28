@@ -7,6 +7,12 @@
     "settings": "Settings",
     "nutrition": "Nutrition"
   },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page doesn't exist, or it has been moved or deleted.",
+    "toRecipes": "Go to Recipes",
+    "toPlanner": "Go to Planner"
+  },
   "app": {
     "name": "Fredheim Meal Planner",
     "version": "Version 1.0 · All data stored locally on your device"
@@ -231,6 +237,9 @@
     "dayNotePlaceholder": "Note…",
     "batchCook": "Batch cooking",
     "batchCookHint": "Prep once for the week. Counted in the shopping list.",
+    "batchShow": "Show batch cooking",
+    "batchHide": "Hide batch cooking",
+    "moreActions": "More",
     "batchTextPlaceholder": "e.g. double batch of tomato sauce",
     "addRecipe": "Recipe",
     "addNote": "Note",

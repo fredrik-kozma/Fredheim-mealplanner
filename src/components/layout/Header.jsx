@@ -89,7 +89,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-100 px-4 h-14 flex items-center gap-3 lg:hidden">
+      <header className="relative bg-white/90 backdrop-blur-md border-b border-slate-100 px-4 h-14 flex items-center gap-3 lg:hidden">
         {/* Logo + page title */}
         <button
           onClick={() => navigate('/')}

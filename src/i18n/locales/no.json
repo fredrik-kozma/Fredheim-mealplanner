@@ -7,6 +7,12 @@
     "settings": "Innstillinger",
     "nutrition": "Ernæring"
   },
+  "notFound": {
+    "title": "Fant ikke siden",
+    "text": "Denne siden finnes ikke, eller den er flyttet eller slettet.",
+    "toRecipes": "Gå til oppskrifter",
+    "toPlanner": "Gå til ukeplan"
+  },
   "about": {
     "inCooperationWith": "I samarbeid med"
   },
@@ -231,6 +237,9 @@
     "dayNotePlaceholder": "Notat…",
     "batchCook": "Storkokking",
     "batchCookHint": "Lag én gang for hele uken. Tas med i handlelisten.",
+    "batchShow": "Vis storkokking",
+    "batchHide": "Skjul storkokking",
+    "moreActions": "Mer",
     "batchTextPlaceholder": "f.eks. dobbel porsjon tomatsaus",
     "addRecipe": "Oppskrift",
     "addNote": "Notat",

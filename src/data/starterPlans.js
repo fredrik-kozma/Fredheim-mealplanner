@@ -57,6 +57,9 @@ import { FREDHEIM_RECIPES_WITH_PICTURES_PACK, FREDHEIM_REVERSAL_PROTOCOL_PACK, F
 
 // Convenience reference to the canonical Fredheim recipes pack id — the
 // vast majority of starter plans will pull recipes from it.
+// The id ("fredheim-recepies-with-pictures") is misspelled on purpose: it is
+// stored in users' saved data (sourcePackId, installedPacks), so it must
+// never be "fixed". Rename the pack via its display name instead.
 const FREDHEIM_PACK_ID = FREDHEIM_RECIPES_WITH_PICTURES_PACK.id
 const REVERSAL_PACK_ID = FREDHEIM_REVERSAL_PROTOCOL_PACK.id
 const FMD_PACK_ID = FREDHEIM_FMD_5DAY_PACK.id

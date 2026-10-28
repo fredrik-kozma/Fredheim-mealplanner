@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
+import { BUILT_IN_PACKS } from '../../data/installedPacks'
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -121,8 +122,9 @@ export default function ExportPackModal({ onClose }) {
     const opts = []
     for (const [packId, info] of Object.entries(installedPacks || {})) {
       if (!counts[packId]) continue
-      const localized = info?.translations?.[currentLang]?.name
-      opts.push({ id: packId, label: localized || info?.name || packId, count: counts[packId] })
+      const pack = BUILT_IN_PACKS[packId] || info
+      const localized = pack?.translations?.[currentLang]?.name
+      opts.push({ id: packId, label: localized || pack?.name || packId, count: counts[packId] })
     }
     opts.sort((a, b) => a.label.localeCompare(b.label))
     if (userRecipeCount > 0) {

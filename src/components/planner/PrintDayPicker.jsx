@@ -33,7 +33,7 @@ export default function PrintDayPicker({ days, confirmLabel, onCancel, onConfirm
   return createPortal(
     <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onCancel} />
-      <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl p-5 max-h-[85vh] overflow-y-auto">
+      <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] sheet-max-h overflow-y-auto">
         <div className="sm:hidden flex justify-center mb-3">
           <div className="w-10 h-1 rounded-full bg-slate-200" />
         </div>
@@ -69,7 +69,7 @@ export default function PrintDayPicker({ days, confirmLabel, onCancel, onConfirm
                   type="checkbox"
                   checked={on}
                   onChange={() => toggle(day.key)}
-                  className="w-4.5 h-4.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer flex-shrink-0"
+                  className="w-[18px] h-[18px] rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer flex-shrink-0"
                 />
                 <span className={`flex-1 text-sm font-medium ${on ? 'text-slate-800' : 'text-slate-500'}`}>
                   {day.label}

@@ -127,7 +127,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
         ) : (
           <span className="text-sm flex-shrink-0">🍽</span>
         )}
-        <span className="text-xs font-medium text-slate-700 flex-1 leading-tight line-clamp-1">
+        <span className="text-xs font-medium text-slate-700 flex-1 leading-tight line-clamp-2">
           {recipe.translations?.[currentLang]?.title || recipe.title}
         </span>
         <button
@@ -136,7 +136,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
             e.stopPropagation()
             removeRecipeFromSlot(day, slot, item.recipeId)
           }}
-          className="text-slate-400 hover:text-red-500 transition-colors flex-shrink-0"
+          className="tap-target text-slate-400 hover:text-red-500 transition-colors flex-shrink-0"
           title={t('common.remove')}
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -162,7 +162,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
             <button
               onClick={(e) => bumpServings(-1, e)}
               disabled={effectiveServings <= 1}
-              className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
+              className="tap-target w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
             >
               −
             </button>
@@ -180,14 +180,14 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
             </div>
             <button
               onClick={(e) => bumpServings(1, e)}
-              className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
+              className="tap-target w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
             >
               +
             </button>
             {isOverridden && (
               <button
                 onClick={resetServings}
-                className="text-[10px] text-slate-400 hover:text-indigo-600 px-1 transition-colors"
+                className="tap-target text-[10px] text-slate-400 hover:text-indigo-600 px-1 transition-colors"
                 title={t('planner.resetServings', { defaultValue: 'Use household default' })}
               >
                 ↺
@@ -195,7 +195,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
             )}
             <button
               onClick={toggleAdjuster}
-              className="text-slate-300 hover:text-slate-500 ml-0.5"
+              className="tap-target text-slate-300 hover:text-slate-500 ml-0.5"
               title={t('common.close')}
             >
               <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -208,7 +208,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
             <button
               {...stopDragPress}
               onClick={toggleAdjuster}
-              className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
+              className={`tap-target text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
                 isOverridden
                   ? 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'
                   : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
@@ -222,7 +222,7 @@ function SlotItemChip({ day, slot, item, recipe, currentLang }) {
             <button
               {...stopDragPress}
               onClick={toggleShopping}
-              className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
+              className={`tap-target text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-colors ${
                 isCovered
                   ? 'bg-orange-100 text-orange-700 hover:bg-orange-200'
                   : 'bg-slate-100 text-slate-400 hover:bg-slate-200'
@@ -283,7 +283,7 @@ function CustomSlotChip({ day, slot, item }) {
         // rather than picking the chip up.
         {...stopDragPress}
         onClick={(e) => { e.stopPropagation(); removeCustomFromSlot(day, slot, item.id) }}
-        className="absolute top-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-slate-300 hover:text-rose-500 hover:bg-rose-50 transition-colors"
+        className="tap-target absolute top-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-slate-300 hover:text-rose-500 hover:bg-rose-50 transition-colors"
         title={t('common.remove', { defaultValue: 'Remove' })}
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
@@ -358,7 +358,7 @@ export default function MealSlot({ day, slot, onAdd }) {
       {/* Add button */}
       <button
         onClick={onAdd}
-        className="mt-1.5 w-full flex items-center justify-center gap-1 py-1 rounded-lg text-xs text-slate-400 hover:text-indigo-600 hover:bg-white/80 transition-colors duration-150"
+        className="tap-target mt-1.5 w-full flex items-center justify-center gap-1 py-1 rounded-lg text-xs text-slate-400 hover:text-indigo-600 hover:bg-white/80 transition-colors duration-150"
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

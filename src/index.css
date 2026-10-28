@@ -51,6 +51,34 @@
   .badge {
     @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
   }
+  /* A small icon button that is still a 40×40 target for a finger. The
+     invisible ::after grows the hit area around the button without moving
+     anything, so the icon and the layout stay exactly as drawn. Touch
+     screens only — a mouse is precise enough, and on a desktop the larger
+     area would only steal clicks from whatever sits next to the button.
+     In the components layer so an `absolute` utility on the same element
+     still wins over the `relative` here. */
+  /* Height cap for a bottom-sheet modal. dvh follows iOS Safari's toolbar
+     as it shows and hides, so the sheet's last row isn't pushed under it;
+     the vh line is the fallback for browsers without dvh. */
+  .sheet-max-h {
+    max-height: 85vh;
+    max-height: 85dvh;
+  }
+  .tap-target {
+    position: relative;
+  }
+  @media (pointer: coarse) {
+    .tap-target::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: max(100%, 40px);
+      height: max(100%, 40px);
+      transform: translate(-50%, -50%);
+    }
+  }
 }
 
 /* Custom scrollbar */

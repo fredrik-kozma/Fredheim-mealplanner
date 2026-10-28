@@ -42,10 +42,12 @@ export default function RecipeDetail() {
   const { isLocked, isPreviewRecipe } = useAccess()
   const showPaywall = isLocked && !isPreviewRecipe(id)
 
-  // Remember this recipe so the nav can return to it
+  // Remember this recipe so the nav can return to it. Only a recipe that
+  // exists — a dead id would send the nav back to "Recipe not found".
+  const recipeExists = !!recipe
   useEffect(() => {
-    if (id) setLastOpenedRecipeId(id)
-  }, [id, setLastOpenedRecipeId])
+    if (id && recipeExists) setLastOpenedRecipeId(id)
+  }, [id, recipeExists, setLastOpenedRecipeId])
   const familySize = useStore(s => s.familySize)
   const language = useStore(s => s.language)
   const checkedIngredients = useStore(s => s.checkedIngredients)

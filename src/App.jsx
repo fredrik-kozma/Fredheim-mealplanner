@@ -12,6 +12,7 @@ import NutritionPage from './pages/NutritionPage'
 import RecipeForm from './components/recipes/RecipeForm'
 import RecipeDetail from './components/recipes/RecipeDetail'
 import ResetPasswordPage from './pages/ResetPasswordPage'
+import NotFoundPage from './pages/NotFoundPage'
 import useStore from './store/useStore'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { SubscriptionProvider } from './contexts/SubscriptionContext'
@@ -201,9 +202,13 @@ function AppShell() {
           beyond the edge of the screen: that is how the Share button
           ended up unreachable. */}
       <main className="flex-1 min-w-0 flex flex-col lg:ml-60 min-h-dvh">
-        {/* Sticky CTA banner for anonymous visitors (auto-hidden if signed in) */}
-        <PreviewBanner />
-        <Header />
+        {/* Banner and header stick together. Each used to be sticky top-0
+            on its own, so on scroll the header slid up over the banner. */}
+        <div className="sticky top-0 z-30">
+          {/* CTA banner for anonymous visitors (auto-hidden if signed in) */}
+          <PreviewBanner />
+          <Header />
+        </div>
         <div className="flex-1 flex flex-col overflow-hidden">
           <Routes>
             <Route path="/" element={<RecipesPage />} />
@@ -218,6 +223,8 @@ function AppShell() {
             {/* A shared menu or recipe. The code is the content — see
                 shareCodec.js — so this route needs no server of its own. */}
             <Route path="/s/:code" element={<SharedImportPage />} />
+            {/* Anything else — a typo, an old link, a bare /s/. */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </main>

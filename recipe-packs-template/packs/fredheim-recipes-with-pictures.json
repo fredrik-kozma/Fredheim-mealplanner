@@ -1,13 +1,23 @@
 {
   "id": "fredheim-recepies-with-pictures",
-  "name": "Fredheim recepies with pictures",
-  "description": "A selection of Fredheim recipes bundled with photos.",
+  "name": "Fredheim Kitchen",
+  "description": "Everyday Fredheim recipes, with photos.",
   "author": "Fredheim",
-  "version": "1.58.0",
+  "version": "1.59.0",
   "tags": [
     "fredheim",
     "with-photos"
   ],
+  "translations": {
+    "no": {
+      "name": "Fredheim-kjøkkenet",
+      "description": "Hverdagsoppskrifter fra Fredheim, med bilder."
+    },
+    "sv": {
+      "name": "Fredheims kök",
+      "description": "Vardagsrecept från Fredheim, med bilder."
+    }
+  },
   "recipes": [
     {
       "id": "fr-1",
@@ -19070,7 +19080,7 @@
           "name": "Lemon juice"
         },
         {
-          "quantity": 0,
+          "quantity": 0.5,
           "unit": "tsp",
           "ingredient": "salt",
           "name": "Salt"
@@ -19202,7 +19212,7 @@
               "name": "Sitronsaft"
             },
             {
-              "quantity": 0,
+              "quantity": 0.5,
               "unit": "ts",
               "ingredient": "salt",
               "name": "Salt"
@@ -19332,7 +19342,7 @@
               "name": "Citronsaft"
             },
             {
-              "quantity": 0,
+              "quantity": 0.5,
               "unit": "tsp",
               "ingredient": "salt",
               "name": "Salt"
@@ -21246,7 +21256,7 @@
           "note": "extra virgin"
         },
         {
-          "quantity": 0,
+          "quantity": 1,
           "unit": "clove",
           "ingredient": "garlic",
           "name": "Garlic"
@@ -21322,7 +21332,7 @@
               "note": "ekstra virgin"
             },
             {
-              "quantity": 0,
+              "quantity": 1,
               "unit": "clove",
               "ingredient": "garlic",
               "name": "Hvitløk"
@@ -21397,7 +21407,7 @@
               "note": "extra virgin"
             },
             {
-              "quantity": 0,
+              "quantity": 1,
               "unit": "clove",
               "ingredient": "garlic",
               "name": "Vitlök"
@@ -31092,7 +31102,7 @@
           "name": "Honey"
         },
         {
-          "quantity": 0,
+          "quantity": 0.5,
           "unit": "tsp",
           "ingredient": "vanilla-powder",
           "name": "Vanilla powder"
@@ -31126,7 +31136,7 @@
               "name": "Honning"
             },
             {
-              "quantity": 0,
+              "quantity": 0.5,
               "unit": "ts",
               "ingredient": "vanilla-powder",
               "name": "Vaniljepulver"
@@ -31158,7 +31168,7 @@
               "name": "Honung"
             },
             {
-              "quantity": 0,
+              "quantity": 0.5,
               "unit": "tsp",
               "ingredient": "vanilla-powder",
               "name": "Vaniljpulver"
@@ -32390,7 +32400,7 @@
           "name": "Lemon juice"
         },
         {
-          "quantity": 0,
+          "quantity": 100,
           "unit": "g",
           "ingredient": "spinach",
           "name": "Spinach"
@@ -32471,7 +32481,7 @@
               "name": "Sitronsaft"
             },
             {
-              "quantity": 0,
+              "quantity": 100,
               "unit": "g",
               "ingredient": "spinach",
               "name": "Spinat"
@@ -32550,7 +32560,7 @@
               "name": "Citronsaft"
             },
             {
-              "quantity": 0,
+              "quantity": 100,
               "unit": "g",
               "ingredient": "spinach",
               "name": "Spenat"
@@ -32567,79 +32577,79 @@
         }
       },
       "nutrition": {
-        "calories": 254,
-        "protein": 7.9,
-        "totalFat": 9.5,
+        "calories": 258,
+        "protein": 8.4,
+        "totalFat": 9.6,
         "saturatedFat": 1.7,
         "polyunsaturatedFat": 1.7,
         "monounsaturatedFat": 5.2,
         "omega3": 0,
         "cholesterol": 0,
-        "totalCarbs": 36,
-        "totalSugars": 4.4,
+        "totalCarbs": 37,
+        "totalSugars": 4.5,
         "addedSugar": 0,
-        "fiber": 5.2,
-        "calcium": 21,
-        "potassium": 920,
-        "copper": 0.48,
-        "iron": 2.6,
-        "magnesium": 100,
-        "manganese": 0.41,
-        "selenium": 4.3,
-        "phosphorus": 132,
-        "zinc": 1.3,
-        "sodium": 783,
-        "vitaminA": 97,
-        "vitaminB6": 0.57,
+        "fiber": 5.6,
+        "calcium": 38,
+        "potassium": 1013,
+        "copper": 0.5,
+        "iron": 3.1,
+        "magnesium": 113,
+        "manganese": 0.56,
+        "selenium": 4.5,
+        "phosphorus": 140,
+        "zinc": 1.4,
+        "sodium": 796,
+        "vitaminA": 175,
+        "vitaminB6": 0.6,
         "vitaminB12": 0,
-        "vitaminC": 47,
+        "vitaminC": 52,
         "vitaminD": 0,
         "vitaminE": 0,
-        "vitaminK": 6.7,
-        "folate": 28,
-        "thiamin": 0.09,
+        "vitaminK": 87,
+        "folate": 60,
+        "thiamin": 0.1,
         "riboflavin": 0,
         "niacin": 0,
         "choline": 0
       },
       "nutritionPer100g": {
-        "calories": 42,
+        "calories": 41,
         "protein": 1.3,
         "totalFat": 1.6,
-        "saturatedFat": 0.28,
+        "saturatedFat": 0.27,
         "polyunsaturatedFat": 0.28,
-        "monounsaturatedFat": 0.86,
+        "monounsaturatedFat": 0.84,
         "omega3": 0,
         "cholesterol": 0,
-        "totalCarbs": 6,
-        "totalSugars": 0.73,
+        "totalCarbs": 5.9,
+        "totalSugars": 0.72,
         "addedSugar": 0,
-        "fiber": 0.86,
-        "calcium": 3.4,
-        "potassium": 153,
+        "fiber": 0.9,
+        "calcium": 6,
+        "potassium": 164,
         "copper": 0.08,
-        "iron": 0.44,
-        "magnesium": 17,
-        "manganese": 0.07,
-        "selenium": 0.72,
-        "phosphorus": 22,
-        "zinc": 0.21,
-        "sodium": 130,
-        "vitaminA": 16,
+        "iron": 0.5,
+        "magnesium": 19,
+        "manganese": 0.09,
+        "selenium": 0.73,
+        "phosphorus": 23,
+        "zinc": 0.22,
+        "sodium": 129,
+        "vitaminA": 28,
         "vitaminB6": 0.09,
         "vitaminB12": 0,
-        "vitaminC": 7.8,
+        "vitaminC": 8.3,
         "vitaminD": 0,
         "vitaminE": 0,
-        "vitaminK": 1.1,
-        "folate": 4.6,
+        "vitaminK": 14,
+        "folate": 9.7,
         "thiamin": 0.02,
         "riboflavin": 0,
         "niacin": 0,
         "choline": 0
       },
-      "totalWeight": 3607,
-      "servingWeight": 601,
+      "totalWeight": 3707,
+      "servingWeight": 618,
       "createdAt": 1785164400000
     },
     {
@@ -37015,19 +37025,19 @@
           "name": "Maple syrup"
         },
         {
-          "quantity": 0,
+          "quantity": 0.25,
           "unit": "tsp",
           "ingredient": "salt",
           "name": "Salt"
         },
         {
-          "quantity": 0,
+          "quantity": 0.5,
           "unit": "tsp",
           "ingredient": "cinnamon-ground",
           "name": "Cinnamon, ground"
         },
         {
-          "quantity": 0,
+          "quantity": 0.5,
           "unit": "tsp",
           "ingredient": "vanilla-powder",
           "name": "Vanilla powder"
@@ -37068,19 +37078,19 @@
               "name": "Lønnesirup"
             },
             {
-              "quantity": 0,
+              "quantity": 0.25,
               "unit": "ts",
               "ingredient": "salt",
               "name": "Salt"
             },
             {
-              "quantity": 0,
+              "quantity": 0.5,
               "unit": "ts",
               "ingredient": "cinnamon-ground",
               "name": "Kanel, malt"
             },
             {
-              "quantity": 0,
+              "quantity": 0.5,
               "unit": "ts",
               "ingredient": "vanilla-powder",
               "name": "Vaniljepulver"
@@ -37120,19 +37130,19 @@
               "name": "Lönnsirap"
             },
             {
-              "quantity": 0,
+              "quantity": 0.25,
               "unit": "tsp",
               "ingredient": "salt",
               "name": "Salt"
             },
             {
-              "quantity": 0,
+              "quantity": 0.5,
               "unit": "tsp",
               "ingredient": "cinnamon-ground",
               "name": "Kanel, malen"
             },
             {
-              "quantity": 0,
+              "quantity": 0.5,
               "unit": "tsp",
               "ingredient": "vanilla-powder",
               "name": "Vaniljpulver"
@@ -39743,8 +39753,8 @@
           "name": "Potatoes"
         },
         {
-          "quantity": 0,
-          "unit": "dl",
+          "quantity": 2,
+          "unit": "tbsp",
           "ingredient": "olive-oil",
           "name": "Olive oil",
           "note": "extra virgin"
@@ -39804,8 +39814,8 @@
               "name": "Poteter"
             },
             {
-              "quantity": 0,
-              "unit": "dl",
+              "quantity": 2,
+              "unit": "ss",
               "ingredient": "olive-oil",
               "name": "Olivenolje",
               "note": "ekstra virgin"
@@ -39863,8 +39873,8 @@
               "name": "Potatis"
             },
             {
-              "quantity": 0,
-              "unit": "dl",
+              "quantity": 2,
+              "unit": "tbsp",
               "ingredient": "olive-oil",
               "name": "Olivolja",
               "note": "extra virgin"
@@ -39916,12 +39926,12 @@
         }
       },
       "nutrition": {
-        "calories": 186,
+        "calories": 234,
         "protein": 4.8,
-        "totalFat": 0,
-        "saturatedFat": 0,
-        "polyunsaturatedFat": 0,
-        "monounsaturatedFat": 0,
+        "totalFat": 5.4,
+        "saturatedFat": 0.75,
+        "polyunsaturatedFat": 0.57,
+        "monounsaturatedFat": 3.9,
         "omega3": 0,
         "cholesterol": 0,
         "totalCarbs": 41,
@@ -39943,8 +39953,8 @@
         "vitaminB12": 0,
         "vitaminC": 43,
         "vitaminD": 0,
-        "vitaminE": 0.29,
-        "vitaminK": 6.2,
+        "vitaminE": 1.1,
+        "vitaminK": 9.5,
         "folate": 0,
         "thiamin": 0,
         "riboflavin": 0,
@@ -39952,43 +39962,43 @@
         "choline": 0
       },
       "nutritionPer100g": {
-        "calories": 88,
-        "protein": 2.3,
-        "totalFat": 0,
-        "saturatedFat": 0,
-        "polyunsaturatedFat": 0,
-        "monounsaturatedFat": 0,
+        "calories": 108,
+        "protein": 2.2,
+        "totalFat": 2.5,
+        "saturatedFat": 0.34,
+        "polyunsaturatedFat": 0.26,
+        "monounsaturatedFat": 1.8,
         "omega3": 0,
         "cholesterol": 0,
         "totalCarbs": 19,
-        "totalSugars": 0.75,
+        "totalSugars": 0.73,
         "addedSugar": 0,
-        "fiber": 3.7,
-        "calcium": 46,
-        "potassium": 454,
+        "fiber": 3.6,
+        "calcium": 45,
+        "potassium": 443,
         "copper": 0,
         "iron": 1.9,
-        "magnesium": 29,
+        "magnesium": 28,
         "manganese": 0,
         "selenium": 0,
         "phosphorus": 0,
         "zinc": 0,
-        "sodium": 438,
+        "sodium": 427,
         "vitaminA": 12,
-        "vitaminB6": 0.29,
+        "vitaminB6": 0.28,
         "vitaminB12": 0,
         "vitaminC": 20,
         "vitaminD": 0,
-        "vitaminE": 0.14,
-        "vitaminK": 2.9,
+        "vitaminE": 0.49,
+        "vitaminK": 4.3,
         "folate": 0,
         "thiamin": 0,
         "riboflavin": 0,
         "niacin": 0,
         "choline": 0
       },
-      "totalWeight": 1062,
-      "servingWeight": 212,
+      "totalWeight": 1089,
+      "servingWeight": 218,
       "createdAt": 1785250800000
     },
     {

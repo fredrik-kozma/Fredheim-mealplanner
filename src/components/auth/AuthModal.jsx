@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../contexts/AuthContext'
 
@@ -46,7 +47,10 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
     setSuccess(null)
   }
 
-  return (
+  // Portalled to <body>: it is opened from the header and the preview
+  // banner, which share a sticky z-30 wrapper. Left in place it would be
+  // trapped in that stacking context, under the z-40 bottom nav.
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
       {/* Backdrop */}
       <div
@@ -217,6 +221,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
           </svg>
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

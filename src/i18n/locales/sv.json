@@ -7,6 +7,12 @@
     "settings": "Inställningar",
     "nutrition": "Näring"
   },
+  "notFound": {
+    "title": "Sidan hittades inte",
+    "text": "Den här sidan finns inte, eller så har den flyttats eller tagits bort.",
+    "toRecipes": "Gå till recept",
+    "toPlanner": "Gå till planering"
+  },
   "about": {
     "inCooperationWith": "I samarbete med"
   },
@@ -231,6 +237,9 @@
     "dayNotePlaceholder": "Anteckning…",
     "batchCook": "Storkok",
     "batchCookHint": "Laga en gång för hela veckan. Räknas med i inköpslistan.",
+    "batchShow": "Visa storkok",
+    "batchHide": "Dölj storkok",
+    "moreActions": "Mer",
     "batchTextPlaceholder": "t.ex. dubbel sats tomatsås",
     "addRecipe": "Recept",
     "addNote": "Anteckning",
