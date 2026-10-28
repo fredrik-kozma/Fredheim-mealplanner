@@ -31,7 +31,32 @@ import WeekScale from './WeekScale'
 // Column width (in rem) for each day. Kept in a constant so the grid
 // template and the "add day" column stay in sync.
 const DAY_COL = '13rem'
-const LABEL_COL = '5rem'
+// Narrower on phones so more of a day shows beside it. Set on the grid as
+// --label-col (4.5rem below sm, 5rem from sm up); the board's
+// scroll-padding uses the same 4.5rem so a snapped day starts just after it.
+const LABEL_COL = 'var(--label-col)'
+
+// The sticky label column: the corner cell above it and one label per row.
+// Opaque page background, so days slide neatly underneath. The ::after
+// fills the row gap below each cell, so the column reads as one unbroken
+// strip instead of a stack of tiles with cards peeking between them. The
+// right edge line is phones-only, where sideways swiping is the norm.
+const STICKY_COL = "sticky left-0 z-10 bg-slate-50 max-sm:border-r border-slate-200 after:content-[''] after:absolute after:left-0 after:-right-px after:top-full after:h-2 after:bg-slate-50 max-sm:after:border-r after:border-slate-200"
+// Toolbar icon paths (Heroicons outline), shared by the desktop buttons
+// and the phone menu that stands in for them.
+const PRINTER_ICON = 'M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z'
+const BOOK_ICON = 'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25'
+const SHARE_ICON = 'M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z'
+
+function ToolbarIcon({ d, className = 'w-4 h-4' }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d={d} />
+    </svg>
+  )
+}
+
+const ROW_LABEL ='flex justify-end text-right text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide pr-1.5 sm:pr-1 break-words hyphens-auto min-w-0'
 
 // One day's column header — weekday name (or "Day 8…" for extra days),
 // today highlighted, with a remove button on extra days.
@@ -53,7 +78,7 @@ function DayHeader({ day }) {
   }
 
   return (
-    <div className={`relative text-center py-2 rounded-xl font-semibold text-sm ${
+    <div className={`relative text-center py-2 rounded-xl font-semibold text-sm max-sm:snap-start ${
       isToday
         ? 'bg-indigo-600 text-white shadow-sm'
         : isExtra
@@ -547,9 +572,7 @@ export default function WeeklyPlanner() {
             disabled={mealCount === 0}
             className="btn-secondary py-2 px-3.5 hidden sm:inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
-            </svg>
+            <ToolbarIcon d={PRINTER_ICON} />
             {t('planner.printWeek', { defaultValue: 'Print menu' })}
           </button>
           <button
@@ -558,9 +581,7 @@ export default function WeeklyPlanner() {
             className="btn-secondary py-2 px-3.5 hidden sm:inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
             title={t('planner.printMenuBookHint', { defaultValue: 'Every recipe for the week, in one document' })}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-            </svg>
+            <ToolbarIcon d={BOOK_ICON} />
             {t('planner.printMenuBook', { defaultValue: 'Print all recipes' })}
           </button>
           <button
@@ -569,9 +590,7 @@ export default function WeeklyPlanner() {
             className="btn-secondary py-2 px-3.5 hidden sm:inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
             title={t('planner.shareWeekHint', { defaultValue: 'Send this menu to someone' })}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
-            </svg>
+            <ToolbarIcon d={SHARE_ICON} />
             {t('planner.shareWeek', { defaultValue: 'Share' })}
           </button>
           {/* Phones: Print, Print all and Share fold into this menu, so
@@ -586,26 +605,27 @@ export default function WeeklyPlanner() {
               aria-haspopup="menu"
               aria-expanded={moreOpen}
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                <circle cx="5" cy="12" r="1.75" /><circle cx="12" cy="12" r="1.75" /><circle cx="19" cy="12" r="1.75" />
-              </svg>
+              {/* A printer rather than ⋯: printing is what the menu is
+                  mostly for. The aria-label still says "More". */}
+              <ToolbarIcon d={PRINTER_ICON} />
             </button>
             {moreOpen && (
               <>
                 <div className="fixed inset-0 z-20" onClick={() => setMoreOpen(false)} />
                 <div role="menu" className="absolute right-0 top-full mt-1 z-30 w-56 bg-white rounded-xl shadow-lg border border-slate-100 py-1">
                   {[
-                    { label: t('planner.printWeek', { defaultValue: 'Print menu' }), run: () => startPrint('week') },
-                    { label: t('planner.printMenuBook', { defaultValue: 'Print all recipes' }), run: () => startPrint('book') },
-                    { label: t('planner.shareWeek', { defaultValue: 'Share' }), run: () => setSharing(buildShare()) },
+                    { icon: PRINTER_ICON, label: t('planner.printWeek', { defaultValue: 'Print menu' }), run: () => startPrint('week') },
+                    { icon: BOOK_ICON, label: t('planner.printMenuBook', { defaultValue: 'Print all recipes' }), run: () => startPrint('book') },
+                    { icon: SHARE_ICON, label: t('planner.shareWeek', { defaultValue: 'Share' }), run: () => setSharing(buildShare()) },
                   ].map(item => (
                     <button
                       key={item.label}
                       role="menuitem"
                       disabled={mealCount === 0}
                       onClick={() => { setMoreOpen(false); item.run() }}
-                      className="w-full text-left px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                      className="w-full text-left px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center gap-2.5"
                     >
+                      <ToolbarIcon d={item.icon} className="w-4 h-4 flex-shrink-0 text-slate-500" />
                       {item.label}
                     </button>
                   ))}
@@ -631,16 +651,22 @@ export default function WeeklyPlanner() {
             own, and its sideways scrollbar sits at most one screen down
             rather than under the last row of a long week. Phones keep
             plain page scrolling — a nested vertical scroller fights the
-            finger there, and sideways is a swipe anyway. */}
-        <div className="flex-1 overflow-x-auto overflow-y-auto px-4 pb-24 lg:pb-8 lg:max-h-[calc(100vh-4rem)]">
-          <div className="flex gap-3 min-w-max">
+            finger there, and sideways is a swipe anyway.
+            The side padding sits on the inner row rather than here, so the
+            sticky labels pin to the true left edge with no strip beside
+            them for cards to show through. On phones a swipe snaps to the
+            nearest day (proximity, so a drag near the edge isn't yanked
+            around), with that day starting just right of the labels. */}
+        <div className="flex-1 overflow-x-auto overflow-y-auto pb-24 lg:pb-8 lg:max-h-[calc(100vh-4rem)] max-sm:snap-x max-sm:snap-proximity max-sm:scroll-pl-[5.25rem]">
+          <div className="flex gap-3 min-w-max px-4 max-sm:snap-start">
             {/* Batch cooking — what gets prepped once for the whole week */}
             <BatchCookColumn onAddRecipe={() => setPicker({ batch: true })} />
 
             {/* Aligned grid: label column + one column per day */}
-            <div className="grid gap-3 gap-y-2" style={gridStyle}>
-              {/* Header row: empty corner + day headers */}
-              <div />
+            <div className="grid gap-3 gap-y-2 [--label-col:4.5rem] sm:[--label-col:5rem]" style={gridStyle}>
+              {/* Header row: the corner is part of the sticky label column,
+                  so day names pass under it rather than into the labels. */}
+              <div className={`${STICKY_COL} z-20`} />
               {dayKeys.map(day => (
                 <DayHeader key={day} day={day} />
               ))}
@@ -652,7 +678,7 @@ export default function WeeklyPlanner() {
                       under it; opaque and above the slots so nothing shows
                       through. Drops are unaffected: dnd-kit matches by the
                       slots' measured rects, not by what is on top. */}
-                  <div className="sticky left-0 z-10 bg-slate-50 flex items-center justify-end text-xs font-semibold text-slate-500 uppercase tracking-wide pr-1">
+                  <div lang={i18n.resolvedLanguage} className={`${STICKY_COL} ${ROW_LABEL} items-center`}>
                     {t(`planner.mealSlots.${slot}`, { defaultValue: slot })}
                   </div>
                   {dayKeys.map(day => (
@@ -668,7 +694,7 @@ export default function WeeklyPlanner() {
 
               {/* Notes row — one short reminder per day, aligned to the
                   day columns like any meal-slot row. */}
-              <div className="sticky left-0 z-10 bg-slate-50 flex items-start justify-end text-xs font-semibold text-slate-500 uppercase tracking-wide pr-1 pt-1.5">
+              <div lang={i18n.resolvedLanguage} className={`${STICKY_COL} ${ROW_LABEL} items-start pt-1.5`}>
                 {t('planner.notesRow', { defaultValue: 'Notes' })}
               </div>
               {dayKeys.map(day => (
