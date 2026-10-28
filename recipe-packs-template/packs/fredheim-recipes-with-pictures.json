@@ -3,7 +3,7 @@
   "name": "Fredheim recepies with pictures",
   "description": "A selection of Fredheim recipes bundled with photos.",
   "author": "Fredheim",
-  "version": "1.57.0",
+  "version": "1.58.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -170,6 +170,13 @@
               "ingredient": "garlic",
               "name": "Vitlök"
             }
+          ],
+          "title": "Aioli",
+          "steps": [
+            "Lägg alla ingredienserna utom oljan i mixern, och börja blanda på låg hastighet.",
+            "När ingredienserna börjar blanda sig, häller du långsamt i oljan medan du fortsätter mixa. Det är viktigt att hälla långsamt (lite i taget så att aiolien får tid att emulgera (tjockna)",
+            "När all oljan är tillsatt, ökar du hastigheten lite i 5–10 sekunder tills du får en slät och tjock konsistens.",
+            "Smaka på aiolien och justera med mer citronsaft, salt eller senap om så önskas."
           ]
         }
       },
@@ -448,7 +455,8 @@
               "quantity": 50,
               "unit": "ml",
               "ingredient": "water",
-              "name": "Vatten"
+              "name": "Vatten",
+              "note": "dricksvatten"
             },
             {
               "quantity": 1,
@@ -502,8 +510,17 @@
               "quantity": 1,
               "unit": "dl",
               "ingredient": "water",
-              "name": "Vatten"
+              "name": "Vatten",
+              "note": "dricksvatten"
             }
+          ],
+          "title": "Mandeltartar",
+          "steps": [
+            "Mal mandlarna, men inte helt fint (låt det vara lite textur).",
+            "Stek/fräs löken i vattnet och oljan i cirka 5 minuter tills den är mjuk. Tillsätt salt.",
+            "Tillsätt örter och paprikapulver. Låt det koka i 1 till 2 minuter",
+            "Blanda i tomatpuré, vatten och mandlar.",
+            "Blanda väl och låt det svalna innan du ställer in det i kylskåpet."
           ]
         }
       },
@@ -783,7 +800,8 @@
               "quantity": 8,
               "unit": "dl",
               "ingredient": "water",
-              "name": "Vatten"
+              "name": "Vatten",
+              "note": "dricksvatten"
             },
             {
               "quantity": 1,
@@ -803,6 +821,12 @@
               "ingredient": "nutritional-yeast",
               "name": "Näringsjäst"
             }
+          ],
+          "title": "Mandel- och paprikaost",
+          "steps": [
+            "Blanda alla ingredienserna i en höghastighetsmixer tills blandningen är helt slät.",
+            "Koka upp blandningen i en kastrull och låt den koka under omrörning i minst 3–5 minuter.",
+            "Häll över i formar och låt det svalna innan du ställer in det i kylskåpet."
           ]
         }
       },
@@ -1101,6 +1125,15 @@
               "ingredient": "coconut-oil",
               "name": "Kokosolja"
             }
+          ],
+          "title": "Amerikanska havrepannkakor",
+          "steps": [
+            "Blanda ihop havremjöl, bakpulver, sukrin, salt, vanilj och kanel i en medelstor skål. Använd en visp för att ta bort klumpar och fördela bakpulvret och saltet jämnt.",
+            "Tillsätt sojamjölk och citronsaft, och blanda försiktigt till allt mjölet är fuktigt. Smeten ska vara TJOCK och lite klumpig.",
+            "Låt smeten vila i minst 5 minuter medan du värmer en stekpanna över medelvärme (nummer 4 på spisen). Detta är en rätt som steks långsamt under lock.",
+            "Sänk värmen ner till nummer 3 och smörj pannan lätt med kokosolja. Häll portioner i cirka 0,8 dl (1/3 cup) smet i pannan. Använd en liten slev för att få fina portioner och sprid ut smeten. Lägg på lock på pannan för att påskynda stekningen.",
+            "Stek pannkakorna tills kanterna ser torra, fasta och gyllenbruna ut, och det dyker upp bubblor på ytan. Vänd dem och stek i ytterligare 30–90 sekunder tills de är luftiga och bruna på båda sidor.",
+            "Upprepa samma sak med resten av pannkakasmeten."
           ]
         }
       },
@@ -1321,6 +1354,11 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Äppel- och havrebakelse",
+          "steps": [
+            "Blanda alla ingredienserna ihop i en skål och tillsätt därefter mjölken. Häll blandningen över i en ugnssäker form. Låt den stå svalt över natten.",
+            "Stek i 170 grader i 30 minuter. Serveras het med ett strö av valnötter på ytan."
           ]
         }
       },
@@ -1722,6 +1760,17 @@
               "name": "Cayennepeppar",
               "note": "efter smak"
             }
+          ],
+          "title": "Asiatisk nudelsallad",
+          "steps": [
+            "Pressa ut vätskan från tofun, skär den i tärningar och låt den marinera i sojasåsen.",
+            "Koka nudlarna som beskrivet på förpackningen. Direkt efter att de är färdigkokta, skölj nudlarna i en sil under kallt vatten för att kyla dem ner och hindra att de klistrar ihop sig.",
+            "Rosta sesamfröna: Värm upp en stekpanna, häll i sesamfröna och rör hela tiden med en träslev. Rosta dem tills de sväller lite upp och börjar dofta (2–5 min), och häll dem därefter över på en kall tallrik eller en bricka för att avbryta stekningen.",
+            "Använd den varma pannan till att steka tofutärningarna med lite olivolja, tills de är gyllenbruna och krispiga (8–10 min).",
+            "Gör en dressing av limesaft, sesamolja, honung, ingefära, vitlök, cayennepeppar och sojasåsen som tofun blev marinerad i.",
+            "Skär upp alla grönsakerna.",
+            "Blanda allt.",
+            "Servera hela salladen rumstempererad, eller med kalla grönsaker blandade med het tofu."
           ]
         }
       },
@@ -1947,6 +1996,11 @@
               "ingredient": "garlic",
               "name": "Vitlök"
             }
+          ],
+          "title": "Avokadokräm",
+          "steps": [
+            "Blanda alla ingredienserna i en matberedare tills blandningen är helt slät.",
+            "Smaka av efter eget tycke."
           ]
         }
       },
@@ -2226,6 +2280,12 @@
               "ingredient": "coriander-seeds",
               "name": "Korianderfrön"
             }
+          ],
+          "title": "Baba ganoush – auberginedipp",
+          "steps": [
+            "Stek auberginen: del auberginen i två och lägg dem i bakplåtspapper med snittflaten ner. stick hål i skinnet med en gaffel. Stek i ugnen i 190 °C i 45 minuter. Ta bort därefter skalet.",
+            "Mixa alla ingredienserna (utan löken) i mixer tills det är slät.",
+            "Blanda i löken till sist."
           ]
         }
       },
@@ -2521,6 +2581,13 @@
               "ingredient": "cayenne-pepper",
               "name": "Cayennepeppar"
             }
+          ],
+          "title": "Ugnsbakade rotfrukter",
+          "steps": [
+            "Skala och skär alla rotfrukterna i båter.",
+            "Vänd rotklyftorna i olja och kryddor. krydda rödbetor för sig själva, så att de inte färgar resten rosa.",
+            "Fördela de kryddade rotfrukterna i ett gör i en plåt. Håll rödbetor för sig selv.",
+            "Stek i 180–190 °C i 15 minuter. Vänd dem, och fortsätt att steke tills de är genomstekta (mjuka inuti) och gyllenbruna på utsidan."
           ]
         }
       },
@@ -2696,6 +2763,14 @@
               "ingredient": "olive-oil",
               "name": "Olivolja"
             }
+          ],
+          "title": "Ugnsbakad sötpotatis",
+          "steps": [
+            "Skala sötpotatisarna.",
+            "Skär dem i båter.",
+            "Skölj sötpotatisarna i kallt vatten och lägg dem i kallt vatten i minst 30 minuter (tar bort stärkelse och ger krispigare resultat). Torka dem därefter väl med kökspapper eller et handduk.",
+            "Strö över lite olivolja och salt, och blanda väl så att det fordeler sig jämnt.",
+            "Fördela dem i en plåt (viktigt att de inte ligger ovanpå varandra) och stek i 220 °C i 25–35 minuter tills de är gyllenbruna. Vänd dem en gång efter 15–20 minuter."
           ]
         }
       },
@@ -2877,6 +2952,10 @@
               "ingredient": "soy-milk",
               "name": "Sojamjölk"
             }
+          ],
+          "title": "Byggkaffedryck",
+          "steps": [
+            "Blanda de tre första ingredienserna och tillsätt därefter den värme mjölken."
           ]
         }
       },
@@ -3234,6 +3313,11 @@
               "ingredient": "vegetable-bouillon",
               "name": "Grönsaksbuljong (pulver/tärning)"
             }
+          ],
+          "title": "Bönpaté",
+          "steps": [
+            "Fräs lök och vitlök tills de är mjuka. Tillsätt lite olja om så önskas.",
+            "Mixa alla ingredienserna i matberedaren till en slät massa."
           ]
         }
       },
@@ -3518,6 +3602,11 @@
               "ingredient": "nutritional-yeast",
               "name": "Näringsjäst"
             }
+          ],
+          "title": "Bönpålägg",
+          "steps": [
+            "Lägg alla ingredienserna, förutom från oliver, i mixern och mixa i 2 minuter tills det är slät.",
+            "Tillsätt oliverna och mixa i 30 sekunder till."
           ]
         }
       },
@@ -3738,6 +3827,10 @@
               "ingredient": "sukrin",
               "name": "Sukrin (erytritol)"
             }
+          ],
+          "title": "Bärsås",
+          "steps": [
+            "Koka bären med ½ dl vatten i 7 minuter. I under tiden blandar du majsstärkelse, sukrin och kallt vatten i en kopp, och tillsätter blandningen gradvis till bären. Rör hela tiden, och koka i 3 minuter till. Sänk därefter ner värmen. Låt det svalna innan servering."
           ]
         }
       },
@@ -4134,6 +4227,14 @@
               "ingredient": "coriander-fresh",
               "name": "Färsk koriander"
             }
+          ],
+          "title": "Svartbönsgryta",
+          "steps": [
+            "Het olivolja i en stor grytan i medelvärme. Tillsätt hackad lök och fräs i cirka 3–5 minuter tills den är mjuk och lätt gyllene. Tillsätt vitlök, paprika och morot, och fräs i 5–7 minuter till grönsakerna är mjuka.",
+            "Tillsätt tomatpuré, spiskummin, paprikapulver, chili och oregano. Rör väl och låt det fräsa i 1–2 minuter så att kryddorna får utviklet smaken.",
+            "Tillsätt svarta bönor och vatten, och låt det koka i 10 minuter till så bönorna blir värme och drar åt sig smaken.",
+            "Smaka av grytan och justera med mer salt eller kryddor efter behov.",
+            "Pressa limesaft över grytan och rör om. Toppa med hackad koriander."
           ]
         }
       },
@@ -4385,6 +4486,12 @@
               "ingredient": "snow-peas",
               "name": "Sockerärtor"
             }
+          ],
+          "title": "Spröd blandning av groddar",
+          "steps": [
+            "gör klar alla grönsakerna.",
+            "Om rödbeten är saftig, torkar du den lätt med kökspapper. Det hindrar att allt farges rött.",
+            "Blanda alla ingredienserna i en skål."
           ]
         }
       },
@@ -4539,6 +4646,11 @@
               "name": "Chiafrön",
               "note": "torkade"
             }
+          ],
+          "title": "Blåbärssylt",
+          "steps": [
+            "Tina bären och mosa/mixa dem lätt med en stavmixer – inte helt slät.",
+            "Tillsätt chiafrö och rör då och då innan förvaring."
           ]
         }
       },
@@ -4793,6 +4905,15 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Frallor",
+          "steps": [
+            "Blanda de tre första ingredienserna väl i Diamant-mikseren.",
+            "Tillsätt resten av ingredienserna och knåda i minst 10 minuter.",
+            "Rulla bullar i 100 gram per styck, lägg dem i plåt täckt med bakplåtspapper och låt dem jäsa i cirka en timme.",
+            "Värm ugnen till 175 °C.",
+            "Stek bullarna i cirka 20 minuter tills de är gyllenbruna.",
+            "Ta dem ut och täck med et handduk tills de är svalnade."
           ]
         }
       },
@@ -5072,6 +5193,21 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Broccolisallad",
+          "steps": [
+            "Värm ugnen till 170 °C i 5 minuter.",
+            "Fördela valnötterna i ett gör i en plåt.",
+            "Rosta valnötterna i ugnen i 7–10 minuter i 170 °C.",
+            "Ta dem ut omedelbart och låt dem svalna vid rumstemperatur.",
+            "När de är svalnade, hackar du dem i mindre bitar (om de inte redan är det i paketet).",
+            "Koka upp en stor kastrull med vatten, och salt det (smaka: det ska vara lika salt som havsvatten).",
+            "Tillsätt broccolibuketterna och förväll i cirka 60 sekunder tills de är sterkt gröna.",
+            "Häll av och skölj omedelbart med kallt vatten i cirka 2 minuter för att stoppe kokningen.",
+            "Torka broccolin väl: lägg den i en salladsslunga, slunga ur vattnet, och torka vidare med kökshanddukar för att ta bort överskott av fuktighet.",
+            "Lägg broccoli, rostade valnötter, soltorkade tomater, svarta bönor, skivad rödlök, sojamajonnäs (eget recept), citron och salt i en stor skål.",
+            "Ställ salladen i kylskåpet.",
+            "Serveras kall eller vid rumstemperatur."
           ]
         }
       },
@@ -5338,6 +5474,15 @@
               "name": "Cashewnötter",
               "note": "osaltad"
             }
+          ],
+          "title": "Broccolisoppa",
+          "steps": [
+            "Finhacka löken och pressa vitlöken.",
+            "Skala broccolistjälkarna (om det är några), skär dem i små, jämna bitar och lägg dem i en skål. Skär buketten i små, jämna bitar och lägg dem i en egen skål.",
+            "Lägg olja, lök och vitlök i en gryta tillsammans med en nypa salt. Fräs försiktigt till löken är blank, cirka 10 minuter. Tillsätt broccolistjälkarna och rör så att de täcks av fettet. Fortsätt att fräsa i några minuter tills de är mjuka.",
+            "Blanda buljongen med hälften av vattnet (helst varmt) och lägg det i grytan.",
+            "Mixa cashewnötterna med resten av vattnet tills det är slät, och lägg det i grytan. Höj värmen till medelvärme och låt soppan nätt och jämnt sjuda. Rör ofte så att botten inte bränner vid.",
+            "När stjälkarna nästan är mjuka, tillsätter du buketten tillsammans med en god nypa salt. Låt soppan sjuda försiktigt till buketten är helt mjuk (cirka 10 minuter). När buketten är mjuk, smakar du av med salt."
           ]
         }
       },
@@ -5546,6 +5691,13 @@
               "name": "Vatten",
               "note": "dricksvatten"
             }
+          ],
+          "title": "Brun sås",
+          "steps": [
+            "Vispa de tre första ingredienserna i en kastrull och koka upp.",
+            "Medan det kokar, rör du ihop majsstärkelse och kallt vatten.",
+            "Rör försiktigt majsstärkelsesblandingen i såsen medan du visper.",
+            "Serveras het."
           ]
         }
       },
@@ -5896,6 +6048,17 @@
               "ingredient": "marjoram-dried",
               "name": "Mejram, torkad"
             }
+          ],
+          "title": "Boveteburgare",
+          "steps": [
+            "Koka upp vatten i en vattenkokare för att spare tid, och lägg vattnet i en gryta i het platta. När vattnet kokar, tillsätter du salt och bovete. Låt det koka upp igen och täck över med et lock som är täckt av en ren kökshandduk. Sänk plattan i laveste värme och låt det dampe i 20 minuter.",
+            "Tillsätt lök och låt det dampe i 10 minuter till.",
+            "Värm ugnen till 205 °C.",
+            "Ta grytan av plattan och tillsätt resten av ingredienserna. Rör väl och smaka av med kryddor.",
+            "Alternativ 1: Använd locket från et spireglass till att forma burgerne. Täck nettet med plastfolie och pressa en portion ner i locket så att det fyller cirka ¾ av volymet. Forma burgerne pent och pressa dem ut av formen.",
+            "Alternativ 2: Använd glasskopa och forma burgerne med en sked, och doppa skjeen i vatten så att den inte klistrar sig.",
+            "Stek i 10 minuter i första sidan, vänd, och stek i 6 minuter till.",
+            "Serveras värme."
           ]
         }
       },
@@ -6234,6 +6397,12 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Bulgursallad",
+          "steps": [
+            "Koka upp vattnet med salt och tillsätt bulguren. Ta av plattan och täck över med et lock till allt vattnet är absorberat (cirka 25 minuter). Kyl därefter bulguren.",
+            "Blanda olivolja, citronsaft, honung, chiliflak och salt i en skålen.",
+            "Blanda bulguren med grönsakerna, och tillsätt dressingen."
           ]
         }
       },
@@ -6487,6 +6656,16 @@
               "ingredient": "olive-oil",
               "name": "Olivolja"
             }
+          ],
+          "title": "Hamburgerbröd",
+          "steps": [
+            "Blanda mjöl, jäst och salt i en stor skål.",
+            "Tillsätt vatten, honung och olja, och knåda degen i cirka 8–10 minuter tills den är smidig och elastisk och inte längre henger vid skålen.",
+            "Täck skålen till och låt degen jäsa i cirka en timme, eller tills den har doblet sig.",
+            "Del degen i emner i cirka 110 gram, och forma dem till runde burgerbröd.",
+            "Lägg brödene i en plåt täckt med bakplåtspapper och låt dem etterheve i 30–40 minuter under en ren kökshandduk.",
+            "Pensla toppene med vatten eller mjölk, och strö över sesamfrö för et klassisk uttrykk.",
+            "Stek i förvärmd ugn i 200 °C i 12–15 minuter, tills de är gyllenbruna."
           ]
         }
       },
@@ -6874,6 +7053,11 @@
               "ingredient": "olive-oil",
               "name": "Olivolja"
             }
+          ],
+          "title": "Burgardressing",
+          "steps": [
+            "Mixa alla ingredienserna ihop till en slät massa.",
+            "Lägg det över i en dressingflaske."
           ]
         }
       },
@@ -7215,6 +7399,15 @@
               "ingredient": "parsley",
               "name": "Persilja"
             }
+          ],
+          "title": "Kålsoppa",
+          "steps": [
+            "Ta bort stilken från kålen och skär den i små bitar (1–1,5 cm). Blanda vattnet med buljongen och ställ till sidan.",
+            "Värm upp en stor, tjockbunnet grytan i medelvärme. När den är het, tillsätter du olja, lök, morötter och en nypa salt. Låt lök och morot svette tills de är mjuka (men inte brunas). Tillsätt vitlök och låt det fräsa i cirka 1 minut.",
+            "Tillsätt kålen och en nypa salt, och låt det fräsa i cirka 10 minuter under omrörning tills det är mjukt. Tillsätt därefter kraften (buljongvattnet), tomater och salt, och låt det sjuda.",
+            "Tillsätt kryddorna i soppan och låt det sjuda i cirka 15 minuter för att trekke till sig smaken.",
+            "Kontrollera morötterna och låt det sjuda i 10 minuter till, eller tills de är mjuka och gjennomkokte.",
+            "Tillsätt persilja. Smaka av soppan med kryddor."
           ]
         }
       },
@@ -7426,6 +7619,13 @@
               "ingredient": "avocados",
               "name": "Avokado"
             }
+          ],
+          "title": "Caesarsallad",
+          "steps": [
+            "Blötlägg de soltorkade tomaterna i 5–10 minuter och sil av.",
+            "Använd färdiga krutonger, eller gör dem selv: Skär brödet i tärningar, blanda med olja och salt. Värm ugnen till 180 °C och stek krutongene i 10 minuter, eller tills de är genomstekta. Vänd dem efter 5 minuter.",
+            "Skär eller riv salladen i mindre bitar.",
+            "Blanda alla ingredienserna ihop."
           ]
         }
       },
@@ -7694,6 +7894,12 @@
               "name": "Kummin",
               "note": "hel"
             }
+          ],
+          "title": "Kummin- och cashewost",
+          "steps": [
+            "Mixa alla ingredienserna i en högeffektsmixer tills det är slät. Kom ihåg att kun häll i 2/3 av karvefröene innan du kjörer, och de återstående 1/3 efteråt.",
+            "Koka upp blandningen i en kastrull och låt det koka under omrörning i minst 3–5 minuter.",
+            "Häll i formar och låt det svalna innan det ställs i kylskåpet."
           ]
         }
       },
@@ -7884,6 +8090,11 @@
               "name": "Vatten",
               "note": "dricksvatten"
             }
+          ],
+          "title": "Cashewgräddfil",
+          "steps": [
+            "Mixa cashewnötter, vatten, eplecidervinäger och citronsaft tills det är slät.",
+            "Justera med vatten till önskad konsistens."
           ]
         }
       },
@@ -8095,6 +8306,10 @@
               "name": "Salt",
               "note": "efter smak"
             }
+          ],
+          "title": "Cashewvaniljkräm",
+          "steps": [
+            "Lägg cashewnötter, vätska, sötning, vanilj och salt i en högeffektsmixer. Mixa i hög hastighet tills det är helt slät, och skrapa ner sidorna av mixerkannen då och då."
           ]
         }
       },
@@ -8401,6 +8616,14 @@
               "ingredient": "lemon-juice",
               "name": "Citronsaft"
             }
+          ],
+          "title": "Cashewbéchamelsås",
+          "steps": [
+            "Blötlägg cashewnötterna i vatten i en skål i 3–4 timmar.",
+            "Het en stekpanna i medelvärme låg värme och tillsätt olivolja. Tillsätt lök och låt det fräsa i 5–8 minuter tills den är blank.",
+            "Tillsätt vitlök och låt det fräsa i några minuter till.",
+            "Lägg det över i en mixer, tillsätt resten av ingredienserna och mixa i hög hastighet tills det är slät.",
+            "Koka det upp och servera varmt."
           ]
         }
       },
@@ -8685,6 +8908,12 @@
               "name": "Rökt paprika",
               "note": "efter smak"
             }
+          ],
+          "title": "Cashewostsås",
+          "steps": [
+            "gör mjölk av cashewnötterna och vattnet.",
+            "Lägg allt i en kastrull och vispa tills det är blandat, och sänk därefter i plattan i medelvärme.",
+            "Låt det sjuda tills det är tjockt, medan du rör jämnt."
           ]
         }
       },
@@ -8947,6 +9176,13 @@
               "ingredient": "lemon-juice",
               "name": "Citronsaft"
             }
+          ],
+          "title": "Blomkålssoppa",
+          "steps": [
+            "Mixa cashewnötter och vatten till en slät massa. Ställ till sidan.",
+            "Fräs lök i {{1 tsk}} olivolja och {{2 msk}} vatten tills den är nästan klar (inte bruna).",
+            "Tillsätt blomkål, vatten och kryddor, och låt det koka i 5–10 minuter.",
+            "Rör i den mixade cashewmjölken och citronsaften, värm upp till kokepunktet igen innan servering."
           ]
         }
       },
@@ -9214,6 +9450,14 @@
               "name": "Rökt paprika",
               "note": "efter smak"
             }
+          ],
+          "title": "Ostsås till lökpaj",
+          "steps": [
+            "gör cashewmjölk i henhold till receptet (se kjökkenarkivet).",
+            "Lägg alla ingredienserna i en kastrull och rör med en vispa.",
+            "När allt är väl blandat, skrur du i plattan.",
+            "Ställ värmen i låg till medelvärme och låt såsen sjuda under ständig omrörning i ett minut eller tills den får en elastisk konsistens.",
+            "Den är lettere att håndtere när den är het. För att värme den upp igen, tillsätt en skvätt vatten eller växtmjölk och rör hela tiden tills den är gjennomvarm."
           ]
         }
       },
@@ -9497,6 +9741,13 @@
               "name": "Salt",
               "note": "efter smak"
             }
+          ],
+          "title": "Ostig blomkålssås",
+          "steps": [
+            "Koka upp vatten i en kastrull. Tillsätt blomkål, lökpulver, vitlök och gurkmeja. Täck väl till och sänk värmen ner till svårt låg. Låt det sjuda till blomkålen är så mjuk att den lätt faller från varandra när du stikker i den med en gaffel, cirka 15–20 minuter.",
+            "Häll försiktigt innehållet i kastrullen över i en mixer. Tillsätt resten av ingredienserna. Mixa först på låg hastighet och ök gradvis till högsta hastighet. Mixa tills såsen är helt slät.",
+            "Smaka av och tillsätt mer salt efter behov.",
+            "Häll såsen tillbaka i kastrullen och värm upp under jämnt omrörning. När det börjar att boble, låter du det koka och tjockna i minst 2 minuter till."
           ]
         }
       },
@@ -9800,6 +10051,14 @@
               "ingredient": "kale",
               "name": "Grönkål"
             }
+          ],
+          "title": "Ostiga cashew-grönkålschips",
+          "steps": [
+            "För att göra dressingen: Lägg alla ingredienserna (förutom från grönkålen) i en högeffektsmixer och mixa tills det är helt slät. Du ska lägg en kremaktig konsistens.",
+            "Förbered grönkålen: tvätta och torka den väl. Ta bort därefter bladene från stjälkarna, och pröv att holde bitene så stora som möjligt (de krymper mycket under torkning/steking).",
+            "Lägg grönkålen i en stor skål och häll dressingen över.",
+            "Använd händerna (ta i hansker) och massera dressingen väl i grönkålen så att den täcks jämnt.",
+            "Lägg därefter de dressede grönkålsbladen i brettene i torken. Passa i att bladene ligger i ett gör, ellers kommer att de inte törkes jämnt. Torka i 46 °C i 6 timmar (eller tills de är krispig)."
           ]
         }
       },
@@ -10188,6 +10447,13 @@
               "ingredient": "spring-onions",
               "name": "Salladslök"
             }
+          ],
+          "title": "Kikärtsomelett",
+          "steps": [
+            "Värm ugnen till 170 °C.",
+            "Mixa alla ingredienserna, förutom från persiljan, i en högeffektsmixer i 30 sekunder.",
+            "Häll blandningen i en forma klädd med bakplåtspapper (rund eller fyrkantig), strö över persilja, paprikapulver och vårlök. Stek i 15–20 minuter i 170 °C.",
+            "Serveras som rund forma eller pizzabit tillsammans med surdegsbröd, tomat och gurka."
           ]
         }
       },
@@ -10497,6 +10763,14 @@
               "ingredient": "cucumber",
               "name": "Gurka"
             }
+          ],
+          "title": "Kikärtssallad",
+          "steps": [
+            "gör cashewgräddfilen: sil av cashewnötterna och skölj dem. Mixa därefter cashewnötter, vatten och citronsaft till en svårt slät konsistens.",
+            "Lägg kikärtorna i en stor skål.",
+            "Använd en potatisstöt eller gaffel och mosa kikärtorna så att de går sönder. Passa i att alla kikärtor åtminstone är delvis mosad.",
+            "Tillsätt lök, stjälkselleri och gurka. Tillsätt noriflakes, cashewgräddfil och salt, och blanda väl.",
+            "Lägg små mängdr av salladen i tvättade salladsblad och servera."
           ]
         }
       },
@@ -10684,6 +10958,13 @@
               "ingredient": "olive-oil",
               "name": "Olivolja"
             }
+          ],
+          "title": "Kikärtstofu",
+          "steps": [
+            "Vispa ihop kikärtsmjöl, salt, olivolja och 1/3 av vattnet. Passa i att det inte är klumpar.",
+            "Värm upp resten av vattnet. När det kokar, skrur du ner till medelvärme och häller långsamt i kikärtsblandningen medan du visper jämnt.",
+            "Fortsätt att röra tills det får en konsistens som puddinggröt. Detta tar några minuter.",
+            "Häll blandningen över i en forma medan den är het, och låt den kyla sig ner och stelna."
           ]
         }
       },
@@ -10923,6 +11204,12 @@
               "ingredient": "sesame-oil",
               "name": "Sesamolja"
             }
+          ],
+          "title": "Kinakålssallad",
+          "steps": [
+            "Värm ugnen till 170 °C. Fördela mandlarna i en plåt och stek dem i 8 minuter. Låt dem svalna och grovhacka dem därefter.",
+            "Vispa ihop honung, citronsaft, sojasås och sesamolja.",
+            "Strimla kinakålen och vårlöken tunt, och lägg i en skål. Tillsätt mandlar och dressing, och blanda salladen rätt innan servering."
           ]
         }
       },
@@ -11282,6 +11569,15 @@
               "name": "Risnudlar",
               "note": "torra"
             }
+          ],
+          "title": "Kinesisk soppa",
+          "steps": [
+            "Fräs lök och purjolök i lite olja. När det börjar att bli mjukt, tillsätter du vitlök.",
+            "Riv stjälkselleri och morötter, eller skär dem i tborta strimler.",
+            "Fräs alla grönsakerna med salt i 5 minuter. Tillsätt kokt vatten och låt det koka till morötterna är mjuka.",
+            "Ta ut en del av soppan (för eksempel 1 liter) och mixa den tillsammans med cashew och ingefära tills det är slät.",
+            "Blötlägg risnudlarna i varmt vatten i 2 minuter. Skär dem i bitar i 3–4 cm och tillsätt i soppan.",
+            "Koka upp, och så är den klar."
           ]
         }
       },
@@ -11629,6 +11925,16 @@
               "ingredient": "cayenne-pepper",
               "name": "Cayennepeppar"
             }
+          ],
+          "title": "Panerade tofustavar",
+          "steps": [
+            "gör klar tre djupa behållare till paneringen: a) Blanda mjöl, näringsjäst, salt och norialgpulver (mixa nori i mixer i några sekunder tills det blir pulver).",
+            "b) Blanda sojamjölk och näringsjäst.",
+            "c) Mixa resten av ingredienserna (glutenfria ströbröd till cayennepeppar) i thermomixen i högsta hastighet i 15 sekunder.",
+            "Täck tofuskivorna i melblandingen, doppa dem därefter i mjölkblandingen och rulla dem till sist i ströbrödsblandningen.",
+            "Stek i förvärmd ugn i 200 °C i 20–25 minuter.",
+            "Valfritt: Lägg skivor av cherrytomat och färska blad (timjan, salvia) ovanpå innan steking.",
+            "Valfritt: Garnering med kokosbacon och gräslök rätt innan servering."
           ]
         }
       },
@@ -11758,7 +12064,7 @@
       ],
       "translations": {
         "no": {
-          "title": "Godterirundstykker",
+          "title": "Fruktgodisruller",
           "description": "",
           "ingredients": [
             {
@@ -11822,6 +12128,16 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Fruktgodisrullar",
+          "steps": [
+            "Tina jordbär och bananer (de Måste vara helt tina, ellers får du inte en slät konsistens).",
+            "Lägg alla ingredienserna, förutom från dadlarna, i Vitamixen. Mixa i cirka 1,5 minuter i högsta hastighet (tills det är slät). Tillsätt därefter dadlarna och mixa i 1 minut till i högsta hastighet med den svarta staven.",
+            "Häll 8 dl direkt från Vitamixen ut i en platta. Fördela jämnt med en slickepott.",
+            "Torka i minst 9 timmar, eller längre om behövs, i 63 °C (den är färdig när den är helt torr – kontrollera med fingrarna).",
+            "Ta frukten försiktigt av plattan med det samma, ellers blir det svårare att ta bort efteråt.",
+            "Rull fruktlädret så hårt som möjligt, och skär det i cirka 2,4 cm breda bitar (använd en linjal som guide i starten).",
+            "Förvara i en lufttät burk eller packa omedelbart. Använd tång eller pincett för att lägga godisarna i förpackningen eller påsen."
           ]
         }
       },
@@ -12066,6 +12382,13 @@
               "name": "Salt",
               "note": "efter smak"
             }
+          ],
+          "title": "Karamelliserade nötter",
+          "steps": [
+            "Blanda ihop lönnsirap, kokosolja, kanel och salt.",
+            "Hacka nötterna i mindre bitar, enten med en kniv eller i matberedaren.",
+            "Alternativ 1: Lägg nötterna i en stekpanna i medelvärme i 3–5 minuter under jämnt omrörning. Tillsätt så sirupblandingen och rör hela tiden i 2–3 minuter. Fördela därefter i en plåt med bakplåtspapper till avsvalning.",
+            "Alternativ 2: Blanda allt väl ihop, fördela jämnt i en plåt med bakplåtspapper och stek i ugnen i 160 °C i 12–15 minuter (rör då och då)."
           ]
         }
       },
@@ -12296,7 +12619,7 @@
           ]
         },
         "sv": {
-          "title": "Carob spread (hazelnut)",
+          "title": "Karobpålägg (hasselnöt)",
           "description": "Ett naturligt sött, mjölkfritt chokladliknande pålägg — carob och dadlar mixat med rostade nötter tills det blir silkeslent. Utan tillsatt socker, utan olja.",
           "ingredients": [
             {
@@ -12497,7 +12820,7 @@
           ]
         },
         "sv": {
-          "title": "Carob spread (almond)",
+          "title": "Karobpålägg (mandel)",
           "description": "Ett naturligt sött, mjölkfritt chokladliknande pålägg — carob och dadlar mixat med rostade nötter tills det blir silkeslent. Utan tillsatt socker, utan olja.",
           "ingredients": [
             {
@@ -12739,6 +13062,15 @@
               "name": "Citronsaft",
               "note": "på flaska"
             }
+          ],
+          "title": "Chipotlesås",
+          "steps": [
+            "Blötlägg cashewnötterna.",
+            "Stek paprikan i 200 °C i 20 minuter. Ta bort därefter den gröna delen, skalet och fröna.",
+            "Mixa alla ingredienserna.",
+            "Tillsätt citronsaften långsamt.",
+            "Koka i några minuter under jämnt omrörning tills det har en tjockere konsistens.",
+            "Låt det kyla sig ner."
           ]
         }
       },
@@ -13077,6 +13409,12 @@
               "ingredient": "rosemary-dried",
               "name": "Rosmarin, torkad"
             }
+          ],
+          "title": "Chorizo med potatistaco",
+          "steps": [
+            "Ånga potatisarna i ugnen, eller om du inte har den funktionen, koka dem på glänt i vatten. Passa i att du inte överkokar dem.",
+            "Stek/koka/fräs tofun med sojasås, chili och kryddor.",
+            "Blanda allt och servera varmt."
           ]
         }
       },
@@ -13315,6 +13653,10 @@
               "name": "Cayennepeppar",
               "note": "efter smak"
             }
+          ],
+          "title": "Citrusdressing",
+          "steps": [
+            "Mixa alla ingredienserna i Vitamixen i 2 minuter."
           ]
         }
       },
@@ -13524,6 +13866,12 @@
               "name": "Paprika",
               "note": "grön"
             }
+          ],
+          "title": "Klassisk grekisk sallad",
+          "steps": [
+            "Skär tomater, gurka och lök i tärningar i cirka 2 cm.",
+            "Lägg alla ingredienserna (förutom från feta) i en skål och blanda försiktigt ihop.",
+            "Servera feta separat."
           ]
         }
       },
@@ -13740,6 +14088,14 @@
               "ingredient": "honey",
               "name": "Honung"
             }
+          ],
+          "title": "Kokosmakronbollar",
+          "steps": [
+            "Mixa cashewnötterna i matberedare till mjöl. Häll över i en skål och ställ till sidan.",
+            "Lägg resten av ingredienserna i matberedaren (honungen överst så att den inte klistrar sig i botten) och mixa tills allt är blandat och börjar att binde sig och kan formes till en boll.",
+            "Tillsätt den söte kokosblandingen i cashewmjölet och blanda ordentligt.",
+            "Använd en glasskopa och forma blandningen till bollar vid att presse den tillsammans med handflatan – storlek cirka 2 msk.",
+            "Ställ i kylskåpet för att kyla sig innan servering."
           ]
         }
       },
@@ -14038,6 +14394,19 @@
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             }
+          ],
+          "title": "Kokosmozzarella",
+          "steps": [
+            "Lägg cashewnötter, vatten, citronsaft, näringsjäst och salt i en högeffektsmixer. Mixa tills det är svårt slät.",
+            "Tillsätt tapiokamel och smeltet kokosolja och mixa tills allt är väl blandat. Ställ blandningen till sidan.",
+            "Förbered et isbad: lägg lite is och vatten i en stor skål och ställ till sidan.",
+            "Lägg det återstående vattnet och agar agar-pulver i en medelstor kastrull och låt det sjuda i medelvärme.",
+            "Koka blandningen tills den börjar att boble, tjocknar och blir lite gjennomskinnelig (mellan 5 och 10 minuter).",
+            "Häll blandningen från mixern i agar agar-blandningen och vispa ihop.",
+            "Rör hela tiden till blandningen ser slät, elastisk och lätt glänsande ut. Ta den så av plattan.",
+            "För att forma mozzarellabollarna: använd en glasskopa till att sked upp den värme mozzarellaen. Lägg den fylte glasskopan i isbadet och hold den där några sekunder tills den stelnar.",
+            "Vänd därefter glasskopan och slipp mozzarellabollen ut i vattnet.",
+            "Ställ skålen i kylskåpet och låt det stå i maksimalt 30 minuter."
           ]
         }
       },
@@ -14255,6 +14624,14 @@
               "name": "Vatten",
               "note": "dricksvatten"
             }
+          ],
+          "title": "Tranbärssylt",
+          "steps": [
+            "Koka tranbär med första del av vattnet i 7 minuter.",
+            "I under tiden blandar du majsstärkelse, sukrin och resten av vattnet (kallt) i en kopp.",
+            "Tillsätt blandningen gradvis i tranbärene.",
+            "Rör hela tiden och koka i 3 minuter till, sänk därefter ner värmen.",
+            "Låt det svalna innan det ställs i kylskåpet. Serveras kall."
           ]
         }
       },
@@ -14470,6 +14847,12 @@
               "name": "Timjan, torkad",
               "note": "efter smak"
             }
+          ],
+          "title": "Krutonger",
+          "steps": [
+            "Skär brödskivorna i tärningar i cirka 1 cm.",
+            "Lägg dem i en skål och blanda med olivolja, salt och kryddor.",
+            "Stek i 15 minuter i 180 °C."
           ]
         }
       },
@@ -14655,6 +15038,10 @@
               "ingredient": "pecans",
               "name": "Pekannötter"
             }
+          ],
+          "title": "Krispig morotssallad",
+          "steps": [
+            "Blanda alla ingredienserna ihop."
           ]
         }
       },
@@ -14894,6 +15281,10 @@
               "ingredient": "coriander-fresh",
               "name": "Färsk koriander"
             }
+          ],
+          "title": "Krispig söt kålsallad",
+          "steps": [
+            "Blanda alla ingredienserna ihop."
           ]
         }
       },
@@ -15208,6 +15599,12 @@
               "ingredient": "lemons",
               "name": "Citroner"
             }
+          ],
+          "title": "Gurkdressing",
+          "steps": [
+            "Mixa alla ingredienserna i en högeffektsmixer tills det är svårt slät (i minst 1 minut).",
+            "Låt det svalna i kylskåpet innan servering.",
+            "Garnering med frisk dill och gurka i små tärningar (brunoise)."
           ]
         }
       },
@@ -15430,6 +15827,12 @@
               "ingredient": "cashew-sour-cream",
               "name": "Cashewgräddfil"
             }
+          ],
+          "title": "Gurkraita",
+          "steps": [
+            "gör cashewgräddfil (se eget recept).",
+            "Blanda alla ingredienserna försiktigt ihop.",
+            "Smaka av."
           ]
         }
       },
@@ -15669,6 +16072,12 @@
               "ingredient": "dill",
               "name": "Dill"
             }
+          ],
+          "title": "Gurk- och solrosfrödressing",
+          "steps": [
+            "Mixa solrosfröna tillsammans med 500 ml sojamjölk i en högeffektsmixer.",
+            "Tillsätt resten av ingredienserna, förutom från citronen, och fortsätt att mixa.",
+            "När blandningen är slät, tillsätter du citronsaften (som förtjockningsmedel) medan mixern går."
           ]
         }
       },
@@ -16094,6 +16503,21 @@
               "ingredient": "coriander-fresh",
               "name": "Färsk koriander"
             }
+          ],
+          "title": "Dalgryta",
+          "steps": [
+            "Blötlägg linserna i minst 20 minuter.",
+            "Skölj dem därefter och koka i en kastrull med vatten till linserna är mjuka.",
+            "När linserna är kokt, kjörer du dem tillsammans med lite kokevatten i en mixer tills det är slät.",
+            "Het lite olivolja i en annan kastrull tillsammans med senapsfrö, lagerblad och bockhornsklöverfrö.",
+            "När hela kryddorna doftar och senapsfröna börjar att poppa, tillsätter du lök och fräser tills den är mjuk eller gyllene. Passa i att den inte bränns. Använd inte för hög värme, och tillsätt lite vatten vid behov.",
+            "Tillsätt därefter ingefära och vitlök, och fräs vidare i några minuter. Passa i att det inte klistrar sig. Tillsätt lite vatten vid behov.",
+            "Tillsätt de malda kryddorna och låt det fräsa i några minuter.",
+            "Tillsätt tomater och låt det fräsa i några minuter.",
+            "till sist tillsätter du de mixade linserna. Tillsätt vatten vid behov för att få önskad konsistens. Låt allt småkoka i minst 15 minuter (jo längre koktid, desto bättre smakerna drar in).",
+            "Ta bort lagerbladen.",
+            "Tillsätt citronskal och rör i.",
+            "Toppa med hackad koriander eller persilja som garnering."
           ]
         }
       },
@@ -16322,6 +16746,13 @@
               "name": "Vatten",
               "note": "dricksvatten"
             }
+          ],
+          "title": "Sylt på torkad frukt",
+          "steps": [
+            "Skär de torkade frukterna som är större än russin i mindre bitar.",
+            "Lägg torkad frukt i en kastrull.",
+            "Koka upp vattnet i en vattenkokare, häll det över fruktblandingen och koka i 2–3 minuter.",
+            "Låt det svalna innan det ställs i kylskåpet."
           ]
         }
       },
@@ -16504,6 +16935,10 @@
               "ingredient": "red-onions",
               "name": "Rödlök"
             }
+          ],
+          "title": "Enkel colombiansk sallad",
+          "steps": [
+            "Blanda alla ingredienserna ihop."
           ]
         }
       },
@@ -16821,6 +17256,18 @@
               "ingredient": "raisins",
               "name": "Russin"
             }
+          ],
+          "title": "Ellens granola",
+          "steps": [
+            "Blötlägg 3 liter bovete i 20 minuter. Lägg den därefter i stora siler och skölj tre gånger om dagen i 1–2 dagar. Passa i att skölje väl varje gång.",
+            "När groddarna har kommit ut, är den klar.",
+            "Om du inte ska göra Ellens granola samma dag: Torka den groddade boveten i 24 timmar i 39–40 °C.",
+            "Blötlägg dadlarna i kokande vatten i 10 minuter, och mixa dem till pasta tillsammans med kryddor och salt.",
+            "Blanda den groddade boveten (som var 3 liter innan groddning, men har större volym nå) med dadelpastaen och resten av ingredienserna.",
+            "Fördela blandningen i torkställ: drypp blandningen över brettene och tryck lite ner med fingertopparna där det är för tjockt till att se till torken.",
+            "Torka i cirka 24 timmar i 39–40 °C.",
+            "När den är färdig torkad, låter du granolaen svalna innan du förvarar den i en lufttät burk vid rumstemperatur.",
+            "Tillsätt russin innan förvaring om portionen ska säljas."
           ]
         }
       },
@@ -17187,6 +17634,17 @@
               "ingredient": "raisins",
               "name": "Russin"
             }
+          ],
+          "title": "Eriks granola",
+          "steps": [
+            "Värm ugnen till 100 °C.",
+            "Mixa mandlarna i matberedaren tills de är hackad (inte mjöl).",
+            "Blanda alla de torra ingredienserna i en stor skål (havre till kokos). Förutom från russinen!",
+            "Mixa de återstående ingredienserna, förutom från russinen, tills det är slät.",
+            "Tillsätt den mixade blandningen i den torra blandningen och blanda väl.",
+            "Fördela blandningen i plåt med bakplåtspapper eller silikonmattor.",
+            "Stek i 2 timmar. När den är färdig, låter du granolaen svalna innan du förvarar den i en lufttät burk vid rumstemperatur.",
+            "Tillsätt russin innan förvaring om portionen ska säljas."
           ]
         }
       },
@@ -17473,6 +17931,15 @@
               "ingredient": "mint",
               "name": "Mynta"
             }
+          ],
+          "title": "Falafel",
+          "steps": [
+            "Lägg de torkade kikärtorna i en stor skål, täck med kallt vatten och låt dem blötläggas över natten.",
+            "Pulsera vitlök et par gånger i en matberedare, därefter lök. Tillsätt kikärtor, salt, peppar, bakpulver och {{2 msk}} mjöl, och pulsera till nästan jämn massa.",
+            "Lägg det över i en stor skål och tillsätt persilja och mynta.",
+            "Täck skålen med plastfolie och ställ in i kylskåpet i 1–2 timmar.",
+            "Kontrollera att falafelbullarna håller ihop och smaka av.",
+            "Värm ugnen till 200 °C och stek i 15 minuter."
           ]
         }
       },
@@ -17683,6 +18150,12 @@
               "ingredient": "pomegranate",
               "name": "Granatäpple"
             }
+          ],
+          "title": "Vintersallad med granatäpple",
+          "steps": [
+            "Skölj gurka, tomat och vårlök.",
+            "Skär gurkan och vårlöken i tborta skivor, och körsbärstomaterna i 2 eller 4 bitar.",
+            "Blanda alla grönsakerna ihop och strö granatäpplekärnorna över."
           ]
         }
       },
@@ -17874,6 +18347,21 @@
               "name": "Kummin",
               "note": "hel"
             }
+          ],
+          "title": "Fermenterad rödkål",
+          "steps": [
+            "Skölj kålhuvudet väl. Släng de två yttersta lagren med kålblad om de inte ser färska ut.",
+            "Ta vara ett kålblad till senare använd.",
+            "Strimla kålhuvudet svårt fint med kniv eller mandolin, och lägg det i en skål.",
+            "Strö saltet jämnt över kålen.",
+            "Massera kålen med händerna i 5–10 minuter tills den mjuknar och har släppt en god mängd vätska (lake).",
+            "Rör i karve.",
+            "Pressa kålen väl ner i glasset eller burken, så att vätskan stiger över kålen.",
+            "Lägg det reserverade ytterbladet på ytan och pressa ner.",
+            "Täck till med et kökshandduk för att holde damm borta.",
+            "Låt det stå vid rumstemperatur (18–22 °C) i 5–10 dagar.",
+            "Kontrollera daglig: pressa ner för att holde kålen under lake, och smaka på den efter 5 dagar. När den smaker behagligt syrligt, är den klar!",
+            "När den är fermenterad efter önske, stänger du burkarna väl och ställer dem i kylskåpet."
           ]
         }
       },
@@ -18059,6 +18547,12 @@
               "ingredient": "lemon-juice",
               "name": "Citronsaft"
             }
+          ],
+          "title": "Fikonpålägg",
+          "steps": [
+            "Täck fikonen med vatten (inte för mycket) och låt dem blötläggas.",
+            "Mixa fikonen och vattnet i mixer.",
+            "Rör i kokos och citronsaft."
           ]
         }
       },
@@ -18361,6 +18855,15 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Färsk grönsaksbuljong",
+          "steps": [
+            "Börja med sellerirot och morötter, och lägg dem i mixern. Pulsera flera gånger tills de börjar att gå sönder.",
+            "Tillsätt därefter fennikel, purjolök, stjälkselleri, schalottenlök och vitlök, och pulsera igen.",
+            "Tillsätt de soltorkade tomaterna och mixa allt ihop.",
+            "Tillsätt salt och pulsera några gånger.",
+            "Tillsätt därefter färska örter och pulsera igen tills du har en fin, fuktigt, pastaaktig konsistens.",
+            "Om den inte ska används med det samma, lägger du pastaen i en behåller och fryser den."
           ]
         }
       },
@@ -18834,6 +19337,15 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Frittata",
+          "steps": [
+            "Mixa alla de första ingredienserna (inklusive cayennepeppar) till en slät röra.",
+            "För att rosta sötpotatisarna: skala och skär sötpotatisarna i medelstora tärningar, blanda med olivolja och salt och stek i ugnen i 170 °C i 10–15 minuter.",
+            "För att karamellisera löken: del löken i två och skär i tborta skivor. Fräs med olivolja, salt, lönnsirap och citronsaft. Använd lock eller rör jämnt.",
+            "Blanda smeten, den karamelliserade löken, de stekte sötpotatisarna och resten av ingredienserna försiktigt ihop.",
+            "Klä botten av en rund kakform med bakplåtspapper och pensla sidorna av formen med olivolja. Häll därefter i blandningen.",
+            "Stek i 170 °C i 30 minuter med lock, och därefter 15 minuter utan lock."
           ]
         }
       },
@@ -19101,6 +19613,14 @@
               "ingredient": "coconut-oil",
               "name": "Kokosolja"
             }
+          ],
+          "title": "Fruktcrumble",
+          "steps": [
+            "Värm ugnen till 175 °C.",
+            "Ta bort kärnhuset från eplene och kärnorna från plommonen. Skär dem därefter i tärningar eller skivor.",
+            "Förbered en plåt med bakplåtspapper eller olja. Lägg epler, plommon och hallon jämnt fördela i lager, eller blanda frukterna med hallon i en skål och lägg dem över i plåten.",
+            "smält kokosoljan och blanda den med resten av ingredienserna, och rör till allt är väl blandat. Drypp/smula det jämnt över frukten.",
+            "Stek i 35–40 minuter till frukten är gjennomkokt."
           ]
         }
       },
@@ -19324,6 +19844,10 @@
               "ingredient": "grapes",
               "name": "Vindruvor"
             }
+          ],
+          "title": "Fruktsallad",
+          "steps": [
+            "Blanda all frukten i en skål."
           ]
         }
       },
@@ -19589,6 +20113,12 @@
               "ingredient": "garlic-powder",
               "name": "Vitlökspulver"
             }
+          ],
+          "title": "Vitlöks- och cashewost",
+          "steps": [
+            "Mixa alla ingredienserna i en högeffektsmixer tills det är slät.",
+            "Koka upp blandningen i en kastrull och låt det koka under omrörning i minst 3–5 minuter.",
+            "Häll i formar och låt det svalna innan det ställs i kylskåpet."
           ]
         }
       },
@@ -19888,6 +20418,15 @@
               "ingredient": "gluten-free-flour-mix",
               "name": "Glutenfri mjölmix"
             }
+          ],
+          "title": "Glutenfria havrebullar",
+          "steps": [
+            "Lägg linfröna i vattnet och låt dem trekke.",
+            "Blanda alla torra ingredienser ihop.",
+            "Tillsätt resten av ingredienserna, inklusive de blötlagda linfröna, och blanda väl.",
+            "Låt degen vila i 5–10 minuter så att fiberhusken får suga upp vätska.",
+            "Forma till skålr (cirka 100 g per styck) och lägg i en plåt med bakplåtspapper. Om de ska används till burger, trycker du dem ner så att de inte är mer än 2 cm tjocke.",
+            "Stek i 200 °C i 20 minuter."
           ]
         }
       },
@@ -20150,6 +20689,13 @@
               "ingredient": "coconut-milk",
               "name": "Kokosmjölk"
             }
+          ],
+          "title": "Gyllene soppa",
+          "steps": [
+            "Koka lök, purjolök och morötter med currypulver och {{2,5 dl}} vatten tills de är mjuka.",
+            "Mixa majs och vatten i mixer.",
+            "Tillsätt den mixade majsen, buljong, salt och kokosmjölk i lök-, purjolök- och morotblandingen.",
+            "Koka upp innan servering."
           ]
         }
       },
@@ -20315,6 +20861,11 @@
               "ingredient": "olive-oil",
               "name": "Olivolja"
             }
+          ],
+          "title": "Gröna bönor",
+          "steps": [
+            "Fräs haricots vertsen i lite olja (eller en skvätt vatten).",
+            "Tillsätt salt under fräsningen."
           ]
         }
       },
@@ -20556,6 +21107,13 @@
               "ingredient": "coriander-fresh",
               "name": "Färsk koriander"
             }
+          ],
+          "title": "Guacamole",
+          "steps": [
+            "Lägg avokadon i en skål och mosa den lätt med en gaffel, ELLER använd en matberedare.",
+            "Konsistensen är helt upp till deg. Det rekommenderas att guacamolen hos oss är lite grovare, särskilt när den serveras som dipp.",
+            "Tillsätt vitlök, citronsaft och lite salt, och blanda försiktigt ihop.",
+            "Strö över rödlök och färska örter innan servering."
           ]
         }
       },
@@ -20868,6 +21426,10 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Glad bönsallad",
+          "steps": [
+            "gör klar grönsakerna, tillsätt dressingen och blanda."
           ]
         }
       },
@@ -21165,7 +21727,8 @@
               "quantity": 0.15,
               "unit": "tsp",
               "ingredient": "sage-dried",
-              "name": "Salvia, torkad"
+              "name": "Salvia, torkad",
+              "note": "torr"
             },
             {
               "quantity": 0.25,
@@ -21179,6 +21742,19 @@
               "ingredient": "olive-oil",
               "name": "Olivolja"
             }
+          ],
+          "title": "Hasselbackspotatis",
+          "steps": [
+            "Värm ugnen till 180 °C.",
+            "Tvätta potatisarna ordentligt med skalet i.",
+            "Del dem i två i längden, och lägg den flata siden ner i skärbrädan.",
+            "Ta én halv potatis om gangen och lägg en träpinne i varje sidan av potatisen.",
+            "Skär potatisen i skivor (cirka 4 mm från varandra) ner till träpinnene. Pinnene gör att du inte skär helt genom.",
+            "Lägg potatisarna i bakplåtspapper (eller oljat bricka) med flat sidan ner. Pensla dem därefter med lite olivolja.",
+            "Blanda kryddorna i en liten skål och strö över potatisarna.",
+            "Stek i 45 minuter täckt med aluminiumsfolie.",
+            "Ta bort folien och stek i 15 minuter till.",
+            "Kontrollera att de är genomstekta."
           ]
         }
       },
@@ -21444,6 +22020,12 @@
               "name": "Citronsaft",
               "note": "på flaska"
             }
+          ],
+          "title": "Hasselnöts- och soltorkad tomatost",
+          "steps": [
+            "Mixa alla ingredienserna i en högeffektsmixer tills det är slät.",
+            "Koka upp blandningen i en kastrull och låt det koka under omrörning i minst 3–5 minuter.",
+            "Häll i formar och låt det svalna innan det ställs i kylskåpet."
           ]
         }
       },
@@ -21722,6 +22304,19 @@
               "ingredient": "honey",
               "name": "Honung"
             }
+          ],
+          "title": "Hemgjort fullkornsbröd",
+          "steps": [
+            "Häll alla de torra ingredienserna, förutom från jästen, i en mikser. Vi använder Diamant-mikseren med degkrok. Blanda dem väl i några minuter.",
+            "Medan det går, blandar du vattnet med honung och torrjäst och låt det lösa sig upp i 3 minuter.",
+            "Häll vattnet gradvis i, 0,5–1 liter om gangen, medan maskinen går i laveste hastighet. Öka till hastighet 2 i ett minut när allt vattnet är i.",
+            "Sänk tillbaka till laveste hastighet och ställ timmaren i 10 minuter.",
+            "Klä brödformer med bakplåtspapper.",
+            "Ta ut degen och fördela den i formarna – 800 g i de små och 900 g i de storra.",
+            "Låt den jäsa tiltäckt i minst 1 timme till dubbel storlek ovanpå ugnen.",
+            "Värm ugnen till 200 °C.",
+            "Ta bort plasten försiktigt och stek i 10 minuter. Sänk därefter ner temperaturen till 185 °C och stek i 25 minuter till.",
+            "Ta brödet ut av ugnen och täck det med et fuktigt handduk i cirka 10 minuter. Ta det ut av formen och låt det svalna innan det förvaras."
           ]
         }
       },
@@ -22024,6 +22619,13 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Pepparrotsdressing",
+          "steps": [
+            "Mixa alla ingredienserna i en högeffektsmixer tills det är slätt (i minst 1 minut).",
+            "Låt det svalna i kylskåpet innan servering.",
+            "Garnering med hackad persilja eller gräslök, och koriander.",
+            "Tillsätt vatten till krämig konsistens."
           ]
         }
       },
@@ -22286,6 +22888,13 @@
               "ingredient": "onion-powder",
               "name": "Lökpulver"
             }
+          ],
+          "title": "Hummus",
+          "steps": [
+            "Mixa citronsaft och tahini i matberedaren i 1 minut eller tills det är krämigt och tjockt.",
+            "Tillsätt vitlök, salt och spiskummin, och mixa igen.",
+            "Tillsätt hälften av kikärtorna och mixa i ett minut till. Tillsätt därefter resten av kikärtorna och mixa tills det är slät.",
+            "Tillsätt till sist vattnet medan mixern går, och da är det klart till servering."
           ]
         }
       },
@@ -22490,6 +23099,11 @@
               "ingredient": "nutritional-yeast",
               "name": "Näringsjäst"
             }
+          ],
+          "title": "Isabels dressing",
+          "steps": [
+            "Häll vattnet över jästflagen och rör om.",
+            "Tillsätt resten av ingredienserna och vispa väl innan servering."
           ]
         }
       },
@@ -22759,6 +23373,13 @@
               "name": "Salt",
               "note": "efter smak"
             }
+          ],
+          "title": "Grönkåls- och sötpotatissallad",
+          "steps": [
+            "stick hål i sötpotatisen med en gaffel och stek den hel med skalet i ugnen vid 200 °C i 35–45 minuter tills den är mjuk.",
+            "Låt sötpotatisen svalna sig och ta bort skalet.",
+            "Massera grönkålen med sötpotatis, citronsaft och salt.",
+            "Blanda alla ingredienserna ihop."
           ]
         }
       },
@@ -23103,6 +23724,16 @@
               "ingredient": "nutritional-yeast",
               "name": "Näringsjäst"
             }
+          ],
+          "title": "Grönkål med avokado",
+          "steps": [
+            "För att rosta fröna: het en stekpanna i medelvärme hög värme. Tillsätt solros- och sesamfröna.",
+            "Vänd försiktigt till fröna börjar att poppa och doftar. De ska få en gyllene farge.",
+            "Blanda de rostade fröna med spiskummin, lökpulver, näringsjäst och salt.",
+            "Lägg grönkålen, avokadon och citronsaften i en skål. Ta i på dig handskar och pressa avokadon till kräm med händerna till allt är väl blandat. Massera i 2 minuter eller längre tills det är mjukt.",
+            "Blanda i purjolök, tomater och några av röda vinägerna, och hold av några till garnering.",
+            "Tillsätt de rostade fröna i grönkålen och blanda.",
+            "Garnering med ."
           ]
         }
       },
@@ -23318,6 +23949,13 @@
               "name": "Salt",
               "note": "efter smak"
             }
+          ],
+          "title": "Grönkålschips",
+          "steps": [
+            "Skölj, ta bort stjälkarna och torka grönkålsbladen (salladsslunga och kökspapper).",
+            "Blanda grönkålen med olja, cayennepeppar, vitlök och salt.",
+            "Lägg bakplåtspapper i en plåt.",
+            "Sänk temperaturen ner till 130 °C och stek i 10 minuter, eller till chipsen är krispig."
           ]
         }
       },
@@ -23565,6 +24203,13 @@
               "ingredient": "lemon-juice",
               "name": "Citronsaft"
             }
+          ],
+          "title": "Grönkålssoppa",
+          "steps": [
+            "Koka de 5 första ingredienserna i 15 minuter.",
+            "Tillsätt grönkålen och pressa den ner i vattnet. Koka i 5 minuter till.",
+            "Låt det svalna lite vid behov, och mixa därefter allt i mixer/thermomix/vitamix tillsammans med citronsaft tills det är slät.",
+            "Värm upp igen vid behov innan servering."
           ]
         }
       },
@@ -23821,6 +24466,10 @@
               "ingredient": "basil",
               "name": "Basilika"
             }
+          ],
+          "title": "Katrines pestodressing",
+          "steps": [
+            "Mixa alla ingredienserna till en slät konsistens."
           ]
         }
       },
@@ -24062,6 +24711,10 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Ketchup",
+          "steps": [
+            "Lägg alla ingredienserna i thermomixen och mixa i 20 sekunder. Eller värma vattnet och smält honungen i det, och vispa därefter i resten av ingredienserna."
           ]
         }
       },
@@ -24442,6 +25095,13 @@
               "ingredient": "nutritional-yeast",
               "name": "Näringsjäst"
             }
+          ],
+          "title": "Kidneybönsgryta",
+          "steps": [
+            "Fräs lök och vitlök i {{0.5 tsk}} olivolja och {{1 msk}} vatten tills de är mjuka.",
+            "Tillsätt paprika och fräs tills den är mjuk.",
+            "Tillsätt resten av ingredienserna och koka upp, låt det därefter småkoka i 20–30 minuter.",
+            "Mosa grytan lite med en stavmixer tills den är krämigt – några av bönorna bör fortfarande vara hela."
           ]
         }
       },
@@ -24845,6 +25505,15 @@
               "ingredient": "lasagne-sheets",
               "name": "Lasagneplattor"
             }
+          ],
+          "title": "Lasagne",
+          "steps": [
+            "Fräs lök och vitlök i {{1 tsk}} olivolja och {{2 msk}} vatten tills det är mjukt.",
+            "Tillsätt resten av ingredienserna och koka upp.",
+            "gör vit sås efter receptet som heter \"hvit cashewsås\".",
+            "Lägg lasagnen i denna ordningen: spenat- och tofusås – lasagneplattor – vit sås. gör 3 gör och avsluta med et extra tjockt gör med vit sås.",
+            "Värm ugnen till 170 °C.",
+            "Stek lasagnen i cirka 40 minuter till plattorna är mjuka och såsen på ytan är gyllene."
           ]
         }
       },
@@ -25026,6 +25695,10 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Citron- och olivoljedressing",
+          "steps": [
+            "Vispa alla ingredienserna ihop i en skål, eller lägg allt i Vitamixen och mixa i några sekunder."
           ]
         }
       },
@@ -25502,7 +26175,8 @@
               "quantity": 0.5,
               "unit": "tsp",
               "ingredient": "sage-dried",
-              "name": "Salvia, torkad"
+              "name": "Salvia, torkad",
+              "note": "torr"
             },
             {
               "quantity": 0.15,
@@ -25530,6 +26204,16 @@
               "ingredient": "parsley",
               "name": "Persilja"
             }
+          ],
+          "title": "Linsgryta",
+          "steps": [
+            "Lägg linser, vatten, salt och låturbärblad i en kastrull och koka i 25–30 minuter. Häll av vätskan (inte oroa dig om de inte är helt färdiga – de får längre koktid senare).",
+            "Finhacka vitlöken och skär purjolöken i tborta ringer i 1 cm. Skär resten av grönsakerna i tärningar i 2 cm, förutom från potatisarna som bör skäras i tärningar i 3 cm. Kålrot behöver längre koktid – du kan överväga att skära den mindre.",
+            "Fräs lök och kålrot i medelvärme hög värme i 2 minuter. (Tillsätt lite vatten om det klistrar sig till grytan.)",
+            "Tillsätt vitlök, kryddor, tomatpuré, linser och grönsaker, och fräs i ett minut till. Tillsätt därefter vattnet.",
+            "Låt det småkoka i 10–15 minuter. Tillsätt därefter purjolöken och låt det koka i 3–5 minuter till.",
+            "Beroende av hur mycket vatten du använde och vilken konsistens du önskar, kan du tillsätta majsstärkelses- och vattenblandingen och koka i ett minut till.",
+            "Tillsätt persilja, och så är det klart till servering."
           ]
         }
       },
@@ -25670,6 +26354,15 @@
               "ingredient": "broccoli",
               "name": "Broccoli"
             }
+          ],
+          "title": "Lättkokt broccoli",
+          "steps": [
+            "Del broccolin i buketter av lik storlek.",
+            "Lägg en god mängd vatten i en gryta och tillsätt salt.",
+            "När vattnet kokar, tillsätter du broccolin och presser den ner i vattnet.",
+            "Lägg på lock och koka i 4 minuter. (Använd timer.)",
+            "Häll dem i en sil så att allt vattnet renner av.",
+            "Serveras het."
           ]
         }
       },
@@ -25993,6 +26686,15 @@
               "name": "Cayennepeppar",
               "note": "efter smak"
             }
+          ],
+          "title": "Lukes indiska kikärtssås",
+          "steps": [
+            "Hacka och fräs lök i lite olja.",
+            "Tillsätt tomat.",
+            "Tillsätt vatten, saften från kikärtorna, röda linser och kryddor.",
+            "Koka i cirka 30 minuter till linserna är mjuka.",
+            "Tillsätt kikärtor och koka upp.",
+            "Ta av plattan och tillsätt kokosgrädde/-mjölk, rör och servera."
           ]
         }
       },
@@ -26316,6 +27018,16 @@
               "ingredient": "bread-crumbs",
               "name": "Ströbröd"
             }
+          ],
+          "title": "Marikas tofubollar",
+          "steps": [
+            "Värm ugnen till 195 °C, i dampeprogrammet.",
+            "Fräs löken i {{2 msk}} olivolja tills den är blank, tillsätt därefter vitlök och fräs i ett minut till.",
+            "Mixa nötterna i en matberedare tills de är finhackade.",
+            "Pressa vätskan ut av tofun och tillsätt den tillsammans med alla de andra ingredienserna, förutom från mjölet, i matberedaren tills det är väl blandat.",
+            "Tillsätt mjölet gradvis i blandningen i matberedaren.",
+            "När allt är blandat i, tar du massen ut och formar små bullar för hand.",
+            "Lägg kulene i en plåt och ånga dem i ugnen i 25 minuter, eller till kulene börjar att bli bruna."
           ]
         }
       },
@@ -26616,6 +27328,15 @@
               "ingredient": "edamame-frozen",
               "name": "Edamame, fryst"
             }
+          ],
+          "title": "Marikas sommarsallad",
+          "steps": [
+            "Värm ugnen till 180 °C.",
+            "Skär sötpotatisen i stora tärningar och blanda med salt och olivolja.",
+            "Stek i 20–30 minuter tills den är mjuk. Passa i att bitene inte berör varandra, så att de blir väl stekt.",
+            "Massera grönkålen i 2 minuter med {{3 msk}} av \"Isabel-dressingen\" (se eget recept).",
+            "Låt sötpotatisen svalna.",
+            "Blanda alla ingredienserna i en stor skål och servera."
           ]
         }
       },
@@ -26859,6 +27580,11 @@
               "ingredient": "vegetable-bouillon",
               "name": "Grönsaksbuljong (pulver/tärning)"
             }
+          ],
+          "title": "Marinerade tofustavar",
+          "steps": [
+            "Skär tofun i skivor (pröv att få storlek i typiska fiskpinnar).",
+            "Mixa nori i mixern i några sekunder tills det är nästan pulver. Blanda det med resten av ingredienserna. Lägg tofuskivorna i marinaden och marinera i minst två timmar eller natten över i kylskåpet."
           ]
         }
       },
@@ -27067,6 +27793,13 @@
               "ingredient": "vegetable-bouillon",
               "name": "Grönsaksbuljong (pulver/tärning)"
             }
+          ],
+          "title": "Potatismos",
+          "steps": [
+            "Skär potatisarna i bitar och koka dem i rikligt med saltat vatten tills de är mjuka.",
+            "När potatisarna är färdiga, häller du av nästan allt vattnet och låt det stå igen cirka en centimeter vatten i botten av grytan. (Ta vare i en del av potatisvattnet ifall du senare kommer att göra potatismosen mjukare/tunnare.)",
+            "Tillsätt resten av ingredienserna.",
+            "Mosa allt ihop, helst med elektrisk vispa, tills det är slätt och luftig."
           ]
         }
       },
@@ -27410,6 +28143,13 @@
               "name": "Paprika",
               "note": "röd"
             }
+          ],
+          "title": "Medelhavssoppa",
+          "steps": [
+            "Tvätta och skär auberginen i medelstora tärningar. Drypp med olja och salt. Stek i 10 minuter i 170 °C i förvärmd ugn.",
+            "Fräs lök, vitlök, purjolök, paprika och squash, enten med lock eller med lite olivolja.",
+            "Tillsätt hackad tomat från burk och låt det fräsa i några minuter till.",
+            "Tillsätt resten av ingredienserna och låt det sjuda tills alla grönsakerna är gjennomkokte."
           ]
         }
       },
@@ -28128,6 +28868,19 @@
               "name": "Glasnudlar",
               "note": "torra"
             }
+          ],
+          "title": "Nudelwok",
+          "steps": [
+            "marinera tofutärningarna i sojasås, sesamolja och röd chili.",
+            "Koka upp vatten med lite salt och olja.",
+            "Koka nudlarna efter anvisningen i paketet.",
+            "Sil av och skölj med kallt vatten för att undvik att de klistrar sig.",
+            "Stek tofutärningarna i olja i stekpanna.",
+            "Het olja i en stor panna (eller wok). Fräs lök, vitlök och ingefära tills det är mjukt.",
+            "Tillsätt paprika, morot och kål. wokar i hög värme i 3–4 minuter.",
+            "Tillsätt marinaden (sojasås, sesamolja och chili), ketchup, salt och peppar.",
+            "Tillsätt nudlar och tofu. wokar i 3–4 minuter.",
+            "Garnering med färsk vårlök."
           ]
         }
       },
@@ -28369,6 +29122,11 @@
               "ingredient": "sunflower-seeds",
               "name": "Solrosfrön"
             }
+          ],
+          "title": "Nordisk groddsallad",
+          "steps": [
+            "Så spirer du frö om du inte använder köpta spirer: Skölj väl under kallt vatten för att ta bort smuts eller fytinsyra. Blötlägg i en skål med rikligt rent vatten i 12 timmar. Häll av och skölj väl. Lägg i en sil med en ren handduk över, vid rumstemperatur. Skölj groddarna med friskt vatten morgon och kväll. De är klara efter 1–4 dagar, Beroende av type, rumstemperatur och önskad storlek.",
+            "Blanda alla ingredienserna ihop."
           ]
         }
       },
@@ -28798,6 +29556,14 @@
               "ingredient": "cayenne-pepper",
               "name": "Cayennepeppar"
             }
+          ],
+          "title": "Nötstek",
+          "steps": [
+            "Mixa alla nötter i matberedaren i 30 sekunder.",
+            "Fräs löken med olivolja i en stekpanna tills den är mjuk.",
+            "Blanda alla ingredienserna och rör väl. Tillsätt sojamjölk eller vatten om det är för torrt.",
+            "Häll blandningen i en brödform (20 x 12 x 7,5 cm). Fyll halva brödformen med nötsteken. Stek i 175 °C i 1 timme tills den är genomstekt.",
+            "Låt den vila i 10 minuter innan servering."
           ]
         }
       },
@@ -29084,6 +29850,15 @@
               "ingredient": "small-oats",
               "name": "Småflingade havregryn"
             }
+          ],
+          "title": "Havreburgare",
+          "steps": [
+            "Koka upp vattnet och tillsätt resten av ingredienserna, förutom från havren. Koka i 5 minuter.",
+            "Tillsätt havren och koka i minst 3 minuter tills den är tjock som gröt. Låt blandningen svalna lite.",
+            "Sked blandningen till små bullar (helst med glasskopa) och lägg dem i en plåt med bakplåtspapper, och forma dem till burgere.",
+            "Värm ugnen till 175 °C.",
+            "Stek havreburgerne i minst 20 minuter.",
+            "Låt dem vila lite innan servering."
           ]
         }
       },
@@ -29306,6 +30081,11 @@
               "ingredient": "oat-milk",
               "name": "Havremjölk"
             }
+          ],
+          "title": "Lökpajbotten",
+          "steps": [
+            "Blanda de torra ingredienserna först, tillsätt därefter vätskorna.",
+            "Rör tills det är väl blandat, och fördela det därefter snabbt i botten och låtngs sidorna av en bakform i et 1 cm tjockt gör."
           ]
         }
       },
@@ -29542,6 +30322,16 @@
               "name": "Vatten",
               "note": "dricksvatten"
             }
+          ],
+          "title": "Lökpajfyllning",
+          "steps": [
+            "Hacka lök och vitlök i matberedare, och skär därefter purjolöken i skivor.",
+            "Fräs grönsakerna med timjan och buljong i 15 minuter i hög värme, och tillsätt vatten om det börjar att klistre sig.",
+            "gör under tiden cashewkräm vid att mixa vatten och cashewnötter i en mixer i hög hastighet i 1–2 minuter.",
+            "Tillsätt cashewkrämen och rör i 1–2 minuter.",
+            "Fördela fyllningen på ytan av botten i et 2 cm tjockt gör.",
+            "Osten ska fördelas tunt på ytan i et jämnt gör. (Se eget recept.)",
+            "Stek i förvärmd ugn i 175 °C i 22 minuter."
           ]
         }
       },
@@ -29726,6 +30516,10 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Parmesan",
+          "steps": [
+            "Mixa ingredienserna i matberedaren tills det är cirka 1 mm stora bitar."
           ]
         }
       },
@@ -29984,6 +30778,11 @@
               "ingredient": "water",
               "name": "Vatten"
             }
+          ],
+          "title": "Jordnöts- och ingefäradressing",
+          "steps": [
+            "Rosta sesamfröna: Het stekpannan, tillsätt sesamfrö, och rör fröna hela tiden med en träsked. Rosta tills de är lätt puffade och doftar (2–5 minuter), och lägg därefter fröna över på en kall tallrik/et kallt bricka för att avbryta stekningen.",
+            "Blanda alla ingredienserna ihop."
           ]
         }
       },
@@ -30171,6 +30970,13 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Inlagd ingefära",
+          "steps": [
+            "Skala den färska ingefäraen med en sked eller kniv, och skär den i svårt tborta skivor.",
+            "I en liten kastrull kokar du upp vattnet och tillsätter lönnsirap. Rör tills det är upplöst.",
+            "Tillsätt den skivade ingefäraen och citronsaft. Låt det småkoka i låg värme i 15–20 minuter till ingefäraen är mjuk och drar åt sig smakerna.",
+            "Ta kastrullen av plattan och låt blandningen svalna helt. När den är svalnade, överför du ingefäraen och sirupen till et försluten burk och förvarar det i kylskåpet."
           ]
         }
       },
@@ -30357,6 +31163,10 @@
               "ingredient": "vanilla-powder",
               "name": "Vaniljpulver"
             }
+          ],
+          "title": "Ananaskräm",
+          "steps": [
+            "Mixa alla ingredienserna (inklusive ananasjuicen) i hög hastighet tills det är slät."
           ]
         }
       },
@@ -30688,6 +31498,16 @@
               "ingredient": "basil-dried",
               "name": "Basilika, torkad"
             }
+          ],
+          "title": "Pizzabottensmet",
+          "steps": [
+            "Mät upp vattnet och häll jästen ovanpå. Låt den lösa sig upp innan du rör i. Tillsätt mjölet.",
+            "Tillsätt resten av ingredienserna och blanda väl.",
+            "Knåda degen i minst 10 minuter. kavla ut degen och forma den i en plåt med bakplåtspapper. Det är bättre att göra den för tunn än för tjock. Täck med et kökshandduk för att hindra att brödet torkar ut. Låt den jäsa i 1 timme eller till dubbel storlek. Värm ugnen till 170 °C. Förgrädda botten i 170 °C i 10 minuter.",
+            "gör cashewosten (se eget recept: Vit cashewsås). Inte koka den för länge så att den blir onödigt tjock, ellers blir den svårt att fördela i pizzaen.",
+            "Smjuk först tomatsåsen i pizzabotten, tillsätt så grönsakerna, och lägg cashewosten/såsen på ytan.",
+            "Stek i 15–20 minuter i 170 °C. Passa i att den inte bränns i sidorna.",
+            "Del pizzaen och garnering med ruccola. Strö över oregano och olivolja."
           ]
         }
       },
@@ -30954,6 +31774,14 @@
               "name": "Citronsaft",
               "note": "på flaska"
             }
+          ],
+          "title": "Växtbaserat smör",
+          "steps": [
+            "Lägg mandlarna i kokande vatten i några minuter, och skala dem därefter enkelt.",
+            "Mixa nötter och vatten tills det är slät.",
+            "Kokosoljan måste vara smeltet för att kunna blandas, och det är best att se till att de andra ingredienserna inte är för kalla, så att kokosoljan inte stelnar medan du blandar (kokosolja har smältpunkt i cirka 24 °C).",
+            "Tillsätt resten av ingredienserna och blanda i minst 2 minuter till, så att det kommer mycket luft i.",
+            "Häll över i en skål/burk och ställ in i kylskåpet tills den stelnar (kan ta flera timmar)."
           ]
         }
       },
@@ -31159,6 +31987,13 @@
               "ingredient": "honey",
               "name": "Honung"
             }
+          ],
+          "title": "Polenta",
+          "steps": [
+            "Koka upp vatten eller mjölk tillsammans med salt.",
+            "När vätskan kokar, skrur du ner värmen och visper polenta långsamt i. Passa i att röra hela tiden för att undvik klumpar.",
+            "Låt polentaen småkoka i låg värme i cirka 15–20 minuter under jämnt omrörning. Polentaen ska tjockna och bli mjuk.",
+            "När polentaen är färdig, rör du i olivolja eller smjuk och honung."
           ]
         }
       },
@@ -31388,6 +32223,14 @@
               "name": "Salt",
               "note": "efter smak"
             }
+          ],
+          "title": "Pomodorosås",
+          "steps": [
+            "Ta bort fästet vid stjälken i tomaterna och skär dem i 4 bitar eller så.",
+            "Fräs löken i olivolja i medelvärme tills den är mjuk.",
+            "Tillsätt vitlök och fräs i 2–3 minuter till.",
+            "Tillsätt tomater och salt, och låt det sjuda i 30–40 minuter till tomaterna faller från varandra.",
+            "Tillsätt basilikabladen en kort stund (cirka 2 minuter) innan servering – länge nok till att bli mjuka och värme, men kort nog till att behålla den gröna fargen."
           ]
         }
       },
@@ -31712,6 +32555,14 @@
               "ingredient": "spinach",
               "name": "Spenat"
             }
+          ],
+          "title": "Potatis- och spenatsoppa",
+          "steps": [
+            "Mixa hälften av vattnet tillsammans med cashewnötterna och ställ till sidan.",
+            "Fräs lök och vitlök i {{0.5 tsk}} olivolja och {{1 msk}} vatten tills det är mjukt.",
+            "Tillsätt potatisar och morötter, och fräs i 2–3 minuter. Tillsätt lite vatten vid behov.",
+            "Tillsätt resten av vattnet, cashewkrämen, buljongen, saltet och blomkålen, och koka upp. Koka i cirka 10–15 minuter till potatisarna är mjuka.",
+            "Rätt innan servering tillsätter du spenat och citronsaft, och kokar upp igen."
           ]
         }
       },
@@ -31992,6 +32843,13 @@
               "ingredient": "onion-powder",
               "name": "Lökpulver"
             }
+          ],
+          "title": "Potatisgratäng",
+          "steps": [
+            "Skala potatisarna och riv dem därefter med mandolin eller skär, och ånga dem i ugnen i 20 minuter i 98 °C.",
+            "Pensla bakeformen med rapsolja. Värm ugnen medan potatisarna är färdiga.",
+            "Mixa alla ingredienserna till såsen, förutom från mejram.",
+            "Stek allt i förvärmd ugn i 20 minuter i 200 °C."
           ]
         }
       },
@@ -32200,6 +33058,13 @@
               "ingredient": "soy-mayonnaise",
               "name": "Sojamajonnäs"
             }
+          ],
+          "title": "Potatissallad",
+          "steps": [
+            "Skala potatisarna och skär dem i små tärningar.",
+            "Lägg potatistärningarna i saltat vatten och koka dem tills de är mjuka (men inte går i stycker). Det tar cirka 10–15 minuter från det börjar att boble.",
+            "När de är färdiga, häller du av vattnet omedelbart för att undvik overkoking, och låt potatisarna svalna sig.",
+            "Blanda allt försiktigt ihop i en skål."
           ]
         }
       },
@@ -32494,6 +33359,20 @@
               "ingredient": "cayenne-pepper",
               "name": "Cayennepeppar"
             }
+          ],
+          "title": "Pumpasoppa",
+          "steps": [
+            "Skölj, skala och skär potatisarna i tärningar. Lägg dem i 1 liter vatten för att hindra oxidering.",
+            "Skala pumpan och skär det i tärningar. Lägg till sidan.",
+            "Het grytan i medelvärme hög värme.",
+            "Skär löken i medelstora tärningar och lägg dem i den värme grytan. Använd lite av vattnet och saltet till att fräsa löken.",
+            "Finhacka under tiden ingefära och vitlök. Lägg det i grytan och fortsätt att fräsa i ett minut till.",
+            "Tillsätt cayennen och rör.",
+            "Sil potatisarna upp av vattnet, och lägg potatisarna, pumpan, resten av saltet och lite mer av vattnet i grytan. Fräs i 5 minuter.",
+            "Tillsätt resten av vattnet och kokosmjölken.",
+            "Koka upp grönsakerna. Låt det så sjuda tills de är mjuka (cirka 20–30 minuter).",
+            "Mixa soppan till en krämig konsistens.",
+            "Serveras med grönkålchips och kryddade, bakade kikärtor."
           ]
         }
       },
@@ -32753,6 +33632,12 @@
               "name": "Citronsaft",
               "note": "på flaska"
             }
+          ],
+          "title": "Pumpafrö- och basilikaost",
+          "steps": [
+            "Mixa alla ingredienserna i en högeffektsmixer tills det är slät.",
+            "Koka upp blandningen i en kastrull och låt det koka under omrörning i minst 3–5 minuter.",
+            "Häll i formar och låt det svalna innan det ställs i kylskåpet."
           ]
         }
       },
@@ -33041,6 +33926,12 @@
               "name": "Paprika",
               "note": "gul/orange"
             }
+          ],
+          "title": "Quinoasallad (variant 1)",
+          "steps": [
+            "Rosta valnötterna i en stekpanna eller i förvärmd ugn i 7 minuter i 180 °C.",
+            "Skölj quinoaen och koka den med vattnet i 5 minuter. Sänk därefter ner värmen och låt den stå till allt vattnet är absorberat. Låt den svalna.",
+            "Blanda alla ingredienserna ihop."
           ]
         }
       },
@@ -33459,6 +34350,13 @@
               "ingredient": "avocados",
               "name": "Avokado"
             }
+          ],
+          "title": "Quinoasallad (variant 2)",
+          "steps": [
+            "Värm ugnen till 200 °C. Stek paprikan i 45 minuter. Ta den ut av ugnen och förvara den i en lufttät burk – låt den svette tills den är kall. Skala därefter av de förkolnade och svarta delene.",
+            "Koka upp quinoaen och sänk till laveste värme och lägg på lock. Du kan lägga en metallplate under för att undvik att det bränns. När den är färdig, låter du quinoaen svalna innan du blandar den med de andra ingredienserna.",
+            "Blanda olivolja, citronsaft, honung, chiliflak och salt i en liten skål.",
+            "Blanda alla de två sista ingredienserna och tillsätt därefter dressingen."
           ]
         }
       },
@@ -33758,6 +34656,12 @@
               "ingredient": "cayenne-pepper",
               "name": "Cayennepeppar"
             }
+          ],
+          "title": "Ranchdressing",
+          "steps": [
+            "Vispa alla ingredienserna ihop, förutom från örterna. Tillsätt mer vatten vid behov.",
+            "Efter att du har mixat såsen, tillsätter du de färska örterna.",
+            "Bör stå i kylskåpet i minst 30 minuter så att smakerna får blandas innan servering."
           ]
         }
       },
@@ -33931,6 +34835,12 @@
               "name": "Chiafrön",
               "note": "torkade"
             }
+          ],
+          "title": "Hallonsylt",
+          "steps": [
+            "Tina och mosa/mixa bären lite med en stavmixer – inte helt slät.",
+            "Tillsätt dadelpuré och blanda väl.",
+            "Tillsätt chiafrö och rör då och då innan förvaring."
           ]
         }
       },
@@ -34331,6 +35241,16 @@
               "ingredient": "coconut-oil",
               "name": "Kokosolja"
             }
+          ],
+          "title": "Rå cheesecake",
+          "steps": [
+            "Lägg de första ingredienserna (nötter, dadlar, kokosmasse och salt) i matberedaren och mixa tills det är små bitar och det börjar att kunde formes till något som håller ihop när du presser det tillsammans med fingrarna.",
+            "Ta enten en kakform och lägg bakplåtspapper i botten, eller ta en dyp bakform. Tryck nötteblandingen jämnt ner i botten.",
+            "Mixa de nästa 5 ingredienserna (från cashew till vaniljpulver). Tillsätt vatten vid behov för att kunde mixa.",
+            "Häll det över nötlagret och fördela jämnt.",
+            "Om fyllningen är tunt (flytande), sätter du det i kylskåpet i 1–2 timmar så att det tjocknar. (Om inte du kommer att toppingen ska blandes i fyllningen.)",
+            "Mixa bär, honung och kokos tills det är slät, och häll det över kakefyllningen.",
+            "Ställ i kylskåpet i minst 1 timme så att den stelnar/tjocknar."
           ]
         }
       },
@@ -34617,6 +35537,12 @@
               "name": "Persilja",
               "note": "efter smak"
             }
+          ],
+          "title": "Rödbetspålägg",
+          "steps": [
+            "Skala rödbeten, skär i tärningar i 2–3 cm och koka i 20 minuter.",
+            "Blötlägg de soltorkade tomaterna i 5 minuter och sil av. (De behöver inte blötläggass om du använder dem som ligger i olja.)",
+            "Mixa cashewnötterna i en matberedare (helst i thermomix) tills de är finhackade. Tillsätt resten av ingredienserna och mixa i 1–2 minuter tills det är slät. Förvara i en lufttät burk i kylskåpet i upp till 3–4 dagar."
           ]
         }
       },
@@ -34841,6 +35767,10 @@
               "ingredient": "herb-salt",
               "name": "Örtsalt"
             }
+          ],
+          "title": "Rödkålssallad",
+          "steps": [
+            "Lägg alla ingredienserna i en skål och massera i några minuter så att kålen mjuknar lite."
           ]
         }
       },
@@ -35102,6 +36032,14 @@
               "ingredient": "soy-mayonnaise",
               "name": "Sojamajonnäs"
             }
+          ],
+          "title": "Rödbetssallad",
+          "steps": [
+            "Alternativ 1: Ånga potatisarna i 30–45 minuter i ugnen. Alternativ 2: Lägg potatisar och rödbeter i varje sin kastrull och koka dem med skalet i tills de är färdiga.",
+            "Förbered under tiden resten av ingredienserna. Det är en eget recept i sojamajonnäs.",
+            "Skala och skär potatisar och rödbeter i tärningar, och lägg i en stor skål.",
+            "Tillsätt resten av ingredienserna och till sist sojamajonnäsen, och blanda allt.",
+            "Justera salt och citronsaft vid behov."
           ]
         }
       },
@@ -35569,6 +36507,15 @@
               "ingredient": "smoked-paprika",
               "name": "Rökt paprika"
             }
+          ],
+          "title": "Rödbetsburgare",
+          "steps": [
+            "Mixa de 4 första ingredienserna i matberedaren.",
+            "Fräs löken i lite olivolja och havsalt.",
+            "Blanda alla ingredienserna ihop.",
+            "Använd 100 g per burger och forma dem runde och cirka 1,5 cm tjocke.",
+            "Lägg dem i en plåt med bakplåtspapper.",
+            "Stek i 200 °C i 20 minuter, vänd dem och stek i 5 minuter till."
           ]
         }
       },
@@ -35943,6 +36890,12 @@
               "ingredient": "vegetable-bouillon",
               "name": "Grönsaksbuljong (pulver/tärning)"
             }
+          ],
+          "title": "Röd linssoppa",
+          "steps": [
+            "Fräs lök och vitlök i {{0.5 tsk}} olivolja och {{1 msk}} vatten.",
+            "Tillsätt kryddor och buljong och koka i 30 sekunder.",
+            "Tillsätt resten av ingredienserna och koka till linserna är mjuka."
           ]
         }
       },
@@ -36145,7 +37098,8 @@
               "quantity": 80,
               "unit": "g",
               "ingredient": "brown-rice",
-              "name": "Fullkornsris"
+              "name": "Fullkornsris",
+              "note": "fullkorn"
             },
             {
               "quantity": 8,
@@ -36183,6 +37137,12 @@
               "ingredient": "vanilla-powder",
               "name": "Vaniljpulver"
             }
+          ],
+          "title": "Risgrynsgröt",
+          "steps": [
+            "Tvätta risen.",
+            "Lägg ris och vatten i en gryta och koka upp i hög värme. Sänk därefter ner till låg värme och lägg på lock. Låt det sjuda under jämnt omrörning till risen är mycket mjuk och blandningen börjar att tjockna (cirka 40–60 minuter).",
+            "Rör i kokosmjölk, vaniljpulver, salt, kanel och lönnsirap."
           ]
         }
       },
@@ -36391,6 +37351,14 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Ugnsbakad blomkål",
+          "steps": [
+            "Värm ugnen till 200 °C.",
+            "Skär blomkålen i lika stora buketter. Mycket stora buketter kan deles i två.",
+            "För att göra dressingen: blanda alla de återstående ingredienserna.",
+            "Lägg blomkålen i dressingen och vänd väl.",
+            "Stek i 8 minuter i 200 °C."
           ]
         }
       },
@@ -36846,6 +37814,18 @@
               "ingredient": "hot-sauce",
               "name": "Chilisås"
             }
+          ],
+          "title": "Ugnsbakade paprika-seitankorvar",
+          "steps": [
+            "Värm ugnen till 170 °C.",
+            "Tvätta paprikan och stick hål i dem med en gaffel. Stek paprikorna hela i 30–40 minuter. Ta dem ut av ugnen, lägg dem i en lufttät burk och låt dem svette tills de är kalla. Skala därefter av de förkolnade och svarta delene.",
+            "Förbered seitanbasen: blanda ihop glutenmel, näringsjäst, lökpulver och vitlökspulver.",
+            "Blanda seitanbasen, stekt paprika, kikärtor (krossade för hand efterhand som du tillsätter eller i matberedaren), chiliflak, spiskummin, rökt paprikapulver, honung, havsalt, peppar, fräst lök och persilja.",
+            "I en mixer tillsätter du tofu, resten av den stekte paprikan, vitlök, grönnsaksbuljong, vatten och hotsås. Mixa tills det är slät.",
+            "För att forma degen måste du blanda den torra och den våta massen. gör en liten fördjupning i midten av den torra. Tillsätt den våta gradvis i fördjupningen och stopp ofte för att röra. Fortsätt till degen har en fast konsistens. Du bör använda det meste, om inte all, av vätskan. Konsistensen är riktig när du kan riva degen från varandra med lite motstånd.",
+            "För att forma korvarna deler du degen i korvformade bitar i 110 gram. Packa dem i aluminiumsfolie som karameller.",
+            "Ånga korvarna i 45 minuter. Ta dem ut av ångugnen och låt dem svalna sig lite innan du tar bort förpackningen.",
+            "När de är svalnade, tar bort du förpackningen och steker dem i 10–15 minuter i 170 °C."
           ]
         }
       },
@@ -37108,6 +38088,14 @@
               "ingredient": "lemon-juice",
               "name": "Citronsaft"
             }
+          ],
+          "title": "Ugnsbakad sötpotatis- och ruccolasallad",
+          "steps": [
+            "Värm ugnen till 180 °C.",
+            "Vänd sötpotatisarna i olivolja.",
+            "Fördela potatisarna jämnt i en plåt. Ställ i ugnen och stek i 25 minuter, eller tills de är mjuka och lätt bruna. Låt potatisarna svalna sig tills de har ungefär rumstemperatur. Passa i att bitene inte berör varandra så att de blir väl stekt.",
+            "gör dressingen medan potatisarna steker: vispa ihop citronsaft, honung, kanel och gräslök i en liten skål.",
+            "Rätt innan servering blandar du försiktigt ruccola och morot i en stor skål. Tillsätt potatisarna, drypp över dressingen och vänd försiktigt."
           ]
         }
       },
@@ -37353,6 +38341,15 @@
               "ingredient": "olive-oil",
               "name": "Olivolja"
             }
+          ],
+          "title": "Ugnsbakad brysselkål",
+          "steps": [
+            "Tina brysselkålen: Häll kokande vatten över brysselkålen och vänta i et par minuter. Häll därefter av vattnet.",
+            "Del dem i två.",
+            "Blanda alla ingredienserna i en skål. Passa i att kryddorna fördelas jämnt i brysselkålen.",
+            "Fördela brysselkålen i en plåt klädd med silikonmatta eller bakplåtspapper.",
+            "Värm ugnen till 200 °C.",
+            "Stek brysselkålen i cirka 15–20 minuter tills den är stekt."
           ]
         }
       },
@@ -37794,6 +38791,14 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Ugnsbakad sallad",
+          "steps": [
+            "Lägg rödbet, olja, salt, paprikapulver och cayenne i en plåt med bakplåtspapper och blanda väl så att olja och kryddor fördelas jämnt i rödbetor. Stek dem i ugnen i 200 °C i 25–30 minuter.",
+            "gör samma sak med morötterna som med rödbetor. (Men inte blanda dem. Både eftersom de kan trenge olika stektid, och eftersom rödbetor kommer att farge morötterna.)",
+            "Hacka pekannötterna i mindre bitar. Lägg dem i bakplåtspapper i ugnen med lönnsirap i 180 °C i 10–12 minuter.",
+            "Ta bort stilken från grönkålen och riv bladene i bitar, och lägg dem i en skål. Massera grönkålen med avokado, limejuice, vitlök och salt för att fördela smakerna och göra kålfibrene mjukare.",
+            "När alla komponenterna är kalla, blandar du dem ihop."
           ]
         }
       },
@@ -38033,6 +39038,10 @@
               "name": "Vatten",
               "note": "dricksvatten"
             }
+          ],
+          "title": "Rysk penicillin",
+          "steps": [
+            "Mixa allt i en mixer."
           ]
         }
       },
@@ -38268,6 +39277,10 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Salsa",
+          "steps": [
+            "Blanda i en skål och låt det stå så att smakerna drar i."
           ]
         }
       },
@@ -38622,6 +39635,14 @@
               "ingredient": "basil",
               "name": "Basilika"
             }
+          ],
+          "title": "Tofuröra",
+          "steps": [
+            "marinera den smulade tofun med sojasås.",
+            "Het en stekpanna i medelvärme hög värme och tillsätt olivolja. Tillsätt löken och sänk till medelvärme. Fräs tills den är blank och gyllene, och tillsätt därefter vitlök och paprika.",
+            "När löken och vitlöken är karamelliserad, tillsätter du den smulade tofun. Stek i hög värme i 4 minuter till ingredienserna börjar att bli lätt bruna.",
+            "Tillsätt därefter näringsjäst, valfritt indiskt svartsalt och gurkmeja, och stek i 3–5 minuter till.",
+            "Rätt innan servering tillsätter du spenat och en näve färska italienska örter."
           ]
         }
       },
@@ -38884,6 +39905,13 @@
               "ingredient": "onion-powder",
               "name": "Lökpulver"
             }
+          ],
+          "title": "Kryddade ugnsbakade potatisar",
+          "steps": [
+            "Tvätta potatisarna väl.",
+            "Skär potatisarna i båter.",
+            "Tillsätt olivolja och kryddor, och blanda riktigt väl.",
+            "Stek i 200 °C i 22 minuter."
           ]
         }
       },
@@ -39059,6 +40087,14 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Enkla ugnsbakade potatisar",
+          "steps": [
+            "Ställ i ångläget och värm ugnen till 98 °C.",
+            "Ånga i 15 minuter i 98 °C.",
+            "Ställ i gräddningsläget och värm ugnen till 200 °C.",
+            "Vänd potatisarna i olivolja och salt, och stek i 20 minuter i 200 °C.",
+            "Garnering med färska eller torkade örter."
           ]
         }
       },
@@ -39247,6 +40283,11 @@
               "ingredient": "honey",
               "name": "Honung"
             }
+          ],
+          "title": "Sorbet",
+          "steps": [
+            "Ta frukten ut av frysen 5 minuter innan du gör sorbeten.",
+            "Lägg alla ingredienserna i en matberedare (helst thermomix) och mixa i 2–3 minuter. Du måste kanske stoppe och röre med en sked några gånger. Använd en glasskopa eller sked till att forma en fin sorbetkula. Best när den serveras omedelbart. Om den ska serveras senare, sätter du den i frysen och tar den ut cirka 5 minuter innan servering för att låt den mjukna."
           ]
         }
       },
@@ -39525,6 +40566,11 @@
               "ingredient": "coriander-ground",
               "name": "Koriander, malen"
             }
+          ],
+          "title": "Sojamajonnäs",
+          "steps": [
+            "Mixa alla ingredienserna i mixer/vitamix, utan citronsaft och olja, till vitlöken är helt slät.",
+            "Tillsätt citronsaft och olja medan mixern går i medelhög hastighet, och mixa därefter i hög hastighet tills det har en tjock konsistens."
           ]
         }
       },
@@ -39766,6 +40812,19 @@
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             }
+          ],
+          "title": "Sojamozzarella",
+          "steps": [
+            "1: Blötlägg helst cashewnötterna i vatten i några timmar för att göra dem mjuka. Sil av cashewnötterna och häll av vattnet.",
+            "2: Mixa cashewnötterna med yoghurten och hälften av vattnet. Börja långsamt och mixa därefter i hög hastighet i minst 1 minut för att vara sikker i att konsistensen är helt slät.",
+            "3: Låt smeten vila i en glasskål i cirka 24 timmar i rumstemperatur. Kan täcks med kökshandduk eller plastfolie med hål så att röraen får luft.",
+            "Vispa i salt och tapiokamel.",
+            "Förbered en stor skål med isvatten. Använd isbiter eller de blå fryselementen.",
+            "Lägg resten av vattnet och agar agar i en kastrull. Vispa och koka i 3–4 minuter.",
+            "Tillsätt smeten i kastrullen och vispa den i. Fortsätt att koka i medelvärme under ständig omrörning med en träsked med platt ände.",
+            "Smeten är färdigkokt när den har blitt tjock, blank och elastisk. Sked därefter upp bullar med en glasskopa (med utskjutare) och sked kulene så runde som möjligt ut i isvattnet.",
+            "Låt mozzarellabollarna vila i isvattnet i 20–30 minuter.",
+            "Ta kulene ut av vattnet, över i en behåller, och förvara kallt."
           ]
         }
       },
@@ -40099,6 +41158,14 @@
               "ingredient": "cayenne-pepper",
               "name": "Cayennepeppar"
             }
+          ],
+          "title": "Sojasalami",
+          "steps": [
+            "Mixa hälften av rödbeten och alla de andra ingredienserna, förutom från vitlöken, tills det är helt slät.",
+            "Koka upp blandningen i en kastrull. När den börjar att boble, låter du den koka under omrörning i minst 3–5 minuter.",
+            "Mixa blandningen igen tillsammans med resten av rödbeten och vitlöken.",
+            "Häll i burk (med praktisk form, så att innehållet kan tas ut utan att bli förstört) och låt det svalna innan det ställs i kylskåpet.",
+            "Innan servering: Ta den ut av glasset och skär i tborta skivor."
           ]
         }
       },
@@ -40283,6 +41350,10 @@
               "ingredient": "garlic",
               "name": "Vitlök"
             }
+          ],
+          "title": "Sojayoghurtdressing",
+          "steps": [
+            "gör dressingen rätt innan servering. Mixa all soyayoghurten och vitlöken i en högeffektsmixer i 15–20 sekunder. Tillsätt därefter citronsaft och salt. Inte mixa för länge. Justera citronsaften efter smak."
           ]
         }
       },
@@ -40462,6 +41533,13 @@
               "name": "Persilja",
               "note": "efter smak"
             }
+          ],
+          "title": "Ångkokta småpotatisar",
+          "steps": [
+            "Värm ugnen till 100 °C i 10 minuter.",
+            "Skär potatisarna i två i längden, och därefter en gång till i samma retning, så att du hamnar med 4 båter per potatis.",
+            "Ställ i ugnen och ånga i 98 °C i 25 minuter.",
+            "Tillsätt salt och garnering med färsk eller torkad persilja."
           ]
         }
       },
@@ -40686,6 +41764,11 @@
               "name": "Citroner",
               "note": "skal"
             }
+          ],
+          "title": "Stine Gros våfflor",
+          "steps": [
+            "Mixa alla ingredienserna i mixern i 30 sekunder.",
+            "Stek våfflorna i våffeljärnet."
           ]
         }
       },
@@ -40837,6 +41920,11 @@
               "name": "Chiafrön",
               "note": "torkade"
             }
+          ],
+          "title": "Jordgubbssylt",
+          "steps": [
+            "Tina bären och mosa/mixa dem lite med en stavmixer – inte helt slät.",
+            "Tillsätt chiafrö och rör då och då innan förvaring."
           ]
         }
       },
@@ -41221,6 +42309,19 @@
               "ingredient": "parsley",
               "name": "Persilja"
             }
+          ],
+          "title": "Fylld paprika med tofu",
+          "steps": [
+            "Fräs lök, vitlök, purjolök (skåret i ringer) och morötter (revet) med {{4 msk}} vatten, sojasås och olja. Stek tills det är mjukt.",
+            "Inte tillsätt mer olja och vatten vid större mängdr.",
+            "Riv tofun och tillsätt den i grönsakerna.",
+            "För stora portioner är det fint att använda maskinen till att rive grönsakerna och tofun.",
+            "Mixa cashewnötterna med vatten, jästflak, salt och gurkmeja, och tillsätt det i tofu- och grönsaksblandningen.",
+            "Blanda allt och tillsätt finhackade färsk persilja.",
+            "Låt blandningen stå i 5 minuter så att tofun får absorberat smaken.",
+            "Del paprikorna i två och fyll dem med tofublandingen.",
+            "Värm ugnen till 200 °C.",
+            "Stek de fylte paprikorna i 35 minuter i 150 °C, eller till paprikan är genomstekt."
           ]
         }
       },
@@ -41491,6 +42592,17 @@
               "name": "Olivolja",
               "note": "extra virgin"
             }
+          ],
+          "title": "Svensk ugnspannkaka",
+          "steps": [
+            "Mixa de fyra första ingredienserna i en mixer till en slät konsistens.",
+            "Tillsätt fiberhusk i mixern och mixa lite till för att blanda det i.",
+            "Häll blandningen över i en skål och vispa i resten av ingredienserna.",
+            "Värm ugnen till 180 °C.",
+            "Välj en forma som är i en storlek som ger blandningen en tjocklek i 1–1,5 cm när den hälls i. Smörj/pensla formen med olja och häll blandningen i.",
+            "Stek i midten av ugnen i 30 minuter tills den är gyllene/mellanbrun på ytan.",
+            "Låt den vila i rumstemperatur för att bli fastare.",
+            "Om den inte ska serveras samma dag, värmer du den ganska enkelt upp innan servering."
           ]
         }
       },
@@ -41817,6 +42929,18 @@
               "ingredient": "pecans",
               "name": "Pekannötter"
             }
+          ],
+          "title": "Sötpotatismuffins",
+          "steps": [
+            "Skala sötpotatisen och skär den i mindre, jämna bitar. Lägg dem i en kastrull med vatten och koka tills de är mjuka.",
+            "Blanda mjöl, kanel, bakpulver, bikarbonat och salt i en stor skål. Blanda de torra ingredienserna ihop.",
+            "I Vitamixen blandar du kokt sötpotatis, lönnsirap, kokosolja (helst smeltet), växtmjölk och vanilj. Mixa i hög hastighet tills det är helt slätt och krämigt.",
+            "Häll den mosade sötpotatisblandingen över i den stora skålen med de torra ingredienserna. Rör och vänd allt försiktigt ihop tills det nätt och jämnt är blandat.",
+            "Värm ugnen till 180 °C.",
+            "Lägg muffinsformer i metallformen och fyll dem med blandningen, cirka till två tredjedelar i varje.",
+            "Toppa dem med hackade pekannötter som garnering. Pressa dem ner i smeten så att de fester sig.",
+            "Stek muffinsen i 20 minuter, eller till ytan är välvd och lätt mörk, och en kniv som sticks i midten kommer ren ut.",
+            "Låt muffinsen svalna sig helt innan servering."
           ]
         }
       },
@@ -42062,6 +43186,12 @@
               "name": "Salt",
               "note": "efter smak"
             }
+          ],
+          "title": "Sötpotatissoppa",
+          "steps": [
+            "Fräs lök, vitlök och currypulver med lite vatten tills det är mjukt.",
+            "Tillsätt resten av vattnet, buljongen och sötpotatisen. Låt det sjuda under lock till potatisarna är gjennomkokte (cirka 15 minuter).",
+            "Mixa soppan."
           ]
         }
       },
@@ -42244,6 +43374,10 @@
               "ingredient": "cayenne-pepper",
               "name": "Cayennepeppar"
             }
+          ],
+          "title": "Söt vinaigrette",
+          "steps": [
+            "Vispa alla ingredienserna ihop."
           ]
         }
       },
@@ -42555,6 +43689,15 @@
               "name": "Persilja",
               "note": "efter smak"
             }
+          ],
+          "title": "Söt gul ärtsoppa",
+          "steps": [
+            "Blötlägg gula ärtor över natten. Koka därefter de gula ärtorna separat.",
+            "Fräs löken i medelvärme tills den är mjuk.",
+            "Tillsätt morot och salt, och fortsätt att fräsa till morötterna är mjuka.",
+            "Tillsätt de gula ärtorna, vattnet och gurkmeja, och koka till allt är väl blandat och varmt.",
+            "Ta hälften av soppan och pulsera den i matberedare eller vitamix några gånger.",
+            "Garnering med hackad persilja på ytan."
           ]
         }
       },
@@ -42897,6 +44040,14 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Thaisoppa",
+          "steps": [
+            "Skär tofun i tärningar och marinera i 1–2 timmar i lite sojasås, lökpulver och vitlökspulver. Stek därefter i 20 minuter i 170 °C.",
+            "Fräs lök och purjolök i {{1 tsk}} olivolja eller vatten tills de är blanke.",
+            "Tillsätt morötter och låt det koka i cirka 10 minuter under jämnt omrörning. Tillsätt varmt vatten och låt det koka i 15 minuter till.",
+            "Tillsätt tofu, stekt paprika och kokosmjölk.",
+            "till sist, rätt innan servering, tillsätter du nudlarna och kokar upp."
           ]
         }
       },
@@ -43088,6 +44239,14 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Tofufeta",
+          "steps": [
+            "Om tofun inte är pressad, lägg en vikt på den i 15–20 minuter för att presse ut så mycket vatten som möjligt.",
+            "Lägg alla ingredienserna i en matberedare och mixa tills det är slät.",
+            "Häll över i en liten forma klädd med bakplåtspapper.",
+            "Täck med plastfolie och ställ i frysen i 30 minuter. Förvara därefter i kylskåpet.",
+            "Ta ut av formen och smula eller skär upp efter behov. Håller sig i cirka 3 dagar."
           ]
         }
       },
@@ -43348,6 +44507,11 @@
               "ingredient": "tofu",
               "name": "Tofu"
             }
+          ],
+          "title": "Tofu cottage cheese",
+          "steps": [
+            "Mixa alla ingredienserna förutom från tofu och färska örter tills det är slät.",
+            "smula tofun. Hacka örterna. Blanda allt. Serveras kall."
           ]
         }
       },
@@ -43796,6 +44960,16 @@
               "ingredient": "paprika-powder",
               "name": "Paprikapulver"
             }
+          ],
+          "title": "Tofuform",
+          "steps": [
+            "Skär tofun i tborta skivor (cirka 5 mm) och marinera i en behåller med 0,5 liter sojamjölk, sojasås, olivolja och vitlökspulver i minst 1 timme.",
+            "Ta tofun ut av såsen och lägg den i brickan.",
+            "Stek i 20 minuter i 170 °C tills de blir bruna.",
+            "Låt tofun svalna.",
+            "Lägg tofun snyggt i et djup plåt.",
+            "Använd resten av marinaden till att göra sås till tofuformen. (Fyll i med mjölk tills du har totalmängdn till såsen.) Mixa alla återstående ingredienser och häll såsen över tofun.",
+            "Täck med aluminiumsfolie och stek i 30–40 minuter till i 170 °C."
           ]
         }
       },
@@ -44069,6 +45243,17 @@
               "ingredient": "rapeseed-oil",
               "name": "Rapsolja"
             }
+          ],
+          "title": "Toms glutenfria bröd",
+          "steps": [
+            "Låt linfrö och kokande vatten svälla i cirka 2 timmar innan du gör degen.",
+            "Låt fiberhusk och vatten svälla i cirka 10 minuter (rör med en gång för att undvik klumpar).",
+            "Blanda alla de torra ingredienserna. Häll oljan i fröna som är färdig svällat.",
+            "Blanda både torra och våta ingredienser (det ska känns som en tjock gröt).",
+            "Häll i 1,5 liters brödformer (använd bakplåtspapper).",
+            "Låt det stå över natten i cirka 12–13 timmar. Stek nästa morgon.",
+            "Stek i förvärmd ugn i 200 °C i 15 minuter.",
+            "Täck med aluminiumsfolie och fortsätt att steke i 1 timme och 30 minuter."
           ]
         }
       },
@@ -44310,6 +45495,13 @@
               "ingredient": "herb-salt",
               "name": "Örtsalt"
             }
+          ],
+          "title": "Tomatbruschetta",
+          "steps": [
+            "Skär körsbärstomaterna i 4 (eller små tärningar) och lägg dem i en stor skål.",
+            "Tillsätt resten av ingredienserna och blanda.",
+            "Täck med plastfolie och ställ in i kylskåpet i minst 1 timme, så att smakerna får dra in i varandra. Efter det ska du kunna se en fin och smaksrik buljong i skålen tillsammans med tomaterna.",
+            "Ta ut av kylskåpet minst 30 minuter innan servering."
           ]
         }
       },
@@ -44623,6 +45815,10 @@
               "ingredient": "sukrin",
               "name": "Sukrin (erytritol)"
             }
+          ],
+          "title": "Tomatsås till pizza",
+          "steps": [
+            "Blanda alla ingredienserna i en skål."
           ]
         }
       },
@@ -44904,6 +46100,12 @@
               "ingredient": "sukrin",
               "name": "Sukrin (erytritol)"
             }
+          ],
+          "title": "Tomatsoppa",
+          "steps": [
+            "I en stor kastrull fräser du stjälkselleri, lök och röd paprika i ¼ kopp kokosmjölk i 5–6 minuter, eller tills det är mört. Tillsätt tomater och tomatpuré. Koka upp. Sänk värmen, lägg på lock och låt det sjuda i 40 minuter.",
+            "Ta den av plattan. Rör i basilika, socker och salt, och låt det svalna lite. Häll hälften av soppan över i en mixer. Medan den kjörer, tillsätter du gradvis kokosmjölk och kjörer tills det är puréad. Häll tillbaka i kastrullen och het genom (inte koka).",
+            "Serveras med krutonger."
           ]
         }
       },
@@ -45182,6 +46384,10 @@
               "ingredient": "dates-dried",
               "name": "Torkade dadlar"
             }
+          ],
+          "title": "Tomat- och bönsallad",
+          "steps": [
+            "Blanda alla ingredienserna i en skål och serveras kall/vid rumstemperatur."
           ]
         }
       },
@@ -45447,6 +46653,12 @@
               "name": "Citronsaft",
               "note": "på flaska"
             }
+          ],
+          "title": "Gurkmeja- och cashewost",
+          "steps": [
+            "Mixa alla ingredienserna i en högeffektsmixer tills det är slät.",
+            "Koka upp blandningen i en kastrull och låt det koka under omrörning i minst 3–5 minuter.",
+            "Häll i formar och låt det svalna innan det ställs i kylskåpet."
           ]
         }
       },
@@ -45791,6 +47003,15 @@
               "ingredient": "lemon-juice",
               "name": "Citronsaft"
             }
+          ],
+          "title": "Ukrainsk borsjtjsoppa",
+          "steps": [
+            "Börja med att fräsa revet rödbet i en stor kastrull med {{1 tsk}} olivolja och {{1 msk}} vatten i 10 minuter.",
+            "Tillsätt morot, potatis, kål, buljong, salt och vatten, och koka upp.",
+            "Låt kraften koka i 10–15 minuter till potatisarna är mjuka.",
+            "Medan kraften kokar, förbereder du mirepoixen och fräser lök och stjälkselleri i en stålpanna med 1 tsk olja och lite vatten i 7–8 minuter tills det är gyllenbrunt.",
+            "Tillsätt sukrin, wokar i 30 sekunder och tillsätt det i kraften.",
+            "Smaka av med kryddor och serveras heta."
           ]
         }
       },
@@ -46051,6 +47272,12 @@
               "ingredient": "vanilla-powder",
               "name": "Vaniljpulver"
             }
+          ],
+          "title": "Vaniljsås",
+          "steps": [
+            "Mixa alla ingredienserna tills det är slät.",
+            "Koka upp såsen i medelvärme medan du visper.",
+            "Kyl utan att röra, och ta bort hinnan som bildas på ytan, eller mixa/sil."
           ]
         }
       },
@@ -46496,6 +47723,13 @@
               "ingredient": "black-salt",
               "name": "Svart salt (kala namak)"
             }
+          ],
+          "title": "Grönsakspaj",
+          "steps": [
+            "gör botten: Blanda mjöl, havregryn och salt med olja tills det är smulate. Tillsätt vatten gradvis tills det bildas en slät deg. Tryck degen ut i en forma och stick hål i botten med en gaffel. Förgrädda i 200 °C i cirka 8–10 minuter.",
+            "Förbered fyllningen: Fräs lök och vitlök i lite olja tills det är mjukt och gyllent. Tillsätt broccoli, morot, hälften av tofun (smulat) och sojasås, och stek i 5–7 minuter till allt är väl blandat och varmt.",
+            "gör tofu-\"custard\": Mixa den andra hälften av tofun, sojamjölk, majsstärkelse, näringsjäst, citronsaft, senap och svartsalt i mixer tills det är slätt och krämigt.",
+            "Ställ ihop och stek: Fördela grönsaksblandningen jämnt i den förgräddade botten. Häll tofucustarden över grönsakerna och blanda det översta laget försiktigt. Stek i 200 °C i 30–35 minuter, till fyllningen är stelnat och ytan är gyllene."
           ]
         }
       },
@@ -46752,6 +47986,10 @@
               "name": "Vatten",
               "note": "dricksvatten"
             }
+          ],
+          "title": "Valnöts- och basilikadressing",
+          "steps": [
+            "Mixa alla ingredienserna tills det är slät."
           ]
         }
       },
@@ -47019,6 +48257,12 @@
               "ingredient": "salt",
               "name": "Salt"
             }
+          ],
+          "title": "Vitkålssallad (coleslaw)",
+          "steps": [
+            "Skär kålen i strimler och lägg den i en skål. Massera den därefter med ¼ tsk salt tills den blir mjuk. Riv morötterna och blanda dem i kålen.",
+            "Mixa resten av ingredienserna i en högeffektsmixer i 1–2 minuter tills det är slät.",
+            "Blanda majonesen i kålen och morötterna innan servering."
           ]
         }
       },
@@ -47280,6 +48524,11 @@
               "ingredient": "lemon-juice",
               "name": "Citronsaft"
             }
+          ],
+          "title": "Vit cashewsås",
+          "steps": [
+            "Mixa alla ingredienserna i en högeffektsmixer tills det är slät.",
+            "Koka upp och koka tills det är tjockt."
           ]
         }
       },
@@ -47617,6 +48866,16 @@
               "name": "Dill",
               "note": "hackad"
             }
+          ],
+          "title": "Fredheim växtbaserad färskost",
+          "description": "Rik och krämig cashewbaserad färskost med färska örter.",
+          "steps": [
+            "Blötlägg rå cashewnötter i vatten i 2–4 timmar, eller häll kokande vatten över dem och låt dem blötläggas i 10 minuter. Sil av.",
+            "Mixa i 2–3 omgångar: blanda cashewnötter, dadlar, citronsaft, citronskal, salt, näringsjäst, lökpulver, vitlökspulver och vatten.",
+            "Mixa tills det är helt slätt och krämigt.",
+            "Tillsätt vatten gradvis tills det är en tjock, men bredbar konsistens (typiskt 300–500 ml totalt).",
+            "Häll över i en skål och vänd ner finhackade gräslök och dill.",
+            "Ställ i kylskåpet i 2–3 timmar innan servering – kremosten kommer att tjockna och smakerna utvikle sig."
           ]
         }
       },
@@ -48116,6 +49375,19 @@
               "name": "Färsk koriander",
               "note": "hackad"
             }
+          ],
+          "title": "Krämig röd linsgryta",
+          "description": "Värmande gryta med röda linser, grönsaker och krämig cashewmjölk.",
+          "steps": [
+            "Fräs lök, vitlök, morötter och paprika med en skvätt vatten i medelvärme tills det är mjukt och doftande, cirka 5–7 minuter.",
+            "Tillsätt spiskummin, rökt paprikapulver, gurkmeja, kanel, koriander och salt, och rör i 30 sekunder tills det doftar.",
+            "Rör i linser, potatisar, krossade tomater, buljong och dadelpasta. Koka upp.",
+            "Sänk värmen till låg, lägg på lock på glänt, och låt det sjuda i 20–25 minuter tills linser och grönsaker är mjuka.",
+            "Mixa cashewnötter med vatten tills det är slätt och krämigt.",
+            "Rör cashewmjölk och citronsaft i grytan, och låt det sjuda i 5 minuter för att tjockna.",
+            "Valfritt: använd stavmixer för att mosa en del av grytan för att göra den krämig, medan resten behåller strukturen.",
+            "Smaka av med salt, citron och kryddor efter behov.",
+            "Serveras het garnerad med koriander, tillsammans med bröd, ris eller quinoa."
           ]
         }
       },

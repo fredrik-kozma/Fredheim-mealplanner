@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.57.0",
+  "version": "1.58.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -2160,7 +2160,8 @@
               "quantity": 200,
               "unit": "g",
               "ingredient": "mango-frozen",
-              "name": "Mango, fryst"
+              "name": "Mango, fryst",
+              "note": "bitar"
             },
             {
               "quantity": 80,
@@ -9175,7 +9176,8 @@
               "quantity": 500,
               "unit": "g",
               "ingredient": "sweetcorn-frozen",
-              "name": "Majs, fryst"
+              "name": "Majs, fryst",
+              "note": "kärnor"
             },
             {
               "quantity": 150,
@@ -12012,7 +12014,8 @@
               "quantity": 32,
               "unit": "g",
               "ingredient": "walnuts",
-              "name": "Valnötter"
+              "name": "Valnötter",
+              "note": "halvor"
             },
             {
               "quantity": 50,
