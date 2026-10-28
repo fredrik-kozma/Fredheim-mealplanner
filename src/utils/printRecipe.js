@@ -91,7 +91,7 @@ export function printRecipe(opts) {
       (ing) => `
       <li>
         <span class="ing-name">${escapeHtml(ing.name)}${ing.note ? `<span class="ing-note">, ${escapeHtml(ing.note)}</span>` : ''}</span>
-        <span class="ing-qty">${escapeHtml(ing.quantityLabel || '')}</span>
+        <span class="ing-qty">${escapeHtml(ing.quantityLabel || '')}${ing.spoonHint ? `<span class="ing-note">&thinsp;${escapeHtml(ing.spoonHint)}</span>` : ''}</span>
       </li>`
     )
     .join('')

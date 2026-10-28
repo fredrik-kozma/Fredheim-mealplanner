@@ -1,0 +1,1088 @@
+{
+ "about": "Decisions for the wrong-unit rows. Apply only after Fredrik approves (he may reject whole groups, listed in approvedGroups). Rows are addressed by pack file + recipe id + rowIndex; the same index in translations.no.ingredients and translations.sv.ingredients. Before changing a row, check that expect.ingredient/quantity/unit/note match the current row in all three languages; if not, skip the row and report it.",
+ "sourceSnapshot": "Box copy of packs: pictures 1.55.0, reversal 1.56.0, fmd 1.17.0 (PC was offline; pushed commit 5a9e52f not re-read)",
+ "approvedGroups": "ALL (edit this when Fredrik answers)",
+ "conventions": {
+  "units": "Write canonical unit keys (g, tsp, tbsp, pcs, ml) in all three languages; the app translates them. Do not use ts/ss/tsk/msk spellings.",
+  "ingredientChange": "When change.ingredient is set, set row.ingredient to it and row.name to the dictionary names[lang] in each language; remove the old note unless change.note says otherwise (keep the existing note when change.note is absent and the ingredient is unchanged).",
+  "keepNote": "When change.note is absent, keep the existing note (e.g. zest/peel, white, dissolved at finish) in each language.",
+  "toTaste": "change.note \"to-taste\": quantity null, unit \"\", note \"to taste\" (en) / \"etter smak\" (no) / \"efter smak\" (sv), exactly like existing salt rows (e.g. recipe fr-7 row 4).",
+  "rounding": "g under 20 are whole grams; spoons and pieces use quarter, third, half, two-thirds fractions only."
+ },
+ "conversionFactors": {
+  "fresh coriander / mint": "1 tsp = 1 g, 1 tbsp = 3 g",
+  "lemon zest": "1 lemon = 3 tsp",
+  "lime zest": "1 lime = 2 tsp",
+  "psyllium husk powder": "1 tbsp = 8 g",
+  "onion powder": "1 tsp = 2.4 g",
+  "garlic powder": "1 tsp = 3 g",
+  "ground cinnamon": "1 tsp = 2.6 g",
+  "carob powder": "1 tbsp = 7.5 g",
+  "dry yeast": "1 tsp = 3 g",
+  "miso": "1 tbsp = 17 g",
+  "nori": "1 sheet = about 2.5 g = 2 tbsp flakes/powder"
+ },
+ "dictionaryChanges": [
+  {
+   "id": "agar-agar",
+   "field": "preferredUnit",
+   "from": "tsp",
+   "to": "g",
+   "group": "H"
+  }
+ ],
+ "decisions": [
+  {
+   "decision": "D01",
+   "group": "A",
+   "groupName": "Dried herbs written as plain herbs",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fr-2",
+   "recipeTitle": "Almond Tartar",
+   "rowIndex": 5,
+   "expect": {
+    "ingredient": "thyme",
+    "quantity": 1,
+    "unit": "tsp",
+    "note": null
+   },
+   "change": {
+    "ingredient": "thyme-dried",
+    "quantity": 1,
+    "unit": "tsp"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "Switch to Thyme, dried; keep 1 tsp",
+   "reason": "Sits next to dried marjoram and paprika powder in a spice mix; \"add herbs\" with no chopping. 1 tsp is a dried-herb amount.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D02",
+   "group": "A",
+   "groupName": "Dried herbs written as plain herbs",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fr-2",
+   "recipeTitle": "Almond Tartar",
+   "rowIndex": 6,
+   "expect": {
+    "ingredient": "basil",
+    "quantity": 1,
+    "unit": "tsp",
+    "note": null
+   },
+   "change": {
+    "ingredient": "basil-dried",
+    "quantity": 1,
+    "unit": "tsp"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "Switch to Basil, dried; keep 1 tsp",
+   "reason": "Same spice mix as the thyme row.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D03",
+   "group": "A",
+   "groupName": "Dried herbs written as plain herbs",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fr-180",
+   "recipeTitle": "Tomato Sauce for Pizza",
+   "rowIndex": 7,
+   "expect": {
+    "ingredient": "thyme",
+    "quantity": 3,
+    "unit": "tsp",
+    "note": null
+   },
+   "change": {
+    "ingredient": "thyme-dried",
+    "quantity": 3,
+    "unit": "tsp"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "Switch to Thyme, dried; keep 3 tsp",
+   "reason": "Cold pizza sauce, \"mix all ingredients in a bowl\" with dried oregano. 3 tsp of fresh thyme would be a lot, so dried is the likely intent.",
+   "confidence": "medium"
+  },
+  {
+   "decision": "D04",
+   "group": "A",
+   "groupName": "Dried herbs written as plain herbs",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fr-180",
+   "recipeTitle": "Tomato Sauce for Pizza",
+   "rowIndex": 8,
+   "expect": {
+    "ingredient": "rosemary",
+    "quantity": 1.5,
+    "unit": "tsp",
+    "note": null
+   },
+   "change": {
+    "ingredient": "rosemary-dried",
+    "quantity": 1.5,
+    "unit": "tsp"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "Switch to Rosemary, dried; keep 1.5 tsp",
+   "reason": "Same reasoning as thyme in this sauce.",
+   "confidence": "medium"
+  },
+  {
+   "decision": "D05",
+   "group": "B",
+   "groupName": "Fresh herbs measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fr-41",
+   "recipeTitle": "Chickpea Omelet",
+   "rowIndex": 8,
+   "expect": {
+    "ingredient": "coriander-fresh",
+    "quantity": 0.25,
+    "unit": "tsp",
+    "note": null
+   },
+   "change": {
+    "quantity": 1,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "0.25 tsp -> 1 g",
+   "reason": "Rule: 1 tsp chopped fresh coriander = 1 g (1 tbsp = 3 g). 0.25 tsp is 0.25 g, rounded to the smallest whole gram.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D06",
+   "group": "B",
+   "groupName": "Fresh herbs measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "crunchy-sweet-cabbage-salad",
+   "recipeTitle": "Crunchy Sweet Cabbage Salad",
+   "rowIndex": 6,
+   "expect": {
+    "ingredient": "coriander-fresh",
+    "quantity": 2,
+    "unit": "tbsp",
+    "note": null
+   },
+   "change": {
+    "quantity": 6,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "2 tbsp -> 6 g",
+   "reason": "1 tbsp chopped fresh coriander = 3 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D07",
+   "group": "B",
+   "groupName": "Fresh herbs measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "dal-stew",
+   "recipeTitle": "Dal Stew",
+   "rowIndex": 15,
+   "expect": {
+    "ingredient": "coriander-fresh",
+    "quantity": 2,
+    "unit": "tbsp",
+    "note": null
+   },
+   "change": {
+    "quantity": 6,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "2 tbsp -> 6 g",
+   "reason": "Same factor; garnish at the end.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D08",
+   "group": "B",
+   "groupName": "Fresh herbs measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fr-64",
+   "recipeTitle": "Falafel",
+   "rowIndex": 8,
+   "expect": {
+    "ingredient": "mint",
+    "quantity": 2,
+    "unit": "tbsp",
+    "note": null
+   },
+   "change": {
+    "quantity": 6,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "2 tbsp -> 6 g",
+   "reason": "1 tbsp chopped fresh mint = 3 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D09",
+   "group": "B",
+   "groupName": "Fresh herbs measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "horseradish-dressing",
+   "recipeTitle": "Horseradish Dressing",
+   "rowIndex": 4,
+   "expect": {
+    "ingredient": "coriander-fresh",
+    "quantity": 1,
+    "unit": "tsp",
+    "note": null
+   },
+   "change": {
+    "quantity": 1,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "1 tsp -> 1 g",
+   "reason": "1 tsp = 1 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D10",
+   "group": "B",
+   "groupName": "Fresh herbs measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "kidney-bean-stew",
+   "recipeTitle": "Kidney Bean Stew",
+   "rowIndex": 8,
+   "expect": {
+    "ingredient": "coriander-fresh",
+    "quantity": 2,
+    "unit": "tsp",
+    "note": null
+   },
+   "change": {
+    "quantity": 2,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "2 tsp -> 2 g",
+   "reason": "1 tsp = 1 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D11",
+   "group": "C",
+   "groupName": "Lemon in spoons that is really juice",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "cashew-bechamel-sauce",
+   "recipeTitle": "Cashew Bechamel Sauce",
+   "rowIndex": 9,
+   "expect": {
+    "ingredient": "lemons",
+    "quantity": 1,
+    "unit": "tbsp",
+    "note": null
+   },
+   "change": {
+    "ingredient": "lemon-juice",
+    "quantity": 1,
+    "unit": "tbsp"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "Switch to Lemon juice; keep 1 tbsp",
+   "reason": "A blended sauce with no zesting step; 1 tbsp is a juice amount.",
+   "confidence": "medium"
+  },
+  {
+   "decision": "D12",
+   "group": "C",
+   "groupName": "Lemon in spoons that is really juice",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fr-78",
+   "recipeTitle": "Guacamole",
+   "rowIndex": 3,
+   "expect": {
+    "ingredient": "lemons",
+    "quantity": 2,
+    "unit": "tbsp",
+    "note": null
+   },
+   "change": {
+    "ingredient": "lemon-juice",
+    "quantity": 2,
+    "unit": "tbsp"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "Switch to Lemon juice; keep 2 tbsp",
+   "reason": "The method says \"add the garlic, lemon juice and salt\".",
+   "confidence": "high"
+  },
+  {
+   "decision": "D13",
+   "group": "D",
+   "groupName": "Lemon and lime zest measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "dal-stew",
+   "recipeTitle": "Dal Stew",
+   "rowIndex": 14,
+   "expect": {
+    "ingredient": "lemons",
+    "quantity": 1,
+    "unit": "tsp",
+    "note": null
+   },
+   "change": {
+    "quantity": 0.33,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "1 tsp zest -> 1/3 lemon",
+   "reason": "Method says \"add lemon zest\". Rule: 1 lemon = 3 tsp zest. Shopping list rounds up to 1 lemon.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D14",
+   "group": "D",
+   "groupName": "Lemon and lime zest measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fr-50",
+   "recipeTitle": "Coconut Macaroon Balls",
+   "rowIndex": 3,
+   "expect": {
+    "ingredient": "lemons",
+    "quantity": 3,
+    "unit": "tbsp",
+    "note": "peel"
+   },
+   "change": {
+    "quantity": 3,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "3 tbsp peel -> 3 lemons (CHECK)",
+   "reason": "3 tbsp = 9 tsp = about 3 lemons of zest. That is a lot for one batch, so it may be a typo. Converted faithfully; please check.",
+   "confidence": "low"
+  },
+  {
+   "decision": "D15",
+   "group": "D",
+   "groupName": "Lemon and lime zest measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "stine-gros-waffles",
+   "recipeTitle": "Stine Gro´s Waffles",
+   "rowIndex": 5,
+   "expect": {
+    "ingredient": "lemons",
+    "quantity": 0.25,
+    "unit": "tsp",
+    "note": "peel"
+   },
+   "change": {
+    "quantity": 0.25,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "0.25 tsp peel -> 1/4 lemon",
+   "reason": "Smallest clean fraction the app can show is 1/4 (true amount is about 1/12). Slightly more zest; use as much as you like.",
+   "confidence": "medium"
+  },
+  {
+   "decision": "D16",
+   "group": "D",
+   "groupName": "Lemon and lime zest measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fredheim-deluxe-plant-based-cream-cheese",
+   "recipeTitle": "Fredheim Plant-Based Cream Cheese",
+   "rowIndex": 3,
+   "expect": {
+    "ingredient": "lemons",
+    "quantity": 3,
+    "unit": "tsp",
+    "note": "zest"
+   },
+   "change": {
+    "quantity": 1,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "3 tsp zest -> 1 lemon",
+   "reason": "1 lemon = 3 tsp zest.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D17",
+   "group": "D",
+   "groupName": "Lemon and lime zest measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "lime-cheesecake",
+   "recipeTitle": "Lime Cheesecake (Raw)",
+   "rowIndex": 3,
+   "expect": {
+    "ingredient": "limes",
+    "quantity": 1,
+    "unit": "tsp",
+    "note": "zest, grated, for the base"
+   },
+   "change": {
+    "quantity": 0.5,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "1 tsp zest -> 1/2 lime",
+   "reason": "Rule: 1 lime = 2 tsp zest.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D18",
+   "group": "D",
+   "groupName": "Lemon and lime zest measured in spoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "lime-cheesecake",
+   "recipeTitle": "Lime Cheesecake (Raw)",
+   "rowIndex": 12,
+   "expect": {
+    "ingredient": "limes",
+    "quantity": 1,
+    "unit": "tsp",
+    "note": "zest, grated, for the filling"
+   },
+   "change": {
+    "quantity": 0.5,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "1 tsp zest -> 1/2 lime",
+   "reason": "Same rule; the two rows add up to 1 lime.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D19",
+   "group": "D",
+   "groupName": "Lemon and lime zest measured in spoons",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-5",
+   "recipeTitle": "Fudgy Carob & Date Brownies",
+   "rowIndex": 11,
+   "expect": {
+    "ingredient": "lemons",
+    "quantity": 2,
+    "unit": "tsp",
+    "note": "or orange zest, optional, recommended"
+   },
+   "change": {
+    "quantity": 0.67,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "2 tsp zest -> 2/3 lemon",
+   "reason": "1 lemon = 3 tsp zest. The note says \"or orange zest\", which stays.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D20",
+   "group": "D",
+   "groupName": "Lemon and lime zest measured in spoons",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-21",
+   "recipeTitle": "Sautéed Red Cabbage with Lemon & Dates",
+   "rowIndex": 4,
+   "expect": {
+    "ingredient": "lemons",
+    "quantity": 1,
+    "unit": "tsp",
+    "note": "zest"
+   },
+   "change": {
+    "quantity": 0.33,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "1 tsp zest -> 1/3 lemon",
+   "reason": "1 lemon = 3 tsp zest.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D21",
+   "group": "D",
+   "groupName": "Lemon and lime zest measured in spoons",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-44",
+   "recipeTitle": "Deep Prune Jam",
+   "rowIndex": 5,
+   "expect": {
+    "ingredient": "lemons",
+    "quantity": 1,
+    "unit": "tsp",
+    "note": "zest"
+   },
+   "change": {
+    "quantity": 0.33,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "1 tsp zest -> 1/3 lemon",
+   "reason": "1 lemon = 3 tsp zest.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D22",
+   "group": "D",
+   "groupName": "Lemon and lime zest measured in spoons",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-46",
+   "recipeTitle": "Sour & Savory White Bean Hummus",
+   "rowIndex": 2,
+   "expect": {
+    "ingredient": "lemons",
+    "quantity": 1,
+    "unit": "tsp",
+    "note": "zest"
+   },
+   "change": {
+    "quantity": 0.33,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "1 tsp zest -> 1/3 lemon",
+   "reason": "1 lemon = 3 tsp zest.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D23",
+   "group": "E",
+   "groupName": "Nori sheets measured in tablespoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fr-42",
+   "recipeTitle": "Chickpea Salad",
+   "rowIndex": 7,
+   "expect": {
+    "ingredient": "nori",
+    "quantity": 2,
+    "unit": "tbsp",
+    "note": "dried seaweed"
+   },
+   "change": {
+    "quantity": 1,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "2 tbsp -> 1 sheet",
+   "reason": "The method says \"nori flakes\". 2 tbsp of flakes = about 2 g = 1 sheet (a sheet is about 2.5 g).",
+   "confidence": "medium"
+  },
+  {
+   "decision": "D24",
+   "group": "E",
+   "groupName": "Nori sheets measured in tablespoons",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "breaded-tofu-sticks",
+   "recipeTitle": "Breaded Tofu Sticks",
+   "rowIndex": 0,
+   "expect": {
+    "ingredient": "nori",
+    "quantity": 2,
+    "unit": "tbsp",
+    "note": "dried seaweed"
+   },
+   "change": {
+    "quantity": 1,
+    "unit": "pcs"
+   },
+   "dictionaryPreferredUnit": "pcs",
+   "recommendation": "2 tbsp -> 1 sheet",
+   "reason": "The method blends nori sheets to powder. 2 tbsp powder = about 1 sheet.",
+   "confidence": "medium"
+  },
+  {
+   "decision": "D25",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "ultimate-fluffy-vegan-gluten-free-bread",
+   "recipeTitle": "Fluffy Gluten-Free Bread",
+   "rowIndex": 4,
+   "expect": {
+    "ingredient": "psyllium-husk",
+    "quantity": 12,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 1.5,
+    "unit": "tbsp"
+   },
+   "dictionaryPreferredUnit": "tbsp",
+   "recommendation": "12 g -> 1.5 tbsp",
+   "reason": "Rule: 1 tbsp psyllium husk powder = 8 g (the same factor the app's nutrition table uses).",
+   "confidence": "high"
+  },
+  {
+   "decision": "D26",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fluffy-gluten-free-loaf",
+   "recipeTitle": "Fluffy Gluten-Free Loaf",
+   "rowIndex": 4,
+   "expect": {
+    "ingredient": "psyllium-husk",
+    "quantity": 12,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 1.5,
+    "unit": "tbsp"
+   },
+   "dictionaryPreferredUnit": "tbsp",
+   "recommendation": "12 g -> 1.5 tbsp",
+   "reason": "1 tbsp = 8 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D27",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-17",
+   "recipeTitle": "Gluten-Free Oat & Potato Bread Rolls",
+   "rowIndex": 4,
+   "expect": {
+    "ingredient": "psyllium-husk",
+    "quantity": 12,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 1.5,
+    "unit": "tbsp"
+   },
+   "dictionaryPreferredUnit": "tbsp",
+   "recommendation": "12 g -> 1.5 tbsp",
+   "reason": "1 tbsp = 8 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D28",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-19",
+   "recipeTitle": "Tropical Psyllium Pudding",
+   "rowIndex": 0,
+   "expect": {
+    "ingredient": "psyllium-husk",
+    "quantity": 24,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 3,
+    "unit": "tbsp"
+   },
+   "dictionaryPreferredUnit": "tbsp",
+   "recommendation": "24 g -> 3 tbsp",
+   "reason": "1 tbsp = 8 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D29",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-33",
+   "recipeTitle": "Vanilla-Carob Psyllium Pudding with Blueberries (Water-Based)",
+   "rowIndex": 7,
+   "expect": {
+    "ingredient": "psyllium-husk",
+    "quantity": 16,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 2,
+    "unit": "tbsp"
+   },
+   "dictionaryPreferredUnit": "tbsp",
+   "recommendation": "16 g -> 2 tbsp",
+   "reason": "1 tbsp = 8 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D30",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-34",
+   "recipeTitle": "Vanilla-Carob Psyllium Pudding with Blueberries",
+   "rowIndex": 7,
+   "expect": {
+    "ingredient": "psyllium-husk",
+    "quantity": 16,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 2,
+    "unit": "tbsp"
+   },
+   "dictionaryPreferredUnit": "tbsp",
+   "recommendation": "16 g -> 2 tbsp",
+   "reason": "1 tbsp = 8 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D31",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-66",
+   "recipeTitle": "Gluten-Free Oat & Potato Loaf",
+   "rowIndex": 4,
+   "expect": {
+    "ingredient": "psyllium-husk",
+    "quantity": 18,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 2.25,
+    "unit": "tbsp"
+   },
+   "dictionaryPreferredUnit": "tbsp",
+   "recommendation": "18 g -> 2 1/4 tbsp",
+   "reason": "1 tbsp = 8 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D32",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fredheim-deluxe-plant-based-cream-cheese",
+   "recipeTitle": "Fredheim Plant-Based Cream Cheese",
+   "rowIndex": 6,
+   "expect": {
+    "ingredient": "onion-powder",
+    "quantity": 12,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 5,
+    "unit": "tsp"
+   },
+   "dictionaryPreferredUnit": "tsp",
+   "recommendation": "12 g -> 5 tsp",
+   "reason": "1 tsp onion powder = 2.4 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D33",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fredheim-deluxe-plant-based-cream-cheese",
+   "recipeTitle": "Fredheim Plant-Based Cream Cheese",
+   "rowIndex": 7,
+   "expect": {
+    "ingredient": "garlic-powder",
+    "quantity": 9,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 3,
+    "unit": "tsp"
+   },
+   "dictionaryPreferredUnit": "tsp",
+   "recommendation": "9 g -> 3 tsp",
+   "reason": "1 tsp garlic powder = 3 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D34",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-6",
+   "recipeTitle": "Carob & White Bean Protein Shake",
+   "rowIndex": 5,
+   "expect": {
+    "ingredient": "cinnamon-ground",
+    "quantity": 1,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 0.33,
+    "unit": "tsp"
+   },
+   "dictionaryPreferredUnit": "tsp",
+   "recommendation": "1 g -> 1/3 tsp",
+   "reason": "1 tsp ground cinnamon = 2.6 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D35",
+   "group": "F",
+   "groupName": "Powders written in grams",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-10",
+   "recipeTitle": "Warm Buckwheat Porridge with Dates, Carob & Cinnamon",
+   "rowIndex": 4,
+   "expect": {
+    "ingredient": "cinnamon-ground",
+    "quantity": 1.3,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 0.5,
+    "unit": "tsp"
+   },
+   "dictionaryPreferredUnit": "tsp",
+   "recommendation": "1.3 g -> 1/2 tsp",
+   "reason": "1 tsp ground cinnamon = 2.6 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D36",
+   "group": "G",
+   "groupName": "Pastes and powders the dictionary wants in grams",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "carob-spread",
+   "recipeTitle": "Carob spread (hazelnut)",
+   "rowIndex": 3,
+   "expect": {
+    "ingredient": "carob-powder",
+    "quantity": 2,
+    "unit": "tbsp",
+    "note": null
+   },
+   "change": {
+    "quantity": 15,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "2 tbsp -> 15 g",
+   "reason": "1 tbsp carob powder = 7.5 g (USDA says 6.5 g, the app's table says 8 g).",
+   "confidence": "high"
+  },
+  {
+   "decision": "D37",
+   "group": "G",
+   "groupName": "Pastes and powders the dictionary wants in grams",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "carob-spread-almond",
+   "recipeTitle": "Carob spread (almond)",
+   "rowIndex": 3,
+   "expect": {
+    "ingredient": "carob-powder",
+    "quantity": 2,
+    "unit": "tbsp",
+    "note": null
+   },
+   "change": {
+    "quantity": 15,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "2 tbsp -> 15 g",
+   "reason": "Same as above.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D38",
+   "group": "G",
+   "groupName": "Pastes and powders the dictionary wants in grams",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "toms-gluten-free-bread",
+   "recipeTitle": "Tom's Gluten Free Bread",
+   "rowIndex": 2,
+   "expect": {
+    "ingredient": "dry-yeast",
+    "quantity": 1,
+    "unit": "tsp",
+    "note": null
+   },
+   "change": {
+    "quantity": 3,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "1 tsp -> 3 g",
+   "reason": "1 tsp dry yeast = 3 g (an 11 g envelope is about 3.5 tsp).",
+   "confidence": "high"
+  },
+  {
+   "decision": "D39",
+   "group": "G",
+   "groupName": "Pastes and powders the dictionary wants in grams",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-11",
+   "recipeTitle": "Miso Red Lentil & Sweet Potato Soup",
+   "rowIndex": 6,
+   "expect": {
+    "ingredient": "miso-paste",
+    "quantity": 1,
+    "unit": "tbsp",
+    "note": "white, low sodium"
+   },
+   "change": {
+    "quantity": 17,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "1 tbsp -> 17 g",
+   "reason": "1 tbsp miso = 17 g (USDA). Miso is a thick paste, which the house rule says to weigh.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D40",
+   "group": "G",
+   "groupName": "Pastes and powders the dictionary wants in grams",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-12",
+   "recipeTitle": "Fredheim Golden Vegetable Broth",
+   "rowIndex": 11,
+   "expect": {
+    "ingredient": "miso-paste",
+    "quantity": 2,
+    "unit": "tsp",
+    "note": "white, shiro, dissolved at finish"
+   },
+   "change": {
+    "quantity": 11,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "2 tsp -> 11 g",
+   "reason": "1 tsp miso = 5.7 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D41",
+   "group": "G",
+   "groupName": "Pastes and powders the dictionary wants in grams",
+   "pack": "fredheim-reversal-protocol",
+   "recipeId": "orn-46",
+   "recipeTitle": "Sour & Savory White Bean Hummus",
+   "rowIndex": 5,
+   "expect": {
+    "ingredient": "miso-paste",
+    "quantity": 1,
+    "unit": "tbsp",
+    "note": "white"
+   },
+   "change": {
+    "quantity": 17,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "1 tbsp -> 17 g",
+   "reason": "1 tbsp miso = 17 g.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D42",
+   "group": "I",
+   "groupName": "A pinch of salt",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "vegan-tzatziki-sauce",
+   "recipeTitle": "Vegan Tzatziki Sauce",
+   "rowIndex": 6,
+   "expect": {
+    "ingredient": "salt",
+    "quantity": 1.5,
+    "unit": "pinch",
+    "note": null
+   },
+   "change": {
+    "quantity": null,
+    "unit": "",
+    "note": "to-taste"
+   },
+   "dictionaryPreferredUnit": "tsp",
+   "recommendation": "Salt, to taste (no amount)",
+   "reason": "House rule: pinches become \"to taste\" (same as the many other salt rows).",
+   "confidence": "high"
+  },
+  {
+   "decision": "D43",
+   "group": "I",
+   "groupName": "A pinch of salt",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "carob-black-bean-mousse",
+   "recipeTitle": "Carob & Black Bean Mousse",
+   "rowIndex": 6,
+   "expect": {
+    "ingredient": "salt",
+    "quantity": 1,
+    "unit": "pinch",
+    "note": null
+   },
+   "change": {
+    "quantity": null,
+    "unit": "",
+    "note": "to-taste"
+   },
+   "dictionaryPreferredUnit": "tsp",
+   "recommendation": "Salt, to taste (no amount)",
+   "reason": "Same rule.",
+   "confidence": "high"
+  },
+  {
+   "decision": "D44",
+   "group": "J",
+   "groupName": "Onion measured in cloves",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "noodle-wok",
+   "recipeTitle": "Noodle Wok",
+   "rowIndex": 4,
+   "expect": {
+    "ingredient": "onions",
+    "quantity": 3,
+    "unit": "clove",
+    "note": null
+   },
+   "change": {
+    "quantity": 330,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "g",
+   "recommendation": "3 \"clove\" onion -> 330 g (3 onions)",
+   "reason": "Garlic is a separate row; 3 medium onions (110 g each) for 12 servings is sensible. \"Clove\" is a data slip. Please confirm.",
+   "confidence": "medium"
+  },
+  {
+   "decision": "D45",
+   "group": "H",
+   "groupName": "Agar-agar",
+   "pack": "fredheim-recipes-with-pictures",
+   "recipeId": "fr-51",
+   "recipeTitle": "Coconut Mozzarella",
+   "rowIndex": 8,
+   "expect": {
+    "ingredient": "agar-agar",
+    "quantity": 7,
+    "unit": "g",
+    "note": null
+   },
+   "change": {
+    "quantity": 7,
+    "unit": "g"
+   },
+   "dictionaryPreferredUnit": "tsp",
+   "recommendation": "Keep 7 g; change the dictionary so agar-agar is weighed",
+   "reason": "Gelling agents are weighed for reliable setting; one recipe uses it. Dictionary preferred unit becomes g.",
+   "confidence": "high",
+   "noRowChange": true
+  }
+ ],
+ "notDecided": [
+  {
+   "note": "fr-50 (Coconut Macaroon Balls) lemon peel 3 tbsp may be a typo; faithful conversion to 3 lemons is included but flagged low confidence."
+  },
+  {
+   "note": "noodle-wok onion \"3 clove\" is guessed to be 3 onions (330 g); confirm."
+  }
+ ]
+}

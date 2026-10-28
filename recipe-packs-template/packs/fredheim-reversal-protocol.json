@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.56.0",
+  "version": "1.57.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -1119,8 +1119,8 @@
               "note": "fint"
             },
             {
-              "quantity": 2,
-              "unit": "tsp",
+              "quantity": 0.67,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Sitroner",
               "note": "eller appelsinskall, valgfritt, anbefalt"
@@ -1216,8 +1216,8 @@
               "note": "fint"
             },
             {
-              "quantity": 2,
-              "unit": "tsp",
+              "quantity": 0.67,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Citroner",
               "note": "eller apelsinskal, valfritt, rekommenderas"
@@ -1310,8 +1310,8 @@
           "name": "Salt"
         },
         {
-          "quantity": 2,
-          "unit": "tsp",
+          "quantity": 0.67,
+          "unit": "pcs",
           "ingredient": "lemons",
           "name": "Lemons",
           "note": "or orange zest, optional, recommended"
@@ -1431,8 +1431,8 @@
               "name": "Linfrø, malt"
             },
             {
-              "quantity": 1,
-              "unit": "g",
+              "quantity": 0.33,
+              "unit": "tsp",
               "ingredient": "cinnamon-ground",
               "name": "Kanel, malt"
             },
@@ -1488,8 +1488,8 @@
               "name": "Linfrön, malda"
             },
             {
-              "quantity": 1,
-              "unit": "g",
+              "quantity": 0.33,
+              "unit": "tsp",
               "ingredient": "cinnamon-ground",
               "name": "Kanel, malen"
             },
@@ -1543,8 +1543,8 @@
           "name": "Flaxseed, ground"
         },
         {
-          "quantity": 1,
-          "unit": "g",
+          "quantity": 0.33,
+          "unit": "tsp",
           "ingredient": "cinnamon-ground",
           "name": "Cinnamon, ground"
         },
@@ -2345,8 +2345,8 @@
               "name": "Karobpulver"
             },
             {
-              "quantity": 1.3,
-              "unit": "g",
+              "quantity": 0.5,
+              "unit": "tsp",
               "ingredient": "cinnamon-ground",
               "name": "Kanel, malt"
             },
@@ -2394,8 +2394,8 @@
               "name": "Carobpulver"
             },
             {
-              "quantity": 1.3,
-              "unit": "g",
+              "quantity": 0.5,
+              "unit": "tsp",
               "ingredient": "cinnamon-ground",
               "name": "Kanel, malen"
             },
@@ -2441,8 +2441,8 @@
           "name": "Carob powder"
         },
         {
-          "quantity": 1.3,
-          "unit": "g",
+          "quantity": 0.5,
+          "unit": "tsp",
           "ingredient": "cinnamon-ground",
           "name": "Cinnamon, ground"
         },
@@ -2570,8 +2570,8 @@
               "note": "babyspinat"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 17,
+              "unit": "g",
               "ingredient": "miso-paste",
               "name": "Misopasta",
               "note": "lys, lavt natrium"
@@ -2675,8 +2675,8 @@
               "note": "babyspenat"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 17,
+              "unit": "g",
               "ingredient": "miso-paste",
               "name": "Misopasta",
               "note": "ljus, lågt natrium"
@@ -2777,8 +2777,8 @@
           "note": "baby"
         },
         {
-          "quantity": 1,
-          "unit": "tbsp",
+          "quantity": 17,
+          "unit": "g",
           "ingredient": "miso-paste",
           "name": "Miso paste",
           "note": "white, low sodium"
@@ -2975,8 +2975,8 @@
               "note": "tilsettes til slutt"
             },
             {
-              "quantity": 2,
-              "unit": "tsp",
+              "quantity": 11,
+              "unit": "g",
               "ingredient": "miso-paste",
               "name": "Misopasta",
               "note": "lys, shiro, løses opp til slutt"
@@ -3072,8 +3072,8 @@
               "note": "tillsätts på slutet"
             },
             {
-              "quantity": 2,
-              "unit": "tsp",
+              "quantity": 11,
+              "unit": "g",
               "ingredient": "miso-paste",
               "name": "Misopasta",
               "note": "ljus, shiro, löses upp på slutet"
@@ -3167,8 +3167,8 @@
           "note": "added at finish"
         },
         {
-          "quantity": 2,
-          "unit": "tsp",
+          "quantity": 11,
+          "unit": "g",
           "ingredient": "miso-paste",
           "name": "Miso paste",
           "note": "white, shiro, dissolved at finish"
@@ -4284,8 +4284,8 @@
               "note": "kokt, most (uten tilsetninger)"
             },
             {
-              "quantity": 12,
-              "unit": "g",
+              "quantity": 1.5,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfrøskall"
             },
@@ -4373,8 +4373,8 @@
               "note": "kokt, mosad (utan tillsatser)"
             },
             {
-              "quantity": 12,
-              "unit": "g",
+              "quantity": 1.5,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfröskal"
             },
@@ -4459,8 +4459,8 @@
           "note": "plain cooked mashed, no additions"
         },
         {
-          "quantity": 12,
-          "unit": "g",
+          "quantity": 1.5,
+          "unit": "tbsp",
           "ingredient": "psyllium-husk",
           "name": "Psyllium husk"
         },
@@ -4863,8 +4863,8 @@
           "notes": "Teksturtips: puddingen tykner betydelig i kjøleskapet. For en mykere konsistens: reduser psyllium til 18 g; for en fastere, skjærbar pudding: øk til 28 g. Smaksløft: en klype kardemomme eller en liten bit fersk ingefær kjørt inn løfter den tropiske profilen — uten å påvirke scoren. Viktig: bruk psylliumhusk-pulver, ikke hele skall — pulver gelerer jevnere og unngår grynete tekstur. Batch: gir 4 glass, ideelt til matprep; holder seg i kjøleskap i opptil 4 dager.",
           "ingredients": [
             {
-              "quantity": 24,
-              "unit": "g",
+              "quantity": 3,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfrøskall"
             },
@@ -4923,8 +4923,8 @@
           "notes": "Konsistenstips: puddingen tjocknar rejält i kylen. För en mjukare konsistens: minska psyllium till 18 g; för en fastare, skivbar pudding: öka till 28 g. Smaklyft: en nypa kardemumma eller en liten bit färsk ingefära mixad ger den tropiska profilen extra skjuts — utan att påverka poängen. Viktigt: använd psylliumpulver, inte hela skal — pulver gelar jämnare och undviker grynig konsistens. Batch: ger 4 burkar, perfekt för matprep; håller sig i kylen i upp till 4 dagar.",
           "ingredients": [
             {
-              "quantity": 24,
-              "unit": "g",
+              "quantity": 3,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfröskal"
             },
@@ -4980,8 +4980,8 @@
       },
       "ingredients": [
         {
-          "quantity": 24,
-          "unit": "g",
+          "quantity": 3,
+          "unit": "tbsp",
           "ingredient": "psyllium-husk",
           "name": "Psyllium husk"
         },
@@ -5498,8 +5498,8 @@
               "name": "Sitronsaft"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 0.33,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Sitroner",
               "note": "skall"
@@ -5559,8 +5559,8 @@
               "name": "Citronsaft"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 0.33,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Citroner",
               "note": "skal"
@@ -5617,8 +5617,8 @@
           "name": "Lemon juice"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 0.33,
+          "unit": "pcs",
           "ingredient": "lemons",
           "name": "Lemons",
           "note": "zest"
@@ -8419,8 +8419,8 @@
           "note": "pinch, to taste"
         },
         {
-          "quantity": 16,
-          "unit": "g",
+          "quantity": 2,
+          "unit": "tbsp",
           "ingredient": "psyllium-husk",
           "name": "Psyllium husk"
         },
@@ -8498,8 +8498,8 @@
               "note": "fint, klype, etter smak"
             },
             {
-              "quantity": 16,
-              "unit": "g",
+              "quantity": 2,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfrøskall"
             },
@@ -8578,8 +8578,8 @@
               "note": "fint, nypa, efter smak"
             },
             {
-              "quantity": 16,
-              "unit": "g",
+              "quantity": 2,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfröskal"
             },
@@ -8723,8 +8723,8 @@
           "note": "pinch, to taste"
         },
         {
-          "quantity": 16,
-          "unit": "g",
+          "quantity": 2,
+          "unit": "tbsp",
           "ingredient": "psyllium-husk",
           "name": "Psyllium husk"
         },
@@ -8803,8 +8803,8 @@
               "note": "fint, klype, etter smak"
             },
             {
-              "quantity": 16,
-              "unit": "g",
+              "quantity": 2,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfrøskall"
             },
@@ -8884,8 +8884,8 @@
               "note": "fint, nypa, efter smak"
             },
             {
-              "quantity": 16,
-              "unit": "g",
+              "quantity": 2,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfröskal"
             },
@@ -11580,8 +11580,8 @@
           "name": "Lemon juice"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 0.33,
+          "unit": "pcs",
           "ingredient": "lemons",
           "name": "Lemons",
           "note": "zest"
@@ -11671,8 +11671,8 @@
               "name": "Sitronsaft"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 0.33,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Sitroner",
               "note": "skall"
@@ -11723,8 +11723,8 @@
               "name": "Citronsaft"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 0.33,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Citroner",
               "note": "skal"
@@ -12127,8 +12127,8 @@
           "name": "Lemon juice"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 0.33,
+          "unit": "pcs",
           "ingredient": "lemons",
           "name": "Lemons",
           "note": "zest"
@@ -12147,8 +12147,8 @@
           "name": "Tahini"
         },
         {
-          "quantity": 1,
-          "unit": "tbsp",
+          "quantity": 17,
+          "unit": "g",
           "ingredient": "miso-paste",
           "name": "Miso paste",
           "note": "white"
@@ -12260,8 +12260,8 @@
               "name": "Sitronsaft"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 0.33,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Sitroner",
               "note": "skall"
@@ -12280,8 +12280,8 @@
               "name": "Tahini"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 17,
+              "unit": "g",
               "ingredient": "miso-paste",
               "name": "Misopasta",
               "note": "hvit"
@@ -12354,8 +12354,8 @@
               "name": "Citronsaft"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 0.33,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Citroner",
               "note": "skal"
@@ -12374,8 +12374,8 @@
               "name": "Tahini"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 17,
+              "unit": "g",
               "ingredient": "miso-paste",
               "name": "Misopasta",
               "note": "vit"
@@ -17045,8 +17045,8 @@
           "note": "plain cooked mashed, no additions"
         },
         {
-          "quantity": 18,
-          "unit": "g",
+          "quantity": 2.25,
+          "unit": "tbsp",
           "ingredient": "psyllium-husk",
           "name": "Psyllium husk"
         },
@@ -17138,8 +17138,8 @@
               "note": "kokt, most (uten tilsetninger)"
             },
             {
-              "quantity": 18,
-              "unit": "g",
+              "quantity": 2.25,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfrøskall"
             },
@@ -17228,8 +17228,8 @@
               "note": "kokt, mosad (utan tillsatser)"
             },
             {
-              "quantity": 18,
-              "unit": "g",
+              "quantity": 2.25,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfröskal"
             },

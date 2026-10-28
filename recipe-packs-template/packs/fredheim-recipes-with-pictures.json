@@ -3,7 +3,7 @@
   "name": "Fredheim recepies with pictures",
   "description": "A selection of Fredheim recipes bundled with photos.",
   "author": "Fredheim",
-  "version": "1.55.0",
+  "version": "1.57.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -297,14 +297,14 @@
         {
           "quantity": 1,
           "unit": "tsp",
-          "ingredient": "thyme",
-          "name": "Thyme"
+          "ingredient": "thyme-dried",
+          "name": "Thyme, dried"
         },
         {
           "quantity": 1,
           "unit": "tsp",
-          "ingredient": "basil",
-          "name": "Basil"
+          "ingredient": "basil-dried",
+          "name": "Basil, dried"
         },
         {
           "quantity": 1,
@@ -382,14 +382,14 @@
             {
               "quantity": 1,
               "unit": "tsp",
-              "ingredient": "thyme",
-              "name": "Timian"
+              "ingredient": "thyme-dried",
+              "name": "Timian, tørket"
             },
             {
               "quantity": 1,
               "unit": "tsp",
-              "ingredient": "basil",
-              "name": "Basilikum"
+              "ingredient": "basil-dried",
+              "name": "Basilikum, tørket"
             },
             {
               "quantity": 1,
@@ -465,14 +465,14 @@
             {
               "quantity": 1,
               "unit": "tsp",
-              "ingredient": "thyme",
-              "name": "Timjan"
+              "ingredient": "thyme-dried",
+              "name": "Timjan, torkad"
             },
             {
               "quantity": 1,
               "unit": "tsp",
-              "ingredient": "basil",
-              "name": "Basilika"
+              "ingredient": "basil-dried",
+              "name": "Basilika, torkad"
             },
             {
               "quantity": 1,
@@ -632,8 +632,8 @@
           "name": "Paprika powder"
         },
         {
-          "quantity": 2,
-          "unit": "tsp",
+          "quantity": 4,
+          "unit": "g",
           "ingredient": "agar-agar",
           "name": "Agar-agar"
         },
@@ -704,8 +704,8 @@
               "name": "Paprikapulver"
             },
             {
-              "quantity": 2,
-              "unit": "tsp",
+              "quantity": 4,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -774,8 +774,8 @@
               "name": "Paprikapulver"
             },
             {
-              "quantity": 2,
-              "unit": "tsp",
+              "quantity": 4,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -7534,8 +7534,8 @@
           "note": "drinking water"
         },
         {
-          "quantity": 2,
-          "unit": "tsp",
+          "quantity": 4,
+          "unit": "g",
           "ingredient": "agar-agar",
           "name": "Agar-agar"
         },
@@ -7596,8 +7596,8 @@
               "note": "drikkevann"
             },
             {
-              "quantity": 2,
-              "unit": "ts",
+              "quantity": 4,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -7657,8 +7657,8 @@
               "note": "dricksvatten"
             },
             {
-              "quantity": 2,
-              "unit": "tsp",
+              "quantity": 4,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -8248,8 +8248,8 @@
         {
           "quantity": 1,
           "unit": "tbsp",
-          "ingredient": "lemons",
-          "name": "Lemons"
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
         }
       ],
       "steps": [
@@ -8323,9 +8323,9 @@
             },
             {
               "quantity": 1,
-              "unit": "ss",
-              "ingredient": "lemons",
-              "name": "Sitroner"
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
             }
           ],
           "steps": [
@@ -8398,8 +8398,8 @@
             {
               "quantity": 1,
               "unit": "tbsp",
-              "ingredient": "lemons",
-              "name": "Citroner"
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
             }
           ]
         }
@@ -9942,8 +9942,8 @@
           "name": "Cayenne pepper"
         },
         {
-          "quantity": 0.25,
-          "unit": "tsp",
+          "quantity": 1,
+          "unit": "g",
           "ingredient": "coriander-fresh",
           "name": "Fresh coriander (cilantro)"
         },
@@ -10045,8 +10045,8 @@
               "name": "Kajennepepper"
             },
             {
-              "quantity": 0.25,
-              "unit": "ts",
+              "quantity": 1,
+              "unit": "g",
               "ingredient": "coriander-fresh",
               "name": "Fersk koriander"
             },
@@ -10146,8 +10146,8 @@
               "name": "Cayennepeppar"
             },
             {
-              "quantity": 0.25,
-              "unit": "tsp",
+              "quantity": 1,
+              "unit": "g",
               "ingredient": "coriander-fresh",
               "name": "Färsk koriander"
             },
@@ -10329,8 +10329,8 @@
           "name": "Celery stalks"
         },
         {
-          "quantity": 2,
-          "unit": "tbsp",
+          "quantity": 1,
+          "unit": "pcs",
           "ingredient": "nori",
           "name": "Nori sheets",
           "note": "dried seaweed"
@@ -10405,8 +10405,8 @@
               "name": "Stangselleri"
             },
             {
-              "quantity": 2,
-              "unit": "ss",
+              "quantity": 1,
+              "unit": "pcs",
               "ingredient": "nori",
               "name": "Nori",
               "note": "tørket tang"
@@ -10479,8 +10479,8 @@
               "name": "Stjälkselleri"
             },
             {
-              "quantity": 2,
-              "unit": "tbsp",
+              "quantity": 1,
+              "unit": "pcs",
               "ingredient": "nori",
               "name": "Nori",
               "note": "torkad tång"
@@ -11377,8 +11377,8 @@
       "kcal": 0,
       "ingredients": [
         {
-          "quantity": 2,
-          "unit": "tbsp",
+          "quantity": 1,
+          "unit": "pcs",
           "ingredient": "nori",
           "name": "Nori sheets",
           "note": "dried seaweed"
@@ -11467,8 +11467,8 @@
           "description": "",
           "ingredients": [
             {
-              "quantity": 2,
-              "unit": "ss",
+              "quantity": 1,
+              "unit": "pcs",
               "ingredient": "nori",
               "name": "Nori",
               "note": "tørket tang"
@@ -11555,8 +11555,8 @@
         "sv": {
           "ingredients": [
             {
-              "quantity": 2,
-              "unit": "tbsp",
+              "quantity": 1,
+              "unit": "pcs",
               "ingredient": "nori",
               "name": "Nori",
               "note": "torkad tång"
@@ -12222,8 +12222,8 @@
           "name": "Water"
         },
         {
-          "quantity": 2,
-          "unit": "tbsp",
+          "quantity": 15,
+          "unit": "g",
           "ingredient": "carob-powder",
           "name": "Carob powder"
         },
@@ -12270,8 +12270,8 @@
               "name": "Vann"
             },
             {
-              "quantity": 2,
-              "unit": "tbsp",
+              "quantity": 15,
+              "unit": "g",
               "ingredient": "carob-powder",
               "name": "Karobpulver"
             },
@@ -12318,8 +12318,8 @@
               "name": "Vatten"
             },
             {
-              "quantity": 2,
-              "unit": "tbsp",
+              "quantity": 15,
+              "unit": "g",
               "ingredient": "carob-powder",
               "name": "Carobpulver"
             },
@@ -12423,8 +12423,8 @@
           "name": "Water"
         },
         {
-          "quantity": 2,
-          "unit": "tbsp",
+          "quantity": 15,
+          "unit": "g",
           "ingredient": "carob-powder",
           "name": "Carob powder"
         },
@@ -12471,8 +12471,8 @@
               "name": "Vann"
             },
             {
-              "quantity": 2,
-              "unit": "tbsp",
+              "quantity": 15,
+              "unit": "g",
               "ingredient": "carob-powder",
               "name": "Karobpulver"
             },
@@ -12519,8 +12519,8 @@
               "name": "Vatten"
             },
             {
-              "quantity": 2,
-              "unit": "tbsp",
+              "quantity": 15,
+              "unit": "g",
               "ingredient": "carob-powder",
               "name": "Carobpulver"
             },
@@ -13641,7 +13641,7 @@
         },
         {
           "quantity": 3,
-          "unit": "tbsp",
+          "unit": "pcs",
           "ingredient": "lemons",
           "name": "Lemons",
           "note": "peel"
@@ -13686,7 +13686,7 @@
             },
             {
               "quantity": 3,
-              "unit": "ss",
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Sitroner",
               "note": "skall"
@@ -13729,7 +13729,7 @@
             },
             {
               "quantity": 3,
-              "unit": "tbsp",
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Citroner",
               "note": "skal"
@@ -14789,8 +14789,8 @@
           "name": "Pecans"
         },
         {
-          "quantity": 2,
-          "unit": "tbsp",
+          "quantity": 6,
+          "unit": "g",
           "ingredient": "coriander-fresh",
           "name": "Fresh coriander (cilantro)"
         }
@@ -14840,8 +14840,8 @@
               "name": "Pekannøtter"
             },
             {
-              "quantity": 2,
-              "unit": "ss",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "coriander-fresh",
               "name": "Fersk koriander"
             }
@@ -14889,8 +14889,8 @@
               "name": "Pekannötter"
             },
             {
-              "quantity": 2,
-              "unit": "tbsp",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "coriander-fresh",
               "name": "Färsk koriander"
             }
@@ -15849,14 +15849,14 @@
           "name": "Tomatoes"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 0.33,
+          "unit": "pcs",
           "ingredient": "lemons",
           "name": "Lemons"
         },
         {
-          "quantity": 2,
-          "unit": "tbsp",
+          "quantity": 6,
+          "unit": "g",
           "ingredient": "coriander-fresh",
           "name": "Fresh coriander (cilantro)"
         }
@@ -15967,14 +15967,14 @@
               "name": "Tomater"
             },
             {
-              "quantity": 1,
-              "unit": "ts",
+              "quantity": 0.33,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Sitroner"
             },
             {
-              "quantity": 2,
-              "unit": "ss",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "coriander-fresh",
               "name": "Fersk koriander"
             }
@@ -16083,14 +16083,14 @@
               "name": "Tomater"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 0.33,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Citroner"
             },
             {
-              "quantity": 2,
-              "unit": "tbsp",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "coriander-fresh",
               "name": "Färsk koriander"
             }
@@ -17332,8 +17332,8 @@
           "name": "White pepper"
         },
         {
-          "quantity": 2,
-          "unit": "tbsp",
+          "quantity": 6,
+          "unit": "g",
           "ingredient": "mint",
           "name": "Mint"
         }
@@ -17401,8 +17401,8 @@
               "name": "Hvit pepper"
             },
             {
-              "quantity": 2,
-              "unit": "ss",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "mint",
               "name": "Mynte"
             }
@@ -17468,8 +17468,8 @@
               "name": "Vitpeppar"
             },
             {
-              "quantity": 2,
-              "unit": "tbsp",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "mint",
               "name": "Mynta"
             }
@@ -19444,8 +19444,8 @@
           "name": "Onion powder"
         },
         {
-          "quantity": 2,
-          "unit": "tsp",
+          "quantity": 4,
+          "unit": "g",
           "ingredient": "agar-agar",
           "name": "Agar-agar"
         },
@@ -19505,8 +19505,8 @@
               "name": "Løkpulver"
             },
             {
-              "quantity": 2,
-              "unit": "ts",
+              "quantity": 4,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -19565,8 +19565,8 @@
               "name": "Lökpulver"
             },
             {
-              "quantity": 2,
-              "unit": "tsp",
+              "quantity": 4,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -20429,8 +20429,8 @@
         {
           "quantity": 2,
           "unit": "tbsp",
-          "ingredient": "lemons",
-          "name": "Lemons"
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
         },
         {
           "quantity": 1,
@@ -20482,9 +20482,9 @@
             },
             {
               "quantity": 2,
-              "unit": "ss",
-              "ingredient": "lemons",
-              "name": "Sitroner"
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
             },
             {
               "quantity": 1,
@@ -20535,8 +20535,8 @@
             {
               "quantity": 2,
               "unit": "tbsp",
-              "ingredient": "lemons",
-              "name": "Citroner"
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
             },
             {
               "quantity": 1,
@@ -21298,8 +21298,8 @@
           "name": "Onion powder"
         },
         {
-          "quantity": 3,
-          "unit": "tsp",
+          "quantity": 6,
+          "unit": "g",
           "ingredient": "agar-agar",
           "name": "Agar-agar"
         },
@@ -21359,8 +21359,8 @@
               "name": "Løkpulver"
             },
             {
-              "quantity": 3,
-              "unit": "ts",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -21419,8 +21419,8 @@
               "name": "Lökpulver"
             },
             {
-              "quantity": 3,
-              "unit": "tsp",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -21844,7 +21844,7 @@
         },
         {
           "quantity": 1,
-          "unit": "tsp",
+          "unit": "g",
           "ingredient": "coriander-fresh",
           "name": "Fresh coriander (cilantro)"
         },
@@ -21918,7 +21918,7 @@
             },
             {
               "quantity": 1,
-              "unit": "ts",
+              "unit": "g",
               "ingredient": "coriander-fresh",
               "name": "Fersk koriander"
             },
@@ -21990,7 +21990,7 @@
             },
             {
               "quantity": 1,
-              "unit": "tsp",
+              "unit": "g",
               "ingredient": "coriander-fresh",
               "name": "Färsk koriander"
             },
@@ -24210,7 +24210,7 @@
         },
         {
           "quantity": 2,
-          "unit": "tsp",
+          "unit": "g",
           "ingredient": "coriander-fresh",
           "name": "Fresh coriander (cilantro)"
         },
@@ -24310,7 +24310,7 @@
             },
             {
               "quantity": 2,
-              "unit": "ts",
+              "unit": "g",
               "ingredient": "coriander-fresh",
               "name": "Fersk koriander"
             },
@@ -24408,7 +24408,7 @@
             },
             {
               "quantity": 2,
-              "unit": "tsp",
+              "unit": "g",
               "ingredient": "coriander-fresh",
               "name": "Färsk koriander"
             },
@@ -27823,8 +27823,8 @@
           "note": "red"
         },
         {
-          "quantity": 3,
-          "unit": "clove",
+          "quantity": 330,
+          "unit": "g",
           "ingredient": "onions",
           "name": "Onions"
         },
@@ -27940,8 +27940,8 @@
               "note": "rød"
             },
             {
-              "quantity": 3,
-              "unit": "fedd",
+              "quantity": 330,
+              "unit": "g",
               "ingredient": "onions",
               "name": "Løk"
             },
@@ -28055,8 +28055,8 @@
               "note": "röd"
             },
             {
-              "quantity": 3,
-              "unit": "clove",
+              "quantity": 330,
+              "unit": "g",
               "ingredient": "onions",
               "name": "Lök"
             },
@@ -32612,8 +32612,8 @@
           "name": "Onion powder"
         },
         {
-          "quantity": 3,
-          "unit": "tsp",
+          "quantity": 6,
+          "unit": "g",
           "ingredient": "agar-agar",
           "name": "Agar-agar"
         },
@@ -32671,8 +32671,8 @@
               "name": "Løkpulver"
             },
             {
-              "quantity": 3,
-              "unit": "ts",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -32729,8 +32729,8 @@
               "name": "Lökpulver"
             },
             {
-              "quantity": 3,
-              "unit": "tsp",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -39651,8 +39651,8 @@
           "name": "Tapioca starch"
         },
         {
-          "quantity": 1,
-          "unit": "tbsp",
+          "quantity": 6,
+          "unit": "g",
           "ingredient": "agar-agar",
           "name": "Agar-agar"
         }
@@ -39707,8 +39707,8 @@
               "name": "Tapiokastivelse"
             },
             {
-              "quantity": 1,
-              "unit": "ss",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             }
@@ -39761,8 +39761,8 @@
               "name": "Tapiokastärkelse"
             },
             {
-              "quantity": 1,
-              "unit": "tbsp",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             }
@@ -39920,8 +39920,8 @@
           "name": "Lemon juice"
         },
         {
-          "quantity": 3,
-          "unit": "tsp",
+          "quantity": 6,
+          "unit": "g",
           "ingredient": "agar-agar",
           "name": "Agar-agar"
         },
@@ -40005,8 +40005,8 @@
               "name": "Sitronsaft"
             },
             {
-              "quantity": 3,
-              "unit": "ts",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -40088,8 +40088,8 @@
               "name": "Citronsaft"
             },
             {
-              "quantity": 3,
-              "unit": "tsp",
+              "quantity": 6,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -40588,7 +40588,7 @@
         },
         {
           "quantity": 0.25,
-          "unit": "tsp",
+          "unit": "pcs",
           "ingredient": "lemons",
           "name": "Lemons",
           "note": "peel"
@@ -40635,7 +40635,7 @@
             },
             {
               "quantity": 0.25,
-              "unit": "tsp",
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Sitroner",
               "note": "skall"
@@ -40681,7 +40681,7 @@
             },
             {
               "quantity": 0.25,
-              "unit": "tsp",
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Citroner",
               "note": "skal"
@@ -43902,8 +43902,8 @@
           "name": "Salt"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 3,
+          "unit": "g",
           "ingredient": "dry-yeast",
           "name": "Dry yeast"
         },
@@ -43968,8 +43968,8 @@
               "name": "Salt"
             },
             {
-              "quantity": 1,
-              "unit": "ts",
+              "quantity": 3,
+              "unit": "g",
               "ingredient": "dry-yeast",
               "name": "Tørrgjær"
             },
@@ -44032,8 +44032,8 @@
               "name": "Salt"
             },
             {
-              "quantity": 1,
-              "unit": "tsp",
+              "quantity": 3,
+              "unit": "g",
               "ingredient": "dry-yeast",
               "name": "Torrjäst"
             },
@@ -44450,14 +44450,14 @@
         {
           "quantity": 3,
           "unit": "tsp",
-          "ingredient": "thyme",
-          "name": "Thyme"
+          "ingredient": "thyme-dried",
+          "name": "Thyme, dried"
         },
         {
           "quantity": 1.5,
           "unit": "tsp",
-          "ingredient": "rosemary",
-          "name": "Rosemary"
+          "ingredient": "rosemary-dried",
+          "name": "Rosemary, dried"
         },
         {
           "quantity": 25,
@@ -44526,15 +44526,15 @@
             },
             {
               "quantity": 3,
-              "unit": "ts",
-              "ingredient": "thyme",
-              "name": "Timian"
+              "unit": "tsp",
+              "ingredient": "thyme-dried",
+              "name": "Timian, tørket"
             },
             {
               "quantity": 1.5,
-              "unit": "ts",
-              "ingredient": "rosemary",
-              "name": "Rosmarin"
+              "unit": "tsp",
+              "ingredient": "rosemary-dried",
+              "name": "Rosmarin, tørket"
             },
             {
               "quantity": 25,
@@ -44602,14 +44602,14 @@
             {
               "quantity": 3,
               "unit": "tsp",
-              "ingredient": "thyme",
-              "name": "Timjan"
+              "ingredient": "thyme-dried",
+              "name": "Timjan, torkad"
             },
             {
               "quantity": 1.5,
               "unit": "tsp",
-              "ingredient": "rosemary",
-              "name": "Rosmarin"
+              "ingredient": "rosemary-dried",
+              "name": "Rosmarin, torkad"
             },
             {
               "quantity": 25,
@@ -45301,8 +45301,8 @@
           "name": "Onion powder"
         },
         {
-          "quantity": 2,
-          "unit": "tsp",
+          "quantity": 4,
+          "unit": "g",
           "ingredient": "agar-agar",
           "name": "Agar-agar"
         },
@@ -45362,8 +45362,8 @@
               "name": "Løkpulver"
             },
             {
-              "quantity": 2,
-              "unit": "ts",
+              "quantity": 4,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -45422,8 +45422,8 @@
               "name": "Lökpulver"
             },
             {
-              "quantity": 2,
-              "unit": "tsp",
+              "quantity": 4,
+              "unit": "g",
               "ingredient": "agar-agar",
               "name": "Agar-agar"
             },
@@ -47396,8 +47396,8 @@
           "name": "Lemon juice"
         },
         {
-          "quantity": 3,
-          "unit": "tsp",
+          "quantity": 1,
+          "unit": "pcs",
           "ingredient": "lemons",
           "name": "Lemons",
           "note": "zest"
@@ -47415,14 +47415,14 @@
           "name": "Nutritional yeast"
         },
         {
-          "quantity": 12,
-          "unit": "g",
+          "quantity": 5,
+          "unit": "tsp",
           "ingredient": "onion-powder",
           "name": "Onion powder"
         },
         {
-          "quantity": 9,
-          "unit": "g",
+          "quantity": 3,
+          "unit": "tsp",
           "ingredient": "garlic-powder",
           "name": "Garlic powder"
         },
@@ -47482,8 +47482,8 @@
               "name": "Sitronsaft"
             },
             {
-              "quantity": 3,
-              "unit": "tsp",
+              "quantity": 1,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Sitroner",
               "note": "skall"
@@ -47501,14 +47501,14 @@
               "name": "Næringsgjær"
             },
             {
-              "quantity": 12,
-              "unit": "g",
+              "quantity": 5,
+              "unit": "tsp",
               "ingredient": "onion-powder",
               "name": "Løkpulver"
             },
             {
-              "quantity": 9,
-              "unit": "g",
+              "quantity": 3,
+              "unit": "tsp",
               "ingredient": "garlic-powder",
               "name": "Hvitløkspulver"
             },
@@ -47566,8 +47566,8 @@
               "name": "Citronsaft"
             },
             {
-              "quantity": 3,
-              "unit": "tsp",
+              "quantity": 1,
+              "unit": "pcs",
               "ingredient": "lemons",
               "name": "Citroner",
               "note": "skal"
@@ -47585,14 +47585,14 @@
               "name": "Näringsjäst"
             },
             {
-              "quantity": 12,
-              "unit": "g",
+              "quantity": 5,
+              "unit": "tsp",
               "ingredient": "onion-powder",
               "name": "Lökpulver"
             },
             {
-              "quantity": 9,
-              "unit": "g",
+              "quantity": 3,
+              "unit": "tsp",
               "ingredient": "garlic-powder",
               "name": "Vitlökspulver"
             },
@@ -48241,8 +48241,8 @@
           "name": "Potato starch"
         },
         {
-          "quantity": 12,
-          "unit": "g",
+          "quantity": 1.5,
+          "unit": "tbsp",
           "ingredient": "psyllium-husk",
           "name": "Psyllium husk"
         },
@@ -48322,8 +48322,8 @@
               "name": "Potetmel"
             },
             {
-              "quantity": 12,
-              "unit": "g",
+              "quantity": 1.5,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfrøskall"
             },
@@ -48405,8 +48405,8 @@
               "name": "Potatismjöl"
             },
             {
-              "quantity": 12,
-              "unit": "g",
+              "quantity": 1.5,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfröskal"
             },
@@ -49502,10 +49502,11 @@
           "note": "peeled and grated"
         },
         {
-          "quantity": 1.5,
-          "unit": "pinch",
+          "quantity": null,
+          "unit": "",
           "ingredient": "salt",
-          "name": "Salt"
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -49562,10 +49563,11 @@
               "note": "skrelt og revet"
             },
             {
-              "quantity": 1.5,
-              "unit": "pinch",
+              "quantity": null,
+              "unit": "",
               "ingredient": "salt",
-              "name": "Salt"
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -49622,10 +49624,11 @@
               "note": "skalad och riven"
             },
             {
-              "quantity": 1.5,
-              "unit": "pinch",
+              "quantity": null,
+              "unit": "",
               "ingredient": "salt",
-              "name": "Salt"
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -50118,10 +50121,11 @@
           "name": "Vanilla extract"
         },
         {
-          "quantity": 1,
-          "unit": "pinch",
+          "quantity": null,
+          "unit": "",
           "ingredient": "salt",
-          "name": "Salt"
+          "name": "Salt",
+          "note": "to taste"
         }
       ],
       "steps": [
@@ -50176,10 +50180,11 @@
               "name": "Vaniljeekstrakt"
             },
             {
-              "quantity": 1,
-              "unit": "klype",
+              "quantity": null,
+              "unit": "",
               "ingredient": "salt",
-              "name": "Salt"
+              "name": "Salt",
+              "note": "etter smak"
             }
           ],
           "steps": [
@@ -50234,10 +50239,11 @@
               "name": "Vaniljextrakt"
             },
             {
-              "quantity": 1,
-              "unit": "nypa",
+              "quantity": null,
+              "unit": "",
               "ingredient": "salt",
-              "name": "Salt"
+              "name": "Salt",
+              "note": "efter smak"
             }
           ],
           "steps": [
@@ -50331,8 +50337,8 @@
           "name": "Shredded coconut"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 0.5,
+          "unit": "pcs",
           "ingredient": "limes",
           "name": "Limes",
           "note": "zest, grated, for the base"
@@ -50389,8 +50395,8 @@
           "name": "Lime juice"
         },
         {
-          "quantity": 1,
-          "unit": "tsp",
+          "quantity": 0.5,
+          "unit": "pcs",
           "ingredient": "limes",
           "name": "Limes",
           "note": "zest, grated, for the filling"
@@ -50449,8 +50455,8 @@
               "name": "Kokosmasse"
             },
             {
-              "quantity": 1,
-              "unit": "ts",
+              "quantity": 0.5,
+              "unit": "pcs",
               "ingredient": "limes",
               "name": "Lime",
               "note": "skall, revet, til bunnen"
@@ -50507,8 +50513,8 @@
               "name": "Limesaft"
             },
             {
-              "quantity": 1,
-              "unit": "ts",
+              "quantity": 0.5,
+              "unit": "pcs",
               "ingredient": "limes",
               "name": "Lime",
               "note": "skall, revet, til kremen"
@@ -50567,8 +50573,8 @@
               "name": "Riven kokos"
             },
             {
-              "quantity": 1,
-              "unit": "tsk",
+              "quantity": 0.5,
+              "unit": "pcs",
               "ingredient": "limes",
               "name": "Lime",
               "note": "skal, rivet, till botten"
@@ -50625,8 +50631,8 @@
               "name": "Limejuice"
             },
             {
-              "quantity": 1,
-              "unit": "tsk",
+              "quantity": 0.5,
+              "unit": "pcs",
               "ingredient": "limes",
               "name": "Lime",
               "note": "skal, rivet, till krämen"
@@ -51429,8 +51435,8 @@
           "name": "Potato starch"
         },
         {
-          "quantity": 12,
-          "unit": "g",
+          "quantity": 1.5,
+          "unit": "tbsp",
           "ingredient": "psyllium-husk",
           "name": "Psyllium husk"
         },
@@ -51512,8 +51518,8 @@
               "name": "Potetmel"
             },
             {
-              "quantity": 12,
-              "unit": "g",
+              "quantity": 1.5,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfrøskall"
             },
@@ -51595,8 +51601,8 @@
               "name": "Potatismjöl"
             },
             {
-              "quantity": 12,
-              "unit": "g",
+              "quantity": 1.5,
+              "unit": "tbsp",
               "ingredient": "psyllium-husk",
               "name": "Psylliumfröskal"
             },

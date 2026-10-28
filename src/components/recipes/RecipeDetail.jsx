@@ -221,11 +221,12 @@ export default function RecipeDetail() {
       const held = ing.scalesLinearly === false && displayServings !== recipe.servings
         ? ` — ${t('recipeDetail.doesNotScale', { defaultValue: 'adjust manually' })}`
         : ''
-      const { name, quantityLabel } = scaledRow(ing)
+      const { name, quantityLabel, spoonHint: gramHint } = scaledRow(ing)
       return {
         name: ing.note ? name : name + held,
         note: ing.note ? ing.note + held : '',
         quantityLabel,
+        spoonHint: gramHint || '',
       }
     })
     printRecipe({
@@ -553,6 +554,9 @@ export default function RecipeDetail() {
                     </span>
                     <span className={`text-sm font-medium flex-shrink-0 tabular-nums whitespace-nowrap transition-colors ${isChecked ? 'text-slate-300 line-through' : 'text-slate-900'}`}>
                       {row.quantityLabel}
+                      {row.spoonHint && (
+                        <span className={`text-xs font-normal ${isChecked ? 'text-slate-300' : 'text-slate-400'}`}>{' '}{row.spoonHint}</span>
+                      )}
                     </span>
                   </button>
                 )

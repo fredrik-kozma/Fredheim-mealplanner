@@ -17,9 +17,13 @@
  *   quantity-without-unit a number with no unit
  *   missing-translation   no `translations.no|sv` title / ingredients / steps, or no en title
  *   misaligned            no/sv list differs from en in length, id, quantity or unit at an index
+ *   missing-spoon-grams   (soft) under 30 g of a seed, powder, paste, spice, baking ingredient
+ *                         or herb whose dictionary entry has no spoonGrams.gPerTsp, so the
+ *                         recipe cannot show its "(≈ 2 tsp)" hint. Checked on the en list.
  *
  * Known leftovers are listed in scripts/data/check-recipes-baseline.json and are reported
  * as warnings; anything not in the baseline is an error and the exit code is 1.
+ * Soft issues are always warnings (never baselined), and errors under --strict.
  *
  * Usage:
  *   npm run check-recipes                         # all packs
@@ -78,6 +82,28 @@ const ALLOWED_TEXT = {
   pcs: 'pieces (pcs)',
 }
 
+// Kinds of ingredient measured with a spoon when the amount is small: their
+// dictionary entries need spoonGrams for the recipe view's "(≈ 2 tsp)" hint.
+// The aisles are too coarse to tell (seeds and nuts share one), so this goes
+// by id; oils, extracts, sauces and syrups are liquids and never count.
+const SPOON_GRAMS_MAX = 30.5
+const NOT_SPOON_KIND = /oil|extract|sauce|syrup/
+const SPOON_KINDS = [
+  ['seed', () => true, /seed|chia|flax|psyllium/],
+  ['powder', () => true, /powder|ground|starch/],
+  ['paste', () => true, /paste|puree|tahini|miso|.-butter$/],
+  ['baking', () => true, /yeast|baking|agar|gelatin|cocoa|carob|vanilla/],
+  ['spice', (e) => e.aisle === 'Oils & Condiments', /salt|pepper|masala|sumac|chili-flakes|spice|-dried$/],
+  ['herb', (e) => e.aisle === 'Produce', /herb|basil|parsley|coriander|cilantro|mint|dill|chive|thyme|rosemary|oregano|sage|tarragon|marjoram|lovage|ginger/],
+]
+
+/** 'seed' | 'powder' | 'paste' | 'baking' | 'spice' | 'herb', or null. */
+export function spoonKind(entry) {
+  if (!entry?.id || NOT_SPOON_KIND.test(entry.id)) return null
+  const hit = SPOON_KINDS.find(([, inAisle, re]) => inAisle(entry) && re.test(entry.id))
+  return hit ? hit[0] : null
+}
+
 // ---------------------------------------------------------------- core
 /**
  * Checks recipes against the dictionary. Pure: no files, no console.
@@ -94,9 +120,10 @@ export function checkPacks(packs, dictionary, { only = () => true } = {}) {
   for (const pack of packs) {
     for (const recipe of pack.recipes || []) {
       if (!only(recipe, pack)) continue
-      const add = (lang, index, code, detail, message) => issues.push({
+      const add = (lang, index, code, detail, message, soft = false) => issues.push({
         pack: pack.id, recipe: recipe.id, title: recipe.title, lang, index, code, message,
         key: [pack.id, recipe.id, lang, code, detail].join('|'),
+        ...(soft && { soft: true }),
       })
 
       if (!String(recipe.title || '').trim()) add('en', null, 'missing-translation', 'title', 'no English title')
@@ -157,6 +184,12 @@ export function checkPacks(packs, dictionary, { only = () => true } = {}) {
             add(lang, i, 'bad-unit', `${row.ingredient}:${normalizeUnit(row.unit)}`,
               `${row.ingredient}: "${unitText}" should be in ${ALLOWED_TEXT[entry.preferredUnit] || entry.preferredUnit} (dictionary unit ${entry.preferredUnit})`)
           }
+          // A dictionary gap, so once per recipe row (en), not per language.
+          if (lang === 'en' && normalizeUnit(row.unit) === 'g' && q > 0 && q < SPOON_GRAMS_MAX
+            && !(entry.spoonGrams?.gPerTsp > 0) && spoonKind(entry)) {
+            add(lang, i, 'missing-spoon-grams', row.ingredient,
+              `${row.ingredient}: ${unitText} of a ${spoonKind(entry)}, but the dictionary entry has no spoonGrams.gPerTsp (no "≈ tsp" hint)`, true)
+          }
         })
       }
     }
@@ -167,12 +200,14 @@ export function checkPacks(packs, dictionary, { only = () => true } = {}) {
 /**
  * Splits issues into errors and baselined warnings. The baseline is a multiset of
  * keys: a recipe that had two known leftovers may keep two, not gain a third.
+ * Soft issues are warnings without the baseline, and errors when `strict`.
  */
-export function applyBaseline(issues, baselineKeys = []) {
+export function applyBaseline(issues, baselineKeys = [], { strict = false } = {}) {
   const left = new Map()
   for (const k of baselineKeys) left.set(k, (left.get(k) || 0) + 1)
   const errors = [], warnings = []
   for (const issue of issues) {
+    if (issue.soft) { (strict ? errors : warnings).push(issue); continue }
     const n = left.get(issue.key) || 0
     if (n > 0) { left.set(issue.key, n - 1); warnings.push(issue) } else errors.push(issue)
   }
@@ -231,7 +266,7 @@ function main(argv) {
 
   if (flag('--update-baseline')) {
     if (recipeIds || packIds || since !== null || changed) throw new Error('--update-baseline must run on all packs (no filters)')
-    const keys = issues.map((i) => i.key).sort()
+    const keys = issues.filter((i) => !i.soft).map((i) => i.key).sort()
     fs.writeFileSync(BASELINE_PATH, JSON.stringify({
       description: 'Known ingredient-standard leftovers in the built-in packs, as of when this file was generated. scripts/check-recipes.mjs reports these as warnings instead of errors. Regenerate with: npm run check-recipes -- --update-baseline (only after deliberately accepting the current state).',
       generated: new Date().toISOString().slice(0, 10),
@@ -243,7 +278,9 @@ function main(argv) {
   }
 
   const baseline = flag('--strict') || !fs.existsSync(BASELINE_PATH) ? [] : readJson(BASELINE_PATH).keys
-  const { errors, warnings } = applyBaseline(issues, baseline)
+  const { errors, warnings: allWarnings } = applyBaseline(issues, baseline, { strict: flag('--strict') })
+  const warnings = allWarnings.filter((w) => !w.soft)
+  const softWarnings = allWarnings.filter((w) => w.soft)
 
   const printGroup = (list, heading) => {
     const byRecipe = new Map()
@@ -268,6 +305,8 @@ function main(argv) {
     if (flag('--verbose')) printGroup(warnings, 'WARNINGS (baseline)')
     else console.log('    (--verbose lists them)')
   }
+  // Few, and each one is a dictionary entry to fill in, so always listed.
+  if (softWarnings.length) printGroup(softWarnings, `WARNINGS (${softWarnings.length}, add spoonGrams to the dictionary entry; errors under --strict)`)
   if (errors.length) {
     printGroup(errors, `ERRORS (${errors.length})`)
     console.log('\nFix the rows above: see CLAUDE.md "Adding or editing recipes" and recipe-packs-template/INGREDIENT_UNITS.md.')

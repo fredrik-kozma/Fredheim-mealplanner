@@ -15,9 +15,11 @@
 
 import { formatQuantity } from './formatQuantity.js'
 import { ingredientLabel } from './ingredientDictionary.js'
+import { formatGramSpoonHint } from './gramSpoonHint.js'
 
 function qty(ing, lang) {
-  return formatQuantity(ing.quantity, ing.unit, lang)
+  const hint = formatGramSpoonHint({ quantity: ing.quantity, unit: ing.unit, ingredientId: ing.ingredient, lang })
+  return [formatQuantity(ing.quantity, ing.unit, lang), hint].filter(Boolean).join(' ')
 }
 
 /**

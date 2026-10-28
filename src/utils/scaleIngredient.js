@@ -1,6 +1,7 @@
 import { normalizeUnit, CANONICAL_UNITS, convertToSystem } from './unitNormalizer.js'
 import { formatQuantity } from './formatQuantity.js'
 import { nameForAmount, prefersSpoons } from './ingredientDictionary.js'
+import { formatGramSpoonHint } from './gramSpoonHint.js'
 
 /**
  * Scales one ingredient amount and renders it as a display string.
@@ -32,7 +33,9 @@ export function formatScaledQuantity(opts) {
 
 /**
  * One recipe row, scaled: its name — singular when the amount shown is
- * one or less of a counted thing ("½ Sitron") — and its amount label.
+ * one or less of a counted thing ("½ Sitron") — its amount label, and
+ * the "(≈ 2 tsp)" for a small amount in grams (null when there is none;
+ * the caller decides whether to show it).
  * `opts` as formatScaledQuantity, minus quantity/unit/ingredient.
  */
 export function formatScaledIngredient(row, opts) {
@@ -41,6 +44,7 @@ export function formatScaledIngredient(row, opts) {
   return {
     name: nameForAmount(row, lang, scaled.quantity, scaled.unit),
     quantityLabel: formatQuantity(scaled.quantity, scaled.unit, lang),
+    spoonHint: formatGramSpoonHint({ ...scaled, ingredientId: row.ingredient, lang }),
   }
 }
 

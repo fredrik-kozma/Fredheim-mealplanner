@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --import ./tests/support/json-loader.mjs --test tests/formatQuantity.test.js tests/ingredientCategorizer.test.js tests/ingredientDictionary.test.js tests/ingredientPolish.test.js tests/checkRecipes.test.js",
+    "test": "node --import ./tests/support/json-loader.mjs --test tests/formatQuantity.test.js tests/gramSpoonHint.test.js tests/ingredientCategorizer.test.js tests/ingredientDictionary.test.js tests/ingredientPolish.test.js tests/checkRecipes.test.js",
     "check-recipes": "node scripts/check-recipes.mjs"
   },
   "dependencies": {

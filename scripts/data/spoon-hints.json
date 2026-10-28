@@ -1,0 +1,282 @@
+{
+  "about": "Spoon densities for recipe-view hints next to small gram amounts. Applied into dictionary as entry.spoonGrams = { gPerTsp }. gPerTbsp is always 3 × gPerTsp (same volume). Thresholds and rounding live in the helper, not here.",
+  "sourceSnapshot": "Box packs + PC dictionary (agar preferredUnit already g). Agar spoon rows still tsp/tbsp on box packs until agar-decisions apply; after that they are 4 g / 6 g.",
+  "entries": {
+    "agar-agar": {
+      "gPerTsp": 2,
+      "gPerTbsp": 6,
+      "confidence": "high",
+      "note": "Packed powder. Matches agar-decisions.json. Flakes are ~3× less potent by volume — not used here."
+    },
+    "psyllium-husk": {
+      "gPerTsp": 2.7,
+      "gPerTbsp": 8,
+      "confidence": "high",
+      "note": "Matches house conversion used when grams → tbsp (1 tbsp = 8 g). Fibre husk powder."
+    },
+    "flaxseed-ground": {
+      "gPerTsp": 2.3,
+      "gPerTbsp": 7,
+      "confidence": "high",
+      "note": "Ground flax meal ~7 g/tbsp (USDA / CompareSeeds). Whole flax is denser — see flaxseed-whole."
+    },
+    "flaxseed-whole": {
+      "gPerTsp": 3.4,
+      "gPerTbsp": 10.3,
+      "confidence": "high",
+      "note": "USDA Seeds, flaxseed: 1 tbsp whole = 10.3 g."
+    },
+    "chia-seeds": {
+      "gPerTsp": 3.5,
+      "gPerTbsp": 10.5,
+      "confidence": "high",
+      "note": "USDA chia: ~10.5 g/tbsp. Some converters list 12 g/tbsp; we use USDA."
+    },
+    "carob-powder": {
+      "gPerTsp": 2.5,
+      "gPerTbsp": 7.5,
+      "confidence": "medium",
+      "note": "Aligned with the 2 tbsp → 15 g conversion already applied. Branded Now Foods lists ~10 g/tbsp; powder packs differently."
+    },
+    "dry-yeast": {
+      "gPerTsp": 3,
+      "gPerTbsp": 9,
+      "confidence": "high",
+      "note": "Standard baking: 1 tsp instant/dry yeast ≈ 3 g; an 11 g envelope ≈ 3.5 tsp."
+    },
+    "miso-paste": {
+      "gPerTsp": 5.7,
+      "gPerTbsp": 17,
+      "confidence": "high",
+      "note": "USDA white miso ≈ 17 g/tbsp. Matches agar/unit decisions for miso."
+    },
+    "nutritional-yeast": {
+      "gPerTsp": 1.7,
+      "gPerTbsp": 5,
+      "confidence": "high",
+      "note": "INGREDIENT_UNITS.md: nutritional yeast flakes 1 tbsp = 5 g. Preferred unit is already tbsp; hint only if a row is somehow in grams."
+    },
+    "sesame-seeds": {
+      "gPerTsp": 3,
+      "gPerTbsp": 9,
+      "confidence": "high",
+      "note": "USDA / CompareSeeds: ~9 g/tbsp whole sesame."
+    },
+    "sunflower-seeds": {
+      "gPerTsp": 3,
+      "gPerTbsp": 9,
+      "confidence": "medium",
+      "note": "Similar density to sesame; used as garnish in small gram amounts."
+    },
+    "pumpkin-seeds": {
+      "gPerTsp": 3.3,
+      "gPerTbsp": 10,
+      "confidence": "medium",
+      "note": "USDA pepitas ~10 g/tbsp. Only useful as a garnish hint under ~30 g."
+    },
+    "potato-starch": {
+      "gPerTsp": 2.8,
+      "gPerTbsp": 8.3,
+      "confidence": "medium",
+      "note": "App nutrition density for starches ~0.55 g/ml → ~8.3 g/tbsp."
+    },
+    "cornstarch": {
+      "gPerTsp": 2.8,
+      "gPerTbsp": 8.3,
+      "confidence": "medium",
+      "note": "Same starch density as potato starch. Preferred unit is already tbsp."
+    },
+    "tapioca-starch": {
+      "gPerTsp": 2.8,
+      "gPerTbsp": 8.3,
+      "confidence": "medium",
+      "note": "Same starch density. Preferred unit is already tbsp."
+    },
+    "tahini": {
+      "gPerTsp": 5,
+      "gPerTbsp": 15,
+      "confidence": "high",
+      "note": "House density tahini 100 g/dl → 15 g/tbsp. Spoon-friendly paste."
+    },
+    "peanut-butter": {
+      "gPerTsp": 5.3,
+      "gPerTbsp": 16,
+      "confidence": "medium",
+      "note": "Typical smooth peanut butter ~16 g/tbsp. Sticky; hint still helps."
+    },
+    "almond-butter": {
+      "gPerTsp": 5.3,
+      "gPerTbsp": 16,
+      "confidence": "medium",
+      "note": "Same ballpark as peanut butter."
+    },
+    "tomato-puree": {
+      "gPerTsp": 5.3,
+      "gPerTbsp": 16,
+      "confidence": "medium",
+      "note": "House density tomato purée 105 g/dl → ~15.8 g/tbsp. Useful for the small 5–16 g rows."
+    },
+    "date-paste": {
+      "gPerTsp": 5.5,
+      "gPerTbsp": 16.5,
+      "confidence": "low",
+      "note": "Thick paste; density varies with water content. Round numbers only."
+    },
+    "cinnamon-ground": {
+      "gPerTsp": 2.6,
+      "gPerTbsp": 7.8,
+      "confidence": "high",
+      "note": "Matches unit-decisions conversion. Preferred unit is tsp; hint only if a row is in grams."
+    },
+    "onion-powder": {
+      "gPerTsp": 2.4,
+      "gPerTbsp": 7.2,
+      "confidence": "high",
+      "note": "Matches unit-decisions (12 g → 5 tsp)."
+    },
+    "garlic-powder": {
+      "gPerTsp": 3,
+      "gPerTbsp": 9,
+      "confidence": "high",
+      "note": "Matches unit-decisions (9 g → 3 tsp)."
+    },
+    "baking-powder": {
+      "gPerTsp": 4,
+      "gPerTbsp": 12,
+      "confidence": "medium",
+      "note": "Common baking conversion ~4–5 g/tsp. Preferred unit already tsp."
+    },
+    "baking-soda": {
+      "gPerTsp": 4.5,
+      "gPerTbsp": 13.5,
+      "confidence": "medium",
+      "note": "Slightly denser than baking powder. Preferred unit already tsp."
+    },
+    "salt": {
+      "gPerTsp": 6,
+      "gPerTbsp": 18,
+      "confidence": "high",
+      "note": "House salt ~1.2 g/ml → 6 g/tsp. Preferred unit tsp; rare leftover gram rows only."
+    },
+    "herb-salt": {
+      "gPerTsp": 5,
+      "gPerTbsp": 15,
+      "confidence": "low",
+      "note": "Blend density varies by brand; slightly lighter than plain salt."
+    },
+    "cumin-ground": {
+      "gPerTsp": 2.1,
+      "gPerTbsp": 6.3,
+      "confidence": "medium",
+      "note": "Typical ground cumin ~2 g/tsp."
+    },
+    "turmeric-ground": {
+      "gPerTsp": 2.2,
+      "gPerTbsp": 6.6,
+      "confidence": "medium",
+      "note": "Typical ground turmeric ~2–2.5 g/tsp."
+    },
+    "paprika-powder": {
+      "gPerTsp": 2.3,
+      "gPerTbsp": 6.9,
+      "confidence": "medium",
+      "note": "Typical paprika ~2.3 g/tsp."
+    },
+    "smoked-paprika": {
+      "gPerTsp": 2.3,
+      "gPerTbsp": 6.9,
+      "confidence": "medium",
+      "note": "Same as paprika powder."
+    },
+    "black-pepper": {
+      "gPerTsp": 2.3,
+      "gPerTbsp": 6.9,
+      "confidence": "medium",
+      "note": "Ground black pepper ~2.3 g/tsp."
+    },
+    "cayenne-pepper": {
+      "gPerTsp": 1.8,
+      "gPerTbsp": 5.4,
+      "confidence": "medium",
+      "note": "Fine powder, a bit lighter than black pepper."
+    },
+    "mustard-seeds": {
+      "gPerTsp": 3.3,
+      "gPerTbsp": 10,
+      "confidence": "medium",
+      "note": "Whole mustard seeds ~10 g/tbsp."
+    },
+    "vanilla-powder": {
+      "gPerTsp": 2.5,
+      "gPerTbsp": 7.5,
+      "confidence": "low",
+      "note": "Varies by brand (with/without sugar). Prefer tsp rows."
+    },
+    "parsley": {
+      "gPerTsp": 1.333,
+      "gPerTbsp": 4,
+      "confidence": "medium",
+      "note": "USDA, chopped"
+    },
+    "coriander-fresh": {
+      "gPerTsp": 0.533,
+      "gPerTbsp": 1.6,
+      "confidence": "medium",
+      "note": "USDA, chopped"
+    },
+    "mint": {
+      "gPerTsp": 0.533,
+      "gPerTbsp": 1.6,
+      "confidence": "medium",
+      "note": "USDA, chopped"
+    },
+    "dill": {
+      "gPerTsp": 0.333,
+      "gPerTbsp": 1,
+      "confidence": "medium",
+      "note": "USDA, chopped"
+    },
+    "chives": {
+      "gPerTsp": 1,
+      "gPerTbsp": 3,
+      "confidence": "medium",
+      "note": "USDA, chopped"
+    },
+    "basil": {
+      "gPerTsp": 0.867,
+      "gPerTbsp": 2.6,
+      "confidence": "medium",
+      "note": "USDA, chopped"
+    },
+    "thyme": {
+      "gPerTsp": 0.8,
+      "gPerTbsp": 2.4,
+      "confidence": "medium",
+      "note": "USDA, chopped"
+    },
+    "rosemary": {
+      "gPerTsp": 0.567,
+      "gPerTbsp": 1.7,
+      "confidence": "medium",
+      "note": "USDA, chopped"
+    },
+    "herbs-fresh-mixed": {
+      "gPerTsp": 1,
+      "gPerTbsp": 3,
+      "confidence": "medium",
+      "note": "USDA, chopped"
+    },
+    "ginger-fresh": {
+      "gPerTsp": 2,
+      "gPerTbsp": 6,
+      "confidence": "low",
+      "note": "Grated/minced ginger. A knob is ~30 g; spoon hints only for small grated amounts."
+    }
+  },
+  "excluded": [
+    "Flour, oats, polenta, breadcrumbs — weighed, not spooned at these sizes.",
+    "Vegetables, fruit, whole nuts, dates, olives, tofu, crispbread — counting/weighing is natural; a spoon hint is silly.",
+    "Oils, plant milks, water, juices — already volume.",
+    "Cocoa — not in the dictionary (carob covers the chocolate-like powder in this collection)."
+  ]
+}

@@ -117,9 +117,9 @@ test('a counted ingredient reads singular at one or less, plural above, in every
 test('recipe view and shopping list both say "½ Sitron"', () => {
   const r = recipe('r', [['lemons', 0.5, 'pcs'], ['carrots', 3, 'pcs']])
   const view = formatScaledIngredient(r.translations.no.ingredients[0], { fromServings: 4, toServings: 4, lang: 'no' })
-  assert.deepEqual(view, { name: 'Sitron', quantityLabel: '½ stk' })
+  assert.deepEqual(view, { name: 'Sitron', quantityLabel: '½ stk', spoonHint: null })
   const doubled = formatScaledIngredient(r.translations.no.ingredients[0], { fromServings: 4, toServings: 8, lang: 'no' })
-  assert.deepEqual(doubled, { name: 'Sitron', quantityLabel: '1 stk' })
+  assert.deepEqual(doubled, { name: 'Sitron', quantityLabel: '1 stk', spoonHint: null })
   const four = formatScaledIngredient(r.translations.no.ingredients[0], { fromServings: 4, toServings: 16, lang: 'no' })
   assert.equal(four.name, 'Sitroner')
 

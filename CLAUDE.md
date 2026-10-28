@@ -42,8 +42,21 @@ in `ingredients`, `translations.no.ingredients` and `translations.sv.ingredients
 7. **Not in the dictionary?** Do **not** invent an id, a near-duplicate, or
    fall back to a free-text name. Stop and ask the user, proposing a new
    entry: `id`, `names` en/no/sv, `singular` (if countable), `synonyms`,
-   `aisle` (one of the dictionary's `aisles`), `preferredUnit`. Add it to
-   the dictionary only after they approve.
+   `aisle` (one of the dictionary's `aisles`), `preferredUnit`, and
+   `spoonGrams` when rule 8 applies. Add it to the dictionary only after
+   they approve.
+8. **Spoon weights.** Small amounts of spoon-measured ingredients (seeds,
+   powders, pastes, spices, yeast, herbs, etc.) are stored in grams, and
+   the recipe view shows "4 g (≈ 2 tsp)" automatically
+   (`src/utils/gramSpoonHint.js`). That only works when the dictionary
+   entry has `"spoonGrams": { "gPerTsp": <number> }` (a tbsp is 3 × that;
+   placed right after `preferredUnit`). Every such entry must have it. When
+   proposing a new entry of that kind, include a realistic `gPerTsp` with a
+   short basis note (USDA, package, house conversion — see
+   `scripts/data/spoon-hints.json` for examples), and ask Fredrik if
+   unsure. check-recipes flags a gram row under 30 g of such an ingredient
+   without `spoonGrams` (`missing-spoon-grams`: a warning normally, an
+   error under `--strict`).
 
 **Before finishing:**
 

@@ -120,6 +120,36 @@ test('baseline: known leftovers are warnings, a new one of the same kind is an e
   assert.equal(applyBaseline(check(recipe('new', [row('carrots', 2, 'tbsp')])), known).errors.length, 3)
 })
 
+test('a few grams of a spoon-measured kind needs spoon weights in the dictionary', () => {
+  const dict = structuredClone(DICT)
+  delete dict.entries.find((e) => e.id === 'chia-seeds').spoonGrams
+  const checkWith = (r) => checkPacks([{ id: 'test-pack', recipes: [r] }], dict)
+  const issues = checkWith(recipe('chia', [row('chia-seeds', 10, 'g')]))
+  assert.deepEqual(codes(issues), ['missing-spoon-grams'])
+  assert.equal(issues.length, 1) // a dictionary gap, reported once, not per language
+  assert.equal(issues[0].soft, true)
+  // a warning normally, an error under --strict
+  assert.deepEqual(applyBaseline(issues, []).errors, [])
+  assert.equal(applyBaseline(issues, [], { strict: true }).errors.length, 1)
+  // not for large amounts, entries that have spoon weights, or things that are weighed
+  assert.deepEqual(checkWith(recipe('lots', [row('chia-seeds', 50, 'g')])), [])
+  assert.deepEqual(check(recipe('ok', [row('chia-seeds', 10, 'g')])), [])
+  assert.deepEqual(check(recipe('nuts', [row('walnuts', 20, 'g'), row('rolled-oats', 20, 'g')])), [])
+})
+
+test('spoon kinds: seeds, powders, pastes, spices, herbs — not oils, nuts or vegetables', async () => {
+  const { spoonKind } = await import('../scripts/check-recipes.mjs')
+  const kind = (id) => spoonKind(DICT.entries.find((e) => e.id === id))
+  assert.equal(kind('chia-seeds'), 'seed')
+  assert.equal(kind('curry-powder'), 'powder')
+  assert.equal(kind('miso-paste'), 'paste')
+  assert.equal(kind('dry-yeast'), 'baking')
+  assert.equal(kind('herbs-fresh-mixed'), 'herb')
+  assert.equal(kind('rapeseed-oil'), null)
+  assert.equal(kind('walnuts'), null)
+  assert.equal(kind('carrots'), null)
+})
+
 test('the checker passes on the current packs (only baselined leftovers)', () => {
   const out = execFileSync(process.execPath, ['scripts/check-recipes.mjs'], { encoding: 'utf8' })
   assert.match(out, /OK: no new problems/)

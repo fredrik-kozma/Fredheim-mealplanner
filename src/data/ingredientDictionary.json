@@ -101,6 +101,9 @@
       "id": "basil",
       "aisle": "Produce",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 0.867
+      },
       "names": {
         "en": "Basil",
         "no": "Basilikum",
@@ -367,6 +370,9 @@
       "id": "chives",
       "aisle": "Produce",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 1
+      },
       "names": {
         "en": "Chives",
         "no": "Gressløk",
@@ -397,6 +403,9 @@
       "id": "dill",
       "aisle": "Produce",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 0.333
+      },
       "names": {
         "en": "Dill",
         "no": "Dill",
@@ -463,6 +472,9 @@
       "id": "coriander-fresh",
       "aisle": "Produce",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 0.533
+      },
       "names": {
         "en": "Fresh coriander (cilantro)",
         "no": "Fersk koriander",
@@ -487,6 +499,9 @@
       "id": "ginger-fresh",
       "aisle": "Produce",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 2
+      },
       "names": {
         "en": "Fresh ginger",
         "no": "Fersk ingefær",
@@ -502,6 +517,9 @@
       "id": "herbs-fresh-mixed",
       "aisle": "Produce",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 1
+      },
       "names": {
         "en": "Fresh herbs (mixed)",
         "no": "Friske urter",
@@ -737,6 +755,9 @@
       "id": "mint",
       "aisle": "Produce",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 0.533
+      },
       "names": {
         "en": "Mint",
         "no": "Mynte",
@@ -827,6 +848,9 @@
       "id": "parsley",
       "aisle": "Produce",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 1.333
+      },
       "names": {
         "en": "Parsley",
         "no": "Persille",
@@ -1058,6 +1082,9 @@
       "id": "rosemary",
       "aisle": "Produce",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 0.567
+      },
       "names": {
         "en": "Rosemary",
         "no": "Rosmarin",
@@ -1217,6 +1244,9 @@
       "id": "thyme",
       "aisle": "Produce",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 0.8
+      },
       "names": {
         "en": "Thyme",
         "no": "Timian",
@@ -1457,7 +1487,10 @@
     {
       "id": "agar-agar",
       "aisle": "Bakery & Grains",
-      "preferredUnit": "tsp",
+      "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 2
+      },
       "names": {
         "en": "Agar-agar",
         "no": "Agar-agar",
@@ -1473,6 +1506,9 @@
       "id": "baking-powder",
       "aisle": "Bakery & Grains",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 4
+      },
       "names": {
         "en": "Baking powder",
         "no": "Bakepulver",
@@ -1488,6 +1524,9 @@
       "id": "baking-soda",
       "aisle": "Bakery & Grains",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 4.5
+      },
       "names": {
         "en": "Baking soda",
         "no": "Natron",
@@ -1615,6 +1654,9 @@
       "id": "carob-powder",
       "aisle": "Bakery & Grains",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 2.5
+      },
       "names": {
         "en": "Carob powder",
         "no": "Karobpulver",
@@ -1660,6 +1702,9 @@
       "id": "cornstarch",
       "aisle": "Bakery & Grains",
       "preferredUnit": "tbsp",
+      "spoonGrams": {
+        "gPerTsp": 2.8
+      },
       "names": {
         "en": "Cornstarch",
         "no": "Maisstivelse",
@@ -1683,6 +1728,9 @@
       "id": "dry-yeast",
       "aisle": "Bakery & Grains",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 3
+      },
       "names": {
         "en": "Dry yeast",
         "no": "Tørrgjær",
@@ -1787,6 +1835,9 @@
       "id": "potato-starch",
       "aisle": "Bakery & Grains",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 2.8
+      },
       "names": {
         "en": "Potato starch",
         "no": "Potetmel",
@@ -1808,6 +1859,9 @@
       "id": "psyllium-husk",
       "aisle": "Bakery & Grains",
       "preferredUnit": "tbsp",
+      "spoonGrams": {
+        "gPerTsp": 2.7
+      },
       "names": {
         "en": "Psyllium husk",
         "no": "Psylliumfrøskall",
@@ -1969,6 +2023,9 @@
       "id": "tapioca-starch",
       "aisle": "Bakery & Grains",
       "preferredUnit": "tbsp",
+      "spoonGrams": {
+        "gPerTsp": 2.8
+      },
       "names": {
         "en": "Tapioca starch",
         "no": "Tapiokastivelse",
@@ -2129,6 +2186,9 @@
       "id": "chia-seeds",
       "aisle": "Canned & Dried",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 3.5
+      },
       "names": {
         "en": "Chia seeds",
         "no": "Chiafrø",
@@ -2210,6 +2270,9 @@
       "id": "date-paste",
       "aisle": "Canned & Dried",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 5.5
+      },
       "names": {
         "en": "Date paste",
         "no": "Daddelpuré",
@@ -2310,6 +2373,9 @@
       "id": "flaxseed-ground",
       "aisle": "Canned & Dried",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 2.3
+      },
       "names": {
         "en": "Flaxseed, ground",
         "no": "Linfrø, malt",
@@ -2332,6 +2398,9 @@
       "id": "flaxseed-whole",
       "aisle": "Canned & Dried",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 3.4
+      },
       "names": {
         "en": "Flaxseed, whole",
         "no": "Linfrø, hele",
@@ -2438,6 +2507,9 @@
       "id": "nutritional-yeast",
       "aisle": "Canned & Dried",
       "preferredUnit": "tbsp",
+      "spoonGrams": {
+        "gPerTsp": 1.7
+      },
       "names": {
         "en": "Nutritional yeast",
         "no": "Næringsgjær",
@@ -2555,6 +2627,9 @@
       "id": "pumpkin-seeds",
       "aisle": "Canned & Dried",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 3.3
+      },
       "names": {
         "en": "Pumpkin seeds",
         "no": "Gresskarkjerner",
@@ -2600,6 +2675,9 @@
       "id": "sesame-seeds",
       "aisle": "Canned & Dried",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 3
+      },
       "names": {
         "en": "Sesame seeds",
         "no": "Sesamfrø",
@@ -2658,6 +2736,9 @@
       "id": "sunflower-seeds",
       "aisle": "Canned & Dried",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 3
+      },
       "names": {
         "en": "Sunflower seeds",
         "no": "Solsikkefrø",
@@ -2673,6 +2754,9 @@
       "id": "tahini",
       "aisle": "Canned & Dried",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 5
+      },
       "names": {
         "en": "Tahini",
         "no": "Tahini",
@@ -2688,6 +2772,9 @@
       "id": "tomato-puree",
       "aisle": "Canned & Dried",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 5.3
+      },
       "names": {
         "en": "Tomato purée",
         "no": "Tomatpuré",
@@ -2825,6 +2912,9 @@
       "id": "almond-butter",
       "aisle": "Oils & Condiments",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 5.3
+      },
       "names": {
         "en": "Almond butter",
         "no": "Mandelsmør",
@@ -2890,6 +2980,9 @@
       "id": "black-pepper",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 2.3
+      },
       "names": {
         "en": "Black pepper",
         "no": "Svart pepper",
@@ -2956,6 +3049,9 @@
       "id": "cayenne-pepper",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 1.8
+      },
       "names": {
         "en": "Cayenne pepper",
         "no": "Kajennepepper",
@@ -3001,6 +3097,9 @@
       "id": "cinnamon-ground",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 2.6
+      },
       "names": {
         "en": "Cinnamon, ground",
         "no": "Kanel, malt",
@@ -3083,6 +3182,9 @@
       "id": "cumin-ground",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 2.1
+      },
       "names": {
         "en": "Cumin, ground",
         "no": "Spisskummen, malt",
@@ -3150,6 +3252,9 @@
       "id": "garlic-powder",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 3
+      },
       "names": {
         "en": "Garlic powder",
         "no": "Hvitløkspulver",
@@ -3180,6 +3285,9 @@
       "id": "herb-salt",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 5
+      },
       "names": {
         "en": "Herb salt",
         "no": "Urtesalt",
@@ -3270,6 +3378,9 @@
       "id": "miso-paste",
       "aisle": "Oils & Condiments",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 5.7
+      },
       "names": {
         "en": "Miso paste",
         "no": "Misopasta",
@@ -3285,6 +3396,9 @@
       "id": "mustard-seeds",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 3.3
+      },
       "names": {
         "en": "Mustard seeds",
         "no": "Sennepsfrø",
@@ -3345,6 +3459,9 @@
       "id": "onion-powder",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 2.4
+      },
       "names": {
         "en": "Onion powder",
         "no": "Løkpulver",
@@ -3375,6 +3492,9 @@
       "id": "paprika-powder",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 2.3
+      },
       "names": {
         "en": "Paprika powder",
         "no": "Paprikapulver",
@@ -3405,6 +3525,9 @@
       "id": "peanut-butter",
       "aisle": "Oils & Condiments",
       "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 5.3
+      },
       "names": {
         "en": "Peanut butter",
         "no": "Peanøttsmør",
@@ -3471,6 +3594,9 @@
       "id": "salt",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 6
+      },
       "names": {
         "en": "Salt",
         "no": "Salt",
@@ -3512,6 +3638,9 @@
       "id": "smoked-paprika",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 2.3
+      },
       "names": {
         "en": "Smoked paprika",
         "no": "Røkt paprika",
@@ -3690,6 +3819,9 @@
       "id": "turmeric-ground",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 2.2
+      },
       "names": {
         "en": "Turmeric, ground",
         "no": "Gurkemeie, malt",
@@ -3720,6 +3852,9 @@
       "id": "vanilla-powder",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 2.5
+      },
       "names": {
         "en": "Vanilla powder",
         "no": "Vaniljepulver",
