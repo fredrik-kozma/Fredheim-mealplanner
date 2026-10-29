@@ -231,10 +231,8 @@ export const MEAL_OVERRIDES = {
   'roasted-red-pepper-hummus': ['component', 'snack'], 'orn-46': ['component', 'snack'], 'fr-41': ['breakfast', 'lunch'],
   'scrambled-tofu': ['breakfast', 'lunch'], 'fr-70': ['breakfast', 'lunch', 'dinner'], 'fr-2': ['component', 'lunch'],
   'orn-45': ['side', 'lunch'], 'orn-61': ['side', 'snack'], 'fr-64': ['lunch', 'dinner'], 'fr-143': ['lunch', 'dinner'],
-  // A 420 g bowl of cabbage, carrot, onion, tomato and 1.65 l of water
-  // comes to 47 kcal, which is right for what it is and far too thin to
-  // be anybody's dinner. Category Soup would otherwise make it one.
-  'fr-27': ['side'],
+  // fr-27 (Cabbage Soup) was a side at 47 kcal a bowl; with a can of white
+  // beans it is a meal, so category Soup decides (lunch, dinner).
 }
 export function proposeMealTypes(r, perServing) {
   if (MEAL_OVERRIDES[r.id]) return { mealTypes: MEAL_OVERRIDES[r.id], basis: 'per-recipe judgement' }

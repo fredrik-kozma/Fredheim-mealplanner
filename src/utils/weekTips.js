@@ -50,6 +50,10 @@ export function noticeText(n, { t, titleOf, packName = id => id }, stats = null)
       return t(n.level === 'standard' ? 'makeMyWeek.notice.saltStandard' : n.auto ? 'makeMyWeek.notice.saltLowAuto' : 'makeMyWeek.notice.saltLow')
     case 'kcalLow':
       return t(stats?.meals === 1 ? 'makeMyWeek.notice.kcalLowDinner' : 'makeMyWeek.notice.kcalLow', { target: n.target })
+    case 'portionsFitted':
+      return t(stats?.meals === 1 ? 'makeMyWeek.notice.portionsFittedDinner' : 'makeMyWeek.notice.portionsFitted', { target: n.target })
+    case 'kcalOffTarget':
+      return t('makeMyWeek.notice.kcalOffTarget', { count: n.count })
     default:
       return t(`makeMyWeek.notice.${n.key}`)
   }
@@ -57,6 +61,10 @@ export function noticeText(n, { t, titleOf, packName = id => id }, stats = null)
 
 export function statsText(stats, { t }) {
   if (!stats) return null
+  // With the user's own calorie target, the line names it.
+  if (stats.fitted && stats.kcalTarget) {
+    return t(stats.meals === 1 ? 'makeMyWeek.statsDinnerTarget' : 'makeMyWeek.statsDayTarget', { kcal: stats.kcal, fibre: stats.fibre, target: stats.kcalTarget })
+  }
   return t(stats.meals === 1 ? 'makeMyWeek.statsDinner' : 'makeMyWeek.statsDay', { kcal: stats.kcal, fibre: stats.fibre })
 }
 
@@ -70,7 +78,9 @@ export function weekTipsData({ goal, goals, notices = [], stats = null, fruit = 
     // saved before that carry a single `goal`, which still renders.
     goals: answerGoals({ goals, goal }),
     notices: notices.filter(n => n.key !== 'packMissing'),
-    stats: stats ? { kcal: stats.kcal, fibre: stats.fibre, meals: stats.meals } : null,
+    stats: stats
+      ? { kcal: stats.kcal, fibre: stats.fibre, meals: stats.meals, ...(stats.fitted ? { fitted: true, kcalTarget: stats.kcalTarget } : {}) }
+      : null,
     fruit: { ...fruit },
   }
 }

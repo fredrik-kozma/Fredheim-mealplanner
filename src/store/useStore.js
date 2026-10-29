@@ -1288,6 +1288,22 @@ const useStore = create(
       avoidHoney: false,
       setAvoidHoney: (v) => set({ avoidHoney: Boolean(v) }),
 
+      // Make my week's calorie target (kcal a day per person, or null for
+      // none) and meals a day (3, 2 or 1, a snack only with 3): the answers
+      // it starts from next time. Out-of-range values are no target.
+      planKcalTarget: null,
+      planMeals: 3,
+      planSnack: false,
+      setPlanPreferences: ({ kcal, meals, snack }) => set(() => {
+        const n = Math.round(Number(kcal))
+        const planMeals = [1, 2, 3].includes(meals) ? meals : 3
+        return {
+          planKcalTarget: kcal != null && n >= 1000 && n <= 4000 ? n : null,
+          planMeals,
+          planSnack: Boolean(snack) && planMeals === 3,
+        }
+      }),
+
       // Temporarily show everything (e.g. cooking for someone without the
       // allergy) without losing the saved profile. Not persisted — it resets
       // on reload so the safe default always comes back.

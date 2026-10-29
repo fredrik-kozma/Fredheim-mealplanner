@@ -769,7 +769,8 @@
       "meals": "How many meals a day?",
       "prefs": "A few preferences",
       "breakfast": "Breakfast: savoury, sweet or both?",
-      "salt": "Salt level"
+      "salt": "Salt level",
+      "kcal": "About how many calories a day?"
     },
     "goals": {
       "general": "Healthy everyday food",
@@ -802,7 +803,8 @@
     "meals": {
       "1": "Dinner only",
       "2": "Breakfast and lunch",
-      "3": "Breakfast, lunch and dinner"
+      "3": "Breakfast, lunch and dinner",
+      "3s": "Breakfast, lunch, dinner and a snack"
     },
     "doctorNote": "Suggestions only — talk to your doctor before changing medication or diet for a medical condition.",
     "goalNote": "Every recipe carries the “{{label}}” label.",
@@ -816,7 +818,7 @@
     "covered": "batch",
     "statsDay": "About {{kcal}} kcal and {{fibre}} g fibre per person a day.",
     "statsDinner": "About {{kcal}} kcal and {{fibre}} g fibre per person per dinner.",
-    "dayStats": "{{kcal}} kcal · {{fibre}} g fibre",
+    "dayStats": "≈ {{kcal}} kcal · {{fibre}} g fibre",
     "portionsEach": "{{n}} portions each",
     "extra": "extra",
     "dayFruit_one": "Add 1 piece of fruit per person today (an apple, a pear or an orange) to reach the day’s energy.",
@@ -850,7 +852,12 @@
       "noFavourites": "None of your favourites fit this week’s choices.",
       "saltStandard": "Salt level: Standard. Savoury dishes use their standard salt amount (about 700 mg sodium a main meal). Health labels describe the low-salt version.",
       "saltLow": "Salt level: Low salt. The recipes are used exactly as written.",
-      "saltLowAuto": "Salt level: Low salt, because of your health goal. The recipes are used exactly as written."
+      "saltLowAuto": "Salt level: Low salt, because of your health goal. The recipes are used exactly as written.",
+      "portionsFitted": "Portions are sized (½ to 2 each) so each day lands near your target of about {{target}} kcal. The shopping list buys for that, and the week still scales with the number of people.",
+      "portionsFittedDinner": "Portions are sized (½ to 2 each) so each dinner lands near about {{target}} kcal. The shopping list buys for that, and the week still scales with the number of people.",
+      "kcalOffTarget_one": "On 1 day the dishes that fit your choices don’t quite reach within 10% of your target. Adjust a portion in the planner if you like.",
+      "kcalOffTarget_other": "On {{count}} days the dishes that fit your choices don’t quite reach within 10% of your target. Adjust a portion in the planner if you like.",
+      "snackFruit": "On days without a snack recipe that fits, the snack is a piece of fruit (see the day’s note)."
     },
     "goalsHint": "Pick one or more.",
     "breakfasts": {
@@ -872,7 +879,21 @@
     "fewerIngredientsHint": "Dishes that share ingredients, and a dish twice rather than a new one",
     "uniqueIngredients_one": "This week needs {{count}} different ingredient.",
     "uniqueIngredients_other": "This week needs {{count}} different ingredients.",
-    "goalNoteMany": "Every recipe carries these labels: {{labels}}."
+    "goalNoteMany": "Every recipe carries these labels: {{labels}}.",
+    "snackHint": "A snack from the recipes marked as snacks, or a piece of fruit",
+    "kcalHint": "Per person. Portions are sized so each day lands near it.",
+    "kcalHintDinner": "Per person, for the whole day: dinner is planned at about 40% of it.",
+    "kcalNone": "No target",
+    "kcalNoneHint": "The usual amounts for the goal you chose",
+    "kcalValue": "{{kcal}} kcal",
+    "kcalCustom": "Or type your own",
+    "kcalPerDay": "kcal a day",
+    "kcalRange": "Enter a number from {{min}} to {{max}}.",
+    "kcalGuidance": "Below 1,200 kcal a day is best done with guidance from a health professional.",
+    "mealKcal": "≈ {{kcal}} kcal",
+    "estimateNote": "kcal are estimates per person, from the recipes’ nutrition: a suggestion, not a prescription.",
+    "statsDayTarget": "About {{kcal}} kcal and {{fibre}} g fibre per person a day (your target: {{target}} kcal).",
+    "statsDinnerTarget": "About {{kcal}} kcal and {{fibre}} g fibre per person per dinner (aiming for {{target}} kcal)."
   },
   "timer": {
     "title": "Timer",

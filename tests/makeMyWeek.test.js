@@ -498,3 +498,173 @@ test('fewer ingredients: recipes that share ingredients, fewer to buy', () => {
   }
   assert.ok(on < off * 0.92, `unique ingredients: ${on} with the option, ${off} without`)
 })
+
+// ── Calorie target and a snack ───────────────────────────────────────────
+
+const servingsOf = (it, people) => it.servings ?? people
+const within = (kcal, target, band = 0.1) => Math.abs(kcal - target) / target <= band
+
+test('no calorie target: the week is exactly as before', () => {
+  for (const answers of [BASE, EXAMPLE, { ...BASE, meals: 2, goal: 'weight' }]) {
+    const before = makeMyWeek({ recipes: ALL, answers, seed: 5 })
+    assert.deepEqual(makeMyWeek({ recipes: ALL, answers: { ...answers, kcal: null, snack: false }, seed: 5 }), before)
+    // Out of range or not a number is no target too.
+    for (const kcal of [500, 9000, 'abc', '']) {
+      assert.deepEqual(makeMyWeek({ recipes: ALL, answers: { ...answers, kcal }, seed: 5 }), before, `kcal ${kcal}`)
+    }
+    assert.ok(!before.stats.fitted)
+  }
+  assert.equal(kcalTarget('weight', 3), 1600)
+  assert.equal(kcalTarget('weight', 3, null), 1600)
+  assert.equal(kcalTarget('weight', 3, 2500), 2500)
+})
+
+test('1,500 and 2,500 kcal targets: every day within 10%', () => {
+  for (const kcal of [1500, 1800, 2500]) {
+    for (const goal of ['general', 'diabetes', 'heart']) {
+      for (const batch of [false, true]) {
+        for (const snack of [false, true]) {
+          const answers = { ...BASE, goal, batch, snack, kcal }
+          for (const seed of [1, 2]) {
+            const week = makeMyWeek({ recipes: ALL, answers, seed })
+            const label = `${kcal} ${goal} batch:${batch} snack:${snack} seed ${seed}`
+            assert.equal(week.stats.kcalTarget, kcal, label)
+            assert.ok(week.stats.fitted, label)
+            for (const [day, { kcal: total }] of Object.entries(dayTotals(week, answers.people))) {
+              assert.ok(within(total, kcal), `${label}: ${day} ${Math.round(total)} kcal`)
+            }
+            assert.ok(!week.notices.some(n => n.key === 'kcalOffTarget'), label)
+          }
+        }
+      }
+    }
+  }
+})
+
+test('a calorie target moves the week: smaller portions at 1,500, larger at 2,500', () => {
+  // Over many seeds, so no single random week decides it.
+  const total = week => items(week).reduce((n, it) => n + servingsOf(it, 2), 0)
+  const meal = (week, slot) => Object.values(week.stats.perMeal).reduce((n, m) => n + (m[slot] || 0), 0)
+  const offBy = (week, kcal) => Object.values(week.stats.perDay).reduce((n, d) => n + Math.abs(d.kcal - kcal), 0) / 7
+  for (let seed = 1; seed <= 20; seed++) {
+    const none = makeMyWeek({ recipes: ALL, answers: BASE, seed })
+    const low = makeMyWeek({ recipes: ALL, answers: { ...BASE, kcal: 1500 }, seed })
+    const high = makeMyWeek({ recipes: ALL, answers: { ...BASE, kcal: 2500 }, seed })
+    assert.ok(total(high) > total(low), `seed ${seed}: ${total(high)} servings at 2,500, ${total(low)} at 1,500`)
+    assert.ok(low.notices.some(n => n.key === 'portionsFitted' && n.target === 1500), `seed ${seed}`)
+    for (const [kcal, week] of [[1500, low], [2500, high]]) {
+      const label = `seed ${seed}, ${kcal} kcal`
+      // The days move to the target: much closer than the same week without one.
+      assert.ok(offBy(week, kcal) < offBy(none, kcal) / 2,
+        `${label}: days off by ${Math.round(offBy(week, kcal))} kcal, ${Math.round(offBy(none, kcal))} without a target`)
+      // Each meal near its share: over the week dinner (40%) outweighs lunch (35%).
+      assert.ok(meal(week, 'Dinner') > meal(week, 'Lunch'), `${label}: dinner ${meal(week, 'Dinner')}, lunch ${meal(week, 'Lunch')}`)
+    }
+  }
+})
+
+test('calorie target portions: ½ to 2 each in half portions, bread whole servings', () => {
+  for (const people of [2, 4, 3, 1]) {
+    for (const kcal of [1500, 2500]) {
+      for (const batch of [false, true]) {
+        const answers = { ...BASE, people, kcal, batch, snack: true }
+        const week = makeMyWeek({ recipes: ALL, answers, seed: 2 })
+        const label = `${people} people, ${kcal} kcal, batch:${batch}`
+        for (const it of items(week)) {
+          const r = byId.get(it.recipeId)
+          const s = servingsOf(it, people)
+          assert.ok(Number.isInteger(s) && s >= 1, `${label}: ${r.id} ${s}`)
+          assert.ok(s <= 2 * people, `${label}: ${r.id} ${s} > 2 each`)
+          if (r.category === 'Bread' || r.category === 'Spreads') assert.ok(s <= people, `${label}: ${r.id} more than one portion`)
+          if (isExtra(week, it)) continue
+          assert.ok(s >= Math.ceil(people / 2), `${label}: ${r.id} ${s} < ½ each`)
+          // Half portions where that is a whole serving.
+          if (people % 2 === 0 && r.category !== 'Bread') assert.equal(s % (people / 2), 0, `${label}: ${r.id} ${s} not in half portions`)
+        }
+      }
+    }
+  }
+})
+
+test('a smaller portion buys less: the shopping list follows the fitted servings', () => {
+  // The packs' portions are modest, so even a low target mostly sizes up:
+  // look for a week where a dish went down to ½ each.
+  let small = null
+  for (let seed = 1; seed <= 20 && !small; seed++) {
+    const week = makeMyWeek({ recipes: ALL, answers: { ...BASE, kcal: 1000 }, seed })
+    small = items(week).find(it => it.servings != null && it.servings < 2 && !it.excludeFromShopping)
+  }
+  assert.ok(small, 'a dish at less than one portion each')
+  const TO_BASE = { ml: 1, tsp: 5, tbsp: 15, dl: 100, l: 1000, g: 1, kg: 1000 }
+  const total = list => list.reduce((n, l) => n + (typeof l.quantity === 'number' ? l.quantity * (TO_BASE[l.unit] || 1) : 0), 0)
+  const listFor = servings => generateShoppingList({ monday: { Dinner: [{ recipeId: small.recipeId, servings }] } }, ALL, 2, 'en')
+    .flatMap(g => g.items || [])
+  const one = total(listFor(null))
+  assert.ok(Math.abs(total(listFor(small.servings)) / one - small.servings / 2) < 0.01)
+  // The batch is sized to the servings planned, scaled ones included.
+  const batched = makeMyWeek({ recipes: ALL, answers: { ...BASE, kcal: 1500, batch: true }, seed: 3 })
+  for (const b of batched.batchCook) {
+    const eaten = items(batched).filter(it => it.recipeId === b.recipeId && it.excludeFromShopping)
+    assert.equal(b.servings, eaten.reduce((n, it) => n + servingsOf(it, 2), 0), b.recipeId)
+  }
+})
+
+test('the calorie target does not apply to the FMD week', () => {
+  const answers = { ...BASE, goal: 'fmd' }
+  assert.deepEqual(
+    makeMyWeek({ recipes: ALL, answers: { ...answers, kcal: 1500, snack: true }, seed: 1 }),
+    makeMyWeek({ recipes: ALL, answers, seed: 1 }))
+})
+
+test('3 meals + snack: a snack recipe a day, or a piece of fruit', () => {
+  for (const goal of ['general', 'weight', 'heart']) {
+    const week = makeMyWeek({ recipes: ALL, answers: { ...BASE, goal, snack: true }, seed: 4 })
+    for (const day of DAY_KEYS) {
+      const snack = week.plan[day].Snack || []
+      if (snack.length) {
+        const r = byId.get(snack[0].recipeId)
+        assert.ok(r.mealTypes.includes('snack'), `${goal} ${day}: ${r.id} is not a snack`)
+        assert.ok(!['Spreads', 'Sauce', 'Soup'].includes(r.category), `${goal} ${day}: ${r.id} (${r.category})`)
+        if (GOAL_TAG[goal]) assert.ok(r.tags.includes(GOAL_TAG[goal]), `${goal} ${day}: ${r.id} lacks the label`)
+      } else {
+        assert.ok(week.fruit[day] >= 1, `${goal} ${day}: no snack and no fruit`)
+      }
+    }
+  }
+  // Only with three meals, and never without asking.
+  const two = makeMyWeek({ recipes: ALL, answers: { ...BASE, meals: 2, snack: true }, seed: 4 })
+  const none = makeMyWeek({ recipes: ALL, answers: BASE, seed: 4 })
+  for (const week of [two, none]) assert.ok(items(week).every(it => it.slot !== 'Snack'))
+})
+
+test('calorie target tips render in every language', () => {
+  const short = makeMyWeek({ recipes: ALL, answers: { ...BASE, goal: 'weight', meals: 2, kcal: 2500 }, seed: 1 })
+  assert.ok(short.notices.some(n => n.key === 'kcalOffTarget'), 'light weight-loss dishes cannot reach 2,500 kcal in two meals')
+  const fitted = makeMyWeek({ recipes: ALL, answers: { ...BASE, kcal: 1500, snack: true }, seed: 1 })
+  for (const week of [short, fitted]) {
+    const data = weekTipsData({ goals: week.goals, notices: week.notices, stats: week.stats, fruit: week.fruit })
+    for (const lang of ['en', 'no', 'sv']) {
+      const text = renderWeekTips(data, { t: tFor(lang), titleOf: id => byId.get(id)?.title }).week
+      assert.ok(!/makeMyWeek\.|\{\{/.test(text), `${lang}: ${text}`)
+      assert.ok(text.includes(String(week.stats.kcalTarget)), `${lang}: names the target`)
+    }
+  }
+})
+
+test('the calorie target and meals a day are saved settings, in the backup too', async () => {
+  const { default: useStore } = await import('../src/store/useStore.js')
+  const { buildBackup, validateBackup } = await import('../src/utils/dataBackup.js')
+  const saved = s => ({ planKcalTarget: s.planKcalTarget, planMeals: s.planMeals, planSnack: s.planSnack })
+  useStore.getState().setPlanPreferences({ kcal: 1800, meals: 3, snack: true })
+  assert.deepEqual(saved(useStore.getState()), { planKcalTarget: 1800, planMeals: 3, planSnack: true })
+  const restored = validateBackup(buildBackup(useStore.getState()))
+  assert.ok(restored.ok)
+  assert.deepEqual(saved(restored.data), { planKcalTarget: 1800, planMeals: 3, planSnack: true })
+  // Out of range is no target; a snack only with three meals.
+  useStore.getState().setPlanPreferences({ kcal: 99999, meals: 2, snack: true })
+  assert.deepEqual(saved(useStore.getState()), { planKcalTarget: null, planMeals: 2, planSnack: false })
+  // The wizard starts from them.
+  const answers = defaultAnswers({ kcal: 1800, meals: 3, snack: true })
+  assert.equal(answers.kcal, 1800)
+  assert.equal(answers.snack, true)
+})

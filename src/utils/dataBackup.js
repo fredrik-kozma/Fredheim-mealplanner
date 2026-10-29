@@ -66,6 +66,9 @@ const FIELDS = {
   recipeCategories: 'array',
   avoidedAllergens: 'array',
   avoidHoney: 'boolean',
+  planKcalTarget: 'kcalTarget',
+  planMeals: 'mealsPerDay',
+  planSnack: 'boolean',
   saltLevel: 'saltLevel',
   recipeSaltLevels: 'saltLevelMap',
   hasSeenTutorial: 'boolean',
@@ -130,6 +133,9 @@ function matchesKind(value, kind) {
     case 'saltLevel': return SALT_LEVELS.includes(value)
     // { recipeId: level } from the recipe page, every level a known one.
     case 'saltLevelMap': return matchesKind(value, 'object') && Object.values(value).every(v => SALT_LEVELS.includes(v))
+    // Make my week's calorie target: none, or a whole number in its range.
+    case 'kcalTarget': return value === null || (Number.isInteger(value) && value >= 1000 && value <= 4000)
+    case 'mealsPerDay': return [1, 2, 3].includes(value)
     default: return false
   }
 }

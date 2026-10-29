@@ -769,7 +769,8 @@
       "meals": "Hur många måltider om dagen?",
       "prefs": "Några önskemål",
       "breakfast": "Frukost: salt, söt eller båda?",
-      "salt": "Saltnivå"
+      "salt": "Saltnivå",
+      "kcal": "Ungefär hur många kalorier om dagen?"
     },
     "goals": {
       "general": "Hälsosam vardagsmat",
@@ -802,7 +803,8 @@
     "meals": {
       "1": "Bara middag",
       "2": "Frukost och lunch",
-      "3": "Frukost, lunch och middag"
+      "3": "Frukost, lunch och middag",
+      "3s": "Frukost, lunch, middag och ett mellanmål"
     },
     "doctorNote": "Endast förslag — prata med din läkare innan du ändrar medicinering eller kost på grund av en sjukdom.",
     "goalNote": "Alla recept är märkta ”{{label}}”.",
@@ -816,7 +818,7 @@
     "covered": "storkok",
     "statsDay": "Ungefär {{kcal}} kcal och {{fibre}} g fiber per person och dag.",
     "statsDinner": "Ungefär {{kcal}} kcal och {{fibre}} g fiber per person och middag.",
-    "dayStats": "{{kcal}} kcal · {{fibre}} g fiber",
+    "dayStats": "≈ {{kcal}} kcal · {{fibre}} g fiber",
     "portionsEach": "{{n}} portioner var",
     "extra": "extra",
     "dayFruit_one": "Lägg till 1 frukt per person i dag (ett äpple, ett päron eller en apelsin) för att nå dagens energibehov.",
@@ -850,7 +852,12 @@
       "noFavourites": "Ingen av dina favoriter passar veckans val.",
       "saltStandard": "Saltnivå: Standard. Salta rätter använder sin standardmängd salt (runt 700 mg natrium per huvudmåltid). Hälsomärkningarna gäller versionen med lite salt.",
       "saltLow": "Saltnivå: Lite salt. Recepten används precis som de är skrivna.",
-      "saltLowAuto": "Saltnivå: Lite salt, på grund av ditt hälsomål. Recepten används precis som de är skrivna."
+      "saltLowAuto": "Saltnivå: Lite salt, på grund av ditt hälsomål. Recepten används precis som de är skrivna.",
+      "portionsFitted": "Portionerna är anpassade (½ till 2 var) så att varje dag hamnar nära ditt mål på ungefär {{target}} kcal. Inköpslistan handlar för det, och veckan skalas fortfarande med antalet personer.",
+      "portionsFittedDinner": "Portionerna är anpassade (½ till 2 var) så att varje middag hamnar nära ungefär {{target}} kcal. Inköpslistan handlar för det, och veckan skalas fortfarande med antalet personer.",
+      "kcalOffTarget_one": "På 1 dag når rätterna som passar dina val inte riktigt inom 10 % av målet. Justera gärna en portion i planeraren.",
+      "kcalOffTarget_other": "På {{count}} dagar når rätterna som passar dina val inte riktigt inom 10 % av målet. Justera gärna en portion i planeraren.",
+      "snackFruit": "De dagar inget mellanmålsrecept passar är mellanmålet en frukt (se dagens anteckning)."
     },
     "goalsHint": "Välj ett eller flera.",
     "breakfasts": {
@@ -872,7 +879,21 @@
     "fewerIngredientsHint": "Rätter som delar ingredienser, och en rätt två gånger hellre än en ny",
     "uniqueIngredients_one": "Den här veckan behöver {{count}} olik ingrediens.",
     "uniqueIngredients_other": "Den här veckan behöver {{count}} olika ingredienser.",
-    "goalNoteMany": "Alla recept har de här märkningarna: {{labels}}."
+    "goalNoteMany": "Alla recept har de här märkningarna: {{labels}}.",
+    "snackHint": "Ett mellanmål från recepten märkta som det, eller en frukt",
+    "kcalHint": "Per person. Portionerna anpassas så att varje dag hamnar nära målet.",
+    "kcalHintDinner": "Per person, för hela dagen: middagen planeras till ungefär 40 % av det.",
+    "kcalNone": "Inget mål",
+    "kcalNoneHint": "De vanliga mängderna för målet du valde",
+    "kcalValue": "{{kcal}} kcal",
+    "kcalCustom": "Eller skriv in ditt eget",
+    "kcalPerDay": "kcal om dagen",
+    "kcalRange": "Skriv ett tal från {{min}} till {{max}}.",
+    "kcalGuidance": "Under 1200 kcal om dagen görs helst med vägledning från vårdpersonal.",
+    "mealKcal": "≈ {{kcal}} kcal",
+    "estimateNote": "kcal är uppskattningar per person, utifrån receptens näringsinnehåll: ett förslag, inte en ordination.",
+    "statsDayTarget": "Ungefär {{kcal}} kcal och {{fibre}} g fiber per person och dag (ditt mål: {{target}} kcal).",
+    "statsDinnerTarget": "Ungefär {{kcal}} kcal och {{fibre}} g fiber per person och middag (vi siktar på {{target}} kcal)."
   },
   "timer": {
     "title": "Timer",

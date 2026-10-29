@@ -37,7 +37,7 @@ export const PORTIONS = {
   // ── soups served as a main with a bowl over ~530 g → ~400 g bowls ──
   'broccoli-soup': { sw: 440, portion: bowl(440), basis: 'the whole batch is 1767 g, so 4 bowls are ~440 g, not 614 g' },
   'pumpkin-soup': { servings: 10, sw: 400, portion: bowl(400), basis: '3994 g soup; 10 bowls of ~400 g (was 6 × 702 g)' },
-  'fr-27': { servings: 6, sw: 420, portion: bowl(420), basis: '2509 g soup; 6 bowls of ~420 g (was 4 × 627 g)' },
+  'fr-27': { servings: 6, sw: 460, portion: bowl(460), basis: '2749 g soup with the can of white beans (2509 g before them); 6 bowls of ~460 g (was 4 × 627 g)' },
   'potato-and-spinach-soup': { servings: 8, sw: 420, portion: bowl(420), basis: '3329 g soup; 8 bowls of ~420 g (was 6 × 618 g, more than the batch)' },
   'fr-184': { servings: 10, sw: 380, portion: bowl(380), basis: '3837 g soup; 10 bowls of ~380 g (was 7 × 584 g)' },
   'orn-30': { servings: 6, sw: 390, portion: bowl(390), basis: '~2340 g soup; 6 bowls of ~390 g (was 4 × 586 g)' },

@@ -5,24 +5,26 @@ import { ALLERGENS } from '../../data/allergens'
 import { BUILT_IN_PACKS } from '../../data/installedPacks'
 import {
   makeMyWeek, defaultAnswers, resolveSlotNames, answerGoals, saltLevelFor,
-  MMW_GOALS, MMW_TIMES, MMW_MEALS, MMW_BREAKFASTS, EXCLUSIVE_GOALS,
+  MMW_GOALS, MMW_TIMES, MMW_MEAL_OPTIONS, MMW_BREAKFASTS, EXCLUSIVE_GOALS,
+  MMW_KCAL_PICKS, KCAL_MIN, KCAL_MAX, KCAL_GUIDANCE, normalizeKcal, mealOptionKey,
 } from '../../utils/makeMyWeek'
 import { SALT_LEVELS, LOW_SALT_GOALS } from '../../utils/saltLevel'
 import { noticeText as renderNotice, statsText as renderStats, weekTipsData, renderWeekTips } from '../../utils/weekTips'
 import { formatAmount } from '../../utils/formatQuantity'
 
 const GOAL_ICONS = { general: '🥗', weight: '⚖️', bloodPressure: '💗', diabetes: '🩸', heart: '❤️', fmd: '🌙' }
-const MEAL_ICONS = { 3: '🍳🥣🍲', 2: '🍳🥣', 1: '🍲' }
+const MEAL_ICONS = { '3s': '🍳🥣🍲🍎', 3: '🍳🥣🍲', 2: '🍳🥣', 1: '🍲' }
 const TIME_ICONS = { quick: '⚡', medium: '⏱️', any: '🧑‍🍳' }
 const BREAKFAST_ICONS = { both: '🍳🥣', savoury: '🍳', sweet: '🥣' }
 
 // The answers from the last time the modal was used this session, so a
 // Shuffle-and-tweak round doesn't start the questions from scratch. People,
 // allergens, honey, favourites and dislikes are always read fresh from
-// settings instead. A single `goal` (from before goals were multiple
+// settings instead, and so are the calorie target and meals a day (saved
+// when a week is used). A single `goal` (from before goals were multiple
 // choice) is read as a list of one.
 let lastAnswers = null
-const REMEMBERED = ['time', 'batch', 'meals', 'breakfast', 'preferFavourites', 'fewerIngredients', 'saltLevel']
+const REMEMBERED = ['time', 'batch', 'meals', 'snack', 'kcal', 'breakfast', 'preferFavourites', 'fewerIngredients', 'saltLevel']
 function remembered(last) {
   if (!last) return {}
   const out = { goals: answerGoals(last) }
@@ -113,11 +115,25 @@ export default function MakeMyWeekModal({ onClose }) {
   const setSaltLevel = useStore(s => s.setSaltLevel)
   const favourites = useStore(s => s.favoriteRecipes) || []
   const disliked = useStore(s => s.dislikedRecipes) || []
+  const planKcalTarget = useStore(s => s.planKcalTarget)
+  const planMeals = useStore(s => s.planMeals)
+  const planSnack = useStore(s => s.planSnack)
+  const setPlanPreferences = useStore(s => s.setPlanPreferences)
+  const addMealSlot = useStore(s => s.addMealSlot)
 
   const [answers, setAnswers] = useState(() => ({
-    ...defaultAnswers({ familySize, avoidedAllergens, avoidHoney, saltLevel, favourites, disliked }),
+    ...defaultAnswers({
+      familySize, avoidedAllergens, avoidHoney, saltLevel, favourites, disliked,
+      kcal: planKcalTarget, meals: planMeals, snack: planSnack,
+    }),
     ...remembered(lastAnswers),
   }))
+  // The typed calorie target, while it is being typed (a quick pick clears it).
+  const [kcalText, setKcalText] = useState(() =>
+    (answers.kcal && !MMW_KCAL_PICKS.includes(answers.kcal) ? String(answers.kcal) : ''))
+  const kcalTextInvalid = kcalText.trim() !== '' && normalizeKcal(kcalText) == null
+  const numberLocale = lang === 'no' ? 'nb-NO' : lang === 'sv' ? 'sv-SE' : 'en-GB'
+  const fmtKcal = n => new Intl.NumberFormat(numberLocale).format(n)
   const goals = answerGoals(answers)
   const isFmd = goals.includes('fmd')
   // Blood pressure, heart and diabetes: low salt without asking.
@@ -131,10 +147,11 @@ export default function MakeMyWeekModal({ onClose }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  // FMD is a fixed plan: time, batch, meals and preferences don't apply to it.
+  // FMD is a fixed plan with its own fixed energy: time, batch, meals,
+  // calorie target and preferences don't apply to it.
   const steps = isFmd
     ? ['goal', 'people', 'avoid']
-    : ['goal', 'people', 'avoid', 'time', 'batch', 'meals', 'prefs']
+    : ['goal', 'people', 'avoid', 'time', 'batch', 'meals', 'kcal', 'prefs']
   const showResult = step >= steps.length
   const slotNames = useMemo(() => resolveSlotNames(mealSlots), [mealSlots])
 
@@ -196,7 +213,14 @@ export default function MakeMyWeekModal({ onClose }) {
       if (answers.avoid.includes(a.id) !== avoidedAllergens.includes(a.id)) toggleAvoidedAllergen(a.id)
     }
     setAvoidHoney(answers.noHoney)
-    if (result.kind === 'week') setSaltLevel(result.saltLevel)
+    if (result.kind === 'week') {
+      setSaltLevel(result.saltLevel)
+      setPlanPreferences({ kcal: answers.kcal, meals: answers.meals, snack: answers.snack })
+      // A snack needs its row in the planner, or it would load out of sight.
+      const snackSlot = slotNames.snack || 'Snack'
+      const usesSnack = Object.values(result.plan).some(day => day[snackSlot]?.length)
+      if (usesSnack && !mealSlots.includes(snackSlot)) addMealSlot(snackSlot)
+    }
     if (result.kind === 'fmd') {
       for (const packId of result.starterPlan.requiredPackIds || []) {
         if (!installedPacks?.[packId] && BUILT_IN_PACKS[packId]) installPack(BUILT_IN_PACKS[packId])
@@ -438,14 +462,91 @@ export default function MakeMyWeekModal({ onClose }) {
           {stepName === 'meals' && (
             <div className="space-y-2">
               <p className="text-base font-semibold text-slate-800 mb-3">{t('makeMyWeek.q.meals')}</p>
-              {MMW_MEALS.map(v => (
-                <Choice key={v} selected={answers.meals === v} onClick={() => choose('meals', v)} icon={MEAL_ICONS[v]} title={t(`makeMyWeek.meals.${v}`)} />
+              {MMW_MEAL_OPTIONS.map(o => (
+                <Choice
+                  key={o.key}
+                  selected={mealOptionKey(answers) === o.key}
+                  onClick={() => { setAnswers(a => ({ ...a, meals: o.meals, snack: o.snack })); setStep(s => s + 1) }}
+                  icon={MEAL_ICONS[o.key]}
+                  title={t(`makeMyWeek.meals.${o.key}`)}
+                  hint={o.snack ? t('makeMyWeek.snackHint') : undefined}
+                />
               ))}
             </div>
           )}
 
-          {['goal', 'avoid', 'prefs'].includes(stepName) && (
-            <button onClick={() => setStep(s => s + 1)} className="btn-primary w-full min-h-[44px] mt-6">
+          {stepName === 'kcal' && (
+            <div className="space-y-2">
+              <p className="text-base font-semibold text-slate-800">{t('makeMyWeek.q.kcal')}</p>
+              <p className="text-xs text-slate-500 mb-3">
+                {t(answers.meals === 1 ? 'makeMyWeek.kcalHintDinner' : 'makeMyWeek.kcalHint')}
+              </p>
+              <Choice
+                selected={answers.kcal == null && !kcalText}
+                onClick={() => { setKcalText(''); choose('kcal', null) }}
+                icon="🍽️"
+                title={t('makeMyWeek.kcalNone')}
+                hint={t('makeMyWeek.kcalNoneHint')}
+              />
+              <div className="grid grid-cols-2 gap-2">
+                {MMW_KCAL_PICKS.map(v => (
+                  <button
+                    key={v}
+                    onClick={() => { setKcalText(''); choose('kcal', v) }}
+                    aria-pressed={answers.kcal === v && !kcalText}
+                    className={`min-h-[48px] rounded-xl border text-sm font-semibold tabular-nums transition-colors ${
+                      answers.kcal === v && !kcalText
+                        ? 'border-indigo-500 bg-indigo-50 text-indigo-700 ring-1 ring-indigo-500'
+                        : 'border-slate-200 text-slate-700 hover:border-indigo-300'
+                    }`}
+                  >
+                    {t('makeMyWeek.kcalValue', { kcal: fmtKcal(v) })}
+                  </button>
+                ))}
+              </div>
+              <label className="block pt-2">
+                <span className="block text-sm font-semibold text-slate-700 mb-1">{t('makeMyWeek.kcalCustom')}</span>
+                <span className="flex items-center gap-2">
+                  <input
+                    type="number"
+                    inputMode="numeric"
+                    min={KCAL_MIN}
+                    max={KCAL_MAX}
+                    step={50}
+                    value={kcalText}
+                    onChange={e => {
+                      const text = e.target.value
+                      setKcalText(text)
+                      const n = normalizeKcal(text)
+                      if (n != null) set('kcal', n)
+                      else if (text.trim() === '') set('kcal', null)
+                    }}
+                    placeholder="1700"
+                    aria-invalid={kcalTextInvalid}
+                    className={`input w-32 tabular-nums ${kcalTextInvalid ? 'border-red-400' : ''}`}
+                  />
+                  <span className="text-sm text-slate-500">{t('makeMyWeek.kcalPerDay')}</span>
+                </span>
+                {kcalTextInvalid && (
+                  <span className="block text-xs text-red-600 mt-1">
+                    {t('makeMyWeek.kcalRange', { min: fmtKcal(KCAL_MIN), max: fmtKcal(KCAL_MAX) })}
+                  </span>
+                )}
+              </label>
+              {answers.kcal != null && answers.kcal < KCAL_GUIDANCE && !kcalTextInvalid && (
+                <p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 leading-relaxed">
+                  ⚕️ {t('makeMyWeek.kcalGuidance')}
+                </p>
+              )}
+            </div>
+          )}
+
+          {['goal', 'avoid', 'prefs', 'kcal'].includes(stepName) && (
+            <button
+              onClick={() => setStep(s => s + 1)}
+              disabled={stepName === 'kcal' && kcalTextInvalid}
+              className="btn-primary w-full min-h-[44px] mt-6"
+            >
               {t('makeMyWeek.next')}
             </button>
           )}
@@ -455,6 +556,11 @@ export default function MakeMyWeekModal({ onClose }) {
               <p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 leading-relaxed">
                 ⚕️ {t('makeMyWeek.doctorNote')}
               </p>
+              {result.kind === 'week' && answers.kcal != null && answers.kcal < KCAL_GUIDANCE && (
+                <p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 leading-relaxed">
+                  ⚕️ {t('makeMyWeek.kcalGuidance')}
+                </p>
+              )}
 
               {result.kind === 'fmd' && (
                 <p className="text-sm text-slate-600 leading-relaxed">
@@ -497,6 +603,9 @@ export default function MakeMyWeekModal({ onClose }) {
               )}
 
               <div className="space-y-2">
+                {result.kind === 'week' && result.stats && (
+                  <p className="text-[11px] text-slate-500 leading-relaxed">{t('makeMyWeek.estimateNote')}</p>
+                )}
                 {previewDays.map(day => (
                   <div key={day} className="rounded-xl border border-slate-100 px-3 py-2">
                     <div className="flex items-baseline justify-between gap-2 mb-1">
@@ -533,6 +642,11 @@ export default function MakeMyWeekModal({ onClose }) {
                             )}
                           </span>
                         ))}
+                        {result.kind === 'week' && result.stats?.perMeal?.[day]?.[slot] != null && (
+                          <span className="ml-1.5 text-[11px] text-slate-400 tabular-nums whitespace-nowrap">
+                            {t('makeMyWeek.mealKcal', { kcal: result.stats.perMeal[day][slot] })}
+                          </span>
+                        )}
                       </p>
                     ))}
                     {result.kind === 'week' && result.fruit?.[day] > 0 && (
