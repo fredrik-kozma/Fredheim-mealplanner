@@ -20,6 +20,7 @@ import { useSubscription } from './hooks/useSubscription'
 import UpgradeWall from './components/subscription/UpgradeWall'
 import PreviewBanner from './components/subscription/PreviewBanner'
 import AutoInstallDefaultPack from './components/AutoInstallDefaultPack'
+import LocalizedWeekTips from './components/planner/LocalizedWeekTips'
 import ScrollManager from './components/ScrollManager'
 import TutorialModal from './components/onboarding/TutorialModal'
 import LanguagePicker from './components/onboarding/LanguagePicker'
@@ -175,6 +176,9 @@ function AppShell() {
       {/* One-time install of the built-in pack so first-time visitors have
           recipes to browse immediately. */}
       <AutoInstallDefaultPack />
+
+      {/* A generated week's tips follow the language switch. */}
+      <LocalizedWeekTips />
 
       {/* Opens each page at the top; restores your place on long lists. */}
       <ScrollManager />

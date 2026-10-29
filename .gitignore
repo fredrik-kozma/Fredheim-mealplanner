@@ -36,3 +36,8 @@ Fredheim-Mealplaner/
 
 # Generated recipe books — rebuild with scripts/build_heart_healthy_pdf.mjs
 Fredheim-*.pdf
+
+# Scratch space for one-off migration runs: before/after pack snapshots,
+# dumps and throwaway scan scripts. Tens of megabytes, and every pack
+# snapshot carries the embedded photos, so this must never reach history.
+scripts/_tmp/

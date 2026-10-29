@@ -58,6 +58,82 @@ in `ingredients`, `translations.no.ingredients` and `translations.sv.ingredients
    without `spoonGrams` (`missing-spoon-grams`: a warning normally, an
    error under `--strict`).
 
+## Recipe rules: portions, nutrition, time, meal types, labels (MANDATORY)
+
+Every new recipe must integrate with Make my week, the shopping list and the
+good-for filters without hand work. The criteria live in
+`scripts/lib/recipeLabels.mjs` (the same code the label report
+`scripts/build_recipe_proposals.mjs` and check-recipes use).
+
+- **Servings + portion.** `servings` is a realistic whole number of portions
+  for the batch (a loaf is 2 slices a serving, a soup ~350 g a bowl, a
+  spread 30 g), `servingWeightGrams` the eaten portion in grams, and
+  `portion` describes it in en, with `translations.no.portion` and
+  `translations.sv.portion` ("2 slices (~116 g)" / "2 skiver (~116 g)" /
+  "2 skivor (~116 g)").
+- **Nutrition.** `nutrition.perServing` (calories, protein, totalFat,
+  saturatedFat, totalCarbs, fiber, totalSugars, addedSugar, sodium,
+  potassium) is calculated from the ingredient rows with
+  `scripts/data/food-composition-core.json` (`npm run label-recipes` prints
+  it). If the pasted nutrition disagrees, say so and use the calculation
+  unless the user decides otherwise. `kcal` = rounded calories. A food
+  missing from the composition table: propose an entry (per 100 g, with its
+  USDA/label source) and ask, like a dictionary entry.
+- **Time.** `prepTime` and `cookTime` in minutes; waiting (soaking, rising,
+  setting) goes in cookTime.
+- **Meal types.** `mealTypes` from breakfast, lunch, dinner, snack, side,
+  dessert, component (label-recipes suggests them from the category).
+- **Labels are computed, never hand-guessed.** The good-for tags
+  (weight-loss, blood-pressure-friendly, diabetes-friendly, heart-healthy,
+  gluten-free, nut-free, soy-free, oil-free, no-added-sugar, quick,
+  batch-friendly, kid-friendly) are exactly what the criteria compute;
+  `npm run label-recipes -- --recipe <id> --write` writes them. Other tags
+  (vegan, ornish-…) are kept.
+- **Salt level (two levels, Fredrik's decision).** *Low salt* is the
+  recipe exactly as written (blood pressure, heart or kidney disease: main
+  meals about ≤ 600 mg sodium a serving); write recipes at that level.
+  *Standard* (healthy adults, WHO < 5 g salt a day) is an optional
+  `standardAmount` on the recipe's salt row (same unit as the row; a
+  "to taste" row with `unit: ""` also gets `standardUnit: "tsp"`), in en,
+  no and sv alike, plus `nutrition.sodiumStandard` (mg a serving at
+  standard). Targets at standard: a main meal ~650–700 mg (never over
+  750), a savoury breakfast or bread ≤ 400 mg. Only salt (or the recipe's
+  herb salt) is raised; soy sauce/tamari, miso, bouillon may carry one but
+  canned beans and broth never change. Sweet recipes, components, sauces,
+  spreads, sides and salads get none. A savoury main with no salt row gets
+  a "to taste" salt row with a standard amount. Health labels are always
+  judged on the low-salt recipe (`scripts/lib/recipeLabels.mjs` unchanged).
+  `node scripts/build_salt_levels.mjs --write` decides all of this
+  (rules in `scripts/lib/saltLevels.mjs`), bumps changed pack versions and
+  writes `scripts/data/salt-level-proposals.md`.
+- **Flavour.** Every breakfast recipe (not bread) and every spread or jam
+  has `flavourProfile: "sweet" | "savoury"` (Make my week's breakfast
+  question); the same script sets it from sugars and ingredients. Check
+  the report and correct the rule in `scripts/lib/saltLevels.mjs` (not the
+  pack by hand) if a recipe is misjudged.
+- **Oil-free methods preferred.** Sauté in water or broth, bake on
+  parchment, dress with tahini/lemon rather than oil. Oil (in an ingredient
+  row or the method text) costs oil-free, heart-healthy and
+  diabetes-friendly. Keep the recipe as the user wrote it, but point it out
+  and offer the oil-free version.
+
+**Steps for adding a recipe:**
+
+1. Look up every ingredient (rules 1–8 above); ask about missing dictionary
+   or composition entries first.
+2. Write `scripts/add_<what>.cjs`: rows, servings, portion (en/no/sv),
+   servingWeightGrams, prepTime/cookTime, mealTypes, `createdAt` above the
+   max in all packs, and bump the pack `version`. Run it.
+3. `npm run label-recipes -- --recipe <id>`: compare the calculated
+   nutrition with the pasted one, check meal types and the oil note; fix the
+   add script if needed, then run again with `--write` (labels, and
+   nutrition/mealTypes only where missing).
+4. `node scripts/build_salt_levels.mjs --write`: standard salt amount and
+   flavourProfile (see above); check the new recipe's line in
+   `scripts/data/salt-level-proposals.md`.
+5. Run the checks below, and report what was standardized, which labels
+   the recipe got, and its salt level (low → standard sodium).
+
 **Before finishing:**
 
 ```
@@ -65,6 +141,16 @@ npm run check-recipes -- --recipe <new-id>[,<id>...] --strict   # new recipes mu
 npm run check-recipes                                           # whole collection: no new problems
 npm test
 ```
+
+check-recipes fails a recipe added after the rules came in that lacks any of
+the fields above, has a per-serving energy over 1500 kcal (or under 50 for a
+meal), nutrition that disagrees with its ingredients, or labels that differ
+from the computed ones. It also fails a `standardAmount` on a row that isn't
+salt/soy sauce/tamari/miso/bouillon, below the row's amount, without a unit
+or different between languages, a missing or wrong `sodiumStandard`, one
+over the cap, a standard amount on a sweet recipe, and a breakfast/spread
+without `flavourProfile`. Older recipes only get a counted warning for a
+missing portion description.
 
 Fix every reported problem (don't add to the baseline to silence it). Then
 report briefly what was standardized: ids matched, words moved to notes,

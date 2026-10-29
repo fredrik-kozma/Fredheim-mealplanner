@@ -1383,6 +1383,28 @@
       }
     },
     {
+      "id": "classic-hummus",
+      "aisle": "Dairy",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Classic hummus",
+        "no": "Klassisk hummus",
+        "sv": "Klassisk hummus"
+      },
+      "synonyms": {
+        "en": [
+          "Homemade hummus"
+        ],
+        "no": [
+          "Hjemmelaget hummus"
+        ],
+        "sv": [
+          "Hemgjord hummus"
+        ]
+      },
+      "homemade": true
+    },
+    {
       "id": "oat-milk",
       "aisle": "Dairy",
       "preferredUnit": "ml",

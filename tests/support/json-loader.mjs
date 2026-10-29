@@ -9,6 +9,16 @@ import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 registerHooks({
+  // Vite also resolves extensionless relative imports ('./installedPacks');
+  // try .js, then .jsx, the way it does.
+  resolve(specifier, context, nextResolve) {
+    if (/^\.\.?\//.test(specifier) && !/\.[a-z]+$/i.test(specifier)) {
+      for (const ext of ['.js', '.jsx']) {
+        try { return nextResolve(specifier + ext, context) } catch { /* try the next one */ }
+      }
+    }
+    return nextResolve(specifier, context)
+  },
   load(url, context, nextLoad) {
     if (url.startsWith('file:') && url.endsWith('.json')) {
       return {

@@ -27,6 +27,8 @@
  * to be shaped the way we wrote it.
  */
 
+import { SALT_LEVELS } from './saltLevel.js'
+
 export const BACKUP_APP = 'fredheim-meal-planner'
 export const BACKUP_VERSION = 1
 
@@ -45,6 +47,7 @@ const FIELDS = {
   activeWeekName: 'stringOrNull',
   plannerTemplates: 'array',
   favoriteRecipes: 'array',
+  dislikedRecipes: 'array',
   nutritionLog: 'object',
   savedShoppingLists: 'array',
   savedListChecks: 'object',
@@ -62,6 +65,9 @@ const FIELDS = {
   mealSlots: 'array',
   recipeCategories: 'array',
   avoidedAllergens: 'array',
+  avoidHoney: 'boolean',
+  saltLevel: 'saltLevel',
+  recipeSaltLevels: 'saltLevelMap',
   hasSeenTutorial: 'boolean',
   hasChosenLanguage: 'boolean',
 }
@@ -120,6 +126,10 @@ function matchesKind(value, kind) {
     case 'stringOrNull': return value === null || typeof value === 'string'
     case 'number': return typeof value === 'number' && Number.isFinite(value)
     case 'boolean': return typeof value === 'boolean'
+    // Only a level the app knows: an unknown one would silently mean low.
+    case 'saltLevel': return SALT_LEVELS.includes(value)
+    // { recipeId: level } from the recipe page, every level a known one.
+    case 'saltLevelMap': return matchesKind(value, 'object') && Object.values(value).every(v => SALT_LEVELS.includes(v))
     default: return false
   }
 }

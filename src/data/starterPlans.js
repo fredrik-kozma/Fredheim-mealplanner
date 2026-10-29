@@ -202,24 +202,24 @@ export const STARTER_PLANS = [
   {
     id: 'diabetes-week-1',
     name: 'Type 2 Diabetes — Sample Week',
-    description: "Every recipe this week carries Fredheim's diabetes-friendly tag — low saturated fat, no added sugar, no refined flour, fibre-forward. Drawn from all three packs: the core Fredheim collection, the reversal-protocol recipes, and a few light dishes borrowed from the fasting plan.",
+    description: "Every recipe this week carries Fredheim's diabetes-friendly tag — low saturated fat, no added sugar, no added oil, no refined flour, fibre-forward. Drawn from all three packs: the core Fredheim collection, the reversal-protocol recipes, and a few light dishes borrowed from the fasting plan.",
     condition: 'diabetes',
     author: 'Fredheim Livsstilssenter',
-    version: '1.0.0',
+    version: '1.2.0',
     translations: {
       no: {
         name: 'Diabetes type 2 — Eksempeluke',
-        description: 'Hver oppskrift denne uken har Fredheims diabetesvennlige merking — lite mettet fett, uten tilsatt sukker, uten raffinert mel, rik på fiber. Hentet fra alle tre oppskriftspakkene: Fredheim-samlingen, reverseringsprotokollen og noen lette retter fra fasteplanen.',
+        description: 'Hver oppskrift denne uken har Fredheims diabetesvennlige merking — lite mettet fett, uten tilsatt sukker, uten tilsatt olje, uten raffinert mel, rik på fiber. Hentet fra alle tre oppskriftspakkene: Fredheim-samlingen, reverseringsprotokollen og noen lette retter fra fasteplanen.',
         notes: {
-          week: 'Havre- og potetrundstykkene ligger i Storkokking-kortet — bak hele oppskriften mandag, den dekker alle fire gangene de dukker opp denne uken, med noen til overs å fryse ned. De teller ikke med i handlelisten hver dag, kun én gang der. Porsjonert for én; 👥-kontrollen skalerer hele uken. Fullstendige næringsverdier vises bare for oppskriftene som har dem ennå — noen av de klassiske Fredheim-rettene (lasagnen, burgerne, middelhavssuppa) er ikke ferdig analysert ennå og mangler tall inntil videre.',
+          week: 'Rugbrødet ligger i Storkokking-kortet — det trenger en forhåndsdeig over natten og et døgns hvile før det skjæres, så begynn lørdagen før uken. Ett brød (8 porsjoner à 2 skiver) dekker alle fire gangene det dukker opp, med noen skiver til overs å fryse ned. Det teller ikke med i handlelisten hver dag, kun én gang der. Hver middag er en mettende hovedrett eller en suppe eller gryte med bønner, linser eller erter, med salat bare som tilbehør. Bokhveteburgerne kommer to ganger (tirsdag og fredag) — lag fredagens sammen med tirsdagens og frys den. Tahini-mandel-chiapuddingen lages kvelden før, så onsdags- og søndagsmorgenen går raskt. Porsjonert for én; 👥-kontrollen skalerer hele uken.',
           days: {},
         },
       },
       sv: {
         name: 'Typ 2-diabetes — Exempelvecka',
-        description: 'Varje recept denna vecka bär Fredheims diabetesvänliga märkning — lite mättat fett, utan tillsatt socker, utan raffinerat mjöl, fiberrikt. Hämtat från alla tre receptpaketen: Fredheim-samlingen, reverseringsprotokollet och några lätta rätter från fasteplanen.',
+        description: 'Varje recept denna vecka bär Fredheims diabetesvänliga märkning — lite mättat fett, utan tillsatt socker, utan tillsatt olja, utan raffinerat mjöl, fiberrikt. Hämtat från alla tre receptpaketen: Fredheim-samlingen, reverseringsprotokollet och några lätta rätter från fasteplanen.',
         notes: {
-          week: 'Havre- och potatisfrallorna ligger i Storkokning-kortet — baka hela receptet på måndag, det täcker alla fyra gångerna de dyker upp denna vecka, med några över att frysa in. De räknas inte in i inköpslistan varje dag, bara en gång där. Portionerat för en; 👥-kontrollen skalar hela veckan. Fullständiga näringsvärden visas bara för recepten som har dem än — några av de klassiska Fredheim-rätterna (lasagnen, burgarna, medelhavssoppan) är inte färdiganalyserade än och saknar siffror tills vidare.',
+          week: 'Fullkornsrågbrödet ligger i Storkokning-kortet — det behöver en fördeg över natten och ett dygns vila innan det skärs, så börja lördagen före veckan. Ett bröd (8 portioner à 2 skivor) täcker alla fyra gångerna det dyker upp, med några skivor över att frysa in. Det räknas inte in i inköpslistan varje dag, bara en gång där. Varje middag är en mättande huvudrätt eller en soppa eller gryta med bönor, linser eller ärtor, med sallad bara som tillbehör. Boveteburgarna kommer två gånger (tisdag och fredag) — laga fredagens tillsammans med tisdagens och frys in den. Tahini-mandel-chiapuddingen görs kvällen innan, så onsdags- och söndagsmorgonen går snabbt. Portionerat för en; 👥-kontrollen skalar hela veckan.',
           days: {},
         },
       },
@@ -231,54 +231,55 @@ export const STARTER_PLANS = [
     portions: 1,
     // Smart tips travel with the week and land in the planner's tips card.
     notes: {
-      week: "The oat & potato bread rolls live in the Batch cooking card — bake the full recipe on Monday and it covers all four times they appear this week, with a couple spare to freeze. They don't count toward the shopping list each day, only once there. Portioned for one; the 👥 control scales the whole week. Full nutrition figures are shown only for the recipes that carry them yet — a few of the classic Fredheim dishes (the lasagne, the burgers, the mediterranean soup) haven't been analysed yet and show no numbers until they are.",
+      week: "The wholegrain rye loaf lives in the Batch cooking card — it needs an overnight sponge and a full day's rest before slicing, so start it on the Saturday before the week. One loaf (8 servings of 2 slices) covers all four times it appears, with a few slices spare to freeze. It doesn't count toward the shopping list each day, only once there. Every dinner is a filling main or a bean, lentil or pea soup or stew, with a salad only as the side. The buckwheat burgers come round twice (Tuesday and Friday) — cook Friday's with Tuesday's and freeze it. The tahini-almond chia pudding is made the night before, so Wednesday and Sunday mornings stay quick. Portioned for one; the 👥 control scales the whole week.",
       days: {},
     },
-    // Baked once, Monday, as a batch — one full recipe (8 rolls) covers all
-    // four appearances across the week with extras to spare. Each day below
-    // still shows the roll being eaten (via `mb`), but its ingredients are
+    // Baked once, before the week, as a batch — one loaf (8 servings of 2
+    // slices) covers all four appearances with some to spare. Each day below
+    // still shows the bread being eaten (via `mb`), but its ingredients are
     // bought once here rather than four separate times.
     batchCook: [
-      { id: 'diabetes-week-1-rolls', kind: 'recipe', recipeId: 'orn-17', servings: 8 },
+      { id: 'diabetes-week-1-rye-loaf', kind: 'recipe', recipeId: 'orn-39', servings: 8 },
     ],
+    // Every recipe must carry the diabetes-friendly tag (the description says
+    // so); tests/starterPlans.test.js checks it.
     plan: {
+      // Every dinner is built on a filling Main or a bean/lentil/pea soup or
+      // stew; a salad only ever comes as the side next to it.
       monday: {
-        Breakfast: [m('orn-1')],
-        Lunch: [m('orn-14'), mb('orn-17')],
-        Dinner: [m('fr-23'), m('steamed-small-potatoes')],
+        Breakfast: [m('orn-49')],
+        Lunch: [m('orn-14'), mb('orn-39')],
+        Dinner: [m('sweet-yellow-pea-soup'), m('crunchy-carrot-salad')],
       },
       tuesday: {
-        Breakfast: [m('orn-10')],
+        Breakfast: [m('orn-51')],
         Lunch: [m('mediterranean-soup')],
-        Dinner: [m('fmd-d2-dinner'), mb('orn-17')],
+        Dinner: [m('fr-23'), m('fr-137')],
       },
       wednesday: {
-        Breakfast: [m('orn-18')],
-        Lunch: [m('orn-16'), mb('orn-17')],
-        Dinner: [m('chorizo-with-potato-taco'), m('orn-21')],
+        Breakfast: [m('orn-36')],
+        Lunch: [m('orn-16'), mb('orn-39')],
+        Dinner: [m('orn-11')],
       },
       thursday: {
         Breakfast: [m('fmd-d4-breakfast')],
         Lunch: [m('potato-and-spinach-soup')],
-        Dinner: [m('fmd-d4-dinner'), m('fr-104')],
+        Dinner: [m('lentil-lap-stew'), m('kale-and-sweet-potato-salad')],
       },
       friday: {
-        Breakfast: [m('orn-9')],
+        Breakfast: [m('orn-53')],
         Lunch: [m('fmd-d3-lunch')],
-        Dinner: [m('oat-burger'), m('lightly-cooked-broccoli')],
+        Dinner: [m('fr-23'), m('lightly-cooked-broccoli')],
       },
       saturday: {
-        Breakfast: [m('orn-6')],
-        // Roti (fr-148) was removed from the pack; the bread roll already
-        // batch-cooked elsewhere in this week works the same way as a base
-        // for the bean pâté, and it has nutrition data where Roti didn't.
-        Lunch: [mb('orn-17'), m('bean-pate')],
-        Dinner: [m('fr-94'), m('fr-190')],
+        Breakfast: [m('fmd-d2-breakfast')],
+        Lunch: [mb('orn-39'), m('bean-spread')],
+        Dinner: [m('orn-62'), m('fr-190')],
       },
       sunday: {
-        Breakfast: [m('fmd-d5-breakfast'), m('orn-13')],
+        Breakfast: [m('fmd-d5-breakfast'), m('orn-36')],
         Lunch: [m('fmd-d5-lunch', 2)],
-        Dinner: [m('fmd-d3-dinner'), mb('orn-17')],
+        Dinner: [m('fmd-d3-dinner'), mb('orn-39')],
       },
     },
   },

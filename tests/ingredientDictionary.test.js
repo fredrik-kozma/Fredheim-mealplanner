@@ -189,15 +189,25 @@ test('search finds recipes by name, note and current-language synonyms', () => {
   assert.ok(matchSearchEntry(buildSearchEntry(r, 'en'), 'savoykål'))
 })
 
+// Deliberate recipe changes (scripts/apply_recipe_adaptations.mjs): coconut
+// milk → soy drink, tamari left out. Once committed, HEAD has them too.
+const INTENDED_ALLERGENS = {
+  'fredheim-recipes-with-pictures/red-lentil-soup': ['soy'],
+  'fredheim-reversal-protocol/orn-20': ['tree-nuts'],
+}
+
 test('allergen flags for every built-in recipe are identical to the original packs (git HEAD)', () => {
   let compared = 0
   for (const id of PACKS) {
     const before = JSON.parse(execFileSync('git', ['show', `HEAD:${packPath(id)}`], { maxBuffer: 256 * 1024 * 1024, encoding: 'utf8' }))
     const after = loadPack(id)
     const old = new Map(before.recipes.map(r => [r.id, recipeAllergens(r)]))
-    assert.equal(after.recipes.length, before.recipes.length, id)
-    for (const r of after.recipes) {
-      assert.deepEqual(recipeAllergens(r), old.get(r.id), `${id} / ${r.id}`)
+    const now = new Set(after.recipes.map(r => r.id))
+    for (const r of before.recipes) assert.ok(now.has(r.id), `${id} / ${r.id} is gone`)
+    // Recipes added since HEAD have nothing to compare with.
+    for (const r of after.recipes.filter(x => old.has(x.id))) {
+      const expected = INTENDED_ALLERGENS[`${id}/${r.id}`] || old.get(r.id)
+      assert.deepEqual(recipeAllergens(r), expected, `${id} / ${r.id}`)
       compared++
     }
   }

@@ -101,6 +101,7 @@
     "translationMissingDesc": "Oversett den nå for å se tittel, ingredienser og fremgangsmåte på norsk.",
     "translateNow": "Oversett nå",
     "originalServings": "Originalstørrelse",
+    "portion": "1 porsjon: {{portion}}",
     "decreaseServings": "Reduser porsjoner",
     "increaseServings": "Øk porsjoner",
     "resetServings": "Nullstill",
@@ -410,6 +411,7 @@
     "allergens": "Allergener å unngå",
     "allergensDesc": "Oppskrifter som inneholder disse skjules fra oppskriftslisten og ukeplanen.",
     "allergensClear": "Nullstill alle",
+    "noHoneyHint": "«Lag uken min» utelater oppskrifter med honning.",
     "allergensWarning": "Oppdages automatisk fra ingrediensnavn. Sjekk alltid hele ingredienslisten selv — dette kan ikke ta høyde for merkeforskjeller eller «kan inneholde spor av».",
     "packsDesc": "Installer samlinger med oppskrifter, eller lag din egen pakke å dele.",
     "openPacks": "Åpne oppskriftspakker"
@@ -687,11 +689,28 @@
     }
   },
   "conditions": {
-    "all": "Alle tilstander",
+    "all": "Alle merker",
     "diabetes-friendly": "Diabetesvennlig",
     "blood-pressure-friendly": "Blodtrykk",
     "heart-healthy": "Hjerte & kolesterol",
-    "weight-loss": "Vektnedgang"
+    "weight-loss": "Vektnedgang",
+    "gluten-free": "Glutenfri",
+    "nut-free": "Nøttefri",
+    "soy-free": "Soyafri",
+    "oil-free": "Oljefri",
+    "no-added-sugar": "Uten tilsatt sukker",
+    "quick": "Rask",
+    "batch-friendly": "Storkok",
+    "kid-friendly": "Barnevennlig"
+  },
+  "mealTypes": {
+    "breakfast": "Frokost",
+    "lunch": "Lunsj",
+    "dinner": "Middag",
+    "snack": "Mellommåltid",
+    "side": "Tilbehør",
+    "dessert": "Dessert",
+    "component": "Komponent"
   },
   "nutritionTracker": {
     "title": "Ernæring",
@@ -731,6 +750,129 @@
     "sesame": "Sesam",
     "mustard": "Sennep",
     "celery": "Selleri"
+  },
+  "makeMyWeek": {
+    "button": "Lag uken min",
+    "title": "Lag uken min",
+    "resultTitle": "Uken din",
+    "stepOf": "Spørsmål {{n}} av {{total}}",
+    "back": "Tilbake",
+    "next": "Neste",
+    "emptyTitle": "Ingenting planlagt ennå?",
+    "emptyText": "Svar på noen raske spørsmål, så fyller vi uken med oppskrifter for deg.",
+    "q": {
+      "goal": "Hva skal denne uken hjelpe med?",
+      "people": "Hvor mange skal spise?",
+      "avoid": "Noe du vil unngå?",
+      "time": "Hvor mye tid har du til matlaging på hverdager?",
+      "batch": "Vil du storkoke på søndag?",
+      "meals": "Hvor mange måltider om dagen?",
+      "prefs": "Noen ønsker",
+      "breakfast": "Frokost: salt, søt eller begge deler?",
+      "salt": "Saltnivå"
+    },
+    "goals": {
+      "general": "Sunn hverdagsmat",
+      "weight": "Vektnedgang",
+      "bloodPressure": "Blodtrykk",
+      "diabetes": "Diabetes type 2",
+      "heart": "Hjertehelse (reversering)",
+      "fmd": "Faste-imiterende (FMD)"
+    },
+    "goalHints": {
+      "general": "Variert, plantebasert og snill mot hjertet",
+      "weight": "Lettere måltider som likevel metter",
+      "bloodPressure": "Lite salt, mye kalium",
+      "diabetes": "Jevnt blodsukker og rikelig med fiber",
+      "heart": "Oppskrifter i Ornish-stil for hjerte og kolesterol",
+      "fmd": "Laster inn den ferdige 5-dagersplanen"
+    },
+    "peopleHint": "Dette setter også husstandsstørrelsen din.",
+    "avoidHint": "Trykk på alt som gjelder. Allergier lagres i innstillingene dine.",
+    "noHoney": "Uten honning (strengt vegansk)",
+    "timeHint": "I helgene kan det ta litt lenger tid.",
+    "times": {
+      "quick": "Inntil 20 minutter",
+      "medium": "Inntil 45 minutter",
+      "any": "Ingen grense"
+    },
+    "batchYes": "Ja takk",
+    "batchYesHint": "En stor suppe, et brød og et pålegg som varer uken",
+    "batchNo": "Nei, vi lager mat underveis",
+    "meals": {
+      "1": "Bare middag",
+      "2": "Frokost og lunsj",
+      "3": "Frokost, lunsj og middag"
+    },
+    "doctorNote": "Kun forslag — snakk med legen din før du endrer medisiner eller kosthold på grunn av en sykdom.",
+    "goalNote": "Alle oppskriftene er merket «{{label}}».",
+    "weekName": "Min uke: {{goal}}",
+    "batchTitle": "Storkokking på søndag",
+    "batchSoup": "kok {{name}}",
+    "batchBread": "bak {{name}}",
+    "batchSpread": "lag {{name}}",
+    "servings_one": "{{count}} porsjon",
+    "servings_other": "{{count}} porsjoner",
+    "covered": "storkok",
+    "statsDay": "Omtrent {{kcal}} kcal og {{fibre}} g fiber per person om dagen.",
+    "statsDinner": "Omtrent {{kcal}} kcal og {{fibre}} g fiber per person per middag.",
+    "dayStats": "{{kcal}} kcal · {{fibre}} g fiber",
+    "portionsEach": "{{n}} porsjoner hver",
+    "extra": "ekstra",
+    "dayFruit_one": "Legg til 1 frukt per person i dag (et eple, en pære eller en appelsin) for å nå dagens energibehov.",
+    "dayFruit_other": "Legg til {{count}} frukter per person i dag (epler, pærer eller appelsiner) for å nå dagens energibehov.",
+    "shuffle": "Stokk om",
+    "useWeek": "Bruk denne uken",
+    "changeAnswers": "Endre svar",
+    "replaceConfirm": "Vil du bytte ut uken du har planlagt nå med denne?",
+    "notice": {
+      "packMissing": "Pakken «{{pack}}» er ikke installert, så det er litt færre å velge mellom. Du kan legge den til under Pakker.",
+      "batchTip": "På søndag: {{list}}. Hver av dem står én gang i handlelisten og er merket som dekket de dagene du spiser dem. Suppen holder seg 4–5 dager i kjøleskapet; frys brødet du ikke spiser innen to dager.",
+      "batchNoSoup": "Vi fant ingen suppe eller gryte til storkokking som passer valgene dine, så det blir ingen storkokt suppe denne uken.",
+      "batchNoBread": "Vi fant ikke noe brød som passer valgene dine, så storkokingen er bare suppen.",
+      "dinnerSoupSide": "Det finnes bare noen få hovedretter med denne merkingen, så de fleste hovedmåltidene er en mettende suppe eller gryte med tilbehør.",
+      "relaxTime": "Noen hverdagsretter tar lenger tid enn grensen din — det fantes ikke noe raskere som passet. Bytt dem gjerne ut.",
+      "relaxCap": "Noen retter kommer tilbake en tredje gang, fordi det ikke var nok å velge mellom.",
+      "emptySlots": "Noen måltider står tomme — ikke nok oppskrifter passer alle valgene dine. Trykk + i planleggeren for å legge til dine egne.",
+      "noRecipes": "Ingen oppskrifter passer disse valgene. Prøv å unngå færre ting, eller installer Fredheims oppskriftspakker.",
+      "kcalLow": "Det er under de omtrent {{target}} kcal om dagen vi sikter mot. Legg til frukt, brød eller en større porsjon for å bli mett.",
+      "kcalLowDinner": "Det er en lett middag (vi sikter mot omtrent {{target}} kcal). Legg til brød eller en større porsjon om du er sulten.",
+      "fmdPackAdded": "FMD-oppskriftspakken blir installert slik at uken kan lastes inn.",
+      "fmdAllergens": "Merk: noen FMD-retter inneholder {{list}}. Planen er fast, så sjekk dem og bytt ut det du trenger.",
+      "fmdHoney": "Merk: noen FMD-retter inneholder honning.",
+      "portionsScaled": "Oppskriftenes porsjoner er små, så hovedretter, supper og frokoster er planlagt med opptil 2 porsjoner hver for å nå dagens energibehov. Handlelisten kjøper inn til det, og uken skaleres fortsatt med antall personer.",
+      "extraBread": "For å nå dagens energibehov får noen måltider {{name}} ved siden av (merket «ekstra»).",
+      "extraFruit": "Noen dager foreslår dagens notat en frukt eller to: rettene alene gir litt under dagens energibehov.",
+      "goalRelaxed": "For få oppskrifter passer alle målene dine samtidig, så «{{goals}}» ble utelatt. Uken følger: {{kept}}.",
+      "breakfastRelaxed": "Bare noen få {{kind}} frokoster passer valgene dine, så noen andre er blandet inn.",
+      "favouritesUsed_one": "{{count}} av favorittene dine er med denne uken.",
+      "favouritesUsed_other": "{{count}} av favorittene dine er med denne uken.",
+      "noFavourites": "Ingen av favorittene dine passer valgene denne uken.",
+      "saltStandard": "Saltnivå: Standard. Salte retter bruker standard saltmengde (rundt 700 mg natrium per hovedmåltid). Helsemerkene gjelder versjonen med lite salt.",
+      "saltLow": "Saltnivå: Lite salt. Oppskriftene brukes nøyaktig slik de er skrevet.",
+      "saltLowAuto": "Saltnivå: Lite salt, på grunn av helsemålet ditt. Oppskriftene brukes nøyaktig slik de er skrevet."
+    },
+    "goalsHint": "Velg ett eller flere.",
+    "breakfasts": {
+      "both": "Begge deler",
+      "savoury": "Salt",
+      "sweet": "Søt"
+    },
+    "breakfastKinds": {
+      "savoury": "salte",
+      "sweet": "søte"
+    },
+    "breakfastHint": "Pålegget følger samme valg.",
+    "saltAuto": "Lite salt, på grunn av helsemålet du valgte.",
+    "preferFavourites": "Foretrekk favorittene mine",
+    "preferFavouritesHint_one": "{{count}} favoritt",
+    "preferFavouritesHint_other": "{{count}} favoritter",
+    "noFavouritesYet": "Ingen favoritter ennå: trykk ♥ på en oppskrift.",
+    "fewerIngredients": "Færre ingredienser / kortere handleliste",
+    "fewerIngredientsHint": "Retter som deler ingredienser, og en rett to ganger heller enn en ny",
+    "uniqueIngredients_one": "Denne uken trenger {{count}} ulik ingrediens.",
+    "uniqueIngredients_other": "Denne uken trenger {{count}} ulike ingredienser.",
+    "goalNoteMany": "Alle oppskriftene har disse merkene: {{labels}}."
   },
   "timer": {
     "title": "Timer",
@@ -824,5 +966,27 @@
     "someDropped": "Deler av denne filen var ødelagt og blir ikke gjenopprettet: {{fields}}",
     "replaceWarning": "Dette erstatter det som ligger i appen nå. De innebygde oppskriftene berøres ikke.",
     "confirmRestore": "Gjenopprett"
+  },
+  "salt": {
+    "title": "Saltnivå",
+    "standard": "Standard (friske voksne, WHO: under 5 g salt/dag)",
+    "low": "Lite salt (blodtrykk, hjerte- eller nyresykdom)",
+    "desc": "Salte retter har en standard saltmengde for friske voksne. Lite salt bruker hver oppskrift nøyaktig slik den er skrevet. Helsemerkene gjelder alltid versjonen med lite salt.",
+    "tip": "Tilsett saltet til slutt eller ved bordet: du kjenner mer smak med mindre salt. Sitron, hvitløk, urter, tomatpuré, miso og næringsgjær gir mer smak.",
+    "lowHint": "Lite salt: {{amount}}",
+    "toTaste": "etter smak",
+    "sodiumLine": "Standard salt: {{standard}} mg natrium per porsjon (lite salt: {{low}} mg).",
+    "labelNote": "Merket «{{label}}» gjelder versjonen med lite salt.",
+    "short": {
+      "low": "Lite salt",
+      "standard": "Standard"
+    },
+    "recipeToggle": "Saltnivå for denne oppskriften",
+    "resetToDefault": "Bruk innstillingen min ({{level}})"
+  },
+  "dislike": {
+    "add": "Ikke for meg",
+    "remove": "Merket «ikke for meg». Trykk for å angre",
+    "hint": "Lag uken min velger ikke denne oppskriften."
   }
 }

@@ -21,6 +21,32 @@
  *                         or herb whose dictionary entry has no spoonGrams.gPerTsp, so the
  *                         recipe cannot show its "(≈ 2 tsp)" hint. Checked on the en list.
  *
+ * Per recipe, in the Fredheim packs (the recipe rules in CLAUDE.md; criteria in
+ * scripts/lib/recipeLabels.mjs, the same ones the label report uses):
+ *   missing-servings        servings not a whole number ≥ 1, or no servingWeightGrams
+ *   missing-portion         no portion description in en/no/sv
+ *   missing-meal-types      no mealTypes, or an unknown one
+ *   missing-time            prepTime/cookTime missing (or both 0)
+ *   missing-nutrition       no nutrition.perServing
+ *   implausible-kcal        over 1500 kcal a serving, under 50 for a meal, or `kcal` ≠ calories
+ *   nutrition-mismatch      stored values disagree with the ingredient estimate
+ *                           (food-composition-core.json): kcal, sodium, added sugar, false zeros
+ *   nutrition-unverifiable  an ingredient has no composition data, so it can't be checked
+ *   labels-not-computed     good-for label tags differ from what the criteria compute
+ * These are errors, except missing-portion on recipes from before the rule
+ * (createdAt up to META_RULES_AFTER), which is a counted warning.
+ *
+ * Salt levels and flavour (scripts/lib/saltLevels.mjs, written by
+ * scripts/build_salt_levels.mjs):
+ *   bad-standard-amount     standardAmount on a row that is not salt, soy sauce/tamari, miso or
+ *                           bouillon; not a positive number; below the row's own amount; no unit
+ *                           to measure it in; or different from the English row at that index
+ *   standard-sodium         (Fredheim packs) nutrition.sodiumStandard missing, wrong or over the
+ *                           standard cap (750 mg a main, 400 mg a breakfast/bread), or a standard
+ *                           amount on a sweet recipe
+ *   missing-flavour         (Fredheim packs) a breakfast, spread or jam without
+ *                           flavourProfile "sweet" | "savoury"
+ *
  * Known leftovers are listed in scripts/data/check-recipes-baseline.json and are reported
  * as warnings; anything not in the baseline is an error and the exit code is 1.
  * Soft issues are always warnings (never baselined), and errors under --strict.
@@ -40,6 +66,8 @@ import path from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { normalizeUnit, CANONICAL_UNITS, BASE_UNIT_TYPE } from '../src/utils/unitNormalizer.js'
+import { analyzeRecipe, recipeMetaProblems } from './lib/recipeLabels.mjs'
+import { STANDARD_AMOUNT_IDS, TARGETS, saltClass, standardSodium, needsFlavour } from './lib/saltLevels.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.join(__dirname, '..')
@@ -197,6 +225,122 @@ export function checkPacks(packs, dictionary, { only = () => true } = {}) {
   return issues
 }
 
+// ---------------------------------------------------------------- recipe rules
+// The packs the label criteria were written for (plant-based Fredheim).
+export const META_PACK_IDS = ['fredheim-recepies-with-pictures', 'fredheim-reversal-protocol', 'fredheim-fmd-5day']
+// The newest createdAt when the recipe rules came in (2026-10-29). Recipes
+// up to it may lack a portion description (a counted warning); anything
+// added later must have everything.
+export const META_RULES_AFTER = 1785697200000
+const LEGACY_TOLERATED = new Set(['missing-portion'])
+
+const createdMs = (r) => (typeof r.createdAt === 'number' ? r.createdAt : Date.parse(r.createdAt) || 0)
+
+/**
+ * The recipe rules (servings, portion, nutrition, time, meal types, labels)
+ * for recipes in META_PACK_IDS. Issues as checkPacks; legacy-tolerated ones
+ * carry `soft` and `legacy`.
+ */
+export function checkRecipeMeta(packs, { only = () => true } = {}) {
+  const recipesById = new Map(packs.flatMap((p) => (p.recipes || []).map((r) => [r.id, r])))
+  const issues = []
+  for (const pack of packs) {
+    if (!META_PACK_IDS.includes(pack.id)) continue
+    for (const recipe of pack.recipes || []) {
+      if (!only(recipe, pack)) continue
+      const legacy = !(createdMs(recipe) > META_RULES_AFTER)
+      for (const p of recipeMetaProblems(recipe, analyzeRecipe(recipe, recipesById, { storedMealTypes: true }))) {
+        const tolerated = legacy && LEGACY_TOLERATED.has(p.code)
+        issues.push({
+          pack: pack.id, recipe: recipe.id, title: recipe.title, lang: 'en', index: null, code: p.code, message: p.message,
+          key: [pack.id, recipe.id, 'en', p.code, p.detail].join('|'),
+          ...(tolerated && { soft: true, legacy: true }),
+        })
+      }
+    }
+  }
+  return issues
+}
+
+// ---------------------------------------------------------------- salt levels
+const SPOON_UNITS = new Set(['tsp', 'tbsp'])
+const FLAVOURS = new Set(['sweet', 'savoury'])
+
+/**
+ * standardAmount rows (every pack) and sodiumStandard / flavourProfile (the
+ * Fredheim packs). Issues as checkPacks.
+ */
+export function checkSaltLevels(packs, { only = () => true } = {}) {
+  const issues = []
+  for (const pack of packs) {
+    for (const recipe of pack.recipes || []) {
+      if (!only(recipe, pack)) continue
+      const add = (lang, index, code, detail, message) => issues.push({
+        pack: pack.id, recipe: recipe.id, title: recipe.title, lang, index, code, message,
+        key: [pack.id, recipe.id, lang, code, detail].join('|'),
+      })
+      const en = recipe.ingredients || []
+      let standardRows = 0
+      for (const lang of LANGS) {
+        const list = lang === 'en' ? en : recipe.translations?.[lang]?.ingredients
+        if (!Array.isArray(list)) continue
+        list.forEach((row, i) => {
+          const label = row.ingredient || row.name || `row ${i + 1}`
+          if (row.standardAmount == null) {
+            if (row.standardUnit != null) add(lang, i, 'bad-standard-amount', `${label}:unit`, `${label}: standardUnit without a standardAmount`)
+            return
+          }
+          if (lang === 'en') standardRows++
+          const v = row.standardAmount
+          const unit = row.standardUnit ?? row.unit
+          if (!STANDARD_AMOUNT_IDS.has(row.ingredient)) {
+            add(lang, i, 'bad-standard-amount', `${label}:id`, `${label}: a standard amount only goes on salt, soy sauce/tamari, miso or bouillon rows`)
+          }
+          if (typeof v !== 'number' || !Number.isFinite(v) || v <= 0) {
+            add(lang, i, 'bad-standard-amount', `${label}:value`, `${label}: standardAmount ${JSON.stringify(v)} is not a positive number`)
+          } else if (typeof row.quantity === 'number' && v < row.quantity) {
+            add(lang, i, 'bad-standard-amount', `${label}:below`, `${label}: standardAmount ${v} is below the low-salt amount ${row.quantity}`)
+          }
+          if (row.standardUnit != null && row.unit) {
+            add(lang, i, 'bad-standard-amount', `${label}:unit`, `${label}: standardUnit is only for a "to taste" row (unit ""); this row is measured in ${row.unit}`)
+          } else if (!SPOON_UNITS.has(normalizeUnit(unit)) && !['g', 'ml'].includes(normalizeUnit(unit))) {
+            add(lang, i, 'bad-standard-amount', `${label}:unit`, `${label}: no unit to measure the standard amount in (give a "to taste" row standardUnit "tsp")`)
+          }
+          const e = en[i]
+          if (lang !== 'en' && e && (e.standardAmount !== row.standardAmount || (e.standardUnit ?? null) !== (row.standardUnit ?? null))) {
+            add(lang, i, 'bad-standard-amount', `${label}:misaligned`, `${label}: standard ${row.standardAmount} ${row.standardUnit || ''} but English row ${i + 1} has ${e.standardAmount ?? '-'} ${e.standardUnit || ''}`.trim())
+          }
+        })
+      }
+
+      if (!META_PACK_IDS.includes(pack.id)) continue
+      if (recipe.flavourProfile != null && !FLAVOURS.has(recipe.flavourProfile)) {
+        add('en', null, 'missing-flavour', 'value', `flavourProfile "${recipe.flavourProfile}" should be "sweet" or "savoury"`)
+      } else if (recipe.flavourProfile == null && needsFlavour(recipe)) {
+        add('en', null, 'missing-flavour', 'missing', 'breakfast/spread without flavourProfile (node scripts/build_salt_levels.mjs --write)')
+      }
+      const stored = recipe.nutrition?.sodiumStandard
+      if (!standardRows) {
+        if (stored != null) add('en', null, 'standard-sodium', 'orphan', `nutrition.sodiumStandard ${stored} but no row has a standard amount`)
+        continue
+      }
+      const cls = saltClass(recipe)
+      if (typeof cls === 'object' && cls.skip === 'sweet') {
+        add('en', null, 'standard-sodium', 'sweet', 'a sweet recipe gets no standard salt amount')
+      }
+      let expected = null
+      try { expected = standardSodium(recipe) } catch (err) { add('en', null, 'standard-sodium', 'unverifiable', `standard sodium can't be computed: ${err.message}`) }
+      if (expected != null) {
+        if (typeof stored !== 'number') add('en', null, 'standard-sodium', 'missing', `no nutrition.sodiumStandard (expected ${expected} mg a serving)`)
+        else if (Math.abs(stored - expected) > 2) add('en', null, 'standard-sodium', 'mismatch', `nutrition.sodiumStandard ${stored} mg, but the standard amounts give ${expected} mg a serving`)
+        const cap = typeof cls === 'string' ? TARGETS[cls].cap : null
+        if (cap != null && expected > cap) add('en', null, 'standard-sodium', 'cap', `${expected} mg sodium a serving at standard is over the ${cap} mg cap for a ${cls}`)
+      }
+    }
+  }
+  return issues
+}
+
 /**
  * Splits issues into errors and baselined warnings. The baseline is a multiset of
  * keys: a recipe that had two known leftovers may keep two, not gain a third.
@@ -263,9 +407,11 @@ function main(argv) {
     if (recipeIds || packIds) process.exit(1) // a named recipe or pack that is not there is a mistake
   }
   const issues = checkPacks(packs, dictionary, { only })
+  const metaIssues = [...checkRecipeMeta(packs, { only }), ...checkSaltLevels(packs, { only })]
 
   if (flag('--update-baseline')) {
     if (recipeIds || packIds || since !== null || changed) throw new Error('--update-baseline must run on all packs (no filters)')
+    // Ingredient rows only: the recipe rules are never baselined.
     const keys = issues.filter((i) => !i.soft).map((i) => i.key).sort()
     fs.writeFileSync(BASELINE_PATH, JSON.stringify({
       description: 'Known ingredient-standard leftovers in the built-in packs, as of when this file was generated. scripts/check-recipes.mjs reports these as warnings instead of errors. Regenerate with: npm run check-recipes -- --update-baseline (only after deliberately accepting the current state).',
@@ -278,9 +424,10 @@ function main(argv) {
   }
 
   const baseline = flag('--strict') || !fs.existsSync(BASELINE_PATH) ? [] : readJson(BASELINE_PATH).keys
-  const { errors, warnings: allWarnings } = applyBaseline(issues, baseline, { strict: flag('--strict') })
+  const { errors, warnings: allWarnings } = applyBaseline([...issues, ...metaIssues], baseline, { strict: flag('--strict') })
   const warnings = allWarnings.filter((w) => !w.soft)
-  const softWarnings = allWarnings.filter((w) => w.soft)
+  const softWarnings = allWarnings.filter((w) => w.soft && !w.legacy)
+  const legacyWarnings = allWarnings.filter((w) => w.legacy)
 
   const printGroup = (list, heading) => {
     const byRecipe = new Map()
@@ -307,6 +454,11 @@ function main(argv) {
   }
   // Few, and each one is a dictionary entry to fill in, so always listed.
   if (softWarnings.length) printGroup(softWarnings, `WARNINGS (${softWarnings.length}, add spoonGrams to the dictionary entry; errors under --strict)`)
+  if (legacyWarnings.length) {
+    const byCode = legacyWarnings.reduce((m, w) => { m[w.code] = (m[w.code] || 0) + 1; return m }, {})
+    console.log(`  ${legacyWarnings.length} recipe(s) from before the recipe rules (warnings): ${Object.entries(byCode).map(([c, n]) => `${c} ${n}`).join(', ')}`)
+    if (flag('--verbose')) printGroup(legacyWarnings, 'WARNINGS (recipes from before the rules)')
+  }
   if (errors.length) {
     printGroup(errors, `ERRORS (${errors.length})`)
     console.log('\nFix the rows above: see CLAUDE.md "Adding or editing recipes" and recipe-packs-template/INGREDIENT_UNITS.md.')

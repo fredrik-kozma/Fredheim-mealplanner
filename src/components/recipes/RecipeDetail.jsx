@@ -11,13 +11,14 @@ import LockedOverlay from '../subscription/LockedOverlay'
 import NutritionPanel from './NutritionPanel'
 import EditableNumber from '../common/EditableNumber'
 import FavoriteStar from './FavoriteStar'
-import { recipeConditions, CONDITION_BADGE } from '../../data/conditionTags'
+import { recipeConditions, recipeMealTypes, CONDITION_BADGE, CONDITION_TAGS } from '../../data/conditionTags'
 import { isFmdRecipe } from '../../utils/recipeFlags'
 import { renderStepText } from '../../utils/scaleStepText'
 import ShareModal from '../share/ShareModal'
 import { buildRecipePayload } from '../../utils/sharePayload'
 import { recipeAsText } from '../../utils/shareText'
 import { formatDuration } from '../../utils/formatDuration'
+import { ingredientsAtLevel, recipeAtLevel, hasStandardSalt, hasStandardAmount, sodiumAtLevel, lowSaltOnlyLabels, saltLevelForRecipe } from '../../utils/saltLevel'
 
 export default function RecipeDetail() {
   const { id } = useParams()
@@ -50,6 +51,15 @@ export default function RecipeDetail() {
   }, [id, recipeExists, setLastOpenedRecipeId])
   const familySize = useStore(s => s.familySize)
   const language = useStore(s => s.language)
+  // The global salt level, unless this recipe has its own (the toggle by
+  // the ingredients). Picking the global value there clears the override.
+  const defaultSaltLevel = useStore(s => s.saltLevel)
+  const recipeSaltOverride = useStore(s => s.recipeSaltLevels?.[id])
+  const saltLevel = saltLevelForRecipe(id, defaultSaltLevel, { [id]: recipeSaltOverride })
+  const setRecipeSaltLevel = useStore(s => s.setRecipeSaltLevel)
+  const clearRecipeSaltLevel = useStore(s => s.clearRecipeSaltLevel)
+  const isDisliked = useStore(s => (s.dislikedRecipes || []).includes(id))
+  const toggleDisliked = useStore(s => s.toggleDisliked)
   const checkedIngredients = useStore(s => s.checkedIngredients)
   const toggleIngredientChecked = useStore(s => s.toggleIngredientChecked)
   const clearCheckedIngredients = useStore(s => s.clearCheckedIngredients)
@@ -86,9 +96,16 @@ export default function RecipeDetail() {
   const translation = recipe.translations?.[currentLang]
   const displayTitle = translation?.title || recipe.title
   const displayDescription = translation?.description || recipe.description
-  const displayIngredients = translation?.ingredients || recipe.ingredients
+  // As written (low salt), and at the chosen salt level: on Standard a
+  // salt row shows its standard amount, with the low-salt one beside it.
+  const writtenIngredients = translation?.ingredients || recipe.ingredients
+  const displayIngredients = ingredientsAtLevel(writtenIngredients, saltLevel)
+  const standardSalt = saltLevel === 'standard' && hasStandardSalt(recipe)
+  const recipeAtSalt = recipeAtLevel(recipe, saltLevel)
   const displaySteps = translation?.steps || recipe.steps
   const displayNotes = translation?.notes || recipe.notes
+  // What one serving is, for batch recipes ("2 slices (~92 g)", "30 g").
+  const displayPortion = translation?.portion || recipe.portion
 
   // Cross-links to other recipes (e.g. a bread recipe pointing at a
   // separate "how to build a starter" reference). Stored as an array of
@@ -310,6 +327,18 @@ export default function RecipeDetail() {
                   previews, so visitors can build a wishlist while
                   browsing. */}
               <FavoriteStar recipeId={id} size="lg" />
+              {/* "Not for me": Make my week never picks it. */}
+              <button
+                onClick={() => toggleDisliked(id)}
+                aria-pressed={isDisliked}
+                className={`px-3 py-2 ${isDisliked ? 'btn-secondary bg-slate-700 text-white hover:bg-slate-800' : 'btn-secondary'}`}
+                title={isDisliked ? t('dislike.remove') : `${t('dislike.add')}: ${t('dislike.hint')}`}
+                aria-label={isDisliked ? t('dislike.remove') : t('dislike.add')}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
+                </svg>
+              </button>
               <button
                 onClick={() => setSharing(buildShare())}
                 className="btn-secondary px-3 py-2"
@@ -349,6 +378,12 @@ export default function RecipeDetail() {
         {/* Meta chips */}
         <div className="flex flex-wrap gap-2 mt-3 mb-5">
           <span className="badge bg-indigo-50 text-indigo-700">{t(`categories.${recipe.category}`, { defaultValue: recipe.category })}</span>
+          {/* Meal types this recipe suits — skip one that just repeats the category. */}
+          {recipeMealTypes(recipe)
+            .filter(m => t(`mealTypes.${m}`, { defaultValue: m }) !== t(`categories.${recipe.category}`, { defaultValue: recipe.category }))
+            .map(m => (
+              <span key={m} className="badge bg-slate-100 text-slate-600">{t(`mealTypes.${m}`, { defaultValue: m })}</span>
+            ))}
           {/* `> 0`, not truthiness: a no-cook recipe stores cookTime 0, and
               `{0 && …}` evaluates to 0 — which React happily renders as a
               stray "0" chip next to the prep time. */}
@@ -365,6 +400,19 @@ export default function RecipeDetail() {
             </span>
           ))}
         </div>
+
+        {/* The labels are judged on the recipe as written (low salt): say so
+            for each sodium-based label the standard sodium is over. */}
+        {lowSaltOnlyLabels(recipe, saltLevel).map(label => (
+          <p key={label} className="-mt-3 mb-4 text-xs text-slate-500">
+            {CONDITION_TAGS.find(c => c.id === label)?.icon} {t('salt.labelNote', { label: t(`conditions.${label}`) })}
+          </p>
+        ))}
+        {isDisliked && (
+          <p className="-mt-3 mb-4 text-xs text-slate-500">
+            🚫 {t('dislike.add')}: {t('dislike.hint')}
+          </p>
+        )}
 
         {/* Fasting-diet notice — makes clear this is a restricted protocol
             meal, not a complete standalone one, before anyone plans around it. */}
@@ -399,6 +447,11 @@ export default function RecipeDetail() {
                 <p className="text-sm text-slate-700 font-medium">
                   {t('recipeDetail.servings', { count: recipe.servings })}
                 </p>
+                {displayPortion && (
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    {t('recipeDetail.portion', { portion: displayPortion, defaultValue: '1 serving: {{portion}}' })}
+                  </p>
+                )}
               </div>
               <div className="flex items-center gap-2 flex-wrap justify-end">
                 <button
@@ -517,10 +570,55 @@ export default function RecipeDetail() {
                 </div>
               )}
             </div>
+            {/* Salt level for this recipe only, when it has a standard
+                amount. Starts at the global setting; the shopping list
+                follows the choice. */}
+            {hasStandardSalt(recipe) && (
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-3">
+                <div
+                  role="group"
+                  aria-label={t('salt.recipeToggle')}
+                  className="inline-flex rounded-full bg-slate-100 p-0.5 text-xs font-medium"
+                >
+                  {['low', 'standard'].map(level => (
+                    <button
+                      key={level}
+                      type="button"
+                      onClick={() => setRecipeSaltLevel(id, level)}
+                      aria-pressed={saltLevel === level}
+                      aria-label={t(`salt.${level}`)}
+                      className={`px-3 py-1.5 rounded-full transition-colors whitespace-nowrap ${
+                        saltLevel === level ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'
+                      }`}
+                    >
+                      {t(`salt.short.${level}`)}
+                    </button>
+                  ))}
+                </div>
+                {recipeSaltOverride && (
+                  <button
+                    type="button"
+                    onClick={() => clearRecipeSaltLevel(id)}
+                    className="text-xs font-medium text-slate-400 hover:text-indigo-600 transition-colors"
+                  >
+                    {t('salt.resetToDefault', { level: t(`salt.short.${defaultSaltLevel}`) })}
+                  </button>
+                )}
+              </div>
+            )}
             <div className="card divide-y divide-slate-50">
               {displayIngredients.map((ing, i) => {
                 const isChecked = Boolean(checkedForRecipe[i])
                 const row = scaledRow(ing)
+                // On Standard, the amount as written: "Low salt: ½ tsp".
+                const written = writtenIngredients[i]
+                const lowSaltHint = standardSalt && hasStandardAmount(written)
+                  ? t('salt.lowHint', {
+                    amount: written.quantity == null
+                      ? t('salt.toTaste')
+                      : scaledRow(written).quantityLabel,
+                  })
+                  : null
                 return (
                   <button
                     key={i}
@@ -552,6 +650,9 @@ export default function RecipeDetail() {
                           <span aria-hidden>⚖️</span>
                           {t('recipeDetail.doesNotScale', { defaultValue: 'adjust manually' })}
                         </span>
+                      )}
+                      {lowSaltHint && (
+                        <span className={`block text-[11px] ${isChecked ? 'text-slate-300' : 'text-slate-400'}`}>💗 {lowSaltHint}</span>
                       )}
                     </span>
                     <span className={`text-sm font-medium flex-shrink-0 tabular-nums whitespace-nowrap transition-colors ${isChecked ? 'text-slate-300 line-through' : 'text-slate-900'}`}>
@@ -641,8 +742,17 @@ export default function RecipeDetail() {
           </section>
         )}
 
-        {/* Nutrition panel — only renders when recipe has nutrition data */}
-        <NutritionPanel recipe={recipe} displayServings={displayServings} />
+        {/* Nutrition panel — only renders when recipe has nutrition data.
+            Sodium follows the salt level; the labels never do. */}
+        <NutritionPanel recipe={recipeAtSalt} displayServings={displayServings} />
+        {standardSalt && recipe.nutrition?.perServing && sodiumAtLevel(recipe, 'low') != null && (
+          <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+            🧂 {t('salt.sodiumLine', {
+              standard: Math.round(sodiumAtLevel(recipe, 'standard')),
+              low: Math.round(sodiumAtLevel(recipe, 'low')),
+            })}
+          </p>
+        )}
         </div>
         {/* end paywall wrapper */}
 

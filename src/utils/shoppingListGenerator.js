@@ -7,6 +7,7 @@ import { normalizeUnit } from './unitNormalizer.js'
 import { groupIngredients } from './ingredientMatcher.js'
 import { AISLES, categoriseIngredient } from './ingredientCategorizer.js'
 import { resolveIngredientId, standardName, dictionaryAisle, prefersSpoons } from './ingredientDictionary.js'
+import { ingredientsAtLevel, saltLevelForRecipe } from './saltLevel.js'
 
 // A spice's total stays in spoons; see smartConvert's preferSpoons.
 export const totalOptionsFor = (id) => ({ preferSpoons: prefersSpoons(id) })
@@ -55,7 +56,13 @@ export function isPlainWater(name) {
   return head.length > 0 && WATER_WORDS.has(head[0])
 }
 
-export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en', batchCook = []) {
+/**
+ * options.saltLevel: 'low' (default, the recipes as written) or 'standard',
+ * which buys a salt row's standardAmount instead (src/utils/saltLevel.js).
+ * options.recipeSaltLevels: { [recipeId]: level } chosen on a recipe's page;
+ * those recipes are bought at their own level instead.
+ */
+export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en', batchCook = [], { saltLevel = 'low', recipeSaltLevels = {} } = {}) {
   const recipeMap = Object.fromEntries(recipes.map(r => [r.id, r]))
 
   // Ingredient occurrences, kept in two buckets so the week's batch prep can
@@ -74,9 +81,9 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
     // Use translated ingredients if available for this language,
     // otherwise fall back to the canonical English ones.
     const translation = recipe.translations?.[lang]
-    const ingredients = translation?.ingredients?.length
+    const ingredients = ingredientsAtLevel(translation?.ingredients?.length
       ? translation.ingredients
-      : (recipe.ingredients || [])
+      : (recipe.ingredients || []), saltLevelForRecipe(recipeId, saltLevel, recipeSaltLevels))
     const recipeTitle = translation?.title || recipe.title
 
     for (const ing of ingredients) {

@@ -101,6 +101,7 @@
     "translationMissingDesc": "Translate it now to see the title, ingredients and steps in your language.",
     "translateNow": "Translate now",
     "originalServings": "Original size",
+    "portion": "1 serving: {{portion}}",
     "decreaseServings": "Decrease servings",
     "increaseServings": "Increase servings",
     "resetServings": "Reset",
@@ -410,6 +411,7 @@
     "allergens": "Allergens to avoid",
     "allergensDesc": "Recipes containing these are hidden from the recipe list and the planner.",
     "allergensClear": "Clear all",
+    "noHoneyHint": "Make my week leaves out recipes with honey.",
     "allergensWarning": "Detected automatically from ingredient names. Always check the full ingredient list yourself — this cannot account for brand differences or “may contain” cross-contamination.",
     "packsDesc": "Install collections of recipes, or build a pack of your own to share.",
     "openPacks": "Open recipe packs"
@@ -687,11 +689,28 @@
     }
   },
   "conditions": {
-    "all": "All conditions",
+    "all": "All labels",
     "diabetes-friendly": "Diabetes-friendly",
     "blood-pressure-friendly": "Blood pressure",
     "heart-healthy": "Heart & cholesterol",
-    "weight-loss": "Weight loss"
+    "weight-loss": "Weight loss",
+    "gluten-free": "Gluten-free",
+    "nut-free": "Nut-free",
+    "soy-free": "Soy-free",
+    "oil-free": "Oil-free",
+    "no-added-sugar": "No added sugar",
+    "quick": "Quick",
+    "batch-friendly": "Batch cooking",
+    "kid-friendly": "Kid-friendly"
+  },
+  "mealTypes": {
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "snack": "Snack",
+    "side": "Side dish",
+    "dessert": "Dessert",
+    "component": "Component"
   },
   "nutritionTracker": {
     "title": "Nutrition",
@@ -731,6 +750,129 @@
     "sesame": "Sesame",
     "mustard": "Mustard",
     "celery": "Celery"
+  },
+  "makeMyWeek": {
+    "button": "Make my week",
+    "title": "Make my week",
+    "resultTitle": "Your week",
+    "stepOf": "Question {{n}} of {{total}}",
+    "back": "Back",
+    "next": "Next",
+    "emptyTitle": "Nothing planned yet?",
+    "emptyText": "Answer a few quick questions and we’ll fill the week with recipes for you.",
+    "q": {
+      "goal": "What should this week help with?",
+      "people": "How many people are eating?",
+      "avoid": "Anything to avoid?",
+      "time": "How much time for cooking on weekdays?",
+      "batch": "Batch cook on Sunday?",
+      "meals": "How many meals a day?",
+      "prefs": "A few preferences",
+      "breakfast": "Breakfast: savoury, sweet or both?",
+      "salt": "Salt level"
+    },
+    "goals": {
+      "general": "Healthy everyday food",
+      "weight": "Weight loss",
+      "bloodPressure": "Blood pressure",
+      "diabetes": "Type 2 diabetes",
+      "heart": "Heart health (Reversal)",
+      "fmd": "Fasting mimicking (FMD)"
+    },
+    "goalHints": {
+      "general": "Varied, plant-based and kind to the heart",
+      "weight": "Lighter meals that still fill you up",
+      "bloodPressure": "Low in salt, rich in potassium",
+      "diabetes": "Steady blood sugar and plenty of fibre",
+      "heart": "Ornish-style recipes for heart and cholesterol",
+      "fmd": "Loads the ready-made 5-day FMD plan"
+    },
+    "peopleHint": "This also sets your household size.",
+    "avoidHint": "Tap all that apply. Allergies are saved to your settings.",
+    "noHoney": "No honey (strict vegan)",
+    "timeHint": "Weekends can take a little longer.",
+    "times": {
+      "quick": "Up to 20 minutes",
+      "medium": "Up to 45 minutes",
+      "any": "No limit"
+    },
+    "batchYes": "Yes, please",
+    "batchYesHint": "A big soup, a bread and a spread that last the week",
+    "batchNo": "No, we cook as we go",
+    "meals": {
+      "1": "Dinner only",
+      "2": "Breakfast and lunch",
+      "3": "Breakfast, lunch and dinner"
+    },
+    "doctorNote": "Suggestions only — talk to your doctor before changing medication or diet for a medical condition.",
+    "goalNote": "Every recipe carries the “{{label}}” label.",
+    "weekName": "My week: {{goal}}",
+    "batchTitle": "Sunday batch cooking",
+    "batchSoup": "cook {{name}}",
+    "batchBread": "bake {{name}}",
+    "batchSpread": "make {{name}}",
+    "servings_one": "{{count}} serving",
+    "servings_other": "{{count}} servings",
+    "covered": "batch",
+    "statsDay": "About {{kcal}} kcal and {{fibre}} g fibre per person a day.",
+    "statsDinner": "About {{kcal}} kcal and {{fibre}} g fibre per person per dinner.",
+    "dayStats": "{{kcal}} kcal · {{fibre}} g fibre",
+    "portionsEach": "{{n}} portions each",
+    "extra": "extra",
+    "dayFruit_one": "Add 1 piece of fruit per person today (an apple, a pear or an orange) to reach the day’s energy.",
+    "dayFruit_other": "Add {{count}} pieces of fruit per person today (apples, pears or oranges) to reach the day’s energy.",
+    "shuffle": "Shuffle",
+    "useWeek": "Use this week",
+    "changeAnswers": "Change answers",
+    "replaceConfirm": "Replace the week you have planned now with this one?",
+    "notice": {
+      "packMissing": "The “{{pack}}” pack isn’t installed, so there’s a bit less to choose from. You can add it on the Packs page.",
+      "batchTip": "On Sunday: {{list}}. Each is in the shopping list once and marked as covered on the days you eat it. The soup keeps 4–5 days in the fridge; freeze any bread you won’t eat within two days.",
+      "batchNoSoup": "We couldn’t find a batch-friendly soup or stew that fits your choices, so there’s no batch soup this week.",
+      "batchNoBread": "We couldn’t find a bread that fits your choices, so the batch is just the soup.",
+      "dinnerSoupSide": "There are only a few main dishes with this label, so most main meals are a filling soup or stew with a side.",
+      "relaxTime": "A few weekday dishes take longer than your time limit — nothing quicker fitted. Swap them if you like.",
+      "relaxCap": "A few dishes come round a third time, as there weren’t enough to choose from.",
+      "emptySlots": "Some meals are left empty — not enough recipes fit all your choices. Tap + in the planner to add your own.",
+      "noRecipes": "No recipes fit these choices. Try avoiding fewer things, or install the Fredheim recipe packs.",
+      "kcalLow": "That’s under the roughly {{target}} kcal a day we aim for. Add fruit, bread or a bigger helping to fill up.",
+      "kcalLowDinner": "That’s a light dinner (we aim for about {{target}} kcal). Add bread or a bigger helping if you’re hungry.",
+      "fmdPackAdded": "The FMD recipe pack will be installed so the week can load.",
+      "fmdAllergens": "Heads up: some FMD dishes contain {{list}}. The plan is fixed, so check them and swap what you need.",
+      "fmdHoney": "Heads up: some FMD dishes contain honey.",
+      "portionsScaled": "The recipes’ servings are modest, so main dishes, soups and breakfasts are planned at up to 2 portions each to reach the day’s energy. The shopping list buys for that, and the week still scales with the number of people.",
+      "extraBread": "To reach the day’s energy, some meals get {{name}} on the side (marked “extra”).",
+      "extraFruit": "On some days the day’s note suggests a piece of fruit or two: the dishes alone come in a little under the day’s energy.",
+      "goalRelaxed": "Too few recipes fit all your goals at once, so “{{goals}}” was left out. The week follows: {{kept}}.",
+      "breakfastRelaxed": "Only a few {{kind}} breakfasts fit your choices, so some others are mixed in.",
+      "favouritesUsed_one": "{{count}} of your favourites is in this week.",
+      "favouritesUsed_other": "{{count}} of your favourites are in this week.",
+      "noFavourites": "None of your favourites fit this week’s choices.",
+      "saltStandard": "Salt level: Standard. Savoury dishes use their standard salt amount (about 700 mg sodium a main meal). Health labels describe the low-salt version.",
+      "saltLow": "Salt level: Low salt. The recipes are used exactly as written.",
+      "saltLowAuto": "Salt level: Low salt, because of your health goal. The recipes are used exactly as written."
+    },
+    "goalsHint": "Pick one or more.",
+    "breakfasts": {
+      "both": "Both",
+      "savoury": "Savoury",
+      "sweet": "Sweet"
+    },
+    "breakfastKinds": {
+      "savoury": "savoury",
+      "sweet": "sweet"
+    },
+    "breakfastHint": "Spreads follow the same choice.",
+    "saltAuto": "Low salt, because of the health goal you chose.",
+    "preferFavourites": "Prefer my favourites",
+    "preferFavouritesHint_one": "{{count}} favourite",
+    "preferFavouritesHint_other": "{{count}} favourites",
+    "noFavouritesYet": "No favourites yet: tap ♥ on a recipe.",
+    "fewerIngredients": "Fewer ingredients / shorter shopping list",
+    "fewerIngredientsHint": "Dishes that share ingredients, and a dish twice rather than a new one",
+    "uniqueIngredients_one": "This week needs {{count}} different ingredient.",
+    "uniqueIngredients_other": "This week needs {{count}} different ingredients.",
+    "goalNoteMany": "Every recipe carries these labels: {{labels}}."
   },
   "timer": {
     "title": "Timer",
@@ -824,5 +966,27 @@
     "someDropped": "Some parts of this file were damaged and will not be restored: {{fields}}",
     "replaceWarning": "This replaces what is in the app now. The built-in recipes are not affected.",
     "confirmRestore": "Restore"
+  },
+  "salt": {
+    "title": "Salt level",
+    "standard": "Standard (healthy adults, WHO: under 5 g salt/day)",
+    "low": "Low salt (blood pressure, heart or kidney disease)",
+    "desc": "Savoury dishes have a standard salt amount for healthy adults. Low salt uses every recipe exactly as written. Health labels always describe the low-salt version.",
+    "tip": "Add the salt at the end or at the table: you taste more with less. Lemon, garlic, herbs, tomato paste, miso and nutritional yeast boost flavour.",
+    "lowHint": "Low salt: {{amount}}",
+    "toTaste": "to taste",
+    "sodiumLine": "Standard salt: {{standard}} mg sodium per serving (low salt: {{low}} mg).",
+    "labelNote": "The “{{label}}” label applies to the low-salt version.",
+    "short": {
+      "low": "Low salt",
+      "standard": "Standard"
+    },
+    "recipeToggle": "Salt level for this recipe",
+    "resetToDefault": "Use my default ({{level}})"
+  },
+  "dislike": {
+    "add": "Not for me",
+    "remove": "Marked “not for me”. Tap to undo",
+    "hint": "Make my week won’t pick this recipe."
   }
 }

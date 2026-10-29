@@ -11,6 +11,7 @@ import useInstallPWA from '../hooks/useInstallPWA'
 import IOSInstallInstructions from '../components/pwa/IOSInstallInstructions'
 import { ALLERGENS } from '../data/allergens'
 import { buildBackup, downloadBackup, validateBackup, mergeRecipes } from '../utils/dataBackup'
+import { SALT_LEVELS } from '../utils/saltLevel'
 
 function SectionCard({ title, children }) {
   return (
@@ -246,6 +247,10 @@ export default function SettingsPage() {
   const avoidedAllergens = useStore(s => s.avoidedAllergens) || []
   const toggleAvoidedAllergen = useStore(s => s.toggleAvoidedAllergen)
   const clearAvoidedAllergens = useStore(s => s.clearAvoidedAllergens)
+  const avoidHoney = useStore(s => s.avoidHoney)
+  const setAvoidHoney = useStore(s => s.setAvoidHoney)
+  const saltLevel = useStore(s => s.saltLevel)
+  const setSaltLevel = useStore(s => s.setSaltLevel)
   const units = useStore(s => s.units)
   const setUnits = useStore(s => s.setUnits)
 
@@ -517,6 +522,22 @@ export default function SettingsPage() {
               )
             })}
           </div>
+          {/* Not an allergen: only the starting answer for Make my week. */}
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => setAvoidHoney(!avoidHoney)}
+              aria-pressed={avoidHoney}
+              className={`inline-flex items-center gap-1.5 h-9 px-3 rounded-full text-sm font-medium border transition-colors ${
+                avoidHoney
+                  ? 'bg-red-600 text-white border-red-600'
+                  : 'bg-white text-slate-600 border-slate-200 hover:border-red-300'
+              }`}
+            >
+              <span aria-hidden>{avoidHoney ? '✓' : '🍯'}</span>
+              {t('makeMyWeek.noHoney')}
+            </button>
+            <span className="text-[11px] text-slate-500">{t('settings.noHoneyHint')}</span>
+          </div>
           {avoidedAllergens.length > 0 && (
             <button
               onClick={clearAvoidedAllergens}
@@ -531,6 +552,30 @@ export default function SettingsPage() {
             ⚠️ {t('settings.allergensWarning', {
               defaultValue: 'Detected automatically from ingredient names. Always check the full ingredient list yourself — this cannot account for brand differences or “may contain” cross-contamination.',
             })}
+          </p>
+        </SectionCard>
+
+        {/* Salt level — which salt amount recipes and the shopping list use */}
+        <SectionCard title={t('salt.title')}>
+          <p className="text-xs text-slate-500 mb-3">{t('salt.desc')}</p>
+          <div className="space-y-2">
+            {SALT_LEVELS.map(level => (
+              <button
+                key={level}
+                onClick={() => setSaltLevel(level)}
+                aria-pressed={saltLevel === level}
+                className={`w-full min-h-[48px] px-4 py-3 rounded-xl border-2 text-left text-sm font-medium transition-colors ${
+                  saltLevel === level
+                    ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
+                    : 'border-slate-200 text-slate-600 hover:border-indigo-300'
+                }`}
+              >
+                {level === 'standard' ? '🧂 ' : '💗 '}{t(`salt.${level}`)}
+              </button>
+            ))}
+          </div>
+          <p className="text-[11px] text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 mt-3 leading-relaxed">
+            💡 {t('salt.tip')}
           </p>
         </SectionCard>
 

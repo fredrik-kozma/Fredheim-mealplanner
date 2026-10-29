@@ -154,3 +154,89 @@ test('the checker passes on the current packs (only baselined leftovers)', () =>
   const out = execFileSync(process.execPath, ['scripts/check-recipes.mjs'], { encoding: 'utf8' })
   assert.match(out, /OK: no new problems/)
 })
+
+// ── Recipe rules: servings, portion, nutrition, time, meal types, labels ──
+
+const FREDHEIM = 'fredheim-recepies-with-pictures'
+const fredheimPacks = () => ['fredheim-recipes-with-pictures', 'fredheim-reversal-protocol', 'fredheim-fmd-5day']
+  .map((f) => JSON.parse(readFileSync(`recipe-packs-template/packs/${f}.json`, 'utf8')))
+
+// A complete new recipe: the rye loaf, stamped after the rules came in.
+async function completeNewRecipe() {
+  const { META_RULES_AFTER } = await import('../scripts/check-recipes.mjs')
+  const rye = fredheimPacks().flatMap((p) => p.recipes).find((r) => r.id === 'orn-39')
+  return { ...structuredClone(rye), id: 'new-rye', createdAt: META_RULES_AFTER + 1 }
+}
+const metaCodes = async (r) => {
+  const { checkRecipeMeta } = await import('../scripts/check-recipes.mjs')
+  const packs = fredheimPacks()
+  packs[0].recipes.push(r)
+  return codes(checkRecipeMeta(packs, { only: (x) => x.id === r.id }))
+}
+
+test('recipe rules: a complete new recipe passes', async () => {
+  assert.deepEqual(await metaCodes(await completeNewRecipe()), [])
+})
+
+test('recipe rules: each missing field is flagged on a new recipe', async () => {
+  const base = await completeNewRecipe()
+  const without = (patch) => ({ ...structuredClone(base), ...patch })
+  // (2.5 servings also moves the per-serving estimate, so more is flagged.)
+  assert.ok((await metaCodes(without({ servings: 2.5 }))).includes('missing-servings'))
+  assert.deepEqual(await metaCodes(without({ servingWeightGrams: null })), ['missing-servings'])
+  assert.deepEqual(await metaCodes(without({ portion: '' })), ['missing-portion'])
+  assert.deepEqual(await metaCodes(without({ mealTypes: [] })), ['missing-meal-types'])
+  assert.deepEqual(await metaCodes(without({ prepTime: null })), ['missing-time'])
+  assert.deepEqual(await metaCodes(without({ nutrition: {} })), ['missing-nutrition'])
+  // Hand-guessed labels: one added, one dropped.
+  assert.deepEqual(await metaCodes(without({ tags: [...base.tags.filter((t) => t !== 'heart-healthy'), 'weight-loss'] })), ['labels-not-computed'])
+})
+
+test('recipe rules: implausible kcal, and nutrition that disagrees with the ingredients', async () => {
+  const base = await completeNewRecipe()
+  const per = base.nutrition.perServing
+  const withKcal = (calories) => ({ ...structuredClone(base), kcal: calories, nutrition: { ...base.nutrition, perServing: { ...per, calories } } })
+  const high = await metaCodes(withKcal(1800))
+  assert.ok(high.includes('implausible-kcal') && high.includes('nutrition-mismatch'), String(high))
+  // A tiny "meal" is flagged; the same energy on a condiment is not.
+  const low = { ...withKcal(40) }
+  assert.ok((await metaCodes(low)).includes('implausible-kcal'))
+  const { recipeMetaProblems, analyzeRecipe } = await import('../scripts/lib/recipeLabels.mjs')
+  const condiment = { ...low, mealTypes: ['component'] }
+  assert.ok(!recipeMetaProblems(condiment, analyzeRecipe(condiment, new Map(), { storedMealTypes: true })).some((p) => p.code === 'implausible-kcal' && p.detail === 'low'))
+  // `kcal` out of step with the panel.
+  assert.deepEqual(await metaCodes({ ...structuredClone(base), kcal: per.calories + 40 }), ['implausible-kcal'])
+})
+
+test('recipe rules: built-in recipes meet them all', async () => {
+  const { checkRecipeMeta } = await import('../scripts/check-recipes.mjs')
+  const issues = checkRecipeMeta(fredheimPacks())
+  assert.deepEqual(issues.map((i) => i.key), [])
+})
+
+test('recipe rules: a missing portion text on a recipe from before the rules is only a warning', async () => {
+  const { checkRecipeMeta, applyBaseline: split } = await import('../scripts/check-recipes.mjs')
+  const packs = fredheimPacks()
+  const legacy = packs[0].recipes.find((r) => r.id === 'oat-burger')
+  delete legacy.portion
+  for (const lang of ['no', 'sv']) delete legacy.translations[lang].portion
+  const issues = checkRecipeMeta(packs)
+  assert.ok(issues.length > 0)
+  assert.ok(issues.every((i) => i.code === 'missing-portion' && i.legacy), issues.filter((i) => !i.legacy).map((i) => i.key).join('\n'))
+  assert.deepEqual(split(issues, []).errors, [])
+  assert.equal(split(issues, [], { strict: true }).errors.length, issues.length, '--strict makes them errors')
+  assert.ok(issues.some((i) => i.pack === FREDHEIM))
+})
+
+test('label-recipes: --write puts the computed labels on a recipe and nothing else', async () => {
+  const { analyzeRecipe, withLabels, LABELS } = await import('../scripts/lib/recipeLabels.mjs')
+  const r = await completeNewRecipe()
+  const guessed = { ...r, tags: ['vegan', 'weight-loss', 'kid-friendly'] }
+  const a = analyzeRecipe(guessed, new Map(), { storedMealTypes: true })
+  const tags = withLabels(guessed.tags, a.proposed)
+  assert.equal(tags[0], 'vegan', 'other tags kept first')
+  assert.deepEqual(tags.filter((t) => LABELS.includes(t)), LABELS.filter((l) => r.tags.includes(l)))
+  const out = execFileSync(process.execPath, ['scripts/label-recipes.mjs', '--recipe', 'orn-39'], { encoding: 'utf8' })
+  assert.match(out, /diabetes-friendly/)
+  assert.match(out, /complete: check-recipes has nothing to add/)
+})

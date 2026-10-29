@@ -195,6 +195,11 @@ export default function ExportPackModal({ onClose }) {
         imageUrl: r.imageUrl ?? null,
         description: r.description ?? '',
         tags: r.tags ?? [],
+        ...(r.mealTypes ? { mealTypes: r.mealTypes } : {}),
+        ...(r.portion ? { portion: r.portion } : {}),
+        // Make my week's breakfast question. Salt rows keep their
+        // standardAmount and nutrition its sodiumStandard as they are.
+        ...(r.flavourProfile ? { flavourProfile: r.flavourProfile } : {}),
         kcal: r.kcal ?? null,
         // Preserve serving weight so per-100g math survives re-install
         ...(r.servingWeightGrams != null ? { servingWeightGrams: r.servingWeightGrams } : {}),

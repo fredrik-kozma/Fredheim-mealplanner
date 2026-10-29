@@ -59,7 +59,11 @@ export default function ShoppingList() {
   const [undoInfo, setUndoInfo] = useState(null) // { label, revert }
   const undoTimer = useRef(null)
 
-  const rawGroups = generateShoppingList(weekPlan, recipes, familySize, currentLang, batchCook)
+  // The salt level picks which salt amount is bought (Settings), or a
+  // recipe's own choice from its page.
+  const saltLevel = useStore(s => s.saltLevel)
+  const recipeSaltLevels = useStore(s => s.recipeSaltLevels)
+  const rawGroups = generateShoppingList(weekPlan, recipes, familySize, currentLang, batchCook, { saltLevel, recipeSaltLevels })
 
   const srcKey = (itemId, recipe) => `${itemId}::${recipe}`
 

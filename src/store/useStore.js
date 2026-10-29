@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { idbStorage, migrateFromLocalStorage } from './idbStorage'
 import { STARTER_PLANS } from '../data/starterPlans'
+import { DEFAULT_SALT_LEVEL, SALT_LEVELS, normalizeSaltLevel } from '../utils/saltLevel'
 
 // Fire-and-forget — copy any pre-IndexedDB localStorage blob over the
 // first time the new app loads on an existing device, so users don't
@@ -102,7 +103,13 @@ function normalizeWeekNotes(raw) {
       if (typeof text === 'string' && text.trim()) days[day] = text
     }
   }
-  return { week: typeof raw.week === 'string' ? raw.week : '', days }
+  // A generated week's tips also carry the data they were rendered from
+  // (src/utils/weekTips.js), so they can follow a language switch.
+  const tips = raw.tips && typeof raw.tips === 'object' && !Array.isArray(raw.tips) &&
+    raw.tips.data && typeof raw.tips.data === 'object'
+    ? { tips: raw.tips }
+    : {}
+  return { week: typeof raw.week === 'string' ? raw.week : '', days, ...tips }
 }
 
 // True when a notes object carries anything worth saving/showing.
@@ -782,6 +789,24 @@ const useStore = create(
 
       clearWeekNotes: () => set({ weekNotes: emptyWeekNotes(), activeStarterPlanId: null }),
 
+      // A generated week's tips, rendered again in another language
+      // (`next` = { week, days }, see LocalizedWeekTips). Text the user has
+      // edited no longer matches what was rendered, and is left alone.
+      relocalizeWeekTips: (next) => set((s) => {
+        const notes = normalizeWeekNotes(s.weekNotes)
+        const rendered = notes.tips?.rendered
+        if (!rendered) return {}
+        const week = notes.week === (rendered.week || '') ? next.week : notes.week
+        const days = { ...notes.days }
+        const dayKeys = new Set([...Object.keys(rendered.days || {}), ...Object.keys(next.days || {})])
+        for (const day of dayKeys) {
+          if ((notes.days[day] || '') !== (rendered.days?.[day] || '')) continue
+          if (next.days?.[day]) days[day] = next.days[day]
+          else delete days[day]
+        }
+        return { weekNotes: { ...notes, week, days, tips: { ...notes.tips, rendered: next } } }
+      }),
+
       // ── Kitchen timers ──
       //
       // Held as an absolute finish time (`endsAt`), never as a
@@ -1256,6 +1281,12 @@ const useStore = create(
       }),
 
       clearAvoidedAllergens: () => set({ avoidedAllergens: [] }),
+
+      // "No honey (strict vegan)" from Make my week. Not an allergen, so it
+      // doesn't hide recipes elsewhere; it is the answer Make my week starts
+      // from next time (and the Settings toggle shows it).
+      avoidHoney: false,
+      setAvoidHoney: (v) => set({ avoidHoney: Boolean(v) }),
 
       // Temporarily show everything (e.g. cooking for someone without the
       // allergy) without losing the saved profile. Not persisted — it resets
@@ -1787,7 +1818,44 @@ const useStore = create(
           favoriteRecipes: exists
             ? list.filter(id => id !== recipeId)
             : [...list, recipeId],
+          // A favourite is not also "not for me".
+          ...(exists ? {} : { dislikedRecipes: (s.dislikedRecipes || []).filter(id => id !== recipeId) }),
         }
+      }),
+
+      // ── Recipes the user doesn't want ──
+      // "Not for me": Make my week never picks these. The recipe stays in
+      // the list and can still be planned by hand.
+      dislikedRecipes: [],
+      toggleDisliked: (recipeId) => set((s) => {
+        if (!recipeId) return {}
+        const list = s.dislikedRecipes || []
+        const exists = list.includes(recipeId)
+        return {
+          dislikedRecipes: exists ? list.filter(id => id !== recipeId) : [...list, recipeId],
+          ...(exists ? {} : { favoriteRecipes: (s.favoriteRecipes || []).filter(id => id !== recipeId) }),
+        }
+      }),
+
+      // ── Salt level ──
+      // 'low' (the recipes as written) or 'standard' (healthy adults, WHO
+      // < 5 g salt a day). Low by default, so nobody's recipes change
+      // without them choosing it. See src/utils/saltLevel.js.
+      saltLevel: DEFAULT_SALT_LEVEL,
+      setSaltLevel: (level) => set({ saltLevel: normalizeSaltLevel(level) }),
+      // Per-recipe choice from the recipe page: { [recipeId]: level }. Only
+      // a level different from the global one is stored, so picking the
+      // global value (or resetting) clears the override.
+      recipeSaltLevels: {},
+      setRecipeSaltLevel: (recipeId, level) => set((s) => {
+        if (!recipeId) return {}
+        const { [recipeId]: _old, ...rest } = s.recipeSaltLevels || {}
+        if (!SALT_LEVELS.includes(level) || level === normalizeSaltLevel(s.saltLevel)) return { recipeSaltLevels: rest }
+        return { recipeSaltLevels: { ...rest, [recipeId]: level } }
+      }),
+      clearRecipeSaltLevel: (recipeId) => set((s) => {
+        const { [recipeId]: _old, ...rest } = s.recipeSaltLevels || {}
+        return { recipeSaltLevels: rest }
       }),
 
       // ── "What's new" tracker ──
