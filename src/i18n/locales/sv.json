@@ -405,9 +405,9 @@
     "support": "Hjälp och support",
     "supportDesc": "Har du en fråga eller stöter du på ett problem? Vi hjälper dig gärna.",
     "contactSupport": "Kontakta support",
-    "tutorial": "App-rundtur",
-    "tutorialDesc": "Ta en snabb rundtur och se hur du planerar måltider, bygger inköpslistor och får ut mest av appen.",
-    "showTutorial": "Visa rundtur",
+    "tutorial": "Rundtur",
+    "tutorialDesc": "Se vad Fredheim kan göra för dig och hur du planerar en vecka på en minut.",
+    "showTutorial": "Ta rundturen",
     "allergens": "Allergener att undvika",
     "allergensDesc": "Recept som innehåller dessa döljs från receptlistan och veckoplaneraren.",
     "allergensClear": "Rensa alla",
@@ -531,7 +531,11 @@
     "passwordTooShort": "Lösenordet måste vara minst 6 tecken.",
     "resetLinkExpiredTitle": "Återställningslänken har gått ut",
     "resetLinkExpiredDesc": "Den här återställningslänken är inte längre giltig. Begär en ny från inloggningsskärmen.",
-    "backToApp": "Tillbaka till appen"
+    "backToApp": "Tillbaka till appen",
+    "trialNote": "Inget kort behövs. Du betalar bara om du väljer att prenumerera efter de 14 dagarna.",
+    "serviceError": "Vi når inte servern just nu. Kontrollera anslutningen och försök igen om en stund.",
+    "tooManyAttempts": "För många försök. Vänta några minuter och försök igen.",
+    "emailInUse": "Det finns redan ett konto med den här e-postadressen. Försök logga in i stället."
   },
   "preview": {
     "bannerText": "Prova Fredheim Måltidsplanerare gratis i 14 dagar",
@@ -1009,5 +1013,99 @@
     "add": "Inte för mig",
     "remove": "Markerat ”inte för mig”. Tryck för att ångra",
     "hint": "Gör min vecka väljer inte det här receptet."
+  },
+  "tour": {
+    "skip": "Hoppa över",
+    "close": "Stäng",
+    "back": "Tillbaka",
+    "next": "Nästa",
+    "progress": "{{n}} av {{total}}",
+    "goTo": "Gå till bild {{n}}",
+    "screenshotAlt": "Skärmbild: {{title}}",
+    "chooseTitle": "Hur vill du börja?",
+    "quick": "Snabbstart",
+    "quickTime": "1 min",
+    "full": "Hela rundturen",
+    "fullTime": "3 min",
+    "ctaMakeWeek": "Gör min vecka nu",
+    "ctaTrial": "Starta gratis provperiod",
+    "ctaExplore": "Utforska på egen hand",
+    "disclaimer": "Fredheim ger förslag, inte medicinska råd. Prata med din läkare innan du ändrar medicinering eller kost på grund av en sjukdom.",
+    "slides": {
+      "welcome": {
+        "title": "Välkommen till Fredheim",
+        "body": "Växtbaserade recept på riktig, lite bearbetad mat från Fredheim Livsstilssenter, ett läkarlett livsstilscenter – och en planerare som gör om dem till veckomeny, inköpslista och näringsöversikt. Mindre tid till att bestämma, mer tid till god mat."
+      },
+      "recipes": {
+        "title": "Recept du får lust att laga",
+        "body": "Varje recept har bild, tydliga steg och näringsinnehåll per portion. Ändra antalet portioner så räknas alla mängder om.",
+        "callout": "Anpassas efter hushållet"
+      },
+      "labels": {
+        "title": "Hitta maten som passar dig",
+        "body": "Märkningarna visar vilka recept som är framtagna med tanke på blodtryck, diabetes, hjärthälsa eller viktminskning, och vilka som är glutenfria, nötfria eller snabba. Tryck på en eller flera för att filtrera.",
+        "callout": "Tryck för att filtrera"
+      },
+      "salt": {
+        "title": "Salt efter dina behov",
+        "body": "Recepten är skrivna med lite salt. Friska vuxna kan välja Standard, en vanlig mängd inom WHO:s rekommendation. Välj för varje recept, eller en gång för alla i Inställningar.",
+        "callout": "Lite salt eller Standard"
+      },
+      "makeWeek": {
+        "title": "En hel vecka planerad på en minut",
+        "body": "Öppna Planering och tryck på ”Gör min vecka”. Svara på några korta frågor så får du måltider för hela veckan, klara att använda.",
+        "callout": "Börja här",
+        "callout2": "Några snabba frågor"
+      },
+      "goals": {
+        "title": "Berätta vad du vill uppnå",
+        "body": "Vardagsmat för hälsan, viktminskning, blodtryck, typ 2-diabetes eller hjärthälsa: veckan byggs av recept framtagna för just det målet. Välj hjärthälsa för recept i Ornish-stil (reversering), eller ladda den färdiga 5-dagars fastehärmande planen.",
+        "callout": "Färdiga planer"
+      },
+      "calories": {
+        "title": "Portioner som passar din dag",
+        "body": "Sätt ett dagligt kalorimål – eller låt bli – och välj hur många måltider du äter. Portionerna anpassas så att varje dag hamnar nära målet, och inköpslistan handlar precis det.",
+        "callout": "Per person och dag"
+      },
+      "prefs": {
+        "title": "Din smak, dina val",
+        "body": "Salt eller söt frukost, dina favoriter först, och det du markerat ”inte för mig” lämnas utanför. Vill du ha färre ingredienser? Be om en kortare inköpslista och rätter som delar på dem.",
+        "callout": "Salt, söt eller båda",
+        "callout2": "Kortare inköpslista"
+      },
+      "preview": {
+        "title": "Se veckan innan du använder den",
+        "body": "Kolla kcal och fiber för varje dag och vad du ska laga på söndag: en stor soppa, ett bröd och ett pålägg som räcker flera dagar. Inte riktigt rätt? Blanda om.",
+        "callout": "Laga en gång på söndag",
+        "callout2": "kcal för varje dag"
+      },
+      "planner": {
+        "title": "Hela veckan i en överblick",
+        "body": "Allt hamnar i Planering, där du kan lägga till, byta eller ta bort måltider. Storkokade rätter har en egen kolumn, så du ser vad som redan är lagat.",
+        "callout": "Ändra vad du vill",
+        "callout2": "Lagat på söndag"
+      },
+      "shopping": {
+        "title": "Inköpslistan skriver sig själv",
+        "body": "Alla ingredienser för veckan, sammanräknade och anpassade efter antalet personer. Bocka av i butiken, skriv ut listan eller dela den.",
+        "callout": "Sammanräknat för hela veckan"
+      },
+      "nutrition": {
+        "title": "Håll koll på näringen",
+        "body": "Lägg in det du ätit direkt från planen och se kalorier, protein, fiber, mineraler och mer för dagen eller veckan.",
+        "callout": "Hämta dagens måltider från planen"
+      },
+      "settings": {
+        "title": "Gör appen till din",
+        "body": "Välj språk (svenska, norska eller engelska), antal personer, måttenheter, allergener att undvika och din vanliga saltnivå. Du kan ta rundturen igen från Inställningar när som helst.",
+        "callout": "Din vanliga saltnivå"
+      },
+      "done": {
+        "title": "Redo när du är",
+        "body_makeWeek": "Låt ”Gör min vecka” planera din första vecka nu. Du kan ändra allt efteråt.",
+        "body_trial": "Starta din kostnadsfria provperiod på 14 dagar och lås upp planeringen, inköpslistan och alla recept. Inget kort behövs.",
+        "body_explore": "Titta runt i lugn och ro. Du kan ta rundturen igen från Inställningar när som helst."
+      }
+    }
   }
 }

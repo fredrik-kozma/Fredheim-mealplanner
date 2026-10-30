@@ -3,6 +3,38 @@ import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../contexts/AuthContext'
 
+// Supabase never times out on its own; a hung request left the button
+// spinning forever.
+const REQUEST_TIMEOUT_MS = 20000
+
+function withTimeout(promise) {
+  let id
+  const timeout = new Promise((_, reject) => {
+    id = setTimeout(() => reject(Object.assign(new Error('timeout'), { name: 'Timeout' })), REQUEST_TIMEOUT_MS)
+  })
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(id))
+}
+
+/**
+ * A sentence the user can act on, in their language. Server trouble, a
+ * dropped connection and a timeout all read the same: try again shortly.
+ * Supabase's own messages are English-only, so they are kept only for the
+ * cases not recognised here.
+ */
+function authErrorMessage(err, t) {
+  const status = Number(err?.status) || 0
+  const code = err?.code || ''
+  if (err?.name === 'Timeout' || err?.name === 'AuthRetryableFetchError' || status >= 500
+      || err instanceof TypeError) {
+    return t('auth.serviceError')
+  }
+  if (status === 429 || /rate_limit/.test(code)) return t('auth.tooManyAttempts')
+  if (code === 'user_already_exists' || code === 'email_exists') return t('auth.emailInUse')
+  if (code === 'weak_password') return t('auth.passwordTooShort')
+  const msg = typeof err?.message === 'string' ? err.message.trim() : ''
+  return msg && msg !== '{}' ? msg : t('auth.genericError')
+}
+
 export default function AuthModal({ onClose, initialTab = 'signin' }) {
   const { t } = useTranslation()
   const { signIn, signUp, resetPassword } = useAuth()
@@ -23,22 +55,37 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
 
     try {
       if (tab === 'signup') {
-        await signUp(email.trim(), password)
-        setSuccess(t('auth.signUpSuccess'))
+        const data = await withTimeout(signUp(email.trim(), password))
+        // An address that already has an account comes back looking like
+        // a success, with no identities, and no email is ever sent.
+        if (Array.isArray(data?.user?.identities) && data.user.identities.length === 0) {
+          setError(t('auth.emailInUse'))
+        } else {
+          setSuccess(t('auth.signUpSuccess'))
+        }
       } else if (tab === 'forgot') {
-        await resetPassword(email.trim())
+        await withTimeout(resetPassword(email.trim()))
         setSuccess(t('auth.resetEmailSent', {
           defaultValue: 'Check your inbox — we sent you a link to reset your password.',
         }))
       } else {
-        await signIn(email.trim(), password)
+        await withTimeout(signIn(email.trim(), password))
         onClose()
       }
     } catch (err) {
-      setError(err.message || t('auth.genericError'))
+      // Stay open: the form keeps what was typed, and the message says
+      // what went wrong.
+      console.warn('Auth request failed:', err)
+      setError(authErrorMessage(err, t))
     } finally {
       setLoading(false)
     }
+  }
+
+  // A stray tap outside must not throw away a request in flight (or the
+  // message about why it failed).
+  function handleBackdrop() {
+    if (!loading) onClose()
   }
 
   function switchTab(next) {
@@ -55,7 +102,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-        onClick={onClose}
+        onClick={handleBackdrop}
       />
 
       {/* Sheet */}
@@ -169,7 +216,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
           )}
 
           {error && (
-            <p className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2">
+            <p role="alert" className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2">
               {error}
             </p>
           )}

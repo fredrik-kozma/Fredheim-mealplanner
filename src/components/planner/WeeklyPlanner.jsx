@@ -1,4 +1,5 @@
-import { useState, Fragment } from 'react'
+import { useState, useEffect, Fragment } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import {
   DndContext,
   DragOverlay,
@@ -147,6 +148,17 @@ export default function WeeklyPlanner() {
   const [moreOpen, setMoreOpen] = useState(false)
   const [makeWeekOpen, setMakeWeekOpen] = useState(false)
   const weekIsEmpty = mealCount === 0 && batchCook.length === 0
+
+  // The intro tour's "Make my week now" lands here with this flag. Open
+  // the wizard once, then drop the flag so Back or a reload doesn't
+  // reopen it.
+  const location = useLocation()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!location.state?.openMakeMyWeek) return
+    setMakeWeekOpen(true)
+    navigate(location.pathname, { replace: true, state: null })
+  }, [location.state, location.pathname, navigate])
 
   /**
    * Everything the share sheet needs, built on demand rather than kept in

@@ -405,9 +405,9 @@
     "support": "Hjelp og støtte",
     "supportDesc": "Har du et spørsmål eller støter på et problem? Vi hjelper deg gjerne.",
     "contactSupport": "Kontakt kundestøtte",
-    "tutorial": "App-omvisning",
-    "tutorialDesc": "Ta en rask omvisning og se hvordan du planlegger måltider, lager handlelister og får mest mulig ut av appen.",
-    "showTutorial": "Vis omvisning",
+    "tutorial": "Omvisning",
+    "tutorialDesc": "Se hva Fredheim kan gjøre for deg, og hvordan du planlegger en uke på ett minutt.",
+    "showTutorial": "Ta omvisningen",
     "allergens": "Allergener å unngå",
     "allergensDesc": "Oppskrifter som inneholder disse skjules fra oppskriftslisten og ukeplanen.",
     "allergensClear": "Nullstill alle",
@@ -531,7 +531,11 @@
     "passwordTooShort": "Passordet må være minst 6 tegn.",
     "resetLinkExpiredTitle": "Tilbakestillingslenken er utløpt",
     "resetLinkExpiredDesc": "Denne tilbakestillingslenken er ikke lenger gyldig. Be om en ny fra innloggingsskjermen.",
-    "backToApp": "Tilbake til appen"
+    "backToApp": "Tilbake til appen",
+    "trialNote": "Du trenger ikke kort. Du betaler bare hvis du velger å abonnere etter de 14 dagene.",
+    "serviceError": "Vi får ikke kontakt med serveren akkurat nå. Sjekk tilkoblingen og prøv igjen om litt.",
+    "tooManyAttempts": "For mange forsøk. Vent noen minutter og prøv igjen.",
+    "emailInUse": "Det finnes allerede en konto med denne e-postadressen. Prøv å logge inn i stedet."
   },
   "preview": {
     "bannerText": "Prøv Fredheim Menyplanlegger gratis i 14 dager",
@@ -1009,5 +1013,99 @@
     "add": "Ikke for meg",
     "remove": "Merket «ikke for meg». Trykk for å angre",
     "hint": "Lag uken min velger ikke denne oppskriften."
+  },
+  "tour": {
+    "skip": "Hopp over",
+    "close": "Lukk",
+    "back": "Tilbake",
+    "next": "Neste",
+    "progress": "{{n}} av {{total}}",
+    "goTo": "Gå til bilde {{n}}",
+    "screenshotAlt": "Skjermbilde: {{title}}",
+    "chooseTitle": "Hvordan vil du begynne?",
+    "quick": "Kort innføring",
+    "quickTime": "1 min",
+    "full": "Full omvisning",
+    "fullTime": "3 min",
+    "ctaMakeWeek": "Lag uken min nå",
+    "ctaTrial": "Start gratis prøveperiode",
+    "ctaExplore": "Utforsk på egen hånd",
+    "disclaimer": "Fredheim gir forslag, ikke medisinske råd. Snakk med legen din før du endrer medisiner eller kosthold på grunn av en sykdom.",
+    "slides": {
+      "welcome": {
+        "title": "Velkommen til Fredheim",
+        "body": "Plantebaserte oppskrifter på ekte, lite bearbeidet mat fra Fredheim Livsstilssenter, et legeledet livsstilssenter – og en planlegger som gjør dem om til ukemeny, handleliste og næringsoversikt. Mindre tid på å bestemme seg, mer tid til god mat."
+      },
+      "recipes": {
+        "title": "Oppskrifter du får lyst til å lage",
+        "body": "Hver oppskrift har bilde, tydelige steg og næringsinnhold per porsjon. Endre antall porsjoner, så følger alle mengdene med.",
+        "callout": "Tilpasses husstanden din"
+      },
+      "labels": {
+        "title": "Finn maten som passer deg",
+        "body": "Merkene viser hvilke oppskrifter som er laget med tanke på blodtrykk, diabetes, hjertehelse eller vektnedgang, og hvilke som er glutenfrie, nøttefrie eller raske. Trykk på ett eller flere for å filtrere.",
+        "callout": "Trykk for å filtrere"
+      },
+      "salt": {
+        "title": "Salt slik du trenger det",
+        "body": "Oppskriftene er skrevet med lite salt. Friske voksne kan velge Standard, en vanlig mengde innenfor WHOs anbefaling. Velg for hver oppskrift, eller én gang for alle i Innstillinger.",
+        "callout": "Lite salt eller Standard"
+      },
+      "makeWeek": {
+        "title": "En hel uke planlagt på ett minutt",
+        "body": "Åpne Ukeplan og trykk på «Lag uken min». Svar på noen korte spørsmål, så får du måltider for hele uken, klare til bruk.",
+        "callout": "Start her",
+        "callout2": "Noen raske spørsmål"
+      },
+      "goals": {
+        "title": "Fortell hva du ønsker å oppnå",
+        "body": "Sunn hverdagsmat, vektnedgang, blodtrykk, diabetes type 2 eller hjertehelse: uken settes sammen av oppskrifter laget for akkurat det målet. Velg hjertehelse for oppskrifter i Ornish-stil (reversering), eller last inn den ferdige 5-dagers faste-imiterende planen.",
+        "callout": "Ferdige planer"
+      },
+      "calories": {
+        "title": "Porsjoner som passer dagen din",
+        "body": "Sett et daglig kalorimål – eller la være – og velg hvor mange måltider du spiser. Porsjonene tilpasses så hver dag havner nær målet, og handlelisten kjøper inn akkurat det.",
+        "callout": "Per person, per dag"
+      },
+      "prefs": {
+        "title": "Din smak, dine valg",
+        "body": "Salt eller søt frokost, favorittene dine først, og det du har merket «ikke for meg» holdes utenfor. Vil du ha færre ingredienser? Be om kortere handleliste og retter som deler på dem.",
+        "callout": "Salt, søt eller begge deler",
+        "callout2": "Kortere handleliste"
+      },
+      "preview": {
+        "title": "Se uken før du tar den i bruk",
+        "body": "Sjekk kcal og fiber for hver dag, og hva du skal lage på søndag: én stor suppe, et brød og et pålegg som rekker flere dager. Ikke helt fornøyd? Stokk om.",
+        "callout": "Lag én gang på søndag",
+        "callout2": "kcal for hver dag"
+      },
+      "planner": {
+        "title": "Hele uken på ett blikk",
+        "body": "Alt havner i Ukeplan, der du kan legge til, bytte eller fjerne måltider. Storkokte retter har sin egen kolonne, så du ser hva som allerede er laget.",
+        "callout": "Endre hva du vil",
+        "callout2": "Laget på søndag"
+      },
+      "shopping": {
+        "title": "Handlelisten skriver seg selv",
+        "body": "Alle ingrediensene for uken, lagt sammen og tilpasset antall personer. Kryss av i butikken, skriv ut listen eller del den.",
+        "callout": "Lagt sammen for hele uken"
+      },
+      "nutrition": {
+        "title": "Hold øye med næringen",
+        "body": "Før opp det du har spist rett fra ukeplanen, og se kalorier, protein, fiber, mineraler og mer for dagen eller uken.",
+        "callout": "Hent dagens måltider fra planen"
+      },
+      "settings": {
+        "title": "Gjør appen til din",
+        "body": "Velg språk (norsk, svensk eller engelsk), antall personer, måleenheter, allergener du vil unngå og ditt vanlige saltnivå. Du kan ta omvisningen igjen fra Innstillinger når som helst.",
+        "callout": "Ditt vanlige saltnivå"
+      },
+      "done": {
+        "title": "Klar når du er",
+        "body_makeWeek": "La «Lag uken min» planlegge den første uken din nå. Du kan endre alt etterpå.",
+        "body_trial": "Start den gratis prøveperioden på 14 dager og lås opp ukeplanen, handlelisten og alle oppskriftene. Du trenger ikke kort.",
+        "body_explore": "Ta en titt rundt. Du kan ta omvisningen igjen fra Innstillinger når som helst."
+      }
+    }
   }
 }

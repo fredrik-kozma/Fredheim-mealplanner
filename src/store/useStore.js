@@ -1822,6 +1822,12 @@ const useStore = create(
       hasChosenLanguage: false,
       setHasChosenLanguage: (value) => set(() => ({ hasChosenLanguage: !!value })),
 
+      // The intro tour ("Welcome to Fredheim") opens by itself once, right
+      // after the language question. Existing installs are migrated to
+      // true (v10): they know the app already. Replayable from Settings.
+      hasSeenIntroTour: false,
+      setHasSeenIntroTour: (value) => set(() => ({ hasSeenIntroTour: !!value })),
+
       // ── Recipe favorites ──
       // Array of recipe ids the user has starred. Toggling is idempotent
       // so the UI can call it without checking current state first.
@@ -1954,8 +1960,16 @@ const useStore = create(
           recipes: (persisted.recipes || []).filter(r => !r.sourcePackId || r.userEdited),
         }
       },
-      version: 9,
+      version: 10,
       migrate: (persistedState, version) => {
+        // v10: the intro tour opens once for new users. Anyone already
+        // using the app has found their way around, so it stays closed
+        // for them (they can still take it from Settings).
+        if (version < 10) {
+          if (typeof persistedState.hasSeenIntroTour !== 'boolean') {
+            persistedState.hasSeenIntroTour = true
+          }
+        }
         // v8: the recipe-category filter/picker had "Middag" (Main) but no
         // "Lunsj" (Lunch) option — Lunch was simply missing from the default
         // list, not a translation bug. Backfill it for existing users so the

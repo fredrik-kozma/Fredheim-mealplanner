@@ -46,6 +46,9 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        // The intro tour's screenshots (~80 images, 3 languages × 2
+        // layouts) load only when the tour opens; never precache them.
+        globIgnores: ['**/node_modules/**', 'tour/**'],
         // Adds the timer's notificationclick handler to the generated
         // worker. generateSW writes the rest of this file itself, so an
         // imported script is the only place to register a listener of our

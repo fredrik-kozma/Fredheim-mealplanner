@@ -405,9 +405,9 @@
     "support": "Help & Support",
     "supportDesc": "Have a question or running into an issue? We're happy to help.",
     "contactSupport": "Contact support",
-    "tutorial": "App tutorial",
-    "tutorialDesc": "Take a quick tour to see how to plan meals, build shopping lists, and get the most out of the app.",
-    "showTutorial": "Show tutorial",
+    "tutorial": "Intro tour",
+    "tutorialDesc": "See what Fredheim can do for you and how to plan a week in a minute.",
+    "showTutorial": "Take the tour",
     "allergens": "Allergens to avoid",
     "allergensDesc": "Recipes containing these are hidden from the recipe list and the planner.",
     "allergensClear": "Clear all",
@@ -531,7 +531,11 @@
     "passwordTooShort": "Password must be at least 6 characters.",
     "resetLinkExpiredTitle": "Reset link expired",
     "resetLinkExpiredDesc": "This password reset link is no longer valid. Please request a new one from the sign-in screen.",
-    "backToApp": "Back to app"
+    "backToApp": "Back to app",
+    "trialNote": "No card needed. You only pay if you choose to subscribe after the 14 days.",
+    "serviceError": "We couldn’t reach the server just now. Please check your connection and try again in a moment.",
+    "tooManyAttempts": "Too many attempts. Please wait a few minutes and try again.",
+    "emailInUse": "There is already an account with this email. Try signing in instead."
   },
   "preview": {
     "bannerText": "Try Fredheim Meal Planner free for 14 days",
@@ -1009,5 +1013,99 @@
     "add": "Not for me",
     "remove": "Marked “not for me”. Tap to undo",
     "hint": "Make my week won’t pick this recipe."
+  },
+  "tour": {
+    "skip": "Skip",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "progress": "{{n}} of {{total}}",
+    "goTo": "Go to slide {{n}}",
+    "screenshotAlt": "Screenshot: {{title}}",
+    "chooseTitle": "How would you like to start?",
+    "quick": "Quick start",
+    "quickTime": "1 min",
+    "full": "Full tour",
+    "fullTime": "3 min",
+    "ctaMakeWeek": "Make my week now",
+    "ctaTrial": "Start free trial",
+    "ctaExplore": "Explore on my own",
+    "disclaimer": "Fredheim gives suggestions, not medical advice. Talk to your doctor before changing medication or diet for a medical condition.",
+    "slides": {
+      "welcome": {
+        "title": "Welcome to Fredheim",
+        "body": "Plant-based, whole-food recipes from Fredheim Livsstilssenter, a doctor-led lifestyle centre, and a planner that turns them into your week, your shopping list and your nutrition overview. Less time deciding, more time eating well."
+      },
+      "recipes": {
+        "title": "Recipes you’ll want to cook",
+        "body": "Every recipe has a photo, clear steps and nutrition for each serving. Change the number of servings and every amount follows.",
+        "callout": "Scales to your household"
+      },
+      "labels": {
+        "title": "Find food that suits you",
+        "body": "Labels show which recipes are designed with blood pressure, diabetes, heart health or weight loss in mind, and which are gluten-free, nut-free or quick. Tap one or more to filter.",
+        "callout": "Tap to filter"
+      },
+      "salt": {
+        "title": "Salt the way you need it",
+        "body": "Recipes are written low in salt. Healthy adults can switch to Standard, a normal amount within WHO advice. Choose per recipe, or once for everything in Settings.",
+        "callout": "Low salt or Standard"
+      },
+      "makeWeek": {
+        "title": "A whole week planned in a minute",
+        "body": "Open the Planner and tap Make my week. Answer a few short questions and you get meals for the whole week, ready to use.",
+        "callout": "Start here",
+        "callout2": "A few quick questions"
+      },
+      "goals": {
+        "title": "Tell it what you’re aiming for",
+        "body": "Healthy everyday food, weight loss, blood pressure, type 2 diabetes or heart health: the week is built from recipes designed for that goal. Pick heart health for Ornish-style Reversal recipes, or load the ready-made 5-day fasting-mimicking plan.",
+        "callout": "Ready-made plans"
+      },
+      "calories": {
+        "title": "Portions that fit your day",
+        "body": "Set a daily calorie target, or none, and choose how many meals you eat. Portions are sized so each day lands near your target, and the shopping list buys exactly that.",
+        "callout": "Per person, per day"
+      },
+      "prefs": {
+        "title": "Your taste, your rules",
+        "body": "Savoury or sweet breakfasts, your favourites first, and anything you’ve marked “not for me” left out. Want fewer ingredients? Ask for a shorter shopping list and dishes that share them.",
+        "callout": "Savoury, sweet or both",
+        "callout2": "Shorter shopping list"
+      },
+      "preview": {
+        "title": "See the week before you use it",
+        "body": "Check kcal and fibre for each day and what to cook on Sunday: one big soup, a bread and a spread that cover several days. Not quite right? Shuffle.",
+        "callout": "Cook once on Sunday",
+        "callout2": "kcal for each day"
+      },
+      "planner": {
+        "title": "Your week at a glance",
+        "body": "Everything lands in the Planner, where you can add, swap or remove any meal. Batch-cooked dishes have their own column, so you can see what’s already made.",
+        "callout": "Change anything",
+        "callout2": "Made on Sunday"
+      },
+      "shopping": {
+        "title": "The shopping list writes itself",
+        "body": "Every ingredient for the week, added up and scaled to the number of people. Tick things off in the shop, print the list or share it.",
+        "callout": "Added up for the whole week"
+      },
+      "nutrition": {
+        "title": "Keep an eye on nutrition",
+        "body": "Log what you ate straight from your plan and see calories, protein, fibre, minerals and more for the day or the week.",
+        "callout": "Add today’s meals from the plan"
+      },
+      "settings": {
+        "title": "Make it yours",
+        "body": "Choose your language (English, Norwegian or Swedish), household size, units, allergens to avoid and your usual salt level. You can take this tour again from Settings at any time.",
+        "callout": "Your usual salt level"
+      },
+      "done": {
+        "title": "Ready when you are",
+        "body_makeWeek": "Let Make my week plan your first week now. You can change everything afterwards.",
+        "body_trial": "Start your 14-day free trial to unlock the planner, the shopping list and every recipe. No card needed.",
+        "body_explore": "Have a look around. You can take this tour again from Settings at any time."
+      }
+    }
   }
 }

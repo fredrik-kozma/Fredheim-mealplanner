@@ -104,3 +104,26 @@
 .drag-over {
   @apply ring-2 ring-indigo-400 ring-offset-1;
 }
+
+/* Intro tour: each slide eases in, its highlights breathe. Both stop for
+   anyone who has asked their system for less motion. */
+@keyframes tour-slide-in {
+  from { opacity: 0; transform: translateX(var(--tour-from, 24px)); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes tour-glow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.8; }
+}
+.tour-slide-in {
+  animation: tour-slide-in 260ms ease-out both;
+}
+.tour-glow {
+  animation: tour-glow 1.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-slide-in,
+  .tour-glow {
+    animation: none;
+  }
+}

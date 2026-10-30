@@ -73,6 +73,7 @@ const FIELDS = {
   recipeSaltLevels: 'saltLevelMap',
   hasSeenTutorial: 'boolean',
   hasChosenLanguage: 'boolean',
+  hasSeenIntroTour: 'boolean',
 }
 
 const MAX_DEPTH = 12

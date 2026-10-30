@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { useState, useEffect, lazy, Suspense } from 'react'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import Navigation from './components/layout/Navigation'
 import Header from './components/layout/Header'
 import RecipesPage from './pages/RecipesPage'
@@ -22,12 +22,17 @@ import PreviewBanner from './components/subscription/PreviewBanner'
 import AutoInstallDefaultPack from './components/AutoInstallDefaultPack'
 import LocalizedWeekTips from './components/planner/LocalizedWeekTips'
 import ScrollManager from './components/ScrollManager'
-import TutorialModal from './components/onboarding/TutorialModal'
 import LanguagePicker from './components/onboarding/LanguagePicker'
+import AuthModal from './components/auth/AuthModal'
+import { useAccess } from './hooks/useAccess'
+import { shouldAutoShowTour } from './data/introTour'
 import InstallBanner from './components/pwa/InstallBanner'
 import WhatsNewModal from './components/whatsnew/WhatsNewModal'
 import TimerRunner from './components/timer/TimerRunner'
 import TimerAlarm from './components/timer/TimerAlarm'
+
+// Loaded only when it opens: most visits never show it.
+const IntroTour = lazy(() => import('./components/onboarding/IntroTour'))
 
 // Blocks rendering until the Zustand store has fully hydrated from IndexedDB.
 // Without this guard, useEffect hooks in child components fire before hydration
@@ -139,27 +144,50 @@ function AppShell() {
 
   // ── First run ──
   //
-  // A new visitor is asked which language they want, and nothing else. The
-  // onboarding tour that used to open here had gone out of date, and a
-  // tour of an app you haven't used — written in a language you may not
-  // read — is worse than no tour at all. It still exists and can be
-  // replayed from Settings; it just no longer greets anyone.
+  // A new visitor is asked which language they want first; only then does
+  // the intro tour open, in that language, once. Logged-out visitors get
+  // it too: it is as much a reason to start the trial as a how-to.
+  const navigate = useNavigate()
+  const { canAccess } = useAccess()
   const hasChosenLanguage = useStore(s => s.hasChosenLanguage)
   const setHasChosenLanguage = useStore(s => s.setHasChosenLanguage)
   const setStoreLanguage = useStore(s => s.setLanguage)
   const setHasSeenTutorial = useStore(s => s.setHasSeenTutorial)
-  const [showTutorial, setShowTutorial] = useState(false)
+  const hasSeenIntroTour = useStore(s => s.hasSeenIntroTour)
+  const setHasSeenIntroTour = useStore(s => s.setHasSeenIntroTour)
+  const [showTour, setShowTour] = useState(false)
+  const [showTrialSignup, setShowTrialSignup] = useState(false)
 
-  // Settings' "replay the tour" button still fires this.
+  // Not over a shared menu someone has just opened from a link: that page
+  // is what they came for. The tour waits until they move on.
+  const autoTour = shouldAutoShowTour({
+    hasChosenLanguage,
+    hasSeenIntroTour,
+    otherModalOpen: location.pathname.startsWith('/s/'),
+  })
   useEffect(() => {
-    function handleOpen() { setShowTutorial(true) }
+    if (autoTour) setShowTour(true)
+  }, [autoTour])
+
+  // Settings' "Take the tour" button fires this.
+  useEffect(() => {
+    function handleOpen() { setShowTour(true) }
     window.addEventListener('open-tutorial', handleOpen)
     return () => window.removeEventListener('open-tutorial', handleOpen)
   }, [])
 
-  function closeTutorial() {
-    setShowTutorial(false)
-    setHasSeenTutorial(true)
+  function closeTour() {
+    setShowTour(false)
+    setHasSeenIntroTour(true)
+  }
+
+  // The tour's last button: plan a week if they can, or start the trial
+  // that lets them.
+  const tourCta = canAccess ? 'makeWeek' : !user ? 'trial' : 'explore'
+  function handleTourCta() {
+    closeTour()
+    if (tourCta === 'makeWeek') navigate('/planner', { state: { openMakeMyWeek: true } })
+    else if (tourCta === 'trial') setShowTrialSignup(true)
   }
 
   function handleChooseLanguage(code) {
@@ -237,15 +265,24 @@ function AppShell() {
           until it's answered. */}
       {!hasChosenLanguage && <LanguagePicker onChoose={handleChooseLanguage} />}
 
-      {showTutorial && <TutorialModal onClose={closeTutorial} />}
+      {/* The intro tour. Its code and screenshots load only when it opens. */}
+      {showTour && (
+        <Suspense fallback={null}>
+          <IntroTour onClose={closeTour} onCta={handleTourCta} cta={tourCta} />
+        </Suspense>
+      )}
+
+      {showTrialSignup && (
+        <AuthModal initialTab="signup" onClose={() => setShowTrialSignup(false)} />
+      )}
 
       {/* What's-new announcements — small modal that pops up once per
           unseen entry in src/data/whatsNew.js, after the tutorial has
           been acknowledged so the two never stack on top of each other. */}
       {/* `tutorialOpen` means "another first-run modal is up" — the
-          language question counts, or announcements would stack on top of
-          it the instant a new user arrives. */}
-      <WhatsNewModal tutorialOpen={showTutorial || !hasChosenLanguage} />
+          language question and the intro tour count, or announcements
+          would stack on top of them the instant a new user arrives. */}
+      <WhatsNewModal tutorialOpen={showTour || autoTour || !hasChosenLanguage} />
 
       {/* PWA install prompt — appears after a short delay on devices
           where installing is possible and the user hasn't already
