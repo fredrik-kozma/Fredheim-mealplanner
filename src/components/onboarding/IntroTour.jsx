@@ -217,9 +217,6 @@ export default function IntroTour({ onClose, onCta, cta = 'explore' }) {
             {isFirst && (
               <p className="mt-3 text-sm font-semibold text-slate-700">{t('tour.chooseTitle')}</p>
             )}
-            {isLast && (
-              <p className="mt-3 text-xs text-slate-400 leading-relaxed">{t('tour.disclaimer')}</p>
-            )}
           </div>
         </div>
 

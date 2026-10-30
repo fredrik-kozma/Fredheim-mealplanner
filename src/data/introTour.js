@@ -101,30 +101,12 @@ export const TOUR_SLIDES = {
       },
     },
     mobile: {
-      // On a phone Make my week sits in the planner's menu. Only the
-      // Norwegian and Swedish shots caught that menu open; English shows
-      // the first question instead.
+      // Make my week is now a full-width button at the top of the planner.
+      // The phone shots were taken when it still sat in the print menu, so
+      // until they are retaken every language shows the first question.
       img: '08-wiz-q1',
       crop: [18, 100],
       marks: [{ box: [3.5, 22.6, 60, 5.2], label: 'callout2', at: [50, 34] }],
-      lang: {
-        no: {
-          img: '07-planner-more',
-          crop: [0, 55],
-          marks: [
-            { box: [84.6, 19, 11.6, 4.8] },
-            { box: [39, 24.2, 57, 5.2], label: 'callout', at: [22, 40] },
-          ],
-        },
-        sv: {
-          img: '07-planner-more',
-          crop: [0, 55],
-          marks: [
-            { box: [84.6, 19, 11.6, 4.8] },
-            { box: [39, 24.2, 57, 5.2], label: 'callout', at: [22, 40] },
-          ],
-        },
-      },
     },
   },
 

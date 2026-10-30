@@ -44,10 +44,14 @@
  *   - A calorie target (answers.kcal, 1000–4000) replaces the automatic
  *     one: portions then go both ways, ½ to 2 per person for a dish (bread
  *     in whole servings, so whole slices), until each day is within about
- *     10% of it, and of the attempts the one needing the least scaling
+ *     10% of it, then the meals are balanced towards their shares: most at
+ *     breakfast, lunch close to it, dinner clearly the lightest (a proper
+ *     main, but a lighter one, about a portion). Dinner never tops a day up
+ *     and never passes lunch or breakfast, even if the day then lands under
+ *     its target: bigger portions, bread and fruit go to breakfast or lunch.
+ *     Of the attempts the one needing the least scaling with the best split
  *     wins. No target: everything here, unchanged. FMD ignores it.
- *   - "3 meals + snack" (answers.snack) adds a snack a day from the
- *     recipes marked as snacks (a piece of fruit when none fits).
+ *   - No snacks: they aren't planned (snack recipes stay in the library).
  * If the rules can't all be met, they are relaxed in a fixed order (a third
  * repeat, then the weekday time limit) and the week says so in a notice.
  *
@@ -77,30 +81,16 @@ export const MMW_GOALS = ['general', 'weight', 'bloodPressure', 'diabetes', 'hea
 export const MMW_TIMES = ['quick', 'medium', 'any']
 export const MMW_MEALS = [3, 2, 1]
 export const MMW_BREAKFASTS = ['both', 'savoury', 'sweet']
-// The meals question: a meal count, and for three meals optionally a snack.
-export const MMW_MEAL_OPTIONS = [
-  { key: '3s', meals: 3, snack: true },
-  { key: '3', meals: 3, snack: false },
-  { key: '2', meals: 2, snack: false },
-  { key: '1', meals: 1, snack: false },
-]
-// Calorie target: quick picks, the range a typed value must be in, and the
-// level below which the wizard suggests professional guidance.
+// Calorie target: quick picks and the range a typed value must be in.
 export const MMW_KCAL_PICKS = [1500, 1800, 2000, 2500]
 export const KCAL_MIN = 1000
 export const KCAL_MAX = 4000
-export const KCAL_GUIDANCE = 1200
 
 /** A daily calorie target in range, as a whole number; anything else is no target (null). */
 export function normalizeKcal(value) {
   if (value === null || value === undefined || value === '') return null
   const n = Math.round(Number(value))
   return Number.isFinite(n) && n >= KCAL_MIN && n <= KCAL_MAX ? n : null
-}
-
-/** The meals option key for answers ({ meals, snack }). */
-export function mealOptionKey(answers = {}) {
-  return answers.snack && answers.meals === 3 ? '3s' : String(answers.meals ?? 3)
 }
 
 export const GOAL_TAG = {
@@ -167,15 +157,27 @@ const SHARES = {
   2: { breakfast: 0.4, lunch: 0.6 },
   1: { dinner: 0.4 },
 }
-// Three meals and a snack: the snack's tenth comes off the meals.
-const SNACK_SHARES = { breakfast: 0.22, lunch: 0.32, dinner: 0.36, snack: 0.1 }
-const sharesFor = a => (a.meals === 3 && a.snack ? SNACK_SHARES : SHARES[a.meals] || SHARES[3])
+// With the user's own calorie target: the earlier meal is the bigger one,
+// dinner the lightest. (Two meals are always breakfast and lunch; dinner only
+// is planned as above.)
+const TARGET_SHARES = {
+  3: { breakfast: 0.4, lunch: 0.35, dinner: 0.25 },
+  2: { breakfast: 0.55, lunch: 0.45 },
+  1: SHARES[1],
+}
+const sharesFor = a => (a.kcal != null ? TARGET_SHARES : SHARES)[a.meals] || SHARES[3]
 
 // With a calorie target: the least a dish may go down to per person, how
 // close a day is fitted (then left alone), and the band it should end in.
 const MIN_PORTIONS = 0.5
 const FIT_CLOSE = 0.03
 const TARGET_BAND = 0.1
+// Balancing the meals may move the day this far from its target, and a
+// breakfast or lunch under this much of its share takes bread beside it.
+const BALANCE_BAND = 0.05
+const MEAL_SHORT = 0.85
+// A week with a dinner bigger than lunch or breakfast loses to any week without.
+const HEAVY_DINNER_PENALTY = 100
 
 // Batch items: the soup on Mon/Wed/Fri, bread + spread on Tue/Thu/Sat —
 // spaced so neither lands on consecutive days, and all eaten within the
@@ -195,8 +197,7 @@ export function kcalTarget(goal, meals, kcal = null) {
   return 2000
 }
 
-export function defaultAnswers({ familySize, avoidedAllergens, avoidHoney, saltLevel, favourites, disliked, kcal, meals, snack } = {}) {
-  const mealCount = MMW_MEALS.includes(meals) ? meals : 3
+export function defaultAnswers({ familySize, avoidedAllergens, avoidHoney, saltLevel, favourites, disliked, kcal, meals } = {}) {
   return {
     goals: [],
     people: Math.min(8, Math.max(1, Number(familySize) || 2)),
@@ -204,9 +205,7 @@ export function defaultAnswers({ familySize, avoidedAllergens, avoidHoney, saltL
     noHoney: Boolean(avoidHoney),
     time: 'medium',
     batch: false,
-    meals: mealCount,
-    // A snack a day, with three meals only.
-    snack: Boolean(snack) && mealCount === 3,
+    meals: MMW_MEALS.includes(meals) ? meals : 3,
     // Daily calorie target per person; null = none (the automatic one).
     kcal: normalizeKcal(kcal),
     breakfast: 'both',
@@ -275,11 +274,6 @@ export const isFilling = (r, types = ['dinner']) => hasType(r, ...types) && (r.c
 export const isSide = r => hasType(r, 'side') && (r.category === 'Salad' || r.category === 'Side')
 export const isBread = r => r.category === 'Bread' && hasType(r, 'breakfast', 'lunch', 'side')
 export const isSpread = r => r.category === 'Spreads'
-// A snack eaten on its own: marked as one, not a spread or sauce (those need
-// something to go with) or a soup, and enough to count (not a 20 kcal drink).
-const NOT_SNACK = new Set(['Spreads', 'Sauce', 'Soup'])
-export const isSnack = r => hasType(r, 'snack') && !NOT_SNACK.has(r.category) &&
-  Number(r?.nutrition?.perServing?.calories) >= 50
 const isBatchFriendly = r => tagsOf(r).includes('batch-friendly')
 
 const perServing = r => {
@@ -434,13 +428,12 @@ export function makeMyWeek({ recipes, answers, seed = 1, installedPackIds, slotN
     goals: answerGoals(merged),
     saltLevel: saltLevelFor(merged),
     kcal: normalizeKcal(merged.kcal),
-    snack: Boolean(merged.snack) && merged.meals === 3,
   }
   const installed = installedPackIds ||
     [...new Set((recipes || []).map(r => r.sourcePackId).filter(Boolean))]
   if (a.goals.includes('fmd')) return makeFmdWeek({ recipes, answers: a, installedPackIds: installed })
 
-  const slots = { snack: 'Snack', ...resolveSlotNames(), ...(slotNames || {}) }
+  const slots = { ...resolveSlotNames(), ...(slotNames || {}) }
   const { pool, goals, relaxed } = poolForGoals(recipes, a)
   const favourites = new Set(a.preferFavourites ? a.favourites : [])
   const ctx = {
@@ -477,13 +470,13 @@ function buildAttempt(ctx, rng) {
   // days[d][role] = [{ id, batch, kind, servings }]. kind: 'base' (the dish
   // of the meal), 'side' (salad, side, batch bread/spread) or 'extra'.
   // servings is for the whole household, a.people at one portion each.
-  const days = DAY_KEYS.map(() => (a.snack
-    ? { breakfast: [], lunch: [], dinner: [], snack: [] }
-    : { breakfast: [], lunch: [], dinner: [] }))
+  const days = DAY_KEYS.map(() => ({ breakfast: [], lunch: [], dinner: [] }))
   const uses = new Map()
   const relax = { cap: 0, time: 0, empty: 0, breakfast: false }
   const byId = new Map(pool.map(r => [r.id, r]))
   const people = a.people
+  // Three meals with the user's own target: dinner is the light meal.
+  const lightDinner = ctx.fitted && a.meals === 3
 
   const usesOf = id => uses.get(id) || []
   const familyDays = new Map()
@@ -496,7 +489,7 @@ function buildAttempt(ctx, rng) {
     return list.length < cap && list.every(d => Math.abs(d - day) >= 2)
   }
   const place = (day, role, r, batch = false, kind = 'base') => {
-    days[day][role].push({ id: r.id, batch, kind, servings: people })
+    days[day][role].push({ id: r.id, batch, kind, role, day, servings: people })
     for (const k of keysOf(r)) weekKeys.add(k)
     if (kind === 'extra') return
     uses.set(r.id, [...usesOf(r.id), day])
@@ -508,7 +501,7 @@ function buildAttempt(ctx, rng) {
   const mealKcal = (day, role) => days[day][role].reduce((n, it) => n + itemValue(it, 'calories'), 0)
   const mealFibre = (day, role) => days[day][role].reduce((n, it) => n + itemValue(it, 'fiber'), 0)
 
-  function score(r, { kcal, fibre, penalizeMain, day, savoury, flavour }) {
+  function score(r, { kcal, fibre, penalizeMain, day, savoury, flavour, light }) {
     let s = rng() * 1.2
     if (ctx.preferTag && tagsOf(r).includes(ctx.preferTag)) s += 0.6
     if (ctx.preferPack && r.sourcePackId === ctx.preferPack) s += 0.5
@@ -530,6 +523,8 @@ function buildAttempt(ctx, rng) {
       if (kcal > 0) s -= Math.min(2, Math.abs(Number(n.calories) - kcal) / kcal)
       if (fibre > 0) s += 0.5 * Math.min(1, (Number(n.fiber) || 0) / fibre)
       if (ctx.lowSodium) s -= 0.8 * Math.min(1.5, (Number(n.sodium) || 0) / 800)
+      // A light dinner: soups and stews first, the heaviest mains last.
+      if (light) s += (r.category === 'Soup' ? 0.1 : 0) - Math.max(0, Number(n.calories) / light - 1)
     } else {
       s -= 0.15
     }
@@ -611,15 +606,17 @@ function buildAttempt(ctx, rng) {
     const items = days[day][mainRole]
     let base = items.map(it => byId.get(it.id)).find(r => r && isFilling(r, mainTypes))
     if (!base) {
-      base = pick(fillingCands, day, { kcal: slotTarget * 0.7, fibre: FIBRE_TARGET * mainShare * 0.6 })
+      base = pick(fillingCands, day, { kcal: slotTarget * 0.7, fibre: FIBRE_TARGET * mainShare * 0.6, light: lightDinner ? slotTarget : 0 })
       if (!base) { relax.empty++; continue }
       place(day, mainRole, base)
     }
     const hasBread = items.some(it => byId.get(it.id) && isBread(byId.get(it.id)))
-    const needSide = !hasBread && (base.category === 'Soup' || mealKcal(day, mainRole) < slotTarget * 0.85)
+    // A light dinner's soup is enough by itself when it nearly fills the share.
+    const needSide = !hasBread && ((base.category === 'Soup' && !lightDinner) || mealKcal(day, mainRole) < slotTarget * 0.85)
     if (needSide) {
       // A soup may take bread as its side; a main only a salad or vegetable.
-      const cands = base.category === 'Soup' ? [...sideCands, ...breadSideCands] : sideCands
+      // A light dinner never takes bread.
+      const cands = base.category === 'Soup' && !lightDinner ? [...sideCands, ...breadSideCands] : sideCands
       const side = pick(cands, day, {
         kcal: Math.max(100, slotTarget - mealKcal(day, mainRole)),
         fibre: Math.max(0, FIBRE_TARGET * mainShare - mealFibre(day, mainRole)),
@@ -636,7 +633,8 @@ function buildAttempt(ctx, rng) {
       const r = pick(lunchCands, day, {
         kcal: Math.max(150, target * shares.lunch - mealKcal(day, 'lunch')),
         fibre: FIBRE_TARGET * shares.lunch,
-        penalizeMain: true,
+        // With a target a Main at lunch is welcome: lunch has to be a proper meal.
+        penalizeMain: !ctx.fitted,
       })
       if (r) place(day, 'lunch', r)
       else relax.empty++
@@ -667,18 +665,6 @@ function buildAttempt(ctx, rng) {
     }
   }
 
-  // ── Snack (three meals + snack): a snack recipe that fits every rule as
-  // it is, else a piece of fruit. A snack never bends a rule. ──
-  const snackFruit = DAY_KEYS.map(() => 0)
-  if (shares.snack) {
-    const snackCands = pool.filter(isSnack)
-    for (let day = 0; day < 7; day++) {
-      const r = pick(snackCands, day, { kcal: target * shares.snack, fibre: FIBRE_TARGET * shares.snack, strict: true })
-      if (r) place(day, 'snack', r, false, 'snack')
-      else snackFruit[day] = 1
-    }
-  }
-
   // ── Portions and extras ──
   const dayTarget = target * Object.values(shares).reduce((n, s) => n + s, 0)
   const fibreTarget = FIBRE_TARGET * Object.values(shares).reduce((n, s) => n + s, 0)
@@ -687,11 +673,9 @@ function buildAttempt(ctx, rng) {
   const extraBread = (batch.bread && perServing(batch.bread))
     ? batch.bread
     : pickExtraBread(pool.filter(r => isBread(r) && perServing(r) && !isSweet(r)), rng)
-  // A snack day's fruit is counted from the start; more may be added below.
-  const fruit = [...snackFruit]
+  const fruit = DAY_KEYS.map(() => 0)
   const known = days.map(d => Object.values(d).every(list => list.every(it => perServing(byId.get(it.id)))))
-  const platesKcal = day => Object.keys(days[day]).reduce((n, role) => n + mealKcal(day, role), 0)
-  const dayKcal = day => platesKcal(day) + snackFruit[day] * FRUIT.kcal
+  const dayKcal = day => Object.keys(days[day]).reduce((n, role) => n + mealKcal(day, role), 0)
 
   for (let day = 0; day < 7; day++) {
     if (!known[day]) continue
@@ -714,6 +698,16 @@ function buildAttempt(ctx, rng) {
   function fitDay(day) {
     fitPortions(day)
     while (dayKcal(day) < dayTarget * (1 - TARGET_BAND) && extraBread && addBread(day)) fitPortions(day)
+    balanceMeals(day)
+    breadForShortMeal(day, 'breakfast')
+    breadForShortMeal(day, 'lunch')
+    // Dinner stays the lightest even if the day ends under its target: only
+    // breakfast and lunch may fill what is still missing.
+    if (lightDinner) {
+      keepDinnerLightest(day)
+      growEarlierMeals(day)
+      while (dayKcal(day) < dayTarget * (1 - TARGET_BAND) && extraBread && addBread(day)) growEarlierMeals(day)
+    }
     if (dayKcal(day) < dayTarget * (1 - TARGET_BAND)) {
       const short = dayTarget - dayKcal(day)
       fruit[day] = Math.min(MAX_FRUIT, fruit[day] + Math.max(1, Math.round(short / FRUIT.kcal)))
@@ -722,8 +716,9 @@ function buildAttempt(ctx, rng) {
 
   // [least, most, step] servings for the household. Dishes ½–2 portions
   // per person, in half portions where that is a whole serving (2 people:
-  // 1–4 in steps of 1), else one serving at a time. Sides, snacks and bread
-  // ½–1, bread one serving (whole slices) at a time; spreads stay as they are.
+  // 1–4 in steps of 1), else one serving at a time. Sides and bread ½–1,
+  // bread one serving (whole slices) at a time; spreads stay as they are. A
+  // light dinner's dish stays at one portion, unless more still fits its share.
   function fitRange(it) {
     const r = byId.get(it.id)
     const least = Math.max(1, Math.ceil(people * MIN_PORTIONS))
@@ -731,7 +726,15 @@ function buildAttempt(ctx, rng) {
     if (isSpread(r)) return [it.servings, it.servings, 0]
     if (isBread(r)) return [it.kind === 'extra' ? 1 : least, people, 1]
     if (it.kind !== 'base' || r.category === 'Side') return [least, people, step]
-    return [least, Math.round(people * MAX_PORTIONS), step]
+    const most = Math.round(people * MAX_PORTIONS)
+    if (lightDinner && it.role === 'dinner') {
+      const per = itemValue({ id: it.id, servings: 1 }, 'calories')
+      const room = target * shares.dinner - (mealKcal(it.day, 'dinner') - itemValue(it, 'calories'))
+      let top = people
+      while (top + step <= most && per * (top + step) <= room) top += step
+      return [least, top, step]
+    }
+    return [least, most, step]
   }
 
   // One step at a time, the change that brings the day closest to its
@@ -764,6 +767,145 @@ function buildAttempt(ctx, rng) {
       }
       if (!best) return
       best.it.servings = best.next
+    }
+  }
+
+  // How far a day is from what it should be: each meal from its share, the
+  // day from its target, lunch above breakfast or dinner above either, and
+  // portions far from one each. Squared kcal; lower is better.
+  function dayCost(day) {
+    let cost = 3 * (dayKcal(day) - dayTarget) ** 2
+    const meal = role => (days[day][role]?.length ? mealKcal(day, role) : null)
+    for (const role of Object.keys(days[day])) {
+      if (meal(role) != null) cost += (meal(role) - target * (shares[role] || 0)) ** 2
+      for (const it of days[day][role]) {
+        if (it.kind === 'base') cost += (0.05 * dayTarget * (it.servings / people - 1)) ** 2
+      }
+    }
+    const [b, l, d] = [meal('breakfast'), meal('lunch'), meal('dinner')]
+    if (b != null && l != null && l > b) cost += (l - b) ** 2
+    if (l != null && d != null && d > l) cost += 2 * (d - l) ** 2
+    if (b != null && d != null && d > b) cost += 2 * (d - b) ** 2
+    return cost
+  }
+
+  // Trades portions between meals, one or two steps at a time, while that
+  // lowers dayCost: fitPortions only looks at the day's total, which leaves
+  // one meal short whenever another happened to take the energy. The day stays
+  // within BALANCE_BAND of its target, or moves closer to it. Every move must
+  // lower the cost, so this ends.
+  function balanceMeals(day) {
+    const moves = Object.values(days[day]).flat().flatMap(it => {
+      const step = fitRange(it)[2]
+      return step ? [{ it, by: step }, { it, by: -step }] : []
+    })
+    const tries = moves.map(m => [m])
+    moves.forEach((m, i) => {
+      for (const n of moves.slice(i + 1)) if (n.it !== m.it) tries.push([m, n])
+    })
+    const inRange = m => {
+      const [least, most] = fitRange(m.it)
+      return m.it.servings + m.by >= least && m.it.servings + m.by <= most
+    }
+    const apply = (list, sign) => { for (const m of list) m.it.servings += sign * m.by }
+    for (;;) {
+      const gap = Math.abs(dayKcal(day) - dayTarget)
+      let best = null
+      let bestCost = dayCost(day) - 1
+      for (const list of tries) {
+        if (!list.every(inRange)) continue
+        apply(list, 1)
+        const after = Math.abs(dayKcal(day) - dayTarget)
+        const cost = dayCost(day)
+        if (cost < bestCost && (after <= dayTarget * BALANCE_BAND || after < gap)) { best = list; bestCost = cost }
+        apply(list, -1)
+      }
+      if (!best) return
+      apply(best, 1)
+    }
+  }
+
+  // A light dish at most portions can still be a small breakfast or lunch:
+  // bread beside it, the other meals giving way. Undone if that doesn't make a
+  // better day.
+  function breadForShortMeal(day, role) {
+    const meal = days[day][role]
+    if (!shares[role] || !meal.length || !extraBread) return
+    if (meal.some(it => isBread(byId.get(it.id)))) return
+    if (mealKcal(day, role) >= target * shares[role] * MEAL_SHORT) return
+    const before = Object.values(days[day]).flat().map(it => [it, it.servings])
+    const cost = dayCost(day)
+    addBread(day, role)
+    balanceMeals(day)
+    if (dayCost(day) < cost) return
+    meal.pop()
+    for (const [it, servings] of before) it.servings = servings
+  }
+
+  // The smaller of breakfast and lunch must not be under dinner. A day with
+  // room grows that meal; otherwise, or when it can't grow, dinner comes down,
+  // then that meal takes bread, and last dinner gives up its side. Every step
+  // closes the difference or ends, so this ends; what is left over goes to the
+  // attempt's penalty.
+  function keepDinnerLightest(day) {
+    for (;;) {
+      const smaller = mealKcal(day, 'lunch') < mealKcal(day, 'breakfast') ? 'lunch' : 'breakfast'
+      if (!days[day][smaller].length || mealKcal(day, 'dinner') <= mealKcal(day, smaller)) return
+      if (growMeal(day, smaller, dayTarget)) continue
+      if (shrinkDinner(day)) continue
+      if (growMeal(day, smaller, dayTarget * HIGH)) continue
+      const breadFits = extraBread && !days[day][smaller].some(it => isBread(byId.get(it.id))) &&
+        dayKcal(day) + itemValue({ id: extraBread.id, servings: Math.max(1, Math.round(people / 2)) }, 'calories') <= dayTarget * HIGH
+      if (breadFits && addBread(day, smaller)) continue
+      if (dropDinnerSide(day)) continue
+      return
+    }
+  }
+
+  function dropDinnerSide(day) {
+    const i = days[day].dinner.findIndex(it => it.kind === 'side' && !it.batch)
+    if (i < 0) return false
+    const [side] = days[day].dinner.splice(i, 1)
+    uses.set(side.id, usesOf(side.id).filter(d => d !== day))
+    return true
+  }
+
+  // One portion step up on a dish of this meal, keeping the day under `ceiling`.
+  function growMeal(day, role, ceiling) {
+    let best = null
+    let bestAdd = Infinity
+    for (const it of days[day][role]) {
+      const [, most, step] = fitRange(it)
+      if (!step || it.servings + step > most) continue
+      const add = itemValue({ ...it, servings: step }, 'calories')
+      if (add > 0 && add < bestAdd && dayKcal(day) + add <= ceiling) { best = { it, step }; bestAdd = add }
+    }
+    if (!best) return false
+    best.it.servings += best.step
+    return true
+  }
+
+  function shrinkDinner(day) {
+    let best = null
+    let bestCut = 0
+    for (const it of days[day].dinner) {
+      const [least, , step] = fitRange(it)
+      if (!step || it.servings - step < least) continue
+      const cut = itemValue({ ...it, servings: step }, 'calories')
+      if (cut > bestCut) { best = { it, step }; bestCut = cut }
+    }
+    if (!best) return false
+    best.it.servings -= best.step
+    return true
+  }
+
+  // Breakfast and lunch only, the one furthest below its share first, until the
+  // day is about at its target. Only ever up, so dinner stays the lightest.
+  function growEarlierMeals(day) {
+    while (dayKcal(day) < dayTarget * (1 - FIT_CLOSE)) {
+      const order = ['breakfast', 'lunch']
+        .sort((x, y) => mealKcal(day, x) / shares[x] - mealKcal(day, y) / shares[y])
+      if (!order.some(role => growMeal(day, role, dayTarget * (1 + FIT_CLOSE)))) return
     }
   }
 
@@ -802,19 +944,23 @@ function buildAttempt(ctx, rng) {
   }
 
   // Bread on the side of a meal that has none: lunch first, then the main
-  // meal, then breakfast. One portion (2 slices) a person, or half when a
-  // whole one would overshoot. False when every meal already has bread.
-  function addBread(day) {
-    const roles = ['lunch', a.meals === 2 ? 'lunch' : 'dinner', 'breakfast']
-      .filter((role, i, list) => shares[role] && list.indexOf(role) === i)
-    const role = roles.find(ro => days[day][ro].length &&
+  // meal, then breakfast (with the user's own target: the meal furthest below
+  // its share, never a light dinner). One portion (2 slices) a person, or half
+  // when a whole one would overshoot. False when every meal already has bread.
+  function addBread(day, only = null) {
+    const roles = ctx.fitted && a.meals !== 1
+      ? ['breakfast', 'lunch'].filter(ro => shares[ro])
+        .sort((x, y) => mealKcal(day, x) / shares[x] - mealKcal(day, y) / shares[y])
+      : ['lunch', a.meals === 2 ? 'lunch' : 'dinner', 'breakfast']
+        .filter((ro, i, list) => shares[ro] && list.indexOf(ro) === i)
+    const role = only || roles.find(ro => days[day][ro].length &&
       !days[day][ro].some(it => isBread(byId.get(it.id))))
     if (!role) return false
     const per = itemValue({ id: extraBread.id, servings: people }, 'calories')
     const now = dayKcal(day)
     const half = Math.max(1, Math.round(people / 2))
     const servings = now + per <= dayTarget * HIGH ? people : half
-    days[day][role].push({ id: extraBread.id, batch: extraBread === batch.bread, kind: 'extra', servings })
+    days[day][role].push({ id: extraBread.id, batch: extraBread === batch.bread, kind: 'extra', role, servings })
     return true
   }
 
@@ -822,7 +968,7 @@ function buildAttempt(ctx, rng) {
   let penalty = relax.empty * 100 + relax.time * 5 + relax.cap * 3
   const dayStats = days.map((d, day) => {
     if (!known[day]) return { day, kcal: 0, fibre: 0, known: false, fruit: 0 }
-    const kcal = platesKcal(day) + fruit[day] * FRUIT.kcal
+    const kcal = dayKcal(day) + fruit[day] * FRUIT.kcal
     const fibre = Object.keys(d).reduce((n, role) => n + mealFibre(day, role), 0) + fruit[day] * FRUIT.fibre
     penalty += 2 * Math.abs(kcal - dayTarget) / dayTarget
     penalty += Math.max(0, fibreTarget - fibre) / fibreTarget
@@ -835,6 +981,13 @@ function buildAttempt(ctx, rng) {
       for (const list of Object.values(d)) {
         for (const it of list) if (it.kind !== 'extra') penalty += 0.1 * Math.abs(it.servings / people - 1)
       }
+      // A week whose dishes split the day as they should beats one that doesn't.
+      for (const role of Object.keys(d)) {
+        if (d[role].length) penalty += Math.abs(mealKcal(day, role) - target * (shares[role] || 0)) / dayTarget
+      }
+      if (d.lunch.length && d.breakfast.length && mealKcal(day, 'lunch') > mealKcal(day, 'breakfast')) penalty += 0.3
+      if (d.dinner.length && d.lunch.length && mealKcal(day, 'dinner') > mealKcal(day, 'lunch')) penalty += HEAVY_DINNER_PENALTY
+      if (d.dinner.length && d.breakfast.length && mealKcal(day, 'dinner') > mealKcal(day, 'breakfast')) penalty += HEAVY_DINNER_PENALTY
     }
     const meals = Object.fromEntries(Object.keys(d).map(role => [role, mealKcal(day, role)]))
     return { day, kcal, fibre, known: true, fruit: fruit[day], meals }
@@ -844,7 +997,7 @@ function buildAttempt(ctx, rng) {
   penalty += 1.5 * Math.max(0, ctx.wantFavourites - favouritesUsed)
   if (a.fewerIngredients) penalty += 0.08 * weekKeys.size
 
-  return { days, uses, relax, batch, penalty, dayStats, dayTarget, fibreTarget, byId, fruit, snackFruit, favouritesUsed, uniqueIngredients: weekKeys.size }
+  return { days, uses, relax, batch, penalty, dayStats, dayTarget, fibreTarget, byId, fruit, favouritesUsed, uniqueIngredients: weekKeys.size }
 }
 
 // The bread a week tops up with when the dishes alone are short: savoury,
@@ -880,7 +1033,7 @@ function finish(week, ctx, { slots, installed, seed }) {
   DAY_KEYS.forEach((dayKey, day) => {
     const d = week.days[day]
     const out = {}
-    for (const role of ['breakfast', 'lunch', 'dinner', 'snack']) {
+    for (const role of ['breakfast', 'lunch', 'dinner']) {
       if (!d[role]?.length) continue
       out[slots[role]] = d[role].map(it => it.batch
         ? { recipeId: it.id, servings: servingsOf(it), excludeFromShopping: true }
@@ -964,8 +1117,7 @@ function finish(week, ctx, { slots, installed, seed }) {
     notices.push({ key: 'portionsScaled' })
   }
   if (extras.length) notices.push({ key: 'extraBread', bread: extras[0].recipeId })
-  if (week.snackFruit.some(n => n > 0)) notices.push({ key: 'snackFruit' })
-  else if (Object.keys(fruit).length) notices.push({ key: 'extraFruit' })
+  if (Object.keys(fruit).length) notices.push({ key: 'extraFruit' })
   if (stats && stats.kcal < stats.kcalTarget * LOW) notices.push({ key: 'kcalLow', target: stats.kcalTarget })
   if (ctx.fitted && stats) {
     const off = known.filter(s => Math.abs(s.kcal - week.dayTarget) / week.dayTarget > TARGET_BAND).length

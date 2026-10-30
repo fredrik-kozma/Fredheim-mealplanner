@@ -20,17 +20,19 @@ For each ingredient, ask in order:
    tamari/soy sauce, extract, syrup, honey, maple syrup) → **volume**
    (dl/ml/l for a bulk amount, tbsp/tsp for a small one). Never grams.
 
-2. **Is it a powder or a spice/seasoning?** (nutritional yeast, psyllium/
-   fibre husk, salt, ground spices, baking powder/soda, thickening starches
-   like cornstarch or tapioca) → **tsp/tbsp**. Never grams — "3 g cumin" is
-   worse than "1 tsp cumin", not more precise in any way that matters at the
-   stove. Two exceptions the collection made on purpose: **flour** and
-   **thick pantry pastes** (tomato purée, peanut butter, tahini, soy yogurt,
-   soy mayonnaise, sour cream, date paste) went to **grams** even though
-   they're powder-or-paste-like, because they were the worst offenders for
+2. **Is it a powder or a spice/seasoning?** (nutritional yeast, salt, ground
+   spices, baking powder/soda, thickening starches like cornstarch or
+   tapioca) → **tsp/tbsp**. Never grams — "3 g cumin" is worse than "1 tsp
+   cumin", not more precise in any way that matters at the stove. Two
+   exceptions the collection made on purpose: **flour** and **thick pantry
+   pastes** (tomato purée, peanut butter, tahini, soy yogurt, soy mayonnaise,
+   sour cream, date paste) went to **grams** even though they're
+   powder-or-paste-like, because they were the worst offenders for
    inconsistency (flour alone showed up as `400 g`, `1.2 dl` and `4 l` in
    different recipes) and a kitchen scale is genuinely how people measure
-   them.
+   them. **Agar-agar and psyllium/fibre husk** are in **grams** too: they are
+   sold by weight, and the recipe view shows the spoon beside them
+   ("12 g (≈ 1 ½ tbsp)").
 
 3. **Is it a solid whole food** — vegetable, fruit, nut, seed, legume,
    grain, dried fruit? → **grams**, regardless of whether the recipe would

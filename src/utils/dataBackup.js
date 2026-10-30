@@ -68,7 +68,6 @@ const FIELDS = {
   avoidHoney: 'boolean',
   planKcalTarget: 'kcalTarget',
   planMeals: 'mealsPerDay',
-  planSnack: 'boolean',
   saltLevel: 'saltLevel',
   recipeSaltLevels: 'saltLevelMap',
   hasSeenTutorial: 'boolean',

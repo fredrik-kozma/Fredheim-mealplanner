@@ -1289,18 +1289,15 @@ const useStore = create(
       setAvoidHoney: (v) => set({ avoidHoney: Boolean(v) }),
 
       // Make my week's calorie target (kcal a day per person, or null for
-      // none) and meals a day (3, 2 or 1, a snack only with 3): the answers
-      // it starts from next time. Out-of-range values are no target.
+      // none) and meals a day (3, 2 or 1): the answers it starts from next
+      // time. Out-of-range values are no target.
       planKcalTarget: null,
       planMeals: 3,
-      planSnack: false,
-      setPlanPreferences: ({ kcal, meals, snack }) => set(() => {
+      setPlanPreferences: ({ kcal, meals }) => set(() => {
         const n = Math.round(Number(kcal))
-        const planMeals = [1, 2, 3].includes(meals) ? meals : 3
         return {
           planKcalTarget: kcal != null && n >= 1000 && n <= 4000 ? n : null,
-          planMeals,
-          planSnack: Boolean(snack) && planMeals === 3,
+          planMeals: [1, 2, 3].includes(meals) ? meals : 3,
         }
       }),
 
@@ -1960,8 +1957,11 @@ const useStore = create(
           recipes: (persisted.recipes || []).filter(r => !r.sourcePackId || r.userEdited),
         }
       },
-      version: 10,
+      version: 11,
       migrate: (persistedState, version) => {
+        // v11: Make my week no longer plans a snack. Someone who had "3 meals
+        // + snack" keeps planMeals 3; a Snack row they already have stays.
+        if (version < 11) delete persistedState.planSnack
         // v10: the intro tour opens once for new users. Anyone already
         // using the app has found their way around, so it stays closed
         // for them (they can still take it from Settings).

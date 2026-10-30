@@ -3,7 +3,9 @@ import { useTranslation } from 'react-i18next'
 import useStore, { normalizeSlotItem } from '../../store/useStore'
 import RecipePicker from '../planner/RecipePicker'
 import NutritionCoverage from './NutritionCoverage'
+import OmegaRatioRow from './OmegaRatioRow'
 import { sumNutrition, scaleNutrition } from '../../utils/nutritionData'
+import { dayOmega, weekOmega, logMeals, formatOmegaRatio } from '../../utils/omegaBalance'
 
 // ── Local-date helpers ───────────────────────────────────────────────────
 // Keys are 'YYYY-MM-DD' in the user's own timezone, so "today" matches the
@@ -182,6 +184,17 @@ export default function NutritionTracker() {
     return { key: k, kcal: Math.round(totals.calories || 0) }
   }), [weekDays, nutritionLog, recipeMap])
   const maxKcal = Math.max(1, ...weekCalories.map(d => d.kcal))
+
+  // Omega-6 : omega-3, per day of the week and for the week.
+  const weekOmegaDays = useMemo(
+    () => weekDays.map(k => dayOmega(logMeals(nutritionLog[k], recipeMap))),
+    [weekDays, nutritionLog, recipeMap]
+  )
+  const weekOmegaTotal = useMemo(() => weekOmega(weekOmegaDays), [weekOmegaDays])
+  const selectedOmega = useMemo(
+    () => dayOmega(logMeals(dayEntries, recipeMap)),
+    [dayEntries, recipeMap]
+  )
   const dayShortLabels = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
   return (
@@ -282,6 +295,14 @@ export default function NutritionTracker() {
               {t('nutritionTracker.dailyCoverage', { defaultValue: "Today's coverage" })}
             </h2>
             <NutritionCoverage totals={dayTotals} />
+            {!selectedOmega.empty && (
+              <OmegaRatioRow
+                ratio={selectedOmega.ratio}
+                favourable={selectedOmega.favourable}
+                incomplete={!selectedOmega.complete}
+                className="mt-4"
+              />
+            )}
           </div>
         </>
       ) : (
@@ -325,16 +346,42 @@ export default function NutritionTracker() {
               totals={weekAvgTotals}
               label={t('nutritionTracker.weeklyAvgLabel', { defaultValue: 'Average per day across this week (Mon–Sun)' })}
             />
+            {weekOmegaDays.some(d => !d.empty) && (
+              <>
+                <OmegaRatioRow
+                  ratio={weekOmegaTotal?.ratio}
+                  favourable={weekOmegaTotal?.favourable}
+                  incomplete={!weekOmegaTotal}
+                  note={weekOmegaTotal && weekOmegaTotal.complete < weekOmegaTotal.days
+                    ? t('nutrition.omega63Days', { n: weekOmegaTotal.complete, total: weekOmegaTotal.days })
+                    : null}
+                  className="mt-4"
+                />
+                {/* Each day's ratio; a dash where a meal has no values. */}
+                <div className="mt-2 grid grid-cols-7 gap-1">
+                  {weekOmegaDays.map((d, i) => (
+                    <div key={weekDays[i]} className="text-center">
+                      <p className="text-[10px] font-medium text-slate-400">
+                        {t(`planner.daysShort.${dayShortLabels[i]}`, { defaultValue: dayShortLabels[i] })}
+                      </p>
+                      <p className={`text-[10px] font-semibold tabular-nums ${d.complete ? (d.favourable ? 'text-emerald-700' : 'text-amber-600') : 'text-slate-300'}`}>
+                        {d.complete ? formatOmegaRatio(d.ratio).replace(' : 1', '') : d.empty ? '' : '–'}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </>
       )}
 
-      {/* Balanced-diet disclaimer — the whole point of the weekly view */}
+      {/* Balance over the week — the whole point of the weekly view */}
       <div className="mt-4 rounded-xl bg-emerald-50 border border-emerald-100 px-4 py-3">
         <p className="text-xs text-emerald-900 leading-relaxed">
           <span className="font-semibold">💚 {t('nutritionTracker.balanceTitle', { defaultValue: 'Aim for balance, not perfection.' })}</span>{' '}
           {t('nutritionTracker.balanceBody', {
-            defaultValue: "You don't need to hit 100% of every nutrient every single day — some days run higher, others lower. What matters is that things even out across the week. These figures are estimates from standard food data, not medical advice.",
+            defaultValue: "You don't need to hit 100% of every nutrient every single day — some days run higher, others lower. What matters is that things even out across the week. These figures are estimates from standard food data.",
           })}
         </p>
       </div>

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { NUTRITION_GROUPS, fmtNutrient, dvColour } from '../../utils/nutritionData'
+import { omegaRatio } from '../../utils/omegaBalance'
+import OmegaRatioRow from '../nutrition/OmegaRatioRow'
 
 /**
  * NutritionPanel — renders the recipe's per-serving nutrition with a toggle
@@ -165,25 +167,7 @@ export default function NutritionPanel({ recipe, displayServings }) {
           eating. Lower is better (closer to 1:1 or below). Scale-invariant,
           so it reads the same in every mode. Only shown when both fats are
           present and omega-3 is non-zero. */}
-      {(() => {
-        const o3 = perServing.omega3
-        const o6 = perServing.omega6
-        if (!o3 || o3 <= 0 || o6 == null) return null
-        const ratio = o6 / o3
-        // A ratio at or below ~4:1 is widely considered favourable.
-        const favourable = ratio <= 4
-        return (
-          <div className="mt-4 flex items-center justify-between gap-3 bg-slate-50 rounded-xl px-3.5 py-2.5">
-            <span className="text-xs font-medium text-slate-600">
-              {t('nutrition.omega63Ratio', { defaultValue: 'Omega-6 : Omega-3 ratio' })}
-            </span>
-            <span className={`text-xs font-bold tabular-nums ${favourable ? 'text-emerald-700' : 'text-amber-600'}`}>
-              {ratio < 1 ? ratio.toFixed(2) : ratio.toFixed(1)} : 1
-              {favourable ? ' ✓' : ''}
-            </span>
-          </div>
-        )
-      })()}
+      <OmegaRatioRow {...omegaRatio(perServing.omega6, perServing.omega3)} className="mt-4" />
 
       {/* Footnote */}
       <p className="text-[10px] text-slate-400 mt-4 leading-relaxed">

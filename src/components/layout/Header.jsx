@@ -23,9 +23,11 @@ export default function Header() {
     '/shopping': t('shopping.title'),
     '/settings': t('settings.title'),
     '/packs': t('packs.title'),
+    '/nutrition': t('nutritionTracker.title'),
   }
 
-  const title = PAGE_TITLES[location.pathname] || t('app.name')
+  // The full app name doesn't fit beside the buttons on a phone.
+  const title = PAGE_TITLES[location.pathname] || t('app.shortName')
 
   function openSignIn() {
     setAuthTab('signin')
@@ -89,7 +91,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative bg-white/90 backdrop-blur-md border-b border-slate-100 px-4 h-14 flex items-center gap-3 lg:hidden">
+      <header className="relative bg-white/90 backdrop-blur-md border-b border-slate-100 px-3 min-[400px]:px-4 h-14 flex items-center gap-2 min-[400px]:gap-3 lg:hidden">
         {/* Logo + page title */}
         <button
           onClick={() => navigate('/')}
@@ -100,16 +102,17 @@ export default function Header() {
             alt=""
             className="w-8 h-8 rounded-full flex-shrink-0 object-cover"
           />
-          <span className="font-semibold text-slate-800 text-base truncate">{title}</span>
+          <span className="font-semibold text-slate-800 text-[13px] min-[400px]:text-base leading-tight text-left line-clamp-2 break-words min-w-0">{title}</span>
         </button>
 
         {/* Kitchen timer — sits next to the account area so it's reachable
             from every page, and keeps counting as you move between them. */}
         <TimerButton />
 
-        {/* Trial badge */}
+        {/* Trial badge — on phones it stays in the account menu only, so the
+            page title keeps its room. */}
         {user && isTrial && (
-          <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 flex-shrink-0">
+          <span className="hidden sm:inline text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 flex-shrink-0">
             {t('subscription.trialDaysLeft', { count: daysLeft })}
           </span>
         )}
@@ -199,7 +202,7 @@ export default function Header() {
             </button>
             <button
               onClick={openSignUp}
-              className="btn-primary py-1.5 px-3 text-xs"
+              className="hidden sm:inline-flex btn-primary py-1.5 px-3 text-xs"
             >
               {t('auth.signUp')}
             </button>

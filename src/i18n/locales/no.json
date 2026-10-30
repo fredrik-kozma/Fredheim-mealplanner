@@ -44,6 +44,7 @@
   },
   "app": {
     "name": "Fredheim Menyplanlegger",
+    "shortName": "Fredheim",
     "version": "Versjon 1.0 · Alle data lagres lokalt på enheten din"
   },
   "recipes": {
@@ -240,7 +241,7 @@
     "batchCookHint": "Lag én gang for hele uken. Tas med i handlelisten.",
     "batchShow": "Vis storkokking",
     "batchHide": "Skjul storkokking",
-    "moreActions": "Mer",
+    "printShare": "Skriv ut og del",
     "batchTextPlaceholder": "f.eks. dobbel porsjon tomatsaus",
     "addRecipe": "Oppskrift",
     "addNote": "Notat",
@@ -371,7 +372,7 @@
     "imperialDesc": "oz, kopper, ts, ss",
     "mealSlots": "Måltidsplasser",
     "mealSlotsDesc": "Dette er radene i den ukentlige planleggeren din.",
-    "mealSlotPlaceholder": "f.eks. Mellommåltid, Kveldsmat…",
+    "mealSlotPlaceholder": "f.eks. Brunsj, Kveldsmat…",
     "addMealSlot": "Legg til",
     "save": "Lagre",
     "cancel": "Avbryt",
@@ -649,6 +650,10 @@
     "no100gAvail": "Porsjonsvekt ikke oppgitt",
     "footnote": "Verdiene er estimater basert på standard næringsdata. %-verdi er basert på et 2000 kcal referansekosthold.",
     "omega63Ratio": "Omega-6 : Omega-3-forhold",
+    "omega63Hint": "Lavere er bedre: under 4 : 1 er et godt mål.",
+    "omega63Incomplete": "Ufullstendig: et måltid mangler omega-verdier",
+    "omega63Days": "Basert på {{n}} av {{total}} dager",
+    "omega63Short": "Ω-6:3 {{ratio}}",
     "groups": {
       "macros": "Makronæringsstoffer",
       "minerals": "Mineraler",
@@ -738,7 +743,7 @@
     "emptyTotals": "Ingenting logget ennå – legg til et måltid for å se dekningen.",
     "pickTitle": "Logg mat du spiste",
     "balanceTitle": "Sikt på balanse, ikke perfeksjon.",
-    "balanceBody": "Du trenger ikke å nå 100 % av hvert næringsstoff hver eneste dag – noen dager blir høyere, andre lavere. Det som betyr noe, er at det jevner seg ut i løpet av uken. Disse tallene er estimater fra standard matvaredata, ikke medisinske råd.",
+    "balanceBody": "Du trenger ikke å nå 100 % av hvert næringsstoff hver eneste dag – noen dager blir høyere, andre lavere. Det som betyr noe, er at det jevner seg ut i løpet av uken. Disse tallene er estimater fra standard matvaredata.",
     "noNutritionData": "ingen næringsdata",
     "importPlanned": "Fra ukeplanen ({{count}})",
     "importPlannedHint": "Legg inn måltidene som er planlagt for denne dagen. Du kan justere porsjonene etterpå.",
@@ -764,6 +769,7 @@
     "next": "Neste",
     "emptyTitle": "Ingenting planlagt ennå?",
     "emptyText": "Svar på noen raske spørsmål, så fyller vi uken med oppskrifter for deg.",
+    "emptyHint": "Trykk på Lag uken min over for å komme i gang",
     "q": {
       "goal": "Hva skal denne uken hjelpe med?",
       "people": "Hvor mange skal spise?",
@@ -807,10 +813,8 @@
     "meals": {
       "1": "Bare middag",
       "2": "Frokost og lunsj",
-      "3": "Frokost, lunsj og middag",
-      "3s": "Frokost, lunsj, middag og et mellommåltid"
+      "3": "Frokost, lunsj og middag"
     },
-    "doctorNote": "Kun forslag — snakk med legen din før du endrer medisiner eller kosthold på grunn av en sykdom.",
     "goalNote": "Alle oppskriftene er merket «{{label}}».",
     "weekName": "Min uke: {{goal}}",
     "batchTitle": "Storkokking på søndag",
@@ -827,6 +831,8 @@
     "extra": "ekstra",
     "dayFruit_one": "Legg til 1 frukt per person i dag (et eple, en pære eller en appelsin) for å nå dagens energibehov.",
     "dayFruit_other": "Legg til {{count}} frukter per person i dag (epler, pærer eller appelsiner) for å nå dagens energibehov.",
+    "dayFruitMeals_one": "Spis 1 frukt per person til frokost eller lunsj i dag (et eple, en pære eller en appelsin) for å nå dagens energibehov.",
+    "dayFruitMeals_other": "Spis {{count}} frukter per person til frokost eller lunsj i dag (epler, pærer eller appelsiner) for å nå dagens energibehov.",
     "shuffle": "Stokk om",
     "useWeek": "Bruk denne uken",
     "changeAnswers": "Endre svar",
@@ -860,8 +866,7 @@
       "portionsFitted": "Porsjonene er tilpasset (½ til 2 hver) så hver dag havner nær målet ditt på omtrent {{target}} kcal. Handlelisten kjøper inn til det, og uken skaleres fortsatt med antall personer.",
       "portionsFittedDinner": "Porsjonene er tilpasset (½ til 2 hver) så hver middag havner nær omtrent {{target}} kcal. Handlelisten kjøper inn til det, og uken skaleres fortsatt med antall personer.",
       "kcalOffTarget_one": "På 1 dag når ikke rettene som passer valgene dine helt innenfor 10 % av målet. Juster gjerne en porsjon i planleggeren.",
-      "kcalOffTarget_other": "På {{count}} dager når ikke rettene som passer valgene dine helt innenfor 10 % av målet. Juster gjerne en porsjon i planleggeren.",
-      "snackFruit": "De dagene ingen mellommåltid-oppskrift passer, er mellommåltidet en frukt (se dagens notat)."
+      "kcalOffTarget_other": "På {{count}} dager når ikke rettene som passer valgene dine helt innenfor 10 % av målet. Juster gjerne en porsjon i planleggeren."
     },
     "goalsHint": "Velg ett eller flere.",
     "breakfasts": {
@@ -884,7 +889,6 @@
     "uniqueIngredients_one": "Denne uken trenger {{count}} ulik ingrediens.",
     "uniqueIngredients_other": "Denne uken trenger {{count}} ulike ingredienser.",
     "goalNoteMany": "Alle oppskriftene har disse merkene: {{labels}}.",
-    "snackHint": "Et mellommåltid fra oppskriftene merket som det, eller en frukt",
     "kcalHint": "Per person. Porsjonene tilpasses så hver dag havner nær målet.",
     "kcalHintDinner": "Per person, for hele dagen: middagen planlegges til omtrent 40 % av det.",
     "kcalNone": "Ingen mål",
@@ -893,9 +897,8 @@
     "kcalCustom": "Eller skriv inn ditt eget",
     "kcalPerDay": "kcal om dagen",
     "kcalRange": "Skriv et tall fra {{min}} til {{max}}.",
-    "kcalGuidance": "Under 1200 kcal om dagen bør helst skje med veiledning fra helsepersonell.",
     "mealKcal": "≈ {{kcal}} kcal",
-    "estimateNote": "kcal er anslag per person, ut fra oppskriftenes næringsinnhold: et forslag, ikke en forskrift.",
+    "estimateNote": "kcal per person, ut fra oppskriftenes næringsinnhold.",
     "statsDayTarget": "Omtrent {{kcal}} kcal og {{fibre}} g fiber per person om dagen (ditt mål: {{target}} kcal).",
     "statsDinnerTarget": "Omtrent {{kcal}} kcal og {{fibre}} g fiber per person per middag (vi sikter mot {{target}} kcal)."
   },
@@ -1030,7 +1033,6 @@
     "ctaMakeWeek": "Lag uken min nå",
     "ctaTrial": "Start gratis prøveperiode",
     "ctaExplore": "Utforsk på egen hånd",
-    "disclaimer": "Fredheim gir forslag, ikke medisinske råd. Snakk med legen din før du endrer medisiner eller kosthold på grunn av en sykdom.",
     "slides": {
       "welcome": {
         "title": "Velkommen til Fredheim",
@@ -1053,7 +1055,7 @@
       },
       "makeWeek": {
         "title": "En hel uke planlagt på ett minutt",
-        "body": "Åpne Ukeplan og trykk på «Lag uken min». Svar på noen korte spørsmål, så får du måltider for hele uken, klare til bruk.",
+        "body": "Trykk på knappen «Lag uken min» øverst i Ukeplan. Svar på noen korte spørsmål, så får du måltider for hele uken, klare til bruk.",
         "callout": "Start her",
         "callout2": "Noen raske spørsmål"
       },

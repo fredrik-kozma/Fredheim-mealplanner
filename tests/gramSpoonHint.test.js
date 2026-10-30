@@ -21,6 +21,14 @@ test('about a tablespoon and up says tablespoons', () => {
   assert.equal(hint(17, 'miso-paste'), '(≈ 1 tbsp)')
 })
 
+test('psyllium in grams shows its spoon in each language, at every amount the recipes use', () => {
+  assert.equal(hint(12, 'psyllium-husk'), '(≈ 1 ½ tbsp)')
+  assert.equal(hint(12, 'psyllium-husk', 'no'), '(≈ 1 ½ ss)')
+  assert.equal(hint(12, 'psyllium-husk', 'sv'), '(≈ 1 ½ msk)')
+  assert.equal(hint(4, 'psyllium-husk'), '(≈ 1 ½ tsp)')
+  for (const grams of [3, 4, 5, 12, 16, 18, 24, 27]) assert.ok(hint(grams, 'psyllium-husk'), `${grams} g`)
+})
+
 test('the spoon amount snaps to a kitchen fraction', () => {
   assert.equal(hint(7, 'agar-agar'), '(≈ 1 ¼ tbsp)')
 })

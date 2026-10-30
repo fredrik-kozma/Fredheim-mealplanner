@@ -1880,7 +1880,7 @@
     {
       "id": "psyllium-husk",
       "aisle": "Bakery & Grains",
-      "preferredUnit": "tbsp",
+      "preferredUnit": "g",
       "spoonGrams": {
         "gPerTsp": 2.7
       },

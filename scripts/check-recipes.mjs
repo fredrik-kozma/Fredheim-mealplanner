@@ -67,7 +67,7 @@ import { execFileSync } from 'node:child_process'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { normalizeUnit, CANONICAL_UNITS, BASE_UNIT_TYPE } from '../src/utils/unitNormalizer.js'
 import { analyzeRecipe, recipeMetaProblems } from './lib/recipeLabels.mjs'
-import { STANDARD_AMOUNT_IDS, TARGETS, saltClass, standardSodium, needsFlavour } from './lib/saltLevels.mjs'
+import { STANDARD_AMOUNT_IDS, saltClass, standardCeiling, standardSodium, needsFlavour } from './lib/saltLevels.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.join(__dirname, '..')
@@ -303,7 +303,7 @@ export function checkSaltLevels(packs, { only = () => true } = {}) {
           }
           if (row.standardUnit != null && row.unit) {
             add(lang, i, 'bad-standard-amount', `${label}:unit`, `${label}: standardUnit is only for a "to taste" row (unit ""); this row is measured in ${row.unit}`)
-          } else if (!SPOON_UNITS.has(normalizeUnit(unit)) && !['g', 'ml'].includes(normalizeUnit(unit))) {
+          } else if (!SPOON_UNITS.has(normalizeUnit(unit)) && !['g', 'ml', 'pinch'].includes(normalizeUnit(unit))) {
             add(lang, i, 'bad-standard-amount', `${label}:unit`, `${label}: no unit to measure the standard amount in (give a "to taste" row standardUnit "tsp")`)
           }
           const e = en[i]
@@ -333,8 +333,8 @@ export function checkSaltLevels(packs, { only = () => true } = {}) {
       if (expected != null) {
         if (typeof stored !== 'number') add('en', null, 'standard-sodium', 'missing', `no nutrition.sodiumStandard (expected ${expected} mg a serving)`)
         else if (Math.abs(stored - expected) > 2) add('en', null, 'standard-sodium', 'mismatch', `nutrition.sodiumStandard ${stored} mg, but the standard amounts give ${expected} mg a serving`)
-        const cap = typeof cls === 'string' ? TARGETS[cls].cap : null
-        if (cap != null && expected > cap) add('en', null, 'standard-sodium', 'cap', `${expected} mg sodium a serving at standard is over the ${cap} mg cap for a ${cls}`)
+        const cap = typeof cls === 'string' ? Math.round(standardCeiling(cls, recipe)) : null
+        if (cap != null && expected > cap + 2) add('en', null, 'standard-sodium', 'cap', `${expected} mg sodium a serving at standard is over the ${cap} mg ceiling for a ${cls}`)
       }
     }
   }

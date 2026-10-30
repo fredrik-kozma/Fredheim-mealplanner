@@ -54,6 +54,9 @@ export function noticeText(n, { t, titleOf, packName = id => id }, stats = null)
       return t(stats?.meals === 1 ? 'makeMyWeek.notice.portionsFittedDinner' : 'makeMyWeek.notice.portionsFitted', { target: n.target })
     case 'kcalOffTarget':
       return t('makeMyWeek.notice.kcalOffTarget', { count: n.count })
+    // Tips saved when a week could have a snack: its fruit is plain extra fruit now.
+    case 'snackFruit':
+      return t('makeMyWeek.notice.extraFruit')
     default:
       return t(`makeMyWeek.notice.${n.key}`)
   }
@@ -88,7 +91,7 @@ export function weekTipsData({ goal, goals, notices = [], stats = null, fruit = 
 /** { week, days } text for weekTipsData() output, in the language of `t`. */
 export function renderWeekTips(data, helpers) {
   const { t } = helpers
-  const lines = [t('makeMyWeek.doctorNote')]
+  const lines = []
   const tags = answerGoals(data).map(g => GOAL_TAG[g]).filter(Boolean)
   if (tags.length === 1) lines.push(t('makeMyWeek.goalNote', { label: t(`conditions.${tags[0]}`) }))
   else if (tags.length) lines.push(t('makeMyWeek.goalNoteMany', { labels: tags.map(tag => `“${t(`conditions.${tag}`)}”`).join(', ') }))
@@ -97,7 +100,8 @@ export function renderWeekTips(data, helpers) {
   if (s) lines.push(s)
   const days = {}
   for (const [day, count] of Object.entries(data.fruit || {})) {
-    if (count > 0) days[day] = t('makeMyWeek.dayFruit', { count })
+    // With a calorie target, fruit goes with breakfast or lunch, not dinner.
+    if (count > 0) days[day] = t(data.stats?.fitted && data.stats.meals !== 1 ? 'makeMyWeek.dayFruitMeals' : 'makeMyWeek.dayFruit', { count })
   }
   return { week: lines.join('\n\n'), days }
 }

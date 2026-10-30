@@ -94,14 +94,20 @@ good-for filters without hand work. The criteria live in
   meals about ≤ 600 mg sodium a serving); write recipes at that level.
   *Standard* (healthy adults, WHO < 5 g salt a day) is an optional
   `standardAmount` on the recipe's salt row (same unit as the row; a
-  "to taste" row with `unit: ""` also gets `standardUnit: "tsp"`), in en,
-  no and sv alike, plus `nutrition.sodiumStandard` (mg a serving at
-  standard). Targets at standard: a main meal ~650–700 mg (never over
-  750), a savoury breakfast or bread ≤ 400 mg. Only salt (or the recipe's
-  herb salt) is raised; soy sauce/tamari, miso, bouillon may carry one but
-  canned beans and broth never change. Sweet recipes, components, sauces,
-  spreads, sides and salads get none. A savoury main with no salt row gets
-  a "to taste" salt row with a standard amount. Health labels are always
+  "to taste" row with `unit: ""` also gets `standardUnit: "tsp"` or
+  `"pinch"`), in en, no and sv alike, plus `nutrition.sodiumStandard` (mg a
+  serving at standard). Every savoury recipe with a salt row gets one, so
+  it offers the switch. Targets at standard: a main meal ~650–700 mg, a
+  savoury breakfast or bread ≤ 400 mg, a side ~200 mg, a snack ~150 mg. A
+  recipe already near or above its target still gets a small step (a main
+  at least +80 mg, about 0.2 g salt; the others in proportion), and nothing
+  is salted past 900 mg. Only salt (or the recipe's herb or black salt) is
+  raised; soy sauce/tamari, miso, bouillon may carry one but canned beans
+  and broth never change. Sweet recipes get none, nor do ferments and
+  salt-preserved concentrates. A savoury main, breakfast or bread below
+  target with no salt row gets a "to taste" salt row with a standard
+  amount; other recipes without one (soy sauce or bouillon only) stay
+  without. Health labels are always
   judged on the low-salt recipe (`scripts/lib/recipeLabels.mjs` unchanged).
   `node scripts/build_salt_levels.mjs --write` decides all of this
   (rules in `scripts/lib/saltLevels.mjs`), bumps changed pack versions and

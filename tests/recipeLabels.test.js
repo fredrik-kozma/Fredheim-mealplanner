@@ -20,8 +20,11 @@ const ADAPTED = ['dal-stew', 'stuffed-paprika-with-tofu', 'tofu-form', 'kidney-b
   'red-beet-burger', 'orn-20']
 const ADAPTED_LABELS_LOST = { 'dal-stew': ['blood-pressure-friendly'] }
 // Servings or sodium corrected by scripts/fix_portions_and_sodium.mjs, and the
-// salt cuts / oil-free methods of scripts/apply_salty_mains.mjs: labels re-derived.
-const REPORTIONED = new Set([...Object.keys(PORTIONS), ...SODIUM_FROM_INGREDIENTS, ...SALTY_MAINS])
+// salt cuts / oil-free methods of scripts/apply_salty_mains.mjs and
+// scripts/fix_porridge_liquid_and_salty_sides.mjs and
+// scripts/fix_onion_pie_salt.mjs: labels re-derived.
+const SALTY_SIDES = ['fr-104', 'fr-113', 'seasoned-baked-potatoes', 'fr-114', 'fr-38']
+const REPORTIONED = new Set([...Object.keys(PORTIONS), ...SODIUM_FROM_INGREDIENTS, ...SALTY_MAINS, ...SALTY_SIDES])
 
 test('every good-for label has a style and a name in en, no and sv', () => {
   for (const c of CONDITION_TAGS) {

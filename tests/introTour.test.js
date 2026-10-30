@@ -71,7 +71,7 @@ test('both paths start on the welcome, end on done, and use known slides', () =>
 
 test('every slide and button has its words in en, no and sv', () => {
   const shared = ['skip', 'close', 'back', 'next', 'progress', 'goTo', 'screenshotAlt', 'chooseTitle',
-    'quick', 'quickTime', 'full', 'fullTime', 'ctaMakeWeek', 'ctaTrial', 'ctaExplore', 'disclaimer']
+    'quick', 'quickTime', 'full', 'fullTime', 'ctaMakeWeek', 'ctaTrial', 'ctaExplore']
   for (const lang of TOUR_LANGS) {
     const tour = LOCALES[lang].tour
     for (const key of shared) assert.ok(tour?.[key], `${lang}: tour.${key}`)

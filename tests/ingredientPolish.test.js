@@ -77,6 +77,22 @@ test('the shopping list merges lemon juice rows from pieces, spoons and ml into 
   }
 })
 
+test('psyllium is in grams everywhere, and the shopping list adds it up in grams', () => {
+  const psyllium = ALL.filter(r => r.ingredients.some(x => x.ingredient === 'psyllium-husk'))
+  assert.ok(psyllium.length > 0)
+  for (const r of psyllium) for (const lang of ['en', 'no', 'sv']) {
+    const rows = rowsIn(r, lang).filter(x => x.ingredient === 'psyllium-husk')
+    for (const x of rows) assert.equal(x.unit, 'g', `${r.id} ${lang}`)
+  }
+  const pudding = ALL.find(r => r.id === 'orn-19') // 24 g
+  const loaf = ALL.find(r => r.id === 'orn-66') // 18 g
+  for (const lang of ['en', 'no', 'sv']) {
+    const items = allItems(listFor([pudding, loaf], lang)).filter(i => i.ingredientId === 'psyllium-husk')
+    assert.equal(items.length, 1, lang)
+    assert.deepEqual([items[0].quantity, normalizeUnit(items[0].unit)], [42, 'g'], lang)
+  }
+})
+
 test('volume units merge with volume, weight with weight, for the same id', () => {
   const r = recipe('r', [
     ['oat-milk', 2, 'dl'], ['oat-milk', 50, 'ml'], ['oat-milk', 1, 'l'], ['oat-milk', 2, 'tbsp'], ['oat-milk', 1, 'tsp'],

@@ -499,7 +499,7 @@ test('fewer ingredients: recipes that share ingredients, fewer to buy', () => {
   assert.ok(on < off * 0.92, `unique ingredients: ${on} with the option, ${off} without`)
 })
 
-// ── Calorie target and a snack ───────────────────────────────────────────
+// ── Calorie target ───────────────────────────────────────────────────────
 
 const servingsOf = (it, people) => it.servings ?? people
 const within = (kcal, target, band = 0.1) => Math.abs(kcal - target) / target <= band
@@ -507,7 +507,7 @@ const within = (kcal, target, band = 0.1) => Math.abs(kcal - target) / target <=
 test('no calorie target: the week is exactly as before', () => {
   for (const answers of [BASE, EXAMPLE, { ...BASE, meals: 2, goal: 'weight' }]) {
     const before = makeMyWeek({ recipes: ALL, answers, seed: 5 })
-    assert.deepEqual(makeMyWeek({ recipes: ALL, answers: { ...answers, kcal: null, snack: false }, seed: 5 }), before)
+    assert.deepEqual(makeMyWeek({ recipes: ALL, answers: { ...answers, kcal: null }, seed: 5 }), before)
     // Out of range or not a number is no target too.
     for (const kcal of [500, 9000, 'abc', '']) {
       assert.deepEqual(makeMyWeek({ recipes: ALL, answers: { ...answers, kcal }, seed: 5 }), before, `kcal ${kcal}`)
@@ -523,18 +523,16 @@ test('1,500 and 2,500 kcal targets: every day within 10%', () => {
   for (const kcal of [1500, 1800, 2500]) {
     for (const goal of ['general', 'diabetes', 'heart']) {
       for (const batch of [false, true]) {
-        for (const snack of [false, true]) {
-          const answers = { ...BASE, goal, batch, snack, kcal }
-          for (const seed of [1, 2]) {
-            const week = makeMyWeek({ recipes: ALL, answers, seed })
-            const label = `${kcal} ${goal} batch:${batch} snack:${snack} seed ${seed}`
-            assert.equal(week.stats.kcalTarget, kcal, label)
-            assert.ok(week.stats.fitted, label)
-            for (const [day, { kcal: total }] of Object.entries(dayTotals(week, answers.people))) {
-              assert.ok(within(total, kcal), `${label}: ${day} ${Math.round(total)} kcal`)
-            }
-            assert.ok(!week.notices.some(n => n.key === 'kcalOffTarget'), label)
+        const answers = { ...BASE, goal, batch, kcal }
+        for (const seed of [1, 2]) {
+          const week = makeMyWeek({ recipes: ALL, answers, seed })
+          const label = `${kcal} ${goal} batch:${batch} seed ${seed}`
+          assert.equal(week.stats.kcalTarget, kcal, label)
+          assert.ok(week.stats.fitted, label)
+          for (const [day, { kcal: total }] of Object.entries(dayTotals(week, answers.people))) {
+            assert.ok(within(total, kcal), `${label}: ${day} ${Math.round(total)} kcal`)
           }
+          assert.ok(!week.notices.some(n => n.key === 'kcalOffTarget'), label)
         }
       }
     }
@@ -544,7 +542,6 @@ test('1,500 and 2,500 kcal targets: every day within 10%', () => {
 test('a calorie target moves the week: smaller portions at 1,500, larger at 2,500', () => {
   // Over many seeds, so no single random week decides it.
   const total = week => items(week).reduce((n, it) => n + servingsOf(it, 2), 0)
-  const meal = (week, slot) => Object.values(week.stats.perMeal).reduce((n, m) => n + (m[slot] || 0), 0)
   const offBy = (week, kcal) => Object.values(week.stats.perDay).reduce((n, d) => n + Math.abs(d.kcal - kcal), 0) / 7
   for (let seed = 1; seed <= 20; seed++) {
     const none = makeMyWeek({ recipes: ALL, answers: BASE, seed })
@@ -557,9 +554,130 @@ test('a calorie target moves the week: smaller portions at 1,500, larger at 2,50
       // The days move to the target: much closer than the same week without one.
       assert.ok(offBy(week, kcal) < offBy(none, kcal) / 2,
         `${label}: days off by ${Math.round(offBy(week, kcal))} kcal, ${Math.round(offBy(none, kcal))} without a target`)
-      // Each meal near its share: over the week dinner (40%) outweighs lunch (35%).
-      assert.ok(meal(week, 'Dinner') > meal(week, 'Lunch'), `${label}: dinner ${meal(week, 'Dinner')}, lunch ${meal(week, 'Lunch')}`)
     }
+  }
+})
+
+test('with a calorie target dinner is clearly the lightest meal: seeds 1–20', () => {
+  for (const kcal of [1500, 1800, 2000, 2500]) {
+    for (const goal of ['general', 'diabetes', 'heart']) {
+      let total = { Breakfast: 0, Lunch: 0, Dinner: 0 }
+      let count = 0
+      for (let seed = 1; seed <= 20; seed++) {
+        const answers = { ...BASE, goal, kcal }
+        const week = makeMyWeek({ recipes: ALL, answers, seed })
+        const label = `${kcal} kcal, ${goal}, seed ${seed}`
+        for (const [day, { kcal: dayKcal }] of Object.entries(dayTotals(week, answers.people))) {
+          // Diabetes-friendly dishes can't always fill 2,500 with dinner kept
+          // light: that day lands under the target instead.
+          const under = goal === 'diabetes' && kcal === 2500 ? 0.2 : 0.101
+          assert.ok(dayKcal <= kcal * 1.101 && dayKcal >= kcal * (1 - under), `${label}: ${day} ${Math.round(dayKcal)} kcal`)
+        }
+        for (const m of Object.values(week.stats.perMeal)) {
+          for (const slot of Object.keys(total)) total[slot] += m[slot] || 0
+          count++
+        }
+      }
+      const [b, l, d] = ['Breakfast', 'Lunch', 'Dinner'].map(slot => total[slot] / count)
+      const label = `${kcal} kcal, ${goal}: ${Math.round(b)}/${Math.round(l)}/${Math.round(d)}`
+      // Clearly lightest: at least a tenth under the smaller of the other two.
+      assert.ok(d < 0.9 * Math.min(b, l), label)
+      assert.ok(b >= 0.98 * l, label)
+      const all = b + l + d
+      assert.ok(d / all >= 0.2 && d / all <= 0.3, `${label}: dinner share`)
+      assert.ok(b / all >= 0.35 && b / all <= 0.45, `${label}: breakfast share`)
+      assert.ok(l / all >= 0.3 && l / all <= 0.4, `${label}: lunch share`)
+    }
+  }
+})
+
+test('with a calorie target dinner is never bigger than lunch or breakfast, on any day, and no day runs over', () => {
+  for (const goal of ['general', 'weight', 'bloodPressure', 'diabetes', 'heart']) {
+    for (const kcal of [1500, 1800, 2000, 2500]) {
+      for (let seed = 1; seed <= 20; seed++) {
+        const answers = { ...BASE, goal, kcal }
+        const week = makeMyWeek({ recipes: ALL, answers, seed })
+        const label = `${goal}, ${kcal} kcal, seed ${seed}`
+        const totals = dayTotals(week, answers.people)
+        for (const [day, slots] of Object.entries(week.plan)) {
+          const meal = slot => slots[slot].reduce((n, it) =>
+            n + byId.get(it.recipeId).nutrition.perServing.calories * servingsOf(it, answers.people) / answers.people, 0)
+          assert.ok(meal('Dinner') <= meal('Lunch'), `${label}: ${day} dinner ${Math.round(meal('Dinner'))} > lunch ${Math.round(meal('Lunch'))}`)
+          assert.ok(meal('Dinner') <= meal('Breakfast'), `${label}: ${day} dinner ${Math.round(meal('Dinner'))} > breakfast ${Math.round(meal('Breakfast'))}`)
+          // Under the target is allowed; over it by more than 10% is not.
+          assert.ok(totals[day].kcal <= kcal * 1.1, `${label}: ${day} ${Math.round(totals[day].kcal)} kcal`)
+        }
+      }
+    }
+  }
+})
+
+test('dinner stays the lightest for other household sizes and with batch cooking too', () => {
+  for (const extra of [{ people: 1 }, { people: 3 }, { people: 4 }, { batch: true }, { people: 1, batch: true }]) {
+    for (const goal of ['general', 'weight', 'bloodPressure']) {
+      for (const kcal of [1500, 2500]) {
+        for (let seed = 1; seed <= 5; seed++) {
+          const answers = { ...BASE, ...extra, goal, kcal }
+          const week = makeMyWeek({ recipes: ALL, answers, seed })
+          for (const [day, slots] of Object.entries(week.plan)) {
+            const meal = slot => slots[slot].reduce((n, it) =>
+              n + byId.get(it.recipeId).nutrition.perServing.calories * servingsOf(it, answers.people) / answers.people, 0)
+            const label = `${JSON.stringify(extra)} ${goal}, ${kcal} kcal, seed ${seed}, ${day}`
+            assert.ok(meal('Dinner') <= Math.min(meal('Lunch'), meal('Breakfast')), `${label}: ${Math.round(meal('Breakfast'))}/${Math.round(meal('Lunch'))}/${Math.round(meal('Dinner'))}`)
+          }
+        }
+      }
+    }
+  }
+})
+
+test('with a calorie target dinner stays a proper main, with no bread on the side', () => {
+  for (const kcal of [1500, 1800, 2000, 2500]) {
+    for (const batch of [false, true]) {
+      for (let seed = 1; seed <= 20; seed++) {
+        const week = makeMyWeek({ recipes: ALL, answers: { ...BASE, kcal, batch }, seed })
+        const label = `${kcal} kcal, batch:${batch}, seed ${seed}`
+        for (const it of items(week).filter(x => x.slot === 'Dinner')) {
+          assert.notEqual(byId.get(it.recipeId).category, 'Bread', `${label}: ${it.recipeId}`)
+        }
+        for (const day of DAY_KEYS) {
+          const cats = week.plan[day].Dinner.map(it => byId.get(it.recipeId).category)
+          assert.ok(cats.some(c => c === 'Main' || c === 'Soup'), `${label}: ${day} dinner is ${cats}`)
+        }
+        for (const x of week.extras) assert.notEqual(x.slot, 'Dinner', `${label}: bread top-up at dinner`)
+      }
+    }
+  }
+})
+
+test('with a calorie target dinners lean lighter than the same week without one', () => {
+  const avgDish = answers => {
+    let kcal = 0
+    let n = 0
+    for (let seed = 1; seed <= 20; seed++) {
+      for (const it of items(makeMyWeek({ recipes: ALL, answers, seed })).filter(x => x.slot === 'Dinner')) {
+        const r = byId.get(it.recipeId)
+        if (r.category === 'Main' || r.category === 'Soup') { kcal += r.nutrition.perServing.calories; n++ }
+      }
+    }
+    return kcal / n
+  }
+  // Calories of one portion of the dish chosen, before any portion sizing.
+  const light = avgDish({ ...BASE, kcal: 1500 })
+  const plain = avgDish(BASE)
+  assert.ok(light < plain, `${Math.round(light)} kcal a portion, ${Math.round(plain)} without a target`)
+})
+
+test('with a calorie target two meals keep their split too', () => {
+  for (const kcal of [1500, 1800]) {
+    let b = 0
+    let l = 0
+    for (let seed = 1; seed <= 20; seed++) {
+      const week = makeMyWeek({ recipes: ALL, answers: { ...BASE, meals: 2, kcal }, seed })
+      for (const m of Object.values(week.stats.perMeal)) { b += m.Breakfast; l += m.Lunch }
+    }
+    assert.ok(b > l, `${kcal} kcal: breakfast ${b}, lunch ${l}`)
+    assert.ok(b / (b + l) >= 0.5 && b / (b + l) <= 0.6, `${kcal} kcal: breakfast share ${b / (b + l)}`)
   }
 })
 
@@ -567,7 +685,7 @@ test('calorie target portions: ½ to 2 each in half portions, bread whole servin
   for (const people of [2, 4, 3, 1]) {
     for (const kcal of [1500, 2500]) {
       for (const batch of [false, true]) {
-        const answers = { ...BASE, people, kcal, batch, snack: true }
+        const answers = { ...BASE, people, kcal, batch }
         const week = makeMyWeek({ recipes: ALL, answers, seed: 2 })
         const label = `${people} people, ${kcal} kcal, batch:${batch}`
         for (const it of items(week)) {
@@ -612,35 +730,77 @@ test('a smaller portion buys less: the shopping list follows the fitted servings
 test('the calorie target does not apply to the FMD week', () => {
   const answers = { ...BASE, goal: 'fmd' }
   assert.deepEqual(
-    makeMyWeek({ recipes: ALL, answers: { ...answers, kcal: 1500, snack: true }, seed: 1 }),
+    makeMyWeek({ recipes: ALL, answers: { ...answers, kcal: 1500 }, seed: 1 }),
     makeMyWeek({ recipes: ALL, answers, seed: 1 }))
 })
 
-test('3 meals + snack: a snack recipe a day, or a piece of fruit', () => {
+test('no snacks are ever planned, and an old saved snack answer means three meals', () => {
   for (const goal of ['general', 'weight', 'heart']) {
-    const week = makeMyWeek({ recipes: ALL, answers: { ...BASE, goal, snack: true }, seed: 4 })
-    for (const day of DAY_KEYS) {
-      const snack = week.plan[day].Snack || []
-      if (snack.length) {
-        const r = byId.get(snack[0].recipeId)
-        assert.ok(r.mealTypes.includes('snack'), `${goal} ${day}: ${r.id} is not a snack`)
-        assert.ok(!['Spreads', 'Sauce', 'Soup'].includes(r.category), `${goal} ${day}: ${r.id} (${r.category})`)
-        if (GOAL_TAG[goal]) assert.ok(r.tags.includes(GOAL_TAG[goal]), `${goal} ${day}: ${r.id} lacks the label`)
-      } else {
-        assert.ok(week.fruit[day] >= 1, `${goal} ${day}: no snack and no fruit`)
+    for (const kcal of [null, 1500, 2500]) {
+      for (let seed = 1; seed <= 20; seed++) {
+        const answers = { ...BASE, goal, kcal }
+        const week = makeMyWeek({ recipes: ALL, answers, seed })
+        const label = `${goal} ${kcal} seed ${seed}`
+        for (const it of items(week)) {
+          assert.ok(['Breakfast', 'Lunch', 'Dinner'].includes(it.slot), `${label}: ${it.slot}`)
+          assert.notEqual(byId.get(it.recipeId).category, 'Snack', `${label}: ${it.recipeId}`)
+        }
+        // A saved { meals: 3, snack: true } gives just the three-meal week.
+        assert.deepEqual(makeMyWeek({ recipes: ALL, answers: { ...answers, snack: true }, seed }), week, label)
       }
     }
   }
-  // Only with three meals, and never without asking.
-  const two = makeMyWeek({ recipes: ALL, answers: { ...BASE, meals: 2, snack: true }, seed: 4 })
-  const none = makeMyWeek({ recipes: ALL, answers: BASE, seed: 4 })
-  for (const week of [two, none]) assert.ok(items(week).every(it => it.slot !== 'Snack'))
+  const answers = defaultAnswers({ kcal: 1800, meals: 3, snack: true })
+  assert.equal(answers.meals, 3)
+  assert.ok(!('snack' in answers))
+})
+
+test('old saved data with a snack migrates: store, backup and saved tips', async () => {
+  const { default: useStore } = await import('../src/store/useStore.js')
+  const { validateBackup, BACKUP_APP } = await import('../src/utils/dataBackup.js')
+  // The store's saved state.
+  const { migrate, version } = useStore.persist.getOptions()
+  assert.ok(version >= 11)
+  const migrated = migrate({ planSnack: true, planMeals: 3, planKcalTarget: 1800 }, 10)
+  assert.ok(!('planSnack' in migrated))
+  assert.equal(migrated.planMeals, 3)
+  assert.equal(migrated.planKcalTarget, 1800)
+  // A backup: the field is ignored, not reported as a problem.
+  const restored = validateBackup({ app: BACKUP_APP, version: 1, data: { planSnack: true, planMeals: 3 } })
+  assert.ok(restored.ok)
+  assert.deepEqual(restored.data, { planMeals: 3 })
+  assert.deepEqual(restored.dropped, [])
+  // Tips saved with the old notice still render, without a raw key or a snack.
+  for (const lang of ['en', 'no', 'sv']) {
+    const text = renderWeekTips({ goals: [], notices: [{ key: 'snackFruit' }], fruit: { monday: 1 } }, { t: tFor(lang), titleOf: id => id })
+    assert.ok(!/makeMyWeek\.|snack|mellom|mellan/i.test(text.week), `${lang}: ${text.week}`)
+    assert.ok(!/makeMyWeek\./.test(text.days.monday), `${lang}: ${text.days.monday}`)
+  }
+})
+
+test('the snack wording is gone from Make my week, in every language', () => {
+  for (const [lang, locale] of Object.entries(LOCALES)) {
+    assert.equal(locale.makeMyWeek.meals['3s'], undefined, lang)
+    assert.equal(locale.makeMyWeek.snackHint, undefined, lang)
+    assert.equal(locale.makeMyWeek.notice.snackFruit, undefined, lang)
+    assert.ok(!/snack|mellommål|mellanmål/i.test(JSON.stringify(locale.makeMyWeek)), lang)
+  }
+})
+
+test('fruit with a calorie target goes with breakfast or lunch, in every language', () => {
+  for (const lang of ['en', 'no', 'sv']) {
+    const t = tFor(lang)
+    const days = fitted => renderWeekTips({ goals: [], notices: [], stats: { kcal: 1500, fibre: 30, meals: 3, fitted, kcalTarget: 1500 }, fruit: { monday: 2 } }, { t, titleOf: id => id }).days.monday
+    assert.ok(!/makeMyWeek\.|\{\{/.test(days(true)), `${lang}: ${days(true)}`)
+    assert.ok(new RegExp(t('makeMyWeek.meals.2').split(' ')[0], 'i').test(days(true)), `${lang}: ${days(true)}`)
+    assert.notEqual(days(true), days(false))
+  }
 })
 
 test('calorie target tips render in every language', () => {
   const short = makeMyWeek({ recipes: ALL, answers: { ...BASE, goal: 'weight', meals: 2, kcal: 2500 }, seed: 1 })
   assert.ok(short.notices.some(n => n.key === 'kcalOffTarget'), 'light weight-loss dishes cannot reach 2,500 kcal in two meals')
-  const fitted = makeMyWeek({ recipes: ALL, answers: { ...BASE, kcal: 1500, snack: true }, seed: 1 })
+  const fitted = makeMyWeek({ recipes: ALL, answers: { ...BASE, kcal: 1500 }, seed: 1 })
   for (const week of [short, fitted]) {
     const data = weekTipsData({ goals: week.goals, notices: week.notices, stats: week.stats, fruit: week.fruit })
     for (const lang of ['en', 'no', 'sv']) {
@@ -654,17 +814,15 @@ test('calorie target tips render in every language', () => {
 test('the calorie target and meals a day are saved settings, in the backup too', async () => {
   const { default: useStore } = await import('../src/store/useStore.js')
   const { buildBackup, validateBackup } = await import('../src/utils/dataBackup.js')
-  const saved = s => ({ planKcalTarget: s.planKcalTarget, planMeals: s.planMeals, planSnack: s.planSnack })
-  useStore.getState().setPlanPreferences({ kcal: 1800, meals: 3, snack: true })
-  assert.deepEqual(saved(useStore.getState()), { planKcalTarget: 1800, planMeals: 3, planSnack: true })
+  const saved = s => ({ planKcalTarget: s.planKcalTarget, planMeals: s.planMeals })
+  useStore.getState().setPlanPreferences({ kcal: 1800, meals: 3 })
+  assert.deepEqual(saved(useStore.getState()), { planKcalTarget: 1800, planMeals: 3 })
   const restored = validateBackup(buildBackup(useStore.getState()))
   assert.ok(restored.ok)
-  assert.deepEqual(saved(restored.data), { planKcalTarget: 1800, planMeals: 3, planSnack: true })
-  // Out of range is no target; a snack only with three meals.
-  useStore.getState().setPlanPreferences({ kcal: 99999, meals: 2, snack: true })
-  assert.deepEqual(saved(useStore.getState()), { planKcalTarget: null, planMeals: 2, planSnack: false })
+  assert.deepEqual(saved(restored.data), { planKcalTarget: 1800, planMeals: 3 })
+  // Out of range is no target.
+  useStore.getState().setPlanPreferences({ kcal: 99999, meals: 2 })
+  assert.deepEqual(saved(useStore.getState()), { planKcalTarget: null, planMeals: 2 })
   // The wizard starts from them.
-  const answers = defaultAnswers({ kcal: 1800, meals: 3, snack: true })
-  assert.equal(answers.kcal, 1800)
-  assert.equal(answers.snack, true)
+  assert.equal(defaultAnswers({ kcal: 1800, meals: 3 }).kcal, 1800)
 })

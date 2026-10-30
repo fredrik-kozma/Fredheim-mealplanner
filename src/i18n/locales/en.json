@@ -15,6 +15,7 @@
   },
   "app": {
     "name": "Fredheim Meal Planner",
+    "shortName": "Fredheim",
     "version": "Version 1.0 · All data stored locally on your device"
   },
   "about": {
@@ -240,7 +241,7 @@
     "batchCookHint": "Prep once for the week. Counted in the shopping list.",
     "batchShow": "Show batch cooking",
     "batchHide": "Hide batch cooking",
-    "moreActions": "More",
+    "printShare": "Print & share",
     "batchTextPlaceholder": "e.g. double batch of tomato sauce",
     "addRecipe": "Recipe",
     "addNote": "Note",
@@ -371,7 +372,7 @@
     "imperialDesc": "oz, cups, tsp, tbsp",
     "mealSlots": "Meal Slots",
     "mealSlotsDesc": "These are the rows in your weekly planner.",
-    "mealSlotPlaceholder": "e.g. Snack, Supper…",
+    "mealSlotPlaceholder": "e.g. Brunch, Supper…",
     "addMealSlot": "Add",
     "save": "Save",
     "cancel": "Cancel",
@@ -649,6 +650,10 @@
     "no100gAvail": "Serving weight not set",
     "footnote": "Values are estimates based on standard food composition data. % DV based on a 2000 kcal reference diet.",
     "omega63Ratio": "Omega-6 : Omega-3 ratio",
+    "omega63Hint": "Lower is better: under 4 : 1 is a good target.",
+    "omega63Incomplete": "Incomplete: a meal has no omega values",
+    "omega63Days": "Based on {{n}} of {{total}} days",
+    "omega63Short": "Ω-6:3 {{ratio}}",
     "groups": {
       "macros": "Macronutrients",
       "minerals": "Minerals",
@@ -738,7 +743,7 @@
     "emptyTotals": "Nothing logged yet — add a meal to see your coverage.",
     "pickTitle": "Log a food you ate",
     "balanceTitle": "Aim for balance, not perfection.",
-    "balanceBody": "You don't need to hit 100% of every nutrient every single day — some days run higher, others lower. What matters is that things even out across the week. These figures are estimates from standard food data, not medical advice.",
+    "balanceBody": "You don't need to hit 100% of every nutrient every single day — some days run higher, others lower. What matters is that things even out across the week. These figures are estimates from standard food data.",
     "noNutritionData": "no nutrition data",
     "importPlanned": "From the plan ({{count}})",
     "importPlannedHint": "Log the meals planned for this day. You can adjust the portions after.",
@@ -764,6 +769,7 @@
     "next": "Next",
     "emptyTitle": "Nothing planned yet?",
     "emptyText": "Answer a few quick questions and we’ll fill the week with recipes for you.",
+    "emptyHint": "Tap Make my week above to get started",
     "q": {
       "goal": "What should this week help with?",
       "people": "How many people are eating?",
@@ -807,10 +813,8 @@
     "meals": {
       "1": "Dinner only",
       "2": "Breakfast and lunch",
-      "3": "Breakfast, lunch and dinner",
-      "3s": "Breakfast, lunch, dinner and a snack"
+      "3": "Breakfast, lunch and dinner"
     },
-    "doctorNote": "Suggestions only — talk to your doctor before changing medication or diet for a medical condition.",
     "goalNote": "Every recipe carries the “{{label}}” label.",
     "weekName": "My week: {{goal}}",
     "batchTitle": "Sunday batch cooking",
@@ -827,6 +831,8 @@
     "extra": "extra",
     "dayFruit_one": "Add 1 piece of fruit per person today (an apple, a pear or an orange) to reach the day’s energy.",
     "dayFruit_other": "Add {{count}} pieces of fruit per person today (apples, pears or oranges) to reach the day’s energy.",
+    "dayFruitMeals_one": "Have 1 piece of fruit per person with breakfast or lunch today (an apple, a pear or an orange) to reach the day’s energy.",
+    "dayFruitMeals_other": "Have {{count}} pieces of fruit per person with breakfast or lunch today (apples, pears or oranges) to reach the day’s energy.",
     "shuffle": "Shuffle",
     "useWeek": "Use this week",
     "changeAnswers": "Change answers",
@@ -860,8 +866,7 @@
       "portionsFitted": "Portions are sized (½ to 2 each) so each day lands near your target of about {{target}} kcal. The shopping list buys for that, and the week still scales with the number of people.",
       "portionsFittedDinner": "Portions are sized (½ to 2 each) so each dinner lands near about {{target}} kcal. The shopping list buys for that, and the week still scales with the number of people.",
       "kcalOffTarget_one": "On 1 day the dishes that fit your choices don’t quite reach within 10% of your target. Adjust a portion in the planner if you like.",
-      "kcalOffTarget_other": "On {{count}} days the dishes that fit your choices don’t quite reach within 10% of your target. Adjust a portion in the planner if you like.",
-      "snackFruit": "On days without a snack recipe that fits, the snack is a piece of fruit (see the day’s note)."
+      "kcalOffTarget_other": "On {{count}} days the dishes that fit your choices don’t quite reach within 10% of your target. Adjust a portion in the planner if you like."
     },
     "goalsHint": "Pick one or more.",
     "breakfasts": {
@@ -884,7 +889,6 @@
     "uniqueIngredients_one": "This week needs {{count}} different ingredient.",
     "uniqueIngredients_other": "This week needs {{count}} different ingredients.",
     "goalNoteMany": "Every recipe carries these labels: {{labels}}.",
-    "snackHint": "A snack from the recipes marked as snacks, or a piece of fruit",
     "kcalHint": "Per person. Portions are sized so each day lands near it.",
     "kcalHintDinner": "Per person, for the whole day: dinner is planned at about 40% of it.",
     "kcalNone": "No target",
@@ -893,9 +897,8 @@
     "kcalCustom": "Or type your own",
     "kcalPerDay": "kcal a day",
     "kcalRange": "Enter a number from {{min}} to {{max}}.",
-    "kcalGuidance": "Below 1,200 kcal a day is best done with guidance from a health professional.",
     "mealKcal": "≈ {{kcal}} kcal",
-    "estimateNote": "kcal are estimates per person, from the recipes’ nutrition: a suggestion, not a prescription.",
+    "estimateNote": "kcal per person, from the recipes’ nutrition data.",
     "statsDayTarget": "About {{kcal}} kcal and {{fibre}} g fibre per person a day (your target: {{target}} kcal).",
     "statsDinnerTarget": "About {{kcal}} kcal and {{fibre}} g fibre per person per dinner (aiming for {{target}} kcal)."
   },
@@ -1030,7 +1033,6 @@
     "ctaMakeWeek": "Make my week now",
     "ctaTrial": "Start free trial",
     "ctaExplore": "Explore on my own",
-    "disclaimer": "Fredheim gives suggestions, not medical advice. Talk to your doctor before changing medication or diet for a medical condition.",
     "slides": {
       "welcome": {
         "title": "Welcome to Fredheim",
@@ -1053,7 +1055,7 @@
       },
       "makeWeek": {
         "title": "A whole week planned in a minute",
-        "body": "Open the Planner and tap Make my week. Answer a few short questions and you get meals for the whole week, ready to use.",
+        "body": "Tap the Make my week button at the top of the Weekly Planner. Answer a few short questions and you get meals for the whole week, ready to use.",
         "callout": "Start here",
         "callout2": "A few quick questions"
       },

@@ -7,7 +7,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import {
   rowAtLevel, ingredientsAtLevel, recipeAtLevel, sodiumAtLevel, hasStandardSalt, normalizeSaltLevel,
-  lowSaltOnlyLabels, SODIUM_LABELS, saltLevelForRecipe,
+  lowSaltOnlyLabels, SODIUM_LABELS, saltLevelForRecipe, hasStandardAmount as hasStandardSaltRow,
 } from '../src/utils/saltLevel.js'
 import { generateShoppingList } from '../src/utils/shoppingListGenerator.js'
 import { buildBackup, validateBackup, BACKUP_APP, BACKUP_VERSION } from '../src/utils/dataBackup.js'
@@ -15,7 +15,7 @@ import { BUILT_IN_PACKS } from '../src/data/installedPacks.js'
 import { makeMyWeek, saltLevelFor } from '../src/utils/makeMyWeek.js'
 import { checkSaltLevels, loadPacks } from '../scripts/check-recipes.mjs'
 import { analyzeRecipe, LABELS } from '../scripts/lib/recipeLabels.mjs'
-import { standardSodium, classifyFlavour, needsFlavour } from '../scripts/lib/saltLevels.mjs'
+import { standardSodium, standardCeiling, saltClass, classifyFlavour, needsFlavour } from '../scripts/lib/saltLevels.mjs'
 
 const ALL = Object.values(BUILT_IN_PACKS).flatMap(p => p.recipes.map(r => ({ ...r, sourcePackId: p.id })))
 const byId = new Map(ALL.map(r => [r.id, r]))
@@ -60,13 +60,32 @@ test('standard amounts land in the doctor\'s ranges', () => {
     const low = r.nutrition.perServing.sodium
     const std = r.nutrition.sodiumStandard
     assert.ok(std > low, r.id)
-    const main = ['Main', 'Soup', 'Lunch'].includes(r.category)
-    assert.ok(std <= (main ? 750 : 400), `${r.id}: ${std} mg`)
+    assert.ok(std <= 900, `${r.id}: ${std} mg`)
+    assert.ok(std <= standardCeiling(saltClass(r), r) + 2, `${r.id}: ${std} mg from ${low} mg`)
     assert.equal(std, standardSodium(r), `${r.id}: stored sodiumStandard matches the rows`)
     assert.notEqual(r.flavourProfile, 'sweet', r.id)
-    // Only salt and herb salt are raised; beans, broth, soy, miso stay.
-    for (const row of r.ingredients) if (row.standardAmount != null) assert.ok(['salt', 'herb-salt'].includes(row.ingredient), r.id)
+    // Only salt, herb salt and black salt are raised; beans, broth, soy, miso stay.
+    for (const row of r.ingredients) if (row.standardAmount != null) assert.ok(['salt', 'herb-salt', 'black-salt'].includes(row.ingredient), r.id)
   }
+})
+
+test('every savoury recipe with its own salt row offers the choice', () => {
+  // The exceptions, each for a reason: see scripts/data/salt-level-proposals.md.
+  const LEFT_OUT = new Set(['fermented-red-cabbage', 'fr-69'])
+  for (const r of ALL) {
+    if (!r.nutrition?.perServing || !(r.ingredients || []).some(row => ['salt', 'herb-salt', 'black-salt'].includes(row.ingredient))) continue
+    const cls = saltClass(r)
+    if (typeof cls === 'object' || LEFT_OUT.has(r.id)) { assert.ok(!hasStandardSalt(r), r.id); continue }
+    assert.ok(hasStandardSalt(r), `${r.id} (${cls}) has no switch`)
+  }
+  // What was skipped before: a main already over the target still gets a step.
+  const soup = byId.get('fr-27')
+  assert.ok(soup.nutrition.sodiumStandard - soup.nutrition.perServing.sodium >= 72, 'cabbage soup: about +80 mg')
+  // One portion seasoned to taste: a pinch, not ¼ tsp.
+  const fmd = byId.get('fmd-d1-dinner')
+  const row = fmd.ingredients.find(hasStandardSaltRow)
+  assert.deepEqual([row.standardAmount, row.standardUnit], [1, 'pinch'])
+  assert.ok(fmd.nutrition.sodiumStandard <= 900)
 })
 
 test('the shopping list buys the chosen level, everything else unchanged', () => {

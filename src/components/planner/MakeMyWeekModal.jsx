@@ -5,15 +5,17 @@ import { ALLERGENS } from '../../data/allergens'
 import { BUILT_IN_PACKS } from '../../data/installedPacks'
 import {
   makeMyWeek, defaultAnswers, resolveSlotNames, answerGoals, saltLevelFor,
-  MMW_GOALS, MMW_TIMES, MMW_MEAL_OPTIONS, MMW_BREAKFASTS, EXCLUSIVE_GOALS,
-  MMW_KCAL_PICKS, KCAL_MIN, KCAL_MAX, KCAL_GUIDANCE, normalizeKcal, mealOptionKey,
+  MMW_GOALS, MMW_TIMES, MMW_MEALS, MMW_BREAKFASTS, EXCLUSIVE_GOALS,
+  MMW_KCAL_PICKS, KCAL_MIN, KCAL_MAX,normalizeKcal,
 } from '../../utils/makeMyWeek'
 import { SALT_LEVELS, LOW_SALT_GOALS } from '../../utils/saltLevel'
 import { noticeText as renderNotice, statsText as renderStats, weekTipsData, renderWeekTips } from '../../utils/weekTips'
 import { formatAmount } from '../../utils/formatQuantity'
+import { dayOmega, weekOmega, planDayMeals, formatOmegaRatio } from '../../utils/omegaBalance'
+import OmegaRatioRow from '../nutrition/OmegaRatioRow'
 
 const GOAL_ICONS = { general: '🥗', weight: '⚖️', bloodPressure: '💗', diabetes: '🩸', heart: '❤️', fmd: '🌙' }
-const MEAL_ICONS = { '3s': '🍳🥣🍲🍎', 3: '🍳🥣🍲', 2: '🍳🥣', 1: '🍲' }
+const MEAL_ICONS = { 3: '🍳🥣🍲', 2: '🍳🥣', 1: '🍲' }
 const TIME_ICONS = { quick: '⚡', medium: '⏱️', any: '🧑‍🍳' }
 const BREAKFAST_ICONS = { both: '🍳🥣', savoury: '🍳', sweet: '🥣' }
 
@@ -24,7 +26,7 @@ const BREAKFAST_ICONS = { both: '🍳🥣', savoury: '🍳', sweet: '🥣' }
 // when a week is used). A single `goal` (from before goals were multiple
 // choice) is read as a list of one.
 let lastAnswers = null
-const REMEMBERED = ['time', 'batch', 'meals', 'snack', 'kcal', 'breakfast', 'preferFavourites', 'fewerIngredients', 'saltLevel']
+const REMEMBERED = ['time', 'batch', 'meals', 'kcal', 'breakfast', 'preferFavourites', 'fewerIngredients', 'saltLevel']
 function remembered(last) {
   if (!last) return {}
   const out = { goals: answerGoals(last) }
@@ -117,14 +119,12 @@ export default function MakeMyWeekModal({ onClose }) {
   const disliked = useStore(s => s.dislikedRecipes) || []
   const planKcalTarget = useStore(s => s.planKcalTarget)
   const planMeals = useStore(s => s.planMeals)
-  const planSnack = useStore(s => s.planSnack)
   const setPlanPreferences = useStore(s => s.setPlanPreferences)
-  const addMealSlot = useStore(s => s.addMealSlot)
 
   const [answers, setAnswers] = useState(() => ({
     ...defaultAnswers({
       familySize, avoidedAllergens, avoidHoney, saltLevel, favourites, disliked,
-      kcal: planKcalTarget, meals: planMeals, snack: planSnack,
+      kcal: planKcalTarget, meals: planMeals,
     }),
     ...remembered(lastAnswers),
   }))
@@ -215,11 +215,7 @@ export default function MakeMyWeekModal({ onClose }) {
     setAvoidHoney(answers.noHoney)
     if (result.kind === 'week') {
       setSaltLevel(result.saltLevel)
-      setPlanPreferences({ kcal: answers.kcal, meals: answers.meals, snack: answers.snack })
-      // A snack needs its row in the planner, or it would load out of sight.
-      const snackSlot = slotNames.snack || 'Snack'
-      const usesSnack = Object.values(result.plan).some(day => day[snackSlot]?.length)
-      if (usesSnack && !mealSlots.includes(snackSlot)) addMealSlot(snackSlot)
+      setPlanPreferences({ kcal: answers.kcal, meals: answers.meals })
     }
     if (result.kind === 'fmd') {
       for (const packId of result.starterPlan.requiredPackIds || []) {
@@ -248,6 +244,12 @@ export default function MakeMyWeekModal({ onClose }) {
   const previewDays = previewPlan
     ? DAYS.filter(d => Object.values(previewPlan[d] || {}).some(list => list.length))
     : []
+  // Omega-6 : omega-3 of each previewed day and of the week, per person.
+  const previewOmega = Object.fromEntries(previewDays.map(day => [
+    day,
+    dayOmega(planDayMeals(previewPlan[day], id => recipeById.get(id), answers.people)),
+  ]))
+  const previewOmegaWeek = weekOmega(Object.values(previewOmega))
 
   const stepName = steps[step]
 
@@ -462,14 +464,13 @@ export default function MakeMyWeekModal({ onClose }) {
           {stepName === 'meals' && (
             <div className="space-y-2">
               <p className="text-base font-semibold text-slate-800 mb-3">{t('makeMyWeek.q.meals')}</p>
-              {MMW_MEAL_OPTIONS.map(o => (
+              {MMW_MEALS.map(m => (
                 <Choice
-                  key={o.key}
-                  selected={mealOptionKey(answers) === o.key}
-                  onClick={() => { setAnswers(a => ({ ...a, meals: o.meals, snack: o.snack })); setStep(s => s + 1) }}
-                  icon={MEAL_ICONS[o.key]}
-                  title={t(`makeMyWeek.meals.${o.key}`)}
-                  hint={o.snack ? t('makeMyWeek.snackHint') : undefined}
+                  key={m}
+                  selected={answers.meals === m}
+                  onClick={() => choose('meals', m)}
+                  icon={MEAL_ICONS[m]}
+                  title={t(`makeMyWeek.meals.${m}`)}
                 />
               ))}
             </div>
@@ -533,11 +534,6 @@ export default function MakeMyWeekModal({ onClose }) {
                   </span>
                 )}
               </label>
-              {answers.kcal != null && answers.kcal < KCAL_GUIDANCE && !kcalTextInvalid && (
-                <p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 leading-relaxed">
-                  ⚕️ {t('makeMyWeek.kcalGuidance')}
-                </p>
-              )}
             </div>
           )}
 
@@ -553,15 +549,6 @@ export default function MakeMyWeekModal({ onClose }) {
 
           {showResult && result && (
             <div className="space-y-4">
-              <p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 leading-relaxed">
-                ⚕️ {t('makeMyWeek.doctorNote')}
-              </p>
-              {result.kind === 'week' && answers.kcal != null && answers.kcal < KCAL_GUIDANCE && (
-                <p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 leading-relaxed">
-                  ⚕️ {t('makeMyWeek.kcalGuidance')}
-                </p>
-              )}
-
               {result.kind === 'fmd' && (
                 <p className="text-sm text-slate-600 leading-relaxed">
                   {result.starterPlan.translations?.[lang]?.description || result.starterPlan.description}
@@ -602,6 +589,17 @@ export default function MakeMyWeekModal({ onClose }) {
                 </div>
               )}
 
+              {previewDays.length > 0 && (
+                <OmegaRatioRow
+                  ratio={previewOmegaWeek?.ratio}
+                  favourable={previewOmegaWeek?.favourable}
+                  incomplete={!previewOmegaWeek}
+                  note={previewOmegaWeek && previewOmegaWeek.complete < previewOmegaWeek.days
+                    ? t('nutrition.omega63Days', { n: previewOmegaWeek.complete, total: previewOmegaWeek.days })
+                    : null}
+                />
+              )}
+
               <div className="space-y-2">
                 {result.kind === 'week' && result.stats && (
                   <p className="text-[11px] text-slate-500 leading-relaxed">{t('makeMyWeek.estimateNote')}</p>
@@ -615,6 +613,11 @@ export default function MakeMyWeekModal({ onClose }) {
                       {result.stats?.perDay?.[day] && (
                         <p className="text-[11px] text-slate-400 tabular-nums">
                           {t('makeMyWeek.dayStats', result.stats.perDay[day])}
+                          {previewOmega[day]?.complete && (
+                            <span className={`ml-1.5 font-medium whitespace-nowrap ${previewOmega[day].favourable ? 'text-emerald-700' : 'text-amber-600'}`}>
+                              {t('nutrition.omega63Short', { ratio: formatOmegaRatio(previewOmega[day].ratio) })}
+                            </span>
+                          )}
                         </p>
                       )}
                     </div>
@@ -651,7 +654,7 @@ export default function MakeMyWeekModal({ onClose }) {
                     ))}
                     {result.kind === 'week' && result.fruit?.[day] > 0 && (
                       <p className="text-sm text-slate-700 leading-snug py-0.5">
-                        🍎 {t('makeMyWeek.dayFruit', { count: result.fruit[day] })}
+                        🍎 {t(result.stats?.fitted && result.stats.meals !== 1 ? 'makeMyWeek.dayFruitMeals' : 'makeMyWeek.dayFruit', { count: result.fruit[day] })}
                       </p>
                     )}
                   </div>

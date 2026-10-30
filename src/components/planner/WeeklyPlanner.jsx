@@ -565,11 +565,12 @@ export default function WeeklyPlanner() {
         <div className="px-4 pt-4 pb-3 flex items-center justify-between gap-2 flex-wrap">
           <WeekScale />
           <div className="w-full sm:w-auto grid grid-cols-[1fr_1fr_auto] sm:flex sm:flex-wrap items-center sm:justify-end gap-2 min-w-0">
-          {/* Phones reach this from the ⋯ menu (and the empty-week card),
-              so the toolbar stays one row. */}
+          {/* The planner's main feature, so it leads the toolbar in the
+              primary colour; on a phone it gets a full-width row of its own
+              above Load / Save. */}
           <button
             onClick={() => setMakeWeekOpen(true)}
-            className="btn-secondary py-2 px-3.5 hidden sm:inline-flex items-center justify-center gap-1.5 text-indigo-700"
+            className="btn-primary border border-transparent py-2.5 sm:py-2 px-3.5 col-span-3 sm:col-auto inline-flex items-center justify-center gap-1.5"
           >
             <ToolbarIcon d={SPARKLES_ICON} />
             {t('makeMyWeek.button')}
@@ -625,13 +626,11 @@ export default function WeeklyPlanner() {
             <button
               onClick={() => setMoreOpen(v => !v)}
               className="btn-secondary py-2 px-3 h-full"
-              aria-label={t('planner.moreActions', { defaultValue: 'More' })}
-              title={t('planner.moreActions', { defaultValue: 'More' })}
+              aria-label={t('planner.printShare', { defaultValue: 'Print & share' })}
+              title={t('planner.printShare', { defaultValue: 'Print & share' })}
               aria-haspopup="menu"
               aria-expanded={moreOpen}
             >
-              {/* A printer rather than ⋯: printing is what the menu is
-                  mostly for. The aria-label still says "More". */}
               <ToolbarIcon d={PRINTER_ICON} />
             </button>
             {moreOpen && (
@@ -639,7 +638,6 @@ export default function WeeklyPlanner() {
                 <div className="fixed inset-0 z-20" onClick={() => setMoreOpen(false)} />
                 <div role="menu" className="absolute right-0 top-full mt-1 z-30 w-56 bg-white rounded-xl shadow-lg border border-slate-100 py-1">
                   {[
-                    { icon: SPARKLES_ICON, label: t('makeMyWeek.button'), run: () => setMakeWeekOpen(true), always: true },
                     { icon: PRINTER_ICON, label: t('planner.printWeek', { defaultValue: 'Print menu' }), run: () => startPrint('week') },
                     { icon: BOOK_ICON, label: t('planner.printMenuBook', { defaultValue: 'Print all recipes' }), run: () => startPrint('book') },
                     { icon: SHARE_ICON, label: t('planner.shareWeek', { defaultValue: 'Share' }), run: () => setSharing(buildShare()) },
@@ -647,7 +645,7 @@ export default function WeeklyPlanner() {
                     <button
                       key={item.label}
                       role="menuitem"
-                      disabled={!item.always && mealCount === 0}
+                      disabled={mealCount === 0}
                       onClick={() => { setMoreOpen(false); item.run() }}
                       className="w-full text-left px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center gap-2.5"
                     >
@@ -668,21 +666,16 @@ export default function WeeklyPlanner() {
           </div>
         </div>
 
-        {/* An empty week gets a friendly nudge towards Make my week. */}
+        {/* An empty week gets a friendly nudge towards Make my week, the
+            button in the toolbar right above. */}
         {weekIsEmpty && (
           <div className="mx-4 mb-3 card p-4 flex items-center gap-3 flex-wrap">
             <span className="text-2xl" aria-hidden>✨</span>
             <div className="flex-1 min-w-[12rem]">
               <p className="text-sm font-semibold text-slate-800">{t('makeMyWeek.emptyTitle')}</p>
               <p className="text-xs text-slate-500 mt-0.5">{t('makeMyWeek.emptyText')}</p>
+              <p className="text-xs font-medium text-indigo-600 mt-1">↑ {t('makeMyWeek.emptyHint')}</p>
             </div>
-            <button
-              onClick={() => setMakeWeekOpen(true)}
-              className="btn-primary min-h-[40px] px-4 inline-flex items-center justify-center gap-1.5 max-sm:w-full"
-            >
-              <ToolbarIcon d={SPARKLES_ICON} />
-              {t('makeMyWeek.button')}
-            </button>
           </div>
         )}
 
