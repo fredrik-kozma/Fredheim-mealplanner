@@ -11,6 +11,8 @@
 // noted; zeros for nutrients USDA does not report for a spice. Basis
 // (dry / raw / canned drained) matches the composition table's entry.
 // `null` = nothing besides sodium (salt, water, baking soda).
+import { MICRO_EXTRA } from './micronutrients-extra.mjs'
+
 export const COLS = ['monounsaturatedFat', 'polyunsaturatedFat', 'omega3', 'omega6',
   'calcium', 'iron', 'magnesium', 'phosphorus', 'zinc', 'copper', 'manganese', 'selenium',
   'vitaminA', 'vitaminC', 'vitaminD', 'vitaminE', 'vitaminK',
@@ -40,8 +42,8 @@ export const MICRO = {
   // Firm tofu, scaled to the table's 7 g fat; calcium as in
   // scripts/nutrition/ingredients.mjs (calcium-set).
   'tofu':               [1.5, 4, 0.45, 3.5, 350, 2.5, 60, 180, 1.4, 0.3, 1, 15, 0, 0, 0, 0.1, 2.4, 0.1, 0.08, 0.3, 0.08, 25, 0, 28],
-  // Soy yoghurt, plain, fortified (Alpro natural label: Ca, D, B2, B12).
-  'plant-yogurt':       [0.5, 1.3, 0.2, 1.1, 120, 0.4, 18, 60, 0.3, 0.1, 0.15, 1, 0, 0, 0.75, 0.3, 2, 0.04, 0.21, 0.2, 0.03, 10, 0.38, 10],
+  // Soy yoghurt, plain, UNFORTIFIED (Fredrik 2026-10-31): Ca≈20 from soy solids; D/B12 0.
+  'plant-yogurt':       [0.5, 1.3, 0.2, 1.1, 20, 0.4, 18, 60, 0.3, 0.1, 0.15, 1, 0, 0, 0, 0.3, 2, 0.04, 0.21, 0.2, 0.03, 10, 0, 10],
   'turmeric-ground':    [0.45, 0.76, 0.07, 0.69, 168, 55, 208, 299, 4.5, 1.3, 19.8, 6.2, 0, 0.7, 0, 4.43, 13.4, 0.06, 0.15, 1.35, 0.11, 20, 0, 49],
   'dill':               [0.8, 0.1, 0.01, 0.09, 208, 6.59, 55, 66, 0.91, 0.15, 1.26, 0, 386, 85, 0, 0, 0, 0.06, 0.3, 1.57, 0.19, 150, 0, 0],
   'lemon-juice':        [0.01, 0.02, 0, 0.01, 6, 0.08, 6, 8, 0.05, 0.02, 0.01, 0.1, 1, 38.7, 0, 0.15, 0, 0.02, 0.02, 0.09, 0.05, 20, 0, 5],
@@ -115,11 +117,12 @@ export const MICRO = {
   'lentils-green-brown':[0.19, 0.53, 0.11, 0.42, 35, 6.51, 47, 281, 3.27, 0.75, 1.39, 0.1, 2, 4.5, 0, 0.49, 5, 0.87, 0.21, 2.61, 0.54, 479, 0, 96],
   // Split peas, cooked.
   'yellow-peas-cooked': [0.08, 0.17, 0.03, 0.14, 14, 1.29, 36, 99, 1, 0.18, 0.4, 0.6, 0, 0.4, 0, 0.03, 5, 0.19, 0.06, 0.89, 0.05, 65, 0, 27],
-  // Soy drinks/sauces. Plant drinks as the usual Nordic fortified cartons
-  // (Oatly, Alpro: Ca 120 mg, D 0.75–1.1 µg, B2 0.21 mg, B12 0.38 µg).
-  'soy-milk':           [0.4, 1.1, 0.15, 0.95, 120, 0.4, 15, 50, 0.25, 0.1, 0.15, 1.5, 0, 0, 0.75, 0.1, 3, 0.03, 0.21, 0.15, 0.04, 10, 0.38, 10],
-  'oat-milk':           [0.9, 0.4, 0.1, 0.3, 120, 0.3, 10, 40, 0.2, 0.03, 0.2, 1, 0, 0, 1.1, 0.2, 2, 0.05, 0.21, 0.1, 0.02, 3, 0.38, 3],
-  'cashew-milk':        [1.1, 0.35, 0.01, 0.34, 120, 0.2, 8, 15, 0.15, 0.05, 0.04, 0.5, 0, 0, 1, 0.5, 1, 0.01, 0.01, 0.03, 0.01, 1, 0.38, 1],
+  // Soy drinks/sauces. Plant milks/yogurts counted UNFORTIFIED (Fredrik 2026-10-31):
+  // D/B12 0; Ca from USDA-SR unfortified where available (soy ~25, oat ~12, cashew ~10 mg/100g).
+  // B2 kept near carton levels; choline on soy from USDA unfortified soymilk.
+  'soy-milk':           [0.4, 1.1, 0.15, 0.95, 25, 0.4, 15, 50, 0.25, 0.1, 0.15, 1.5, 0, 0, 0, 0.1, 3, 0.03, 0.21, 0.15, 0.04, 10, 0, 23],
+  'oat-milk':           [0.9, 0.4, 0.1, 0.3, 12, 0.3, 10, 40, 0.2, 0.03, 0.2, 1, 0, 0, 0, 0.2, 2, 0.05, 0.21, 0.1, 0.02, 3, 0, 3],
+  'cashew-milk':        [1.1, 0.35, 0.01, 0.34, 10, 0.2, 8, 15, 0.15, 0.05, 0.04, 0.5, 0, 0, 0, 0.5, 1, 0.01, 0.01, 0.03, 0.01, 1, 0, 1],
   // Canned, full fat.
   'coconut-milk':       [1, 0.26, 0, 0.26, 18, 3.3, 46, 96, 0.56, 0.23, 0.82, 6.2, 0, 1, 0, 0.15, 0.1, 0.02, 0, 0.64, 0.03, 14, 0, 8.5],
   'soy-sauce':          [0.1, 0.25, 0.03, 0.22, 33, 1.45, 43, 110, 0.43, 0.13, 0.4, 0.5, 0, 0, 0, 0, 0, 0.06, 0.15, 3.95, 0.2, 18, 0, 38],
@@ -242,6 +245,10 @@ export const MICRO = {
 }
 
 // Same dictionary id, different product by the row's note.
+
+// Phase (a): merge filled micronutrients (and composites) from the sidecar.
+Object.assign(MICRO, MICRO_EXTRA)
+
 export const VARIANTS = [
   // Hulled sesame: much less calcium, iron and copper than whole seeds.
   { id: 'sesame-seeds', note: /without shell|uten skall|utan skal|hulled|skrelle/i,
@@ -274,7 +281,7 @@ export const OMEGA_ONLY = {
   // Herbs and spices
   'parsley-dried': [2, 1.1], 'tarragon-dried': [1.2, 2.5], 'curry-powder': [0.26, 2.79] /* FDC 170924 */,
   'ginger-ground': [0.15, 0.77],
-  // Products. Plant milk unnamed: as oat drink, the usual Nordic carton.
+  // Products. Plant milk unnamed: omega as oat drink; micros from MICRO_EXTRA (unfortified soymilk).
   'plant-milk': [0.1, 0.3], 'miso-paste': [0.4, 3], 'carob-powder': [0, 0.21] /* FDC 173755 */,
   'ketchup': [0, 0.04], 'hot-sauce': [0.01, 0.1], 'horseradish': [0.2, 0.14],
   'agar-agar': [0.01, 0.08], 'sukrin': [0, 0], 'vanilla-extract': [0, 0],

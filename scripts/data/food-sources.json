@@ -1,0 +1,5087 @@
+{
+  "description": "Provenance for every ingredientDictionary id (macros in food-composition-core, micros in micronutrients.mjs / -extra).",
+  "generatedAt": "2026-10-31T15:04:56.757Z",
+  "entries": {
+    "apples": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171688",
+        "name": "Apples, raw, with skin"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171688,
+        "name": "Apples, raw, with skin",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.530",
+        "name": "Apples, canned",
+        "macros": {
+          "kcal": 69,
+          "protein": 0.2,
+          "fat": 0.5,
+          "carbs": 15,
+          "fiber": 2,
+          "sugars": 9.3,
+          "sodium": 4,
+          "potassium": 112
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "arugula": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169387",
+        "name": "Arugula, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169387,
+        "name": "Arugula, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "avocados": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171705",
+        "name": "Avocados, raw, all commercial varieties"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171705,
+        "name": "Avocados, raw, all commercial varieties",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "bananas": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173944",
+        "name": "Bananas, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 173944,
+        "name": "Bananas, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "basil": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171317",
+        "name": "Spices, basil, dried",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171317,
+        "name": "Spices, basil, dried",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.151",
+        "name": "Basil, dried",
+        "macros": {
+          "kcal": 244,
+          "protein": 23,
+          "fat": 4.1,
+          "carbs": 10,
+          "fiber": 38,
+          "sugars": 0,
+          "sodium": 76,
+          "potassium": 26
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "bean-sprouts": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169957",
+        "name": "Mung beans, mature seeds, sprouted, raw"
+      },
+      "compositionBasis": null
+    },
+    "beetroot": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169146",
+        "name": "Beets, cooked, boiled, drained"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169146,
+        "name": "Beets, cooked, boiled, drained",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.057",
+        "name": "Beetroot, Norwegian, raw",
+        "macros": {
+          "kcal": 49,
+          "protein": 1.6,
+          "fat": 0.2,
+          "carbs": 8.9,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 32,
+          "potassium": 411
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "bell-peppers": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170427",
+        "name": "Peppers, sweet, red, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170427,
+        "name": "Peppers, sweet, red, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "blackberries": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173946",
+        "name": "Blackberries, raw"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.501",
+        "name": "Blackberries, raw",
+        "macros": {
+          "kcal": 41,
+          "protein": 1.3,
+          "fat": 0.5,
+          "carbs": 5.3,
+          "fiber": 5,
+          "sugars": 0,
+          "sodium": 1,
+          "potassium": 213
+        }
+      }
+    },
+    "blueberries": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171711",
+        "name": "Blueberries, raw"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.667",
+        "name": "Blueberries, American, raw",
+        "macros": {
+          "kcal": 61,
+          "protein": 0.3,
+          "fat": 0.3,
+          "carbs": 12.5,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 1,
+          "potassium": 71
+        }
+      }
+    },
+    "broccoli": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170379",
+        "name": "Broccoli, raw"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.272",
+        "name": "Broccoli sprouts, raw",
+        "macros": {
+          "kcal": 10,
+          "protein": 2.2,
+          "fat": 0,
+          "carbs": 0.4,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 16,
+          "potassium": 220
+        }
+      }
+    },
+    "butternut-squash": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169295",
+        "name": "Squash, winter, butternut, raw"
+      },
+      "compositionBasis": null
+    },
+    "cabbage": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169975",
+        "name": "Cabbage, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169975,
+        "name": "Cabbage, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.040",
+        "name": "Cabbage, Chinese, Norwegian, raw",
+        "macros": {
+          "kcal": 15,
+          "protein": 1.1,
+          "fat": 0.1,
+          "carbs": 1.8,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 9,
+          "potassium": 227
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "carrots": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170393",
+        "name": "Carrots, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170393,
+        "name": "Carrots, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "09.136",
+        "name": "Steamed salmon with herb sauce, carrots and potatoes, industrially made",
+        "macros": {
+          "kcal": 105,
+          "protein": 6.8,
+          "fat": 4.2,
+          "carbs": 9.6,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 97,
+          "potassium": 360
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "cauliflower": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169986",
+        "name": "Cauliflower, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169986,
+        "name": "Cauliflower, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.016",
+        "name": "Cauliflower, Norwegian, raw",
+        "macros": {
+          "kcal": 19,
+          "protein": 1.7,
+          "fat": 0,
+          "carbs": 2.4,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 5,
+          "potassium": 300
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "celeriac": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170400",
+        "name": "Celeriac, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170400,
+        "name": "Celeriac, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.060",
+        "name": "Celeriac root, raw",
+        "macros": {
+          "kcal": 22,
+          "protein": 1.3,
+          "fat": 0,
+          "carbs": 2.5,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 20,
+          "potassium": 485
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "celery": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169988",
+        "name": "Celery, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169988,
+        "name": "Celery, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "cherry-tomatoes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170457",
+        "name": "Tomatoes, red, ripe, raw, year round average",
+        "note": "proxy for cherry tomatoes"
+      },
+      "compositionBasis": null
+    },
+    "chinese-cabbage": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170390",
+        "name": "Cabbage, chinese (pak-choi), raw"
+      },
+      "compositionBasis": "macros←USDA-SR 170390",
+      "matvaretabellen": {
+        "id": "06.040",
+        "name": "Cabbage, Chinese, Norwegian, raw",
+        "macros": {
+          "kcal": 15,
+          "protein": 1.1,
+          "fat": 0.1,
+          "carbs": 1.8,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 9,
+          "potassium": 227
+        }
+      }
+    },
+    "chives": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169994",
+        "name": "Chives, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169994,
+        "name": "Chives, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.034",
+        "name": "Chives, raw",
+        "macros": {
+          "kcal": 26,
+          "protein": 2.7,
+          "fat": 0.4,
+          "carbs": 1.3,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 1,
+          "potassium": 313
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "cucumber": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168409",
+        "name": "Cucumber, with peel, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168409,
+        "name": "Cucumber, with peel, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.010",
+        "name": "Cucumber, Norwegian, raw",
+        "macros": {
+          "kcal": 9,
+          "protein": 0.8,
+          "fat": 0,
+          "carbs": 1.3,
+          "fiber": 0.4,
+          "sugars": 0,
+          "sodium": 1,
+          "potassium": 175
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "dill": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172233",
+        "name": "Dill weed, fresh"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 172233,
+        "name": "Dill weed, fresh",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.120",
+        "name": "Dill, raw",
+        "macros": {
+          "kcal": 48,
+          "protein": 3.5,
+          "fat": 1.1,
+          "carbs": 4.9,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 27,
+          "potassium": 647
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "eggplant": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169228",
+        "name": "Eggplant, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169228,
+        "name": "Eggplant, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "fennel": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169385",
+        "name": "Fennel, bulb, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169385,
+        "name": "Fennel, bulb, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.112",
+        "name": "Fennel, raw",
+        "macros": {
+          "kcal": 19,
+          "protein": 0.9,
+          "fat": 0.4,
+          "carbs": 1.8,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 11,
+          "potassium": 440
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "chili-fresh": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170106",
+        "name": "Peppers, hot chili, red, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170106,
+        "name": "Peppers, hot chili, red, raw"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "coriander-fresh": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169997",
+        "name": "Coriander (cilantro) leaves, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169997,
+        "name": "Coriander (cilantro) leaves, raw"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "ginger-fresh": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169231",
+        "name": "Ginger root, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169231,
+        "name": "Ginger root, raw"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "herbs-fresh-mixed": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172232",
+        "name": "Basil, fresh",
+        "note": "proxy: fresh basil for mixed soft herbs"
+      },
+      "compositionBasis": "macros←USDA-SR 172232"
+    },
+    "garlic": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169230",
+        "name": "Garlic, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169230,
+        "name": "Garlic, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.038",
+        "name": "Garlic, raw",
+        "macros": {
+          "kcal": 106,
+          "protein": 7.9,
+          "fat": 0.6,
+          "carbs": 16.3,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 4,
+          "potassium": 620
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "grapes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173040",
+        "name": "Grapes, muscadine, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 173040,
+        "name": "Grapes, muscadine, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.756",
+        "name": "Grapes, green, raw",
+        "macros": {
+          "kcal": 68,
+          "protein": 0.7,
+          "fat": 0.2,
+          "carbs": 15.2,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 1,
+          "potassium": 217
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "green-peas": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170419",
+        "name": "Peas, green, frozen, unprepared"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170419,
+        "name": "Peas, green, frozen, unprepared",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.075",
+        "name": "Carrot, cauliflower, green beans, peas, frozen",
+        "macros": {
+          "kcal": 34,
+          "protein": 1.7,
+          "fat": 0.2,
+          "carbs": 4.3,
+          "fiber": 4,
+          "sugars": 0,
+          "sodium": 12,
+          "potassium": 221
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "horseradish": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173472",
+        "name": "Horseradish, prepared"
+      },
+      "compositionBasis": "USDA prepared horseradish; macros←USDA-SR 173472"
+    },
+    "kale": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168421",
+        "name": "Kale, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168421,
+        "name": "Kale, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.208",
+        "name": "Kale, frozen, raw",
+        "macros": {
+          "kcal": 27,
+          "protein": 2.1,
+          "fat": 0.6,
+          "carbs": 0.2,
+          "fiber": 6,
+          "sugars": 0,
+          "sodium": 13,
+          "potassium": 151
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "leeks": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169246",
+        "name": "Leeks, (bulb and lower leaf-portion), raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169246,
+        "name": "Leeks, (bulb and lower leaf-portion), raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "lemon-juice": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "167749",
+        "name": "Lemon juice, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 167749,
+        "name": "Lemon juice, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.245",
+        "name": "Juice, with apple, carrot, ginger and lemon, from cafe/bakery",
+        "macros": {
+          "kcal": 38,
+          "protein": 0.4,
+          "fat": 0.1,
+          "carbs": 8.4,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 9,
+          "potassium": 172
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "lemons": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "167747",
+        "name": "Lemons, raw, without peel"
+      },
+      "compositionBasis": "a lemon is 85 g edible; zest only is ~3 g",
+      "usda": {
+        "fdcId": 167747,
+        "name": "Lemons, raw, without peel",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "lime-juice": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168156",
+        "name": "Lime juice, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168156,
+        "name": "Lime juice, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "limes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168155",
+        "name": "Limes, raw"
+      },
+      "compositionBasis": null
+    },
+    "lingonberries": {
+      "micro": {
+        "db": "Matvaretabellen",
+        "id": "06.515",
+        "name": "Lingonberries, cowberries, raw",
+        "note": "proxy: cranberries raw (no lingonberry in SR Legacy); Nordic berries similar micros; Nordic preferred; MICRO values still from USDA/fill until Matvare micros ported"
+      },
+      "compositionBasis": "macros←USDA-SR 171722",
+      "usda": {
+        "fdcId": "171722",
+        "name": "Cranberries, raw",
+        "note": "proxy: cranberries raw (no lingonberry in SR Legacy); Nordic berries similar micros"
+      },
+      "matvaretabellen": {
+        "id": "06.515",
+        "name": "Lingonberries, cowberries, raw",
+        "macros": {
+          "kcal": 44,
+          "protein": 0.7,
+          "fat": 0.6,
+          "carbs": 7,
+          "fiber": 4,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 118
+        }
+      },
+      "preferred": "Matvaretabellen"
+    },
+    "melon": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "167765",
+        "name": "Watermelon, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 167765,
+        "name": "Watermelon, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.600",
+        "name": "Melon, cantaloupe, raw",
+        "macros": {
+          "kcal": 38,
+          "protein": 0.8,
+          "fat": 0.2,
+          "carbs": 7.9,
+          "fiber": 0.9,
+          "sugars": 0,
+          "sodium": 16,
+          "potassium": 267
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "mint": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172239",
+        "name": "Spearmint, dried",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 172239,
+        "name": "Spearmint, dried",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.259",
+        "name": "Mint, raw",
+        "macros": {
+          "kcal": 58,
+          "protein": 3.5,
+          "fat": 0.8,
+          "carbs": 5.3,
+          "fiber": 7,
+          "sugars": 0,
+          "sodium": 31,
+          "potassium": 514
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "berries-mixed": {
+      "micro": {
+        "db": "composite",
+        "id": null,
+        "name": "Mixed berries (avg blueberry/raspberry/strawberry)",
+        "note": "Equal-weight average of the three raw berries"
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": {
+        "id": "06.844",
+        "name": "Berries, mixed, frozen",
+        "macros": {
+          "kcal": 47,
+          "protein": 0.9,
+          "fat": 0.7,
+          "carbs": 7.6,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 190
+        }
+      },
+      "preferred": "composite"
+    },
+    "mushrooms": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169251",
+        "name": "Mushrooms, white, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169251,
+        "name": "Mushrooms, white, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "onions": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170000",
+        "name": "Onions, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170000,
+        "name": "Onions, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "oranges": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169097",
+        "name": "Oranges, raw, all commercial varieties"
+      },
+      "compositionBasis": null
+    },
+    "parsley": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170416",
+        "name": "Parsley, fresh"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170416,
+        "name": "Parsley, fresh",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.051",
+        "name": "Parsley root, Norwegian, raw",
+        "macros": {
+          "kcal": 46,
+          "protein": 1.7,
+          "fat": 0.3,
+          "carbs": 7.3,
+          "fiber": 4,
+          "sugars": 0,
+          "sodium": 27,
+          "potassium": 483
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "parsnips": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170417",
+        "name": "Parsnips, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170417,
+        "name": "Parsnips, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "pears": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "167750",
+        "name": "Prickly pears, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 167750,
+        "name": "Prickly pears, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.608",
+        "name": "Pears, canned, in natural juice",
+        "macros": {
+          "kcal": 38,
+          "protein": 0.3,
+          "fat": 0,
+          "carbs": 8.5,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 3,
+          "potassium": 81
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "pineapple": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168193",
+        "name": "Pineapple, raw, traditional varieties",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168193,
+        "name": "Pineapple, raw, traditional varieties",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.517",
+        "name": "Pineapple, raw",
+        "macros": {
+          "kcal": 44,
+          "protein": 0.1,
+          "fat": 0.1,
+          "carbs": 10.1,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 123
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "plums": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169949",
+        "name": "Plums, raw"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.544",
+        "name": "Plums, raw",
+        "macros": {
+          "kcal": 44,
+          "protein": 0.5,
+          "fat": 0.1,
+          "carbs": 9.3,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 199
+        }
+      }
+    },
+    "pomegranate": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169134",
+        "name": "Pomegranates, raw"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.596",
+        "name": "Pomegranate, raw",
+        "macros": {
+          "kcal": 80,
+          "protein": 1.7,
+          "fat": 1.2,
+          "carbs": 13.7,
+          "fiber": 4,
+          "sugars": 0,
+          "sodium": 3,
+          "potassium": 236
+        }
+      }
+    },
+    "potatoes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170026",
+        "name": "Potatoes, flesh and skin, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170026,
+        "name": "Potatoes, flesh and skin, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.136",
+        "name": "Sweet potato, raw",
+        "macros": {
+          "kcal": 80,
+          "protein": 1.6,
+          "fat": 0.1,
+          "carbs": 16.8,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 55,
+          "potassium": 337
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "pumpkin": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168448",
+        "name": "Pumpkin, raw"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.210",
+        "name": "Pumpkin, butternut, raw",
+        "macros": {
+          "kcal": 44,
+          "protein": 0.8,
+          "fat": 0.2,
+          "carbs": 8.2,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 369
+        }
+      }
+    },
+    "radishes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168451",
+        "name": "Radishes, oriental, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168451,
+        "name": "Radishes, oriental, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "raspberries": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "167755",
+        "name": "Raspberries, raw"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.503",
+        "name": "Raspberries, raw",
+        "macros": {
+          "kcal": 29,
+          "protein": 1.1,
+          "fat": 0.4,
+          "carbs": 3.2,
+          "fiber": 4,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 186
+        }
+      }
+    },
+    "red-cabbage": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169336",
+        "name": "Cabbage, common (danish, domestic, and pointed types), stored, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169336,
+        "name": "Cabbage, common (danish, domestic, and pointed types), stored, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.093",
+        "name": "Cabbage, red, raw",
+        "macros": {
+          "kcal": 23,
+          "protein": 1.3,
+          "fat": 0,
+          "carbs": 3.4,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 5,
+          "potassium": 285
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "red-onions": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170000",
+        "name": "Onions, raw",
+        "note": "proxy: onions raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170000,
+        "name": "Onions, raw",
+        "note": "proxy: onions raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "romaine-lettuce": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169247",
+        "name": "Lettuce, cos or romaine, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169247,
+        "name": "Lettuce, cos or romaine, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.138",
+        "name": "Romaine lettuce",
+        "macros": {
+          "kcal": 15,
+          "protein": 1.2,
+          "fat": 0,
+          "carbs": 1.4,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 10,
+          "potassium": 259
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "rosemary": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173473",
+        "name": "Rosemary, fresh"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.168",
+        "name": "Rosemary, raw",
+        "macros": {
+          "kcal": 121,
+          "protein": 3.3,
+          "fat": 5.9,
+          "carbs": 6.6,
+          "fiber": 14,
+          "sugars": 0,
+          "sodium": 26,
+          "potassium": 668
+        }
+      }
+    },
+    "salad-leaves": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169249",
+        "name": "Lettuce, green leaf, raw",
+        "note": "proxy for mixed salad leaves"
+      },
+      "compositionBasis": null
+    },
+    "shallots": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170499",
+        "name": "Shallots, raw"
+      },
+      "compositionBasis": null
+    },
+    "snow-peas": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170010",
+        "name": "Peas, edible-podded, raw"
+      },
+      "compositionBasis": null
+    },
+    "sour-cherries": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173954",
+        "name": "Cherries, sour, red, raw"
+      },
+      "compositionBasis": null
+    },
+    "spinach": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168462",
+        "name": "Spinach, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168462,
+        "name": "Spinach, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.285",
+        "name": "Spinach, Norwegian, raw",
+        "macros": {
+          "kcal": 16,
+          "protein": 2.8,
+          "fat": 0,
+          "carbs": 0.1,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 9,
+          "potassium": 740
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "spring-onions": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170005",
+        "name": "Onions, spring or scallions (includes tops and bulb), raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170005,
+        "name": "Onions, spring or scallions (includes tops and bulb), raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "strawberries": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "167762",
+        "name": "Strawberries, raw"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "13.143",
+        "name": "Frappe, strawberries and white chocolate",
+        "macros": {
+          "kcal": 139,
+          "protein": 2.8,
+          "fat": 4.6,
+          "carbs": 21.5,
+          "fiber": 0,
+          "sugars": 17.4,
+          "sodium": 40,
+          "potassium": 148
+        }
+      }
+    },
+    "sweet-potatoes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172276",
+        "name": "Babyfood, vegetables, sweet potatoes strained",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 172276,
+        "name": "Babyfood, vegetables, sweet potatoes strained",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "thyme": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170938",
+        "name": "Spices, thyme, dried",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170938,
+        "name": "Spices, thyme, dried",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.171",
+        "name": "Thyme, raw",
+        "macros": {
+          "kcal": 107,
+          "protein": 5.6,
+          "fat": 1.7,
+          "carbs": 10.4,
+          "fiber": 14,
+          "sugars": 0,
+          "sodium": 9,
+          "potassium": 609
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "tomatoes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170457",
+        "name": "Tomatoes, red, ripe, raw, year round average"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170457,
+        "name": "Tomatoes, red, ripe, raw, year round average",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "09.151",
+        "name": "Pizza, mozzarella and tomatoes, industrially made",
+        "macros": {
+          "kcal": 260,
+          "protein": 10.8,
+          "fat": 12.5,
+          "carbs": 24.8,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 380,
+          "potassium": 350
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "watermelon": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "167765",
+        "name": "Watermelon, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 167765,
+        "name": "Watermelon, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "zucchini": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169291",
+        "name": "Squash, summer, zucchini, includes skin, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169291,
+        "name": "Squash, summer, zucchini, includes skin, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.085",
+        "name": "Squash, zucchini, raw",
+        "macros": {
+          "kcal": 17,
+          "protein": 1.3,
+          "fat": 0.1,
+          "carbs": 2.2,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 248
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "almond-milk": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "174832",
+        "name": "Beverages, almond milk, unsweetened, shelf stable (fortification removed)",
+        "note": "Fredrik: UNFORTIFIED. Base FDC 174832 but Ca 184→16 and vitamin D 1→0 (no added Ca/D/B12)."
+      },
+      "compositionBasis": "USDA almond milk, unsweetened; macros←USDA-SR 174832",
+      "matvaretabellen": {
+        "id": "01.131",
+        "name": "Pudding, milk, almond flavour, industrially made",
+        "macros": {
+          "kcal": 105,
+          "protein": 3,
+          "fat": 3.1,
+          "carbs": 16,
+          "fiber": 0.4,
+          "sugars": 9.7,
+          "sodium": 60,
+          "potassium": 154
+        }
+      }
+    },
+    "cashew-milk": {
+      "micro": {
+        "db": "estimate",
+        "id": null,
+        "name": "Cashew milk, unsweetened, unfortified",
+        "note": "Fredrik 2026-10-31 UNFORTIFIED: Ca≈10 dilute cashew; D/B12 0."
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "label"
+    },
+    "cashew-sour-cream": {
+      "micro": {
+        "db": "composite",
+        "id": "fr-33",
+        "name": "Pack Cashew Sour Cream per 100 g",
+        "note": "Computed from recipe ingredients after MICRO fill"
+      },
+      "compositionBasis": "the pack's own Cashew Sour Cream, per 100 g"
+    },
+    "hummus": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "174289",
+        "name": "Hummus, commercial",
+        "note": "commercial hummus; homemade classic-hummus is composite"
+      },
+      "compositionBasis": "USDA commercial hummus; macros←USDA-SR 174289",
+      "matvaretabellen": {
+        "id": "06.679",
+        "name": "Hummus",
+        "macros": {
+          "kcal": 170,
+          "protein": 5.6,
+          "fat": 11.9,
+          "carbs": 6.7,
+          "fiber": 7,
+          "sugars": 0,
+          "sodium": 120,
+          "potassium": 168
+        }
+      }
+    },
+    "classic-hummus": {
+      "micro": {
+        "db": "composite",
+        "id": "classic-hummus",
+        "name": "Pack Classic Hummus per 100 g",
+        "note": "Computed from recipe ingredients after MICRO fill"
+      },
+      "compositionBasis": "the pack's own Classic Hummus (classic-hummus), per 100 g"
+    },
+    "oat-milk": {
+      "micro": {
+        "db": "estimate",
+        "id": null,
+        "name": "Oat drink, unsweetened, unfortified",
+        "note": "Fredrik 2026-10-31 UNFORTIFIED: Ca≈12 from oat solids (no added Ca); D/B12 0. Macros still from oat-drink label."
+      },
+      "compositionBasis": "oat drink label; its 4 g sugars are enzymatic maltose, counted as added sugar (doctor's decision 2026-10-28, as UK SACN)",
+      "usda": {
+        "fdcId": 167545,
+        "name": "Snacks, granola bars, soft, coated, milk chocolate coating, chocolate chip",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "01.188",
+        "name": "Cheese, goat milk, Feta",
+        "macros": {
+          "kcal": 260,
+          "protein": 18.1,
+          "fat": 20.8,
+          "carbs": 0.2,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 1060,
+          "potassium": 34
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "plant-milk": {
+      "micro": {
+        "db": "Matvaretabellen",
+        "id": "01.188",
+        "name": "Cheese, goat milk, Feta",
+        "note": "Fredrik: plant milks count as UNFORTIFIED (no added Ca/D/B12). Generic plant-milk uses USDA unfortified soymilk.; Nordic preferred; MICRO values still from USDA/fill until Matvare micros ported"
+      },
+      "compositionBasis": "unspecified unsweetened plant drink; macros←USDA-SR 172446",
+      "usda": {
+        "fdcId": "172446",
+        "name": "Soymilk, original and vanilla, unfortified",
+        "note": "Fredrik: plant milks count as UNFORTIFIED (no added Ca/D/B12). Generic plant-milk uses USDA unfortified soymilk."
+      },
+      "matvaretabellen": {
+        "id": "01.188",
+        "name": "Cheese, goat milk, Feta",
+        "macros": {
+          "kcal": 260,
+          "protein": 18.1,
+          "fat": 20.8,
+          "carbs": 0.2,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 1060,
+          "potassium": 34
+        }
+      },
+      "preferred": "Matvaretabellen"
+    },
+    "plant-yogurt": {
+      "micro": {
+        "db": "estimate",
+        "id": null,
+        "name": "Soy yoghurt, plain, unfortified",
+        "note": "Fredrik 2026-10-31 UNFORTIFIED: was Alpro-type fortified; Ca≈20 soy solids; D/B12 0."
+      },
+      "compositionBasis": "soy yogurt, plain (Alpro natural type)",
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "label"
+    },
+    "soy-milk": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172446",
+        "name": "Soymilk, original and vanilla, unfortified",
+        "note": "Fredrik 2026-10-31 UNFORTIFIED: Ca/D/B12 as USDA 172446 (Ca 25, D 0, B12 0)."
+      },
+      "compositionBasis": "unsweetened soy drink",
+      "usda": {
+        "fdcId": 167730,
+        "name": "Milk, imitation, non-soy",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "tofu": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172476",
+        "name": "Tofu, raw, firm, prepared with calcium sulfate"
+      },
+      "compositionBasis": "firm tofu, Nordic supermarket average",
+      "usda": {
+        "fdcId": 172476,
+        "name": "Tofu, raw, firm, prepared with calcium sulfate",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "10.229",
+        "name": "Spring rolls, fresh, with tofu, noodles and vegetables",
+        "macros": {
+          "kcal": 86,
+          "protein": 4.3,
+          "fat": 2.7,
+          "carbs": 10.5,
+          "fiber": 1,
+          "sugars": 0.1,
+          "sodium": 36,
+          "potassium": 207
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "agar-agar": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170090",
+        "name": "Seaweed, agar, dried"
+      },
+      "compositionBasis": "USDA agar, dried"
+    },
+    "baking-powder": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172803",
+        "name": "Leavening agents, baking powder, double-acting, sodium aluminum sulfate",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 172803,
+        "name": "Leavening agents, baking powder, double-acting, sodium aluminum sulfate",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "12.018",
+        "name": "Baking powder",
+        "macros": {
+          "kcal": 172,
+          "protein": 5.2,
+          "fat": 0,
+          "carbs": 37.8,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 11800,
+          "potassium": 49
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "baking-soda": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "175040",
+        "name": "Leavening agents, baking soda",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 175040,
+        "name": "Leavening agents, baking soda",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "10.133",
+        "name": "Baking soda",
+        "macros": {
+          "kcal": 0,
+          "protein": 0,
+          "fat": 0,
+          "carbs": 0,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 27360,
+          "potassium": 0
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "bean-noodles": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "174258",
+        "name": "Noodles, chinese, cellophane or long rice (mung beans), dehydrated"
+      },
+      "compositionBasis": "mung bean glass noodles, dry"
+    },
+    "bread": {
+      "micro": {
+        "db": "Matvaretabellen",
+        "id": "05.129",
+        "name": "Bread, wholemeal flour, wheat and rye, home-made",
+        "note": "Nordic preferred source"
+      },
+      "compositionBasis": "Nordic wholemeal bread (grovbrød)",
+      "usda": {
+        "fdcId": 170144,
+        "name": "Seeds, breadfruit seeds, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.129",
+        "name": "Bread, wholemeal flour, wheat and rye, home-made",
+        "macros": {
+          "kcal": 248,
+          "protein": 8.4,
+          "fat": 2.4,
+          "carbs": 44.4,
+          "fiber": 7,
+          "sugars": 0.6,
+          "sodium": 399,
+          "potassium": 242
+        }
+      },
+      "preferred": "Matvaretabellen"
+    },
+    "bread-crumbs": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "174928",
+        "name": "Bread, crumbs, dry, grated, plain"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "04.070",
+        "name": "Cod, fillet, rolled in breadcrumbs, raw",
+        "macros": {
+          "kcal": 142,
+          "protein": 15.8,
+          "fat": 3.3,
+          "carbs": 11.6,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 143,
+          "potassium": 360
+        }
+      }
+    },
+    "brown-rice": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169703",
+        "name": "Rice, brown, long-grain, raw"
+      },
+      "compositionBasis": "dry",
+      "usda": {
+        "fdcId": 169703,
+        "name": "Rice, brown, long-grain, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.021",
+        "name": "Rice, brown, long-grain, uncooked",
+        "macros": {
+          "kcal": 364,
+          "protein": 9.4,
+          "fat": 3,
+          "carbs": 72.8,
+          "fiber": 4,
+          "sugars": 0,
+          "sodium": 3,
+          "potassium": 193
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "buckwheat-flour": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170687",
+        "name": "Buckwheat flour, whole-groat",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170687,
+        "name": "Buckwheat flour, whole-groat",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.132",
+        "name": "Buckwheat flour",
+        "macros": {
+          "kcal": 308,
+          "protein": 12,
+          "fat": 2.8,
+          "carbs": 56.3,
+          "fiber": 5,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 410
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "buckwheat-groats": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170685",
+        "name": "Buckwheat groats, roasted, dry"
+      },
+      "compositionBasis": "dry",
+      "usda": {
+        "fdcId": 170685,
+        "name": "Buckwheat groats, roasted, dry",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "bulgur": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170688",
+        "name": "Bulgur, dry"
+      },
+      "compositionBasis": "dry",
+      "matvaretabellen": {
+        "id": "05.233",
+        "name": "Bulgur, uncooked",
+        "macros": {
+          "kcal": 288,
+          "protein": 11.8,
+          "fat": 1.9,
+          "carbs": 50.9,
+          "fiber": 10,
+          "sugars": 0,
+          "sodium": 11,
+          "potassium": 375
+        }
+      }
+    },
+    "carob-powder": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173755",
+        "name": "Carob flour"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 173755,
+        "name": "Carob flour",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "chickpea-flour": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "174288",
+        "name": "Chickpea flour (besan)"
+      },
+      "compositionBasis": null
+    },
+    "cornmeal-polenta": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169697",
+        "name": "Cornmeal, whole-grain, yellow"
+      },
+      "compositionBasis": "degermed, dry; macros←USDA-SR 169697",
+      "matvaretabellen": {
+        "id": "05.013",
+        "name": "Cornmeal",
+        "macros": {
+          "kcal": 364,
+          "protein": 6,
+          "fat": 2.3,
+          "carbs": 77,
+          "fiber": 6,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 182
+        }
+      }
+    },
+    "cornstarch": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169698",
+        "name": "Cornstarch",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169698,
+        "name": "Cornstarch",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "dry-yeast": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "175043",
+        "name": "Leavening agents, yeast, baker's, active dry",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 175043,
+        "name": "Leavening agents, yeast, baker's, active dry",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "12.009",
+        "name": "Bakers yeast, active, dry",
+        "macros": {
+          "kcal": 341,
+          "protein": 40.4,
+          "fat": 7.6,
+          "carbs": 14.3,
+          "fiber": 27,
+          "sugars": 0,
+          "sodium": 51,
+          "potassium": 955
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "gluten-flour": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171861",
+        "name": "Rolls, gluten-free, white, made with brown rice flour, tapioca starch, and potato starch",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171861,
+        "name": "Rolls, gluten-free, white, made with brown rice flour, tapioca starch, and potato starch",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.534",
+        "name": "Bread flour mix, fibre bread, gluten-free, organic, powder, Det Glutenfrie Verksted",
+        "macros": {
+          "kcal": 416,
+          "protein": 13,
+          "fat": 19.4,
+          "carbs": 43.7,
+          "fiber": 7,
+          "sugars": 1.6,
+          "sodium": 792,
+          "potassium": 416
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "gluten-free-flour-mix": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169714",
+        "name": "Rice flour, white, unenriched",
+        "note": "proxy for GF flour mix (rice-based)"
+      },
+      "compositionBasis": "typical Nordic GF bread mix (starch-based); varies by brand; macros←USDA-SR 169714",
+      "matvaretabellen": {
+        "id": "05.534",
+        "name": "Bread flour mix, fibre bread, gluten-free, organic, powder, Det Glutenfrie Verksted",
+        "macros": {
+          "kcal": 416,
+          "protein": 13,
+          "fat": 19.4,
+          "carbs": 43.7,
+          "fiber": 7,
+          "sugars": 1.6,
+          "sodium": 792,
+          "potassium": 416
+        }
+      }
+    },
+    "lasagne-sheets": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168927",
+        "name": "Pasta, dry, unenriched",
+        "note": "proxy for dry lasagne sheets"
+      },
+      "compositionBasis": "dry pasta",
+      "usda": {
+        "fdcId": 168927,
+        "name": "Pasta, dry, unenriched",
+        "note": "proxy for dry lasagne sheets"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "millet": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169702",
+        "name": "Millet, raw"
+      },
+      "compositionBasis": "dry",
+      "matvaretabellen": {
+        "id": "05.530",
+        "name": "Millet flakes",
+        "macros": {
+          "kcal": 357,
+          "protein": 10.6,
+          "fat": 3.9,
+          "carbs": 68,
+          "fiber": 4,
+          "sugars": 0,
+          "sodium": 3,
+          "potassium": 173
+        }
+      }
+    },
+    "oat-flour": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169741",
+        "name": "Oat flour, partially debranned"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "05.142",
+        "name": "Crisp bread, wholemeal flour, with oats",
+        "macros": {
+          "kcal": 349,
+          "protein": 11.9,
+          "fat": 4.2,
+          "carbs": 61.1,
+          "fiber": 10,
+          "sugars": 0,
+          "sodium": 381,
+          "potassium": 317
+        }
+      }
+    },
+    "potato-starch": {
+      "micro": {
+        "db": "label",
+        "id": null,
+        "name": "Potato starch (pure starch)",
+        "note": "Starch is nearly nutrient-empty; small mineral traces estimated. Not potato flour."
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": {
+        "id": "05.020",
+        "name": "Potato starch",
+        "macros": {
+          "kcal": 337,
+          "protein": 0,
+          "fat": 0,
+          "carbs": 84.2,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 3,
+          "potassium": 68
+        }
+      },
+      "preferred": "label"
+    },
+    "psyllium-husk": {
+      "micro": {
+        "db": "Matvaretabellen",
+        "id": "05.465",
+        "name": "Psyllium husk"
+      },
+      "compositionBasis": "EU label (fibre at 2 kcal/g)",
+      "usda": null,
+      "matvaretabellen": {
+        "id": "05.465",
+        "name": "Psyllium husk",
+        "macros": {
+          "kcal": 206,
+          "protein": 1.2,
+          "fat": 0.5,
+          "carbs": 10,
+          "fiber": 78,
+          "sugars": 0,
+          "sodium": 74,
+          "potassium": 965
+        }
+      },
+      "preferred": "Matvaretabellen"
+    },
+    "quinoa": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168874",
+        "name": "Quinoa, uncooked"
+      },
+      "compositionBasis": "dry",
+      "usda": {
+        "fdcId": 168874,
+        "name": "Quinoa, uncooked",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.665",
+        "name": "Quinoa, black, uncooked",
+        "macros": {
+          "kcal": 331,
+          "protein": 13.7,
+          "fat": 6.5,
+          "carbs": 47.5,
+          "fiber": 14,
+          "sugars": 0,
+          "sodium": 1,
+          "potassium": 870
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "rice-flour": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169714",
+        "name": "Rice flour, white, unenriched"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "05.223",
+        "name": "Rice flour",
+        "macros": {
+          "kcal": 369,
+          "protein": 6.2,
+          "fat": 0.5,
+          "carbs": 83.9,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 5,
+          "potassium": 82
+        }
+      }
+    },
+    "rice-noodles": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169742",
+        "name": "Rice noodles, dry",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "dry",
+      "usda": {
+        "fdcId": 169742,
+        "name": "Rice noodles, dry",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.331",
+        "name": "Noodles, rice, uncooked",
+        "macros": {
+          "kcal": 361,
+          "protein": 6,
+          "fat": 0.6,
+          "carbs": 82.2,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 182,
+          "potassium": 30
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "rolled-oats": {
+      "micro": {
+        "db": "Matvaretabellen",
+        "id": "11.049",
+        "name": "Baby food, oatmeal porridge with banana and mango, from 8 months, powder",
+        "note": "Nordic preferred source"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 173904,
+        "name": "Cereals, oats, regular and quick, not fortified, dry",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "11.049",
+        "name": "Baby food, oatmeal porridge with banana and mango, from 8 months, powder",
+        "macros": {
+          "kcal": 397,
+          "protein": 16,
+          "fat": 9.9,
+          "carbs": 58.6,
+          "fiber": 5,
+          "sugars": 0,
+          "sodium": 110,
+          "potassium": 777
+        }
+      },
+      "preferred": "Matvaretabellen"
+    },
+    "crispbread": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172739",
+        "name": "Crackers, crispbread, rye"
+      },
+      "compositionBasis": null
+    },
+    "rye-flour": {
+      "micro": {
+        "db": "Matvaretabellen",
+        "id": "05.148",
+        "name": "Crisp bread, wholemeal flour, rye",
+        "note": "Nordic preferred; MICRO values still from USDA/fill until Matvare micros ported"
+      },
+      "compositionBasis": "macros←USDA-SR 168885",
+      "usda": {
+        "fdcId": "168885",
+        "name": "Rye flour, dark"
+      },
+      "matvaretabellen": {
+        "id": "05.148",
+        "name": "Crisp bread, wholemeal flour, rye",
+        "macros": {
+          "kcal": 308,
+          "protein": 9,
+          "fat": 1.5,
+          "carbs": 55.4,
+          "fiber": 18,
+          "sugars": 0,
+          "sodium": 433,
+          "potassium": 467
+        }
+      },
+      "preferred": "Matvaretabellen"
+    },
+    "small-oats": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169705",
+        "name": "Oats",
+        "note": "proxy for fine/small oats"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169705,
+        "name": "Oats",
+        "note": "proxy for fine/small oats"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "sourdough-starter": {
+      "micro": {
+        "db": "composite",
+        "id": "168885",
+        "name": "Sourdough starter ≈ 50% flour + 50% water",
+        "note": "Micros ≈ half of dark rye flour (hydration)"
+      },
+      "compositionBasis": "wholegrain rye flour + water 1:1; macros←composite 168885"
+    },
+    "spelt-flour": {
+      "micro": {
+        "db": "Matvaretabellen",
+        "id": "05.397",
+        "name": "Crisp bread, rye and spelt, Sigdal helsprøtt",
+        "note": "whole spelt grain as flour proxy (similar when milled); Nordic preferred; MICRO values still from USDA/fill until Matvare micros ported"
+      },
+      "compositionBasis": "macros←USDA-SR 169745",
+      "usda": {
+        "fdcId": "169745",
+        "name": "Spelt, uncooked",
+        "note": "whole spelt grain as flour proxy (similar when milled)"
+      },
+      "matvaretabellen": {
+        "id": "05.397",
+        "name": "Crisp bread, rye and spelt, Sigdal helsprøtt",
+        "macros": {
+          "kcal": 457,
+          "protein": 17,
+          "fat": 26,
+          "carbs": 32.9,
+          "fiber": 12,
+          "sugars": 0,
+          "sodium": 410,
+          "potassium": 630
+        }
+      },
+      "preferred": "Matvaretabellen"
+    },
+    "tapioca-starch": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171861",
+        "name": "Rolls, gluten-free, white, made with brown rice flour, tapioca starch, and potato starch",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171861,
+        "name": "Rolls, gluten-free, white, made with brown rice flour, tapioca starch, and potato starch",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "white-flour": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168894",
+        "name": "Wheat flour, white, all-purpose, enriched, bleached",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168894,
+        "name": "Wheat flour, white, all-purpose, enriched, bleached",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.250",
+        "name": "Flour, gluten-free, mix for white bread, Toro",
+        "macros": {
+          "kcal": 361,
+          "protein": 1.1,
+          "fat": 1.1,
+          "carbs": 84.6,
+          "fiber": 4,
+          "sugars": 4.7,
+          "sodium": 520,
+          "potassium": 74
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "wholewheat-flour": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168893",
+        "name": "Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168893,
+        "name": "Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.129",
+        "name": "Bread, wholemeal flour, wheat and rye, home-made",
+        "macros": {
+          "kcal": 248,
+          "protein": 8.4,
+          "fat": 2.4,
+          "carbs": 44.4,
+          "fiber": 7,
+          "sugars": 0.6,
+          "sodium": 399,
+          "potassium": 242
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "almonds": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170567",
+        "name": "Nuts, almonds"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170567,
+        "name": "Nuts, almonds",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.107",
+        "name": "Almonds",
+        "macros": {
+          "kcal": 601,
+          "protein": 21.2,
+          "fat": 52.1,
+          "carbs": 6.6,
+          "fiber": 11,
+          "sugars": 0,
+          "sodium": 1,
+          "potassium": 745
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "aquafaba": {
+      "micro": {
+        "db": "composite",
+        "id": null,
+        "name": "Aquafaba (chickpea canning liquid)",
+        "note": "Dilute chickpea solids ~5–10%; estimated from chickpea micros × ~0.05–0.1"
+      },
+      "compositionBasis": "liquid from salted canned chickpeas",
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "composite"
+    },
+    "black-beans-canned": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "175185",
+        "name": "Beans, black, mature seeds, canned, drained solids"
+      },
+      "compositionBasis": "canned, drained; sodium varies 0-400 mg by brand",
+      "usda": {
+        "fdcId": 175185,
+        "name": "Beans, black, mature seeds, canned, drained solids",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.132",
+        "name": "Beans, black, canned",
+        "macros": {
+          "kcal": 70,
+          "protein": 6.6,
+          "fat": 1,
+          "carbs": 4.3,
+          "fiber": 9,
+          "sugars": 0,
+          "sodium": 160,
+          "potassium": 265
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "borlotti-beans-dry": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "175189",
+        "name": "Beans, cranberry (roman), mature seeds, raw"
+      },
+      "compositionBasis": null
+    },
+    "canned-tomatoes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171425",
+        "name": "Tomatoes, red, ripe, canned, packed in tomato juice"
+      },
+      "compositionBasis": "EU chopped tomatoes; sodium 10-150 mg by brand",
+      "usda": {
+        "fdcId": 171425,
+        "name": "Tomatoes, red, ripe, canned, packed in tomato juice",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "capers": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172238",
+        "name": "Capers, canned"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.129",
+        "name": "Capers, canned",
+        "macros": {
+          "kcal": 25,
+          "protein": 2.4,
+          "fat": 0.9,
+          "carbs": 0.4,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 2769,
+          "potassium": 40
+        }
+      }
+    },
+    "cashews": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170162",
+        "name": "Nuts, cashew nuts, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170162,
+        "name": "Nuts, cashew nuts, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "chia-seeds": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170554",
+        "name": "Seeds, chia seeds, dried"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "05.380",
+        "name": "Chia seeds, dried",
+        "macros": {
+          "kcal": 482,
+          "protein": 21.4,
+          "fat": 34.2,
+          "carbs": 1.8,
+          "fiber": 41,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 640
+        }
+      }
+    },
+    "chickpeas-canned": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173800",
+        "name": "Chickpeas, mature seeds, canned, drained solids"
+      },
+      "compositionBasis": "canned, drained",
+      "usda": {
+        "fdcId": 173800,
+        "name": "Chickpeas, mature seeds, canned, drained solids",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "chickpeas-dry": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173756",
+        "name": "Chickpeas, mature seeds, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 173756,
+        "name": "Chickpeas, mature seeds, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "coconut-cream": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170580",
+        "name": "Nuts, coconut cream, raw (liquid expressed from grated meat)"
+      },
+      "compositionBasis": null
+    },
+    "coconut-milk": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168781",
+        "name": "Puddings, coconut cream, dry mix, instant, prepared with 2% milk",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "canned, full fat",
+      "usda": {
+        "fdcId": 168781,
+        "name": "Puddings, coconut cream, dry mix, instant, prepared with 2% milk",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.701",
+        "name": "Coconut milk, canned",
+        "macros": {
+          "kcal": 209,
+          "protein": 2,
+          "fat": 21.3,
+          "carbs": 1.5,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 13,
+          "potassium": 220
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "date-paste": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168191",
+        "name": "Dates, medjool",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "blended dates only; WHO does not count as free sugar, UK SACN would",
+      "usda": {
+        "fdcId": 168191,
+        "name": "Dates, medjool",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "dried-apricots": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173942",
+        "name": "Apricots, dried, sulfured, stewed, without added sugar",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 173942,
+        "name": "Apricots, dried, sulfured, stewed, without added sugar",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.523",
+        "name": "Apricots, dried",
+        "macros": {
+          "kcal": 207,
+          "protein": 3,
+          "fat": 0,
+          "carbs": 44.5,
+          "fiber": 8,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 1300
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "dried-cranberries": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171723",
+        "name": "Cranberries, dried, sweetened"
+      },
+      "compositionBasis": "sweetened (usual product)",
+      "matvaretabellen": {
+        "id": "06.228",
+        "name": "Cranberries, dried, sweetened",
+        "macros": {
+          "kcal": 301,
+          "protein": 0,
+          "fat": 0,
+          "carbs": 71.9,
+          "fiber": 7,
+          "sugars": 65.3,
+          "sodium": 0,
+          "potassium": 84
+        }
+      }
+    },
+    "dates-dried": {
+      "micro": {
+        "db": "Matvaretabellen",
+        "id": "06.527",
+        "name": "Dates, dried"
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": {
+        "id": "06.527",
+        "name": "Dates, dried",
+        "macros": {
+          "kcal": 298,
+          "protein": 2.4,
+          "fat": 0.2,
+          "carbs": 68,
+          "fiber": 8,
+          "sugars": 0,
+          "sodium": 11,
+          "potassium": 727
+        }
+      },
+      "preferred": "Matvaretabellen"
+    },
+    "dried-figs": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "174666",
+        "name": "Figs, dried, stewed",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 174666,
+        "name": "Figs, dried, stewed",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.535",
+        "name": "Figs, dried",
+        "macros": {
+          "kcal": 255,
+          "protein": 3.1,
+          "fat": 1.2,
+          "carbs": 53,
+          "fiber": 10,
+          "sugars": 0,
+          "sodium": 111,
+          "potassium": 784
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "flaxseed-ground": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169414",
+        "name": "Seeds, flaxseed",
+        "note": "ground = same seed"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169414,
+        "name": "Seeds, flaxseed",
+        "note": "ground = same seed",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "flaxseed-whole": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169414",
+        "name": "Seeds, flaxseed"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169414,
+        "name": "Seeds, flaxseed"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "lentils-green-brown": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172420",
+        "name": "Lentils, raw"
+      },
+      "compositionBasis": "dry",
+      "usda": {
+        "fdcId": 172420,
+        "name": "Lentils, raw"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "hazelnuts": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170581",
+        "name": "Nuts, hazelnuts or filberts"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.553",
+        "name": "Hazelnuts",
+        "macros": {
+          "kcal": 670,
+          "protein": 13.2,
+          "fat": 65,
+          "carbs": 3.3,
+          "fiber": 9,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 600
+        }
+      }
+    },
+    "kidney-beans-canned": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "175194",
+        "name": "Beans, kidney, all types, mature seeds, canned"
+      },
+      "compositionBasis": "canned, drained",
+      "usda": {
+        "fdcId": 175194,
+        "name": "Beans, kidney, all types, mature seeds, canned",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.133",
+        "name": "Beans, red (kidney), canned",
+        "macros": {
+          "kcal": 73,
+          "protein": 6.1,
+          "fat": 0.7,
+          "carbs": 6.7,
+          "fiber": 8,
+          "sugars": 0,
+          "sodium": 170,
+          "potassium": 255
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "medjool-dates": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168191",
+        "name": "Dates, medjool"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168191,
+        "name": "Dates, medjool",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "nori": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168458",
+        "name": "Seaweed, laver, raw",
+        "note": "nori/laver"
+      },
+      "compositionBasis": "dried nori sheet, 2.5 g",
+      "usda": {
+        "fdcId": 168458,
+        "name": "Seaweed, laver, raw",
+        "note": "nori/laver"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "nutritional-yeast": {
+      "micro": {
+        "db": "label",
+        "id": null,
+        "name": "Nutritional yeast unfortified (Engevita-type)",
+        "note": "no SR Legacy food"
+      },
+      "compositionBasis": "unfortified flakes, label (Engevita type)",
+      "usda": null,
+      "matvaretabellen": {
+        "id": "10.214",
+        "name": "Nutritional yeast",
+        "macros": {
+          "kcal": 295,
+          "protein": 46.6,
+          "fat": 5.2,
+          "carbs": 3.8,
+          "fiber": 23,
+          "sugars": 0,
+          "sodium": 55,
+          "potassium": 1900
+        }
+      },
+      "preferred": "label"
+    },
+    "olive-brine": {
+      "micro": {
+        "db": "composite",
+        "id": null,
+        "name": "Olive brine",
+        "note": "Near-zero micros; sodium lives in composition table"
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "composite"
+    },
+    "olives": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169094",
+        "name": "Olives, ripe, canned (small-extra large)",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "brined, drained; mix of green/black",
+      "usda": {
+        "fdcId": 169094,
+        "name": "Olives, ripe, canned (small-extra large)",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.712",
+        "name": "Greek salad, with feta cheese and olives",
+        "macros": {
+          "kcal": 68,
+          "protein": 3.6,
+          "fat": 4.8,
+          "carbs": 2,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 293,
+          "potassium": 180
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "peanuts": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172430",
+        "name": "Peanuts, all types, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 172430,
+        "name": "Peanuts, all types, raw",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.557",
+        "name": "Peanuts, raw",
+        "macros": {
+          "kcal": 594,
+          "protein": 25.8,
+          "fat": 49.2,
+          "carbs": 7.6,
+          "fiber": 9,
+          "sugars": 0,
+          "sodium": 18,
+          "potassium": 705
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "pecans": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170183",
+        "name": "Nuts, pecans, dry roasted, without salt added",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170183,
+        "name": "Nuts, pecans, dry roasted, without salt added",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "pistachios": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170184",
+        "name": "Nuts, pistachio nuts, raw"
+      },
+      "compositionBasis": null
+    },
+    "prunes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "167751",
+        "name": "Plums, dried (prunes), stewed, without added sugar",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 167751,
+        "name": "Plums, dried (prunes), stewed, without added sugar",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.552",
+        "name": "Prunes",
+        "macros": {
+          "kcal": 168,
+          "protein": 2.3,
+          "fat": 0.3,
+          "carbs": 36.5,
+          "fiber": 5,
+          "sugars": 0,
+          "sodium": 3,
+          "potassium": 734
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "pumpkin-seeds": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170556",
+        "name": "Seeds, pumpkin and squash seed kernels, dried"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170556,
+        "name": "Seeds, pumpkin and squash seed kernels, dried",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.170",
+        "name": "Squash seeds, pumpkin seeds",
+        "macros": {
+          "kcal": 585,
+          "protein": 36.3,
+          "fat": 45.9,
+          "carbs": 2,
+          "fiber": 9,
+          "sugars": 0,
+          "sodium": 20,
+          "potassium": 790
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "raisins": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168165",
+        "name": "Raisins, seedless"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168165,
+        "name": "Raisins, seedless",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.117",
+        "name": "Malt loaf, with raisins",
+        "macros": {
+          "kcal": 274,
+          "protein": 6.3,
+          "fat": 3,
+          "carbs": 52.8,
+          "fiber": 5,
+          "sugars": 6.9,
+          "sodium": 121,
+          "potassium": 256
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "lentils-red": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "174284",
+        "name": "Lentils, pink or red, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "dry",
+      "usda": {
+        "fdcId": 174284,
+        "name": "Lentils, pink or red, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.184",
+        "name": "Lentils, red, uncooked",
+        "macros": {
+          "kcal": 274,
+          "protein": 22.5,
+          "fat": 2.2,
+          "carbs": 31.9,
+          "fiber": 19,
+          "sugars": 0,
+          "sodium": 1,
+          "potassium": 870
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "sesame-seeds": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170150",
+        "name": "Seeds, sesame seeds, whole, dried"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170150,
+        "name": "Seeds, sesame seeds, whole, dried",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.030",
+        "name": "Sesame seeds, with shell",
+        "macros": {
+          "kcal": 595,
+          "protein": 19.6,
+          "fat": 53.8,
+          "carbs": 1.4,
+          "fiber": 13,
+          "sugars": 0,
+          "sodium": 1,
+          "potassium": 505
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "shredded-coconut": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168586",
+        "name": "Nuts, coconut meat, dried (desiccated), sweetened, shredded",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "desiccated, unsweetened",
+      "usda": {
+        "fdcId": 168586,
+        "name": "Nuts, coconut meat, dried (desiccated), sweetened, shredded",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "sun-dried-tomatoes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168567",
+        "name": "Tomatoes, sun-dried",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "dry (not in oil), salted",
+      "usda": {
+        "fdcId": 168567,
+        "name": "Tomatoes, sun-dried",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.102",
+        "name": "Tomatoes, sun-dried",
+        "macros": {
+          "kcal": 280,
+          "protein": 14.1,
+          "fat": 3,
+          "carbs": 43,
+          "fiber": 12,
+          "sugars": 0,
+          "sodium": 2095,
+          "potassium": 3427
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "sunflower-seeds": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170562",
+        "name": "Seeds, sunflower seed kernels, dried"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170562,
+        "name": "Seeds, sunflower seed kernels, dried",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.126",
+        "name": "Sunflower seeds",
+        "macros": {
+          "kcal": 621,
+          "protein": 24.2,
+          "fat": 54.4,
+          "carbs": 3.6,
+          "fiber": 10,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 755
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "tahini": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170189",
+        "name": "Seeds, sesame butter, tahini, from roasted and toasted kernels (most common type)"
+      },
+      "compositionBasis": "macros←USDA-SR 170189",
+      "matvaretabellen": {
+        "id": "06.702",
+        "name": "Sesame paste, tahini",
+        "macros": {
+          "kcal": 626,
+          "protein": 18.5,
+          "fat": 58.9,
+          "carbs": 0.8,
+          "fiber": 9,
+          "sugars": 0,
+          "sodium": 20,
+          "potassium": 580
+        }
+      }
+    },
+    "tomato-puree": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170459",
+        "name": "Tomato products, canned, puree, without salt added"
+      },
+      "compositionBasis": "concentrated purée/paste, no added salt",
+      "usda": {
+        "fdcId": 170459,
+        "name": "Tomato products, canned, puree, without salt added",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.080",
+        "name": "Tomato purée",
+        "macros": {
+          "kcal": 84,
+          "protein": 4.8,
+          "fat": 0.2,
+          "carbs": 14.5,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 400,
+          "potassium": 1257
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "vegetable-bouillon": {
+      "micro": {
+        "db": "label",
+        "id": null,
+        "name": "Vegetable bouillon powder",
+        "note": "estimate"
+      },
+      "compositionBasis": "bouillon powder ~50% salt",
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "label"
+    },
+    "vegetable-broth": {
+      "micro": {
+        "db": "label",
+        "id": null,
+        "name": "Ready vegetable broth",
+        "note": "estimate"
+      },
+      "compositionBasis": "made up from cube/powder",
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "label"
+    },
+    "walnuts": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170187",
+        "name": "Nuts, walnuts, english"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170187,
+        "name": "Nuts, walnuts, english",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.560",
+        "name": "Walnuts",
+        "macros": {
+          "kcal": 680,
+          "protein": 14.1,
+          "fat": 66.5,
+          "carbs": 2.8,
+          "fiber": 7,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 380
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "white-beans-canned": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "175203",
+        "name": "Beans, white, mature seeds, canned"
+      },
+      "compositionBasis": "canned, drained",
+      "usda": {
+        "fdcId": 175203,
+        "name": "Beans, white, mature seeds, canned",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.024",
+        "name": "Beans, white, in tomato sauce, canned",
+        "macros": {
+          "kcal": 63,
+          "protein": 3.7,
+          "fat": 1.4,
+          "carbs": 6,
+          "fiber": 6,
+          "sugars": 0.8,
+          "sodium": 225,
+          "potassium": 245
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "white-beans-dry": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "175202",
+        "name": "Beans, white, mature seeds, raw"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 175202,
+        "name": "Beans, white, mature seeds, raw"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "yellow-peas-cooked": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168956",
+        "name": "Yellow rice with seasoning, dry packet mix, unprepared",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168956,
+        "name": "Yellow rice with seasoning, dry packet mix, unprepared",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.029",
+        "name": "Peas, yellow, uncooked",
+        "macros": {
+          "kcal": 334,
+          "protein": 21.6,
+          "fat": 2.4,
+          "carbs": 50,
+          "fiber": 13,
+          "sugars": 0,
+          "sodium": 38,
+          "potassium": 990
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "almond-butter": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168588",
+        "name": "Nuts, almond butter, plain, without salt added"
+      },
+      "compositionBasis": "USDA almond butter, plain, no salt",
+      "matvaretabellen": {
+        "id": "09.154",
+        "name": "Chocolate, with almond butter, Daim",
+        "macros": {
+          "kcal": 540,
+          "protein": 4.1,
+          "fat": 31.1,
+          "carbs": 60.1,
+          "fiber": 2,
+          "sugars": 40.7,
+          "sodium": 321,
+          "potassium": 174
+        }
+      }
+    },
+    "amla-powder": {
+      "micro": {
+        "db": "label",
+        "id": null,
+        "name": "Amla (Indian gooseberry) powder",
+        "note": "Label-type estimate; vitamin C highly variable by brand/drying"
+      },
+      "compositionBasis": "label estimate, dried amla powder",
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "label"
+    },
+    "apple-cider-vinegar": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": null,
+        "name": null,
+        "note": "Pre-existing MICRO entry; FDC id not yet confirmed"
+      },
+      "compositionBasis": "USDA vinegar, cider"
+    },
+    "balsamic-vinegar": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": null,
+        "name": null,
+        "note": "Pre-existing MICRO entry; FDC id not yet confirmed"
+      },
+      "compositionBasis": "USDA vinegar, balsamic (1 tbsp = 16 g); sugars from the grape must, not added"
+    },
+    "basil-dried": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171317",
+        "name": "Spices, basil, dried"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171317,
+        "name": "Spices, basil, dried",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.151",
+        "name": "Basil, dried",
+        "macros": {
+          "kcal": 244,
+          "protein": 23,
+          "fat": 4.1,
+          "carbs": 10,
+          "fiber": 38,
+          "sugars": 0,
+          "sodium": 76,
+          "potassium": 26
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "bay-leaves": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170917",
+        "name": "Spices, bay leaf"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170917,
+        "name": "Spices, bay leaf",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "black-pepper": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170931",
+        "name": "Spices, pepper, black"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170931,
+        "name": "Spices, pepper, black",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "12.111",
+        "name": "Pepper, black",
+        "macros": {
+          "kcal": 277,
+          "protein": 10.4,
+          "fat": 3.3,
+          "carbs": 38.7,
+          "fiber": 25,
+          "sugars": 0,
+          "sodium": 20,
+          "potassium": 1329
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "black-salt": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168402",
+        "name": "Cowpeas (blackeyes), immature seeds, cooked, boiled, drained, without salt",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168402,
+        "name": "Cowpeas (blackeyes), immature seeds, cooked, boiled, drained, without salt",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "caraway-seeds": {
+      "micro": {
+        "db": "Matvaretabellen",
+        "id": "06.159",
+        "name": "Caraway seeds"
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": {
+        "id": "06.159",
+        "name": "Caraway seeds",
+        "macros": {
+          "kcal": 334,
+          "protein": 19.8,
+          "fat": 14.6,
+          "carbs": 11.9,
+          "fiber": 38,
+          "sugars": 0,
+          "sodium": 17,
+          "potassium": 1351
+        }
+      },
+      "preferred": "Matvaretabellen"
+    },
+    "cardamom-ground": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170919",
+        "name": "Spices, cardamom"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.157",
+        "name": "Cardamom, ground",
+        "macros": {
+          "kcal": 321,
+          "protein": 10.8,
+          "fat": 6.7,
+          "carbs": 40.4,
+          "fiber": 28,
+          "sugars": 0,
+          "sodium": 18,
+          "potassium": 1119
+        }
+      }
+    },
+    "cayenne-pepper": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170932",
+        "name": "Spices, pepper, red or cayenne",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170932,
+        "name": "Spices, pepper, red or cayenne",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.165",
+        "name": "Pepper, cayenne, red",
+        "macros": {
+          "kcal": 375,
+          "protein": 12,
+          "fat": 17.3,
+          "carbs": 29.4,
+          "fiber": 27,
+          "sugars": 0,
+          "sodium": 30,
+          "potassium": 2014
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "chili-flakes": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172110",
+        "name": "Chili with beans, microwavable bowls",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 172110,
+        "name": "Chili with beans, microwavable bowls",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "chili-powder": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171319",
+        "name": "Spices, chili powder",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "chili seasoning blend; sodium varies",
+      "usda": {
+        "fdcId": 171319,
+        "name": "Spices, chili powder",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.152",
+        "name": "Chili powder",
+        "macros": {
+          "kcal": 312,
+          "protein": 13.5,
+          "fat": 14.3,
+          "carbs": 14.9,
+          "fiber": 35,
+          "sugars": 0,
+          "sodium": 2867,
+          "potassium": 1950
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "cinnamon-ground": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171320",
+        "name": "Spices, cinnamon, ground"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171320,
+        "name": "Spices, cinnamon, ground",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.156",
+        "name": "Cinnamon, ground",
+        "macros": {
+          "kcal": 246,
+          "protein": 4,
+          "fat": 1.2,
+          "carbs": 28.1,
+          "fiber": 53,
+          "sugars": 0,
+          "sodium": 10,
+          "potassium": 431
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "cloves-ground": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171321",
+        "name": "Spices, cloves, ground",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171321,
+        "name": "Spices, cloves, ground",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.162",
+        "name": "Cloves, ground",
+        "macros": {
+          "kcal": 335,
+          "protein": 6,
+          "fat": 13,
+          "carbs": 31.6,
+          "fiber": 34,
+          "sugars": 0,
+          "sodium": 277,
+          "potassium": 1020
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "coconut-oil": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171412",
+        "name": "Oil, coconut"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "08.249",
+        "name": "Oil, coconut",
+        "macros": {
+          "kcal": 894,
+          "protein": 0,
+          "fat": 99.3,
+          "carbs": 0,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 0
+        }
+      }
+    },
+    "coriander-seeds": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170922",
+        "name": "Spices, coriander seed"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.194",
+        "name": "Coriander seeds",
+        "macros": {
+          "kcal": 346,
+          "protein": 12.4,
+          "fat": 17.8,
+          "carbs": 13.1,
+          "fiber": 42,
+          "sugars": 0,
+          "sodium": 35,
+          "potassium": 1267
+        }
+      }
+    },
+    "coriander-ground": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169997",
+        "name": "Coriander (cilantro) leaves, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169997,
+        "name": "Coriander (cilantro) leaves, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "cumin-ground": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170923",
+        "name": "Spices, cumin seed"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170923,
+        "name": "Spices, cumin seed",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "curry-powder": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170924",
+        "name": "Spices, curry powder"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170924,
+        "name": "Spices, curry powder",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.158",
+        "name": "Curry powder",
+        "macros": {
+          "kcal": 301,
+          "protein": 14.3,
+          "fat": 14,
+          "carbs": 2.8,
+          "fiber": 53,
+          "sugars": 0,
+          "sodium": 52,
+          "potassium": 1170
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "fenugreek-seeds": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171324",
+        "name": "Spices, fenugreek seed"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171324,
+        "name": "Spices, fenugreek seed"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "garam-masala": {
+      "micro": {
+        "db": "label",
+        "id": null,
+        "name": "Garam masala blend (estimate in MICRO)",
+        "note": "spice blend"
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "label"
+    },
+    "garlic-powder": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171325",
+        "name": "Spices, garlic powder",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171325,
+        "name": "Spices, garlic powder",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.154",
+        "name": "Garlic powder",
+        "macros": {
+          "kcal": 346,
+          "protein": 16.6,
+          "fat": 0.7,
+          "carbs": 63.7,
+          "fiber": 9,
+          "sugars": 0,
+          "sodium": 60,
+          "potassium": 1193
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "ginger-ground": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170926",
+        "name": "Spices, ginger, ground"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.155",
+        "name": "Ginger, ground",
+        "macros": {
+          "kcal": 342,
+          "protein": 9,
+          "fat": 4.2,
+          "carbs": 60,
+          "fiber": 14,
+          "sugars": 0,
+          "sodium": 27,
+          "potassium": 1320
+        }
+      }
+    },
+    "herb-salt": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168420",
+        "name": "Jute, potherb, cooked, boiled, drained, without salt",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "herb salt is ~90% salt (Herbamare type)",
+      "usda": {
+        "fdcId": 168420,
+        "name": "Jute, potherb, cooked, boiled, drained, without salt",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "12.024",
+        "name": "Salt, herbal",
+        "macros": {
+          "kcal": 47,
+          "protein": 7.6,
+          "fat": 1.7,
+          "carbs": 0.3,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 30000,
+          "potassium": 2040
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "honey": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169911",
+        "name": "Melons, honeydew, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169911,
+        "name": "Melons, honeydew, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.610",
+        "name": "Melon, honeydew, raw",
+        "macros": {
+          "kcal": 31,
+          "protein": 0.2,
+          "fat": 0.1,
+          "carbs": 7,
+          "fiber": 0.7,
+          "sugars": 0,
+          "sodium": 24,
+          "potassium": 235
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "hot-sauce": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171186",
+        "name": "Sauce, hot chile, sriracha"
+      },
+      "compositionBasis": "macros←USDA-SR 171186"
+    },
+    "ketchup": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168556",
+        "name": "Catsup"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.079",
+        "name": "Tomato ketchup",
+        "macros": {
+          "kcal": 110,
+          "protein": 1,
+          "fat": 0.4,
+          "carbs": 23.6,
+          "fiber": 4,
+          "sugars": 15.2,
+          "sodium": 678,
+          "potassium": 265
+        }
+      }
+    },
+    "maple-syrup": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168838",
+        "name": "Syrups, table blends, pancake, with 2% maple",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168838,
+        "name": "Syrups, table blends, pancake, with 2% maple",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "marjoram-dried": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170928",
+        "name": "Spices, marjoram, dried",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170928,
+        "name": "Spices, marjoram, dried",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.186",
+        "name": "Marjoram, dried",
+        "macros": {
+          "kcal": 276,
+          "protein": 12.7,
+          "fat": 7,
+          "carbs": 20.3,
+          "fiber": 40,
+          "sugars": 0,
+          "sodium": 77,
+          "potassium": 1522
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "miso-paste": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172442",
+        "name": "Miso"
+      },
+      "compositionBasis": null
+    },
+    "mustard-seeds": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168438",
+        "name": "Mustard spinach, (tendergreen), raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168438,
+        "name": "Mustard spinach, (tendergreen), raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.170",
+        "name": "Mustard seeds",
+        "macros": {
+          "kcal": 518,
+          "protein": 26.1,
+          "fat": 36.2,
+          "carbs": 15.9,
+          "fiber": 12,
+          "sugars": 0,
+          "sodium": 13,
+          "potassium": 738
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "nigella-seeds": {
+      "micro": {
+        "db": "label",
+        "id": null,
+        "name": "Nigella (kalonji) seeds (estimate)",
+        "note": "No SR Legacy entry; estimate from published seed analyses"
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "label"
+    },
+    "nutmeg-ground": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171326",
+        "name": "Spices, nutmeg, ground",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171326,
+        "name": "Spices, nutmeg, ground",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.161",
+        "name": "Nutmeg, ground",
+        "macros": {
+          "kcal": 506,
+          "protein": 5.8,
+          "fat": 36.3,
+          "carbs": 28.5,
+          "fiber": 21,
+          "sugars": 0,
+          "sodium": 16,
+          "potassium": 350
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "olive-oil": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171413",
+        "name": "Oil, olive, salad or cooking"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171413,
+        "name": "Oil, olive, salad or cooking",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "08.019",
+        "name": "Oil, olive",
+        "macros": {
+          "kcal": 892,
+          "protein": 0.2,
+          "fat": 99,
+          "carbs": 0,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 0
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "onion-powder": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171327",
+        "name": "Spices, onion powder",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171327,
+        "name": "Spices, onion powder",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "10.025",
+        "name": "Sauce, brown with onion, powder base, prepared",
+        "macros": {
+          "kcal": 40,
+          "protein": 0.9,
+          "fat": 1.5,
+          "carbs": 5.7,
+          "fiber": 0.2,
+          "sugars": 0.3,
+          "sodium": 368,
+          "potassium": 50
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "oregano-dried": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171328",
+        "name": "Spices, oregano, dried"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171328,
+        "name": "Spices, oregano, dried",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.163",
+        "name": "Oregano, dried",
+        "macros": {
+          "kcal": 246,
+          "protein": 9,
+          "fat": 4.3,
+          "carbs": 21.6,
+          "fiber": 43,
+          "sugars": 0,
+          "sodium": 25,
+          "potassium": 1260
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "paprika-powder": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171329",
+        "name": "Spices, paprika"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171329,
+        "name": "Spices, paprika",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.164",
+        "name": "Sweet pepper, paprika, powder",
+        "macros": {
+          "kcal": 316,
+          "protein": 14.1,
+          "fat": 12.9,
+          "carbs": 18.3,
+          "fiber": 35,
+          "sugars": 0,
+          "sodium": 68,
+          "potassium": 2280
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "parsley-dried": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170930",
+        "name": "Spices, parsley, dried"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.167",
+        "name": "Parsley, dried",
+        "macros": {
+          "kcal": 305,
+          "protein": 26.6,
+          "fat": 5.5,
+          "carbs": 23.9,
+          "fiber": 27,
+          "sugars": 0,
+          "sodium": 452,
+          "potassium": 2683
+        }
+      }
+    },
+    "peanut-butter": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172470",
+        "name": "Peanut butter, smooth style, without salt"
+      },
+      "compositionBasis": "natural, lightly salted",
+      "usda": {
+        "fdcId": 172470,
+        "name": "Peanut butter, smooth style, without salt",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "09.182",
+        "name": "Date balls, with peanut butter and rolled oats",
+        "macros": {
+          "kcal": 446,
+          "protein": 10,
+          "fat": 23.9,
+          "carbs": 44,
+          "fiber": 7,
+          "sugars": 1.8,
+          "sodium": 125,
+          "potassium": 652
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "rapeseed-oil": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172336",
+        "name": "Oil, canola"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "08.229",
+        "name": "Margarine, fat spread, rapeseed and sunflower oil, 40 % fat, Vita lett",
+        "macros": {
+          "kcal": 364,
+          "protein": 0.5,
+          "fat": 40,
+          "carbs": 0.5,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 400,
+          "potassium": 0
+        }
+      }
+    },
+    "rice-vinegar": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": null,
+        "name": null,
+        "note": "Pre-existing MICRO entry; FDC id not yet confirmed"
+      },
+      "compositionBasis": "USDA distilled vinegar as proxy for unseasoned rice vinegar (seasoned has sugar and salt)"
+    },
+    "rosemary-dried": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171333",
+        "name": "Spices, rosemary, dried",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171333,
+        "name": "Spices, rosemary, dried",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.169",
+        "name": "Rosemary, dried",
+        "macros": {
+          "kcal": 427,
+          "protein": 4.9,
+          "fat": 15.2,
+          "carbs": 46.4,
+          "fiber": 43,
+          "sugars": 0,
+          "sodium": 50,
+          "potassium": 955
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "sage-dried": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168007",
+        "name": "Sage Valley, Gluten Free Vanilla Sandwich Cookies",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168007,
+        "name": "Sage Valley, Gluten Free Vanilla Sandwich Cookies",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "salt": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173468",
+        "name": "Salt, table",
+        "note": "sodium only"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 173468,
+        "name": "Salt, table",
+        "note": "sodium only",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "03.397",
+        "name": "Beef, minced meat, 13 % fat, without salt and water, raw",
+        "macros": {
+          "kcal": 197,
+          "protein": 19.4,
+          "fat": 13.2,
+          "carbs": 0,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 67,
+          "potassium": 287
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "sesame-oil": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171016",
+        "name": "Oil, sesame, salad or cooking"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171016,
+        "name": "Oil, sesame, salad or cooking",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "08.105",
+        "name": "Oil, sesame",
+        "macros": {
+          "kcal": 898,
+          "protein": 0.2,
+          "fat": 99.7,
+          "carbs": 0,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 2,
+          "potassium": 20
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "smoked-paprika": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171329",
+        "name": "Spices, paprika",
+        "note": "proxy paprika"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171329,
+        "name": "Spices, paprika",
+        "note": "proxy paprika",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "soy-mayonnaise": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171406",
+        "name": "Salad dressing, mayonnaise, imitation, soybean",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "vegan mayonnaise, reduced-fat type; varies",
+      "usda": {
+        "fdcId": 171406,
+        "name": "Salad dressing, mayonnaise, imitation, soybean",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "soy-sauce": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "174277",
+        "name": "Soy sauce made from soy and wheat (shoyu)"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 174277,
+        "name": "Soy sauce made from soy and wheat (shoyu)",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "10.126",
+        "name": "Soy sauce",
+        "macros": {
+          "kcal": 84,
+          "protein": 3,
+          "fat": 0,
+          "carbs": 17.9,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 6760,
+          "potassium": 180
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "soy-sauce-low-sodium": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": null,
+        "name": null,
+        "note": "Pre-existing MICRO entry; FDC id not yet confirmed"
+      },
+      "compositionBasis": "As soy-sauce, sodium at the reduced-sodium figure in recipeNutritionEstimate.mjs (about 40% less, as on labels)"
+    },
+    "sugar": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168833",
+        "name": "Sugars, brown",
+        "note": "brown/raw cane sugar"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.031",
+        "name": "Peas, sugar-snap, Norwegian, raw",
+        "macros": {
+          "kcal": 42,
+          "protein": 3.5,
+          "fat": 0.1,
+          "carbs": 5.3,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 212
+        }
+      }
+    },
+    "sukrin": {
+      "micro": {
+        "db": "label",
+        "id": null,
+        "name": "Erythritol (Sukrin)",
+        "note": "Sugar alcohol; negligible micronutrients"
+      },
+      "compositionBasis": "erythritol: no energy, no glycaemic carbohydrate",
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "label"
+    },
+    "sumac": {
+      "micro": {
+        "db": "label",
+        "id": null,
+        "name": "Sumac, ground (estimate)",
+        "note": "No SR Legacy entry; estimate from published spice analyses"
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "label"
+    },
+    "tamari": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "174278",
+        "name": "Soy sauce made from soy (tamari)"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 174278,
+        "name": "Soy sauce made from soy (tamari)",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.632",
+        "name": "Tamarinds, raw",
+        "macros": {
+          "kcal": 256,
+          "protein": 2.8,
+          "fat": 0.6,
+          "carbs": 57.4,
+          "fiber": 5,
+          "sugars": 0,
+          "sodium": 28,
+          "potassium": 628
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "tandoori-masala": {
+      "micro": {
+        "db": "label",
+        "id": null,
+        "name": "Tandoori masala blend (estimate in MICRO)",
+        "note": "spice blend"
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": null,
+      "preferred": "label"
+    },
+    "tarragon-dried": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170937",
+        "name": "Spices, tarragon, dried"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.183",
+        "name": "Tarragon, dried",
+        "macros": {
+          "kcal": 342,
+          "protein": 22.8,
+          "fat": 7.2,
+          "carbs": 42.8,
+          "fiber": 7,
+          "sugars": 0,
+          "sodium": 62,
+          "potassium": 3020
+        }
+      }
+    },
+    "thyme-dried": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170938",
+        "name": "Spices, thyme, dried"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170938,
+        "name": "Spices, thyme, dried",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.172",
+        "name": "Thyme, dried",
+        "macros": {
+          "kcal": 285,
+          "protein": 9.1,
+          "fat": 7.4,
+          "carbs": 26.9,
+          "fiber": 37,
+          "sugars": 0,
+          "sodium": 55,
+          "potassium": 814
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "turmeric-ground": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172231",
+        "name": "Spices, turmeric, ground"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 172231,
+        "name": "Spices, turmeric, ground",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.153",
+        "name": "Turmeric, ground",
+        "macros": {
+          "kcal": 291,
+          "protein": 9.7,
+          "fat": 3.3,
+          "carbs": 44.4,
+          "fiber": 23,
+          "sugars": 0,
+          "sodium": 27,
+          "potassium": 2080
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "vanilla-extract": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173471",
+        "name": "Vanilla extract"
+      },
+      "compositionBasis": "energy mostly alcohol; amounts are tiny"
+    },
+    "vanilla-powder": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "172235",
+        "name": "Vanilla extract, imitation, alcohol",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 172235,
+        "name": "Vanilla extract, imitation, alcohol",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "10.007",
+        "name": "Sauce, vanilla, powder base, prepared",
+        "macros": {
+          "kcal": 69,
+          "protein": 3.2,
+          "fat": 0.7,
+          "carbs": 12.5,
+          "fiber": 0,
+          "sugars": 5.8,
+          "sodium": 37,
+          "potassium": 158
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "white-cashew-sauce": {
+      "micro": {
+        "db": "composite",
+        "id": "fr-191",
+        "name": "Pack White Cashew Sauce per 100 g",
+        "note": "Computed from recipe ingredients after MICRO fill"
+      },
+      "compositionBasis": "the pack's own White Cashew Sauce, per 100 g"
+    },
+    "white-pepper": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "170933",
+        "name": "Spices, pepper, white",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 170933,
+        "name": "Spices, pepper, white",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.166",
+        "name": "Pepper, white",
+        "macros": {
+          "kcal": 283,
+          "protein": 10.4,
+          "fat": 2.1,
+          "carbs": 42.4,
+          "fiber": 26,
+          "sugars": 0,
+          "sodium": 5,
+          "potassium": 73
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "white-wine-vinegar": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": null,
+        "name": null,
+        "note": "Pre-existing MICRO entry; FDC id not yet confirmed"
+      },
+      "compositionBasis": "USDA vinegar, red wine, as proxy (no separate white wine entry)"
+    },
+    "blueberries-frozen": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173950",
+        "name": "Blueberries, frozen, unsweetened"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.855",
+        "name": "Smoothie mix, strawberries, banana and blueberries, frozen",
+        "macros": {
+          "kcal": 48,
+          "protein": 0.3,
+          "fat": 0.1,
+          "carbs": 10.4,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 191
+        }
+      }
+    },
+    "brussels-sprouts-frozen": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169972",
+        "name": "Brussels sprouts, frozen, unprepared"
+      },
+      "compositionBasis": null
+    },
+    "edamame-frozen": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168410",
+        "name": "Edamame, frozen, unprepared"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.197",
+        "name": "Edamame, soy beans, frozen",
+        "macros": {
+          "kcal": 130,
+          "protein": 11.2,
+          "fat": 7.2,
+          "carbs": 2.8,
+          "fiber": 5,
+          "sugars": 0,
+          "sodium": 6,
+          "potassium": 482
+        }
+      }
+    },
+    "asparagus-beans-frozen": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168389",
+        "name": "Asparagus, raw",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": "yardlong/green beans, frozen",
+      "usda": {
+        "fdcId": 168389,
+        "name": "Asparagus, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "mango-frozen": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169910",
+        "name": "Mangos, raw",
+        "note": "proxy: raw mango (no unsweetened frozen mango in SR Legacy)"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.839",
+        "name": "Mango, frozen",
+        "macros": {
+          "kcal": 46,
+          "protein": 0,
+          "fat": 0,
+          "carbs": 10.7,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 2,
+          "potassium": 140
+        }
+      }
+    },
+    "berries-mixed-frozen": {
+      "micro": {
+        "db": "composite",
+        "id": null,
+        "name": "Mixed berries, frozen (avg)",
+        "note": "Equal-weight average of frozen unsweetened berries"
+      },
+      "compositionBasis": null,
+      "usda": null,
+      "matvaretabellen": {
+        "id": "06.844",
+        "name": "Berries, mixed, frozen",
+        "macros": {
+          "kcal": 47,
+          "protein": 0.9,
+          "fat": 0.7,
+          "carbs": 7.6,
+          "fiber": 3,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 190
+        }
+      },
+      "preferred": "composite"
+    },
+    "pineapple-frozen": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169124",
+        "name": "Pineapple, raw, all varieties",
+        "note": "proxy: raw pineapple (sweetened frozen chunks exist but add sugar)"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.842",
+        "name": "Pineapple, frozen",
+        "macros": {
+          "kcal": 49,
+          "protein": 0,
+          "fat": 0,
+          "carbs": 11.6,
+          "fiber": 1,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 100
+        }
+      }
+    },
+    "raspberries-frozen": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168209",
+        "name": "Raspberries, frozen, red, unsweetened"
+      },
+      "compositionBasis": "macros←USDA-SR 168209",
+      "matvaretabellen": {
+        "id": "06.841",
+        "name": "Raspberries, frozen",
+        "macros": {
+          "kcal": 43,
+          "protein": 1.2,
+          "fat": 0.4,
+          "carbs": 6.3,
+          "fiber": 5,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 190
+        }
+      }
+    },
+    "spinach-frozen": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169287",
+        "name": "Spinach, frozen, chopped or leaf, unprepared (Includes foods for USDA's Food Distribution Program)",
+        "note": "auto-matched; verify"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169287,
+        "name": "Spinach, frozen, chopped or leaf, unprepared (Includes foods for USDA's Food Distribution Program)",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "06.065",
+        "name": "Spinach, frozen",
+        "macros": {
+          "kcal": 19,
+          "protein": 2.2,
+          "fat": 0.6,
+          "carbs": 0.2,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 32,
+          "potassium": 308
+        }
+      },
+      "preferred": "USDA-SR"
+    },
+    "strawberries-frozen": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168173",
+        "name": "Strawberries, frozen, unsweetened"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.855",
+        "name": "Smoothie mix, strawberries, banana and blueberries, frozen",
+        "macros": {
+          "kcal": 48,
+          "protein": 0.3,
+          "fat": 0.1,
+          "carbs": 10.4,
+          "fiber": 2,
+          "sugars": 0,
+          "sodium": 0,
+          "potassium": 191
+        }
+      }
+    },
+    "sweetcorn-frozen": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "168398",
+        "name": "Corn, sweet, yellow, frozen, kernels cut off cob, unprepared"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 168398,
+        "name": "Corn, sweet, yellow, frozen, kernels cut off cob, unprepared"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
+    },
+    "barley-coffee": {
+      "micro": {
+        "db": "Matvaretabellen",
+        "id": "05.093",
+        "name": "Cake, macaroon, Norwegian Prince cake, with apples",
+        "note": "Nordic preferred source"
+      },
+      "compositionBasis": "instant barley/chicory drink powder",
+      "usda": {
+        "fdcId": 170284,
+        "name": "Barley, pearled, raw",
+        "note": "auto-matched; verify",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "05.093",
+        "name": "Cake, macaroon, Norwegian Prince cake, with apples",
+        "macros": {
+          "kcal": 312,
+          "protein": 4.9,
+          "fat": 12.9,
+          "carbs": 42.9,
+          "fiber": 2,
+          "sugars": 18.3,
+          "sodium": 84,
+          "potassium": 98
+        }
+      },
+      "preferred": "Matvaretabellen"
+    },
+    "orange-juice": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169098",
+        "name": "Orange juice, raw"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.244",
+        "name": "Ginger juice, ginger shot, with orange and turmeric, cafe/bakery",
+        "macros": {
+          "kcal": 51,
+          "protein": 0.8,
+          "fat": 0.3,
+          "carbs": 10.8,
+          "fiber": 0.6,
+          "sugars": 0,
+          "sodium": 5,
+          "potassium": 232
+        }
+      }
+    },
+    "pineapple-juice": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169947",
+        "name": "Pineapple juice, canned or bottled, unsweetened, without added ascorbic acid"
+      },
+      "compositionBasis": null,
+      "matvaretabellen": {
+        "id": "06.775",
+        "name": "Pineapple juice",
+        "macros": {
+          "kcal": 46,
+          "protein": 0.4,
+          "fat": 0.1,
+          "carbs": 10.8,
+          "fiber": 0.2,
+          "sugars": 0,
+          "sodium": 2,
+          "potassium": 141
+        }
+      }
+    },
+    "water": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "173217",
+        "name": "Water, bottled, generic",
+        "note": "negligible micros"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 173217,
+        "name": "Water, bottled, generic",
+        "note": "negligible micros",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": {
+        "id": "03.397",
+        "name": "Beef, minced meat, 13 % fat, without salt and water, raw",
+        "macros": {
+          "kcal": 197,
+          "protein": 19.4,
+          "fat": 13.2,
+          "carbs": 0,
+          "fiber": 0,
+          "sugars": 0,
+          "sodium": 67,
+          "potassium": 287
+        }
+      },
+      "preferred": "USDA-SR"
+    }
+  }
+}

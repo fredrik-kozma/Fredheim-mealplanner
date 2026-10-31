@@ -1,3 +1,4 @@
+import { applyBlockedSubstitutions } from '../data/ingredientBlocker.js'
 /**
  * Generates an aggregated shopping list from a weekly plan + recipes.
  * Uses unitNormalizer for proper unit handling and ingredientMatcher for grouping.
@@ -62,7 +63,7 @@ export function isPlainWater(name) {
  * options.recipeSaltLevels: { [recipeId]: level } chosen on a recipe's page;
  * those recipes are bought at their own level instead.
  */
-export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en', batchCook = [], { saltLevel = 'low', recipeSaltLevels = {} } = {}) {
+export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en', batchCook = [], { saltLevel = 'low', recipeSaltLevels = {}, blockedIngredients = null } = {}) {
   const recipeMap = Object.fromEntries(recipes.map(r => [r.id, r]))
 
   // Ingredient occurrences, kept in two buckets so the week's batch prep can
@@ -72,8 +73,11 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
 
   // Expands one recipe into scaled ingredient occurrences on the given bucket.
   function collect(bucket, recipeId, servings) {
-    const recipe = recipeMap[recipeId]
+    let recipe = recipeMap[recipeId]
     if (!recipe) return
+    if (blockedIngredients) {
+      recipe = applyBlockedSubstitutions(recipe, blockedIngredients, lang)
+    }
     // Per-slot override > household default
     const portionCount = servings ?? familySize
     const scaleFactor = portionCount / (recipe.servings || 4)

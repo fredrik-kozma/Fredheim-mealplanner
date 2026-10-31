@@ -23,6 +23,7 @@ import { ingredientsAtLevel, recipeAtLevel, hasStandardSalt, hasStandardAmount, 
 import { fmtNutrient } from '../../utils/nutritionData'
 import { omegaRatio, formatOmegaRatio } from '../../utils/omegaBalance'
 import { useCookingTicks } from '../../hooks/useCookingTicks'
+import { recipeIsBlocked, recipeBlockReasons, applyBlockedSubstitutions, blockedIsActive } from '../../data/ingredientBlocker'
 
 const ICON_BUTTON = 'btn-ghost btn-icon !rounded-full text-slate-500'
 
@@ -99,6 +100,7 @@ export default function RecipeDetail() {
   const isDisliked = useStore(s => (s.dislikedRecipes || []).includes(id))
   const toggleDisliked = useStore(s => s.toggleDisliked)
   const { ticks, toggle: toggleTick, reset: resetTicks } = useCookingTicks(id)
+  const blockedIngredients = useStore(s => s.blockedIngredients) || { groups: [], ids: [] }
 
   const unitSystem = useStore(s => s.units)
   // Normalize legacy 'imperial' value to 'us'.
@@ -134,7 +136,13 @@ export default function RecipeDetail() {
   const displayDescription = translation?.description || recipe.description
   // As written (low salt), and at the chosen salt level: on Standard a
   // salt row shows its standard amount, with the low-salt one beside it.
-  const writtenIngredients = translation?.ingredients || recipe.ingredients
+  const lang = (i18n.language || 'en').slice(0, 2)
+  const showBlockedWarning = blockedIsActive(blockedIngredients) && recipeIsBlocked(recipe, blockedIngredients)
+  const blockReasons = showBlockedWarning ? recipeBlockReasons(recipe, blockedIngredients, t) : []
+  const displayRecipe = applyBlockedSubstitutions(recipe, blockedIngredients, lang)
+  const writtenIngredients = (translation?.ingredients
+    ? applyBlockedSubstitutions({ ...recipe, ingredients: translation.ingredients }, blockedIngredients, lang).ingredients
+    : displayRecipe.ingredients) || recipe.ingredients
   const displayIngredients = ingredientsAtLevel(writtenIngredients, saltLevel)
   const standardSalt = saltLevel === 'standard' && hasStandardSalt(recipe)
   const recipeAtSalt = recipeAtLevel(recipe, saltLevel)
@@ -816,6 +824,18 @@ export default function RecipeDetail() {
             they always were. The labels are judged on the recipe as written
             (low salt): say so for each sodium-based label the standard
             sodium is over. */}
+        
+        {showBlockedWarning && (
+          <div className="mt-3 rounded-control bg-danger-50 border border-danger-200 px-4 py-3 flex gap-3 items-start" role="status">
+            <span aria-hidden className="text-lg leading-none">⚠</span>
+            <div>
+              <p className="text-sm font-semibold text-danger-800">
+                {t('recipes.containsBlocked', { list: blockReasons.join(', ') })}
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="mt-3">
           <CollapsibleSection icon="🏷️" title={t('recipeDetail.about')} summary={aboutSummary}>
             <div className="flex flex-wrap gap-2">

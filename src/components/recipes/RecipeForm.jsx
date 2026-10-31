@@ -1,54 +1,18 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { compressImage } from '../../utils/imageCompressor'
-import UnitSelect from './UnitSelect'
 import { ingredientLabel } from '../../utils/ingredientDictionary'
 import NotFoundPage from '../../pages/NotFoundPage'
-
-/*
- * Pack rows carry a dictionary id and a separate `note`. The form has no
- * fields for either: it shows "name, note" as one editable name, keeps the
- * row exactly as it was while that text is untouched, and turns it into a
- * plain user row (no id, no note) once it is edited — so a renamed row
- * can't keep shopping as the ingredient it used to be.
- */
-function asPlainRow(row, name) {
-  const { ingredient: _id, note: _note, ...rest } = row
-  return { ...rest, name }
-}
-
-function IngredientRow({ ing, onChange, onRemove, t }) {
-  return (
-    <div className="flex gap-2 items-center">
-      <input
-        className="input w-20 flex-shrink-0"
-        placeholder={t('recipeForm.ingredientQty')}
-        value={ing.quantity || ''}
-        onChange={e => onChange({ ...ing, quantity: parseFloat(e.target.value) || 0 })}
-        type="number"
-        min="0"
-        step="any"
-      />
-      <UnitSelect
-        value={ing.unit || ''}
-        onChange={u => onChange({ ...ing, unit: u })}
-      />
-      <input
-        className="input flex-1"
-        placeholder={t('recipeForm.ingredientName')}
-        value={ingredientLabel(ing)}
-        onChange={e => onChange(asPlainRow(ing, e.target.value))}
-      />
-      <button type="button" onClick={onRemove} className="btn-ghost btn-icon text-slate-400 hover:text-danger-500">
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
-  )
-}
+import IngredientRowLinked from './IngredientRowLinked'
+import FormNutritionPreview from './FormNutritionPreview'
+import { useFormNutrition } from '../../hooks/useFormNutrition'
+import { withComputedNutrition, recipeHasSaltSwitch } from '../../utils/computeUserRecipeNutrition'
+import { autoLinkIngredientRows } from '../../utils/autoLinkIngredients'
+import { addMissingIngredientRequest } from '../../utils/missingIngredientRequests'
+import { loadNutritionDb } from '../../utils/loadNutritionDb'
+import DICTIONARY from '../../data/ingredientDictionary.json'
 
 const EMPTY_FORM = {
   title: '',
@@ -126,6 +90,19 @@ export default function RecipeForm() {
   const [newStep, setNewStep] = useState('')
   const [errors, setErrors] = useState({})
   const fileRef = useRef()
+  const savingRef = useRef(false)
+
+  // Live nutrition: starts at the user's salt setting; the preview's switch
+  // only changes it for this form.
+  const settingsSalt = useStore(s => s.saltLevel)
+  const [saltLevel, setSaltLevel] = useState(settingsSalt || 'low')
+  const [nutritionDb, setNutritionDb] = useState(null)
+  useEffect(() => { loadNutritionDb().then(setNutritionDb).catch(() => {}) }, [])
+  const { loading: nutritionLoading, perServing, warnings: nutritionWarnings, omegaRatio } = useFormNutrition({
+    ingredients: form.ingredients,
+    servings: form.servings,
+    saltLevel,
+  })
 
   // Translation editor: a collapsible panel with one tab per other
   // language. Each language keeps its own { title, description, ingNames,
@@ -240,9 +217,16 @@ export default function RecipeForm() {
     return Object.keys(e).length === 0
   }
 
-  function handleSubmit(ev) {
+  async function handleSubmit(ev) {
     ev.preventDefault()
     if (!validate()) return
+
+    // The nutrition chunk can still be loading on a slow connection; a second
+    // tap during that wait must not save the recipe twice.
+    if (savingRef.current) return
+    savingRef.current = true
+    const db = nutritionDb || await loadNutritionDb().catch(() => null)
+    savingRef.current = false
 
     // Build translations object, preserving any existing translations.
     // Write a translation for each OTHER language whose title was filled
@@ -277,7 +261,11 @@ export default function RecipeForm() {
           if (ing.ingredient && orig && orig.ingredient === ing.ingredient && text === ingredientLabel(orig).trim()) {
             return orig.note ? { ...base, name: orig.name, note: orig.note } : { ...base, name: orig.name }
           }
-          if (text) return asPlainRow(ing, text)
+          if (text) {
+            // A renamed row can't keep shopping as the ingredient it used to be.
+            const { ingredient: _id, ...plain } = base
+            return { ...plain, name: text }
+          }
           return base
         })
         // Index-matched to base steps; fall back to the base step text
@@ -290,7 +278,7 @@ export default function RecipeForm() {
       }
     }
 
-    const data = {
+    let data = {
       ...form,
       servings: Number(form.servings) || 4,
       prepTime: form.prepTime ? Number(form.prepTime) : null,
@@ -304,6 +292,8 @@ export default function RecipeForm() {
     }
 
     try {
+      data.ingredients = autoLinkIngredientRows(data.ingredients || form.ingredients, DICTIONARY)
+      if (db) data = withComputedNutrition(data, db, { saltLevel: 'low' })
       if (isEdit) {
         updateRecipe(id, data)
         navigate(`/recipes/${id}`)
@@ -448,16 +438,30 @@ export default function RecipeForm() {
                 <p className="text-sm text-slate-400 py-2">{t('recipeForm.noIngredientsYet')}</p>
               )}
               {form.ingredients.map((ing, i) => (
-                <IngredientRow
+                <IngredientRowLinked
                   key={i}
                   ing={ing}
+                  dictionary={DICTIONARY}
+                  nutritionFood={nutritionDb?.foods?.[ing.ingredient]}
                   onChange={val => updateIngredient(i, val)}
                   onRemove={() => removeIngredient(i)}
-                  t={t}
+                  onRequestMissing={name => {
+                    addMissingIngredientRequest({ name, lang: currentLang, recipeTitle: form.title })
+                  }}
                 />
               ))}
             </div>
           </div>
+
+          <FormNutritionPreview
+            loading={nutritionLoading}
+            perServing={perServing}
+            omegaRatio={omegaRatio}
+            warnings={nutritionWarnings}
+            saltLevel={saltLevel}
+            onSaltLevelChange={setSaltLevel}
+            showSaltSwitch={recipeHasSaltSwitch(form.ingredients)}
+          />
 
           {/* Steps */}
           <div>
@@ -579,7 +583,7 @@ export default function RecipeForm() {
                       <div className="space-y-2">
                         {form.ingredients.map((ing, i) => (
                           <div key={i} className="flex gap-2 items-center">
-                            <span className="text-xs text-slate-400 w-24 flex-shrink-0 truncate">{ing.name || `#${i + 1}`}</span>
+                            <span className="text-xs text-slate-400 w-24 flex-shrink-0 truncate">{ing.name || ingredientLabel(ing) || `#${i + 1}`}</span>
                             <svg className="w-3.5 h-3.5 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                             </svg>

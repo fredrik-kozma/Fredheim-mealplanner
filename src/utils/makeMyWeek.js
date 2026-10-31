@@ -64,6 +64,11 @@ import { recipeHasAvoidedAllergen, recipeAllergens } from '../data/allergens'
 import { STARTER_PLANS } from '../data/starterPlans'
 import { LOW_SALT_GOALS, normalizeSaltLevel } from './saltLevel'
 import {
+  MMW_FOCUS_NUTRIENTS, FOCUS_MAX, FOCUS_DAILY_TARGET, FOCUS_ABBR,
+  normalizeFocusNutrients, focusScoreBonus, focusWeekAverages, focusContributorChips,
+} from './mmwFocus.js'
+export { MMW_FOCUS_NUTRIENTS, FOCUS_MAX, FOCUS_DAILY_TARGET, FOCUS_ABBR, normalizeFocusNutrients }
+import {
   FREDHEIM_RECIPES_WITH_PICTURES_PACK,
   FREDHEIM_REVERSAL_PROTOCOL_PACK,
   FREDHEIM_FMD_5DAY_PACK,
@@ -212,6 +217,8 @@ export function defaultAnswers({ familySize, avoidedAllergens, avoidHoney, saltL
     saltLevel: normalizeSaltLevel(saltLevel),
     preferFavourites: true,
     fewerIngredients: false,
+    // Optional: up to 3 nutrients to gently favour (see mmwFocus.js).
+    focusNutrients: [],
     // From the store, not asked: recipe ids.
     favourites: [...(favourites || [])],
     disliked: [...(disliked || [])],
@@ -428,6 +435,7 @@ export function makeMyWeek({ recipes, answers, seed = 1, installedPackIds, slotN
     goals: answerGoals(merged),
     saltLevel: saltLevelFor(merged),
     kcal: normalizeKcal(merged.kcal),
+    focusNutrients: normalizeFocusNutrients(merged.focusNutrients),
   }
   const installed = installedPackIds ||
     [...new Set((recipes || []).map(r => r.sourcePackId).filter(Boolean))]
@@ -453,16 +461,27 @@ export function makeMyWeek({ recipes, answers, seed = 1, installedPackIds, slotN
     // At least this many favourites a week, where they fit the rules.
     wantFavourites: Math.min(MIN_FAVOURITES, pool.filter(r => favourites.has(r.id)).length),
     keys: new Map(pool.map(r => [r.id, ingredientKeys(r)])),
+    focus: a.focusNutrients,
   }
 
-  let best = null
-  for (let i = 0; i < ATTEMPTS; i++) {
-    const rng = mulberry32(hashSeed(`${seed}:${i}`))
-    const week = buildAttempt(ctx, rng)
-    if (!best || week.penalty < best.penalty) best = week
+  const pickBest = (c) => {
+    let best = null
+    for (let i = 0; i < ATTEMPTS; i++) {
+      const rng = mulberry32(hashSeed(`${seed}:${i}`))
+      const week = buildAttempt(c, rng)
+      if (!best || week.penalty < best.penalty) best = week
+    }
+    return best
   }
 
-  return finish(best, ctx, { slots, installed, seed })
+  const best = pickBest(ctx)
+  // Same seed family without focus → fair % bars on the result screen.
+  let baselineWeek = null
+  if (ctx.focus.length) {
+    baselineWeek = pickBest({ ...ctx, focus: [], a: { ...ctx.a, focusNutrients: [] } })
+  }
+
+  return finish(best, ctx, { slots, installed, seed, baselineWeek })
 }
 
 function buildAttempt(ctx, rng) {
@@ -525,6 +544,7 @@ function buildAttempt(ctx, rng) {
       if (ctx.lowSodium) s -= 0.8 * Math.min(1.5, (Number(n.sodium) || 0) / 800)
       // A light dinner: soups and stews first, the heaviest mains last.
       if (light) s += (r.category === 'Soup' ? 0.1 : 0) - Math.max(0, Number(n.calories) / light - 1)
+      if (ctx.focus?.length) s += focusScoreBonus(n, ctx.focus)
     } else {
       s -= 0.15
     }
@@ -1016,7 +1036,7 @@ function pickExtraBread(cands, rng) {
   return top
 }
 
-function finish(week, ctx, { slots, installed, seed }) {
+function finish(week, ctx, { slots, installed, seed, baselineWeek = null }) {
   const { a, pool } = ctx
   const notices = []
 
@@ -1127,6 +1147,41 @@ function finish(week, ctx, { slots, installed, seed }) {
   notices.push({ key: 'saltLevel', level: a.saltLevel, auto: a.goals.some(g => LOW_SALT_GOALS.includes(g)) })
 
   const planned = [...new Set(week.days.flatMap(d => Object.values(d).flat().map(it => it.id)))]
+  const focusNutrients = ctx.focus || []
+  let focus = null
+  if (focusNutrients.length) {
+    notices.push({ key: 'focusNutrients', nutrients: focusNutrients })
+    const recipeById = week.byId
+    const people = a.people
+    const withPlan = { plan, focusNutrients }
+    const withAvg = focusWeekAverages(withPlan, { people, recipeById })
+    let withoutPct = null
+    if (baselineWeek) {
+      const basePlan = {}
+      DAY_KEYS.forEach((dayKey, day) => {
+        const d = baselineWeek.days[day]
+        const out = {}
+        for (const role of ['breakfast', 'lunch', 'dinner']) {
+          if (!d[role]?.length) continue
+          out[slots[role]] = d[role].map(it => ({
+            recipeId: it.id,
+            servings: it.servings === a.people ? null : it.servings,
+          }))
+        }
+        basePlan[dayKey] = out
+      })
+      withoutPct = focusWeekAverages(
+        { plan: basePlan, focusNutrients },
+        { people, recipeById: baselineWeek.byId },
+      ).pct
+    }
+    focus = {
+      nutrients: focusNutrients,
+      withPct: withAvg.pct,
+      withoutPct,
+      chips: focusContributorChips(withPlan, { people, recipeById, focus: focusNutrients }),
+    }
+  }
   return {
     kind: 'week',
     plan,
@@ -1136,6 +1191,8 @@ function finish(week, ctx, { slots, installed, seed }) {
     stats,
     saltLevel: a.saltLevel,
     goals: ctx.goals,
+    focusNutrients,
+    focus,
     // Different ingredients the week's shopping needs (water left out).
     uniqueIngredients: uniqueIngredientCount(planned.map(id => week.byId.get(id)).filter(Boolean)),
     // Added to fill the day, not chosen as dishes: exempt from the repeat

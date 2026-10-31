@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { NUTRITION_GROUPS, fmtNutrient, dvColour } from '../../utils/nutritionData'
+import { VISIBLE_NUTRITION_GROUPS, fmtNutrient, dvColour } from '../../utils/nutritionData'
 import { omegaRatio } from '../../utils/omegaBalance'
 import OmegaRatioRow from '../nutrition/OmegaRatioRow'
 
@@ -105,7 +105,7 @@ export default function NutritionPanel({ recipe, displayServings, bare = false }
 
       {/* Nutrient groups */}
       <div className="space-y-5">
-        {NUTRITION_GROUPS.map(group => {
+        {VISIBLE_NUTRITION_GROUPS.map(group => {
           // Skip groups where every value is null/0 (e.g. user-created recipes
           // with empty nutrition)
           const anyValue = group.fields.some(f => {

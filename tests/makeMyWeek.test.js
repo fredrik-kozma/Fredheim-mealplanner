@@ -6,7 +6,9 @@ import assert from 'node:assert/strict'
 import {
   makeMyWeek, buildPool, recipeHasHoney, resolveSlotNames, defaultAnswers, kcalTarget, GOAL_TAG, DAY_KEYS,
   FREDHEIM_PACK_ID, REVERSAL_PACK_ID, FMD_PACK_ID, FMD_STARTER_ID, FRUIT,
+  normalizeFocusNutrients, MMW_FOCUS_NUTRIENTS, FOCUS_MAX,
 } from '../src/utils/makeMyWeek.js'
+import { focusScoreBonus, focusDensity, FOCUS_DAILY_TARGET } from '../src/utils/mmwFocus.js'
 import { weekTipsData, renderWeekTips } from '../src/utils/weekTips.js'
 import { generateShoppingList } from '../src/utils/shoppingListGenerator.js'
 import { readFileSync } from 'node:fs'
@@ -825,4 +827,69 @@ test('the calorie target and meals a day are saved settings, in the backup too',
   assert.deepEqual(saved(useStore.getState()), { planKcalTarget: null, planMeals: 2 })
   // The wizard starts from them.
   assert.equal(defaultAnswers({ kcal: 1800, meals: 3 }).kcal, 1800)
+})
+
+
+test('normalizeFocusNutrients: at most three known ids, order kept', () => {
+  assert.deepEqual(normalizeFocusNutrients(['iron', 'calcium', 'iron', 'zinc', 'bogus', 'fiber']), ['iron', 'calcium', 'zinc'])
+  assert.deepEqual(normalizeFocusNutrients(null), [])
+  assert.equal(FOCUS_MAX, 3)
+  assert.ok(MMW_FOCUS_NUTRIENTS.includes('omega3'))
+  assert.equal(FOCUS_DAILY_TARGET.omega3, 2)
+})
+
+test('focus density bonus is soft and zero without focus', () => {
+  const rich = { calories: 200, iron: 6, calcium: 400 }
+  assert.equal(focusScoreBonus(rich, []), 0)
+  assert.ok(focusDensity(rich, ['iron']) > focusDensity({ calories: 200, iron: 1 }, ['iron']))
+  assert.ok(focusScoreBonus(rich, ['iron', 'calcium']) > 0)
+  assert.ok(focusScoreBonus(rich, ['iron']) < 5) // soft nudge, not a hard override
+})
+
+test('empty focusNutrients matches a week without the field (same seed)', () => {
+  const a = { ...BASE, meals: 3, batch: false, time: 'medium', kcal: 2000 }
+  const withEmpty = makeMyWeek({ recipes: ALL, answers: { ...a, focusNutrients: [] }, seed: 42 })
+  const without = makeMyWeek({ recipes: ALL, answers: a, seed: 42 })
+  assert.deepEqual(withEmpty.plan, without.plan)
+  assert.equal(withEmpty.focus, null)
+  assert.deepEqual(withEmpty.focusNutrients, [])
+})
+
+test('focus raises the chosen nutrient vs no-focus baseline; hard rules still hold', () => {
+  const answers = { ...BASE, meals: 3, batch: false, time: 'medium', kcal: 2000, focusNutrients: ['iron', 'calcium'] }
+  const week = makeMyWeek({ recipes: ALL, answers, seed: 7 })
+  assert.ok(week.focus, 'focus summary present')
+  assert.deepEqual(week.focusNutrients, ['iron', 'calcium'])
+  assert.ok(week.focus.withPct.iron > 0)
+  assert.ok(week.focus.withoutPct, 'baseline compare present')
+  // At least one of the focus nutrients should improve (usually both; calcium is the usual gap).
+  const dIron = week.focus.withPct.iron - week.focus.withoutPct.iron
+  const dCa = week.focus.withPct.calcium - week.focus.withoutPct.calcium
+  assert.ok(dIron + dCa > 0, `expected net focus gain, got Fe ${dIron} Ca ${dCa}`)
+
+  // Hard rules: no consecutive-day repeats, dinner never heavier than BF/lunch when fitted.
+  const all = items(week)
+  const days = new Map()
+  for (const it of all) {
+    if ((week.extras || []).some(x => x.day === DAY_KEYS[it.day] && x.recipeId === it.recipeId)) continue
+    days.set(it.recipeId, [...(days.get(it.recipeId) || []), it.day])
+  }
+  for (const [id, list] of days) {
+    const sorted = [...list].sort((a, b) => a - b)
+    for (let i = 1; i < sorted.length; i++) {
+      assert.ok(sorted[i] - sorted[i - 1] >= 2, `${id} consecutive ${sorted}`)
+    }
+    assert.ok(list.length <= 2, `${id} used ${list.length} times`)
+  }
+  assert.ok(week.stats?.fitted)
+  for (const [day, meals] of Object.entries(week.stats.perMeal || {})) {
+    const b = meals.Breakfast ?? meals.breakfast
+    const l = meals.Lunch ?? meals.lunch
+    const d = meals.Dinner ?? meals.dinner
+    if (b != null && d != null) assert.ok(d <= b + 1, `${day}: dinner ${d} > breakfast ${b}`)
+    if (l != null && d != null) assert.ok(d <= l + 1, `${day}: dinner ${d} > lunch ${l}`)
+  }
+  // Avoid extreme monoculture: a week still needs several distinct recipes.
+  const unique = new Set(all.map(it => it.recipeId))
+  assert.ok(unique.size >= 10, `too few unique recipes: ${unique.size}`)
 })

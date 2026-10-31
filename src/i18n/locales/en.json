@@ -86,14 +86,15 @@
     "notFound": "Recipe not found.",
     "backToRecipes": "Back to Recipes",
     "fmdBadge": "Fasting day",
-    "allergenHidden_one": "{{count}} recipe hidden by your allergen filter.",
-    "allergenHidden_other": "{{count}} recipes hidden by your allergen filter.",
+    "allergenHidden_one": "{{count}} recipe hidden due to your blocked ingredients.",
+    "allergenHidden_other": "{{count}} recipes hidden due to your blocked ingredients.",
     "allergenPaused": "Allergen filter paused — showing all recipes.",
     "allergenShowAll": "Show anyway",
     "allergenResume": "Re-apply",
     "noTimeHidden_one": "{{count}} recipe has no time listed and is not shown.",
     "noTimeHidden_other": "{{count}} recipes have no time listed and are not shown.",
-    "noResultsTitle": "Nothing found"
+    "noResultsTitle": "Nothing found",
+    "containsBlocked": "Contains {{list}}"
   },
   "recipeDetail": {
     "back": "Back",
@@ -185,7 +186,32 @@
     "translatedDescription": "Description in {{lang}} (optional)",
     "translatedDescPlaceholder": "Short description…",
     "translatedIngredients": "Ingredient names in {{lang}}",
-    "translatedSteps": "Steps in {{lang}}"
+    "translatedSteps": "Steps in {{lang}}",
+    "linkedToDatabase": "Linked to database",
+    "notInDatabase": "Not in the database",
+    "notInDatabaseHint": "This won’t count toward nutrition until we add it.",
+    "noIngredientMatch": "No matching ingredient",
+    "useAsTyped": "Use “{{name}}” as typed",
+    "ingredientNotePlaceholder": "Note (e.g. diced)",
+    "tellUsMissing": "Tell us it’s missing",
+    "missingThanks": "Thanks — saved on this device for Fredrik.",
+    "nutritionPreview": "Nutrition (live)",
+    "nutritionLoading": "Loading nutrition…",
+    "nutritionPerServing": "Per serving (estimated from your ingredients)",
+    "nutKcal": "Calories",
+    "nutProtein": "Protein",
+    "nutFiber": "Fibre",
+    "nutSodium": "Sodium",
+    "nutOmegaRatio": "Omega-6:3",
+    "omegaRatioNone": "n/a",
+    "nutritionWarningsTitle": "Some rows weren’t counted",
+    "nutritionWarningsMore": "and {{count}} more",
+    "saltLow": "Low salt",
+    "saltStandard": "Standard",
+    "removeIngredient": "Remove ingredient",
+    "missingIngredientTitle": "Missing ingredient?",
+    "exportMissing": "Export requests",
+    "missingLocalOnly": "Requests stay on this device (not uploaded)."
   },
   "planner": {
     "title": "Weekly Planner",
@@ -432,13 +458,21 @@
     "tutorial": "Intro tour",
     "tutorialDesc": "See what Fredheim can do for you and how to plan a week in a minute.",
     "showTutorial": "Take the tour",
-    "allergens": "Allergens to avoid",
-    "allergensDesc": "Recipes containing these are hidden from the recipe list and the planner.",
+    "allergens": "Blocked ingredients",
+    "allergensDesc": "Recipes with these ingredients are hidden from the list, search, Make my week, Today, the picker and starter plans.",
     "allergensClear": "Clear all",
     "noHoneyHint": "Make my week leaves out recipes with honey.",
     "allergensWarning": "Detected automatically from ingredient names. Always check the full ingredient list yourself — this cannot account for brand differences or “may contain” cross-contamination.",
     "packsDesc": "Install collections of recipes, or build a pack of your own to share.",
-    "openPacks": "Open recipe packs"
+    "openPacks": "Open recipe packs",
+    "allergensSearch": "Search any ingredient",
+    "allergensSearchHint": "Same search as the recipe form (EN / NO / SV).",
+    "allergensBlock": "Block",
+    "allergensBlocked": "Currently blocked",
+    "allergensGroups": "Common allergen groups",
+    "oatsGlutenNote": "Oats are listed separately. Some oat products may contain traces of gluten.",
+    "perNut": "Individual nuts",
+    "containsHint": "Contains {{name}}"
   },
   "units": {
     "none": "— none —",
@@ -783,7 +817,10 @@
     "soy": "Soy",
     "sesame": "Sesame",
     "mustard": "Mustard",
-    "celery": "Celery"
+    "celery": "Celery",
+    "coconut": "Coconut",
+    "oats": "Oats",
+    "corn": "Corn"
   },
   "makeMyWeek": {
     "button": "Make my week",
@@ -805,7 +842,8 @@
       "prefs": "A few preferences",
       "breakfast": "Breakfast: savoury, sweet or both?",
       "salt": "Salt level",
-      "kcal": "About how many calories a day?"
+      "kcal": "About how many calories a day?",
+      "focus": "Any nutrients to focus on?"
     },
     "goals": {
       "general": "Healthy everyday food",
@@ -891,7 +929,8 @@
       "portionsFitted": "Portions are sized (½ to 2 each) so each day lands near your target of about {{target}} kcal. The shopping list buys for that, and the week still scales with the number of people.",
       "portionsFittedDinner": "Portions are sized (½ to 2 each) so each dinner lands near about {{target}} kcal. The shopping list buys for that, and the week still scales with the number of people.",
       "kcalOffTarget_one": "On 1 day the dishes that fit your choices don’t quite reach within 10% of your target. Adjust a portion in the planner if you like.",
-      "kcalOffTarget_other": "On {{count}} days the dishes that fit your choices don’t quite reach within 10% of your target. Adjust a portion in the planner if you like."
+      "kcalOffTarget_other": "On {{count}} days the dishes that fit your choices don’t quite reach within 10% of your target. Adjust a portion in the planner if you like.",
+      "focusNutrients": "Favouring recipes higher in {{list}} — calorie split and variety unchanged."
     },
     "goalsHint": "Pick one or more.",
     "breakfasts": {
@@ -925,7 +964,29 @@
     "mealKcal": "≈ {{kcal}} kcal",
     "estimateNote": "kcal per person, from the recipes’ nutrition data.",
     "statsDayTarget": "About {{kcal}} kcal and {{fibre}} g fibre per person a day (your target: {{target}} kcal).",
-    "statsDinnerTarget": "About {{kcal}} kcal and {{fibre}} g fibre per person per dinner (aiming for {{target}} kcal)."
+    "statsDinnerTarget": "About {{kcal}} kcal and {{fibre}} g fibre per person per dinner (aiming for {{target}} kcal).",
+    "focusHint": "Pick up to 3 (optional). Your calorie target, meal split and variety rules stay the same — we just favour recipes richer in these.",
+    "focusCount": "{{n}} of {{max}} selected · optional",
+    "focusNoneNote": "Vitamin B12 and vitamin D are left out here — in plant-based cooking they usually come from fortified foods or a supplement.",
+    "focusCardTitle": "Focus nutrients · daily average",
+    "focusWith": "~{{pct}}% of daily value",
+    "focusWithGuide": "~{{pct}}% of 2 g guide",
+    "focusVsBaseline": "{{delta}} vs no focus",
+    "focusChip": "↑ {{abbr}}",
+    "nutrients": {
+      "iron": "Iron",
+      "calcium": "Calcium",
+      "omega3": "Omega-3",
+      "fiber": "Fibre",
+      "protein": "Protein",
+      "zinc": "Zinc",
+      "magnesium": "Magnesium",
+      "potassium": "Potassium",
+      "folate": "Folate",
+      "vitaminC": "Vitamin C",
+      "vitaminE": "Vitamin E",
+      "selenium": "Selenium"
+    }
   },
   "timer": {
     "title": "Timer",

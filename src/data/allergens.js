@@ -172,8 +172,18 @@ export function recipeAllergens(recipe) {
  * True when a recipe should be hidden for someone avoiding `avoided`
  * (an array of allergen ids).
  */
-export function recipeHasAvoidedAllergen(recipe, avoided) {
+function recipeHasAvoidedAllergen_legacy(recipe, avoided) {
   if (!avoided?.length) return false
   const present = recipeAllergens(recipe)
   return avoided.some(id => present.includes(id))
 }
+export { recipeHasAvoidedAllergen_legacy }
+
+
+// Prefer id-based blocker; keep this file's regex helpers for free-text fallback.
+export {
+  recipeHasAvoidedAllergen,
+  recipeIsBlocked,
+  recipeBlockReasons,
+  applyBlockedSubstitutions,
+} from './ingredientBlocker.js'

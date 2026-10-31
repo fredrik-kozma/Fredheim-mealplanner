@@ -17,6 +17,7 @@ export default function ShoppingList() {
   const { t, i18n } = useTranslation()
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const weekPlan = useStore(s => s.weekPlan)
+  const blockedIngredients = useStore(s => s.blockedIngredients)
   const recipes = useStore(s => s.recipes)
   const familySize = useStore(s => s.familySize)
   const checkedItems = useStore(s => s.checkedItems)
@@ -64,7 +65,7 @@ export default function ShoppingList() {
   // recipe's own choice from its page.
   const saltLevel = useStore(s => s.saltLevel)
   const recipeSaltLevels = useStore(s => s.recipeSaltLevels)
-  const rawGroups = generateShoppingList(weekPlan, recipes, familySize, currentLang, batchCook, { saltLevel, recipeSaltLevels })
+  const rawGroups = generateShoppingList(weekPlan, recipes, familySize, currentLang, batchCook, { blockedIngredients, saltLevel, recipeSaltLevels })
 
   const srcKey = (itemId, recipe) => `${itemId}::${recipe}`
 

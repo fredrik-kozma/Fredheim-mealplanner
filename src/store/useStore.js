@@ -1,8 +1,9 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { idbStorage, migrateFromLocalStorage } from './idbStorage'
-import { STARTER_PLANS } from '../data/starterPlans'
+import { STARTER_PLANS, filterStarterPlanAgainstBlocks } from '../data/starterPlans'
 import { DEFAULT_SALT_LEVEL, SALT_LEVELS, normalizeSaltLevel } from '../utils/saltLevel'
+import { migrateAvoidedAllergens, normalizeBlocked, emptyBlockedIngredients } from '../data/ingredientBlocker'
 
 // Fire-and-forget — copy any pre-IndexedDB localStorage blob over the
 // first time the new app loads on an existing device, so users don't
@@ -797,16 +798,44 @@ const useStore = create(
       // settings and applies everywhere automatically — you can't forget to
       // re-apply it. Recipes containing any of these are hidden from the
       // recipe list and the planner's picker.
-      avoidedAllergens: [],
+      avoidedAllergens: [], // mirrored from blockedIngredients.groups for MMW / legacy
+      blockedIngredients: { groups: [], ids: [] },
 
       toggleAvoidedAllergen: (id) => set((s) => {
-        const cur = s.avoidedAllergens || []
-        return {
-          avoidedAllergens: cur.includes(id) ? cur.filter(a => a !== id) : [...cur, id],
-        }
+        const b = normalizeBlocked(s.blockedIngredients)
+        const groups = b.groups.includes(id) ? b.groups.filter(a => a !== id) : [...b.groups, id]
+        const blockedIngredients = { groups, ids: b.ids }
+        return { blockedIngredients, avoidedAllergens: groups }
       }),
 
-      clearAvoidedAllergens: () => set({ avoidedAllergens: [] }),
+      toggleBlockedGroup: (id) => set((s) => {
+        const b = normalizeBlocked(s.blockedIngredients)
+        const groups = b.groups.includes(id) ? b.groups.filter(a => a !== id) : [...b.groups, id]
+        const blockedIngredients = { groups, ids: b.ids }
+        return { blockedIngredients, avoidedAllergens: groups }
+      }),
+
+      toggleBlockedId: (id) => set((s) => {
+        const b = normalizeBlocked(s.blockedIngredients)
+        const ids = b.ids.includes(id) ? b.ids.filter(a => a !== id) : [...b.ids, id]
+        const blockedIngredients = { groups: b.groups, ids }
+        return { blockedIngredients, avoidedAllergens: b.groups }
+      }),
+
+      clearAvoidedAllergens: () => set({
+        avoidedAllergens: [],
+        blockedIngredients: emptyBlockedIngredients(),
+      }),
+
+      clearBlockedIngredients: () => set({
+        avoidedAllergens: [],
+        blockedIngredients: emptyBlockedIngredients(),
+      }),
+
+      setBlockedIngredients: (next) => set(() => {
+        const blockedIngredients = normalizeBlocked(next)
+        return { blockedIngredients, avoidedAllergens: blockedIngredients.groups }
+      }),
 
       // "No honey (strict vegan)" from Make my week. Not an allergen, so it
       // doesn't hide recipes elsewhere; it is the answer Make my week starts
@@ -1203,7 +1232,13 @@ const useStore = create(
           plan[day] = {}
           for (const slot of s.mealSlots) plan[day][slot] = []
         }
-        const incoming = starterPlan.plan || {}
+        const incomingRaw = starterPlan.plan || {}
+        const recipeMap = Object.fromEntries((s.recipes || []).map(r => [r.id, r]))
+        const { plan: incoming } = filterStarterPlanAgainstBlocks(
+          incomingRaw,
+          recipeMap,
+          s.blockedIngredients || { groups: s.avoidedAllergens || [], ids: [] },
+        )
         for (const [day, slots] of Object.entries(incoming)) {
           if (!plan[day]) {
             plan[day] = {}
@@ -1483,11 +1518,18 @@ const useStore = create(
           recipes: (persisted.recipes || []).filter(r => !r.sourcePackId || r.userEdited),
         }
       },
-      version: 11,
+      version: 12,
       migrate: (persistedState, version) => {
         // v11: Make my week no longer plans a snack. Someone who had "3 meals
         // + snack" keeps planMeals 3; a Snack row they already have stays.
         if (version < 11) delete persistedState.planSnack
+        // v12: blockedIngredients {groups,ids}; migrate avoidedAllergens → groups
+        if (version < 12 || !persistedState.blockedIngredients) {
+          // blockedIngredients migration
+          const migrated = migrateAvoidedAllergens(persistedState.avoidedAllergens || [])
+          persistedState.blockedIngredients = migrated
+          persistedState.avoidedAllergens = migrated.groups
+        }
         // v10: the intro tour opens once for new users. Anyone already
         // using the app has found their way around, so it stays closed
         // for them (they can still take it from Settings).

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { NUTRITION_GROUPS, fmtNutrient, dvColour } from '../../utils/nutritionData'
+import { VISIBLE_NUTRITION_GROUPS, fmtNutrient, dvColour } from '../../utils/nutritionData'
 
 /**
  * Renders a totals object (already summed across everything eaten) against
@@ -31,7 +31,7 @@ export default function NutritionCoverage({ totals, label }) {
         </p></div>
       ) : (
         <div className="space-y-5">
-          {NUTRITION_GROUPS.map(group => {
+          {VISIBLE_NUTRITION_GROUPS.map(group => {
             const anyValue = group.fields.some(f => {
               const v = totals[f.key]
               return v !== null && v !== undefined && v !== 0

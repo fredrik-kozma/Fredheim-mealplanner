@@ -6,7 +6,8 @@ import { BUILT_IN_PACKS } from '../../data/installedPacks'
 import {
   makeMyWeek, defaultAnswers, resolveSlotNames, answerGoals, saltLevelFor,
   MMW_GOALS, MMW_TIMES, MMW_MEALS, MMW_BREAKFASTS, EXCLUSIVE_GOALS,
-  MMW_KCAL_PICKS, KCAL_MIN, KCAL_MAX,normalizeKcal,
+  MMW_KCAL_PICKS, KCAL_MIN, KCAL_MAX, normalizeKcal,
+  MMW_FOCUS_NUTRIENTS, FOCUS_MAX, normalizeFocusNutrients,
 } from '../../utils/makeMyWeek'
 import { SALT_LEVELS, LOW_SALT_GOALS } from '../../utils/saltLevel'
 import { noticeText as renderNotice, statsText as renderStats, weekTipsData, renderWeekTips } from '../../utils/weekTips'
@@ -18,6 +19,10 @@ const GOAL_ICONS = { general: '🥗', weight: '⚖️', bloodPressure: '💗', d
 const MEAL_ICONS = { 3: '🍳🥣🍲', 2: '🍳🥣', 1: '🍲' }
 const TIME_ICONS = { quick: '⚡', medium: '⏱️', any: '🧑‍🍳' }
 const BREAKFAST_ICONS = { both: '🍳🥣', savoury: '🍳', sweet: '🥣' }
+const FOCUS_ICONS = {
+  iron: '🧲', calcium: '🦴', omega3: '🐟', fiber: '🌾', protein: '💪', zinc: '⚡',
+  magnesium: '🌿', potassium: '🍌', folate: '🥬', vitaminC: '🍊', vitaminE: '🌻', selenium: '🌰',
+}
 
 // The answers from the last time the modal was used this session, so a
 // Shuffle-and-tweak round doesn't start the questions from scratch. People,
@@ -26,12 +31,28 @@ const BREAKFAST_ICONS = { both: '🍳🥣', savoury: '🍳', sweet: '🥣' }
 // when a week is used). A single `goal` (from before goals were multiple
 // choice) is read as a list of one.
 let lastAnswers = null
-const REMEMBERED = ['time', 'batch', 'meals', 'kcal', 'breakfast', 'preferFavourites', 'fewerIngredients', 'saltLevel']
+const REMEMBERED = ['time', 'batch', 'meals', 'kcal', 'breakfast', 'preferFavourites', 'fewerIngredients', 'saltLevel', 'focusNutrients']
+const MMW_STORAGE_KEY = 'fredheim-mmw-remembered'
 function remembered(last) {
   if (!last) return {}
   const out = { goals: answerGoals(last) }
   for (const k of REMEMBERED) if (last[k] !== undefined) out[k] = last[k]
+  if (out.focusNutrients) out.focusNutrients = normalizeFocusNutrients(out.focusNutrients)
   return out
+}
+function loadRemembered() {
+  let stored = null
+  try {
+    const raw = localStorage.getItem(MMW_STORAGE_KEY)
+    if (raw) stored = JSON.parse(raw)
+  } catch { /* ignore */ }
+  // Session answers win over stored (shuffle/tweak); stored covers a new visit.
+  return { ...remembered(stored), ...remembered(lastAnswers) }
+}
+function saveRemembered(a) {
+  lastAnswers = a
+  const out = remembered(a)
+  try { localStorage.setItem(MMW_STORAGE_KEY, JSON.stringify(out)) } catch { /* ignore */ }
 }
 
 // A switch row: label left, on/off right.
@@ -126,7 +147,7 @@ export default function MakeMyWeekModal({ onClose }) {
       familySize, avoidedAllergens, avoidHoney, saltLevel, favourites, disliked,
       kcal: planKcalTarget, meals: planMeals,
     }),
-    ...remembered(lastAnswers),
+    ...loadRemembered(),
   }))
   // The typed calorie target, while it is being typed (a quick pick clears it).
   const [kcalText, setKcalText] = useState(() =>
@@ -151,7 +172,7 @@ export default function MakeMyWeekModal({ onClose }) {
   // calorie target and preferences don't apply to it.
   const steps = isFmd
     ? ['goal', 'people', 'avoid']
-    : ['goal', 'people', 'avoid', 'time', 'batch', 'meals', 'kcal', 'prefs']
+    : ['goal', 'people', 'avoid', 'time', 'batch', 'meals', 'kcal', 'prefs', 'focus']
   const showResult = step >= steps.length
   const slotNames = useMemo(() => resolveSlotNames(mealSlots), [mealSlots])
 
@@ -235,7 +256,7 @@ export default function MakeMyWeekModal({ onClose }) {
         portions: result.portions,
       }, lang)
     }
-    lastAnswers = answers
+    saveRemembered(answers)
     onClose()
   }
 
@@ -533,7 +554,48 @@ export default function MakeMyWeekModal({ onClose }) {
             </div>
           )}
 
-          {['goal', 'avoid', 'prefs', 'kcal'].includes(stepName) && (
+
+          {stepName === 'focus' && (
+            <div>
+              <p className="section-title">{t('makeMyWeek.q.focus')}</p>
+              <p className="text-xs text-slate-500 mb-3">{t('makeMyWeek.focusHint')}</p>
+              <div className="flex flex-wrap gap-2">
+                {MMW_FOCUS_NUTRIENTS.map(key => {
+                  const selected = (answers.focusNutrients || []).includes(key)
+                  const full = (answers.focusNutrients || []).length >= FOCUS_MAX
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => {
+                        const cur = answers.focusNutrients || []
+                        if (selected) set('focusNutrients', cur.filter(x => x !== key))
+                        else if (!full) set('focusNutrients', [...cur, key])
+                      }}
+                      aria-pressed={selected}
+                      disabled={!selected && full}
+                      className={`tap-target min-h-[44px] px-3 py-2 rounded-control border text-sm font-medium transition-colors ${
+                        selected
+                          ? 'border-primary-500 bg-primary-50 text-primary-700 ring-1 ring-primary-500'
+                          : 'border-slate-200 text-slate-600 hover:border-primary-300 disabled:opacity-40'
+                      }`}
+                    >
+                      <span className="mr-1" aria-hidden>{FOCUS_ICONS[key]}</span>
+                      {t(`makeMyWeek.nutrients.${key}`)}
+                    </button>
+                  )
+                })}
+              </div>
+              <p className="text-xs text-slate-500 mt-3">
+                {t('makeMyWeek.focusCount', { n: (answers.focusNutrients || []).length, max: FOCUS_MAX })}
+              </p>
+              <p className="text-2xs text-slate-500 mt-3 leading-relaxed bg-slate-50 rounded-small px-3 py-2">
+                {t('makeMyWeek.focusNoneNote')}
+              </p>
+            </div>
+          )}
+
+          {['goal', 'avoid', 'prefs', 'kcal', 'focus'].includes(stepName) && (
             <button
               onClick={() => setStep(s => s + 1)}
               disabled={stepName === 'kcal' && kcalTextInvalid}
@@ -585,7 +647,47 @@ export default function MakeMyWeekModal({ onClose }) {
                 </div>
               )}
 
-              {previewDays.length > 0 && (
+              
+              {result.kind === 'week' && result.focus?.nutrients?.length > 0 && (
+                <div className="rounded-control border border-primary-200 bg-primary-50/60 px-3 py-2.5 space-y-2.5">
+                  <p className="text-xs font-semibold text-primary-800 uppercase tracking-wide">
+                    {t('makeMyWeek.focusCardTitle')}
+                  </p>
+                  {result.focus.nutrients.map(key => {
+                    const withPct = result.focus.withPct?.[key] ?? 0
+                    const withoutPct = result.focus.withoutPct?.[key]
+                    const delta = withoutPct == null ? null : withPct - withoutPct
+                    const barMax = Math.max(100, withPct, withoutPct || 0)
+                    return (
+                      <div key={key}>
+                        <div className="flex items-baseline justify-between gap-2 mb-1">
+                          <p className="text-sm font-semibold text-slate-800">{t(`makeMyWeek.nutrients.${key}`)}</p>
+                          <p className="text-2xs text-slate-500 tabular-nums">
+                            {key === 'omega3'
+                              ? t('makeMyWeek.focusWithGuide', { pct: withPct })
+                              : t('makeMyWeek.focusWith', { pct: withPct })}
+                            {delta != null && (
+                              <span className={`ml-1.5 font-medium ${delta >= 0 ? 'text-success-700' : 'text-slate-500'}`}>
+                                {t('makeMyWeek.focusVsBaseline', { delta: delta > 0 ? `+${delta}` : String(delta) })}
+                              </span>
+                            )}
+                          </p>
+                        </div>
+                        <div className="h-2 rounded-full bg-slate-200 overflow-hidden mb-0.5">
+                          <div className="h-full rounded-full bg-primary-600" style={{ width: `${Math.min(100, (withPct / barMax) * 100)}%` }} />
+                        </div>
+                        {withoutPct != null && (
+                          <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                            <div className="h-full rounded-full bg-slate-400" style={{ width: `${Math.min(100, (withoutPct / barMax) * 100)}%` }} />
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
+
+{previewDays.length > 0 && (
                 <OmegaRatioRow
                   ratio={previewOmegaWeek?.ratio}
                   favourable={previewOmegaWeek?.favourable}
@@ -624,6 +726,11 @@ export default function MakeMyWeekModal({ onClose }) {
                           <span key={`${it.recipeId}-${i}`}>
                             {i > 0 && ' + '}
                             {titleOf(it.recipeId)}
+                            {result.kind === 'week' && result.focus?.chips?.[it.recipeId]?.length > 0 && (
+                              <span className="ml-1 text-2xs font-medium text-primary-700 bg-primary-50 rounded-small px-1 py-0.5">
+                                {t('makeMyWeek.focusChip', { abbr: result.focus.chips[it.recipeId].join(' · ') })}
+                              </span>
+                            )}
                             {result.kind === 'week' && portionsText(it) && (
                               <span className="ml-1 text-2xs font-medium text-primary-700 bg-primary-50 rounded-small px-1 py-0.5 tabular-nums">
                                 {t('makeMyWeek.portionsEach', { n: portionsText(it) })}

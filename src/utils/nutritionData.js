@@ -3,6 +3,7 @@
 //
 // dv: Daily Value in the same unit as the field. null = no official DV.
 // indent: true = sub-item (displayed indented under a parent nutrient).
+// hidden: true = kept in the data and totals, but not shown anywhere in the UI.
 
 export const NUTRITION_GROUPS = [
   {
@@ -55,13 +56,19 @@ export const NUTRITION_GROUPS = [
       { key: 'thiamin',    label: 'Thiamin',     unit: 'mg',     dv: 1.2  },
       { key: 'riboflavin', label: 'Riboflavin',  unit: 'mg',     dv: 1.3  },
       { key: 'niacin',     label: 'Niacin',      unit: 'mg',     dv: 16   },
-      { key: 'choline',    label: 'Choline',     unit: 'mg',     dv: 550  },
+      { key: 'choline',    label: 'Choline',     unit: 'mg',     dv: 550, hidden: true },
     ],
   },
 ]
 
 // All field keys in a flat list — useful for initialising empty nutrition objects.
 export const ALL_NUTRITION_KEYS = NUTRITION_GROUPS.flatMap(g => g.fields.map(f => f.key))
+
+// What the UI shows: NUTRITION_GROUPS without hidden fields (and without a
+// group left empty by them). Every display maps over this, not NUTRITION_GROUPS.
+export const VISIBLE_NUTRITION_GROUPS = NUTRITION_GROUPS
+  .map(g => ({ ...g, fields: g.fields.filter(f => !f.hidden) }))
+  .filter(g => g.fields.length)
 
 /**
  * Sum the nutrition of a set of logged entries into a single totals object

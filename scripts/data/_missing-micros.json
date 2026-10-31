@@ -1,0 +1,407 @@
+[
+  {
+    "id": "bean-sprouts",
+    "en": "Bean sprouts",
+    "homemade": false
+  },
+  {
+    "id": "blackberries",
+    "en": "Blackberries",
+    "homemade": false
+  },
+  {
+    "id": "blueberries",
+    "en": "Blueberries",
+    "homemade": false
+  },
+  {
+    "id": "broccoli",
+    "en": "Broccoli",
+    "homemade": false
+  },
+  {
+    "id": "butternut-squash",
+    "en": "Butternut squash",
+    "homemade": false
+  },
+  {
+    "id": "cherry-tomatoes",
+    "en": "Cherry tomatoes",
+    "homemade": false
+  },
+  {
+    "id": "chinese-cabbage",
+    "en": "Chinese cabbage",
+    "homemade": false
+  },
+  {
+    "id": "herbs-fresh-mixed",
+    "en": "Fresh herbs (mixed)",
+    "homemade": false
+  },
+  {
+    "id": "horseradish",
+    "en": "Horseradish",
+    "homemade": false
+  },
+  {
+    "id": "limes",
+    "en": "Limes",
+    "homemade": false
+  },
+  {
+    "id": "lingonberries",
+    "en": "Lingonberries",
+    "homemade": false
+  },
+  {
+    "id": "berries-mixed",
+    "en": "Mixed berries",
+    "homemade": false
+  },
+  {
+    "id": "oranges",
+    "en": "Oranges",
+    "homemade": false
+  },
+  {
+    "id": "plums",
+    "en": "Plums",
+    "homemade": false
+  },
+  {
+    "id": "pomegranate",
+    "en": "Pomegranate",
+    "homemade": false
+  },
+  {
+    "id": "pumpkin",
+    "en": "Pumpkin",
+    "homemade": false
+  },
+  {
+    "id": "raspberries",
+    "en": "Raspberries",
+    "homemade": false
+  },
+  {
+    "id": "rosemary",
+    "en": "Rosemary",
+    "homemade": false
+  },
+  {
+    "id": "salad-leaves",
+    "en": "Salad leaves (mixed)",
+    "homemade": false
+  },
+  {
+    "id": "shallots",
+    "en": "Shallots",
+    "homemade": false
+  },
+  {
+    "id": "snow-peas",
+    "en": "Snow peas",
+    "homemade": false
+  },
+  {
+    "id": "sour-cherries",
+    "en": "Sour cherries",
+    "homemade": false
+  },
+  {
+    "id": "strawberries",
+    "en": "Strawberries",
+    "homemade": false
+  },
+  {
+    "id": "almond-milk",
+    "en": "Almond milk",
+    "homemade": false
+  },
+  {
+    "id": "cashew-sour-cream",
+    "en": "Cashew sour cream",
+    "homemade": true
+  },
+  {
+    "id": "hummus",
+    "en": "Hummus",
+    "homemade": false
+  },
+  {
+    "id": "classic-hummus",
+    "en": "Classic hummus",
+    "homemade": true
+  },
+  {
+    "id": "plant-milk",
+    "en": "Plant milk",
+    "homemade": false
+  },
+  {
+    "id": "agar-agar",
+    "en": "Agar-agar",
+    "homemade": false
+  },
+  {
+    "id": "bean-noodles",
+    "en": "Bean noodles",
+    "homemade": false
+  },
+  {
+    "id": "bread-crumbs",
+    "en": "Bread crumbs",
+    "homemade": false
+  },
+  {
+    "id": "bulgur",
+    "en": "Bulgur",
+    "homemade": false
+  },
+  {
+    "id": "chickpea-flour",
+    "en": "Chickpea flour",
+    "homemade": false
+  },
+  {
+    "id": "cornmeal-polenta",
+    "en": "Cornmeal (polenta)",
+    "homemade": false
+  },
+  {
+    "id": "gluten-free-flour-mix",
+    "en": "Gluten-free flour mix",
+    "homemade": false
+  },
+  {
+    "id": "millet",
+    "en": "Millet",
+    "homemade": false
+  },
+  {
+    "id": "oat-flour",
+    "en": "Oat flour",
+    "homemade": false
+  },
+  {
+    "id": "potato-starch",
+    "en": "Potato starch",
+    "homemade": false
+  },
+  {
+    "id": "rice-flour",
+    "en": "Rice flour",
+    "homemade": false
+  },
+  {
+    "id": "crispbread",
+    "en": "Rye crispbread",
+    "homemade": false
+  },
+  {
+    "id": "rye-flour",
+    "en": "Rye flour, wholegrain",
+    "homemade": false
+  },
+  {
+    "id": "sourdough-starter",
+    "en": "Sourdough starter",
+    "homemade": true
+  },
+  {
+    "id": "spelt-flour",
+    "en": "Spelt flour",
+    "homemade": false
+  },
+  {
+    "id": "aquafaba",
+    "en": "Aquafaba (chickpea liquid)",
+    "homemade": true
+  },
+  {
+    "id": "borlotti-beans-dry",
+    "en": "Borlotti beans, dry",
+    "homemade": false
+  },
+  {
+    "id": "capers",
+    "en": "Capers",
+    "homemade": false
+  },
+  {
+    "id": "chia-seeds",
+    "en": "Chia seeds",
+    "homemade": false
+  },
+  {
+    "id": "coconut-cream",
+    "en": "Coconut cream",
+    "homemade": false
+  },
+  {
+    "id": "dried-cranberries",
+    "en": "Dried cranberries",
+    "homemade": false
+  },
+  {
+    "id": "hazelnuts",
+    "en": "Hazelnuts",
+    "homemade": false
+  },
+  {
+    "id": "olive-brine",
+    "en": "Olive brine",
+    "homemade": true
+  },
+  {
+    "id": "pistachios",
+    "en": "Pistachios",
+    "homemade": false
+  },
+  {
+    "id": "tahini",
+    "en": "Tahini",
+    "homemade": false
+  },
+  {
+    "id": "almond-butter",
+    "en": "Almond butter",
+    "homemade": false
+  },
+  {
+    "id": "amla-powder",
+    "en": "Amla powder",
+    "homemade": false
+  },
+  {
+    "id": "cardamom-ground",
+    "en": "Cardamom, ground",
+    "homemade": false
+  },
+  {
+    "id": "coconut-oil",
+    "en": "Coconut oil",
+    "homemade": false
+  },
+  {
+    "id": "coriander-seeds",
+    "en": "Coriander seeds",
+    "homemade": false
+  },
+  {
+    "id": "ginger-ground",
+    "en": "Ginger, ground",
+    "homemade": false
+  },
+  {
+    "id": "hot-sauce",
+    "en": "Hot sauce",
+    "homemade": false
+  },
+  {
+    "id": "ketchup",
+    "en": "Ketchup",
+    "homemade": false
+  },
+  {
+    "id": "miso-paste",
+    "en": "Miso paste",
+    "homemade": false
+  },
+  {
+    "id": "nigella-seeds",
+    "en": "Nigella seeds",
+    "homemade": false
+  },
+  {
+    "id": "parsley-dried",
+    "en": "Parsley, dried",
+    "homemade": false
+  },
+  {
+    "id": "rapeseed-oil",
+    "en": "Rapeseed (canola) oil",
+    "homemade": false
+  },
+  {
+    "id": "sugar",
+    "en": "Sugar (raw cane)",
+    "homemade": false
+  },
+  {
+    "id": "sukrin",
+    "en": "Sukrin (erythritol sweetener)",
+    "homemade": false
+  },
+  {
+    "id": "sumac",
+    "en": "Sumac",
+    "homemade": false
+  },
+  {
+    "id": "tarragon-dried",
+    "en": "Tarragon, dried",
+    "homemade": false
+  },
+  {
+    "id": "vanilla-extract",
+    "en": "Vanilla extract",
+    "homemade": false
+  },
+  {
+    "id": "white-cashew-sauce",
+    "en": "White cashew sauce",
+    "homemade": true
+  },
+  {
+    "id": "blueberries-frozen",
+    "en": "Blueberries, frozen",
+    "homemade": false
+  },
+  {
+    "id": "brussels-sprouts-frozen",
+    "en": "Brussels sprouts, frozen",
+    "homemade": false
+  },
+  {
+    "id": "edamame-frozen",
+    "en": "Edamame, frozen",
+    "homemade": false
+  },
+  {
+    "id": "mango-frozen",
+    "en": "Mango, frozen",
+    "homemade": false
+  },
+  {
+    "id": "berries-mixed-frozen",
+    "en": "Mixed berries, frozen",
+    "homemade": false
+  },
+  {
+    "id": "pineapple-frozen",
+    "en": "Pineapple, frozen",
+    "homemade": false
+  },
+  {
+    "id": "raspberries-frozen",
+    "en": "Raspberries, frozen",
+    "homemade": false
+  },
+  {
+    "id": "strawberries-frozen",
+    "en": "Strawberries, frozen",
+    "homemade": false
+  },
+  {
+    "id": "orange-juice",
+    "en": "Orange juice",
+    "homemade": false
+  },
+  {
+    "id": "pineapple-juice",
+    "en": "Pineapple juice",
+    "homemade": false
+  }
+]

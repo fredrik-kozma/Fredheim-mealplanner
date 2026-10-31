@@ -57,6 +57,10 @@ export function noticeText(n, { t, titleOf, packName = id => id }, stats = null)
     // Tips saved when a week could have a snack: its fruit is plain extra fruit now.
     case 'snackFruit':
       return t('makeMyWeek.notice.extraFruit')
+    case 'focusNutrients':
+      return t('makeMyWeek.notice.focusNutrients', {
+        list: (n.nutrients || []).map(k => t(`makeMyWeek.nutrients.${k}`)).join(', '),
+      })
     default:
       return t(`makeMyWeek.notice.${n.key}`)
   }

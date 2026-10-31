@@ -5,6 +5,7 @@ import { BUILT_IN_PACKS } from '../../data/installedPacks'
 import { CONDITION_TAGS } from '../../data/conditionTags'
 import { isFmdRecipe } from '../../utils/recipeFlags'
 import { recipeHasAvoidedAllergen } from '../../data/allergens'
+import { blockedIsActive } from '../../data/ingredientBlocker'
 import { buildSearchEntry, matchSearchEntry } from '../../utils/recipeSearch'
 
 // Scrim left above the sheet on a phone: enough to see it's a sheet and tap out.
@@ -53,9 +54,10 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
   const recipeCategories = useStore(s => s.recipeCategories)
   const installedPacks = useStore(s => s.installedPacks)
   const avoidedAllergens = useStore(s => s.avoidedAllergens) || []
+  const blockedIngredients = useStore(s => s.blockedIngredients) || { groups: avoidedAllergens, ids: [] }
   const favoriteRecipes = useStore(s => s.favoriteRecipes)
   const allergenFilterPaused = useStore(s => s.allergenFilterPaused)
-  const allergenActive = avoidedAllergens.length > 0 && !allergenFilterPaused
+  const allergenActive = blockedIsActive(blockedIngredients) && !allergenFilterPaused
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const titleOf = (r) => r.translations?.[currentLang]?.title || r.title
   const [search, setSearch] = useState('')
@@ -194,7 +196,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
     .filter(r => activeConditions.every(c => (r.tags || []).includes(c)))
     // Allergen profile applies here too — you shouldn't be able to plan a
     // meal containing something the household avoids.
-    .filter(r => !allergenActive || !recipeHasAvoidedAllergen(r, avoidedAllergens))
+    .filter(r => !allergenActive || !recipeHasAvoidedAllergen(r, blockedIngredients))
     .filter(r => {
       if (activePack === 'All') return true
       if (activePack === '__user__') return !r.sourcePackId

@@ -6,8 +6,9 @@ import { BUILT_IN_PACKS } from '../../data/installedPacks'
 import RecipeCard from './RecipeCard'
 import EmptyState from '../common/EmptyState'
 import { CONDITION_TAGS } from '../../data/conditionTags'
-import { NUTRITION_GROUPS, fmtNutrient } from '../../utils/nutritionData'
+import { VISIBLE_NUTRITION_GROUPS, fmtNutrient } from '../../utils/nutritionData'
 import { recipeHasAvoidedAllergen } from '../../data/allergens'
+import { blockedIsActive } from '../../data/ingredientBlocker'
 import { buildSearchEntry, matchSearchEntry } from '../../utils/recipeSearch'
 
 // Nutrients offered in the "Most …" sort — the ones you'd want more of.
@@ -17,12 +18,12 @@ const SORT_NUTRIENT_EXCLUDE = new Set([
   'calories', 'totalFat', 'saturatedFat', 'polyunsaturatedFat', 'monounsaturatedFat',
   'omega6', 'cholesterol', 'totalCarbs', 'totalSugars', 'addedSugar', 'sodium',
 ])
-const NUTRIENT_SORT_GROUPS = NUTRITION_GROUPS
+const NUTRIENT_SORT_GROUPS = VISIBLE_NUTRITION_GROUPS
   .map(g => ({ key: g.key, fields: g.fields.filter(f => !SORT_NUTRIENT_EXCLUDE.has(f.key)) }))
   .filter(g => g.fields.length)
 // key → { unit } for reading the value/unit off a picked nutrient.
 const NUTRIENT_META = Object.fromEntries(
-  NUTRITION_GROUPS.flatMap(g => g.fields.map(f => [f.key, { unit: f.unit }]))
+  VISIBLE_NUTRITION_GROUPS.flatMap(g => g.fields.map(f => [f.key, { unit: f.unit }]))
 )
 const NUTRIENT_SORT_PREFIX = 'nutrient:'
 
@@ -49,6 +50,7 @@ export default function RecipeList() {
   const installedPacks = useStore(s => s.installedPacks)
   const favoriteRecipes = useStore(s => s.favoriteRecipes)
   const avoidedAllergens = useStore(s => s.avoidedAllergens) || []
+  const blockedIngredients = useStore(s => s.blockedIngredients) || { groups: avoidedAllergens, ids: [] }
   const allergenFilterPaused = useStore(s => s.allergenFilterPaused)
   const setAllergenFilterPaused = useStore(s => s.setAllergenFilterPaused)
   const navigate = useNavigate()
@@ -71,7 +73,10 @@ export default function RecipeList() {
   const activeConditions = view.conditions
     ?? (view.condition && view.condition !== 'All' ? [view.condition] : [])
   const search = view.search
-  const sortBy = view.sortBy
+  // A persisted view can still be sorted by a nutrient that is now hidden.
+  const sortBy = view.sortBy?.startsWith(NUTRIENT_SORT_PREFIX) && !NUTRIENT_META[view.sortBy.slice(NUTRIENT_SORT_PREFIX.length)]
+    ? 'newest'
+    : view.sortBy
   // `?? false` rather than a migration: anyone with a persisted view from
   // before this was a stored filter simply has the key missing.
   const favoritesOnly = view.favoritesOnly ?? false
@@ -221,9 +226,9 @@ export default function RecipeList() {
 
   // Allergen filter runs last so the "N hidden" count reflects recipes the
   // user would otherwise be seeing right now, given their other filters.
-  const allergenActive = avoidedAllergens.length > 0 && !allergenFilterPaused
+  const allergenActive = blockedIsActive(blockedIngredients) && !allergenFilterPaused
   const visible = allergenActive
-    ? filtered.filter(r => !recipeHasAvoidedAllergen(r, avoidedAllergens))
+    ? filtered.filter(r => !recipeHasAvoidedAllergen(r, blockedIngredients))
     : filtered
   const hiddenByAllergens = filtered.length - visible.length
 
@@ -333,7 +338,7 @@ export default function RecipeList() {
           </div>
         )}
 
-        {avoidedAllergens.length > 0 && (
+        {blockedIsActive(blockedIngredients) && (
           <div className="flex items-center gap-2 flex-wrap text-xs bg-danger-50 border border-danger-100 text-danger-800 rounded-small px-3 py-2">
             <span aria-hidden>🚫</span>
             <span className="flex-1 min-w-0">

@@ -86,14 +86,15 @@
     "notFound": "Oppskrift ikke funnet.",
     "backToRecipes": "Tilbake til oppskrifter",
     "fmdBadge": "Fastedag",
-    "allergenHidden_one": "{{count}} oppskrift skjult av allergenfilteret ditt.",
-    "allergenHidden_other": "{{count}} oppskrifter skjult av allergenfilteret ditt.",
+    "allergenHidden_one": "{{count}} oppskrift skjult pga. blokkerte ingredienser.",
+    "allergenHidden_other": "{{count}} oppskrifter skjult pga. blokkerte ingredienser.",
     "allergenPaused": "Allergenfilteret er satt på pause — viser alle oppskrifter.",
     "allergenShowAll": "Vis likevel",
     "allergenResume": "Slå på igjen",
     "noTimeHidden_one": "{{count}} oppskrift mangler tid og vises ikke.",
     "noTimeHidden_other": "{{count}} oppskrifter mangler tid og vises ikke.",
-    "noResultsTitle": "Ingen treff"
+    "noResultsTitle": "Ingen treff",
+    "containsBlocked": "Inneholder {{list}}"
   },
   "recipeDetail": {
     "back": "Tilbake",
@@ -185,7 +186,32 @@
     "translatedDescription": "Beskrivelse på {{lang}} (valgfritt)",
     "translatedDescPlaceholder": "Kort beskrivelse…",
     "translatedIngredients": "Ingrediensnavn på {{lang}}",
-    "translatedSteps": "Trinn på {{lang}}"
+    "translatedSteps": "Trinn på {{lang}}",
+    "linkedToDatabase": "Koblet til databasen",
+    "notInDatabase": "Ikke i databasen",
+    "notInDatabaseHint": "Dette telles ikke i næringen før vi legger det til.",
+    "noIngredientMatch": "Ingen treff på ingrediens",
+    "useAsTyped": "Bruk «{{name}}» som skrevet",
+    "ingredientNotePlaceholder": "Merknad (f.eks. i terninger)",
+    "tellUsMissing": "Si ifra at den mangler",
+    "missingThanks": "Takk — lagret på denne enheten til Fredrik.",
+    "nutritionPreview": "Næring (live)",
+    "nutritionLoading": "Laster næring…",
+    "nutritionPerServing": "Per porsjon (beregnet fra ingrediensene dine)",
+    "nutKcal": "Kalorier",
+    "nutProtein": "Protein",
+    "nutFiber": "Fiber",
+    "nutSodium": "Natrium",
+    "nutOmegaRatio": "Omega-6:3",
+    "omegaRatioNone": "—",
+    "nutritionWarningsTitle": "Noen rader ble ikke telt med",
+    "nutritionWarningsMore": "og {{count}} til",
+    "saltLow": "Lite salt",
+    "saltStandard": "Standard",
+    "removeIngredient": "Fjern ingrediens",
+    "missingIngredientTitle": "Mangler ingrediensen?",
+    "exportMissing": "Eksporter ønsker",
+    "missingLocalOnly": "Ønskene blir på denne enheten (lastes ikke opp)."
   },
   "planner": {
     "title": "Ukeplan",
@@ -432,13 +458,21 @@
     "tutorial": "Omvisning",
     "tutorialDesc": "Se hva Fredheim kan gjøre for deg, og hvordan du planlegger en uke på ett minutt.",
     "showTutorial": "Ta omvisningen",
-    "allergens": "Allergener å unngå",
-    "allergensDesc": "Oppskrifter som inneholder disse skjules fra oppskriftslisten og ukeplanen.",
+    "allergens": "Blokkerte ingredienser",
+    "allergensDesc": "Oppskrifter med disse ingrediensene skjules fra listen, søk, Lag uken min, I dag, velgeren og startplaner.",
     "allergensClear": "Nullstill alle",
     "noHoneyHint": "«Lag uken min» utelater oppskrifter med honning.",
     "allergensWarning": "Oppdages automatisk fra ingrediensnavn. Sjekk alltid hele ingredienslisten selv — dette kan ikke ta høyde for merkeforskjeller eller «kan inneholde spor av».",
     "packsDesc": "Installer samlinger med oppskrifter, eller lag din egen pakke å dele.",
-    "openPacks": "Åpne oppskriftspakker"
+    "openPacks": "Åpne oppskriftspakker",
+    "allergensSearch": "Søk etter en ingrediens",
+    "allergensSearchHint": "Samme søk som i oppskriftsskjemaet (EN / NO / SV).",
+    "allergensBlock": "Blokker",
+    "allergensBlocked": "Blokkert nå",
+    "allergensGroups": "Vanlige allergengrupper",
+    "oatsGlutenNote": "Havre er listet separat. Noen havreprodukter kan inneholde spor av gluten.",
+    "perNut": "Enkelte nøtter",
+    "containsHint": "Inneholder {{name}}"
   },
   "units": {
     "none": "— ingen —",
@@ -783,7 +817,10 @@
     "soy": "Soya",
     "sesame": "Sesam",
     "mustard": "Sennep",
-    "celery": "Selleri"
+    "celery": "Selleri",
+    "coconut": "Kokos",
+    "oats": "Havre",
+    "corn": "Mais"
   },
   "makeMyWeek": {
     "button": "Lag uken min",
@@ -805,7 +842,8 @@
       "prefs": "Noen ønsker",
       "breakfast": "Frokost: salt, søt eller begge deler?",
       "salt": "Saltnivå",
-      "kcal": "Omtrent hvor mange kalorier om dagen?"
+      "kcal": "Omtrent hvor mange kalorier om dagen?",
+      "focus": "Noen næringsstoffer du vil fokusere på?"
     },
     "goals": {
       "general": "Sunn hverdagsmat",
@@ -891,7 +929,8 @@
       "portionsFitted": "Porsjonene er tilpasset (½ til 2 hver) så hver dag havner nær målet ditt på omtrent {{target}} kcal. Handlelisten kjøper inn til det, og uken skaleres fortsatt med antall personer.",
       "portionsFittedDinner": "Porsjonene er tilpasset (½ til 2 hver) så hver middag havner nær omtrent {{target}} kcal. Handlelisten kjøper inn til det, og uken skaleres fortsatt med antall personer.",
       "kcalOffTarget_one": "På 1 dag når ikke rettene som passer valgene dine helt innenfor 10 % av målet. Juster gjerne en porsjon i planleggeren.",
-      "kcalOffTarget_other": "På {{count}} dager når ikke rettene som passer valgene dine helt innenfor 10 % av målet. Juster gjerne en porsjon i planleggeren."
+      "kcalOffTarget_other": "På {{count}} dager når ikke rettene som passer valgene dine helt innenfor 10 % av målet. Juster gjerne en porsjon i planleggeren.",
+      "focusNutrients": "Favoriserer oppskrifter med mer {{list}} — kalorifordeling og variasjon er uendret."
     },
     "goalsHint": "Velg ett eller flere.",
     "breakfasts": {
@@ -925,7 +964,29 @@
     "mealKcal": "≈ {{kcal}} kcal",
     "estimateNote": "kcal per person, ut fra oppskriftenes næringsinnhold.",
     "statsDayTarget": "Omtrent {{kcal}} kcal og {{fibre}} g fiber per person om dagen (ditt mål: {{target}} kcal).",
-    "statsDinnerTarget": "Omtrent {{kcal}} kcal og {{fibre}} g fiber per person per middag (vi sikter mot {{target}} kcal)."
+    "statsDinnerTarget": "Omtrent {{kcal}} kcal og {{fibre}} g fiber per person per middag (vi sikter mot {{target}} kcal).",
+    "focusHint": "Velg opptil 3 (valgfritt). Kalorimål, måltidsfordeling og variasjon gjelder som før — vi favoriserer bare oppskrifter som er rikere på disse.",
+    "focusCount": "{{n}} av {{max}} valgt · valgfritt",
+    "focusNoneNote": "Vitamin B12 og vitamin D er ikke med her — i plantebasert mat kommer de vanligvis fra berikede produkter eller et tilskudd.",
+    "focusCardTitle": "Fokus-næringsstoffer · dagsgjennomsnitt",
+    "focusWith": "~{{pct}} % av dagsbehov",
+    "focusWithGuide": "~{{pct}} % av 2 g-veiledning",
+    "focusVsBaseline": "{{delta}} mot uten fokus",
+    "focusChip": "↑ {{abbr}}",
+    "nutrients": {
+      "iron": "Jern",
+      "calcium": "Kalsium",
+      "omega3": "Omega-3",
+      "fiber": "Fiber",
+      "protein": "Protein",
+      "zinc": "Sink",
+      "magnesium": "Magnesium",
+      "potassium": "Kalium",
+      "folate": "Folat",
+      "vitaminC": "Vitamin C",
+      "vitaminE": "Vitamin E",
+      "selenium": "Selen"
+    }
   },
   "timer": {
     "title": "Timer",

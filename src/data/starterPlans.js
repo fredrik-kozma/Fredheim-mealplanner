@@ -1,3 +1,4 @@
+import { recipeHasAvoidedAllergen } from './allergens.js'
 /**
  * Starter meal plans — condition-focused sample weeks users can install
  * with one tap and then tweak.
@@ -428,4 +429,31 @@ export function countPlanMeals(plan) {
     }
   }
   return n
+}
+
+
+/**
+ * Drop meals whose recipe is blocked. Returns { plan, removed }.
+ */
+export function filterStarterPlanAgainstBlocks(plan, recipesById, blocked) {
+  if (!plan || !blocked) return { plan, removed: 0 }
+  let removed = 0
+  const next = { ...plan }
+  for (const day of Object.keys(plan)) {
+    if (typeof plan[day] !== 'object' || !plan[day]) continue
+    const daySlots = { ...plan[day] }
+    for (const slot of Object.keys(daySlots)) {
+      const items = (daySlots[slot] || []).filter((raw) => {
+        const id = typeof raw === 'string' ? raw : raw?.recipeId
+        if (!id) return true
+        const recipe = recipesById?.[id] || recipesById?.get?.(id)
+        if (!recipe) return true
+        if (recipeHasAvoidedAllergen(recipe, blocked)) { removed++; return false }
+        return true
+      })
+      daySlots[slot] = items
+    }
+    next[day] = daySlots
+  }
+  return { plan: next, removed }
 }

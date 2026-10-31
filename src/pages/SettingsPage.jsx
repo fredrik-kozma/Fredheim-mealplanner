@@ -9,7 +9,7 @@ import AuthModal from '../components/auth/AuthModal'
 import EditableNumber from '../components/common/EditableNumber'
 import useInstallPWA from '../hooks/useInstallPWA'
 import IOSInstallInstructions from '../components/pwa/IOSInstallInstructions'
-import { ALLERGENS } from '../data/allergens'
+import BlockedIngredientsSection from '../components/settings/BlockedIngredientsSection'
 import { buildBackup, downloadBackup, validateBackup, mergeRecipes } from '../utils/dataBackup'
 import { SALT_LEVELS } from '../utils/saltLevel'
 import PageHeader from '../components/common/PageHeader'
@@ -245,9 +245,6 @@ export default function SettingsPage() {
 
   const familySize = useStore(s => s.familySize)
   const setFamilySize = useStore(s => s.setFamilySize)
-  const avoidedAllergens = useStore(s => s.avoidedAllergens) || []
-  const toggleAvoidedAllergen = useStore(s => s.toggleAvoidedAllergen)
-  const clearAvoidedAllergens = useStore(s => s.clearAvoidedAllergens)
   const avoidHoney = useStore(s => s.avoidHoney)
   const setAvoidHoney = useStore(s => s.setAvoidHoney)
   const saltLevel = useStore(s => s.saltLevel)
@@ -494,29 +491,9 @@ export default function SettingsPage() {
           </p>
         </SectionCard>
 
-        {/* Allergens — a saved profile, applied everywhere automatically */}
-        <SectionCard title={t('settings.allergens', { defaultValue: 'Allergens to avoid' })}>
-          <p className="text-xs text-slate-500 mb-3">
-            {t('settings.allergensDesc', {
-              defaultValue: 'Recipes containing these are hidden from the recipe list and the planner.',
-            })}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {ALLERGENS.map(a => {
-              const on = avoidedAllergens.includes(a.id)
-              return (
-                <button
-                  key={a.id}
-                  onClick={() => toggleAvoidedAllergen(a.id)}
-                  aria-pressed={on}
-                  className={on ? 'chip-danger' : 'chip'}
-                >
-                  <span aria-hidden>{on ? '✓' : a.icon}</span>
-                  {t(`allergens.${a.id}`, { defaultValue: a.id })}
-                </button>
-              )
-            })}
-          </div>
+        {/* Blocked ingredients — groups + per-ingredient search */}
+        <SectionCard title={t('settings.allergens', { defaultValue: 'Blocked ingredients' })}>
+          <BlockedIngredientsSection />
           {/* Not an allergen: only the starting answer for Make my week. */}
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <button
@@ -529,21 +506,6 @@ export default function SettingsPage() {
             </button>
             <span className="text-2xs text-slate-500">{t('settings.noHoneyHint')}</span>
           </div>
-          {avoidedAllergens.length > 0 && (
-            <button
-              onClick={clearAvoidedAllergens}
-              className="btn-ghost btn-sm mt-3"
-            >
-              {t('settings.allergensClear', { defaultValue: 'Clear all' })}
-            </button>
-          )}
-          {/* Honest about the limitation: this is inferred from ingredient
-              names, not authored allergen metadata. */}
-          <p className="text-2xs text-warning-700 bg-warning-50 border border-warning-200 rounded-small px-3 py-2 mt-3 leading-relaxed">
-            ⚠️ {t('settings.allergensWarning', {
-              defaultValue: 'Detected automatically from ingredient names. Always check the full ingredient list yourself — this cannot account for brand differences or “may contain” cross-contamination.',
-            })}
-          </p>
         </SectionCard>
 
         {/* Salt level — which salt amount recipes and the shopping list use */}
