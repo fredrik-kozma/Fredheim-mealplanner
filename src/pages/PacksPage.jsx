@@ -1,3 +1,5 @@
+import PageHeader from '../components/common/PageHeader'
+import EmptyState from '../components/common/EmptyState'
 import { useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../store/useStore'
@@ -14,8 +16,8 @@ function Toast({ message, onDismiss }) {
   }, [onDismiss])
 
   return (
-    <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-xl">
-      <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+    <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-control shadow-overlay">
+      <svg className="w-4 h-4 text-success-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
       </svg>
       {message}
@@ -42,7 +44,7 @@ function PackCard({ pack, onInstall, installing }) {
       <div className="flex items-start justify-between gap-3 mb-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-1">
-            <h3 className="text-base font-semibold text-slate-800">{displayName}</h3>
+            <h3 className="section-title">{displayName}</h3>
             <span className="badge bg-slate-100 text-slate-500 text-xs">v{pack.version}</span>
           </div>
           <p className="text-xs text-slate-500">{t('packs.by')} {pack.author}</p>
@@ -51,7 +53,7 @@ function PackCard({ pack, onInstall, installing }) {
         {/* Action button */}
         {isInstalled && !hasUpdate ? (
           <span className="badge bg-slate-100 text-slate-500 flex-shrink-0 py-1.5 px-3">
-            <svg className="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
             </svg>
             {t('packs.installed')}
@@ -60,7 +62,7 @@ function PackCard({ pack, onInstall, installing }) {
           <button
             onClick={() => onInstall(pack)}
             disabled={installing}
-            className="btn bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-sm py-2 px-3.5 text-xs flex-shrink-0"
+            className="btn-primary btn-sm flex-shrink-0"
           >
             {installing ? (
               <svg className="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -68,7 +70,7 @@ function PackCard({ pack, onInstall, installing }) {
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
               </svg>
             ) : (
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
               </svg>
             )}
@@ -78,7 +80,7 @@ function PackCard({ pack, onInstall, installing }) {
           <button
             onClick={() => onInstall(pack)}
             disabled={installing}
-            className="btn bg-green-600 text-white hover:bg-green-700 focus:ring-green-500 shadow-sm py-2 px-3.5 text-xs flex-shrink-0"
+            className="btn-primary btn-sm flex-shrink-0"
           >
             {installing ? (
               <svg className="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -86,7 +88,7 @@ function PackCard({ pack, onInstall, installing }) {
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
               </svg>
             ) : (
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
               </svg>
             )}
@@ -101,7 +103,7 @@ function PackCard({ pack, onInstall, installing }) {
       {pack.tags?.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mb-3">
           {pack.tags.map(tag => (
-            <span key={tag} className="badge bg-indigo-50 text-indigo-600 text-xs">{tag}</span>
+            <span key={tag} className="badge bg-primary-50 text-primary-600 text-xs">{tag}</span>
           ))}
         </div>
       )}
@@ -183,31 +185,30 @@ export default function PacksPage() {
   }
 
   return (
-    <div className="pb-24 lg:pb-8">
+    <div className="pb-nav lg:pb-8">
       {/* Page header */}
-      <div className="px-4 pt-4 pb-4 lg:pt-6">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <h1 className="text-xl font-bold text-slate-900">{t('packs.title')}</h1>
-            <p className="text-sm text-slate-500 mt-0.5">{t('packs.subtitle')}</p>
-          </div>
+      <PageHeader
+        title={t('packs.title')}
+        subtitle={t('packs.subtitle')}
+        actions={
           <button
             onClick={() => setShowExportModal(true)}
-            className="btn-primary py-2 px-3.5 flex-shrink-0"
+            aria-label={t('packs.createPack')}
+            className="btn-secondary"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
             </svg>
             <span className="hidden sm:inline">{t('packs.createPack')}</span>
           </button>
-        </div>
-      </div>
+        }
+      />
 
       <div className="px-4 space-y-8">
 
         {/* ── Built-in packs ─────────────────────────────────────────────── */}
         <section>
-          <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">
+          <h2 className="eyebrow mb-3">
             {t('packs.builtIn')}
           </h2>
           <p className="text-xs text-slate-400 mb-4">
@@ -228,17 +229,17 @@ export default function PacksPage() {
         {/* ── Online packs ───────────────────────────────────────────────── */}
         <section>
           <div className="flex items-center justify-between gap-3 mb-3">
-            <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">
+            <h2 className="eyebrow">
               {t('packs.online')}
             </h2>
             <button
               onClick={loadRegistry}
               disabled={loadingRegistry}
-              className="btn-secondary py-1.5 px-3 text-xs"
+              className="btn-secondary btn-sm"
             >
               <svg
                 className={`w-3.5 h-3.5 ${loadingRegistry ? 'animate-spin' : ''}`}
-                fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
               </svg>
@@ -257,9 +258,9 @@ export default function PacksPage() {
           )}
 
           {!loadingRegistry && registryError && (
-            <div className="card p-5 border-red-100">
+            <div className="card p-5 border-danger-100">
               <div className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-danger-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
                 </svg>
                 <div>
@@ -271,15 +272,12 @@ export default function PacksPage() {
           )}
 
           {!loadingRegistry && !registryError && onlineRegistry.length === 0 && (
-            <div className="card p-8 text-center text-slate-400">
-              <svg className="w-8 h-8 mx-auto mb-2 opacity-40" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-              </svg>
-              <p className="text-sm">{t('packs.noOnlinePacks')}</p>
-              <p className="text-xs mt-1 text-slate-400">
-                {t('packs.noOnlinePacksDesc')}
-              </p>
-            </div>
+            <EmptyState
+              className="card"
+              icon="📦"
+              title={t('packs.noOnlinePacks')}
+              body={t('packs.noOnlinePacksDesc')}
+            />
           )}
 
           {!loadingRegistry && !registryError && onlineRegistry.length > 0 && (

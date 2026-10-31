@@ -166,14 +166,14 @@ export default function IntroTour({ onClose, onCta, cta = 'explore' }) {
   }[cta] || t('tour.ctaExplore')
 
   return createPortal(
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm md:p-6">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center scrim md:p-6">
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={bodyId}
-        className="relative flex flex-col bg-white w-full h-full md:h-[min(92dvh,880px)] md:max-w-5xl md:rounded-3xl shadow-2xl overflow-hidden"
+        className="relative flex flex-col bg-white w-full h-full md:h-[min(92dvh,880px)] md:max-w-5xl md:rounded-card shadow-overlay overflow-hidden"
       >
         {/* Top bar: who, where, and a way out */}
         <div className="flex items-center gap-2 px-4 md:px-6 h-14 flex-shrink-0 border-b border-slate-100">
@@ -184,7 +184,7 @@ export default function IntroTour({ onClose, onCta, cta = 'explore' }) {
           </span>
           <button
             onClick={onClose}
-            className="ml-auto text-sm font-medium text-slate-500 hover:text-slate-800 px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors"
+            className="tap-target ml-auto text-sm font-medium text-slate-500 hover:text-slate-800 px-3 py-1.5 rounded-small hover:bg-slate-100 transition-colors"
           >
             {isLast ? t('tour.close') : t('tour.skip')}
           </button>
@@ -232,11 +232,11 @@ export default function IntroTour({ onClose, onCta, cta = 'explore' }) {
               }}
               aria-label={t('tour.goTo', { n: i + 1 })}
               aria-current={i === index ? 'step' : undefined}
-              className="p-1 -m-0.5"
+              className="tap-target p-1 -m-0.5"
             >
               <span
                 className={`block h-1.5 rounded-full ${reducedMotion ? '' : 'transition-all duration-300'} ${
-                  i === index ? 'w-6 bg-indigo-600' : 'w-1.5 bg-slate-300 hover:bg-slate-400'
+                  i === index ? 'w-6 bg-primary-600' : 'w-1.5 bg-slate-300 hover:bg-slate-400'
                 }`}
               />
             </button>
@@ -250,14 +250,14 @@ export default function IntroTour({ onClose, onCta, cta = 'explore' }) {
               <button
                 ref={primaryRef}
                 onClick={() => choosePath('quick')}
-                className="btn-primary py-3 px-6 font-semibold inline-flex items-center justify-center gap-2"
+                className="btn-primary btn-lg"
               >
                 {t('tour.quick')}
                 <span className="text-xs font-normal opacity-80">· {t('tour.quickTime')}</span>
               </button>
               <button
                 onClick={() => choosePath('full')}
-                className="btn-secondary py-3 px-6 font-semibold inline-flex items-center justify-center gap-2"
+                className="btn-secondary btn-lg"
               >
                 {t('tour.full')}
                 <span className="text-xs font-normal text-slate-400">· {t('tour.fullTime')}</span>
@@ -267,7 +267,7 @@ export default function IntroTour({ onClose, onCta, cta = 'explore' }) {
             <div className="flex flex-col-reverse sm:flex-row gap-2 sm:items-center sm:justify-between">
               <button
                 onClick={prev}
-                className="text-sm font-medium px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 self-center sm:self-auto"
+                className="tap-target text-sm font-medium px-3 py-2 rounded-small text-slate-600 hover:bg-slate-100 self-center sm:self-auto"
               >
                 ← {t('tour.back')}
               </button>
@@ -275,7 +275,7 @@ export default function IntroTour({ onClose, onCta, cta = 'explore' }) {
                 {cta !== 'explore' && (
                   <button
                     onClick={onClose}
-                    className="btn-secondary py-3 px-5 font-medium"
+                    className="btn-secondary btn-lg"
                   >
                     {t('tour.ctaExplore')}
                   </button>
@@ -283,7 +283,7 @@ export default function IntroTour({ onClose, onCta, cta = 'explore' }) {
                 <button
                   ref={primaryRef}
                   onClick={cta === 'explore' ? onClose : onCta}
-                  className="btn-primary py-3 px-6 font-semibold"
+                  className="btn-primary btn-lg"
                 >
                   {ctaLabel}
                 </button>
@@ -293,14 +293,14 @@ export default function IntroTour({ onClose, onCta, cta = 'explore' }) {
             <div className="flex items-center justify-between gap-3">
               <button
                 onClick={prev}
-                className="text-sm font-medium px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100"
+                className="tap-target text-sm font-medium px-3 py-2 rounded-small text-slate-600 hover:bg-slate-100"
               >
                 ← {t('tour.back')}
               </button>
               <button
                 ref={primaryRef}
                 onClick={next}
-                className="btn-primary py-2.5 px-8 font-semibold"
+                className="btn-primary"
               >
                 {t('tour.next')} →
               </button>
@@ -363,7 +363,7 @@ function TourShot({ shot, alt, labelFor, reducedMotion }) {
     <div ref={roomRef} className="flex-1 min-h-0 w-full flex items-center justify-center px-3 pt-3 md:px-6 md:pt-5">
       {size && (
         <div
-          className="relative overflow-hidden rounded-xl md:rounded-2xl bg-slate-50 ring-1 ring-slate-200 shadow-sm"
+          className="relative overflow-hidden rounded-control md:rounded-card bg-slate-50 ring-1 ring-slate-200 shadow-card"
           style={{ width: size.w, height: size.h }}
         >
           <div
@@ -442,7 +442,7 @@ function TourShot({ shot, alt, labelFor, reducedMotion }) {
                 {labelled.map((m, i) => (
                   <span
                     key={`l${i}`}
-                    className="absolute -translate-x-1/2 -translate-y-1/2 max-w-[40%] w-max text-center bg-orange-500 text-white text-[11px] md:text-xs font-semibold leading-snug px-2 py-1 rounded-lg shadow-md pointer-events-none"
+                    className="absolute -translate-x-1/2 -translate-y-1/2 max-w-[40%] w-max text-center bg-orange-500 text-white text-2xs md:text-xs font-semibold leading-snug px-2 py-1 rounded-small shadow-raised pointer-events-none"
                     style={{ left: `${labelX(m.at[0])}%`, top: `${m.at[1]}%` }}
                     aria-hidden="true"
                   >

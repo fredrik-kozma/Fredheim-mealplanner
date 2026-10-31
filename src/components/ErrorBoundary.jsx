@@ -94,7 +94,7 @@ export default class ErrorBoundary extends React.Component {
           <button
             onClick={this.handleExport}
             disabled={this.state.exportState === 'working'}
-            className="btn-secondary disabled:opacity-50"
+            className="btn-secondary"
           >
             {this.state.exportState === 'working' ? 'Saving…' : 'Export my data first'}
           </button>
@@ -104,7 +104,7 @@ export default class ErrorBoundary extends React.Component {
         </div>
 
         {this.state.exportState === 'done' && (
-          <p className="text-xs text-green-700 mt-3">
+          <p className="text-xs text-success-700 mt-3">
             Saved. Keep that file somewhere safe — Settings → Your data brings it back.
           </p>
         )}
@@ -114,7 +114,7 @@ export default class ErrorBoundary extends React.Component {
           </p>
         )}
         {this.state.exportState === 'failed' && (
-          <p className="text-xs text-red-600 mt-3">
+          <p className="text-xs text-danger-600 mt-3">
             Could not read the saved data to export it.
           </p>
         )}

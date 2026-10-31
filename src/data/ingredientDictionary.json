@@ -647,6 +647,9 @@
       "id": "lemon-juice",
       "aisle": "Produce",
       "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1
+      },
       "names": {
         "en": "Lemon juice",
         "no": "Sitronsaft",
@@ -690,6 +693,9 @@
       "id": "lime-juice",
       "aisle": "Produce",
       "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1
+      },
       "names": {
         "en": "Lime juice",
         "no": "Limesaft",
@@ -1319,6 +1325,9 @@
       "id": "almond-milk",
       "aisle": "Dairy",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1.03
+      },
       "names": {
         "en": "Almond milk",
         "no": "Mandelmelk",
@@ -1340,6 +1349,9 @@
       "id": "cashew-milk",
       "aisle": "Dairy",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1.03
+      },
       "names": {
         "en": "Cashew milk",
         "no": "Cashewmelk",
@@ -1408,6 +1420,9 @@
       "id": "oat-milk",
       "aisle": "Dairy",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1.03
+      },
       "names": {
         "en": "Oat milk",
         "no": "Havremelk",
@@ -1429,6 +1444,9 @@
       "id": "plant-milk",
       "aisle": "Dairy",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1.03
+      },
       "names": {
         "en": "Plant milk",
         "no": "Plantemelk",
@@ -1466,6 +1484,9 @@
       "id": "soy-milk",
       "aisle": "Dairy",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1.03
+      },
       "names": {
         "en": "Soy milk",
         "no": "Soyamelk",
@@ -2108,6 +2129,9 @@
       "id": "aquafaba",
       "aisle": "Canned & Dried",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1
+      },
       "names": {
         "en": "Aquafaba (chickpea liquid)",
         "no": "Aquafaba (kikertvann)",
@@ -2277,6 +2301,9 @@
       "id": "coconut-milk",
       "aisle": "Canned & Dried",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1
+      },
       "names": {
         "en": "Coconut milk",
         "no": "Kokosmelk",
@@ -2553,6 +2580,9 @@
       "id": "olive-brine",
       "aisle": "Canned & Dried",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1.05
+      },
       "names": {
         "en": "Olive brine",
         "no": "Olivenlake",
@@ -2843,6 +2873,9 @@
       "id": "vegetable-broth",
       "aisle": "Canned & Dried",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1
+      },
       "names": {
         "en": "Vegetable broth",
         "no": "Grønnsakskraft",
@@ -2961,6 +2994,54 @@
         "en": [],
         "no": [],
         "sv": []
+      }
+    },
+    {
+      "id": "apple-cider-vinegar",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1.01
+      },
+      "names": {
+        "en": "Apple cider vinegar",
+        "no": "Eplecidereddik",
+        "sv": "Äppelcidervinäger"
+      },
+      "synonyms": {
+        "en": [
+          "cider vinegar"
+        ],
+        "no": [
+          "eplesidereddik"
+        ],
+        "sv": [
+          "äppelvinäger"
+        ]
+      }
+    },
+    {
+      "id": "balsamic-vinegar",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1.1
+      },
+      "names": {
+        "en": "Balsamic vinegar",
+        "no": "Balsamicoeddik",
+        "sv": "Balsamvinäger"
+      },
+      "synonyms": {
+        "en": [
+          "balsamic"
+        ],
+        "no": [
+          "balsamico"
+        ],
+        "sv": [
+          "balsamico"
+        ]
       }
     },
     {
@@ -3159,6 +3240,9 @@
       "id": "coconut-oil",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 0.92
+      },
       "names": {
         "en": "Coconut oil",
         "no": "Kokosolje",
@@ -3325,6 +3409,9 @@
       "id": "honey",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1.42
+      },
       "names": {
         "en": "Honey",
         "no": "Honning",
@@ -3340,6 +3427,9 @@
       "id": "hot-sauce",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "liquid": {
+        "gPerMl": 1
+      },
       "names": {
         "en": "Hot sauce",
         "no": "Chilisaus",
@@ -3370,6 +3460,9 @@
       "id": "maple-syrup",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1.32
+      },
       "names": {
         "en": "Maple syrup",
         "no": "Lønnesirup",
@@ -3466,6 +3559,9 @@
       "id": "olive-oil",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 0.91
+      },
       "names": {
         "en": "Olive oil",
         "no": "Olivenolje",
@@ -3565,6 +3661,9 @@
       "id": "rapeseed-oil",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 0.92
+      },
       "names": {
         "en": "Rapeseed (canola) oil",
         "no": "Rapsolje",
@@ -3580,6 +3679,26 @@
         "sv": [
           "rapsolja"
         ]
+      }
+    },
+    {
+      "id": "rice-vinegar",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1.01
+      },
+      "names": {
+        "en": "Rice vinegar",
+        "no": "Riseddik",
+        "sv": "Risvinäger"
+      },
+      "synonyms": {
+        "en": [
+          "rice wine vinegar"
+        ],
+        "no": [],
+        "sv": []
       }
     },
     {
@@ -3645,6 +3764,9 @@
       "id": "sesame-oil",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 0.92
+      },
       "names": {
         "en": "Sesame oil",
         "no": "Sesamolje",
@@ -3700,6 +3822,9 @@
       "id": "soy-sauce",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1.1
+      },
       "names": {
         "en": "Soy sauce",
         "no": "Soyasaus",
@@ -3716,6 +3841,30 @@
         "sv": [
           "soja",
           "shoyu"
+        ]
+      }
+    },
+    {
+      "id": "soy-sauce-low-sodium",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1.1
+      },
+      "names": {
+        "en": "Low-sodium soy sauce",
+        "no": "Lettsaltet soyasaus",
+        "sv": "Saltreducerad sojasås"
+      },
+      "synonyms": {
+        "en": [
+          "reduced-sodium soy sauce"
+        ],
+        "no": [
+          "soyasaus med redusert salt"
+        ],
+        "sv": [
+          "sojasås med reducerad salthalt"
         ]
       }
     },
@@ -3775,6 +3924,9 @@
       "id": "tamari",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1.1
+      },
       "names": {
         "en": "Tamari (gluten-free soy sauce)",
         "no": "Tamari (glutenfri soyasaus)",
@@ -3859,6 +4011,9 @@
       "id": "vanilla-extract",
       "aisle": "Oils & Condiments",
       "preferredUnit": "tsp",
+      "liquid": {
+        "gPerMl": 0.88
+      },
       "names": {
         "en": "Vanilla extract",
         "no": "Vaniljeekstrakt",
@@ -3912,6 +4067,24 @@
         "en": "White pepper",
         "no": "Hvit pepper",
         "sv": "Vitpeppar"
+      },
+      "synonyms": {
+        "en": [],
+        "no": [],
+        "sv": []
+      }
+    },
+    {
+      "id": "white-wine-vinegar",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tbsp",
+      "liquid": {
+        "gPerMl": 1.01
+      },
+      "names": {
+        "en": "White wine vinegar",
+        "no": "Hvitvinseddik",
+        "sv": "Vitvinsvinäger"
       },
       "synonyms": {
         "en": [],
@@ -4103,6 +4276,9 @@
       "id": "orange-juice",
       "aisle": "Beverages",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1.04
+      },
       "names": {
         "en": "Orange juice",
         "no": "Appelsinjuice",
@@ -4118,6 +4294,9 @@
       "id": "pineapple-juice",
       "aisle": "Beverages",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1.05
+      },
       "names": {
         "en": "Pineapple juice",
         "no": "Ananasjuice",
@@ -4133,6 +4312,9 @@
       "id": "water",
       "aisle": "Beverages",
       "preferredUnit": "ml",
+      "liquid": {
+        "gPerMl": 1
+      },
       "names": {
         "en": "Water",
         "no": "Vann",

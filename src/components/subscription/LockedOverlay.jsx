@@ -47,7 +47,7 @@ export default function LockedOverlay({ title, description, icon = '🔒', compa
     <>
       <div className="absolute inset-0 z-20 flex items-center justify-center p-6 bg-white/75 backdrop-blur-md">
         <div className={`text-center max-w-sm ${compact ? '' : ''}`}>
-          <div className={`mx-auto rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-lg ${
+          <div className={`mx-auto rounded-card bg-primary-100 flex items-center justify-center ${
             compact ? 'w-12 h-12 text-2xl mb-3' : 'w-14 h-14 text-3xl mb-4'
           }`}>
             {icon}
@@ -62,27 +62,27 @@ export default function LockedOverlay({ title, description, icon = '🔒', compa
           )}
 
           {/* Price chip */}
-          <div className="inline-flex items-baseline gap-1 bg-indigo-50 border border-indigo-100 rounded-xl px-3 py-1.5 mb-4">
-            <span className="text-lg font-bold text-indigo-700">120</span>
-            <span className="text-xs text-indigo-600 font-medium">NOK</span>
-            <span className="text-[10px] text-indigo-400">
+          <div className="inline-flex items-baseline gap-1 bg-primary-50 border border-primary-100 rounded-control px-3 py-1.5 mb-4">
+            <span className="text-lg font-bold text-primary-700">120</span>
+            <span className="text-xs text-primary-600 font-medium">NOK</span>
+            <span className="text-2xs text-primary-400">
               / {t('subscription.perMonth')}
             </span>
-            <span className="ml-1.5 text-[10px] text-slate-400">
+            <span className="ml-1.5 text-2xs text-slate-400">
               · {t('preview.fourteenDayTrial')}
             </span>
           </div>
 
           <button
             onClick={handleSubscribe}
-            className="btn-primary w-full py-3 font-semibold text-sm"
+            className="btn-primary btn-lg w-full"
           >
             {user ? t('subscription.subscribeNow') : t('auth.startTrial')}
           </button>
           {!user && (
             <button
               onClick={() => { setAuthTab('signin'); setShowAuth(true) }}
-              className="block w-full mt-2 text-xs text-slate-500 hover:text-slate-700"
+              className="tap-target block w-full mt-2 text-xs text-slate-500 hover:text-slate-700"
             >
               {t('preview.alreadyHaveAccount')}
             </button>

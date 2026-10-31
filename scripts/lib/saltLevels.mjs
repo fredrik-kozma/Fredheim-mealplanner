@@ -25,7 +25,7 @@ const MAX_STEP = 150
 // A rounded step may land this far under minBump ("about +80 mg").
 const MIN_BUMP_SLACK = 0.9
 // Rows that may carry a standard amount (check-recipes enforces the same).
-export const STANDARD_AMOUNT_IDS = new Set(['salt', 'herb-salt', 'black-salt', 'soy-sauce', 'tamari', 'miso-paste', 'vegetable-bouillon'])
+export const STANDARD_AMOUNT_IDS = new Set(['salt', 'herb-salt', 'black-salt', 'soy-sauce', 'soy-sauce-low-sodium', 'tamari', 'miso-paste', 'vegetable-bouillon'])
 // Rows this script raises, in order of preference: plain salt first.
 const RAISE_IDS = ['salt', 'herb-salt', 'black-salt']
 export const LANGS = ['en', 'no', 'sv']

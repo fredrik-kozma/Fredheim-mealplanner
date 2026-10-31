@@ -1,5 +1,22 @@
 {
+  "today": {
+    "title": "Today",
+    "kcal": "{{kcal}} kcal",
+    "tomorrow": "Tomorrow",
+    "emptyTitle": "Nothing planned for today",
+    "emptyBody": "Let the app put a whole week together for you, or pick the meals yourself.",
+    "weekLink": "See the week plan"
+  },
+  "navShort": {
+    "today": "Today",
+    "recipes": "Recipes",
+    "planner": "Plan",
+    "shopping": "Shop",
+    "settings": "Settings",
+    "nutrition": "Nutrition"
+  },
   "nav": {
+    "today": "Today",
     "recipes": "Recipes",
     "planner": "Planner",
     "shopping": "Shopping",
@@ -111,6 +128,12 @@
     "us": "US",
     "notes": "Chef's notes",
     "resetChecklist": "Reset",
+    "resetIngredients": "Reset ticked ingredients",
+    "resetSteps": "Reset ticked steps",
+    "ticksDone": "{{done}} of {{total}} done",
+    "totalTime": "Total {{time}}",
+    "summaryProtein": "{{amount}} g protein",
+    "about": "About this recipe",
     "goodFor": "Good for",
     "relatedRecipes": "See also",
     "fmdNoticeTitle": "Part of the 5-Day Fasting Mimicking Diet",
@@ -487,7 +510,9 @@
     "addCount_other": "Add {{count}} recipes",
     "addOwnHint": "Not in your recipes? Add it as your own meal — it goes on the shopping list too.",
     "amountPlaceholder": "Amount (optional)",
-    "addOwn": "Add"
+    "addOwn": "Add",
+    "filters": "Filters",
+    "removeFilter": "Remove filter: {{label}}"
   },
   "common": {
     "close": "Close",
@@ -746,7 +771,7 @@
     "balanceBody": "You don't need to hit 100% of every nutrient every single day — some days run higher, others lower. What matters is that things even out across the week. These figures are estimates from standard food data.",
     "noNutritionData": "no nutrition data",
     "importPlanned": "From the plan ({{count}})",
-    "importPlannedHint": "Log the meals planned for this day. You can adjust the portions after.",
+    "importPlannedHint": "Log the meals planned for this day, with the plan's portions per person. You can adjust them after.",
     "importedMeals_one": "Added {{count}} meal",
     "importedMeals_other": "Added {{count}} meals",
     "importNothingNew": "Already logged"
@@ -1036,11 +1061,12 @@
     "slides": {
       "welcome": {
         "title": "Welcome to Fredheim",
-        "body": "Plant-based, whole-food recipes from Fredheim Livsstilssenter, a doctor-led lifestyle centre, and a planner that turns them into your week, your shopping list and your nutrition overview. Less time deciding, more time eating well."
+        "body": "Plant-based, whole-food recipes from Fredheim Livsstilssenter, a doctor-led lifestyle centre, and a planner that turns them into your week, your shopping list and your nutrition overview. It opens on Today: what’s for breakfast, lunch and dinner, one tap from the recipe.",
+        "callout": "Today’s meals, one tap away"
       },
       "recipes": {
         "title": "Recipes you’ll want to cook",
-        "body": "Every recipe has a photo, clear steps and nutrition for each serving. Change the number of servings and every amount follows.",
+        "body": "Every recipe has a photo, clear steps and nutrition for each serving. Change the number of servings and every amount follows, and tick off ingredients and steps as you cook.",
         "callout": "Scales to your household"
       },
       "labels": {
@@ -1051,18 +1077,19 @@
       "salt": {
         "title": "Salt the way you need it",
         "body": "Recipes are written low in salt. Healthy adults can switch to Standard, a normal amount within WHO advice. Choose per recipe, or once for everything in Settings.",
-        "callout": "Low salt or Standard"
+        "callout": "Low salt or Standard",
+        "callout2": "Tick off as you cook"
       },
       "makeWeek": {
         "title": "A whole week planned in a minute",
         "body": "Tap the Make my week button at the top of the Weekly Planner. Answer a few short questions and you get meals for the whole week, ready to use.",
-        "callout": "Start here",
-        "callout2": "A few quick questions"
+        "callout": "Start here"
       },
       "goals": {
         "title": "Tell it what you’re aiming for",
         "body": "Healthy everyday food, weight loss, blood pressure, type 2 diabetes or heart health: the week is built from recipes designed for that goal. Pick heart health for Ornish-style Reversal recipes, or load the ready-made 5-day fasting-mimicking plan.",
-        "callout": "Ready-made plans"
+        "callout": "Ready-made plans",
+        "callout2": "A few quick questions"
       },
       "calories": {
         "title": "Portions that fit your day",

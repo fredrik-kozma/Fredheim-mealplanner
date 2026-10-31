@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { BUILT_IN_PACKS } from '../../data/installedPacks'
 import RecipeCard from './RecipeCard'
-import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
+import EmptyState from '../common/EmptyState'
+import { CONDITION_TAGS } from '../../data/conditionTags'
 import { NUTRITION_GROUPS, fmtNutrient } from '../../utils/nutritionData'
 import { recipeHasAvoidedAllergen } from '../../data/allergens'
 import { buildSearchEntry, matchSearchEntry } from '../../utils/recipeSearch'
@@ -279,7 +280,7 @@ export default function RecipeList() {
               FavoriteStar heart used on cards and the detail header. */}
           <button
             onClick={() => setFavoritesOnly(!favoritesOnly)}
-            className={`flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${
+            className={`tap-target flex-shrink-0 inline-flex items-center justify-center w-11 h-11 rounded-control border transition-colors ${
               favoritesOnly
                 ? 'bg-rose-50 border-rose-300 text-rose-500'
                 : 'bg-white border-slate-200 text-slate-400 hover:text-rose-400 hover:border-rose-200'
@@ -294,7 +295,7 @@ export default function RecipeList() {
                 <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"/>
               </svg>
             ) : (
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
               </svg>
             )}
@@ -305,9 +306,9 @@ export default function RecipeList() {
         {hasActiveFilters && (
           <button
             onClick={resetRecipesView}
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 transition-colors px-3 py-1 rounded-full"
+            className="btn-danger btn-sm !rounded-full"
           >
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
             {t('recipes.clearFilters', { defaultValue: 'Clear filters' })}
@@ -321,7 +322,7 @@ export default function RecipeList() {
             plainly — silently showing a third of the library looks like a
             bug otherwise. */}
         {sortBy === 'time' && noTimeCount > 0 && (
-          <div className="flex items-center gap-2 flex-wrap text-xs bg-amber-50 border border-amber-100 text-amber-800 rounded-lg px-3 py-2">
+          <div className="flex items-center gap-2 flex-wrap text-xs bg-warning-50 border border-warning-100 text-warning-800 rounded-small px-3 py-2">
             <span aria-hidden>⏱</span>
             <span className="flex-1 min-w-0">
               {t('recipes.noTimeHidden', {
@@ -333,7 +334,7 @@ export default function RecipeList() {
         )}
 
         {avoidedAllergens.length > 0 && (
-          <div className="flex items-center gap-2 flex-wrap text-xs bg-red-50 border border-red-100 text-red-800 rounded-lg px-3 py-2">
+          <div className="flex items-center gap-2 flex-wrap text-xs bg-danger-50 border border-danger-100 text-danger-800 rounded-small px-3 py-2">
             <span aria-hidden>🚫</span>
             <span className="flex-1 min-w-0">
               {allergenFilterPaused
@@ -345,7 +346,7 @@ export default function RecipeList() {
             </span>
             <button
               onClick={() => setAllergenFilterPaused(!allergenFilterPaused)}
-              className="font-semibold underline hover:no-underline whitespace-nowrap"
+              className="tap-target font-semibold underline hover:no-underline whitespace-nowrap"
             >
               {allergenFilterPaused
                 ? t('recipes.allergenResume', { defaultValue: 'Re-apply' })
@@ -355,8 +356,7 @@ export default function RecipeList() {
         )}
 
         {/* Pack filter — only shown when more than one bucket exists.
-            Strict static styling: fixed h-7, always-on 1px border, no
-            transitions, no auto-scroll. Tapping a chip only flips the
+            Fixed height, always-on 1px border, no auto-scroll. Tapping a chip only flips the
             colour, never moves anything. */}
         {packOptions.length > 1 && (
           <div
@@ -365,11 +365,7 @@ export default function RecipeList() {
           >
             <button
               onClick={() => setActivePack('All')}
-              className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
-                activePack === 'All'
-                  ? 'bg-emerald-600 text-white border-emerald-600'
-                  : 'bg-white text-slate-600 border-slate-200'
-              }`}
+              className={activePack === 'All' ? 'chip-active' : 'chip'}
             >
               {t('recipes.allPacks', { defaultValue: 'All packs' })}
             </button>
@@ -377,11 +373,7 @@ export default function RecipeList() {
               <button
                 key={opt.id}
                 onClick={() => setActivePack(opt.id)}
-                className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
-                  activePack === opt.id
-                    ? 'bg-emerald-600 text-white border-emerald-600'
-                    : 'bg-white text-slate-600 border-slate-200'
-                }`}
+                className={activePack === opt.id ? 'chip-active' : 'chip'}
               >
                 {opt.label} <span className="opacity-60">&nbsp;· {opt.count}</span>
               </button>
@@ -397,11 +389,7 @@ export default function RecipeList() {
         >
           <button
             onClick={clearConditions}
-            className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
-              activeConditions.length === 0
-                ? 'bg-slate-700 text-white border-slate-700'
-                : 'bg-white text-slate-600 border-slate-200'
-            }`}
+            className={activeConditions.length === 0 ? 'chip-active' : 'chip'}
           >
             {t('conditions.all', { defaultValue: 'All conditions' })}
           </button>
@@ -412,11 +400,7 @@ export default function RecipeList() {
                 key={c.id}
                 onClick={() => toggleCondition(c.id)}
                 aria-pressed={on}
-                className={`flex-shrink-0 h-7 px-3 inline-flex items-center gap-1 rounded-full text-xs font-medium whitespace-nowrap border ${
-                  on
-                    ? `${CONDITION_CHIP_ACTIVE[c.color]} border-transparent`
-                    : 'bg-white text-slate-600 border-slate-200'
-                }`}
+                className={on ? 'chip-active' : 'chip'}
               >
                 <span aria-hidden>{on ? '✓' : c.icon}</span>
                 {t(`conditions.${c.id}`, { defaultValue: c.id })}
@@ -434,11 +418,7 @@ export default function RecipeList() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`flex-shrink-0 h-8 px-3.5 inline-flex items-center rounded-full text-sm font-medium whitespace-nowrap border ${
-                activeCategory === cat
-                  ? 'bg-indigo-600 text-white border-indigo-600'
-                  : 'bg-white text-slate-600 border-slate-200'
-              }`}
+              className={activeCategory === cat ? 'chip-active' : 'chip'}
             >
               {cat === 'All' ? t('recipes.allCategories') : t(`categories.${cat}`, { defaultValue: cat })}
             </button>
@@ -447,23 +427,17 @@ export default function RecipeList() {
       </div>
 
       {/* Recipe grid */}
-      <div className="flex-1 overflow-y-auto px-4 pb-24 lg:pb-6">
+      <div className="flex-1 overflow-y-auto px-4 pb-nav lg:pb-8">
         {visible.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 text-center">
-            <div className="relative flex mb-4" style={{ width: '4rem', height: '3.5rem' }}>
-              <span className="text-5xl absolute left-0">🥑</span>
-              <span className="text-5xl absolute left-6">🥑</span>
-            </div>
-            {/* "No recipes yet" is wrong when you have 260 and simply
-                searched for something that isn't there. */}
-            <h3 className="text-lg font-semibold text-slate-700 mb-2">
-              {search
-                ? t('recipes.noResultsTitle', { defaultValue: 'Nothing found' })
-                : t('recipes.noRecipesYet')}
-            </h3>
-            <p className="text-sm text-slate-500 mb-6 max-w-xs">
-              {search ? t('recipes.noRecipesMatch') : t('recipes.addFirstRecipe')}
-            </p>
+          /* "No recipes yet" is wrong when you have 260 and simply
+              searched for something that isn't there. */
+          <EmptyState
+            icon="🥑"
+            title={search
+              ? t('recipes.noResultsTitle', { defaultValue: 'Nothing found' })
+              : t('recipes.noRecipesYet')}
+            body={search ? t('recipes.noRecipesMatch') : t('recipes.addFirstRecipe')}
+          >
             {!search && (
               <button onClick={() => navigate('/recipes/new')} className="btn-primary">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -472,7 +446,7 @@ export default function RecipeList() {
                 {t('recipes.addRecipe')}
               </button>
             )}
-          </div>
+          </EmptyState>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-2">
             {visible.map(recipe => (

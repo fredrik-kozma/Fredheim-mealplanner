@@ -73,21 +73,21 @@ export default function ShareModal({ kind, payload, text, title, fileBuilder, on
 
   return createPortal(
     <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl shadow-2xl">
+      <div className="absolute inset-0 scrim" onClick={onClose} />
+      <div className="relative z-10 sheet sm:max-w-md">
         <div className="sm:hidden flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 rounded-full bg-slate-200" />
         </div>
 
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
-          <h2 className="text-base font-semibold text-slate-800">
+          <h2 className="section-title">
             {kind === 'week'
               ? t('share.titleWeek', { defaultValue: 'Share this menu' })
               : kind === 'shopping'
                 ? t('share.titleShopping', { defaultValue: 'Share this shopping list' })
                 : t('share.titleRecipe', { defaultValue: 'Share this recipe' })}
           </h2>
-          <button onClick={onClose} className="btn-ghost p-1.5 -mr-1.5 text-slate-400">
+          <button onClick={onClose} className="btn-ghost btn-icon -mr-1.5 text-slate-400">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
@@ -127,7 +127,7 @@ export default function ShareModal({ kind, payload, text, title, fileBuilder, on
 
         {toast && (
           <div className="px-5 pb-4 -mt-1">
-            <div className="text-xs text-slate-600 bg-slate-50 border border-slate-100 rounded-lg px-3 py-2">
+            <div className="text-xs text-slate-600 bg-slate-50 border border-slate-100 rounded-small px-3 py-2">
               {toast}
             </div>
           </div>
@@ -143,7 +143,7 @@ function Option({ icon, label, hint, onClick, disabled, trailing }) {
     <button
       onClick={onClick}
       disabled={disabled}
-      className="w-full text-left flex items-start gap-3 p-3 rounded-xl border border-slate-100 hover:border-indigo-200 hover:bg-slate-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      className="tap-target w-full text-left flex items-start gap-3 p-3 rounded-control border border-slate-100 hover:border-primary-200 hover:bg-slate-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
     >
       <span className="text-xl leading-none mt-0.5" aria-hidden>{icon}</span>
       <span className="flex-1 min-w-0">
@@ -157,6 +157,6 @@ function Option({ icon, label, hint, onClick, disabled, trailing }) {
 
 function Spinner() {
   return (
-    <span className="w-4 h-4 mt-1 rounded-full border-2 border-slate-200 border-t-indigo-500 animate-spin" aria-hidden />
+    <span className="w-4 h-4 mt-1 rounded-full border-2 border-slate-200 border-t-primary-500 animate-spin" aria-hidden />
   )
 }

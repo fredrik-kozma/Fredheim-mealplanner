@@ -86,14 +86,14 @@ export default function UpgradeWall() {
     <div className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white/95 backdrop-blur-sm px-6">
       <div className="w-full max-w-sm text-center">
         {/* Icon */}
-        <div className="w-16 h-16 rounded-2xl bg-indigo-600 flex items-center justify-center text-3xl mx-auto mb-5 shadow-lg">
+        <div className="w-16 h-16 rounded-card bg-primary-100 flex items-center justify-center text-3xl mx-auto mb-5">
           🍽
         </div>
 
         {/* Status emoji */}
         <div className="text-4xl mb-3">{copy.emoji}</div>
 
-        <h1 className="text-xl font-bold text-slate-900 mb-2">
+        <h1 className="page-title mb-2">
           {t(copy.titleKey)}
         </h1>
         <p className="text-sm text-slate-500 mb-6 leading-relaxed">
@@ -101,10 +101,10 @@ export default function UpgradeWall() {
         </p>
 
         {/* Price badge */}
-        <div className="inline-flex items-baseline gap-1 bg-indigo-50 border border-indigo-100 rounded-xl px-4 py-2 mb-6">
-          <span className="text-2xl font-bold text-indigo-700">120</span>
-          <span className="text-sm text-indigo-600 font-medium">NOK</span>
-          <span className="text-xs text-indigo-400">
+        <div className="inline-flex items-baseline gap-1 bg-primary-50 border border-primary-100 rounded-control px-4 py-2 mb-6">
+          <span className="text-2xl font-bold text-primary-700">120</span>
+          <span className="text-sm text-primary-600 font-medium">NOK</span>
+          <span className="text-xs text-primary-400">
             / {t('subscription.perMonth')}
           </span>
         </div>
@@ -113,14 +113,14 @@ export default function UpgradeWall() {
         <ul className="text-sm text-slate-600 text-left space-y-2 mb-7">
           {['subscription.feature1', 'subscription.feature2', 'subscription.feature3'].map((key) => (
             <li key={key} className="flex items-start gap-2">
-              <span className="text-indigo-500 mt-0.5">✓</span>
+              <span className="text-primary-500 mt-0.5">✓</span>
               <span>{t(key)}</span>
             </li>
           ))}
         </ul>
 
         {error && (
-          <p className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2 mb-4">
+          <p className="text-xs text-danger-600 bg-danger-50 rounded-small px-3 py-2 mb-4">
             {error}
           </p>
         )}
@@ -128,7 +128,7 @@ export default function UpgradeWall() {
         <button
           onClick={handleSubscribe}
           disabled={loading}
-          className="btn-primary w-full py-3.5 font-semibold text-base mb-3 disabled:opacity-60"
+          className="btn-primary btn-lg w-full mb-3"
         >
           {loading ? '…' : t('subscription.subscribeNow')}
         </button>
@@ -138,7 +138,7 @@ export default function UpgradeWall() {
           <button
             onClick={handleManage}
             disabled={loading}
-            className="btn-secondary w-full py-2.5 text-sm mb-3"
+            className="btn-secondary w-full mb-3"
           >
             {t('subscription.updatePayment')}
           </button>
@@ -146,7 +146,7 @@ export default function UpgradeWall() {
 
         <button
           onClick={signOut}
-          className="text-xs text-slate-400 hover:text-slate-600 transition-colors"
+          className="tap-target text-xs text-slate-400 hover:text-slate-600 transition-colors"
         >
           {t('auth.signOut')}
         </button>

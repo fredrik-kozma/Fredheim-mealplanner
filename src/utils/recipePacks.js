@@ -15,7 +15,7 @@ export async function fetchRegistry() {
 
 /**
  * Fetches a single pack file (with full recipe data) from the remote repo.
- * @param {string} packId  e.g. "healthy-basics"
+ * @param {string} packId  e.g. "my-pack"
  */
 export async function fetchPack(packId) {
   const res = await fetch(`${REGISTRY_URL}/packs/${packId}.json`)

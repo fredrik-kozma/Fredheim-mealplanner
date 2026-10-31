@@ -64,20 +64,20 @@ export default function TimerPanel({ onClose }) {
   // top of the screen. The clock appeared to do nothing when tapped.
   return createPortal(
     <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl p-5 max-h-[85vh] overflow-y-auto">
+      <div className="absolute inset-0 scrim" onClick={onClose} />
+      <div className="relative z-10 sheet sm:max-w-sm p-5 sheet-max-h overflow-y-auto">
         <div className="sm:hidden flex justify-center mb-3">
           <div className="w-10 h-1 rounded-full bg-slate-200" />
         </div>
 
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-base font-semibold text-slate-800 inline-flex items-center gap-2">
+          <h2 className="section-title inline-flex items-center gap-2">
             <span aria-hidden>⏱</span>
             {t('timer.title', { defaultValue: 'Timer' })}
           </h2>
           <button
             onClick={onClose}
-            className="text-slate-300 hover:text-slate-500"
+            className="tap-target text-slate-300 hover:text-slate-500"
             aria-label={t('common.close', { defaultValue: 'Close' })}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -95,17 +95,17 @@ export default function TimerPanel({ onClose }) {
               return (
                 <div
                   key={tm.id}
-                  className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 ${
+                  className={`flex items-center gap-3 rounded-control border px-3 py-2.5 ${
                     tm.ringing
-                      ? 'bg-amber-50 border-amber-200'
+                      ? 'bg-warning-50 border-warning-200'
                       : paused
                         ? 'bg-slate-50 border-slate-200'
-                        : 'bg-indigo-50/60 border-indigo-100'
+                        : 'bg-primary-50/60 border-primary-100'
                   }`}
                 >
                   <div className="min-w-0 flex-1">
                     <p className={`text-lg font-bold tabular-nums leading-tight ${
-                      tm.ringing ? 'text-amber-800' : paused ? 'text-slate-500' : 'text-indigo-800'
+                      tm.ringing ? 'text-warning-800' : paused ? 'text-slate-500' : 'text-primary-800'
                     }`}>
                       {tm.ringing ? t('timer.done', { defaultValue: 'Done!' }) : formatRemaining(left)}
                     </p>
@@ -113,7 +113,7 @@ export default function TimerPanel({ onClose }) {
                       <p className="text-xs text-slate-600 truncate mt-0.5">{tm.label}</p>
                     )}
                     {paused && (
-                      <p className="text-[11px] text-slate-400 mt-0.5">
+                      <p className="text-2xs text-slate-400 mt-0.5">
                         {t('timer.paused', { defaultValue: 'Paused' })}
                       </p>
                     )}
@@ -122,14 +122,14 @@ export default function TimerPanel({ onClose }) {
                   {tm.ringing ? (
                     <button
                       onClick={() => restartTimer(tm.id)}
-                      className="text-xs font-semibold text-amber-800 hover:bg-amber-100 rounded-lg px-2.5 py-1.5"
+                      className="tap-target text-xs font-semibold text-warning-800 hover:bg-warning-100 rounded-small px-2.5 py-1.5"
                     >
                       {t('timer.again', { defaultValue: 'Again' })}
                     </button>
                   ) : (
                     <button
                       onClick={() => paused ? resumeTimer(tm.id) : pauseTimer(tm.id)}
-                      className="text-slate-400 hover:text-indigo-600 p-1"
+                      className="tap-target text-slate-400 hover:text-primary-600 p-1"
                       aria-label={paused
                         ? t('timer.resume', { defaultValue: 'Resume' })
                         : t('timer.pause', { defaultValue: 'Pause' })}
@@ -144,7 +144,7 @@ export default function TimerPanel({ onClose }) {
 
                   <button
                     onClick={() => removeTimer(tm.id)}
-                    className="text-slate-300 hover:text-red-500 p-1"
+                    className="tap-target text-slate-300 hover:text-danger-500 p-1"
                     aria-label={tm.ringing
                       ? t('timer.dismiss', { defaultValue: 'Dismiss' })
                       : t('common.remove')}
@@ -160,7 +160,7 @@ export default function TimerPanel({ onClose }) {
         )}
 
         {/* New timer */}
-        <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+        <p className="eyebrow mb-2">
           {t('timer.newTimer', { defaultValue: 'New timer' })}
         </p>
 
@@ -169,7 +169,7 @@ export default function TimerPanel({ onClose }) {
             <button
               key={m}
               onClick={() => start(m)}
-              className="py-2 rounded-xl border border-slate-200 text-sm font-semibold text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+              className="tap-target py-2 rounded-control border border-slate-200 text-sm font-semibold text-slate-700 hover:border-primary-300 hover:bg-primary-50 hover:text-primary-700 transition-colors"
             >
               {t('timer.minutesShort', { n: m, defaultValue: `${m} min` })}
             </button>
@@ -198,7 +198,7 @@ export default function TimerPanel({ onClose }) {
         <button
           onClick={() => start(minutes)}
           disabled={!minutes || Number(minutes) <= 0}
-          className="btn-primary w-full mt-2 text-sm py-2 disabled:opacity-40"
+          className="btn-primary w-full mt-2"
         >
           {t('timer.start', { defaultValue: 'Start' })}
         </button>
@@ -206,24 +206,24 @@ export default function TimerPanel({ onClose }) {
         {/* Notifications — the only way the alarm reaches a locked phone,
             so the state is worth showing rather than leaving silent. */}
         {notifyState === 'granted' ? (
-          <p className="text-[11px] text-green-700 bg-green-50 border border-green-100 rounded-lg px-2.5 py-2 mt-3 inline-flex items-center gap-1.5">
+          <p className="text-2xs text-success-700 bg-success-50 border border-success-100 rounded-small px-2.5 py-2 mt-3 inline-flex items-center gap-1.5">
             <span aria-hidden>🔔</span>
             {t('timer.notifyOn', { defaultValue: 'Notifications on — you\'ll be told even if the app is in the background.' })}
           </p>
         ) : notifyState === 'denied' ? (
-          <p className="text-[11px] text-slate-500 bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 mt-3">
+          <p className="text-2xs text-slate-500 bg-slate-50 border border-slate-200 rounded-small px-2.5 py-2 mt-3">
             {t('timer.notifyBlocked', { defaultValue: 'Notifications are blocked for this app. Turn them back on in your browser or phone settings if you want the alarm to reach you in the background.' })}
           </p>
         ) : notifyState === 'default' ? (
           <button
             onClick={enableNotifications}
-            className="w-full text-[11px] font-semibold text-indigo-700 bg-indigo-50 border border-indigo-100 hover:bg-indigo-100 rounded-lg px-2.5 py-2 mt-3 transition-colors"
+            className="tap-target w-full text-2xs font-semibold text-primary-700 bg-primary-50 border border-primary-100 hover:bg-primary-100 rounded-small px-2.5 py-2 mt-3 transition-colors"
           >
             🔔 {t('timer.notifyEnable', { defaultValue: 'Also notify me when the app is in the background' })}
           </button>
         ) : null}
 
-        <p className="text-[11px] text-slate-400 mt-3 leading-relaxed">
+        <p className="text-2xs text-slate-400 mt-3 leading-relaxed">
           {t('timer.backgroundHint', {
             defaultValue: 'Keeps counting while you use the rest of the app. The chime needs the app open on screen — a locked phone may silence it.',
           })}

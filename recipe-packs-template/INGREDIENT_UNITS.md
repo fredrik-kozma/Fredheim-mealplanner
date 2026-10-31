@@ -16,7 +16,7 @@ it goes into a pack.
 
 For each ingredient, ask in order:
 
-1. **Is it a liquid?** (water, plant milk, oil, juice, broth, vinegar,
+1. **Is it a liquid?** (water, plant milk, oil, juice, broth,
    tamari/soy sauce, extract, syrup, honey, maple syrup) → **volume**
    (dl/ml/l for a bulk amount, tbsp/tsp for a small one). Never grams.
 

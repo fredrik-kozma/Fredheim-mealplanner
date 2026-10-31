@@ -78,7 +78,7 @@ export function renderStepText(step, format) {
     return (
       <span
         key={i}
-        className="font-semibold text-indigo-700 bg-indigo-50 rounded px-1 py-0.5 tabular-nums"
+        className="font-semibold text-primary-700 bg-primary-50 rounded-small px-1 py-0.5 tabular-nums"
       >
         {format(part.quantity, part.unit)}
       </span>

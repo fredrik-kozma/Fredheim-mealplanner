@@ -1,5 +1,22 @@
 {
+  "today": {
+    "title": "Idag",
+    "kcal": "{{kcal}} kcal",
+    "tomorrow": "Imorgon",
+    "emptyTitle": "Inget planerat för idag",
+    "emptyBody": "Låt appen sätta ihop en hel vecka åt dig, eller välj måltiderna själv.",
+    "weekLink": "Se veckoplanen"
+  },
+  "navShort": {
+    "today": "Idag",
+    "recipes": "Recept",
+    "planner": "Plan",
+    "shopping": "Handla",
+    "settings": "Val",
+    "nutrition": "Näring"
+  },
   "nav": {
+    "today": "Idag",
     "recipes": "Recept",
     "planner": "Planering",
     "shopping": "Inköpslista",
@@ -111,6 +128,12 @@
     "us": "US",
     "notes": "Kockens tips",
     "resetChecklist": "Återställ",
+    "resetIngredients": "Återställ avbockade ingredienser",
+    "resetSteps": "Återställ avbockade steg",
+    "ticksDone": "{{done}} av {{total}} klart",
+    "totalTime": "Totalt {{time}}",
+    "summaryProtein": "{{amount}} g protein",
+    "about": "Om receptet",
     "goodFor": "Bra för",
     "relatedRecipes": "Se även",
     "fmdNoticeTitle": "Del av den 5-dagars fasteimiterande dieten (FMD)",
@@ -487,7 +510,9 @@
     "addCount_other": "Lägg till {{count}} recept",
     "addOwnHint": "Inte bland recepten? Lägg till den som din egen rätt — den hamnar på inköpslistan också.",
     "amountPlaceholder": "Mängd (valfritt)",
-    "addOwn": "Lägg till"
+    "addOwn": "Lägg till",
+    "filters": "Filter",
+    "removeFilter": "Ta bort filter: {{label}}"
   },
   "common": {
     "close": "Stäng",
@@ -746,7 +771,7 @@
     "balanceBody": "Du behöver inte nå 100 % av varje näringsämne varje dag – vissa dagar blir högre, andra lägre. Det som spelar roll är att det jämnar ut sig under veckan. Dessa siffror är uppskattningar från standardiserade livsmedelsdata.",
     "noNutritionData": "ingen näringsdata",
     "importPlanned": "Från veckoplanen ({{count}})",
-    "importPlannedHint": "Lägg in måltiderna som är planerade för den här dagen. Du kan justera portionerna efteråt.",
+    "importPlannedHint": "Lägg in måltiderna som är planerade för den här dagen, med planens portioner per person. Du kan justera dem efteråt.",
     "importedMeals_one": "Lade till {{count}} måltid",
     "importedMeals_other": "Lade till {{count}} måltider",
     "importNothingNew": "Redan inlagt"
@@ -1036,11 +1061,12 @@
     "slides": {
       "welcome": {
         "title": "Välkommen till Fredheim",
-        "body": "Växtbaserade recept på riktig, lite bearbetad mat från Fredheim Livsstilssenter, ett läkarlett livsstilscenter – och en planerare som gör om dem till veckomeny, inköpslista och näringsöversikt. Mindre tid till att bestämma, mer tid till god mat."
+        "body": "Växtbaserade recept på riktig, lite bearbetad mat från Fredheim Livsstilssenter, ett läkarlett livsstilscenter – och en planerare som gör om dem till veckomeny, inköpslista och näringsöversikt. Appen öppnar på Idag: vad det blir till frukost, lunch och middag, ett tryck från receptet.",
+        "callout": "Dagens måltider, ett tryck bort"
       },
       "recipes": {
         "title": "Recept du får lust att laga",
-        "body": "Varje recept har bild, tydliga steg och näringsinnehåll per portion. Ändra antalet portioner så räknas alla mängder om.",
+        "body": "Varje recept har bild, tydliga steg och näringsinnehåll per portion. Ändra antalet portioner så räknas alla mängder om, och bocka av ingredienser och steg medan du lagar maten.",
         "callout": "Anpassas efter hushållet"
       },
       "labels": {
@@ -1051,18 +1077,19 @@
       "salt": {
         "title": "Salt efter dina behov",
         "body": "Recepten är skrivna med lite salt. Friska vuxna kan välja Standard, en vanlig mängd inom WHO:s rekommendation. Välj för varje recept, eller en gång för alla i Inställningar.",
-        "callout": "Lite salt eller Standard"
+        "callout": "Lite salt eller Standard",
+        "callout2": "Bocka av medan du lagar"
       },
       "makeWeek": {
         "title": "En hel vecka planerad på en minut",
         "body": "Tryck på knappen ”Gör min vecka” högst upp i Veckoplanering. Svara på några korta frågor så får du måltider för hela veckan, klara att använda.",
-        "callout": "Börja här",
-        "callout2": "Några snabba frågor"
+        "callout": "Börja här"
       },
       "goals": {
         "title": "Berätta vad du vill uppnå",
         "body": "Vardagsmat för hälsan, viktminskning, blodtryck, typ 2-diabetes eller hjärthälsa: veckan byggs av recept framtagna för just det målet. Välj hjärthälsa för recept i Ornish-stil (reversering), eller ladda den färdiga 5-dagars fastehärmande planen.",
-        "callout": "Färdiga planer"
+        "callout": "Färdiga planer",
+        "callout2": "Några snabba frågor"
       },
       "calories": {
         "title": "Portioner som passar din dag",

@@ -85,7 +85,7 @@ export const STRAINED = new Set(['orn-8', 'orn-12', 'orn-23', 'orn-43', 'fmd-bro
 export const NOT_EATEN = new Set(['orn-37'])
 // A stored 0 is treated as "never filled in" when the ingredients give at least this much.
 export const FALSE_ZERO_MIN = { protein: 1, totalFat: 1, saturatedFat: 0.5, fiber: 1, totalSugars: 1, sodium: 50, potassium: 50 }
-export const SALTY = new Set(['salt', 'herb-salt', 'black-salt', 'soy-sauce', 'tamari', 'vegetable-bouillon', 'miso-paste'])
+export const SALTY = new Set(['salt', 'herb-salt', 'black-salt', 'soy-sauce', 'soy-sauce-low-sodium', 'tamari', 'vegetable-bouillon', 'miso-paste'])
 // Sub-recipes and products whose composition varies by brand/home recipe.
 export const UNCERTAIN_INGREDIENTS = new Set(['white-cashew-sauce', 'cashew-sour-cream', 'hummus', 'soy-mayonnaise', 'bread',
   'gluten-free-flour-mix', 'plant-milk', 'plant-yogurt', 'sun-dried-tomatoes', 'vegetable-bouillon', 'crispbread', 'cashew-milk'])
@@ -122,13 +122,13 @@ export const COCONUT_FAT = new Set(['coconut-oil', 'coconut-milk', 'coconut-crea
 export const FREE_SUGAR = new Set(['sugar', 'honey', 'maple-syrup', 'dried-cranberries', 'ketchup', 'orange-juice', 'pineapple-juice', 'oat-milk'])
 export const DATES = new Set(['date-paste', 'dates-dried', 'medjool-dates'])
 export const REFINED_BASE = new Set(['white-flour', 'rice-flour', 'gluten-free-flour-mix', 'rice-noodles', 'bean-noodles', 'lasagne-sheets', 'cornmeal-polenta', 'bread-crumbs'])
-export const GLUTEN = new Set(['wholewheat-flour', 'white-flour', 'spelt-flour', 'rye-flour', 'gluten-flour', 'bulgur', 'bread', 'bread-crumbs', 'crispbread', 'lasagne-sheets', 'barley-coffee', 'sourdough-starter', 'soy-sauce'])
+export const GLUTEN = new Set(['wholewheat-flour', 'white-flour', 'spelt-flour', 'rye-flour', 'gluten-flour', 'bulgur', 'bread', 'bread-crumbs', 'crispbread', 'lasagne-sheets', 'barley-coffee', 'sourdough-starter', 'soy-sauce', 'soy-sauce-low-sodium'])
 export const OATS = new Set(['rolled-oats', 'small-oats', 'oat-flour', 'oat-milk'])
 export const GF_CHECK_LABEL = new Set(['miso-paste', 'vegetable-bouillon'])
 export const NUTS = new Set(['almonds', 'almond-butter', 'almond-milk', 'cashews', 'cashew-milk', 'cashew-sour-cream', 'white-cashew-sauce', 'hazelnuts', 'pecans', 'pistachios', 'walnuts', 'peanuts', 'peanut-butter'])
 export const WHOLE_NUTS = new Set(['almonds', 'hazelnuts', 'pecans', 'pistachios', 'walnuts', 'peanuts'])
 export const COCONUT = new Set(['shredded-coconut', 'coconut-milk', 'coconut-cream', 'coconut-oil'])
-export const SOY = new Set(['tofu', 'soy-milk', 'soy-sauce', 'tamari', 'miso-paste', 'edamame-frozen', 'soy-mayonnaise', 'plant-milk', 'plant-yogurt'])
+export const SOY = new Set(['tofu', 'soy-milk', 'soy-sauce', 'soy-sauce-low-sodium', 'tamari', 'miso-paste', 'edamame-frozen', 'soy-mayonnaise', 'plant-milk', 'plant-yogurt'])
 export const HOT = new Set(['cayenne-pepper', 'chili-flakes', 'chili-fresh', 'chili-powder', 'hot-sauce', 'horseradish'])
 export const LEAFY = new Set(['arugula', 'salad-leaves', 'romaine-lettuce', 'spinach', 'chinese-cabbage'])
 
@@ -524,6 +524,17 @@ export function evaluateLabels(r, nut, mt, time, facts, allergens) {
  * suggestion (the report, which proposes them). `mt` is the suggestion
  * either way.
  */
+
+// Per-recipe good-for label overrides. Applied after the criteria so a
+// re-run of label-recipes keeps them. Use for clear batch-friendly stews
+// whose titles do not match the keeps regex (chili, curry, tagine, …).
+export const LABEL_OVERRIDES = {
+  'chili-sin-carne': { add: ['batch-friendly'], note: 'bean chili; makes ≥4 servings and keeps/freezes well' },
+  'moroccan-chickpea-tagine': { add: ['batch-friendly'], note: 'chickpea stew/tagine; makes ≥4 servings and keeps/freezes well' },
+  'thai-red-curry': { add: ['batch-friendly'], note: 'curry stew; makes ≥4 servings and keeps/freezes well' },
+  'vegetarian-lapskaus': { add: ['batch-friendly'], note: 'Norwegian bean-and-root stew; makes ≥4 servings and keeps/freezes well' },
+}
+
 export function analyzeRecipe(original, recipesById = new Map(), { storedMealTypes = false } = {}) {
   const { recipe: r, fix: ingredientFix } = dropDuplicateRows(original)
   const nut = assessNutrition(r, recipesById)
@@ -533,6 +544,19 @@ export function analyzeRecipe(original, recipesById = new Map(), { storedMealTyp
   const allergens = recipeAllergens(r)
   const judgedTypes = storedMealTypes && r.mealTypes?.length ? r.mealTypes : mt.mealTypes
   const labels = evaluateLabels(r, nut, judgedTypes, time, facts, allergens)
+  const ov = LABEL_OVERRIDES[r.id]
+  if (ov?.add) {
+    for (const l of ov.add) {
+      if (!LABELS.includes(l)) throw new Error(`LABEL_OVERRIDES ${r.id}: unknown label ${l}`)
+      labels[l] = { pass: true, why: ov.note || 'per-recipe override' }
+    }
+  }
+  if (ov?.remove) {
+    for (const l of ov.remove) {
+      if (!LABELS.includes(l)) throw new Error(`LABEL_OVERRIDES ${r.id}: unknown label ${l}`)
+      labels[l] = { pass: false, why: ov.note || 'per-recipe override' }
+    }
+  }
   return {
     recipe: r, ingredientFix, nut, time, mt, facts, allergens, labels,
     proposed: LABELS.filter(l => labels[l].pass),

@@ -93,7 +93,7 @@ export default function WeekNotes() {
       <div className="px-4 pb-3">
         <button
           onClick={() => { setDraft(''); setEditing(true) }}
-          className="w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-dashed border-slate-200 text-slate-400 hover:border-amber-300 hover:text-amber-600 hover:bg-amber-50/40 transition-colors text-xs font-medium"
+          className="tap-target w-full flex items-center justify-center gap-2 py-2 rounded-control border border-dashed border-slate-200 text-slate-400 hover:border-warning-300 hover:text-warning-600 hover:bg-warning-50/40 transition-colors text-xs font-medium"
         >
           <span aria-hidden>💡</span>
           {t('planner.addWeekNote', { defaultValue: 'Add smart tips for this week' })}
@@ -106,27 +106,27 @@ export default function WeekNotes() {
 
   return (
     <div className="px-4 pb-3">
-      <div className="rounded-xl bg-amber-50 border border-amber-100">
+      <div className="rounded-control bg-warning-50 border border-warning-100">
         <button
           type="button"
           onClick={toggleOpen}
           disabled={editing}
           aria-expanded={expanded}
           aria-controls={bodyId}
-          className="w-full min-h-[40px] flex items-center gap-2 px-4 py-2 text-left rounded-xl disabled:cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
+          className="tap-target w-full min-h-[40px] flex items-center gap-2 px-4 py-2 text-left rounded-control disabled:cursor-default"
         >
           <span aria-hidden className="shrink-0 text-xs">💡</span>
-          <span className="shrink-0 text-xs font-bold text-amber-900">
+          <span className="shrink-0 text-xs font-bold text-warning-900">
             {t('planner.weekNotesTitle', { defaultValue: 'Smart tips' })}
           </span>
           {/* Folded, the first line of the tips says what's inside. */}
-          <span className="min-w-0 flex-1 truncate text-xs text-amber-900/70">
+          <span className="min-w-0 flex-1 truncate text-xs text-warning-900/70">
             {!expanded && summary}
           </span>
           {!editing && (
             <svg
-              className={`shrink-0 w-4 h-4 text-amber-700 transition-transform motion-reduce:transition-none ${expanded ? 'rotate-180' : ''}`}
-              fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden
+              className={`shrink-0 w-4 h-4 text-warning-700 transition-transform motion-reduce:transition-none ${expanded ? 'rotate-180' : ''}`}
+              fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
@@ -150,24 +150,24 @@ export default function WeekNotes() {
                 placeholder={t('planner.weekNotesPlaceholder', {
                   defaultValue: 'e.g. Bake the bread on Monday — it covers the whole week. Soak the beans Sunday night.',
                 })}
-                className="w-full text-sm text-amber-900 bg-white/70 border border-amber-200 rounded-lg px-3 py-2 leading-relaxed resize-y focus:outline-none focus:ring-2 focus:ring-amber-300 placeholder:text-amber-400/70"
+                className="w-full text-sm text-warning-900 bg-white/70 border border-warning-200 rounded-small px-3 py-2 leading-relaxed resize-y placeholder:text-warning-400/70"
               />
               <div className="flex justify-end gap-2 mt-2">
-                <button onClick={cancel} className="text-xs font-semibold text-slate-500 hover:text-slate-700 px-2 py-1">
+                <button onClick={cancel} className="tap-target text-xs font-semibold text-slate-500 hover:text-slate-700 px-2 py-1">
                   {t('common.cancel')}
                 </button>
-                <button onClick={commit} className="text-xs font-semibold text-white bg-amber-600 hover:bg-amber-700 rounded-lg px-3 py-1">
+                <button onClick={commit} className="tap-target text-xs font-semibold text-white bg-warning-600 hover:bg-warning-700 rounded-small px-3 py-1">
                   {t('common.save')}
                 </button>
               </div>
             </>
           ) : (
             <>
-              <p className="text-sm text-amber-900 leading-relaxed whitespace-pre-wrap">{text}</p>
+              <p className="text-sm text-warning-900 leading-relaxed whitespace-pre-wrap">{text}</p>
               <div className="flex justify-end mt-1.5">
                 <button
                   onClick={() => setEditing(true)}
-                  className="text-[11px] font-semibold text-amber-700 hover:text-amber-900 px-1 py-0.5"
+                  className="tap-target text-2xs font-semibold text-warning-700 hover:text-warning-900 px-1 py-0.5"
                 >
                   {t('common.edit', { defaultValue: 'Edit' })}
                 </button>

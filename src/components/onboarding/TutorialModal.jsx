@@ -131,14 +131,14 @@ export default function TutorialModal({ onClose }) {
   const showImage = slide.image && !imageLoadFailed[slide.id]
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm">
-      <div className="relative w-full h-full sm:h-auto sm:max-w-md sm:max-h-[90vh] bg-white sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center scrim">
+      <div className="relative w-full h-full sm:h-auto sm:max-w-md sm:max-h-[90vh] bg-white sm:rounded-card shadow-overlay flex flex-col overflow-hidden">
 
         {/* Top: skip button */}
         <div className="flex items-center justify-end p-4">
           <button
             onClick={onClose}
-            className="text-sm font-medium text-slate-400 hover:text-slate-600 transition-colors"
+            className="tap-target text-sm font-medium text-slate-400 hover:text-slate-600 transition-colors"
           >
             {t('tutorial.skip', { defaultValue: 'Skip' })}
           </button>
@@ -149,7 +149,7 @@ export default function TutorialModal({ onClose }) {
 
           {/* Visual: real screenshot if available, otherwise emoji icon */}
           {showImage ? (
-            <div className="relative w-full max-w-xs mb-6 bg-slate-50 rounded-2xl overflow-hidden border border-slate-200">
+            <div className="relative w-full max-w-xs mb-6 bg-slate-50 rounded-card overflow-hidden border border-slate-200">
               <img
                 src={slide.image}
                 alt=""
@@ -171,14 +171,14 @@ export default function TutorialModal({ onClose }) {
                     >
                       {/* Pulsing circle */}
                       <div className="relative">
-                        <div className="absolute inset-0 rounded-full bg-emerald-400/40 animate-ping" style={{ width: 36, height: 36, marginLeft: -18, marginTop: -18 }} />
+                        <div className="absolute inset-0 rounded-full bg-success-400/40 animate-ping" style={{ width: 36, height: 36, marginLeft: -18, marginTop: -18 }} />
                         <div
-                          className="rounded-full border-4 border-emerald-500"
+                          className="rounded-full border-4 border-success-500"
                           style={{ width: 36, height: 36, marginLeft: -18, marginTop: -18 }}
                         />
                       </div>
                       {a.label && (
-                        <div className="absolute left-1/2 top-5 -translate-x-1/2 mt-2 bg-emerald-600 text-white text-[10px] font-medium px-2 py-1 rounded-md whitespace-nowrap shadow-md">
+                        <div className="absolute left-1/2 top-5 -translate-x-1/2 mt-2 bg-success-600 text-white text-2xs font-medium px-2 py-1 rounded-small whitespace-nowrap shadow-raised">
                           {a.label}
                         </div>
                       )}
@@ -200,7 +200,7 @@ export default function TutorialModal({ onClose }) {
             {slide.body}
           </p>
           {slide.tip && (
-            <div className="mt-6 inline-flex items-start gap-2 bg-emerald-50 text-emerald-800 text-sm px-4 py-2.5 rounded-xl max-w-sm">
+            <div className="mt-6 inline-flex items-start gap-2 bg-success-50 text-success-800 text-sm px-4 py-2.5 rounded-control max-w-sm">
               <span className="text-base flex-shrink-0">💡</span>
               <span className="text-left">{slide.tip}</span>
             </div>
@@ -209,17 +209,17 @@ export default function TutorialModal({ onClose }) {
           {/* Cooperation acknowledgement — shown only on the closing slide */}
           {slide.showCooperation && (
             <div className="mt-8 pt-5 border-t border-slate-100 w-full max-w-sm">
-              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-3">
+              <p className="text-2xs font-semibold text-slate-400 uppercase tracking-widest mb-3">
                 {t('about.inCooperationWith', { defaultValue: 'In cooperation with' })}
               </p>
               <div className="flex items-center justify-center gap-6">
                 <div className="flex flex-col items-center gap-1">
                   <img src="/fredheim-logo.svg" alt="" className="w-9 h-9 rounded-full" />
-                  <p className="text-[10px] font-medium text-slate-500 leading-tight">Fredheim<br/>Livsstilssenter</p>
+                  <p className="text-2xs font-medium text-slate-500 leading-tight">Fredheim<br/>Livsstilssenter</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
                   <img src="/Vivera_Health_logo.png" alt="" className="w-9 h-9 object-contain" />
-                  <p className="text-[10px] font-medium text-slate-500 leading-tight">Vivera<br/>Health</p>
+                  <p className="text-2xs font-medium text-slate-500 leading-tight">Vivera<br/>Health</p>
                 </div>
               </div>
             </div>
@@ -233,8 +233,8 @@ export default function TutorialModal({ onClose }) {
               key={i}
               onClick={() => setIndex(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === index ? 'w-6 bg-emerald-600' : 'w-1.5 bg-slate-200 hover:bg-slate-300'
+              className={`tap-target h-1.5 rounded-full transition-all duration-300 ${
+                i === index ? 'w-6 bg-primary-600' : 'w-1.5 bg-slate-200 hover:bg-slate-300'
               }`}
             />
           ))}
@@ -245,7 +245,7 @@ export default function TutorialModal({ onClose }) {
           <button
             onClick={prev}
             disabled={index === 0}
-            className={`text-sm font-medium px-3 py-2 rounded-lg transition-colors ${
+            className={`tap-target text-sm font-medium px-3 py-2 rounded-small transition-colors ${
               index === 0
                 ? 'text-slate-300 cursor-not-allowed'
                 : 'text-slate-600 hover:bg-slate-100'
@@ -255,7 +255,7 @@ export default function TutorialModal({ onClose }) {
           </button>
           <button
             onClick={next}
-            className="flex-1 sm:flex-none bg-emerald-600 text-white font-semibold px-6 py-2.5 rounded-xl shadow-sm hover:bg-emerald-700 active:bg-emerald-800 transition-colors"
+            className="btn-primary flex-1 sm:flex-none"
           >
             {isLast
               ? t('tutorial.done', { defaultValue: "Let's go" })

@@ -47,6 +47,10 @@
  *   missing-flavour         (Fredheim packs) a breakfast, spread or jam without
  *                           flavourProfile "sweet" | "savoury"
  *
+ * Every pack, never baselined:
+ *   no-vinegar              a vinegar anywhere in the recipe, in any language (lemon or lime juice
+ *                           instead); the dictionary keeps its vinegar entries for users' own recipes
+ *
  * Known leftovers are listed in scripts/data/check-recipes-baseline.json and are reported
  * as warnings; anything not in the baseline is an error and the exit code is 1.
  * Soft issues are always warnings (never baselined), and errors under --strict.
@@ -262,6 +266,36 @@ export function checkRecipeMeta(packs, { only = () => true } = {}) {
   return issues
 }
 
+// ---------------------------------------------------------------- no vinegar
+// Any vinegar in en/no/sv. "Reddik" (a radish) also ends in "eddik", so an
+// "r" starting the word doesn't count; "Eplecidereddik" still does.
+export const VINEGAR_RE = /vinegar|vin[aä]ger|ättik|attika|balsam(?:ic|vin)|(?<!(?<!\p{L})r)eddik/iu
+
+/** Every string in a recipe (ids, rows, steps, notes, translations) naming a vinegar. Issues as checkPacks. */
+export function checkNoVinegar(packs, { only = () => true } = {}) {
+  const issues = []
+  for (const pack of packs) {
+    for (const recipe of pack.recipes || []) {
+      if (!only(recipe, pack)) continue
+      const walk = (value, where) => {
+        if (typeof value === 'string') {
+          if (VINEGAR_RE.test(value)) {
+            issues.push({
+              pack: pack.id, recipe: recipe.id, title: recipe.title, lang: 'en', index: null, code: 'no-vinegar',
+              message: `${where}: "${value}" (use lemon or lime juice)`,
+              key: [pack.id, recipe.id, 'en', 'no-vinegar', where].join('|'),
+            })
+          }
+        } else if (value && typeof value === 'object') {
+          for (const [k, v] of Object.entries(value)) walk(v, where ? `${where}.${k}` : k)
+        }
+      }
+      walk(recipe, '')
+    }
+  }
+  return issues
+}
+
 // ---------------------------------------------------------------- salt levels
 const SPOON_UNITS = new Set(['tsp', 'tbsp'])
 const FLAVOURS = new Set(['sweet', 'savoury'])
@@ -407,7 +441,7 @@ function main(argv) {
     if (recipeIds || packIds) process.exit(1) // a named recipe or pack that is not there is a mistake
   }
   const issues = checkPacks(packs, dictionary, { only })
-  const metaIssues = [...checkRecipeMeta(packs, { only }), ...checkSaltLevels(packs, { only })]
+  const metaIssues = [...checkRecipeMeta(packs, { only }), ...checkSaltLevels(packs, { only }), ...checkNoVinegar(packs, { only })]
 
   if (flag('--update-baseline')) {
     if (recipeIds || packIds || since !== null || changed) throw new Error('--update-baseline must run on all packs (no filters)')

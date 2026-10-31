@@ -101,12 +101,12 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        className="absolute inset-0 scrim"
         onClick={handleBackdrop}
       />
 
       {/* Sheet */}
-      <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl overflow-hidden">
+      <div className="relative z-10 sheet sm:max-w-sm overflow-hidden">
         {/* Drag handle (mobile) */}
         <div className="sm:hidden flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 rounded-full bg-slate-200" />
@@ -114,7 +114,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
 
         {/* App icon + title */}
         <div className="flex flex-col items-center pt-5 pb-2 px-6">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center text-white text-2xl mb-3 shadow-md">
+          <div className="w-12 h-12 rounded-card bg-primary-100 flex items-center justify-center text-2xl mb-3">
             🍽
           </div>
           <h2 className="text-lg font-bold text-slate-900">
@@ -131,12 +131,12 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
 
         {/* Tabs (hidden on the forgot-password view) */}
         {tab !== 'forgot' && (
-          <div className="flex mx-6 mt-4 bg-slate-100 rounded-xl p-1 gap-1">
+          <div className="flex mx-6 mt-4 bg-slate-100 rounded-control p-1 gap-1">
             <button
               onClick={() => switchTab('signin')}
-              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`tap-target flex-1 py-2 rounded-small text-sm font-medium transition-colors ${
                 tab === 'signin'
-                  ? 'bg-white text-slate-900 shadow-sm'
+                  ? 'bg-white text-slate-900 shadow-card'
                   : 'text-slate-500 hover:text-slate-700'
               }`}
             >
@@ -144,9 +144,9 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
             </button>
             <button
               onClick={() => switchTab('signup')}
-              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`tap-target flex-1 py-2 rounded-small text-sm font-medium transition-colors ${
                 tab === 'signup'
-                  ? 'bg-white text-slate-900 shadow-sm'
+                  ? 'bg-white text-slate-900 shadow-card'
                   : 'text-slate-500 hover:text-slate-700'
               }`}
             >
@@ -183,7 +183,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
                   <button
                     type="button"
                     onClick={() => switchTab('forgot')}
-                    className="text-[11px] font-medium text-indigo-600 hover:text-indigo-700"
+                    className="tap-target text-2xs font-medium text-primary-600 hover:text-primary-700"
                   >
                     {t('auth.forgotPassword', { defaultValue: 'Forgot password?' })}
                   </button>
@@ -200,7 +200,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {tab === 'signup' && (
-                <p className="text-[10px] text-slate-400 mt-1">
+                <p className="text-2xs text-slate-400 mt-1">
                   {t('auth.passwordHint')}
                 </p>
               )}
@@ -216,12 +216,12 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
           )}
 
           {error && (
-            <p role="alert" className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2">
+            <p role="alert" className="text-xs text-danger-600 bg-danger-50 rounded-small px-3 py-2">
               {error}
             </p>
           )}
           {success && (
-            <p className="text-xs text-green-700 bg-green-50 rounded-lg px-3 py-2">
+            <p className="text-xs text-success-700 bg-success-50 rounded-small px-3 py-2">
               {success}
             </p>
           )}
@@ -229,7 +229,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
           <button
             type="submit"
             disabled={loading}
-            className="btn-primary w-full py-3 font-semibold mt-1 disabled:opacity-60"
+            className="btn-primary btn-lg w-full mt-1"
           >
             {loading
               ? '…'
@@ -241,7 +241,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
           </button>
 
           {tab === 'signup' && (
-            <p className="text-[10px] text-slate-400 text-center leading-relaxed">
+            <p className="text-2xs text-slate-400 text-center leading-relaxed">
               {t('auth.trialNote')}
             </p>
           )}
@@ -250,7 +250,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
             <button
               type="button"
               onClick={() => switchTab('signin')}
-              className="w-full text-xs text-slate-500 hover:text-slate-700 mt-1"
+              className="tap-target w-full text-xs text-slate-500 hover:text-slate-700 mt-1"
             >
               ← {t('auth.backToSignIn', { defaultValue: 'Back to sign in' })}
             </button>
@@ -260,7 +260,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-slate-400 hover:text-slate-600"
+          className="tap-target absolute top-4 right-4 text-slate-400 hover:text-slate-600"
           aria-label={t('common.close')}
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

@@ -1,11 +1,12 @@
 import { useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import useStore, { normalizeSlotItem } from '../../store/useStore'
+import useStore from '../../store/useStore'
 import RecipePicker from '../planner/RecipePicker'
 import NutritionCoverage from './NutritionCoverage'
 import OmegaRatioRow from './OmegaRatioRow'
 import { sumNutrition, scaleNutrition } from '../../utils/nutritionData'
 import { dayOmega, weekOmega, logMeals, formatOmegaRatio } from '../../utils/omegaBalance'
+import { plannedPortions, weekdayKey } from '../../utils/todayPlan'
 
 // ── Local-date helpers ───────────────────────────────────────────────────
 // Keys are 'YYYY-MM-DD' in the user's own timezone, so "today" matches the
@@ -25,9 +26,6 @@ function addDays(d, n) {
   out.setDate(out.getDate() + n)
   return out
 }
-// The planner's own day keys, in its own order — index 0 is Monday, which
-// is what (getDay() + 6) % 7 produces.
-const PLANNER_DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
 // Monday as the first day, matching the planner's week.
 function startOfWeek(d) {
@@ -55,16 +53,16 @@ function LogRow({ dateK, entry, recipe, currentLang }) {
   return (
     <div className="flex items-center gap-2.5 py-2.5">
       {recipe.imageUrl ? (
-        <img src={recipe.imageUrl} alt="" className="w-9 h-9 rounded-lg object-cover flex-shrink-0" />
+        <img src={recipe.imageUrl} alt="" className="w-9 h-9 rounded-small object-cover flex-shrink-0" />
       ) : (
-        <div className="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">🍽</div>
+        <div className="w-9 h-9 rounded-small bg-success-50 flex items-center justify-center flex-shrink-0">🍽</div>
       )}
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-slate-800 truncate">{title}</p>
-        <p className="text-[11px] text-slate-400">
+        <p className="text-2xs text-slate-400">
           {t('nutritionTracker.portionsEaten', { count: p, defaultValue: '{{count}} portion(s)' })}
           {!hasNutrition && (
-            <span className="text-amber-500"> · {t('nutritionTracker.noNutritionData', { defaultValue: 'no nutrition data' })}</span>
+            <span className="text-warning-500"> · {t('nutritionTracker.noNutritionData', { defaultValue: 'no nutrition data' })}</span>
           )}
         </p>
       </div>
@@ -72,7 +70,7 @@ function LogRow({ dateK, entry, recipe, currentLang }) {
         <button
           onClick={() => setNutritionPortions(dateK, entry.id, p - 0.5)}
           disabled={p <= 0.5}
-          className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 text-xs font-bold flex items-center justify-center"
+          className="tap-target w-6 h-6 rounded-small bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 text-xs font-bold flex items-center justify-center"
           aria-label={t('nutritionTracker.less', { defaultValue: 'Less' })}
         >
           −
@@ -80,17 +78,17 @@ function LogRow({ dateK, entry, recipe, currentLang }) {
         <span className="w-8 text-center text-xs font-semibold text-slate-700 tabular-nums">{p}</span>
         <button
           onClick={() => setNutritionPortions(dateK, entry.id, p + 0.5)}
-          className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center"
+          className="tap-target w-6 h-6 rounded-small bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center"
           aria-label={t('nutritionTracker.more', { defaultValue: 'More' })}
         >
           +
         </button>
         <button
           onClick={() => removeNutritionEntry(dateK, entry.id)}
-          className="ml-1 text-slate-300 hover:text-red-500 transition-colors"
+          className="tap-target ml-1 text-slate-300 hover:text-danger-500 transition-colors"
           aria-label={t('common.remove')}
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </button>
@@ -106,7 +104,7 @@ export default function NutritionTracker() {
   const nutritionLog = useStore(s => s.nutritionLog) || {}
   const addNutritionEntry = useStore(s => s.addNutritionEntry)
   const weekPlan = useStore(s => s.weekPlan)
-  const mealSlots = useStore(s => s.mealSlots)
+  const familySize = useStore(s => s.familySize)
   const importPlannedMeals = useStore(s => s.importPlannedMeals)
 
   const recipeMap = useMemo(() => Object.fromEntries(recipes.map(r => [r.id, r])), [recipes])
@@ -133,30 +131,20 @@ export default function NutritionTracker() {
   //
   // The planner is a repeating Mon–Sun week, the food log is real calendar
   // dates, so the bridge is the weekday: Tuesday the 14th picks up whatever
-  // "Tuesday" holds in the plan. Custom typed-in meals are skipped — they
-  // have no recipe and so no nutrition to count.
-  const plannedRecipeIds = useMemo(() => {
-    const weekdayKey = PLANNER_DAYS[(selected.getDay() + 6) % 7]
-    const slots = weekPlan?.[weekdayKey] || {}
-    const ids = []
-    for (const slot of mealSlots || []) {
-      for (const item of slots[slot] || []) {
-        const norm = normalizeSlotItem(item)
-        if (!norm || norm.kind === 'custom') continue
-        if (!recipeMap[norm.recipeId]) continue
-        ids.push(norm.recipeId)
-      }
-    }
-    return [...new Set(ids)]
-  }, [selected, weekPlan, mealSlots, recipeMap])
+  // "Tuesday" holds in the plan. The meals and per-person portions are the
+  // ones the Today screen counts: no snacks, no typed-in meals.
+  const planned = useMemo(
+    () => plannedPortions(weekPlan, weekdayKey(selected), id => recipeMap[id], familySize),
+    [selected, weekPlan, recipeMap, familySize]
+  )
 
   // Only the ones not already logged — the button should say what pressing
   // it will actually do, and disappear once there is nothing left to add.
   const loggedIds = useMemo(() => new Set(dayEntries.map(e => e.recipeId)), [dayEntries])
-  const importableCount = plannedRecipeIds.filter(id => !loggedIds.has(id)).length
+  const importableCount = new Set(planned.map(p => p.recipeId).filter(id => !loggedIds.has(id))).size
 
   function handleImportPlanned() {
-    const n = importPlannedMeals(selKey, plannedRecipeIds)
+    const n = importPlannedMeals(selKey, planned)
     setImportToast(
       n > 0
         ? t('nutritionTracker.importedMeals', { count: n, defaultValue: `Added ${n} meals` })
@@ -198,12 +186,12 @@ export default function NutritionTracker() {
   const dayShortLabels = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
   return (
-    <div className="max-w-2xl mx-auto px-4 pb-24 lg:pb-8 w-full">
+    <div className="max-w-2xl mx-auto px-4 pb-nav lg:pb-8 w-full">
       {/* Date navigation + Today */}
       <div className="flex items-center justify-between gap-2 pt-3 pb-3">
         <button
           onClick={() => setSelected(addDays(selected, -1))}
-          className="w-9 h-9 rounded-lg bg-white border border-slate-200 hover:bg-slate-50 flex items-center justify-center text-slate-600"
+          className="btn-secondary btn-icon"
           aria-label={t('nutritionTracker.prevDay', { defaultValue: 'Previous day' })}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
@@ -211,7 +199,7 @@ export default function NutritionTracker() {
         <div className="flex-1 text-center">
           <p className="text-sm font-semibold text-slate-800">{isToday ? t('nutritionTracker.today', { defaultValue: 'Today' }) : dateLabel}</p>
           {!isToday && (
-            <button onClick={() => setSelected(new Date())} className="text-[11px] text-emerald-600 font-medium hover:underline">
+            <button onClick={() => setSelected(new Date())} className="text-link text-2xs">
               {t('nutritionTracker.jumpToday', { defaultValue: 'Jump to today' })}
             </button>
           )}
@@ -219,7 +207,7 @@ export default function NutritionTracker() {
         <button
           onClick={() => setSelected(addDays(selected, 1))}
           disabled={isToday}
-          className="w-9 h-9 rounded-lg bg-white border border-slate-200 hover:bg-slate-50 disabled:opacity-40 flex items-center justify-center text-slate-600"
+          className="btn-secondary btn-icon"
           aria-label={t('nutritionTracker.nextDay', { defaultValue: 'Next day' })}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
@@ -227,16 +215,16 @@ export default function NutritionTracker() {
       </div>
 
       {/* Day / Week toggle */}
-      <div className="inline-flex w-full bg-slate-100 rounded-xl p-0.5 text-sm mb-4">
+      <div className="inline-flex w-full bg-slate-100 rounded-control p-0.5 text-sm mb-4">
         <button
           onClick={() => setView('day')}
-          className={`flex-1 py-1.5 rounded-lg font-medium transition-colors ${view === 'day' ? 'bg-white shadow-sm text-slate-800' : 'text-slate-500'}`}
+          className={`tap-target flex-1 py-1.5 rounded-small font-medium transition-colors ${view === 'day' ? 'bg-white shadow-card text-slate-800' : 'text-slate-500'}`}
         >
           {t('nutritionTracker.dayView', { defaultValue: 'Day' })}
         </button>
         <button
           onClick={() => setView('week')}
-          className={`flex-1 py-1.5 rounded-lg font-medium transition-colors ${view === 'week' ? 'bg-white shadow-sm text-slate-800' : 'text-slate-500'}`}
+          className={`tap-target flex-1 py-1.5 rounded-small font-medium transition-colors ${view === 'week' ? 'bg-white shadow-card text-slate-800' : 'text-slate-500'}`}
         >
           {t('nutritionTracker.weekView', { defaultValue: 'Week' })}
         </button>
@@ -256,9 +244,9 @@ export default function NutritionTracker() {
               {importableCount > 0 && (
                 <button
                   onClick={handleImportPlanned}
-                  className="btn-secondary py-1.5 px-3 text-xs inline-flex items-center gap-1.5 mr-auto ml-3"
+                  className="btn-secondary btn-sm mr-auto ml-3"
                   title={t('nutritionTracker.importPlannedHint', {
-                    defaultValue: 'Log the meals planned for this day. You can adjust the portions after.',
+                    defaultValue: "Log the meals planned for this day, with the plan's portions per person. You can adjust them after.",
                   })}
                 >
                   <span aria-hidden>📅</span>
@@ -267,14 +255,14 @@ export default function NutritionTracker() {
               )}
               <button
                 onClick={() => setPickerOpen(true)}
-                className="btn-primary py-1.5 px-3 text-xs inline-flex items-center gap-1.5"
+                className="btn-secondary btn-sm"
               >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                 {t('nutritionTracker.addFood', { defaultValue: 'Add food' })}
               </button>
             </div>
             {dayEntries.length === 0 ? (
-              <p className="text-sm text-slate-400 py-6 text-center">
+              <p className="empty-state-body mx-auto py-6 text-center">
                 {t('nutritionTracker.noMeals', { defaultValue: 'No meals logged for this day yet.' })}
               </p>
             ) : (
@@ -290,7 +278,7 @@ export default function NutritionTracker() {
 
           {/* Coverage */}
           <div className="card p-5">
-            <h2 className="text-base font-semibold text-slate-800 flex items-center gap-2 mb-3">
+            <h2 className="section-title flex items-center gap-2 mb-3">
               <span className="text-lg">🥗</span>
               {t('nutritionTracker.dailyCoverage', { defaultValue: "Today's coverage" })}
             </h2>
@@ -317,17 +305,17 @@ export default function NutritionTracker() {
                   <button
                     key={d.key}
                     onClick={() => setSelected(parseKey(d.key))}
-                    className="flex-1 flex flex-col items-center gap-1 group"
+                    className="tap-target flex-1 flex flex-col items-center gap-1 group"
                     title={`${d.kcal} kcal`}
                   >
-                    <span className="text-[9px] text-slate-400 tabular-nums">{d.kcal || ''}</span>
+                    <span className="text-2xs text-slate-400 tabular-nums">{d.kcal || ''}</span>
                     <div className="w-full flex items-end justify-center h-16">
                       <div
-                        className={`w-full max-w-[26px] rounded-t-md transition-all ${isSel ? 'bg-emerald-500' : 'bg-emerald-200 group-hover:bg-emerald-300'}`}
+                        className={`w-full max-w-[26px] rounded-t-small transition-all ${isSel ? 'bg-success-500' : 'bg-success-200 group-hover:bg-success-300'}`}
                         style={{ height: `${Math.max(4, (d.kcal / maxKcal) * 100)}%` }}
                       />
                     </div>
-                    <span className={`text-[10px] font-medium ${isSel ? 'text-emerald-700' : 'text-slate-400'}`}>
+                    <span className={`text-2xs font-medium ${isSel ? 'text-success-700' : 'text-slate-400'}`}>
                       {t(`planner.daysShort.${dayShortLabels[i]}`, { defaultValue: dayShortLabels[i] })}
                     </span>
                   </button>
@@ -338,7 +326,7 @@ export default function NutritionTracker() {
 
           {/* Weekly average coverage */}
           <div className="card p-5">
-            <h2 className="text-base font-semibold text-slate-800 flex items-center gap-2 mb-1">
+            <h2 className="section-title flex items-center gap-2 mb-1">
               <span className="text-lg">📊</span>
               {t('nutritionTracker.weeklyCoverage', { defaultValue: 'Weekly average' })}
             </h2>
@@ -361,10 +349,10 @@ export default function NutritionTracker() {
                 <div className="mt-2 grid grid-cols-7 gap-1">
                   {weekOmegaDays.map((d, i) => (
                     <div key={weekDays[i]} className="text-center">
-                      <p className="text-[10px] font-medium text-slate-400">
+                      <p className="text-2xs font-medium text-slate-400">
                         {t(`planner.daysShort.${dayShortLabels[i]}`, { defaultValue: dayShortLabels[i] })}
                       </p>
-                      <p className={`text-[10px] font-semibold tabular-nums ${d.complete ? (d.favourable ? 'text-emerald-700' : 'text-amber-600') : 'text-slate-300'}`}>
+                      <p className={`text-2xs font-semibold tabular-nums ${d.complete ? (d.favourable ? 'text-success-700' : 'text-warning-600') : 'text-slate-300'}`}>
                         {d.complete ? formatOmegaRatio(d.ratio).replace(' : 1', '') : d.empty ? '' : '–'}
                       </p>
                     </div>
@@ -377,8 +365,8 @@ export default function NutritionTracker() {
       )}
 
       {/* Balance over the week — the whole point of the weekly view */}
-      <div className="mt-4 rounded-xl bg-emerald-50 border border-emerald-100 px-4 py-3">
-        <p className="text-xs text-emerald-900 leading-relaxed">
+      <div className="mt-4 rounded-control bg-success-50 border border-success-100 px-4 py-3">
+        <p className="text-xs text-success-900 leading-relaxed">
           <span className="font-semibold">💚 {t('nutritionTracker.balanceTitle', { defaultValue: 'Aim for balance, not perfection.' })}</span>{' '}
           {t('nutritionTracker.balanceBody', {
             defaultValue: "You don't need to hit 100% of every nutrient every single day — some days run higher, others lower. What matters is that things even out across the week. These figures are estimates from standard food data.",
@@ -400,8 +388,8 @@ export default function NutritionTracker() {
       )}
 
       {importToast && (
-        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-xl">
-          <svg className="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-control shadow-overlay">
+          <svg className="w-4 h-4 text-success-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
           {importToast}

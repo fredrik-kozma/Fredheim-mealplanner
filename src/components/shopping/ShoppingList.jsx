@@ -1,3 +1,4 @@
+import EmptyState from '../common/EmptyState'
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
@@ -331,10 +332,10 @@ export default function ShoppingList() {
   // name + amount form. Reused in the empty state and at the end of the
   // populated list.
   const addItemSection = showAddForm ? (
-    <div className="card p-3 border border-indigo-100 relative">
+    <div className="card p-3 border border-primary-100 relative">
       <button
         onClick={() => { setShowAddForm(false); setNewItemName(''); setNewItemAmount('') }}
-        className="absolute top-2 right-2 text-slate-300 hover:text-slate-500"
+        className="tap-target absolute top-2 right-2 text-slate-300 hover:text-slate-500"
         title={t('common.close', { defaultValue: 'Close' })}
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -361,7 +362,7 @@ export default function ShoppingList() {
       <button
         onClick={handleAddCustomItem}
         disabled={!newItemName.trim()}
-        className="btn-primary w-full mt-2 text-sm py-2"
+        className="btn-primary w-full mt-2"
       >
         {t('shopping.addItem', { defaultValue: 'Add item' })}
       </button>
@@ -369,9 +370,9 @@ export default function ShoppingList() {
   ) : (
     <button
       onClick={() => setShowAddForm(true)}
-      className="w-full flex items-center justify-center gap-1.5 py-3 rounded-xl border-2 border-dashed border-slate-200 text-slate-500 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/40 transition-colors text-sm font-medium"
+      className="tap-target w-full flex items-center justify-center gap-1.5 py-3 rounded-control border-2 border-dashed border-slate-200 text-slate-500 hover:border-primary-300 hover:text-primary-600 hover:bg-primary-50/40 transition-colors text-sm font-medium"
     >
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
       </svg>
       {t('shopping.addItem', { defaultValue: 'Add item' })}
@@ -381,18 +382,17 @@ export default function ShoppingList() {
   if (totalItems === 0) {
     return (
       <div className="flex flex-col h-full">
-        <div className="flex-1 flex flex-col items-center justify-center py-16 px-6 text-center">
-          <div className="text-5xl mb-4">🛒</div>
-          <h3 className="text-lg font-semibold text-slate-700 mb-2">{t('shopping.noItemsYet')}</h3>
-          <p className="text-sm text-slate-500 max-w-xs">
-            {t('shopping.noItemsDesc')}
-          </p>
-        </div>
-        <div className="px-4 pb-24 lg:pb-8 space-y-3">
+        <EmptyState
+          className="flex-1"
+          icon="🛒"
+          title={t('shopping.noItemsYet')}
+          body={t('shopping.noItemsDesc')}
+        />
+        <div className="px-4 pb-nav lg:pb-8 space-y-3">
           {dismissedCount > 0 && (
             <div className="flex items-center justify-between gap-2 px-1 text-xs text-slate-500">
               <span>{t('shopping.removedCount', { count: dismissedCount, defaultValue: `${dismissedCount} removed` })}</span>
-              <button onClick={restoreAllRemoved} className="font-medium text-indigo-600 hover:text-indigo-700">
+              <button onClick={restoreAllRemoved} className="text-link">
                 {t('shopping.restoreAll', { defaultValue: 'Restore all' })}
               </button>
             </div>
@@ -406,28 +406,29 @@ export default function ShoppingList() {
   return (
     <div className="flex flex-col h-full">
       {/* Header stats */}
-      <div className="px-4 pt-4 pb-3">
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex-1 min-w-0">
+      <div className="px-4 pt-1 pb-3">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
+          <div className="flex-1 min-w-[10rem]">
             <p className="text-sm text-slate-500 truncate">
               {t('shopping.checkedOf', { checked: checkedCount, total: totalItems, people: familySize })}
             </p>
             {/* Progress bar */}
             <div className="mt-1.5 w-48 h-1.5 bg-slate-200 rounded-full overflow-hidden">
               <div
-                className="h-full bg-indigo-500 rounded-full transition-all duration-300"
+                className="h-full bg-primary-500 rounded-full transition-all duration-300"
                 style={{ width: `${totalItems > 0 ? (checkedCount / totalItems) * 100 : 0}%` }}
               />
             </div>
           </div>
-          <div className="flex gap-1.5 flex-shrink-0">
+          {/* Wraps instead of pushing its last buttons off the side of a phone. */}
+          <div className="flex flex-wrap items-center gap-1.5 min-w-0">
             <button
               onClick={() => {
                 // Nothing ticked off yet → no choice to make, just print.
                 if (checkedCount > 0) setScopeFor('print')
                 else handlePrint(false)
               }}
-              className="btn-secondary py-1.5 px-2.5 text-xs"
+              className="btn-secondary btn-sm"
               title={t('shopping.print', { defaultValue: 'Print' })}
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -443,7 +444,7 @@ export default function ShoppingList() {
                 else handleShare(false)
               }}
               disabled={totalItems === 0}
-              className="btn-secondary py-1.5 px-2.5 text-xs disabled:opacity-40 disabled:cursor-not-allowed"
+              className="btn-secondary btn-sm"
               title={t('shopping.share', { defaultValue: 'Share' })}
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -453,7 +454,7 @@ export default function ShoppingList() {
             </button>
             <button
               onClick={() => setShowSaveModal(true)}
-              className="btn-secondary py-1.5 px-2.5 text-xs"
+              className="btn-secondary btn-sm"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
@@ -462,18 +463,18 @@ export default function ShoppingList() {
             </button>
             <button
               onClick={() => setShowSavedLists(true)}
-              className="btn-ghost py-1.5 px-2 text-xs"
+              className="btn-ghost btn-sm"
             >
               {t('shopping.savedLists')}
             </button>
             <button
               onClick={() => setShowChecked(s => !s)}
-              className="btn-ghost text-xs py-1.5 px-2"
+              className="btn-ghost btn-sm"
             >
               {showChecked ? t('shopping.hideChecked') : t('shopping.showChecked')}
             </button>
             {checkedCount > 0 && (
-              <button onClick={clearCheckedItems} className="btn-ghost text-xs py-1.5 px-2 text-red-400 hover:text-red-600">
+              <button onClick={clearCheckedItems} className="btn-ghost btn-sm text-danger-400 hover:text-danger-600">
                 {t('shopping.clearAll')}
               </button>
             )}
@@ -482,7 +483,7 @@ export default function ShoppingList() {
       </div>
 
       {/* Groups */}
-      <div className="flex-1 overflow-y-auto px-4 pb-24 lg:pb-8 space-y-4">
+      <div className="flex-1 overflow-y-auto px-4 pb-nav lg:pb-8 space-y-4">
         {groups.map(({ category, items }) => {
           const visibleItems = showChecked ? items : items.filter(item => !checkedItems[item.id])
           if (visibleItems.length === 0) return null
@@ -508,7 +509,7 @@ export default function ShoppingList() {
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => toggleCheckedItem(item.id)}
-                          className="w-4.5 h-4.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer flex-shrink-0"
+                          className="w-5 h-5 rounded-small border-slate-300 text-primary-600 cursor-pointer flex-shrink-0"
                         />
                         <span className={`flex-1 min-w-0 text-sm text-slate-700 ${isChecked ? 'line-through' : ''}`}>
                           {shownName(item)}
@@ -523,19 +524,19 @@ export default function ShoppingList() {
                         <div className="relative flex-shrink-0">
                           <button
                             onClick={() => setInfoOpenId(infoOpenId === item.id ? null : item.id)}
-                            className={`transition-colors ${infoOpenId === item.id ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}`}
+                            className={`tap-target transition-colors ${infoOpenId === item.id ? 'text-primary-500' : 'text-slate-300 hover:text-primary-500'}`}
                             title={t('shopping.breakdown', { defaultValue: 'Where this comes from' })}
                             aria-label={t('shopping.breakdown', { defaultValue: 'Where this comes from' })}
                           >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                             </svg>
                           </button>
                           {infoOpenId === item.id && (
                             <>
                               <div className="fixed inset-0 z-20" onClick={() => setInfoOpenId(null)} />
-                              <div className="absolute right-0 top-6 z-30 w-64 bg-white rounded-xl shadow-xl border border-slate-100 p-3 text-left">
-                                <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                              <div className="absolute right-0 top-6 z-30 w-64 bg-white rounded-control shadow-overlay border border-slate-100 p-3 text-left">
+                                <p className="eyebrow mb-2">
                                   {t('shopping.breakdown', { defaultValue: 'Where this comes from' })}
                                 </p>
                                 <div className="space-y-1">
@@ -543,13 +544,13 @@ export default function ShoppingList() {
                                     <div key={idx} className="flex items-center justify-between gap-2 text-xs py-0.5">
                                       <span className="text-slate-600 min-w-0 break-words flex-1">
                                         {r.recipe}
-                                        {r.note && <span className="block text-[11px] text-slate-400">{r.note}</span>}
+                                        {r.note && <span className="block text-2xs text-slate-400">{r.note}</span>}
                                       </span>
                                       <span className="text-slate-900 font-medium whitespace-nowrap">{r.label}</span>
                                       {item.sources.length > 1 && (
                                         <button
                                           onClick={() => removeSource(item, r.recipe)}
-                                          className="text-slate-300 hover:text-red-500 transition-colors flex-shrink-0"
+                                          className="tap-target text-slate-300 hover:text-danger-500 transition-colors flex-shrink-0"
                                           title={t('shopping.removeContribution', { defaultValue: 'Remove this contribution' })}
                                           aria-label={t('shopping.removeContribution', { defaultValue: 'Remove this contribution' })}
                                         >
@@ -567,7 +568,7 @@ export default function ShoppingList() {
                                 </div>
                                 <button
                                   onClick={() => removeWholeItem(item)}
-                                  className="mt-2.5 w-full text-xs font-medium text-red-600 hover:bg-red-50 rounded-lg py-1.5 transition-colors"
+                                  className="tap-target mt-2.5 w-full text-xs font-medium text-danger-600 hover:bg-danger-50 rounded-small py-1.5 transition-colors"
                                 >
                                   {t('shopping.removeAll', { defaultValue: 'Remove all from list' })}
                                 </button>
@@ -584,7 +585,7 @@ export default function ShoppingList() {
                           if (hasSources && item.sources.length > 1) setInfoOpenId(item.id)
                           else removeWholeItem(item)
                         }}
-                        className="text-slate-300 hover:text-red-500 transition-colors flex-shrink-0"
+                        className="tap-target text-slate-300 hover:text-danger-500 transition-colors flex-shrink-0"
                         title={t('common.remove')}
                         aria-label={t('common.remove')}
                       >
@@ -624,7 +625,7 @@ export default function ShoppingList() {
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => toggleCheckedItem(item.id)}
-                          className="w-4.5 h-4.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                          className="w-5 h-5 rounded-small border-slate-300 text-primary-600 cursor-pointer"
                         />
                         <span className={`flex-1 text-sm text-slate-700 ${isChecked ? 'line-through' : ''}`}>
                           {item.name}
@@ -637,7 +638,7 @@ export default function ShoppingList() {
                       )}
                       <button
                         onClick={() => removeCustom(item)}
-                        className="text-slate-300 hover:text-red-500 transition-colors flex-shrink-0"
+                        className="tap-target text-slate-300 hover:text-danger-500 transition-colors flex-shrink-0"
                         title={t('common.remove')}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -658,7 +659,7 @@ export default function ShoppingList() {
             <span>{t('shopping.removedCount', { count: dismissedCount, defaultValue: `${dismissedCount} removed` })}</span>
             <button
               onClick={restoreAllRemoved}
-              className="font-medium text-indigo-600 hover:text-indigo-700"
+              className="text-link"
             >
               {t('shopping.restoreAll', { defaultValue: 'Restore all' })}
             </button>
@@ -683,7 +684,7 @@ export default function ShoppingList() {
                 const recipe = recipes.find(r => r.id === rid)
                 if (!recipe) return null
                 return (
-                  <span key={rid} className="badge bg-indigo-50 text-indigo-700 text-xs">
+                  <span key={rid} className="badge bg-primary-50 text-primary-700 text-xs">
                     {recipe.translations?.[currentLang]?.title || recipe.title}
                   </span>
                 )
@@ -698,12 +699,12 @@ export default function ShoppingList() {
           common case stays a single tap. */}
       {scopeFor && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setScopeFor(null)} />
-          <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl p-5">
+          <div className="absolute inset-0 scrim" onClick={() => setScopeFor(null)} />
+          <div className="relative z-10 sheet sm:max-w-sm p-5">
             <div className="sm:hidden flex justify-center mb-3">
               <div className="w-10 h-1 rounded-full bg-slate-200" />
             </div>
-            <h2 className="text-base font-semibold text-slate-800 mb-1">
+            <h2 className="section-title mb-1">
               {scopeFor === 'share'
                 ? t('shopping.shareOptionsTitle', { defaultValue: 'What should be shared?' })
                 : t('shopping.printOptionsTitle', { defaultValue: 'What should be printed?' })}
@@ -715,7 +716,7 @@ export default function ShoppingList() {
               <button
                 onClick={() => { const run = scopeFor === 'share' ? handleShare : handlePrint; setScopeFor(null); run(true) }}
                 disabled={checkedCount >= totalItems}
-                className="w-full text-left px-4 py-3 rounded-xl border-2 border-indigo-500 bg-indigo-50/50 hover:bg-indigo-50 transition-colors disabled:opacity-40 disabled:border-slate-200 disabled:bg-transparent disabled:cursor-not-allowed"
+                className="tap-target w-full text-left px-4 py-3 rounded-control border-2 border-primary-500 bg-primary-50/50 hover:bg-primary-50 transition-colors disabled:opacity-40 disabled:border-slate-200 disabled:bg-transparent disabled:cursor-not-allowed"
               >
                 <span className="block text-sm font-semibold text-slate-800">
                   {t('shopping.printUnchecked', { defaultValue: 'Only what is left' })}
@@ -733,7 +734,7 @@ export default function ShoppingList() {
               </button>
               <button
                 onClick={() => { const run = scopeFor === 'share' ? handleShare : handlePrint; setScopeFor(null); run(false) }}
-                className="w-full text-left px-4 py-3 rounded-xl border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors"
+                className="tap-target w-full text-left px-4 py-3 rounded-control border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors"
               >
                 <span className="block text-sm font-semibold text-slate-800">
                   {t('shopping.printAll', { defaultValue: 'The whole list' })}
@@ -756,12 +757,12 @@ export default function ShoppingList() {
       {/* Save list modal */}
       {showSaveModal && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setShowSaveModal(false)} />
-          <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl p-5">
+          <div className="absolute inset-0 scrim" onClick={() => setShowSaveModal(false)} />
+          <div className="relative z-10 sheet sm:max-w-sm p-5">
             <div className="sm:hidden flex justify-center mb-3">
               <div className="w-10 h-1 rounded-full bg-slate-200" />
             </div>
-            <h2 className="text-base font-semibold text-slate-800 mb-4">{t('shopping.saveListTitle')}</h2>
+            <h2 className="section-title mb-4">{t('shopping.saveListTitle')}</h2>
             <div className="mb-4">
               <label className="label">{t('shopping.listName')}</label>
               <input
@@ -804,8 +805,8 @@ export default function ShoppingList() {
 
       {/* Toast */}
       {saveToast && (
-        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-xl">
-          <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-control shadow-overlay">
+          <svg className="w-4 h-4 text-success-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
           {saveToast}
@@ -814,9 +815,9 @@ export default function ShoppingList() {
 
       {/* Undo (regret) toast after a deletion */}
       {undoInfo && (
-        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 bg-slate-900 text-white text-sm px-4 py-3 rounded-xl shadow-xl max-w-[90vw]">
+        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 bg-slate-900 text-white text-sm px-4 py-3 rounded-control shadow-overlay max-w-[90vw]">
           <span className="truncate">{undoInfo.label}</span>
-          <button onClick={handleUndo} className="font-semibold text-indigo-300 hover:text-indigo-200 flex-shrink-0">
+          <button onClick={handleUndo} className="tap-target font-semibold text-primary-300 hover:text-primary-200 flex-shrink-0">
             {t('shopping.undo', { defaultValue: 'Undo' })}
           </button>
         </div>

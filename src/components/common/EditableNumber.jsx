@@ -72,7 +72,7 @@ export default function EditableNumber({
       onKeyDown={(e) => {
         if (e.key === 'Enter') e.currentTarget.blur()
       }}
-      className={className}
+      className={`tap-input ${className}`}
       {...inputProps}
     />
   )

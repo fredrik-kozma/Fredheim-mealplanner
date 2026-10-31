@@ -51,7 +51,7 @@ export default function DayNote({ day }) {
         }}
         rows={2}
         placeholder={t('planner.dayNotePlaceholder', { defaultValue: 'Note…' })}
-        className="w-full text-xs text-amber-900 bg-white border border-amber-300 rounded-lg px-2 py-1.5 leading-snug resize-none focus:outline-none focus:ring-2 focus:ring-amber-300 placeholder:text-amber-400/70"
+        className="w-full text-xs text-warning-900 bg-white border border-warning-300 rounded-small px-2 py-1.5 leading-snug resize-none placeholder:text-warning-400/70"
       />
     )
   }
@@ -61,7 +61,7 @@ export default function DayNote({ day }) {
       <button
         onClick={() => setEditing(true)}
         title={t('planner.addDayNote', { defaultValue: 'Add a note for this day' })}
-        className="w-full min-h-[32px] rounded-lg border border-dashed border-slate-200 text-slate-300 hover:border-amber-300 hover:text-amber-500 hover:bg-amber-50/40 transition-colors flex items-center justify-center"
+        className="tap-target w-full min-h-[32px] rounded-small border border-dashed border-slate-200 text-slate-300 hover:border-warning-300 hover:text-warning-500 hover:bg-warning-50/40 transition-colors flex items-center justify-center"
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -74,9 +74,9 @@ export default function DayNote({ day }) {
     <button
       onClick={() => setEditing(true)}
       title={text}
-      className="w-full min-h-[32px] text-left rounded-lg bg-amber-50 border border-amber-100 hover:border-amber-300 transition-colors px-2 py-1.5"
+      className="tap-target w-full min-h-[32px] text-left rounded-small bg-warning-50 border border-warning-100 hover:border-warning-300 transition-colors px-2 py-1.5"
     >
-      <span className="block text-xs text-amber-900 leading-snug whitespace-pre-wrap break-words">{text}</span>
+      <span className="block text-xs text-warning-900 leading-snug whitespace-pre-wrap break-words">{text}</span>
     </button>
   )
 }

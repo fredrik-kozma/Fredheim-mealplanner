@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import NutritionTracker from '../components/nutrition/NutritionTracker'
 import { useAccess } from '../hooks/useAccess'
 import LockedOverlay from '../components/subscription/LockedOverlay'
+import PageHeader from '../components/common/PageHeader'
 
 export default function NutritionPage() {
   const { t } = useTranslation()
@@ -9,9 +10,7 @@ export default function NutritionPage() {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="px-4 pt-4 lg:pt-6 pb-1">
-        <h1 className="text-xl font-bold text-slate-900">{t('nutritionTracker.title', { defaultValue: 'Nutrition' })}</h1>
-      </div>
+      <PageHeader title={t('nutritionTracker.title', { defaultValue: 'Nutrition' })} />
 
       <div className="relative flex-1 overflow-y-auto">
         <div className={isLocked ? 'pointer-events-none' : ''}>

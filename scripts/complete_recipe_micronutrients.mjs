@@ -26,7 +26,7 @@ const PACKS = ['fredheim-recipes-with-pictures.json', 'fredheim-reversal-protoco
 const DRY = process.argv.includes('--dry-run')
 
 // Ingredient ids that are recipes in a pack: per 100 g of the finished batch.
-const COMPOSITE = { 'white-cashew-sauce': 'fr-191', 'classic-hummus': 'classic-hummus' }
+const COMPOSITE = { 'white-cashew-sauce': 'fr-191', 'classic-hummus': 'classic-hummus', 'cashew-sour-cream': 'fr-33' }
 const BROTHS = new Set(['fmd-broth'])
 
 const ORDER = [

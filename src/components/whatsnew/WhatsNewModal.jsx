@@ -89,12 +89,12 @@ export default function WhatsNewModal({ tutorialOpen = false }) {
 
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={handleDismissAll} />
-      <div className="relative z-10 bg-white rounded-3xl shadow-2xl max-w-sm w-full p-6 animate-in fade-in zoom-in-95">
+      <div className="absolute inset-0 scrim" onClick={handleDismissAll} />
+      <div className="relative z-10 bg-white rounded-card shadow-overlay max-w-sm w-full p-6 animate-in fade-in zoom-in-95">
         <button
           onClick={handleDismissAll}
           aria-label={t('common.close', { defaultValue: 'Close' })}
-          className="absolute top-3 right-3 text-slate-400 hover:text-slate-600 p-1"
+          className="tap-target absolute top-3 right-3 text-slate-400 hover:text-slate-600 p-1"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -103,7 +103,7 @@ export default function WhatsNewModal({ tutorialOpen = false }) {
 
         <div className="text-center">
           <div className="text-5xl mb-4 select-none" aria-hidden>{item.icon}</div>
-          <p className="text-[11px] font-semibold text-emerald-600 uppercase tracking-widest mb-2">
+          <p className="text-2xs font-semibold text-success-600 uppercase tracking-widest mb-2">
             {t('whatsNew.label', { defaultValue: "What's new" })}
           </p>
           <h2 className="text-lg font-bold text-slate-900 mb-3 leading-tight">{title}</h2>
@@ -117,7 +117,7 @@ export default function WhatsNewModal({ tutorialOpen = false }) {
               <span
                 key={i}
                 className={`h-1.5 rounded-full transition-all duration-200 ${
-                  i === index ? 'w-5 bg-emerald-600' : 'w-1.5 bg-slate-200'
+                  i === index ? 'w-5 bg-primary-600' : 'w-1.5 bg-slate-200'
                 }`}
               />
             ))}
@@ -126,7 +126,7 @@ export default function WhatsNewModal({ tutorialOpen = false }) {
 
         <button
           onClick={handleNext}
-          className="mt-6 w-full bg-emerald-600 text-white hover:bg-emerald-700 font-semibold rounded-xl py-2.5 text-sm transition-colors"
+          className="btn-primary w-full mt-6"
         >
           {isLast
             ? t('whatsNew.gotIt', { defaultValue: 'Got it' })

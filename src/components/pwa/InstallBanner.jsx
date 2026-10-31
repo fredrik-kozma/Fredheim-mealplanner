@@ -46,7 +46,7 @@ export default function InstallBanner() {
     <>
       <div
         className="fixed bottom-24 lg:bottom-4 left-4 right-4 lg:left-auto lg:right-4 lg:max-w-sm z-40
-                   bg-white border border-slate-200 shadow-2xl rounded-2xl
+                   bg-white border border-slate-200 shadow-overlay rounded-card
                    p-3 flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4"
         role="dialog"
         aria-label={t('install.title', { defaultValue: 'Install app' })}
@@ -60,7 +60,7 @@ export default function InstallBanner() {
           <p className="text-sm font-semibold text-slate-800 truncate">
             {t('install.title', { defaultValue: 'Install Fredheim' })}
           </p>
-          <p className="text-[11px] text-slate-500 leading-tight truncate">
+          <p className="text-2xs text-slate-500 leading-tight truncate">
             {isIOSSafari
               ? t('install.subtitleIOS', { defaultValue: 'Add to Home Screen — tap Install' })
               : t('install.subtitle', { defaultValue: 'Add it to your home screen' })}
@@ -68,16 +68,16 @@ export default function InstallBanner() {
         </div>
         <button
           onClick={handleInstall}
-          className="bg-emerald-600 text-white hover:bg-emerald-700 font-semibold rounded-lg py-1.5 px-3 text-xs flex-shrink-0 transition-colors"
+          className="btn-primary btn-sm flex-shrink-0"
         >
           {t('install.cta', { defaultValue: 'Install' })}
         </button>
         <button
           onClick={dismiss}
           aria-label={t('common.close', { defaultValue: 'Close' })}
-          className="text-slate-400 hover:text-slate-600 flex-shrink-0 transition-colors"
+          className="tap-target text-slate-400 hover:text-slate-600 flex-shrink-0 transition-colors"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </button>

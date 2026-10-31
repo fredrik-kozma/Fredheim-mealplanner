@@ -41,15 +41,15 @@ function Toggle({ on, onClick, icon, title, hint }) {
       onClick={onClick}
       role="switch"
       aria-checked={on}
-      className="w-full min-h-[48px] flex items-center gap-3 px-4 py-3 rounded-xl border border-slate-200 bg-white text-left hover:border-indigo-300 transition-colors"
+      className="tap-target w-full min-h-[48px] flex items-center gap-3 px-4 py-3 rounded-control border border-slate-200 bg-white text-left hover:border-primary-300 transition-colors"
     >
       {icon && <span className="text-xl flex-shrink-0" aria-hidden>{icon}</span>}
       <span className="flex-1 min-w-0">
         <span className="block text-sm font-semibold text-slate-800">{title}</span>
         {hint && <span className="block text-xs text-slate-500 mt-0.5">{hint}</span>}
       </span>
-      <span className={`flex-shrink-0 w-10 h-6 rounded-full p-0.5 transition-colors ${on ? 'bg-indigo-600' : 'bg-slate-300'}`} aria-hidden>
-        <span className={`block w-5 h-5 rounded-full bg-white shadow transition-transform ${on ? 'translate-x-4' : ''}`} />
+      <span className={`flex-shrink-0 w-10 h-6 rounded-full p-0.5 transition-colors ${on ? 'bg-primary-600' : 'bg-slate-300'}`} aria-hidden>
+        <span className={`block w-5 h-5 rounded-full bg-white shadow-raised transition-transform ${on ? 'translate-x-4' : ''}`} />
       </span>
     </button>
   )
@@ -64,10 +64,10 @@ function Segmented({ value, options, onChange }) {
           key={o.value}
           onClick={() => onChange(o.value)}
           aria-pressed={value === o.value}
-          className={`min-h-[44px] px-2 py-2 rounded-xl border text-sm font-medium transition-colors ${
+          className={`tap-target min-h-[44px] px-2 py-2 rounded-control border text-sm font-medium transition-colors ${
             value === o.value
-              ? 'border-indigo-500 bg-indigo-50 text-indigo-700 ring-1 ring-indigo-500'
-              : 'border-slate-200 text-slate-600 hover:border-indigo-300'
+              ? 'border-primary-500 bg-primary-50 text-primary-700 ring-1 ring-primary-500'
+              : 'border-slate-200 text-slate-600 hover:border-primary-300'
           }`}
         >
           {o.icon && <span className="mr-1" aria-hidden>{o.icon}</span>}{o.label}
@@ -82,10 +82,10 @@ function Choice({ selected, onClick, icon, title, hint }) {
     <button
       onClick={onClick}
       aria-pressed={selected}
-      className={`w-full min-h-[48px] flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-colors ${
+      className={`tap-target w-full min-h-[48px] flex items-center gap-3 px-4 py-3 rounded-control border text-left transition-colors ${
         selected
-          ? 'border-indigo-500 bg-indigo-50 ring-1 ring-indigo-500'
-          : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50/40'
+          ? 'border-primary-500 bg-primary-50 ring-1 ring-primary-500'
+          : 'border-slate-200 bg-white hover:border-primary-300 hover:bg-primary-50/40'
       }`}
     >
       {icon && <span className="text-xl flex-shrink-0" aria-hidden>{icon}</span>}
@@ -255,12 +255,12 @@ export default function MakeMyWeekModal({ onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 scrim" onClick={onClose} />
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="mmw-title"
-        className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl sheet-max-h pb-[env(safe-area-inset-bottom)] flex flex-col shadow-2xl"
+        className="relative z-10 sheet sm:max-w-md sheet-max-h pb-[env(safe-area-inset-bottom)] flex flex-col"
       >
         <div className="sm:hidden flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 rounded-full bg-slate-200" />
@@ -271,7 +271,7 @@ export default function MakeMyWeekModal({ onClose }) {
           {step > 0 && (
             <button
               onClick={() => setStep(s => Math.max(0, Math.min(s, steps.length) - 1))}
-              className="btn-ghost w-10 h-10 -ml-2 flex items-center justify-center text-slate-500"
+              className="btn-ghost btn-icon -ml-2 text-slate-500"
               aria-label={t('makeMyWeek.back')}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -280,7 +280,7 @@ export default function MakeMyWeekModal({ onClose }) {
             </button>
           )}
           <div className="flex-1 min-w-0">
-            <h2 id="mmw-title" className="text-base font-semibold text-slate-800">
+            <h2 id="mmw-title" className="section-title">
               {showResult ? t('makeMyWeek.resultTitle') : t('makeMyWeek.title')}
             </h2>
             {!showResult && (
@@ -289,7 +289,7 @@ export default function MakeMyWeekModal({ onClose }) {
           </div>
           <button
             onClick={onClose}
-            className="btn-ghost w-10 h-10 -mr-2 flex items-center justify-center text-slate-400"
+            className="btn-ghost btn-icon -mr-2 text-slate-400"
             aria-label={t('common.close', { defaultValue: 'Close' })}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -302,7 +302,7 @@ export default function MakeMyWeekModal({ onClose }) {
         {!showResult && (
           <div className="flex gap-1 px-5 pt-3" aria-hidden>
             {steps.map((s, i) => (
-              <div key={s} className={`h-1 flex-1 rounded-full ${i <= step ? 'bg-indigo-500' : 'bg-slate-200'}`} />
+              <div key={s} className={`h-1 flex-1 rounded-full ${i <= step ? 'bg-primary-500' : 'bg-slate-200'}`} />
             ))}
           </div>
         )}
@@ -310,7 +310,7 @@ export default function MakeMyWeekModal({ onClose }) {
         <div className="flex-1 overflow-y-auto overscroll-contain p-5">
           {stepName === 'goal' && (
             <div className="space-y-2">
-              <p className="text-base font-semibold text-slate-800">{t('makeMyWeek.q.goal')}</p>
+              <p className="section-title">{t('makeMyWeek.q.goal')}</p>
               <p className="text-xs text-slate-500 mb-3">{t('makeMyWeek.goalsHint')}</p>
               {MMW_GOALS.map(g => (
                 <Choice
@@ -327,7 +327,7 @@ export default function MakeMyWeekModal({ onClose }) {
 
           {stepName === 'prefs' && (
             <div className="space-y-5">
-              <p className="text-base font-semibold text-slate-800">{t('makeMyWeek.q.prefs')}</p>
+              <p className="section-title">{t('makeMyWeek.q.prefs')}</p>
 
               {(answers.meals !== 1 || answers.batch) && (
                 <div>
@@ -363,7 +363,7 @@ export default function MakeMyWeekModal({ onClose }) {
               <div>
                 <p className="text-sm font-semibold text-slate-700 mb-2">{t('makeMyWeek.q.salt')}</p>
                 {saltAuto ? (
-                  <p className="text-xs text-slate-600 bg-slate-50 rounded-lg px-3 py-2">💗 {t('makeMyWeek.saltAuto')}</p>
+                  <p className="text-xs text-slate-600 bg-slate-50 rounded-small px-3 py-2">💗 {t('makeMyWeek.saltAuto')}</p>
                 ) : (
                   <div className="space-y-2">
                     {SALT_LEVELS.map(level => (
@@ -377,14 +377,14 @@ export default function MakeMyWeekModal({ onClose }) {
                     ))}
                   </div>
                 )}
-                <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">💡 {t('salt.tip')}</p>
+                <p className="text-2xs text-slate-500 mt-2 leading-relaxed">💡 {t('salt.tip')}</p>
               </div>
             </div>
           )}
 
           {stepName === 'people' && (
             <div>
-              <p className="text-base font-semibold text-slate-800">{t('makeMyWeek.q.people')}</p>
+              <p className="section-title">{t('makeMyWeek.q.people')}</p>
               <p className="text-xs text-slate-500 mt-1 mb-4">{t('makeMyWeek.peopleHint')}</p>
               <div className="grid grid-cols-4 gap-2">
                 {[1, 2, 3, 4, 5, 6, 7, 8].map(n => (
@@ -392,10 +392,10 @@ export default function MakeMyWeekModal({ onClose }) {
                     key={n}
                     onClick={() => choose('people', n)}
                     aria-pressed={answers.people === n}
-                    className={`h-12 rounded-xl border text-base font-semibold tabular-nums transition-colors ${
+                    className={`tap-target h-12 rounded-control border text-base font-semibold tabular-nums transition-colors ${
                       answers.people === n
-                        ? 'border-indigo-500 bg-indigo-50 text-indigo-700 ring-1 ring-indigo-500'
-                        : 'border-slate-200 text-slate-700 hover:border-indigo-300'
+                        ? 'border-primary-500 bg-primary-50 text-primary-700 ring-1 ring-primary-500'
+                        : 'border-slate-200 text-slate-700 hover:border-primary-300'
                     }`}
                   >
                     {n}
@@ -407,7 +407,7 @@ export default function MakeMyWeekModal({ onClose }) {
 
           {stepName === 'avoid' && (
             <div>
-              <p className="text-base font-semibold text-slate-800">{t('makeMyWeek.q.avoid')}</p>
+              <p className="section-title">{t('makeMyWeek.q.avoid')}</p>
               <p className="text-xs text-slate-500 mt-1 mb-4">{t('makeMyWeek.avoidHint')}</p>
               <div className="flex flex-wrap gap-2">
                 {ALLERGENS.map(a => {
@@ -417,9 +417,7 @@ export default function MakeMyWeekModal({ onClose }) {
                       key={a.id}
                       onClick={() => set('avoid', on ? answers.avoid.filter(x => x !== a.id) : [...answers.avoid, a.id])}
                       aria-pressed={on}
-                      className={`inline-flex items-center gap-1.5 h-10 px-3.5 rounded-full text-sm font-medium border transition-colors ${
-                        on ? 'bg-red-600 text-white border-red-600' : 'bg-white text-slate-600 border-slate-200 hover:border-red-300'
-                      }`}
+                      className={on ? 'chip-danger' : 'chip'}
                     >
                       <span aria-hidden>{on ? '✓' : a.icon}</span>
                       {t(`allergens.${a.id}`, { defaultValue: a.id })}
@@ -429,15 +427,13 @@ export default function MakeMyWeekModal({ onClose }) {
                 <button
                   onClick={() => set('noHoney', !answers.noHoney)}
                   aria-pressed={answers.noHoney}
-                  className={`inline-flex items-center gap-1.5 h-10 px-3.5 rounded-full text-sm font-medium border transition-colors ${
-                    answers.noHoney ? 'bg-red-600 text-white border-red-600' : 'bg-white text-slate-600 border-slate-200 hover:border-red-300'
-                  }`}
+                  className={answers.noHoney ? 'chip-danger' : 'chip'}
                 >
                   <span aria-hidden>{answers.noHoney ? '✓' : '🍯'}</span>
                   {t('makeMyWeek.noHoney')}
                 </button>
               </div>
-              <p className="text-[11px] text-slate-500 mt-4 leading-relaxed">
+              <p className="text-2xs text-slate-500 mt-4 leading-relaxed">
                 {t('settings.allergensWarning')}
               </p>
             </div>
@@ -445,7 +441,7 @@ export default function MakeMyWeekModal({ onClose }) {
 
           {stepName === 'time' && (
             <div className="space-y-2">
-              <p className="text-base font-semibold text-slate-800">{t('makeMyWeek.q.time')}</p>
+              <p className="section-title">{t('makeMyWeek.q.time')}</p>
               <p className="text-xs text-slate-500 mb-3">{t('makeMyWeek.timeHint')}</p>
               {MMW_TIMES.map(v => (
                 <Choice key={v} selected={answers.time === v} onClick={() => choose('time', v)} icon={TIME_ICONS[v]} title={t(`makeMyWeek.times.${v}`)} />
@@ -455,7 +451,7 @@ export default function MakeMyWeekModal({ onClose }) {
 
           {stepName === 'batch' && (
             <div className="space-y-2">
-              <p className="text-base font-semibold text-slate-800 mb-3">{t('makeMyWeek.q.batch')}</p>
+              <p className="section-title mb-3">{t('makeMyWeek.q.batch')}</p>
               <Choice selected={answers.batch} onClick={() => choose('batch', true)} icon="🍲" title={t('makeMyWeek.batchYes')} hint={t('makeMyWeek.batchYesHint')} />
               <Choice selected={!answers.batch} onClick={() => choose('batch', false)} icon="🍳" title={t('makeMyWeek.batchNo')} />
             </div>
@@ -463,7 +459,7 @@ export default function MakeMyWeekModal({ onClose }) {
 
           {stepName === 'meals' && (
             <div className="space-y-2">
-              <p className="text-base font-semibold text-slate-800 mb-3">{t('makeMyWeek.q.meals')}</p>
+              <p className="section-title mb-3">{t('makeMyWeek.q.meals')}</p>
               {MMW_MEALS.map(m => (
                 <Choice
                   key={m}
@@ -478,7 +474,7 @@ export default function MakeMyWeekModal({ onClose }) {
 
           {stepName === 'kcal' && (
             <div className="space-y-2">
-              <p className="text-base font-semibold text-slate-800">{t('makeMyWeek.q.kcal')}</p>
+              <p className="section-title">{t('makeMyWeek.q.kcal')}</p>
               <p className="text-xs text-slate-500 mb-3">
                 {t(answers.meals === 1 ? 'makeMyWeek.kcalHintDinner' : 'makeMyWeek.kcalHint')}
               </p>
@@ -495,10 +491,10 @@ export default function MakeMyWeekModal({ onClose }) {
                     key={v}
                     onClick={() => { setKcalText(''); choose('kcal', v) }}
                     aria-pressed={answers.kcal === v && !kcalText}
-                    className={`min-h-[48px] rounded-xl border text-sm font-semibold tabular-nums transition-colors ${
+                    className={`tap-target min-h-[48px] rounded-control border text-sm font-semibold tabular-nums transition-colors ${
                       answers.kcal === v && !kcalText
-                        ? 'border-indigo-500 bg-indigo-50 text-indigo-700 ring-1 ring-indigo-500'
-                        : 'border-slate-200 text-slate-700 hover:border-indigo-300'
+                        ? 'border-primary-500 bg-primary-50 text-primary-700 ring-1 ring-primary-500'
+                        : 'border-slate-200 text-slate-700 hover:border-primary-300'
                     }`}
                   >
                     {t('makeMyWeek.kcalValue', { kcal: fmtKcal(v) })}
@@ -524,12 +520,12 @@ export default function MakeMyWeekModal({ onClose }) {
                     }}
                     placeholder="1700"
                     aria-invalid={kcalTextInvalid}
-                    className={`input w-32 tabular-nums ${kcalTextInvalid ? 'border-red-400' : ''}`}
+                    className={`input w-32 tabular-nums ${kcalTextInvalid ? 'border-danger-400' : ''}`}
                   />
                   <span className="text-sm text-slate-500">{t('makeMyWeek.kcalPerDay')}</span>
                 </span>
                 {kcalTextInvalid && (
-                  <span className="block text-xs text-red-600 mt-1">
+                  <span className="block text-xs text-danger-600 mt-1">
                     {t('makeMyWeek.kcalRange', { min: fmtKcal(KCAL_MIN), max: fmtKcal(KCAL_MAX) })}
                   </span>
                 )}
@@ -541,7 +537,7 @@ export default function MakeMyWeekModal({ onClose }) {
             <button
               onClick={() => setStep(s => s + 1)}
               disabled={stepName === 'kcal' && kcalTextInvalid}
-              className="btn-primary w-full min-h-[44px] mt-6"
+              className="btn-primary w-full mt-6"
             >
               {t('makeMyWeek.next')}
             </button>
@@ -558,15 +554,15 @@ export default function MakeMyWeekModal({ onClose }) {
               {(result.notices.length > 0 || statsText) && (
                 <ul className="space-y-1.5">
                   {result.notices.map((n, i) => (
-                    <li key={i} className="text-xs text-slate-600 bg-slate-50 rounded-lg px-3 py-2 leading-relaxed">
+                    <li key={i} className="text-xs text-slate-600 bg-slate-50 rounded-small px-3 py-2 leading-relaxed">
                       {noticeText(n)}
                     </li>
                   ))}
                   {statsText && (
-                    <li className="text-xs text-slate-600 bg-slate-50 rounded-lg px-3 py-2 leading-relaxed">📊 {statsText}</li>
+                    <li className="text-xs text-slate-600 bg-slate-50 rounded-small px-3 py-2 leading-relaxed">📊 {statsText}</li>
                   )}
                   {result.kind === 'week' && result.uniqueIngredients > 0 && (
-                    <li className="text-xs text-slate-600 bg-slate-50 rounded-lg px-3 py-2 leading-relaxed">
+                    <li className="text-xs text-slate-600 bg-slate-50 rounded-small px-3 py-2 leading-relaxed">
                       🛒 {t('makeMyWeek.uniqueIngredients', { count: result.uniqueIngredients })}
                     </li>
                   )}
@@ -574,7 +570,7 @@ export default function MakeMyWeekModal({ onClose }) {
               )}
 
               {result.kind === 'week' && result.batchCook.length > 0 && (
-                <div className="rounded-xl border border-cyan-200 bg-cyan-50/60 px-3 py-2.5">
+                <div className="rounded-control border border-cyan-200 bg-cyan-50/60 px-3 py-2.5">
                   <p className="text-xs font-semibold text-cyan-800 uppercase tracking-wide mb-1">
                     🍲 {t('makeMyWeek.batchTitle')}
                   </p>
@@ -602,19 +598,19 @@ export default function MakeMyWeekModal({ onClose }) {
 
               <div className="space-y-2">
                 {result.kind === 'week' && result.stats && (
-                  <p className="text-[11px] text-slate-500 leading-relaxed">{t('makeMyWeek.estimateNote')}</p>
+                  <p className="text-2xs text-slate-500 leading-relaxed">{t('makeMyWeek.estimateNote')}</p>
                 )}
                 {previewDays.map(day => (
-                  <div key={day} className="rounded-xl border border-slate-100 px-3 py-2">
+                  <div key={day} className="rounded-control border border-slate-100 px-3 py-2">
                     <div className="flex items-baseline justify-between gap-2 mb-1">
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
                         {t(`planner.days.${day}`)}
                       </p>
                       {result.stats?.perDay?.[day] && (
-                        <p className="text-[11px] text-slate-400 tabular-nums">
+                        <p className="text-2xs text-slate-400 tabular-nums">
                           {t('makeMyWeek.dayStats', result.stats.perDay[day])}
                           {previewOmega[day]?.complete && (
-                            <span className={`ml-1.5 font-medium whitespace-nowrap ${previewOmega[day].favourable ? 'text-emerald-700' : 'text-amber-600'}`}>
+                            <span className={`ml-1.5 font-medium whitespace-nowrap ${previewOmega[day].favourable ? 'text-success-700' : 'text-warning-600'}`}>
                               {t('nutrition.omega63Short', { ratio: formatOmegaRatio(previewOmega[day].ratio) })}
                             </span>
                           )}
@@ -629,24 +625,24 @@ export default function MakeMyWeekModal({ onClose }) {
                             {i > 0 && ' + '}
                             {titleOf(it.recipeId)}
                             {result.kind === 'week' && portionsText(it) && (
-                              <span className="ml-1 text-[10px] font-medium text-indigo-700 bg-indigo-50 rounded px-1 py-0.5 tabular-nums">
+                              <span className="ml-1 text-2xs font-medium text-primary-700 bg-primary-50 rounded-small px-1 py-0.5 tabular-nums">
                                 {t('makeMyWeek.portionsEach', { n: portionsText(it) })}
                               </span>
                             )}
                             {extraKeys.has(`${day}|${slot}|${it.recipeId}`) && (
-                              <span className="ml-1 text-[10px] font-medium text-emerald-700 bg-emerald-50 rounded px-1 py-0.5">
+                              <span className="ml-1 text-2xs font-medium text-success-700 bg-success-50 rounded-small px-1 py-0.5">
                                 + {t('makeMyWeek.extra')}
                               </span>
                             )}
                             {it.excludeFromShopping && (
-                              <span className="ml-1 text-[10px] font-medium text-cyan-700 bg-cyan-50 rounded px-1 py-0.5">
+                              <span className="ml-1 text-2xs font-medium text-cyan-700 bg-cyan-50 rounded-small px-1 py-0.5">
                                 🍲 {t('makeMyWeek.covered')}
                               </span>
                             )}
                           </span>
                         ))}
                         {result.kind === 'week' && result.stats?.perMeal?.[day]?.[slot] != null && (
-                          <span className="ml-1.5 text-[11px] text-slate-400 tabular-nums whitespace-nowrap">
+                          <span className="ml-1.5 text-2xs text-slate-400 tabular-nums whitespace-nowrap">
                             {t('makeMyWeek.mealKcal', { kcal: result.stats.perMeal[day][slot] })}
                           </span>
                         )}
@@ -666,12 +662,12 @@ export default function MakeMyWeekModal({ onClose }) {
 
         {showResult && result && (
           <div className="border-t border-slate-100 px-5 py-3 flex flex-wrap gap-2">
-            <button onClick={() => setStep(0)} className="btn-ghost min-h-[44px] px-3 text-sm text-slate-500">
+            <button onClick={() => setStep(0)} className="btn-ghost text-slate-500">
               {t('makeMyWeek.changeAnswers')}
             </button>
             <div className="flex-1" />
             {result.kind === 'week' && (
-              <button onClick={() => setSeed(s => (s * 7 + 13) % 1e9 + 1)} className="btn-secondary min-h-[44px] px-4 inline-flex items-center gap-1.5">
+              <button onClick={() => setSeed(s => (s * 7 + 13) % 1e9 + 1)} className="btn-secondary">
                 <span aria-hidden>🔀</span>
                 {t('makeMyWeek.shuffle')}
               </button>
@@ -679,7 +675,7 @@ export default function MakeMyWeekModal({ onClose }) {
             <button
               onClick={handleUse}
               disabled={result.kind === 'week' && result.poolSize === 0}
-              className="btn-primary min-h-[44px] px-4"
+              className="btn-primary"
             >
               {t('makeMyWeek.useWeek')}
             </button>

@@ -12,11 +12,12 @@ import IOSInstallInstructions from '../components/pwa/IOSInstallInstructions'
 import { ALLERGENS } from '../data/allergens'
 import { buildBackup, downloadBackup, validateBackup, mergeRecipes } from '../utils/dataBackup'
 import { SALT_LEVELS } from '../utils/saltLevel'
+import PageHeader from '../components/common/PageHeader'
 
 function SectionCard({ title, children }) {
   return (
     <div className="card p-5 mb-4">
-      <h2 className="text-base font-semibold text-slate-800 mb-4">{title}</h2>
+      <h2 className="section-title mb-4">{title}</h2>
       {children}
     </div>
   )
@@ -27,14 +28,14 @@ function TagList({ items, onRemove, emptyText, labelFor }) {
     <div className="flex flex-wrap gap-2 min-h-[36px]">
       {items.length === 0 && <p className="text-sm text-slate-400">{emptyText}</p>}
       {items.map(item => (
-        <span key={item} className="flex items-center gap-1.5 badge bg-indigo-50 text-indigo-700 pl-3 pr-2 py-1">
+        <span key={item} className="flex items-center gap-1.5 badge bg-primary-50 text-primary-700 pl-3 pr-2 py-1">
           {labelFor ? labelFor(item) : item}
           {onRemove && (
             <button
               onClick={() => onRemove(item)}
-              className="text-indigo-400 hover:text-red-500 transition-colors"
+              className="tap-target text-primary-500 hover:text-danger-600 transition-colors"
             >
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
             </button>
@@ -103,10 +104,10 @@ function SubscriptionSection() {
   }
 
   const statusLabels = {
-    admin:     { text: t('subscription.adminAccess'),   color: 'text-indigo-700 bg-indigo-50 border-indigo-200' },
-    active:    { text: t('subscription.activeStatus'),  color: 'text-green-700  bg-green-50  border-green-200'  },
-    trialing:  { text: t('subscription.trialDaysLeft', { count: daysLeft }), color: 'text-amber-700 bg-amber-50 border-amber-200' },
-    past_due:  { text: t('subscription.pastDueStatus'), color: 'text-red-700   bg-red-50    border-red-200'    },
+    admin:     { text: t('subscription.adminAccess'),   color: 'text-primary-700 bg-primary-50 border-primary-200' },
+    active:    { text: t('subscription.activeStatus'),  color: 'text-success-700  bg-success-50  border-success-200'  },
+    trialing:  { text: t('subscription.trialDaysLeft', { count: daysLeft }), color: 'text-warning-700 bg-warning-50 border-warning-200' },
+    past_due:  { text: t('subscription.pastDueStatus'), color: 'text-danger-700   bg-danger-50    border-danger-200'    },
     canceled:  { text: t('subscription.canceledStatus'),color: 'text-slate-700 bg-slate-50  border-slate-200'  },
     expired:   { text: t('subscription.expiredStatus'), color: 'text-slate-700 bg-slate-50  border-slate-200'  },
     none:      { text: t('subscription.noAccount'),     color: 'text-slate-500 bg-slate-50  border-slate-200'  },
@@ -136,7 +137,7 @@ function SubscriptionSection() {
             )}
 
             {error && (
-              <p className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>
+              <p className="text-xs text-danger-600 bg-danger-50 rounded-small px-3 py-2">{error}</p>
             )}
 
             {/* Actions */}
@@ -145,7 +146,7 @@ function SubscriptionSection() {
               <button
                 onClick={handleCheckout}
                 disabled={loading}
-                className="btn-primary w-full py-2.5 text-sm font-semibold disabled:opacity-60"
+                className="btn-primary w-full"
               >
                 {loading ? '…' : (isTrial
                   ? t('subscription.upgradeNow', { defaultValue: t('subscription.subscribeNow') })
@@ -157,7 +158,7 @@ function SubscriptionSection() {
               <button
                 onClick={handlePortal}
                 disabled={loading}
-                className="btn-secondary w-full py-2 text-sm"
+                className="btn-secondary w-full"
               >
                 {loading ? '…' : t('subscription.manage')}
               </button>
@@ -167,7 +168,7 @@ function SubscriptionSection() {
               <button
                 onClick={handlePortal}
                 disabled={loading}
-                className="btn-ghost w-full py-2 text-xs text-slate-500"
+                className="btn-ghost btn-sm w-full text-slate-500"
               >
                 {loading ? '…' : t('subscription.manage')}
               </button>
@@ -176,7 +177,7 @@ function SubscriptionSection() {
               <button
                 onClick={handlePortal}
                 disabled={loading}
-                className="btn-danger w-full py-2 text-sm"
+                className="btn-danger w-full"
               >
                 {loading ? '…' : t('subscription.updatePayment')}
               </button>
@@ -185,7 +186,7 @@ function SubscriptionSection() {
             {/* Sign out */}
             <button
               onClick={() => { signOut().catch(() => {}) }}
-              className="text-xs text-slate-400 hover:text-red-500 transition-colors"
+              className="tap-target text-xs text-slate-400 hover:text-danger-500 transition-colors"
             >
               {t('auth.signOut')}
             </button>
@@ -196,13 +197,13 @@ function SubscriptionSection() {
             <div className="flex gap-2">
               <button
                 onClick={() => { setAuthTab('signup'); setShowAuth(true) }}
-                className="btn-primary flex-1 py-2 text-sm"
+                className="btn-primary flex-1"
               >
                 {t('auth.startTrial')}
               </button>
               <button
                 onClick={() => { setAuthTab('signin'); setShowAuth(true) }}
-                className="btn-secondary flex-1 py-2 text-sm"
+                className="btn-secondary flex-1"
               >
                 {t('auth.signIn')}
               </button>
@@ -410,10 +411,8 @@ export default function SettingsPage() {
   const currentLang = i18n.language?.slice(0, 2) || language
 
   return (
-    <div className="max-w-lg mx-auto pb-24 lg:pb-8">
-      <div className="px-4 pt-4 lg:pt-6 pb-4">
-        <h1 className="text-xl font-bold text-slate-900">{t('settings.title')}</h1>
-      </div>
+    <div className="max-w-lg mx-auto pb-nav lg:pb-8">
+      <PageHeader title={t('settings.title')} />
 
       <div className="px-4 space-y-4">
         {/* Subscription */}
@@ -426,10 +425,10 @@ export default function SettingsPage() {
               <button
                 key={lang.code}
                 onClick={() => handleChangeLanguage(lang.code)}
-                className={`py-3 rounded-xl border-2 text-sm font-medium transition-colors flex flex-col items-center gap-1 ${
+                className={`tap-target py-3 rounded-control border-2 text-sm font-medium transition-colors flex flex-col items-center gap-1 ${
                   currentLang === lang.code
-                    ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                    : 'border-slate-200 text-slate-600 hover:border-indigo-300'
+                    ? 'border-primary-500 bg-primary-50 text-primary-700'
+                    : 'border-slate-200 text-slate-600 hover:border-primary-300'
                 }`}
               >
                 <span className="text-2xl">{lang.flag}</span>
@@ -453,14 +452,14 @@ export default function SettingsPage() {
                 <button
                   onClick={() => handleTranslateAllMissing(currentLang)}
                   disabled={bulkTranslating || missingCount === 0}
-                  className="btn-secondary w-full py-2 text-xs"
+                  className="btn-secondary btn-sm w-full"
                 >
                   {bulkTranslating
                     ? `${t('settings.translating', { defaultValue: 'Translating' })} ${bulkProgress.done}/${bulkProgress.total}…`
                     : t('settings.translateAllMissing', { defaultValue: 'Translate all missing recipes' })}
                 </button>
                 {bulkStatus && (
-                  <p className="text-xs text-green-700 mt-2 text-center">{bulkStatus}</p>
+                  <p className="text-xs text-success-700 mt-2 text-center">{bulkStatus}</p>
                 )}
               </div>
             )
@@ -472,7 +471,7 @@ export default function SettingsPage() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setFamilySize(Math.max(1, familySize - 1))}
-              className="btn-secondary w-10 h-10 p-0 text-xl"
+              className="btn-secondary btn-icon text-xl"
             >−</button>
             <div className="flex-1 text-center">
               {/* Editable: tap to clear and type a fresh number. */}
@@ -481,13 +480,13 @@ export default function SettingsPage() {
                 onChange={setFamilySize}
                 min={1}
                 max={99}
-                className="block w-full text-center text-3xl font-bold text-indigo-600 bg-transparent border-0 focus:outline-none focus:ring-0 tabular-nums"
+                className="block w-full text-center text-3xl font-bold text-primary-600 bg-transparent border-0 tabular-nums"
               />
               <p className="text-xs text-slate-500 mt-0.5">{t('settings.people')}</p>
             </div>
             <button
               onClick={() => setFamilySize(familySize + 1)}
-              className="btn-secondary w-10 h-10 p-0 text-xl"
+              className="btn-secondary btn-icon text-xl"
             >+</button>
           </div>
           <p className="text-xs text-slate-500 mt-3 text-center">
@@ -510,11 +509,7 @@ export default function SettingsPage() {
                   key={a.id}
                   onClick={() => toggleAvoidedAllergen(a.id)}
                   aria-pressed={on}
-                  className={`inline-flex items-center gap-1.5 h-9 px-3 rounded-full text-sm font-medium border transition-colors ${
-                    on
-                      ? 'bg-red-600 text-white border-red-600'
-                      : 'bg-white text-slate-600 border-slate-200 hover:border-red-300'
-                  }`}
+                  className={on ? 'chip-danger' : 'chip'}
                 >
                   <span aria-hidden>{on ? '✓' : a.icon}</span>
                   {t(`allergens.${a.id}`, { defaultValue: a.id })}
@@ -527,28 +522,24 @@ export default function SettingsPage() {
             <button
               onClick={() => setAvoidHoney(!avoidHoney)}
               aria-pressed={avoidHoney}
-              className={`inline-flex items-center gap-1.5 h-9 px-3 rounded-full text-sm font-medium border transition-colors ${
-                avoidHoney
-                  ? 'bg-red-600 text-white border-red-600'
-                  : 'bg-white text-slate-600 border-slate-200 hover:border-red-300'
-              }`}
+              className={avoidHoney ? 'chip-danger' : 'chip'}
             >
               <span aria-hidden>{avoidHoney ? '✓' : '🍯'}</span>
               {t('makeMyWeek.noHoney')}
             </button>
-            <span className="text-[11px] text-slate-500">{t('settings.noHoneyHint')}</span>
+            <span className="text-2xs text-slate-500">{t('settings.noHoneyHint')}</span>
           </div>
           {avoidedAllergens.length > 0 && (
             <button
               onClick={clearAvoidedAllergens}
-              className="mt-3 text-xs font-medium text-slate-400 hover:text-indigo-600 transition-colors"
+              className="btn-ghost btn-sm mt-3"
             >
               {t('settings.allergensClear', { defaultValue: 'Clear all' })}
             </button>
           )}
           {/* Honest about the limitation: this is inferred from ingredient
               names, not authored allergen metadata. */}
-          <p className="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-3 leading-relaxed">
+          <p className="text-2xs text-warning-700 bg-warning-50 border border-warning-200 rounded-small px-3 py-2 mt-3 leading-relaxed">
             ⚠️ {t('settings.allergensWarning', {
               defaultValue: 'Detected automatically from ingredient names. Always check the full ingredient list yourself — this cannot account for brand differences or “may contain” cross-contamination.',
             })}
@@ -564,17 +555,17 @@ export default function SettingsPage() {
                 key={level}
                 onClick={() => setSaltLevel(level)}
                 aria-pressed={saltLevel === level}
-                className={`w-full min-h-[48px] px-4 py-3 rounded-xl border-2 text-left text-sm font-medium transition-colors ${
+                className={`tap-target w-full min-h-[48px] px-4 py-3 rounded-control border-2 text-left text-sm font-medium transition-colors ${
                   saltLevel === level
-                    ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                    : 'border-slate-200 text-slate-600 hover:border-indigo-300'
+                    ? 'border-primary-500 bg-primary-50 text-primary-700'
+                    : 'border-slate-200 text-slate-600 hover:border-primary-300'
                 }`}
               >
                 {level === 'standard' ? '🧂 ' : '💗 '}{t(`salt.${level}`)}
               </button>
             ))}
           </div>
-          <p className="text-[11px] text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 mt-3 leading-relaxed">
+          <p className="text-2xs text-success-800 bg-success-50 border border-success-200 rounded-small px-3 py-2 mt-3 leading-relaxed">
             💡 {t('salt.tip')}
           </p>
         </SectionCard>
@@ -585,10 +576,10 @@ export default function SettingsPage() {
           <div className="grid grid-cols-2 gap-3">
             <button
               onClick={() => setUnits('metric')}
-              className={`py-3 rounded-xl border-2 text-sm font-medium transition-colors ${
+              className={`tap-target py-3 rounded-control border-2 text-sm font-medium transition-colors ${
                 units === 'metric'
-                  ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                  : 'border-slate-200 text-slate-600 hover:border-indigo-300'
+                  ? 'border-primary-500 bg-primary-50 text-primary-700'
+                  : 'border-slate-200 text-slate-600 hover:border-primary-300'
               }`}
             >
               🇪🇺 {t('settings.metric')}
@@ -596,10 +587,10 @@ export default function SettingsPage() {
             </button>
             <button
               onClick={() => setUnits('us')}
-              className={`py-3 rounded-xl border-2 text-sm font-medium transition-colors ${
+              className={`tap-target py-3 rounded-control border-2 text-sm font-medium transition-colors ${
                 units === 'us' || units === 'imperial'
-                  ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                  : 'border-slate-200 text-slate-600 hover:border-indigo-300'
+                  ? 'border-primary-500 bg-primary-50 text-primary-700'
+                  : 'border-slate-200 text-slate-600 hover:border-primary-300'
               }`}
             >
               🇺🇸 {t('settings.imperial')}
@@ -640,7 +631,7 @@ export default function SettingsPage() {
                 const v = newCustomUnit.trim()
                 if (v) { addCustomUnit(v); setNewCustomUnit('') }
               }}
-              className="btn-primary"
+              className="btn-secondary"
             >
               {t('settings.addCustomUnit', { defaultValue: 'Add' })}
             </button>
@@ -665,17 +656,17 @@ export default function SettingsPage() {
                         if (e.key === 'Escape') setRenaming(null)
                       }}
                     />
-                    <button onClick={() => handleRename(slot)} className="btn-primary py-2 px-3 text-xs">{t('settings.save')}</button>
-                    <button onClick={() => setRenaming(null)} className="btn-secondary py-2 px-3 text-xs">{t('settings.cancel')}</button>
+                    <button onClick={() => handleRename(slot)} className="btn-primary btn-sm">{t('settings.save')}</button>
+                    <button onClick={() => setRenaming(null)} className="btn-secondary btn-sm">{t('settings.cancel')}</button>
                   </>
                 ) : (
                   <>
-                    <span className="flex-1 text-sm font-medium text-slate-700 bg-slate-50 rounded-lg px-3 py-2">
+                    <span className="flex-1 text-sm font-medium text-slate-700 bg-slate-50 rounded-small px-3 py-2">
                       {t(`planner.mealSlots.${slot}`, { defaultValue: slot })}
                     </span>
                     <button
                       onClick={() => { setRenaming(slot); setRenameValue(slot) }}
-                      className="btn-ghost py-2 px-2.5 text-slate-400"
+                      className="btn-ghost text-slate-400"
                       title={t('common.edit')}
                     >
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -685,7 +676,7 @@ export default function SettingsPage() {
                     {mealSlots.length > 1 && (
                       <button
                         onClick={() => { if (confirm(t('settings.removeMealSlotConfirm', { name: slot }))) removeMealSlot(slot) }}
-                        className="btn-ghost py-2 px-2.5 text-slate-300 hover:text-red-500"
+                        className="btn-ghost text-slate-400 hover:text-danger-500"
                         title={t('settings.remove')}
                       >
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -706,7 +697,7 @@ export default function SettingsPage() {
               onChange={e => setNewMealSlot(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleAddMealSlot()}
             />
-            <button onClick={handleAddMealSlot} className="btn-primary">{t('settings.addMealSlot')}</button>
+            <button onClick={handleAddMealSlot} className="btn-secondary">{t('settings.addMealSlot')}</button>
           </div>
         </SectionCard>
 
@@ -727,7 +718,7 @@ export default function SettingsPage() {
               onChange={e => setNewRecipeCat(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleAddRecipeCat()}
             />
-            <button onClick={handleAddRecipeCat} className="btn-primary">{t('settings.addCategory')}</button>
+            <button onClick={handleAddRecipeCat} className="btn-secondary">{t('settings.addCategory')}</button>
           </div>
         </SectionCard>
 
@@ -736,7 +727,7 @@ export default function SettingsPage() {
           <p className="text-xs text-slate-500 mb-3">{t('settings.deleteAllRecipesDesc', { defaultValue: 'Permanently delete all your recipes and clear the weekly planner. This cannot be undone.' })}</p>
           <button
             onClick={() => setShowDeleteAllModal(true)}
-            className="btn-danger w-full py-2 text-sm"
+            className="btn-danger w-full"
             disabled={recipes.length === 0}
           >
             {t('settings.deleteAllRecipes', { defaultValue: 'Delete all recipes' })}
@@ -746,8 +737,8 @@ export default function SettingsPage() {
         {/* Delete All Recipes Modal */}
         {showDeleteAllModal && (
           <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setShowDeleteAllModal(false)} />
-            <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl p-5">
+            <div className="absolute inset-0 scrim" onClick={() => setShowDeleteAllModal(false)} />
+            <div className="relative z-10 sheet sm:max-w-sm p-5">
               <div className="sm:hidden flex justify-center mb-3">
                 <div className="w-10 h-1 rounded-full bg-slate-200" />
               </div>
@@ -760,7 +751,7 @@ export default function SettingsPage() {
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowDeleteAllModal(false)}
-                  className="flex-1 btn-secondary py-2.5 text-sm font-medium"
+                  className="flex-1 btn-secondary"
                 >
                   {t('settings.cancel', { defaultValue: 'Cancel' })}
                 </button>
@@ -769,7 +760,7 @@ export default function SettingsPage() {
                     deleteAllRecipes()
                     setShowDeleteAllModal(false)
                   }}
-                  className="flex-1 btn-danger py-2.5 text-sm font-medium"
+                  className="flex-1 btn-danger"
                 >
                   {t('settings.deleteConfirm', { defaultValue: 'Delete all' })}
                 </button>
@@ -785,8 +776,8 @@ export default function SettingsPage() {
             the user sees they've already got the app installed. */}
         {isStandalone ? (
           <SectionCard title={t('install.title', { defaultValue: 'Install Fredheim' })}>
-            <p className="text-sm text-emerald-700 inline-flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <p className="text-sm text-success-700 inline-flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
               </svg>
               {t('install.alreadyInstalled', { defaultValue: 'You\'re using the installed app — nice!' })}
@@ -801,9 +792,9 @@ export default function SettingsPage() {
             </p>
             <button
               onClick={handleInstallClick}
-              className="btn-primary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+              className="btn-secondary w-full"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
               </svg>
               {t('install.cta', { defaultValue: 'Install' })}
@@ -821,7 +812,7 @@ export default function SettingsPage() {
           <div className="space-y-2">
             <button
               onClick={handleExport}
-              className="btn-secondary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+              className="btn-secondary w-full"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -830,7 +821,7 @@ export default function SettingsPage() {
             </button>
             <button
               onClick={() => importInputRef.current?.click()}
-              className="btn-secondary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+              className="btn-secondary w-full"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M7.5 7.5 12 3m0 0 4.5 4.5M12 3v13.5" />
@@ -846,7 +837,7 @@ export default function SettingsPage() {
             />
           </div>
           {backupMessage && (
-            <p className={`text-xs mt-3 ${backupMessage.bad ? 'text-red-600' : 'text-green-700'}`}>
+            <p className={`text-xs mt-3 ${backupMessage.bad ? 'text-danger-600' : 'text-success-700'}`}>
               {backupMessage.text}
             </p>
           )}
@@ -860,7 +851,7 @@ export default function SettingsPage() {
           </p>
           <button
             onClick={() => navigate('/packs')}
-            className="btn-secondary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+            className="btn-secondary w-full"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -876,7 +867,7 @@ export default function SettingsPage() {
           </p>
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('open-tutorial'))}
-            className="btn-secondary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+            className="btn-secondary w-full"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
@@ -892,7 +883,7 @@ export default function SettingsPage() {
           </p>
           <a
             href="mailto:viverahealth@gmail.com"
-            className="btn-secondary w-full py-2.5 text-sm font-medium inline-flex items-center justify-center gap-2"
+            className="btn-secondary w-full"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
@@ -913,20 +904,20 @@ export default function SettingsPage() {
 
           {/* "In cooperation with" — both logos side by side */}
           <div className="mt-5 pt-4 border-t border-slate-100">
-            <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-3">
+            <p className="eyebrow mb-3">
               {t('about.inCooperationWith', { defaultValue: 'In cooperation with' })}
             </p>
             <div className="flex items-center justify-center gap-6">
               <div className="flex flex-col items-center gap-1.5">
                 <img src="/fredheim-logo.svg" alt="" className="w-10 h-10 rounded-full" />
-                <p className="text-[10px] font-medium text-slate-600 leading-tight">
+                <p className="text-2xs font-medium text-slate-600 leading-tight">
                   Fredheim<br />
                   <span className="text-slate-400">Livsstilssenter</span>
                 </p>
               </div>
               <div className="flex flex-col items-center gap-1.5">
                 <img src="/Vivera_Health_logo.png" alt="" className="w-10 h-10 object-contain" />
-                <p className="text-[10px] font-medium text-slate-600 leading-tight">
+                <p className="text-2xs font-medium text-slate-600 leading-tight">
                   Vivera<br />
                   <span className="text-slate-400">Health</span>
                 </p>
@@ -941,9 +932,9 @@ export default function SettingsPage() {
           file's contents are spelled out first. */}
       {pendingImport && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setPendingImport(null)} />
-          <div className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl shadow-2xl p-5 max-h-[85vh] overflow-y-auto">
-            <h2 className="text-base font-semibold text-slate-800 mb-1">
+          <div className="absolute inset-0 scrim" onClick={() => setPendingImport(null)} />
+          <div className="relative z-10 sheet sm:max-w-md p-5 sheet-max-h overflow-y-auto">
+            <h2 className="section-title mb-1">
               {t('backup.confirmTitle', { defaultValue: 'Restore this backup?' })}
             </h2>
             {pendingImport.summary.exportedAt && (
@@ -965,7 +956,7 @@ export default function SettingsPage() {
             </ul>
 
             {pendingImport.dropped.length > 0 && (
-              <p className="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-3">
+              <p className="text-xs text-warning-800 bg-warning-50 border border-warning-200 rounded-small px-3 py-2 mb-3">
                 {t('backup.someDropped', {
                   fields: pendingImport.dropped.join(', '),
                   defaultValue: `Some parts of this file were damaged and will not be restored: ${pendingImport.dropped.join(', ')}`,
@@ -973,15 +964,15 @@ export default function SettingsPage() {
               </p>
             )}
 
-            <p className="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-4">
+            <p className="text-xs text-warning-800 bg-warning-50 border border-warning-200 rounded-small px-3 py-2 mb-4">
               {t('backup.replaceWarning', { defaultValue: 'This replaces what is in the app now. The built-in recipes are not affected.' })}
             </p>
 
             <div className="flex gap-2">
-              <button onClick={applyImport} className="btn-primary flex-1 py-2.5 text-sm font-medium">
+              <button onClick={applyImport} className="btn-primary flex-1">
                 {t('backup.confirmRestore', { defaultValue: 'Restore' })}
               </button>
-              <button onClick={() => setPendingImport(null)} className="btn-secondary flex-1 py-2.5 text-sm">
+              <button onClick={() => setPendingImport(null)} className="btn-secondary flex-1">
                 {t('common.cancel')}
               </button>
             </div>

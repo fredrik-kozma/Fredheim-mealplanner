@@ -30,23 +30,23 @@ export default function PreviewBanner() {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white shadow-sm">
+      <div className="bg-primary-600 text-white">
         <div className="flex items-center justify-center gap-3 px-3 py-2 max-w-5xl mx-auto">
           <span className="text-xs sm:text-sm font-medium flex-1 text-center">
             ✨ {t('preview.bannerText')}
           </span>
           <button
             onClick={() => setShowAuth(true)}
-            className="text-xs sm:text-sm font-semibold bg-white text-indigo-700 hover:bg-indigo-50 rounded-full px-3 py-1 transition-colors flex-shrink-0"
+            className="tap-target text-xs sm:text-sm font-semibold bg-white text-primary-700 hover:bg-primary-50 rounded-full px-3 py-1 transition-colors flex-shrink-0"
           >
             {t('preview.startTrial')}
           </button>
           <button
             onClick={handleDismiss}
-            className="text-white/70 hover:text-white p-1 flex-shrink-0"
+            className="tap-target text-white/70 hover:text-white p-1 flex-shrink-0"
             aria-label={t('common.close')}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
           </button>

@@ -75,8 +75,8 @@ export default function ResetPasswordPage() {
   if (!hasSession) {
     return (
       <div className="min-h-dvh flex items-center justify-center px-4 bg-slate-50">
-        <div className="max-w-sm w-full bg-white rounded-2xl shadow-lg p-7 text-center">
-          <div className="w-12 h-12 mx-auto rounded-2xl bg-amber-100 flex items-center justify-center text-2xl mb-4">
+        <div className="max-w-sm w-full bg-white rounded-card shadow-raised p-7 text-center">
+          <div className="w-12 h-12 mx-auto rounded-card bg-warning-100 flex items-center justify-center text-2xl mb-4">
             ⚠️
           </div>
           <h1 className="text-lg font-bold text-slate-900 mb-2">
@@ -89,7 +89,7 @@ export default function ResetPasswordPage() {
           </p>
           <button
             onClick={() => navigate('/', { replace: true })}
-            className="btn-primary w-full py-2.5 text-sm font-semibold"
+            className="btn-primary w-full"
           >
             {t('auth.backToApp', { defaultValue: 'Back to app' })}
           </button>
@@ -102,8 +102,8 @@ export default function ResetPasswordPage() {
   if (done) {
     return (
       <div className="min-h-dvh flex items-center justify-center px-4 bg-slate-50">
-        <div className="max-w-sm w-full bg-white rounded-2xl shadow-lg p-7 text-center">
-          <div className="w-12 h-12 mx-auto rounded-2xl bg-green-100 flex items-center justify-center text-2xl mb-4">
+        <div className="max-w-sm w-full bg-white rounded-card shadow-raised p-7 text-center">
+          <div className="w-12 h-12 mx-auto rounded-card bg-success-100 flex items-center justify-center text-2xl mb-4">
             ✅
           </div>
           <h1 className="text-lg font-bold text-slate-900 mb-2">
@@ -122,9 +122,9 @@ export default function ResetPasswordPage() {
   // ── New password form ─────────────────────────────────────────────────
   return (
     <div className="min-h-dvh flex items-center justify-center px-4 bg-slate-50">
-      <div className="max-w-sm w-full bg-white rounded-2xl shadow-lg p-7">
+      <div className="max-w-sm w-full bg-white rounded-card shadow-raised p-7">
         <div className="flex flex-col items-center mb-5">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center text-white text-2xl mb-3 shadow-md">
+          <div className="w-12 h-12 rounded-card bg-primary-100 flex items-center justify-center text-2xl mb-3">
             🍽
           </div>
           <h1 className="text-lg font-bold text-slate-900">
@@ -171,7 +171,7 @@ export default function ResetPasswordPage() {
           </div>
 
           {error && (
-            <p className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2">
+            <p className="text-xs text-danger-600 bg-danger-50 rounded-small px-3 py-2">
               {error}
             </p>
           )}
@@ -179,7 +179,7 @@ export default function ResetPasswordPage() {
           <button
             type="submit"
             disabled={loading}
-            className="btn-primary w-full py-3 font-semibold mt-1 disabled:opacity-60"
+            className="btn-primary btn-lg w-full mt-1"
           >
             {loading ? '…' : t('auth.updatePassword', { defaultValue: 'Update password' })}
           </button>

@@ -3,7 +3,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
-import { checkPacks, applyBaseline } from '../scripts/check-recipes.mjs'
+import { checkPacks, applyBaseline, checkNoVinegar, loadPacks, VINEGAR_RE } from '../scripts/check-recipes.mjs'
 
 const DICT = JSON.parse(readFileSync('src/data/ingredientDictionary.json', 'utf8'))
 
@@ -46,6 +46,31 @@ const good = () => recipe('good', [
 
 test('a standard recipe in en/no/sv passes', () => {
   assert.deepEqual(check(good()), [])
+})
+
+test('vinegar is found in any language, and a radish is not a vinegar', () => {
+  for (const name of ['White wine vinegar', 'apple-cider-vinegar', 'Hvitvinseddik', 'Eplecidereddik', 'eddik', 'Balsamico',
+    'balsamic', 'Äppelcidervinäger', 'Risvinäger', 'ättika', 'ättiksprit', 'rødvinseddiken']) {
+    assert.ok(VINEGAR_RE.test(name), name)
+  }
+  for (const name of ['Reddiker', 'noen av reddikene', 'Smørbrød med reddik', 'Rädisor', 'Sweet Vinaigrette', 'Søt vinaigrette']) {
+    assert.ok(!VINEGAR_RE.test(name), name)
+  }
+})
+
+test('a vinegar in a row, step, note or translation fails', () => {
+  const r = good()
+  r.translations.sv.steps = ['Tillsätt vinäger.']
+  r.translations.no.notes = 'Hvitvinseddik kan brukes.'
+  r.ingredients[0].ingredient = 'rice-vinegar'
+  const issues = checkNoVinegar([{ id: 'test-pack', recipes: [r] }])
+  assert.deepEqual(issues.map((i) => i.code), ['no-vinegar', 'no-vinegar', 'no-vinegar'])
+  assert.deepEqual(checkNoVinegar([{ id: 'test-pack', recipes: [good()] }]), [])
+})
+
+test('no app recipe contains vinegar, in the packs or the sample recipes', () => {
+  assert.deepEqual(checkNoVinegar(loadPacks()).map((i) => i.key), [])
+  assert.ok(!VINEGAR_RE.test(readFileSync('src/store/useStore.js', 'utf8')), 'useStore.js sample recipes')
 })
 
 test('a descriptive word in the name is a non-standard name', () => {

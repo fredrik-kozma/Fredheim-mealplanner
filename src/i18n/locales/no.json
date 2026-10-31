@@ -1,5 +1,22 @@
 {
+  "today": {
+    "title": "I dag",
+    "kcal": "{{kcal}} kcal",
+    "tomorrow": "I morgen",
+    "emptyTitle": "Ingenting planlagt i dag",
+    "emptyBody": "La appen sette sammen en hel uke for deg, eller velg måltidene selv.",
+    "weekLink": "Se ukeplanen"
+  },
+  "navShort": {
+    "today": "I dag",
+    "recipes": "Oppskrift",
+    "planner": "Ukeplan",
+    "shopping": "Handle",
+    "settings": "Valg",
+    "nutrition": "Ernæring"
+  },
   "nav": {
+    "today": "I dag",
     "recipes": "Oppskrifter",
     "planner": "Ukeplan",
     "shopping": "Handleliste",
@@ -111,6 +128,12 @@
     "us": "US",
     "notes": "Kokkens tips",
     "resetChecklist": "Nullstill",
+    "resetIngredients": "Nullstill avkryssede ingredienser",
+    "resetSteps": "Nullstill avkryssede trinn",
+    "ticksDone": "{{done}} av {{total}} ferdig",
+    "totalTime": "Totalt {{time}}",
+    "summaryProtein": "{{amount}} g protein",
+    "about": "Om oppskriften",
     "goodFor": "Bra for",
     "relatedRecipes": "Se også",
     "fmdNoticeTitle": "Del av den 5-dagers fasteimiterende dietten (FMD)",
@@ -487,7 +510,9 @@
     "addCount_other": "Legg til {{count}} oppskrifter",
     "addOwnHint": "Ikke blant oppskriftene? Legg den til som din egen rett — den havner på handlelisten også.",
     "amountPlaceholder": "Mengde (valgfritt)",
-    "addOwn": "Legg til"
+    "addOwn": "Legg til",
+    "filters": "Filtre",
+    "removeFilter": "Fjern filter: {{label}}"
   },
   "common": {
     "close": "Lukk",
@@ -746,7 +771,7 @@
     "balanceBody": "Du trenger ikke å nå 100 % av hvert næringsstoff hver eneste dag – noen dager blir høyere, andre lavere. Det som betyr noe, er at det jevner seg ut i løpet av uken. Disse tallene er estimater fra standard matvaredata.",
     "noNutritionData": "ingen næringsdata",
     "importPlanned": "Fra ukeplanen ({{count}})",
-    "importPlannedHint": "Legg inn måltidene som er planlagt for denne dagen. Du kan justere porsjonene etterpå.",
+    "importPlannedHint": "Legg inn måltidene som er planlagt for denne dagen, med planens porsjoner per person. Du kan justere dem etterpå.",
     "importedMeals_one": "La til {{count}} måltid",
     "importedMeals_other": "La til {{count}} måltider",
     "importNothingNew": "Allerede lagt inn"
@@ -1036,11 +1061,12 @@
     "slides": {
       "welcome": {
         "title": "Velkommen til Fredheim",
-        "body": "Plantebaserte oppskrifter på ekte, lite bearbeidet mat fra Fredheim Livsstilssenter, et legeledet livsstilssenter – og en planlegger som gjør dem om til ukemeny, handleliste og næringsoversikt. Mindre tid på å bestemme seg, mer tid til god mat."
+        "body": "Plantebaserte oppskrifter på ekte, lite bearbeidet mat fra Fredheim Livsstilssenter, et legeledet livsstilssenter – og en planlegger som gjør dem om til ukemeny, handleliste og næringsoversikt. Appen åpner på I dag: hva du skal ha til frokost, lunsj og middag, ett trykk unna oppskriften.",
+        "callout": "Dagens måltider, ett trykk unna"
       },
       "recipes": {
         "title": "Oppskrifter du får lyst til å lage",
-        "body": "Hver oppskrift har bilde, tydelige steg og næringsinnhold per porsjon. Endre antall porsjoner, så følger alle mengdene med.",
+        "body": "Hver oppskrift har bilde, tydelige steg og næringsinnhold per porsjon. Endre antall porsjoner, så følger alle mengdene med, og kryss av ingredienser og steg mens du lager maten.",
         "callout": "Tilpasses husstanden din"
       },
       "labels": {
@@ -1051,18 +1077,19 @@
       "salt": {
         "title": "Salt slik du trenger det",
         "body": "Oppskriftene er skrevet med lite salt. Friske voksne kan velge Standard, en vanlig mengde innenfor WHOs anbefaling. Velg for hver oppskrift, eller én gang for alle i Innstillinger.",
-        "callout": "Lite salt eller Standard"
+        "callout": "Lite salt eller Standard",
+        "callout2": "Kryss av mens du lager"
       },
       "makeWeek": {
         "title": "En hel uke planlagt på ett minutt",
         "body": "Trykk på knappen «Lag uken min» øverst i Ukeplan. Svar på noen korte spørsmål, så får du måltider for hele uken, klare til bruk.",
-        "callout": "Start her",
-        "callout2": "Noen raske spørsmål"
+        "callout": "Start her"
       },
       "goals": {
         "title": "Fortell hva du ønsker å oppnå",
         "body": "Sunn hverdagsmat, vektnedgang, blodtrykk, diabetes type 2 eller hjertehelse: uken settes sammen av oppskrifter laget for akkurat det målet. Velg hjertehelse for oppskrifter i Ornish-stil (reversering), eller last inn den ferdige 5-dagers faste-imiterende planen.",
-        "callout": "Ferdige planer"
+        "callout": "Ferdige planer",
+        "callout2": "Noen raske spørsmål"
       },
       "calories": {
         "title": "Porsjoner som passer dagen din",

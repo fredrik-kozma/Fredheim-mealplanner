@@ -32,19 +32,19 @@ export default function PrintDayPicker({ days, confirmLabel, onCancel, onConfirm
 
   return createPortal(
     <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onCancel} />
-      <div className="relative z-10 bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-2xl p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] sheet-max-h overflow-y-auto">
+      <div className="absolute inset-0 scrim" onClick={onCancel} />
+      <div className="relative z-10 sheet sm:max-w-sm p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] sheet-max-h overflow-y-auto">
         <div className="sm:hidden flex justify-center mb-3">
           <div className="w-10 h-1 rounded-full bg-slate-200" />
         </div>
 
         <div className="flex items-center justify-between gap-2 mb-1">
-          <h2 className="text-base font-semibold text-slate-800">
+          <h2 className="section-title">
             {t('planner.printDaysTitle', { defaultValue: 'Which days?' })}
           </h2>
           <button
             onClick={() => setSelected(allOn ? new Set() : new Set(days.map(d => d.key)))}
-            className="text-xs font-semibold text-indigo-600 hover:text-indigo-800"
+            className="tap-target text-xs font-semibold text-primary-600 hover:text-primary-800"
           >
             {allOn
               ? t('planner.printSelectNone', { defaultValue: 'Clear all' })
@@ -61,15 +61,15 @@ export default function PrintDayPicker({ days, confirmLabel, onCancel, onConfirm
             return (
               <label
                 key={day.key}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl border cursor-pointer transition-colors ${
-                  on ? 'border-indigo-300 bg-indigo-50/60' : 'border-slate-200 hover:bg-slate-50'
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-control border cursor-pointer transition-colors ${
+                  on ? 'border-primary-300 bg-primary-50/60' : 'border-slate-200 hover:bg-slate-50'
                 }`}
               >
                 <input
                   type="checkbox"
                   checked={on}
                   onChange={() => toggle(day.key)}
-                  className="w-[18px] h-[18px] rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer flex-shrink-0"
+                  className="w-5 h-5 rounded-small border-slate-300 text-primary-600 cursor-pointer flex-shrink-0"
                 />
                 <span className={`flex-1 text-sm font-medium ${on ? 'text-slate-800' : 'text-slate-500'}`}>
                   {day.label}
@@ -96,7 +96,7 @@ export default function PrintDayPicker({ days, confirmLabel, onCancel, onConfirm
           <button
             onClick={() => onConfirm([...selected])}
             disabled={noneOn}
-            className="btn-primary flex-1 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="btn-primary flex-1"
           >
             {confirmLabel}
           </button>

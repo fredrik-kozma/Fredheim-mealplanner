@@ -40,15 +40,15 @@ export default function TimerButton({ className = '', showLabel = false }) {
       <button
         onClick={() => setOpen(true)}
         aria-label={t('timer.title', { defaultValue: 'Timer' })}
-        className={`flex items-center gap-1.5 rounded-full transition-colors flex-shrink-0 ${
+        className={`tap-target flex items-center gap-1.5 rounded-full transition-colors flex-shrink-0 ${
           isRinging
-            ? 'bg-amber-100 text-amber-800 animate-pulse'
+            ? 'bg-warning-100 text-warning-800 animate-pulse'
             : soonest
-              ? 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100'
-              : 'text-slate-500 hover:text-indigo-600 hover:bg-slate-50'
+              ? 'bg-primary-50 text-primary-700 hover:bg-primary-100'
+              : 'text-slate-500 hover:text-primary-600 hover:bg-slate-50'
         } ${readout ? 'px-2.5 py-1.5' : 'p-1.5'} ${className}`}
       >
-        <svg className="w-[18px] h-[18px] flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+        <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l3.5 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
         </svg>
         {readout && (
@@ -57,7 +57,7 @@ export default function TimerButton({ className = '', showLabel = false }) {
         {/* A second running timer is worth knowing about without opening
             the panel. */}
         {!isRinging && running.length > 1 && (
-          <span className="text-[10px] font-bold bg-indigo-200 text-indigo-800 rounded-full px-1.5 leading-4">
+          <span className="text-2xs font-bold bg-primary-200 text-primary-800 rounded-full px-1.5 leading-4">
             {running.length}
           </span>
         )}

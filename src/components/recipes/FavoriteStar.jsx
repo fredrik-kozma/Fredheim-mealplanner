@@ -28,8 +28,8 @@ export default function FavoriteStar({ recipeId, size = 'md', variant = 'plain' 
 
   const wrap =
     variant === 'overlay'
-      ? `${padding} rounded-full bg-white/85 backdrop-blur-sm shadow-sm hover:bg-white transition-colors`
-      : `${padding} rounded-full hover:bg-rose-50 transition-colors`
+      ? `${padding} rounded-full bg-white/85 backdrop-blur-sm shadow-card hover:bg-white transition-colors tap-target`
+      : `${padding} rounded-full hover:bg-rose-50 transition-colors tap-target`
 
   return (
     <button
@@ -56,7 +56,7 @@ export default function FavoriteStar({ recipeId, size = 'md', variant = 'plain' 
         </svg>
       ) : (
         // Outlined heart when not favourited
-        <svg className={`${dim} text-slate-400 hover:text-rose-400 transition-colors`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+        <svg className={`${dim} text-slate-400 hover:text-rose-400 transition-colors`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
           <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
         </svg>
       )}

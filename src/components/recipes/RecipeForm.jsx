@@ -41,7 +41,7 @@ function IngredientRow({ ing, onChange, onRemove, t }) {
         value={ingredientLabel(ing)}
         onChange={e => onChange(asPlainRow(ing, e.target.value))}
       />
-      <button type="button" onClick={onRemove} className="btn-ghost p-2 text-slate-400 hover:text-red-500">
+      <button type="button" onClick={onRemove} className="btn-ghost btn-icon text-slate-400 hover:text-danger-500">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
@@ -309,7 +309,7 @@ export default function RecipeForm() {
         navigate(`/recipes/${id}`)
       } else {
         addRecipe(data)
-        navigate('/')
+        navigate('/recipes')
       }
     } catch (err) {
       // Almost always localStorage overflow — tell the user instead of
@@ -334,9 +334,9 @@ export default function RecipeForm() {
   if (id && !existing) return <NotFoundPage />
 
   return (
-    <div className="max-w-2xl mx-auto pb-24 lg:pb-8">
+    <div className="max-w-2xl mx-auto pb-nav lg:pb-8">
       <div className="px-4 pt-4">
-        <button onClick={() => navigate(isEdit ? `/recipes/${id}` : '/')} className="btn-ghost px-2 -ml-2 mb-4">
+        <button onClick={() => navigate(isEdit ? `/recipes/${id}` : '/recipes')} className="btn-ghost px-2 -ml-2 mb-4">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
           </svg>
@@ -351,12 +351,12 @@ export default function RecipeForm() {
           {/* Image upload */}
           <div>
             {form.imageUrl ? (
-              <div className="relative rounded-2xl overflow-hidden h-44 mb-1">
+              <div className="relative rounded-card overflow-hidden h-44 mb-1">
                 <img src={form.imageUrl} alt="Recipe" className="w-full h-full object-cover" />
                 <button
                   type="button"
                   onClick={() => set('imageUrl', null)}
-                  className="absolute top-2 right-2 bg-black/50 text-white rounded-full p-1.5 hover:bg-black/70"
+                  className="tap-target absolute top-2 right-2 scrim text-white rounded-full p-1.5 hover:scrim"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -367,9 +367,9 @@ export default function RecipeForm() {
               <button
                 type="button"
                 onClick={() => fileRef.current?.click()}
-                className="w-full h-24 rounded-2xl border-2 border-dashed border-slate-200 hover:border-indigo-300 flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-indigo-500 transition-colors"
+                className="tap-target w-full h-24 rounded-card border-2 border-dashed border-slate-200 hover:border-primary-300 flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary-500 transition-colors"
               >
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                 </svg>
                 <span className="text-sm">{t('recipeForm.addPhoto')}</span>
@@ -383,9 +383,9 @@ export default function RecipeForm() {
               main fields below are the original, and their own language
               is editable in the translations panel further down. */}
           {isEdit && baseLang !== currentLang && (
-            <div className="flex items-start gap-2.5 bg-indigo-50 border border-indigo-100 rounded-xl px-3.5 py-2.5">
+            <div className="flex items-start gap-2.5 bg-primary-50 border border-primary-100 rounded-control px-3.5 py-2.5">
               <span className="text-base leading-none mt-0.5">{baseMeta.flag}</span>
-              <p className="text-xs text-indigo-900 leading-relaxed">
+              <p className="text-xs text-primary-900 leading-relaxed">
                 {t('recipeForm.baseLangNotice', {
                   lang: baseMeta.label,
                   defaultValue: `The fields below are the original ${baseMeta.label} version. To edit another language, use “Add translations” at the bottom.`,
@@ -401,12 +401,12 @@ export default function RecipeForm() {
               {isEdit && baseLang !== currentLang && <span className="text-sm">{baseMeta.flag}</span>}
             </label>
             <input
-              className={`input ${errors.title ? 'ring-2 ring-red-400 border-red-300' : ''}`}
+              className={`input ${errors.title ? 'ring-2 ring-danger-400 border-danger-300' : ''}`}
               value={form.title}
               onChange={e => set('title', e.target.value)}
               placeholder={t('recipeForm.titlePlaceholder')}
             />
-            {errors.title && <p className="text-xs text-red-500 mt-1">{errors.title}</p>}
+            {errors.title && <p className="text-xs text-danger-500 mt-1">{errors.title}</p>}
           </div>
 
           {/* Category + Servings */}
@@ -439,7 +439,7 @@ export default function RecipeForm() {
           <div>
             <div className="flex items-center justify-between mb-2">
               <label className="label mb-0">{t('recipeForm.ingredients')}</label>
-              <button type="button" onClick={addIngredient} className="btn-ghost text-xs py-1 px-2 text-indigo-600 hover:bg-indigo-50">
+              <button type="button" onClick={addIngredient} className="btn-ghost btn-sm text-primary-600 hover:bg-primary-50">
                 {t('recipeForm.addIngredient')}
               </button>
             </div>
@@ -468,7 +468,7 @@ export default function RecipeForm() {
               )}
               {form.steps.map((step, i) => (
                 <div key={i} className="flex gap-2 items-start">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center mt-2">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 text-primary-700 text-xs font-bold flex items-center justify-center mt-2">
                     {i + 1}
                   </span>
                   <textarea
@@ -480,7 +480,7 @@ export default function RecipeForm() {
                       set('steps', updated)
                     }}
                   />
-                  <button type="button" onClick={() => removeStep(i)} className="btn-ghost p-2 text-slate-400 hover:text-red-500 mt-1">
+                  <button type="button" onClick={() => removeStep(i)} className="btn-ghost btn-icon text-slate-400 hover:text-danger-500 mt-1">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
@@ -505,11 +505,11 @@ export default function RecipeForm() {
             <button
               type="button"
               onClick={() => setShowTranslation(v => !v)}
-              className="flex items-center gap-2.5 w-full text-left group"
+              className="tap-target flex items-center gap-2.5 w-full text-left group"
             >
               <span className="text-lg">🌐</span>
               <div className="flex-1">
-                <p className="text-sm font-semibold text-slate-700 group-hover:text-indigo-700 transition-colors">
+                <p className="text-sm font-semibold text-slate-700 group-hover:text-primary-700 transition-colors">
                   {t('recipeForm.addTranslations', { defaultValue: 'Add translations (optional)' })}
                 </p>
                 <p className="text-xs text-slate-400">
@@ -522,7 +522,7 @@ export default function RecipeForm() {
             </button>
 
             {showTranslation && (
-              <div className="mt-4 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+              <div className="mt-4 bg-slate-50 rounded-card p-4 border border-slate-100">
                 {/* Language tabs — one per OTHER language. A green dot marks
                     languages that already have a title filled in. */}
                 <div className="flex gap-2 mb-4">
@@ -535,15 +535,15 @@ export default function RecipeForm() {
                         key={l}
                         type="button"
                         onClick={() => setActiveTransLang(l)}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${
+                        className={`tap-target flex items-center gap-1.5 px-3 py-1.5 rounded-small text-sm font-medium border transition-colors ${
                           isActive
-                            ? 'bg-white border-indigo-300 text-indigo-700 shadow-sm'
+                            ? 'bg-white border-primary-300 text-primary-700 shadow-card'
                             : 'bg-transparent border-slate-200 text-slate-500 hover:border-slate-300'
                         }`}
                       >
                         <span>{meta.flag}</span>
                         {meta.label}
-                        {filled && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
+                        {filled && <span className="w-1.5 h-1.5 rounded-full bg-success-500" />}
                       </button>
                     )
                   })}
@@ -580,7 +580,7 @@ export default function RecipeForm() {
                         {form.ingredients.map((ing, i) => (
                           <div key={i} className="flex gap-2 items-center">
                             <span className="text-xs text-slate-400 w-24 flex-shrink-0 truncate">{ing.name || `#${i + 1}`}</span>
-                            <svg className="w-3 h-3 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                            <svg className="w-3.5 h-3.5 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                             </svg>
                             <input
@@ -625,7 +625,7 @@ export default function RecipeForm() {
                     </div>
                   )}
 
-                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                  <p className="text-2xs text-slate-400 leading-relaxed">
                     {t('recipeForm.translationHint', { defaultValue: 'Any field you leave blank falls back to the original recipe text for that language.' })}
                   </p>
                 </div>
@@ -635,7 +635,7 @@ export default function RecipeForm() {
 
           {/* Submit */}
           <div className="flex gap-3 pt-2">
-            <button type="button" onClick={() => navigate(isEdit ? `/recipes/${id}` : '/')} className="btn-secondary flex-1">{t('recipeForm.cancel')}</button>
+            <button type="button" onClick={() => navigate(isEdit ? `/recipes/${id}` : '/recipes')} className="btn-secondary flex-1">{t('recipeForm.cancel')}</button>
             <button type="submit" className="btn-primary flex-1">
               {isEdit ? t('recipeForm.saveChanges') : t('recipeForm.addRecipe')}
             </button>

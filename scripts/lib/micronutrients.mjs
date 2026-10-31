@@ -91,6 +91,13 @@ export const MICRO = {
   // Desiccated, unsweetened.
   'shredded-coconut':   [2.75, 0.71, 0, 0.71, 26, 3.32, 90, 206, 2.01, 0.8, 2.75, 18.5, 0, 1.5, 0, 0.44, 0.3, 0.06, 0.1, 0.6, 0.3, 9, 0, 19],
   'olive-oil':          [72.96, 10.52, 0.76, 9.76, 1, 0.56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14.35, 60.2, 0, 0, 0, 0, 0, 0, 0.3],
+  // Vinegars: minerals only, USDA cider, balsamic, red wine (for white wine)
+  // and distilled (for rice). Low-sodium soy sauce differs from soy sauce only in sodium.
+  'apple-cider-vinegar': [0, 0, 0, 0, 7, 0.2, 5, 8, 0.04, 0.01, 0.25, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  'balsamic-vinegar':   [0, 0, 0, 0, 27, 0.72, 12, 19, 0.08, 0.03, 0.13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  'white-wine-vinegar': [0, 0, 0, 0, 6, 0.45, 4, 8, 0.03, 0.01, 0.05, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  'rice-vinegar':       [0, 0, 0, 0, 6, 0.03, 0, 4, 0.01, 0.01, 0.05, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  'soy-sauce-low-sodium': [0.1, 0.25, 0.03, 0.22, 33, 1.45, 43, 110, 0.43, 0.13, 0.4, 0.5, 0, 0, 0, 0, 0, 0.06, 0.15, 3.95, 0.2, 18, 0, 38],
   'sesame-oil':         [39.7, 41.7, 0.3, 41.3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.4, 13.6, 0, 0, 0, 0, 0, 0, 0.2],
   // Green olives (table: 14 g fat).
   'olives':             [10.4, 1.3, 0.1, 1.2, 52, 0.49, 11, 4, 0.04, 0.12, 0.02, 0.9, 20, 0, 0, 3.81, 1.4, 0.02, 0.01, 0.24, 0.03, 3, 0, 14],
@@ -223,6 +230,15 @@ export const MICRO = {
   'vegetable-broth':    [0, 0.05, 0, 0.05, 3, 0.05, 2, 5, 0.02, 0.01, 0.01, 0, 20, 0.5, 0, 0, 0, 0.01, 0.01, 0.1, 0.01, 2, 0, 1],
   // Instant barley/chicory drink powder (Caro/Inka type): estimate.
   'barley-coffee':      [0.1, 0.5, 0.03, 0.45, 80, 2.5, 100, 200, 1.5, 0.4, 1, 5, 0, 0, 0, 0.5, 0, 0.1, 0.1, 10, 0.2, 10, 0, 20],
+  // ── Added for scripts/add_ten_mains.cjs; rounded ──
+  // FDC 170417 Parsnips, raw (SR Legacy). Choline not in SR for raw; kept ~25 from cooked (170009/170508 = 27).
+  'parsnips':           [0.11, 0.05, 0, 0.04, 36, 0.59, 29, 71, 0.59, 0.12, 0.56, 1.8, 0, 17, 0, 1.49, 22.5, 0.09, 0.05, 0.7, 0.09, 67, 0, 25],
+  // FDC 173755 Carob flour (SR Legacy).
+  'carob-powder':       [0.2, 0.22, 0, 0.21, 348, 2.94, 54, 79, 0.92, 0.57, 0.51, 5.3, 1, 0.2, 0, 0.63, 0, 0.05, 0.46, 1.9, 0.37, 29, 0, 12],
+  // FDC 170924 Spices, curry powder (SR Legacy). Was mono 5.56→8.78, poly 2.56→3.06, o3 0.4→0.26, o6 2.1→2.79, P 349→367, Mn 4.15→8.3, riboflavin 0.28→0.2.
+  'curry-powder':       [8.78, 3.06, 0.26, 2.79, 525, 19.1, 255, 367, 4.7, 1.2, 8.3, 40.3, 1, 0.7, 0, 25.2, 99.8, 0.18, 0.2, 3.26, 0.11, 56, 0, 64],
+  // FDC 174278 Soy sauce made from soy (tamari) (SR Legacy). Se was 0.5→0.8; omega3 0→0.01 (18:3=0.005).
+  'tamari':             [0.02, 0.05, 0.01, 0.04, 20, 2.38, 40, 130, 0.43, 0.13, 0.5, 0.8, 0, 0, 0, 0, 0, 0.06, 0.15, 3.95, 0.2, 18, 0, 38],
 }
 
 // Same dictionary id, different product by the row's note.
@@ -246,7 +262,7 @@ export const OMEGA_ONLY = {
   'gluten-free-flour-mix': [0.03, 0.36], // est.: rice flour
   'potato-starch': [0, 0.01], 'bean-noodles': [0, 0.02],
   // Vegetables
-  'parsnips': [0.01, 0.04], 'bean-sprouts': [0.02, 0.03], 'snow-peas': [0.01, 0.08],
+  'parsnips': [0, 0.04] /* FDC 170417 */, 'bean-sprouts': [0.02, 0.03], 'snow-peas': [0.01, 0.08],
   'broccoli': [0.02, 0.02], 'cherry-tomatoes': [0, 0.08], 'chinese-cabbage': [0.03, 0.01],
   'salad-leaves': [0.11, 0.05], 'pumpkin': [0, 0], 'brussels-sprouts-frozen': [0.1, 0.05],
   'edamame-frozen': [0.38, 2.6],
@@ -256,10 +272,10 @@ export const OMEGA_ONLY = {
   'dried-cranberries': [0.1, 0.55], 'pomegranate': [0, 0.08], 'plums': [0, 0.04],
   'oranges': [0.01, 0.02], 'orange-juice': [0.01, 0.03], 'pineapple-juice': [0.01, 0.02],
   // Herbs and spices
-  'parsley-dried': [2, 1.1], 'tarragon-dried': [1.2, 2.5], 'curry-powder': [0.4, 2.1],
+  'parsley-dried': [2, 1.1], 'tarragon-dried': [1.2, 2.5], 'curry-powder': [0.26, 2.79] /* FDC 170924 */,
   'ginger-ground': [0.15, 0.77],
   // Products. Plant milk unnamed: as oat drink, the usual Nordic carton.
-  'plant-milk': [0.1, 0.3], 'miso-paste': [0.4, 3], 'carob-powder': [0.02, 0.2],
+  'plant-milk': [0.1, 0.3], 'miso-paste': [0.4, 3], 'carob-powder': [0, 0.21] /* FDC 173755 */,
   'ketchup': [0, 0.04], 'hot-sauce': [0.01, 0.1], 'horseradish': [0.2, 0.14],
   'agar-agar': [0.01, 0.08], 'sukrin': [0, 0], 'vanilla-extract': [0, 0],
   'aquafaba': [0, 0], 'olive-brine': [0, 0],

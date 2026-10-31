@@ -30,17 +30,17 @@ export default function TimerAlarm() {
     // over it — an alarm shouldn't cost you the ability to navigate while
     // it's up. Desktop has a side nav, so it only needs a normal margin.
     <div className="fixed inset-x-0 bottom-0 z-[70] pointer-events-none px-3 pb-[calc(4.75rem+env(safe-area-inset-bottom))] lg:pb-4">
-      <div className="pointer-events-auto mx-auto w-full max-w-md rounded-2xl bg-amber-50 border-2 border-amber-300 shadow-2xl overflow-hidden">
+      <div className="pointer-events-auto mx-auto w-full max-w-md rounded-card bg-warning-50 border-2 border-warning-300 shadow-overlay overflow-hidden">
         {ringing.map((tm, i) => (
-          <div key={tm.id} className={i > 0 ? 'border-t border-amber-200' : ''}>
+          <div key={tm.id} className={i > 0 ? 'border-t border-warning-200' : ''}>
             <div className="flex items-center gap-3 px-4 pt-3.5">
               <span className="text-2xl animate-pulse" aria-hidden>⏰</span>
               <div className="min-w-0 flex-1">
-                <p className="text-base font-bold text-amber-900 leading-tight">
+                <p className="text-base font-bold text-warning-900 leading-tight">
                   {t('timer.done', { defaultValue: 'Done!' })}
                 </p>
                 {tm.label && (
-                  <p className="text-sm text-amber-800 truncate">{tm.label}</p>
+                  <p className="text-sm text-warning-800 truncate">{tm.label}</p>
                 )}
               </div>
             </div>
@@ -49,13 +49,13 @@ export default function TimerAlarm() {
                   can be hit without looking. */}
               <button
                 onClick={() => removeTimer(tm.id)}
-                className="flex-1 bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-base rounded-xl py-3.5 transition-colors"
+                className="tap-target flex-1 bg-warning-600 hover:bg-warning-700 active:bg-warning-800 text-white font-bold text-base rounded-control py-3.5 transition-colors"
               >
                 {t('timer.stopAlarm', { defaultValue: 'Stop' })}
               </button>
               <button
                 onClick={() => restartTimer(tm.id)}
-                className="px-4 rounded-xl border border-amber-300 text-amber-800 font-semibold text-sm hover:bg-amber-100 transition-colors"
+                className="tap-target px-4 rounded-control border border-warning-300 text-warning-800 font-semibold text-sm hover:bg-warning-100 transition-colors"
               >
                 {t('timer.again', { defaultValue: 'Again' })}
               </button>
@@ -66,7 +66,7 @@ export default function TimerAlarm() {
         {ringing.length > 1 && (
           <button
             onClick={clearFinishedTimers}
-            className="w-full text-sm font-semibold text-amber-800 hover:bg-amber-100 py-2.5 border-t border-amber-200 transition-colors"
+            className="tap-target w-full text-sm font-semibold text-warning-800 hover:bg-warning-100 py-2.5 border-t border-warning-200 transition-colors"
           >
             {t('timer.stopAll', { defaultValue: 'Stop all' })}
           </button>

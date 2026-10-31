@@ -37,8 +37,8 @@ export default function LanguagePicker({ onChoose }) {
   }
 
   return createPortal(
-    <div className="fixed inset-0 z-[80] flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
-      <div className="w-full max-w-xs bg-white rounded-2xl shadow-2xl p-6 text-center">
+    <div className="fixed inset-0 z-[80] flex items-center justify-center p-4 scrim">
+      <div className="w-full max-w-xs bg-white rounded-card shadow-overlay p-6 text-center">
         <img
           src="/fredheim-logo.svg"
           alt=""
@@ -57,10 +57,10 @@ export default function LanguagePicker({ onChoose }) {
             <button
               key={code}
               onClick={() => choose(code)}
-              className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border-2 transition-colors text-left ${
+              className={`tap-target w-full flex items-center gap-3 px-4 py-3.5 rounded-control border-2 transition-colors text-left ${
                 suggested === code
-                  ? 'border-indigo-500 bg-indigo-50/60 hover:bg-indigo-50'
-                  : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50'
+                  ? 'border-primary-500 bg-primary-50/60 hover:bg-primary-50'
+                  : 'border-slate-200 hover:border-primary-300 hover:bg-slate-50'
               }`}
             >
               <span className="text-2xl leading-none" aria-hidden>{flag}</span>
@@ -69,7 +69,7 @@ export default function LanguagePicker({ onChoose }) {
           ))}
         </div>
 
-        <p className="text-[11px] text-slate-400 mt-4">
+        <p className="text-2xs text-slate-400 mt-4">
           Du kan endre dette senere · Du kan ändra detta senare · You can change this later
         </p>
       </div>

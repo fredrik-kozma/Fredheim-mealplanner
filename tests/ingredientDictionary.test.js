@@ -17,7 +17,6 @@ import {
 
 const PACKS = [
   'fredheim-recipes-with-pictures', 'fredheim-reversal-protocol', 'fredheim-fmd-5day',
-  'healthy-basics', 'mediterranean', 'nordic-classics',
 ]
 const packPath = (id) => `recipe-packs-template/packs/${id}.json`
 const loadPack = (id) => JSON.parse(readFileSync(packPath(id), 'utf8'))

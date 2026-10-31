@@ -140,8 +140,8 @@ export default function SavedShoppingLists({ onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl max-h-[85vh] flex flex-col shadow-2xl">
+      <div className="absolute inset-0 scrim" onClick={onClose} />
+      <div className="relative z-10 sheet sm:max-w-md sheet-max-h flex flex-col">
         {/* Handle (mobile) */}
         <div className="sm:hidden flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 rounded-full bg-slate-200" />
@@ -150,16 +150,16 @@ export default function SavedShoppingLists({ onClose }) {
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
           {viewing ? (
-            <button onClick={() => setViewing(null)} className="btn-ghost -ml-2 px-2 text-sm text-slate-600 inline-flex items-center gap-1">
+            <button onClick={() => setViewing(null)} className="btn-ghost -ml-2 px-2 text-slate-600">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
               </svg>
               {t('common.back', { defaultValue: 'Back' })}
             </button>
           ) : (
-            <h2 className="text-base font-semibold text-slate-800">{t('shopping.savedListsTitle')}</h2>
+            <h2 className="section-title">{t('shopping.savedListsTitle')}</h2>
           )}
-          <button onClick={onClose} className="btn-ghost p-1.5 -mr-1.5 text-slate-400">
+          <button onClick={onClose} className="btn-ghost btn-icon -mr-1.5 text-slate-400">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
@@ -178,7 +178,7 @@ export default function SavedShoppingLists({ onClose }) {
               <div className="space-y-3">
                 {[...savedShoppingLists].reverse().map(list => (
                   <div key={list.id} className="card p-4 flex items-center gap-3">
-                    <button onClick={() => openList(list)} className="flex-1 min-w-0 text-left">
+                    <button onClick={() => openList(list)} className="tap-target flex-1 min-w-0 text-left">
                       <p className="text-sm font-semibold text-slate-800 truncate">{list.name}</p>
                       <p className="text-xs text-slate-500 mt-0.5">
                         {t('shopping.itemCount', { count: countItems(list.items) })}
@@ -188,13 +188,13 @@ export default function SavedShoppingLists({ onClose }) {
                     </button>
                     <button
                       onClick={() => openList(list)}
-                      className="btn-secondary py-1.5 px-3 text-xs flex-shrink-0"
+                      className="btn-secondary btn-sm flex-shrink-0"
                     >
                       {t('shopping.openList', { defaultValue: 'Open' })}
                     </button>
                     <button
                       onClick={() => handleDelete(list)}
-                      className="btn-ghost p-1.5 text-slate-300 hover:text-red-500 flex-shrink-0"
+                      className="btn-ghost btn-icon text-slate-400 hover:text-danger-500 flex-shrink-0"
                       title={t('common.delete')}
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -228,17 +228,17 @@ export default function SavedShoppingLists({ onClose }) {
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => setPortions(p => Math.max(1, p - 1))}
-                    className="w-7 h-7 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center"
+                    className="tap-target w-7 h-7 rounded-small bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center"
                   >−</button>
                   <EditableNumber
                     value={portions}
                     onChange={setPortions}
                     min={1}
-                    className="w-10 text-center text-sm font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded py-1 outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-300"
+                    className="w-10 text-center text-sm font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded-small py-1"
                   />
                   <button
                     onClick={() => setPortions(p => p + 1)}
-                    className="w-7 h-7 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center"
+                    className="tap-target w-7 h-7 rounded-small bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center"
                   >+</button>
                 </div>
               </div>
@@ -263,7 +263,7 @@ export default function SavedShoppingLists({ onClose }) {
                               type="checkbox"
                               checked={done}
                               onChange={() => toggleSavedListItem(viewing.id, key)}
-                              className="w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-400 flex-shrink-0 cursor-pointer"
+                              className="w-4 h-4 rounded-small border-slate-300 text-primary-600 flex-shrink-0 cursor-pointer"
                             />
                             <span className={`flex-1 min-w-0 text-sm break-words ${done ? 'line-through text-slate-400' : 'text-slate-700'}`}>
                               {item.shownName}
@@ -271,10 +271,10 @@ export default function SavedShoppingLists({ onClose }) {
                             {hasBreakdown && (
                               <button
                                 onClick={() => setOpenBreakdown(openBreakdown === key ? null : key)}
-                                className={`flex-shrink-0 w-5 h-5 rounded-full text-[11px] font-semibold transition-colors ${
+                                className={`tap-target flex-shrink-0 w-5 h-5 rounded-full text-2xs font-semibold transition-colors ${
                                   openBreakdown === key
-                                    ? 'bg-indigo-100 text-indigo-700'
-                                    : 'text-slate-300 hover:text-indigo-500 hover:bg-indigo-50'
+                                    ? 'bg-primary-100 text-primary-700'
+                                    : 'text-slate-300 hover:text-primary-500 hover:bg-primary-50'
                                 }`}
                                 title={t('shopping.whichRecipes', { defaultValue: 'Which recipes?' })}
                               >
@@ -291,7 +291,7 @@ export default function SavedShoppingLists({ onClose }) {
                                 <div key={bi} className="flex items-baseline justify-between gap-3 text-xs">
                                   <span className="text-slate-500 min-w-0 break-words">
                                     {b.recipe}
-                                    {b.note && <span className="block text-[11px] text-slate-400">{b.note}</span>}
+                                    {b.note && <span className="block text-2xs text-slate-400">{b.note}</span>}
                                   </span>
                                   <span className="text-slate-400 whitespace-nowrap">{b.label}</span>
                                 </div>
@@ -311,12 +311,12 @@ export default function SavedShoppingLists({ onClose }) {
               {viewedChecked > 0 && (
                 <button
                   onClick={() => clearSavedListChecks(viewing.id)}
-                  className="btn-ghost w-full py-1.5 mb-2 text-xs text-slate-400 hover:text-slate-600"
+                  className="btn-ghost btn-sm w-full mb-2 text-slate-400 hover:text-slate-600"
                 >
                   {t('shopping.clearChecks', { defaultValue: 'Clear all ticks' })}
                 </button>
               )}
-              <button onClick={handlePrintViewing} className="btn-primary w-full py-2 text-sm inline-flex items-center justify-center gap-2">
+              <button onClick={handlePrintViewing} className="btn-secondary w-full">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247" />
                 </svg>

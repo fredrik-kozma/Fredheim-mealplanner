@@ -100,7 +100,7 @@ export default function WeekScale() {
 
   return (
     <div
-      className="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-2 py-1"
+      className="inline-flex items-center gap-1 rounded-control border border-slate-200 bg-white px-2 py-1"
       title={t('planner.scaleWeekHint', {
         defaultValue: 'Scale the whole week — adjusted portions scale with it',
       })}
@@ -109,7 +109,7 @@ export default function WeekScale() {
       <button
         onClick={() => step(-1)}
         disabled={value <= 1}
-        className="tap-target w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
+        className="tap-target w-6 h-6 rounded-small bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
         aria-label={t('planner.scaleDown', { defaultValue: 'Fewer people' })}
       >
         −
@@ -118,12 +118,12 @@ export default function WeekScale() {
         value={value}
         onChange={(n) => adjust(n)}
         min={1}
-        className="w-9 text-center text-sm font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded py-0.5 outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-300"
+        className="w-11 text-center text-sm font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded-small py-0.5"
         aria-label={t('planner.peopleCount', { defaultValue: 'People' })}
       />
       <button
         onClick={() => step(1)}
-        className="tap-target w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
+        className="tap-target w-6 h-6 rounded-small bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center transition-colors"
         aria-label={t('planner.scaleUp', { defaultValue: 'More people' })}
       >
         +

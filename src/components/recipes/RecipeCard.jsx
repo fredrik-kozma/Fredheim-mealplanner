@@ -10,7 +10,7 @@ import FavoriteStar from './FavoriteStar'
 const CATEGORY_COLORS = {
   Breakfast: 'bg-amber-100 text-amber-700',
   Lunch: 'bg-green-100 text-green-700',
-  Dinner: 'bg-indigo-100 text-indigo-700',
+  Dinner: 'bg-primary-100 text-primary-700',
   Supper: 'bg-violet-100 text-violet-700',
   Bread: 'bg-orange-100 text-orange-700',
   Porridge: 'bg-yellow-100 text-yellow-700',
@@ -31,7 +31,7 @@ function TimeChip({ minutes, label }) {
   if (!display) return null
   return (
     <span className="text-xs text-slate-500 flex items-center gap-0.5">
-      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="9" /><path strokeLinecap="round" d="M12 7v5l3 3" />
       </svg>
       {label && <span className="text-slate-400">{label}</span>}
@@ -72,8 +72,8 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
       style={style}
       {...attributes}
       {...listeners}
-      className={`card group relative overflow-hidden transition-shadow duration-150 hover:shadow-md ${
-        isDragging ? 'shadow-xl ring-2 ring-indigo-400' : ''
+      className={`card group relative overflow-hidden transition-shadow duration-150 hover:shadow-raised ${
+        isDragging ? 'shadow-overlay ring-2 ring-primary-400' : ''
       } ${compact ? 'p-3' : 'p-4'}`}
       onClick={() => navigate(`/recipes/${recipe.id}`)}
       title={showLock ? t('preview.lockedRecipeHint') : undefined}
@@ -91,8 +91,8 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
 
           {/* 🔒 Lock badge — locked recipes for non-subscribers */}
           {showLock && (
-            <div className="absolute top-2 left-2 flex items-center gap-1 bg-white/90 backdrop-blur-sm text-slate-700 text-[10px] font-semibold px-2 py-1 rounded-full shadow-sm">
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <div className="absolute top-2 left-2 flex items-center gap-1 bg-white/90 backdrop-blur-sm text-slate-700 text-2xs font-semibold px-2 py-1 rounded-full shadow-card">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
               </svg>
               {t('preview.locked')}
@@ -101,7 +101,7 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
 
           {/* ✨ Free preview badge — the 2 teaser recipes */}
           {isLocked && isFreePreview && (
-            <div className="absolute top-2 left-2 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-sm">
+            <div className="absolute top-2 left-2 bg-success-500 text-white text-2xs font-bold px-2 py-1 rounded-full shadow-card">
               ✨ {t('preview.freePreview')}
             </div>
           )}
@@ -135,7 +135,7 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
           standalone meals, so it's called out wherever the recipe is browsed. */}
       {isFmdRecipe(recipe) && (
         <div className="mb-1.5">
-          <span className="inline-flex items-center gap-1 badge bg-amber-100 text-amber-800 text-xs font-semibold">
+          <span className="inline-flex items-center gap-1 badge bg-warning-100 text-warning-800 text-xs font-semibold">
             <span aria-hidden>⏳</span>
             {t('recipes.fmdBadge', { defaultValue: 'Fasting day' })}
           </span>
@@ -146,7 +146,7 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
           the ordering is legible ("this one has 2.3 mg zinc"). */}
       {nutrientBadge && (
         <div className="mb-1">
-          <span className="inline-flex items-center gap-1 badge bg-emerald-50 text-emerald-700 text-xs font-semibold">
+          <span className="inline-flex items-center gap-1 badge bg-success-50 text-success-700 text-xs font-semibold">
             {nutrientBadge.label}
             <span className="tabular-nums">{nutrientBadge.value} {nutrientBadge.unit}</span>
           </span>
@@ -158,8 +158,8 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
           as an answer rather than a stray result. */}
       {matchedIngredient && (
         <div className="mb-1">
-          <span className="inline-flex items-center gap-1 badge bg-indigo-50 text-indigo-700 text-xs font-medium">
-            <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <span className="inline-flex items-center gap-1 badge bg-primary-50 text-primary-700 text-xs font-medium">
+            <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
             </svg>
             <span className="truncate max-w-[14rem]">{matchedIngredient}</span>
@@ -173,7 +173,7 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
           {recipe.cookTime > 0 ? <TimeChip minutes={recipe.cookTime} label="cook " /> : null}
           {recipe.servings && (
             <span className="text-xs text-slate-500 flex items-center gap-0.5">
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
               </svg>
               {recipe.servings}

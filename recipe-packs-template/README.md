@@ -39,9 +39,7 @@ The fastest way to create a pack is to build it directly inside the app using th
    ```
    registry.json
    packs/
-     healthy-basics.json
-     mediterranean.json
-     nordic-classics.json
+     my-pack.json
    ```
 
 3. **Edit `src/utils/recipePacks.js`** in the Menu Planner app and change `YOUR_USERNAME` to your actual GitHub username:
@@ -76,7 +74,7 @@ Each recipe must have:
 
 | Field | Type | Description |
 |---|---|---|
-| `id` | string | Unique across all packs (use a prefix, e.g. `hb-1`) |
+| `id` | string | Unique across all packs (use a prefix, e.g. `my-1`) |
 | `title` | string | Recipe name |
 | `category` | string | One of the app's recipe categories (Breakfast, Lunch, Dinner, Snack, etc.) |
 | `servings` | number | Number of servings the recipe makes |

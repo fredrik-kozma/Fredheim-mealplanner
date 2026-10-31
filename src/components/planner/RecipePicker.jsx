@@ -2,9 +2,37 @@ import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { BUILT_IN_PACKS } from '../../data/installedPacks'
-import { CONDITION_TAGS, CONDITION_CHIP_ACTIVE } from '../../data/conditionTags'
+import { CONDITION_TAGS } from '../../data/conditionTags'
 import { isFmdRecipe } from '../../utils/recipeFlags'
 import { recipeHasAvoidedAllergen } from '../../data/allergens'
+import { buildSearchEntry, matchSearchEntry } from '../../utils/recipeSearch'
+
+// Scrim left above the sheet on a phone: enough to see it's a sheet and tap out.
+const PHONE_TOP_GAP = 32
+
+/*
+ * The part of the screen the keyboard leaves free. dvh ignores the keyboard
+ * on Android and iOS, so without this the end of the list sits behind it.
+ */
+function useVisibleViewport() {
+  const read = () => {
+    const vv = window.visualViewport
+    return { height: vv ? vv.height : window.innerHeight, offsetTop: vv ? vv.offsetTop : 0 }
+  }
+  const [size, setSize] = useState(read)
+  useEffect(() => {
+    const vv = window.visualViewport
+    if (!vv) return
+    const update = () => setSize(read())
+    vv.addEventListener('resize', update)
+    vv.addEventListener('scroll', update)
+    return () => {
+      vv.removeEventListener('resize', update)
+      vv.removeEventListener('scroll', update)
+    }
+  }, [])
+  return size
+}
 
 /*
  * `onSelectMany` enables picking several recipes in one visit. Filling a
@@ -39,6 +67,39 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
   const favSet = useMemo(() => new Set(favoriteRecipes || []), [favoriteRecipes])
   const toggleCondition = (id) => setActiveConditions(prev =>
     prev.includes(id) ? prev.filter(c => c !== id) : [...prev, id])
+
+  // Phone only: the chip rows fold behind one button so the keyboard leaves
+  // room for results. Going back to the search box folds them again.
+  const [filtersOpen, setFiltersOpen] = useState(false)
+  const searchRef = useRef(null)
+  const listRef = useRef(null)
+  const viewport = useVisibleViewport()
+  const toggleFilters = () => {
+    searchRef.current?.blur()
+    setFiltersOpen(v => !v)
+  }
+
+  // New results start at the top, right under the search box.
+  useEffect(() => {
+    if (listRef.current) listRef.current.scrollTop = 0
+  }, [search])
+
+  // Same search as the recipes page: titles and ingredients in every
+  // language. The index is rebuilt with the recipes, not on each keystroke.
+  const searchIndex = useMemo(() => {
+    const idx = new Map()
+    for (const r of recipes) idx.set(r.id, buildSearchEntry(r, currentLang))
+    return idx
+  }, [recipes, currentLang])
+  const searchMatches = useMemo(() => {
+    const out = new Map()
+    if (!search.trim()) return out
+    for (const r of recipes) {
+      const m = matchSearchEntry(searchIndex.get(r.id), search)
+      if (m) out.set(r.id, m)
+    }
+    return out
+  }, [recipes, searchIndex, search])
 
   // ── multi-select ────────────────────────────────────────────────────────
   const canMulti = typeof onSelectMany === 'function'
@@ -139,21 +200,46 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
       if (activePack === '__user__') return !r.sourcePackId
       return r.sourcePackId === activePack
     })
-    .filter(r => {
-      if (!search) return true
-      const q = search.toLowerCase()
-      return titleOf(r).toLowerCase().includes(q) || r.title.toLowerCase().includes(q)
-    })
+    .filter(r => !search.trim() || searchMatches.has(r.id))
+
+  // A dish called "Brokkolisuppe" goes above one that merely contains broccoli.
+  if (search.trim()) {
+    const titleRank = r => (searchMatches.get(r.id)?.inTitle ? 0 : 1)
+    filtered.sort((a, b) => titleRank(a) - titleRank(b))
+  }
 
   const categories = ['All', ...recipeCategories.filter(c => recipes.some(r => r.category === c))]
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
+  // What's on while the rows are folded, each with its own way to turn off.
+  const activeFilters = [
+    ...(activePack !== 'All'
+      ? [{ key: 'pack', label: packOptions.find(o => o.id === activePack)?.label || activePack, clear: () => setActivePack('All') }]
+      : []),
+    ...activeConditions.map(c => ({
+      key: `condition-${c}`,
+      label: t(`conditions.${c}`, { defaultValue: c }),
+      clear: () => toggleCondition(c),
+    })),
+    ...(activeCategory !== 'All'
+      ? [{ key: 'category', label: t(`categories.${activeCategory}`, { defaultValue: activeCategory }), clear: () => setActiveCategory('All') }]
+      : []),
+  ]
 
-      {/* Sheet */}
-      <div className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl sheet-max-h pb-[env(safe-area-inset-bottom)] flex flex-col shadow-2xl">
+  return (
+    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center">
+      {/* Backdrop */}
+      <div className="absolute inset-0 scrim" onClick={onClose} />
+
+      {/* Sheet. On a phone its height comes from the screen, never from the
+          results, so it stays put as a search narrows them: top edge fixed,
+          bottom edge on the keyboard. */}
+      <div
+        className="relative z-10 sheet sm:max-w-md sheet-max-h pb-[env(safe-area-inset-bottom)] flex flex-col max-sm:mt-[var(--picker-top)] max-sm:h-[var(--picker-height)] max-sm:max-h-none"
+        style={{
+          '--picker-top': `${viewport.offsetTop + PHONE_TOP_GAP}px`,
+          '--picker-height': `${viewport.height - PHONE_TOP_GAP}px`,
+        }}
+      >
         {/* Handle (mobile) */}
         <div className="sm:hidden flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 rounded-full bg-slate-200" />
@@ -161,16 +247,12 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
 
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 gap-2">
-          <h2 className="text-base font-semibold text-slate-800 min-w-0 truncate">{pickerTitle}</h2>
+          <h2 className="section-title min-w-0 truncate">{pickerTitle}</h2>
           <div className="flex items-center gap-1 flex-shrink-0">
             {canMulti && (
               <button
                 onClick={() => (multi ? exitMulti() : setMulti(true))}
-                className={`text-xs font-semibold rounded-lg px-2.5 py-1.5 transition-colors ${
-                  multi
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-indigo-700 bg-indigo-50 hover:bg-indigo-100'
-                }`}
+                className="btn-secondary btn-sm"
                 aria-pressed={multi}
               >
                 {multi
@@ -178,7 +260,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
                   : t('recipePicker.selectSeveral', { defaultValue: 'Select several' })}
               </button>
             )}
-            <button onClick={onClose} className="btn-ghost p-1.5 -mr-1.5 text-slate-400">
+            <button onClick={onClose} className="btn-ghost btn-icon -mr-1.5 text-slate-400">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
@@ -187,17 +269,19 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
         </div>
 
         {/* Search + favourites */}
-        <div className="px-4 pt-3 pb-4">
+        <div className="flex-shrink-0 px-4 pt-3 pb-2 sm:pb-4">
           <div className="flex items-center gap-2">
             <div className="relative flex-1 min-w-0">
               <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
               </svg>
               <input
+                ref={searchRef}
                 type="search"
                 placeholder={t('recipePicker.searchPlaceholder')}
                 value={search}
-                onChange={e => setSearch(e.target.value)}
+                onChange={e => { setSearch(e.target.value); setFiltersOpen(false) }}
+                onFocus={() => setFiltersOpen(false)}
                 className="input pl-9"
                 autoFocus
               />
@@ -210,7 +294,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
                 not a view you come back to. */}
             <button
               onClick={() => setFavoritesOnly(v => !v)}
-              className={`flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${
+              className={`tap-target flex-shrink-0 inline-flex items-center justify-center w-11 h-11 rounded-control border transition-colors ${
                 favoritesOnly
                   ? 'bg-rose-50 border-rose-300 text-rose-500'
                   : 'bg-white border-slate-200 text-slate-400 hover:text-rose-400 hover:border-rose-200'
@@ -225,7 +309,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
                   <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"/>
                 </svg>
               ) : (
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
                 </svg>
               )}
@@ -233,11 +317,44 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
           </div>
         </div>
 
+        {/* Phone: the button that unfolds the chip rows, and pills for what
+            is on while they're folded. */}
+        <div
+          className="sm:hidden flex flex-shrink-0 items-center gap-2 overflow-x-auto px-4 pb-2"
+          style={{ scrollbarWidth: 'none' }}
+        >
+          <button
+            onClick={toggleFilters}
+            aria-expanded={filtersOpen}
+            className={filtersOpen ? 'chip-active' : 'chip'}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5h18M7 12h10M10.5 19h3" />
+            </svg>
+            {t('recipePicker.filters', { defaultValue: 'Filters' })}
+            {activeFilters.length > 0 && (
+              <span className="inline-flex items-center justify-center min-w-[1.125rem] h-[1.125rem] px-1 rounded-full bg-primary-600 text-white text-2xs font-semibold tabular-nums">
+                {activeFilters.length}
+              </span>
+            )}
+          </button>
+          {!filtersOpen && activeFilters.map(f => (
+            <button
+              key={f.key}
+              onClick={f.clear}
+              aria-label={t('recipePicker.removeFilter', { label: f.label, defaultValue: 'Remove filter: {{label}}' })}
+              className="chip-active"
+            >
+              {f.label}
+              <span aria-hidden>×</span>
+            </button>
+          ))}
+        </div>
+
+        <div className={`flex-shrink-0 ${filtersOpen ? '' : 'max-sm:hidden'}`}>
         {/* Pack chips — only shown when more than one bucket exists.
-            Strict static styling: explicit h-7, always-on 1px border with
-            colour matching the chip background, no color transition, no
-            auto-scroll. The chip should look pixel-identical in every
-            state — only the colour changes when selected. */}
+            The chip looks pixel-identical in every state, with no
+            auto-scroll: only the colour changes when selected. */}
         {packOptions.length > 1 && (
           <div
             className="flex flex-shrink-0 gap-2 overflow-x-auto px-4 pt-1 pb-2"
@@ -245,11 +362,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
           >
             <button
               onClick={() => setActivePack('All')}
-              className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
-                activePack === 'All'
-                  ? 'bg-emerald-600 text-white border-emerald-600'
-                  : 'bg-slate-100 text-slate-600 border-slate-100'
-              }`}
+              className={activePack === 'All' ? 'chip-active' : 'chip'}
             >
               {t('recipes.allPacks', { defaultValue: 'All packs' })}
             </button>
@@ -257,11 +370,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
               <button
                 key={opt.id}
                 onClick={() => setActivePack(opt.id)}
-                className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
-                  activePack === opt.id
-                    ? 'bg-emerald-600 text-white border-emerald-600'
-                    : 'bg-slate-100 text-slate-600 border-slate-100'
-                }`}
+                className={activePack === opt.id ? 'chip-active' : 'chip'}
               >
                 {opt.label}
               </button>
@@ -277,11 +386,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
         >
           <button
             onClick={() => setActiveConditions([])}
-            className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
-              activeConditions.length === 0
-                ? 'bg-slate-700 text-white border-slate-700'
-                : 'bg-slate-100 text-slate-600 border-slate-100'
-            }`}
+            className={activeConditions.length === 0 ? 'chip-active' : 'chip'}
           >
             {t('conditions.all', { defaultValue: 'All conditions' })}
           </button>
@@ -292,11 +397,7 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
                 key={c.id}
                 onClick={() => toggleCondition(c.id)}
                 aria-pressed={on}
-                className={`flex-shrink-0 h-7 px-3 inline-flex items-center gap-1 rounded-full text-xs font-medium whitespace-nowrap border ${
-                  on
-                    ? `${CONDITION_CHIP_ACTIVE[c.color]} border-transparent`
-                    : 'bg-slate-100 text-slate-600 border-slate-100'
-                }`}
+                className={on ? 'chip-active' : 'chip'}
               >
                 <span aria-hidden>{on ? '✓' : c.icon}</span>
                 {t(`conditions.${c.id}`, { defaultValue: c.id })}
@@ -314,15 +415,12 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`flex-shrink-0 h-7 px-3 inline-flex items-center rounded-full text-xs font-medium whitespace-nowrap border ${
-                activeCategory === cat
-                  ? 'bg-indigo-600 text-white border-indigo-600'
-                  : 'bg-slate-100 text-slate-600 border-slate-100'
-              }`}
+              className={activeCategory === cat ? 'chip-active' : 'chip'}
             >
               {cat === 'All' ? t('recipes.allCategories') : t(`categories.${cat}`, { defaultValue: cat })}
             </button>
           ))}
+        </div>
         </div>
 
         {/* Recipe list — scrollbar-gutter: stable reserves the scrollbar's
@@ -330,42 +428,12 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
             above don't visually "shift" when the user changes filters and
             the result count crosses the overflow threshold. */}
         <div
-          className="flex-1 overflow-y-auto px-4 pt-4 pb-4"
+          ref={listRef}
+          className="flex-1 min-h-0 overflow-y-auto px-4 pt-2 sm:pt-4 pb-4"
           style={{ scrollbarGutter: 'stable' }}
         >
-          {/* Add what you typed as your own meal. Sits above the results
-              rather than only appearing when there are none, because a
-              search for "salat" matches recipes and you may still mean the
-              improvised one. Hidden while multi-selecting — that mode is
-              about picking existing recipes. */}
-          {canAddCustom && !multi && search.trim() && (
-            <div className="mb-3 rounded-xl border border-indigo-200 bg-indigo-50/60 p-3">
-              <p className="text-xs text-slate-600 mb-2">
-                {t('recipePicker.addOwnHint', {
-                  defaultValue: 'Not in your recipes? Add it as your own meal — it goes on the shopping list too.',
-                })}
-              </p>
-              <div className="flex gap-2">
-                <span className="flex-1 min-w-0 inline-flex items-center px-3 h-9 rounded-lg bg-white border border-slate-200 text-sm font-medium text-slate-800 truncate">
-                  {search.trim()}
-                </span>
-                <input
-                  type="text"
-                  value={customAmount}
-                  onChange={e => setCustomAmount(e.target.value)}
-                  onKeyDown={e => { if (e.key === 'Enter') submitCustom() }}
-                  placeholder={t('recipePicker.amountPlaceholder', { defaultValue: 'Amount (optional)' })}
-                  className="input w-32 h-9 text-sm"
-                />
-                <button onClick={submitCustom} className="btn-primary h-9 px-3 text-sm whitespace-nowrap">
-                  {t('recipePicker.addOwn', { defaultValue: 'Add' })}
-                </button>
-              </div>
-            </div>
-          )}
-
           {filtered.length === 0 ? (
-            <div className="text-center py-10 text-sm text-slate-400">{t('recipePicker.noResults')}</div>
+            <div className="empty-state max-sm:py-4"><p className="empty-state-body mt-0">{t('recipePicker.noResults')}</p></div>
           ) : (
             <div className="space-y-2">
               {filtered.map(recipe => {
@@ -383,30 +451,30 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
                   onContextMenu={e => { if (canMulti) e.preventDefault() }}
                   style={canMulti ? { userSelect: 'none', WebkitUserSelect: 'none', WebkitTouchCallout: 'none' } : undefined}
                   aria-pressed={multi ? isSelected : undefined}
-                  className={`w-full text-left card p-3 transition-all duration-150 flex items-center gap-3 ${
+                  className={`tap-target w-full text-left card p-3 transition-all duration-150 flex items-center gap-3 ${
                     isSelected
-                      ? 'border-indigo-400 ring-2 ring-indigo-200 shadow-md'
-                      : 'hover:border-indigo-200 hover:shadow-md'
+                      ? 'border-primary-400 ring-2 ring-primary-200 shadow-raised'
+                      : 'hover:border-primary-200 hover:shadow-raised'
                   }`}
                 >
                   {multi && (
                     <span
-                      className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
-                        isSelected ? 'bg-indigo-600 border-indigo-600' : 'border-slate-300'
+                      className={`w-5 h-5 rounded-small border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
+                        isSelected ? 'bg-primary-600 border-primary-600' : 'border-slate-300'
                       }`}
                       aria-hidden
                     >
                       {isSelected && (
-                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                        <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                         </svg>
                       )}
                     </span>
                   )}
                   {recipe.imageUrl ? (
-                    <img src={recipe.imageUrl} alt="" className="w-12 h-12 rounded-xl object-cover flex-shrink-0" />
+                    <img src={recipe.imageUrl} alt="" className="w-12 h-12 rounded-control object-cover flex-shrink-0" />
                   ) : (
-                    <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0 text-xl">
+                    <div className="w-12 h-12 rounded-control bg-primary-50 flex items-center justify-center flex-shrink-0 text-xl">
                       🍽
                     </div>
                   )}
@@ -418,10 +486,14 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
                     {/* Flag restricted fasting-diet meals so a day isn't built
                         on them by mistake. */}
                     {isFmdRecipe(recipe) && (
-                      <span className="mt-1 inline-flex items-center gap-1 badge bg-amber-100 text-amber-800 text-[11px] font-semibold">
+                      <span className="mt-1 inline-flex items-center gap-1 badge bg-warning-100 text-warning-800 text-2xs font-semibold">
                         <span aria-hidden>⏳</span>
                         {t('recipes.fmdBadge', { defaultValue: 'Fasting day' })}
                       </span>
+                    )}
+                    {/* Why a dish without the word in its name is listed. */}
+                    {searchMatches.get(recipe.id)?.inTitle === false && searchMatches.get(recipe.id)?.ingredient && (
+                      <p className="text-xs text-primary-700 mt-0.5 truncate">{searchMatches.get(recipe.id).ingredient}</p>
                     )}
                   </div>
                   {!multi && (
@@ -434,16 +506,47 @@ export default function RecipePicker({ onSelect, onSelectMany, onAddCustom, onCl
               })}
             </div>
           )}
+
+          {/* Add what you typed as your own meal. Offered even when recipes
+              match, because a search for "salat" may still mean the improvised
+              one, but below them: the results are what the search is for.
+              Hidden while multi-selecting — that mode is about picking
+              existing recipes. */}
+          {canAddCustom && !multi && search.trim() && (
+            <div className="mt-3 rounded-control border border-primary-200 bg-primary-50/60 p-3">
+              <p className="text-xs text-slate-600 mb-2">
+                {t('recipePicker.addOwnHint', {
+                  defaultValue: 'Not in your recipes? Add it as your own meal — it goes on the shopping list too.',
+                })}
+              </p>
+              <div className="flex gap-2">
+                <span className="flex-1 min-w-0 inline-flex items-center px-3 h-9 rounded-small bg-white border border-slate-200 text-sm font-medium text-slate-800 truncate">
+                  {search.trim()}
+                </span>
+                <input
+                  type="text"
+                  value={customAmount}
+                  onChange={e => setCustomAmount(e.target.value)}
+                  onKeyDown={e => { if (e.key === 'Enter') submitCustom() }}
+                  placeholder={t('recipePicker.amountPlaceholder', { defaultValue: 'Amount (optional)' })}
+                  className="input w-32 h-9 text-sm"
+                />
+                <button onClick={submitCustom} className="btn-secondary whitespace-nowrap">
+                  {t('recipePicker.addOwn', { defaultValue: 'Add' })}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Confirm bar — only while selecting, so it never takes space from
             the list in the ordinary single-tap flow. */}
         {multi && (
-          <div className="flex-shrink-0 border-t border-slate-100 px-4 py-3 bg-white sm:rounded-b-2xl">
+          <div className="flex-shrink-0 border-t border-slate-100 px-4 py-3 bg-white sm:rounded-b-card">
             <button
               onClick={confirmMany}
               disabled={selected.length === 0}
-              className="btn-primary w-full justify-center disabled:opacity-40 disabled:cursor-not-allowed"
+              className="btn-primary w-full"
             >
               {selected.length === 0
                 ? t('recipePicker.selectPrompt', { defaultValue: 'Select recipes to add' })

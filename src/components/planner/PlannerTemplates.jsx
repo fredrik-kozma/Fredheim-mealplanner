@@ -179,8 +179,8 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative z-10 bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl sheet-max-h pb-[env(safe-area-inset-bottom)] flex flex-col shadow-2xl">
+      <div className="absolute inset-0 scrim" onClick={onClose} />
+      <div className="relative z-10 sheet sm:max-w-md sheet-max-h pb-[env(safe-area-inset-bottom)] flex flex-col">
         {/* Handle (mobile) */}
         <div className="sm:hidden flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 rounded-full bg-slate-200" />
@@ -188,10 +188,10 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
 
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
-          <h2 className="text-base font-semibold text-slate-800">
+          <h2 className="section-title">
             {mode === 'save' ? t('planner.saveAsTemplate') : t('planner.loadTemplates')}
           </h2>
-          <button onClick={onClose} className="btn-ghost p-1.5 -mr-1.5 text-slate-400">
+          <button onClick={onClose} className="btn-ghost btn-icon -mr-1.5 text-slate-400">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
@@ -202,16 +202,16 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
         <div className="flex border-b border-slate-100">
           <button
             onClick={() => setMode('list')}
-            className={`flex-1 py-2.5 text-sm font-medium transition-colors ${
-              mode === 'list' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-slate-500 hover:text-slate-700'
+            className={`tap-target flex-1 py-2.5 text-sm font-medium transition-colors ${
+              mode === 'list' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             {t('planner.loadTemplate')}
           </button>
           <button
             onClick={() => setMode('save')}
-            className={`flex-1 py-2.5 text-sm font-medium transition-colors ${
-              mode === 'save' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-slate-500 hover:text-slate-700'
+            className={`tap-target flex-1 py-2.5 text-sm font-medium transition-colors ${
+              mode === 'save' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             {t('planner.saveAsTemplate')}
@@ -242,7 +242,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
                         <button
                           onClick={() => handleUpdate(tmpl)}
                           disabled={currentMealCount === 0}
-                          className="btn-secondary py-1.5 px-3 text-xs flex-shrink-0"
+                          className="btn-secondary btn-sm flex-shrink-0"
                         >
                           {t('planner.updateTemplate')}
                         </button>
@@ -297,14 +297,14 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
                 <button
                   onClick={handleDownloadStarterPlan}
                   disabled={currentMealCount === 0}
-                  className="btn-secondary w-full py-2 text-sm inline-flex items-center justify-center gap-2"
+                  className="btn-secondary w-full"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                   </svg>
                   {t('planner.downloadStarterPlan', { defaultValue: 'Download as starter plan JSON' })}
                 </button>
-                <p className="text-[11px] text-slate-400 mt-2 leading-relaxed">
+                <p className="text-2xs text-slate-400 mt-2 leading-relaxed">
                   {t('planner.downloadStarterPlanHint', {
                     defaultValue: 'Saves your current week as a JSON file you can send to your developer to ship as a starter plan for all users.',
                   })}
@@ -324,7 +324,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
                 />
                 <button
                   onClick={() => fileRef.current?.click()}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-dashed border-slate-200 text-slate-500 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/40 transition-colors text-sm font-medium"
+                  className="tap-target w-full flex items-center justify-center gap-2 py-3 rounded-control border-2 border-dashed border-slate-200 text-slate-500 hover:border-primary-300 hover:text-primary-600 hover:bg-primary-50/40 transition-colors text-sm font-medium"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
@@ -356,7 +356,7 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
                             </div>
                             <button
                               onClick={() => handleLoadSampleWeek(plan)}
-                              className="btn-primary py-1.5 px-3 text-xs flex-shrink-0"
+                              className="btn-secondary btn-sm flex-shrink-0"
                             >
                               {t('planner.load')}
                             </button>
@@ -405,29 +405,29 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
                             that recorded what they were built for. */}
                         {base != null && (
                           <div className="flex items-center gap-1 mt-2">
-                            <span className="text-[11px] text-slate-500">
+                            <span className="text-2xs text-slate-500">
                               {t('planner.loadFor', { defaultValue: 'Load for' })}
                             </span>
                             <button
                               onClick={() => setLoadPortions(p => ({ ...p, [tmpl.id]: Math.max(1, (target ?? base) - 1) }))}
                               disabled={(target ?? base) <= 1}
-                              className="tap-target w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 text-xs font-bold flex items-center justify-center"
+                              className="tap-target w-5 h-5 rounded-small bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 text-xs font-bold flex items-center justify-center"
                             >
                               −
                             </button>
-                            <span className={`text-xs font-semibold px-1.5 tabular-nums ${rescaled ? 'text-indigo-600' : 'text-slate-700'}`}>
+                            <span className={`text-xs font-semibold px-1.5 tabular-nums ${rescaled ? 'text-primary-600' : 'text-slate-700'}`}>
                               {target ?? base}
                             </span>
                             <button
                               onClick={() => setLoadPortions(p => ({ ...p, [tmpl.id]: (target ?? base) + 1 }))}
-                              className="tap-target w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center"
+                              className="tap-target w-5 h-5 rounded-small bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center"
                             >
                               +
                             </button>
                             {rescaled && (
                               <button
                                 onClick={() => setLoadPortions(p => { const { [tmpl.id]: _drop, ...rest } = p; return rest })}
-                                className="text-[10px] text-slate-400 hover:text-indigo-600 px-1"
+                                className="tap-target text-2xs text-slate-400 hover:text-primary-600 px-1"
                                 title={t('planner.resetPortions', { defaultValue: 'Back to saved size' })}
                               >
                                 ↺
@@ -438,13 +438,13 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
                       </div>
                       <button
                         onClick={() => handleLoad(tmpl)}
-                        className="btn-primary py-1.5 px-3 text-xs flex-shrink-0"
+                        className="btn-secondary btn-sm flex-shrink-0"
                       >
                         {t('planner.load')}
                       </button>
                       <button
                         onClick={() => handleDelete(tmpl)}
-                        className="btn-ghost p-1.5 text-slate-300 hover:text-red-500 flex-shrink-0"
+                        className="btn-ghost btn-icon text-slate-400 hover:text-danger-500 flex-shrink-0"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
@@ -463,8 +463,8 @@ export default function PlannerTemplates({ onClose, initialMode = 'list' }) {
 
       {/* Toast */}
       {toast && (
-        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-2 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-xl">
-          <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+        <div className="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-2 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-control shadow-overlay">
+          <svg className="w-4 h-4 text-success-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
           {toast}

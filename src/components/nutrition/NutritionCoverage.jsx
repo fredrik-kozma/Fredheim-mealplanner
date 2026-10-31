@@ -22,13 +22,13 @@ export default function NutritionCoverage({ totals, label }) {
   return (
     <div>
       {label && (
-        <p className="text-[11px] text-slate-500 mb-3">{label}</p>
+        <p className="text-2xs text-slate-500 mb-3">{label}</p>
       )}
 
       {isEmpty ? (
-        <div className="text-center py-8 text-sm text-slate-400">
+        <div className="empty-state"><p className="empty-state-body mt-0">
           {t('nutritionTracker.emptyTotals', { defaultValue: 'Nothing logged yet — add a meal to see your coverage.' })}
-        </div>
+        </p></div>
       ) : (
         <div className="space-y-5">
           {NUTRITION_GROUPS.map(group => {
@@ -40,7 +40,7 @@ export default function NutritionCoverage({ totals, label }) {
 
             return (
               <div key={group.key}>
-                <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+                <h3 className="eyebrow mb-2">
                   {t(`nutrition.groups.${group.key}`, { defaultValue: group.label })}
                 </h3>
                 <div className="divide-y divide-slate-100">
@@ -62,7 +62,7 @@ export default function NutritionCoverage({ totals, label }) {
                           </span>
                           {pct !== null ? (
                             <>
-                              <span className="text-[10px] text-slate-500 tabular-nums w-10 text-right">
+                              <span className="text-2xs text-slate-500 tabular-nums w-10 text-right">
                                 {pct}%
                               </span>
                               <div className="w-14 h-1.5 rounded-full bg-slate-100 overflow-hidden">

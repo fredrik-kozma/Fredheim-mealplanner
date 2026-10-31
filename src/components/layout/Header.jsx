@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../contexts/AuthContext'
 import { useSubscription } from '../../hooks/useSubscription'
@@ -7,7 +7,6 @@ import AuthModal from '../auth/AuthModal'
 import TimerButton from '../timer/TimerButton'
 
 export default function Header() {
-  const location = useLocation()
   const navigate = useNavigate()
   const { t } = useTranslation()
   const { user, signOut } = useAuth()
@@ -16,18 +15,6 @@ export default function Header() {
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [showUserMenu, setShowUserMenu] = useState(false)
   const [authTab, setAuthTab] = useState('signin')
-
-  const PAGE_TITLES = {
-    '/': t('recipes.title'),
-    '/planner': t('planner.title'),
-    '/shopping': t('shopping.title'),
-    '/settings': t('settings.title'),
-    '/packs': t('packs.title'),
-    '/nutrition': t('nutritionTracker.title'),
-  }
-
-  // The full app name doesn't fit beside the buttons on a phone.
-  const title = PAGE_TITLES[location.pathname] || t('app.shortName')
 
   function openSignIn() {
     setAuthTab('signin')
@@ -91,18 +78,18 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative bg-white/90 backdrop-blur-md border-b border-slate-100 px-3 min-[400px]:px-4 h-14 flex items-center gap-2 min-[400px]:gap-3 lg:hidden">
+      <header className="relative bg-white/90 backdrop-blur-md border-b border-slate-200/70 px-3 min-[400px]:px-4 h-14 flex items-center gap-2 min-[400px]:gap-3 lg:hidden">
         {/* Logo + page title */}
         <button
           onClick={() => navigate('/')}
-          className="flex items-center gap-2.5 hover:opacity-75 transition-opacity flex-1 min-w-0"
+          className="tap-target flex items-center gap-2.5 hover:opacity-75 transition-opacity flex-1 min-w-0"
         >
           <img
             src="/fredheim-logo.svg"
             alt=""
             className="w-8 h-8 rounded-full flex-shrink-0 object-cover"
           />
-          <span className="font-semibold text-slate-800 text-[13px] min-[400px]:text-base leading-tight text-left line-clamp-2 break-words min-w-0">{title}</span>
+          <span className="section-title truncate min-w-0">{t('app.shortName')}</span>
         </button>
 
         {/* Kitchen timer — sits next to the account area so it's reachable
@@ -112,7 +99,7 @@ export default function Header() {
         {/* Trial badge — on phones it stays in the account menu only, so the
             page title keeps its room. */}
         {user && isTrial && (
-          <span className="hidden sm:inline text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 flex-shrink-0">
+          <span className="hidden sm:inline text-2xs font-semibold text-warning-700 bg-warning-50 border border-warning-200 rounded-full px-2 py-0.5 flex-shrink-0">
             {t('subscription.trialDaysLeft', { count: daysLeft })}
           </span>
         )}
@@ -122,7 +109,7 @@ export default function Header() {
           <div className="relative flex-shrink-0">
             <button
               onClick={() => setShowUserMenu(v => !v)}
-              className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-semibold text-xs flex items-center justify-center hover:bg-indigo-200 transition-colors"
+              className="tap-target w-9 h-9 rounded-full bg-primary-100 text-primary-700 font-semibold text-xs flex items-center justify-center hover:bg-primary-200 transition-colors"
               aria-label={t('auth.account')}
             >
               {initials}
@@ -134,16 +121,16 @@ export default function Header() {
                   className="fixed inset-0 z-10"
                   onClick={() => setShowUserMenu(false)}
                 />
-                <div className="absolute right-0 top-10 z-20 w-52 bg-white rounded-xl shadow-lg border border-slate-100 py-1 overflow-hidden">
+                <div className="absolute right-0 top-10 z-20 w-52 menu-surface py-1 overflow-hidden">
                   {/* Email */}
                   <div className="px-3 py-2 border-b border-slate-100">
                     <p className="text-xs text-slate-500 truncate">{user.email}</p>
                     {isAdmin ? (
-                      <p className="text-[10px] font-semibold text-indigo-600 mt-0.5">
+                      <p className="text-2xs font-semibold text-primary-600 mt-0.5">
                         {t('subscription.adminAccess')}
                       </p>
                     ) : isActive ? (
-                      <p className="text-[10px] font-semibold text-green-600 mt-0.5">
+                      <p className="text-2xs font-semibold text-success-600 mt-0.5">
                         {isTrial
                           ? t('subscription.trialDaysLeft', { count: daysLeft })
                           : t('subscription.activeStatus')}
@@ -155,7 +142,7 @@ export default function Header() {
                   {!isAdmin && (isTrial || !isActive) && (
                     <button
                       onClick={handleCheckout}
-                      className="w-full text-left px-3 py-2 text-sm font-semibold text-indigo-600 hover:bg-indigo-50 transition-colors"
+                      className="tap-target w-full text-left px-3 py-2 text-sm font-semibold text-primary-600 hover:bg-primary-50 transition-colors"
                     >
                       ✨ {t('subscription.subscribeNow')}
                     </button>
@@ -165,7 +152,7 @@ export default function Header() {
                   {!isAdmin && isActive && !isTrial && (
                     <button
                       onClick={handleManageSubscription}
-                      className="w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                      className="tap-target w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
                     >
                       {t('subscription.manage')}
                     </button>
@@ -175,7 +162,7 @@ export default function Header() {
                   {!isAdmin && isTrial && (
                     <button
                       onClick={handleManageSubscription}
-                      className="w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                      className="tap-target w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
                     >
                       {t('subscription.manage')}
                     </button>
@@ -184,7 +171,7 @@ export default function Header() {
                   {/* Sign out */}
                   <button
                     onClick={handleSignOut}
-                    className="w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="tap-target w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
                   >
                     {t('auth.signOut')}
                   </button>
@@ -196,13 +183,13 @@ export default function Header() {
           <div className="flex items-center gap-2 flex-shrink-0">
             <button
               onClick={openSignIn}
-              className="text-xs text-slate-600 hover:text-indigo-600 transition-colors font-medium"
+              className="btn-ghost btn-sm"
             >
               {t('auth.signIn')}
             </button>
             <button
               onClick={openSignUp}
-              className="hidden sm:inline-flex btn-primary py-1.5 px-3 text-xs"
+              className="hidden sm:inline-flex btn-primary btn-sm"
             >
               {t('auth.signUp')}
             </button>

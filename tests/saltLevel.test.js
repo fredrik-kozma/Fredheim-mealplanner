@@ -234,7 +234,7 @@ test('check-recipes: over the cap, on a sweet recipe, flavour missing', () => {
   const r3 = soup([saltRow(0.25, 'tsp')], { category: 'Breakfast', mealTypes: ['breakfast'] })
   assert.ok(codes(checkSaltLevels(packOf(r3))).includes('missing-flavour:missing'))
   // Outside the Fredheim packs flavour and sodium aren't required, but the rows are still checked.
-  assert.deepEqual(codes(checkSaltLevels(packOf(r3, 'healthy-basics'))), [])
+  assert.deepEqual(codes(checkSaltLevels(packOf(r3, 'someone-elses-pack'))), [])
 })
 
 // ── settings ──

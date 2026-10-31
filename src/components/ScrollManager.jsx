@@ -29,7 +29,7 @@ import { useLocation } from 'react-router-dom'
  * half-read recipe puts you back where you were — which is what a back
  * button should do. Only in-app navigation is managed here.
  */
-const RESTORE_PATHS = new Set(['/', '/planner', '/shopping', '/nutrition', '/packs', '/settings'])
+const RESTORE_PATHS = new Set(['/', '/recipes', '/planner', '/shopping', '/nutrition', '/packs', '/settings'])
 
 const scrollY = () => window.scrollY ?? document.scrollingElement?.scrollTop ?? 0
 

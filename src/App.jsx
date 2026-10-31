@@ -3,6 +3,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import Navigation from './components/layout/Navigation'
 import Header from './components/layout/Header'
 import RecipesPage from './pages/RecipesPage'
+import TodayPage from './pages/TodayPage'
 import PlannerPage from './pages/PlannerPage'
 import ShoppingPage from './pages/ShoppingPage'
 import SettingsPage from './pages/SettingsPage'
@@ -243,7 +244,11 @@ function AppShell() {
         </div>
         <div className="flex-1 flex flex-col overflow-hidden">
           <Routes>
-            <Route path="/" element={<RecipesPage />} />
+            {/* Home: today's meals once you have access. A visitor without it
+                has a locked planner and nothing planned, so they keep the
+                recipe list here; signing in swaps it in place. */}
+            <Route path="/" element={canAccess ? <TodayPage /> : <RecipesPage />} />
+            <Route path="/recipes" element={<RecipesPage />} />
             <Route path="/recipes/new" element={<RecipeForm />} />
             <Route path="/recipes/:id" element={<RecipeDetail />} />
             <Route path="/recipes/:id/edit" element={<RecipeForm />} />

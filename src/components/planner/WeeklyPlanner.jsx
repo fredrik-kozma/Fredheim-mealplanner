@@ -59,7 +59,7 @@ function ToolbarIcon({ d, className = 'w-4 h-4' }) {
   )
 }
 
-const ROW_LABEL ='flex justify-end text-right text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide pr-1.5 sm:pr-1 break-words hyphens-auto min-w-0'
+const ROW_LABEL ='flex justify-end text-right text-2xs sm:text-xs font-semibold text-slate-500 uppercase tracking-wide pr-1.5 sm:pr-1 break-words hyphens-auto min-w-0'
 
 // One day's column header — weekday name (or "Day 8…" for extra days),
 // today highlighted, with a remove button on extra days.
@@ -81,9 +81,9 @@ function DayHeader({ day }) {
   }
 
   return (
-    <div className={`relative text-center py-2 rounded-xl font-semibold text-sm max-sm:snap-start ${
+    <div className={`relative text-center py-2 rounded-control font-semibold text-sm max-sm:snap-start ${
       isToday
-        ? 'bg-indigo-600 text-white shadow-sm'
+        ? 'bg-primary-100 text-primary-800'
         : isExtra
           ? 'bg-slate-100 text-slate-600'
           : 'text-slate-600'
@@ -99,10 +99,10 @@ function DayHeader({ day }) {
       {isExtra && (
         <button
           onClick={handleRemove}
-          className="tap-target absolute right-1.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-red-500 transition-colors"
+          className="tap-target absolute right-1.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-danger-500 transition-colors"
           title={t('planner.removeDay', { defaultValue: 'Remove this day' })}
         >
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </button>
@@ -562,7 +562,7 @@ export default function WeeklyPlanner() {
             128px beyond the right edge, present but unreachable.
             Wrapping here means no label in any language can push a button
             out of sight; the toolbar grows downwards instead. */}
-        <div className="px-4 pt-4 pb-3 flex items-center justify-between gap-2 flex-wrap">
+        <div className="px-4 pt-1 pb-3 flex items-center justify-between gap-2 flex-wrap">
           <WeekScale />
           <div className="w-full sm:w-auto grid grid-cols-[1fr_1fr_auto] sm:flex sm:flex-wrap items-center sm:justify-end gap-2 min-w-0">
           {/* The planner's main feature, so it leads the toolbar in the
@@ -570,14 +570,14 @@ export default function WeeklyPlanner() {
               above Load / Save. */}
           <button
             onClick={() => setMakeWeekOpen(true)}
-            className="btn-primary border border-transparent py-2.5 sm:py-2 px-3.5 col-span-3 sm:col-auto inline-flex items-center justify-center gap-1.5"
+            className="btn-primary col-span-3 sm:col-auto"
           >
             <ToolbarIcon d={SPARKLES_ICON} />
             {t('makeMyWeek.button')}
           </button>
           <button
             onClick={() => setTemplatesMode('list')}
-            className="btn-secondary py-2 px-3.5 inline-flex items-center justify-center gap-1.5"
+            className="btn-secondary"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -586,7 +586,7 @@ export default function WeeklyPlanner() {
           </button>
           <button
             onClick={() => setTemplatesMode('save')}
-            className="btn-secondary py-2 px-3.5 inline-flex items-center justify-center gap-1.5"
+            className="btn-secondary"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
@@ -596,7 +596,7 @@ export default function WeeklyPlanner() {
           <button
             onClick={() => startPrint('week')}
             disabled={mealCount === 0}
-            className="btn-secondary py-2 px-3.5 hidden sm:inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="btn-secondary hidden sm:inline-flex"
           >
             <ToolbarIcon d={PRINTER_ICON} />
             {t('planner.printWeek', { defaultValue: 'Print menu' })}
@@ -604,7 +604,7 @@ export default function WeeklyPlanner() {
           <button
             onClick={() => startPrint('book')}
             disabled={mealCount === 0}
-            className="btn-secondary py-2 px-3.5 hidden sm:inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="btn-secondary hidden sm:inline-flex"
             title={t('planner.printMenuBookHint', { defaultValue: 'Every recipe for the week, in one document' })}
           >
             <ToolbarIcon d={BOOK_ICON} />
@@ -613,7 +613,7 @@ export default function WeeklyPlanner() {
           <button
             onClick={() => setSharing(buildShare())}
             disabled={mealCount === 0}
-            className="btn-secondary py-2 px-3.5 hidden sm:inline-flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="btn-secondary hidden sm:inline-flex"
             title={t('planner.shareWeekHint', { defaultValue: 'Send this menu to someone' })}
           >
             <ToolbarIcon d={SHARE_ICON} />
@@ -625,7 +625,7 @@ export default function WeeklyPlanner() {
           <div className="relative sm:hidden">
             <button
               onClick={() => setMoreOpen(v => !v)}
-              className="btn-secondary py-2 px-3 h-full"
+              className="btn-secondary h-full"
               aria-label={t('planner.printShare', { defaultValue: 'Print & share' })}
               title={t('planner.printShare', { defaultValue: 'Print & share' })}
               aria-haspopup="menu"
@@ -636,7 +636,7 @@ export default function WeeklyPlanner() {
             {moreOpen && (
               <>
                 <div className="fixed inset-0 z-20" onClick={() => setMoreOpen(false)} />
-                <div role="menu" className="absolute right-0 top-full mt-1 z-30 w-56 bg-white rounded-xl shadow-lg border border-slate-100 py-1">
+                <div role="menu" className="absolute right-0 top-full mt-1 z-30 w-56 menu-surface py-1">
                   {[
                     { icon: PRINTER_ICON, label: t('planner.printWeek', { defaultValue: 'Print menu' }), run: () => startPrint('week') },
                     { icon: BOOK_ICON, label: t('planner.printMenuBook', { defaultValue: 'Print all recipes' }), run: () => startPrint('book') },
@@ -647,7 +647,7 @@ export default function WeeklyPlanner() {
                       role="menuitem"
                       disabled={mealCount === 0}
                       onClick={() => { setMoreOpen(false); item.run() }}
-                      className="w-full text-left px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center gap-2.5"
+                      className="tap-target w-full text-left px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center gap-2.5"
                     >
                       <ToolbarIcon d={item.icon} className="w-4 h-4 flex-shrink-0 text-slate-500" />
                       {item.label}
@@ -659,7 +659,7 @@ export default function WeeklyPlanner() {
           </div>
           <button
             onClick={() => { if (confirm(t('planner.clearWeekConfirm'))) clearWeekPlan() }}
-            className="btn-ghost text-xs text-slate-400 hover:text-red-500 py-2 px-2 col-span-3 sm:col-auto"
+            className="btn-ghost btn-sm text-slate-500 hover:text-danger-600 col-span-3 sm:col-auto"
           >
             {t('planner.clearWeek')}
           </button>
@@ -674,7 +674,7 @@ export default function WeeklyPlanner() {
             <div className="flex-1 min-w-[12rem]">
               <p className="text-sm font-semibold text-slate-800">{t('makeMyWeek.emptyTitle')}</p>
               <p className="text-xs text-slate-500 mt-0.5">{t('makeMyWeek.emptyText')}</p>
-              <p className="text-xs font-medium text-indigo-600 mt-1">↑ {t('makeMyWeek.emptyHint')}</p>
+              <p className="text-xs font-semibold text-primary-700 mt-1">↑ {t('makeMyWeek.emptyHint')}</p>
             </div>
           </div>
         )}
@@ -694,7 +694,7 @@ export default function WeeklyPlanner() {
             them for cards to show through. On phones a swipe snaps to the
             nearest day (proximity, so a drag near the edge isn't yanked
             around), with that day starting just right of the labels. */}
-        <div className="flex-1 overflow-x-auto overflow-y-auto pb-24 lg:pb-8 lg:max-h-[calc(100vh-4rem)] max-sm:snap-x max-sm:snap-proximity max-sm:scroll-pl-[5.25rem]">
+        <div className="flex-1 overflow-x-auto overflow-y-auto pb-nav lg:pb-8 lg:max-h-[calc(100vh-4rem)] max-sm:snap-x max-sm:snap-proximity max-sm:scroll-pl-[5.25rem]">
           <div className="flex gap-3 min-w-max px-4 max-sm:snap-start">
             {/* Batch cooking — what gets prepped once for the whole week */}
             <BatchCookColumn onAddRecipe={() => setPicker({ batch: true })} />
@@ -744,10 +744,10 @@ export default function WeeklyPlanner() {
               <div className="h-9" />
               <button
                 onClick={addPlannerDay}
-                className="flex-1 min-h-[120px] rounded-xl border-2 border-dashed border-slate-200 text-slate-400 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/40 transition-colors flex flex-col items-center justify-center gap-1 px-2"
+                className="tap-target flex-1 min-h-[120px] rounded-control border-2 border-dashed border-slate-200 text-slate-400 hover:border-primary-300 hover:text-primary-600 hover:bg-primary-50/40 transition-colors flex flex-col items-center justify-center gap-1 px-2"
                 title={t('planner.addDayTitle', { defaultValue: 'Add an extra day to this plan' })}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
                 <span className="text-xs font-medium">{t('planner.addDay', { defaultValue: 'Add day' })}</span>
@@ -760,7 +760,7 @@ export default function WeeklyPlanner() {
       {/* Drag overlay */}
       <DragOverlay>
         {draggedLabel && (
-          <div className="bg-white rounded-xl shadow-2xl px-3 py-2.5 border border-indigo-200 text-sm font-medium text-slate-800 flex items-center gap-2 max-w-[180px]">
+          <div className="bg-white rounded-control shadow-overlay px-3 py-2.5 border border-primary-200 text-sm font-medium text-slate-800 flex items-center gap-2 max-w-[180px]">
             <span>{activeDragData?.type === 'plancustom' ? '📝' : '🍽'}</span>
             <span className="truncate">{draggedLabel}</span>
           </div>

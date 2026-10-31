@@ -60,7 +60,7 @@ export default function SharedImportPage() {
             ? t('share.badVersion', { defaultValue: 'It was made by a newer version of the app. Update and try again.' })
             : t('share.badLink', { defaultValue: 'It may have been cut short when it was sent. Ask for it again, as a complete link.' })}
         </p>
-        <button onClick={() => navigate('/')} className="btn-primary px-4 py-2">
+        <button onClick={() => navigate('/recipes')} className="btn-primary">
           {t('share.goHome', { defaultValue: 'Go to recipes' })}
         </button>
       </Shell>
@@ -73,7 +73,7 @@ export default function SharedImportPage() {
     const meals = countPayloadMeals(payload.plan)
     return (
       <Shell>
-        <p className="text-xs font-medium uppercase tracking-wide text-indigo-500 mb-1">
+        <p className="text-xs font-medium uppercase tracking-wide text-primary-500 mb-1">
           {t('share.sharedWithYou', { defaultValue: 'Shared with you' })}
         </p>
         <h1 className="text-lg font-semibold text-slate-800 mb-1">
@@ -84,7 +84,7 @@ export default function SharedImportPage() {
         </p>
 
         {currentMeals > 0 && (
-          <div className="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-4">
+          <div className="text-xs text-warning-800 bg-warning-50 border border-warning-200 rounded-small px-3 py-2 mb-4">
             {t('share.replaceWarning', {
               count: currentMeals,
               defaultValue: 'This replaces the week you have now ({{count}} meals). Save it first if you want to keep it.',
@@ -104,11 +104,11 @@ export default function SharedImportPage() {
               }, lang)
               navigate('/planner')
             }}
-            className="btn-primary px-4 py-2"
+            className="btn-primary"
           >
             {t('share.addWeek', { defaultValue: 'Add to my planner' })}
           </button>
-          <button onClick={() => navigate('/planner')} className="btn-secondary px-4 py-2">
+          <button onClick={() => navigate('/planner')} className="btn-secondary">
             {t('common.cancel', { defaultValue: 'Cancel' })}
           </button>
         </div>
@@ -121,7 +121,7 @@ export default function SharedImportPage() {
     const groups = shoppingPayloadToGroups(payload)
     return (
       <Shell>
-        <p className="text-xs font-medium uppercase tracking-wide text-indigo-500 mb-1">
+        <p className="text-xs font-medium uppercase tracking-wide text-primary-500 mb-1">
           {t('share.sharedWithYou', { defaultValue: 'Shared with you' })}
         </p>
         <h1 className="text-lg font-semibold text-slate-800 mb-1">
@@ -139,7 +139,7 @@ export default function SharedImportPage() {
 
         {/* A peek at the contents. Saving something unseen is how you end
             up with lists nobody can identify a week later. */}
-        <div className="text-xs text-slate-600 bg-slate-50 border border-slate-100 rounded-lg px-3 py-2 mb-4 max-h-40 overflow-y-auto">
+        <div className="text-xs text-slate-600 bg-slate-50 border border-slate-100 rounded-small px-3 py-2 mb-4 max-h-40 overflow-y-auto">
           {groups.map(g => (
             <div key={g.category} className="mb-1.5 last:mb-0">
               <span className="font-semibold text-slate-700">
@@ -161,7 +161,7 @@ export default function SharedImportPage() {
               saveShoppingList(payload.name || t('share.aShoppingList', { defaultValue: 'A shopping list' }), groups, payload.portions)
               navigate('/shopping')
             }}
-            className="btn-primary px-4 py-2"
+            className="btn-primary"
           >
             {t('share.saveShoppingList', { defaultValue: 'Save as its own list' })}
           </button>
@@ -179,12 +179,12 @@ export default function SharedImportPage() {
               }
               navigate('/shopping')
             }}
-            className="btn-secondary px-4 py-2"
+            className="btn-secondary"
           >
             {t('share.mergeShoppingList', { defaultValue: 'Add to my list' })}
           </button>
         </div>
-        <button onClick={() => navigate('/shopping')} className="btn-ghost text-xs text-slate-400 mt-3">
+        <button onClick={() => navigate('/shopping')} className="btn-ghost btn-sm text-slate-400 mt-3">
           {t('common.cancel', { defaultValue: 'Cancel' })}
         </button>
       </Shell>
@@ -197,13 +197,13 @@ export default function SharedImportPage() {
     if (found) {
       return (
         <Shell>
-          <p className="text-xs font-medium uppercase tracking-wide text-indigo-500 mb-1">
+          <p className="text-xs font-medium uppercase tracking-wide text-primary-500 mb-1">
             {t('share.sharedWithYou', { defaultValue: 'Shared with you' })}
           </p>
           <h1 className="text-lg font-semibold text-slate-800 mb-5">
             {found.translations?.[lang]?.title || found.title}
           </h1>
-          <button onClick={() => navigate(`/recipes/${found.id}`, { replace: true })} className="btn-primary px-4 py-2">
+          <button onClick={() => navigate(`/recipes/${found.id}`, { replace: true })} className="btn-primary">
             {t('share.openRecipe', { defaultValue: 'Open the recipe' })}
           </button>
         </Shell>
@@ -222,7 +222,7 @@ export default function SharedImportPage() {
             defaultValue: "You don't have this recipe yet. It comes from a recipe pack — install it under Packs and open the link again.",
           })}
         </p>
-        <button onClick={() => navigate('/packs')} className="btn-primary px-4 py-2">
+        <button onClick={() => navigate('/packs')} className="btn-primary">
           {t('share.goPacks', { defaultValue: 'Go to packs' })}
         </button>
       </Shell>
@@ -232,7 +232,7 @@ export default function SharedImportPage() {
   const incoming = payload.recipe
   return (
     <Shell>
-      <p className="text-xs font-medium uppercase tracking-wide text-indigo-500 mb-1">
+      <p className="text-xs font-medium uppercase tracking-wide text-primary-500 mb-1">
         {t('share.sharedWithYou', { defaultValue: 'Shared with you' })}
       </p>
       <h1 className="text-lg font-semibold text-slate-800 mb-1">
@@ -253,13 +253,13 @@ export default function SharedImportPage() {
         <button
           onClick={() => {
             addRecipe(incoming)
-            navigate('/')
+            navigate('/recipes')
           }}
-          className="btn-primary px-4 py-2"
+          className="btn-primary"
         >
           {t('share.saveRecipe', { defaultValue: 'Save to my recipes' })}
         </button>
-        <button onClick={() => navigate('/')} className="btn-secondary px-4 py-2">
+        <button onClick={() => navigate('/recipes')} className="btn-secondary">
           {t('common.cancel', { defaultValue: 'Cancel' })}
         </button>
       </div>

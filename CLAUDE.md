@@ -117,6 +117,10 @@ good-for filters without hand work. The criteria live in
   question); the same script sets it from sugars and ingredients. Check
   the report and correct the rule in `scripts/lib/saltLevels.mjs` (not the
   pack by hand) if a recipe is misjudged.
+- **No vinegar.** No vinegar in any recipe; use lemon (or lime) juice
+  instead. check-recipes fails a recipe that mentions one in any language
+  (`no-vinegar`). The dictionary keeps its vinegar entries for users' own
+  recipes only.
 - **Oil-free methods preferred.** Sauté in water or broth, bake on
   parchment, dress with tahini/lemon rather than oil. Oil (in an ingredient
   row or the method text) costs oil-free, heart-healthy and

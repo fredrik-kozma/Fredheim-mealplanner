@@ -21,43 +21,76 @@
     display: flex;
     flex-direction: column;
   }
+
+  /* One focus ring for everything, shown for the keyboard and for typing but
+     not on a mouse click or a tap. Elements clipped by a card use
+     focus-visible:-outline-offset-2 to draw it inside. */
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-primary-500;
+  }
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline-offset: 0;
+  }
 }
 
+/* Tokens live in tailwind.config.js; these are the parts built from them. */
 @layer components {
+  /* Buttons. One primary per screen at most: the main action or the confirm
+     of a dialog. Secondary for other real actions, ghost for quiet ones.
+     The sizes are 44px tall, except btn-sm, which reaches 44px by touch. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 min-h-[2.75rem] rounded-control px-4 py-2 text-sm font-semibold transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed;
   }
   .btn-primary {
-    @apply btn bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500 shadow-sm;
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800 shadow-card;
   }
   .btn-secondary {
-    @apply btn bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 focus:ring-indigo-500 shadow-sm;
+    @apply btn bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 active:bg-slate-100 shadow-card;
   }
   .btn-danger {
-    @apply btn bg-red-50 text-red-600 hover:bg-red-100 focus:ring-red-400;
+    @apply btn bg-danger-50 text-danger-700 hover:bg-danger-100 active:bg-danger-200;
   }
   .btn-ghost {
-    @apply btn text-slate-600 hover:bg-slate-100 focus:ring-indigo-500;
+    @apply btn text-slate-600 hover:bg-slate-100 active:bg-slate-200;
   }
+  .btn-sm {
+    @apply min-h-[2.25rem] gap-1.5 rounded-small px-3 py-1 text-xs tap-target;
+  }
+  .btn-lg {
+    @apply min-h-[3rem] px-6 text-base;
+  }
+  .btn-icon {
+    @apply w-11 h-11 flex-shrink-0 p-0;
+  }
+
+  /* The bottom tab bar clears the phone's home indicator and, sideways, its
+     notch. */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Surfaces. */
   .card {
-    @apply bg-white rounded-2xl shadow-sm border border-slate-100;
+    @apply bg-white rounded-card shadow-card border border-slate-200/70;
   }
-  .input {
-    @apply w-full rounded-xl border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-150 bg-white;
+  .menu-surface {
+    @apply bg-white rounded-control shadow-raised border border-slate-200/70;
   }
-  .label {
-    @apply block text-sm font-medium text-slate-700 mb-1.5;
+  .scrim {
+    @apply bg-slate-900/50 backdrop-blur-sm;
   }
-  .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  /* A dialog: a bottom sheet on a phone, centred from sm up. Give it its
+     width with sm:max-w-*. */
+  .sheet {
+    @apply bg-white w-full sm:rounded-card rounded-t-card shadow-overlay;
   }
-  /* A small icon button that is still a 40×40 target for a finger. The
-     invisible ::after grows the hit area around the button without moving
-     anything, so the icon and the layout stay exactly as drawn. Touch
-     screens only — a mouse is precise enough, and on a desktop the larger
-     area would only steal clicks from whatever sits next to the button.
-     In the components layer so an `absolute` utility on the same element
-     still wins over the `relative` here. */
   /* Height cap for a bottom-sheet modal. dvh follows iOS Safari's toolbar
      as it shows and hides, so the sheet's last row isn't pushed under it;
      the vh line is the fallback for browsers without dvh. */
@@ -65,17 +98,90 @@
     max-height: 85vh;
     max-height: 85dvh;
   }
+
+  /* Text roles. */
+  .page-title {
+    @apply text-2xl font-bold tracking-tight text-slate-900 leading-tight;
+  }
+  .page-subtitle {
+    @apply text-sm text-slate-500;
+  }
+  .section-title {
+    @apply text-base font-semibold text-slate-800;
+  }
+  .eyebrow {
+    @apply text-2xs font-semibold uppercase tracking-wide text-slate-500;
+  }
+  .text-link {
+    @apply font-semibold text-primary-600 hover:text-primary-700 hover:underline tap-target;
+  }
+
+  .page-header {
+    @apply flex items-center justify-between gap-3 px-4 pt-4 pb-3 lg:pt-6;
+  }
+
+  /* Empty states, drawn by components/common/EmptyState.jsx. */
+  .empty-state {
+    @apply flex flex-col items-center justify-center px-6 py-12 text-center;
+  }
+  .empty-state-icon {
+    @apply text-4xl mb-3 select-none;
+  }
+  .empty-state-title {
+    @apply text-base font-semibold text-slate-800;
+  }
+  .empty-state-body {
+    @apply mt-1 text-sm text-slate-500 max-w-xs;
+  }
+  .empty-state-actions {
+    @apply mt-5 flex flex-col items-center gap-2;
+  }
+
+  /* Filter chips and other on/off pills. Active is a tint, so it can't be
+     mistaken for a primary button. */
+  .chip {
+    @apply flex-shrink-0 inline-flex items-center gap-1 h-8 px-3 rounded-full border border-slate-200 bg-white text-xs font-medium text-slate-600 whitespace-nowrap hover:border-slate-300 transition-colors tap-target;
+  }
+  .chip-active {
+    @apply chip border-primary-300 bg-primary-50 text-primary-700 hover:border-primary-400;
+  }
+
+  /* The same pill for "leave this out". */
+  .chip-danger {
+    @apply chip border-danger-300 bg-danger-50 text-danger-700 hover:border-danger-400;
+  }
+
+  .input {
+    @apply w-full min-h-[2.75rem] rounded-control border border-slate-200 px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 transition-colors duration-150 bg-white;
+  }
+  .label {
+    @apply block text-sm font-medium text-slate-700 mb-1.5;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  /* A small control that is still a 44×44 target for a finger. The
+     invisible ::after grows the hit area around it without moving anything,
+     so the icon and the layout stay exactly as drawn. Touch screens only — a
+     mouse is precise enough, and on a desktop the larger area would only
+     steal clicks from whatever sits next to the button.
+     In the components layer so an `absolute` utility on the same element
+     still wins over the `relative` here. */
   .tap-target {
     position: relative;
   }
   @media (pointer: coarse) {
+    /* An input can't carry an ::after, so a small one grows for touch. */
+    .tap-input {
+      min-height: 2.75rem;
+    }
     .tap-target::after {
       content: '';
       position: absolute;
       left: 50%;
       top: 50%;
-      width: max(100%, 40px);
-      height: max(100%, 40px);
+      width: max(100%, 44px);
+      height: max(100%, 44px);
       transform: translate(-50%, -50%);
     }
   }
@@ -102,7 +208,7 @@
 }
 
 .drag-over {
-  @apply ring-2 ring-indigo-400 ring-offset-1;
+  @apply ring-2 ring-primary-400 ring-offset-1;
 }
 
 /* Intro tour: each slide eases in, its highlights breathe. Both stop for
