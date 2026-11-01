@@ -8,6 +8,22 @@ export default defineConfig({
   // nullish coalescing, logical assignment, etc. for us at build time.
   build: {
     target: ['es2020', 'edge88', 'firefox78', 'chrome80', 'safari13'],
+    rollupOptions: {
+      output: {
+        // Keep React / router separate so app updates do not force
+        // phones to re-download the vendor code every time.
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react-dom') || id.includes('/react/') || id.includes('react-router')) {
+              return 'vendor-react'
+            }
+            if (id.includes('@supabase') || id.includes('zustand')) {
+              return 'vendor-data'
+            }
+          }
+        },
+      },
+    },
   },
   plugins: [
     react(),
@@ -48,15 +64,19 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
         // The intro tour's screenshots (~80 images, 3 languages × 2
         // layouts) load only when the tour opens; never precache them.
-        globIgnores: ['**/node_modules/**', 'tour/**'],
+        globIgnores: ['**/node_modules/**', 'tour/**', 'pack-images/**'],
+        // Recipe photos are fetched on demand and cached at runtime
+        // (see pack-images CacheFirst rule). Precaching all 285 would
+        // make the first service-worker install as heavy as the old
+        // base64 bundle.
         // Adds the timer's notificationclick handler to the generated
         // worker. generateSW writes the rest of this file itself, so an
         // imported script is the only place to register a listener of our
         // own short of moving the whole PWA to injectManifest.
         importScripts: ['sw-timer.js'],
-        // Built-in recipe packs bundle embedded photos (base64), which
-        // pushes the main JS chunk past the default 2 MB precache cap.
-        maximumFileSizeToCacheInBytes: 50 * 1024 * 1024,
+        // Main JS is small again (photos are files under /pack-images/).
+        // Modest headroom above Vite's default 2 MB for vendor chunks.
+        maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         // ── Force fresh service worker on every deploy ────────────────────
         // Without these flags the new SW waits for all tabs to close before
         // activating — meaning users keep running stale JS for days, which
@@ -68,6 +88,19 @@ export default defineConfig({
         // must always go to the network so auth/checkout/webhook work.
         navigateFallbackDenylist: [/^\/\.netlify\/functions\//],
         runtimeCaching: [
+          {
+            // Built-in recipe photos — cache as they are viewed so the
+            // recipe list stays fast offline after the first visit.
+            urlPattern: /\/pack-images\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'pack-images',
+              expiration: {
+                maxEntries: 400,
+                maxAgeSeconds: 60 * 60 * 24 * 365
+              }
+            }
+          },
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: 'CacheFirst',

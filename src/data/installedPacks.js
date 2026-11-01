@@ -1,74 +1,58 @@
 /**
  * Built-in demo packs — available offline, no server required.
  *
- * This file also documents the exact JSON format you need when creating
- * your own GitHub-hosted registry. See recipe-packs-template/ at the
- * project root for the ready-to-upload files.
+ * Photos used to be base64 data URLs inside these JSON files (~25 MB in the
+ * main JS bundle). They now live under /pack-images/<recipeId>.jpg and the
+ * pack JSON only stores that path, so the JS stays a couple of megabytes.
+ *
+ * See recipe-packs-template/ at the project root for the ready-to-upload
+ * files and the GitHub registry format.
  */
 
-// Import Fredheim Recipes with Pictures pack
 import fredheimRecipesWithPicturesData from '../../recipe-packs-template/packs/fredheim-recipes-with-pictures.json'
-
-// Import Fredheim Reversal Protocol pack (Ornish-aligned)
 import fredheimReversalProtocolData from '../../recipe-packs-template/packs/fredheim-reversal-protocol.json'
-
-// Import Fredheim FMD 5-day pack (Longo Fasting Mimicking Diet)
 import fredheimFmd5DayData from '../../recipe-packs-template/packs/fredheim-fmd-5day.json'
 
-// ---------------------------------------------------------------------------
-// Pack — Fredheim Recipes with Pictures
-// ---------------------------------------------------------------------------
+// Pack ids are stored in users' saved data (sourcePackId, installedPacks).
+// "fredheim-recepies-with-pictures" is misspelled on purpose — never rename it.
+export const FREDHEIM_PACK_ID = fredheimRecipesWithPicturesData.id
+export const REVERSAL_PACK_ID = fredheimReversalProtocolData.id
+export const FMD_PACK_ID = fredheimFmd5DayData.id
+
 export const FREDHEIM_RECIPES_WITH_PICTURES_PACK = fredheimRecipesWithPicturesData
-
-// ---------------------------------------------------------------------------
-// Pack — Fredheim Reversal Protocol
-// ---------------------------------------------------------------------------
 export const FREDHEIM_REVERSAL_PROTOCOL_PACK = fredheimReversalProtocolData
-
-// ---------------------------------------------------------------------------
-// Pack — Fredheim FMD (Fasting Mimicking Diet) 5-Day Plan
-// ---------------------------------------------------------------------------
 export const FREDHEIM_FMD_5DAY_PACK = fredheimFmd5DayData
 
-// ---------------------------------------------------------------------------
-// Registry index — mirrors what registry.json on GitHub should contain
-// ---------------------------------------------------------------------------
+function registryEntry(pack) {
+  return {
+    id: pack.id,
+    name: pack.name,
+    description: pack.description,
+    author: pack.author,
+    version: pack.version,
+    tags: pack.tags,
+    translations: pack.translations,
+    recipeCount: pack.recipes.length,
+  }
+}
+
 export const BUILT_IN_REGISTRY = [
-  {
-    id: FREDHEIM_RECIPES_WITH_PICTURES_PACK.id,
-    name: FREDHEIM_RECIPES_WITH_PICTURES_PACK.name,
-    description: FREDHEIM_RECIPES_WITH_PICTURES_PACK.description,
-    author: FREDHEIM_RECIPES_WITH_PICTURES_PACK.author,
-    version: FREDHEIM_RECIPES_WITH_PICTURES_PACK.version,
-    tags: FREDHEIM_RECIPES_WITH_PICTURES_PACK.tags,
-    translations: FREDHEIM_RECIPES_WITH_PICTURES_PACK.translations,
-    recipeCount: FREDHEIM_RECIPES_WITH_PICTURES_PACK.recipes.length,
-  },
-  {
-    id: FREDHEIM_REVERSAL_PROTOCOL_PACK.id,
-    name: FREDHEIM_REVERSAL_PROTOCOL_PACK.name,
-    description: FREDHEIM_REVERSAL_PROTOCOL_PACK.description,
-    author: FREDHEIM_REVERSAL_PROTOCOL_PACK.author,
-    version: FREDHEIM_REVERSAL_PROTOCOL_PACK.version,
-    tags: FREDHEIM_REVERSAL_PROTOCOL_PACK.tags,
-    translations: FREDHEIM_REVERSAL_PROTOCOL_PACK.translations,
-    recipeCount: FREDHEIM_REVERSAL_PROTOCOL_PACK.recipes.length,
-  },
-  {
-    id: FREDHEIM_FMD_5DAY_PACK.id,
-    name: FREDHEIM_FMD_5DAY_PACK.name,
-    description: FREDHEIM_FMD_5DAY_PACK.description,
-    author: FREDHEIM_FMD_5DAY_PACK.author,
-    version: FREDHEIM_FMD_5DAY_PACK.version,
-    tags: FREDHEIM_FMD_5DAY_PACK.tags,
-    translations: FREDHEIM_FMD_5DAY_PACK.translations,
-    recipeCount: FREDHEIM_FMD_5DAY_PACK.recipes.length,
-  },
+  registryEntry(FREDHEIM_RECIPES_WITH_PICTURES_PACK),
+  registryEntry(FREDHEIM_REVERSAL_PROTOCOL_PACK),
+  registryEntry(FREDHEIM_FMD_5DAY_PACK),
 ]
 
-// Lookup map for quick access by id
 export const BUILT_IN_PACKS = {
   [FREDHEIM_RECIPES_WITH_PICTURES_PACK.id]: FREDHEIM_RECIPES_WITH_PICTURES_PACK,
   [FREDHEIM_REVERSAL_PROTOCOL_PACK.id]: FREDHEIM_REVERSAL_PROTOCOL_PACK,
   [FREDHEIM_FMD_5DAY_PACK.id]: FREDHEIM_FMD_5DAY_PACK,
+}
+
+/** Async alias so callers that await packs keep working. */
+export async function loadBuiltInPacks() {
+  return BUILT_IN_PACKS
+}
+
+export async function loadBuiltInPack(id) {
+  return BUILT_IN_PACKS[id] || null
 }

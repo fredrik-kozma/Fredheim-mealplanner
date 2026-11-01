@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import useStore from '../store/useStore'
-import { BUILT_IN_PACKS } from '../data/installedPacks'
+import { BUILT_IN_REGISTRY, loadBuiltInPacks } from '../data/installedPacks'
 
 /**
  * Keeps the user's installed copies of every built-in recipe pack in
@@ -48,26 +48,40 @@ export default function AutoInstallDefaultPack() {
     for (const r of s.recipes) {
       if (r.sourcePackId) counts.set(r.sourcePackId, (counts.get(r.sourcePackId) || 0) + 1)
     }
-    return Object.values(BUILT_IN_PACKS)
-      .filter((p) => (counts.get(p.id) || 0) < p.recipes.length)
+    return BUILT_IN_REGISTRY
+      .filter((p) => (counts.get(p.id) || 0) < p.recipeCount)
       .map((p) => p.id)
       .join(',')
   })
 
   useEffect(() => {
+    let cancelled = false
     const incomplete = new Set(incompletePackIds ? incompletePackIds.split(',') : [])
-    for (const pack of Object.values(BUILT_IN_PACKS)) {
-      const installed = installedPacks?.[pack.id]
-      const versionChanged = !installed || installed.version !== pack.version
-      if (!versionChanged && !incomplete.has(pack.id)) continue
+    ;(async () => {
+      let packs
       try {
-        // Refilling after a reload must not clobber an in-app edit; a real
-        // version change must, since the new pack content supersedes it.
-        installPack(pack, { preserveUserEdits: !versionChanged })
+        packs = await loadBuiltInPacks()
       } catch (err) {
-        console.warn('AutoInstallDefaultPack: failed to sync', pack.id, err)
+        console.warn('AutoInstallDefaultPack: failed to load packs', err)
+        return
       }
-    }
+      if (cancelled) return
+      for (const meta of BUILT_IN_REGISTRY) {
+        const pack = packs[meta.id]
+        if (!pack) continue
+        const installed = installedPacks?.[pack.id]
+        const versionChanged = !installed || installed.version !== pack.version
+        if (!versionChanged && !incomplete.has(pack.id)) continue
+        try {
+          // Refilling after a reload must not clobber an in-app edit; a real
+          // version change must, since the new pack content supersedes it.
+          installPack(pack, { preserveUserEdits: !versionChanged })
+        } catch (err) {
+          console.warn('AutoInstallDefaultPack: failed to sync', pack.id, err)
+        }
+      }
+    })()
+    return () => { cancelled = true }
   }, [installedPacks, incompletePackIds, installPack])
 
   return null

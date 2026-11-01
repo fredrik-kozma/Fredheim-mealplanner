@@ -69,14 +69,13 @@ import {
 } from './mmwFocus.js'
 export { MMW_FOCUS_NUTRIENTS, FOCUS_MAX, FOCUS_DAILY_TARGET, FOCUS_ABBR, normalizeFocusNutrients }
 import {
-  FREDHEIM_RECIPES_WITH_PICTURES_PACK,
-  FREDHEIM_REVERSAL_PROTOCOL_PACK,
+  FREDHEIM_PACK_ID,
+  REVERSAL_PACK_ID,
+  FMD_PACK_ID,
   FREDHEIM_FMD_5DAY_PACK,
 } from '../data/installedPacks'
 
-export const FREDHEIM_PACK_ID = FREDHEIM_RECIPES_WITH_PICTURES_PACK.id
-export const REVERSAL_PACK_ID = FREDHEIM_REVERSAL_PROTOCOL_PACK.id
-export const FMD_PACK_ID = FREDHEIM_FMD_5DAY_PACK.id
+export { FREDHEIM_PACK_ID, REVERSAL_PACK_ID, FMD_PACK_ID }
 // The packs a generated week draws from. FMD recipes are deliberately not
 // here: fasting dishes are tiny portions, only right inside the FMD week.
 export const MMW_PACK_IDS = [FREDHEIM_PACK_ID, REVERSAL_PACK_ID]

@@ -3,7 +3,7 @@ import EmptyState from '../components/common/EmptyState'
 import { useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../store/useStore'
-import { BUILT_IN_REGISTRY, BUILT_IN_PACKS } from '../data/installedPacks'
+import { BUILT_IN_REGISTRY, loadBuiltInPack, loadBuiltInPacks } from '../data/installedPacks'
 import { fetchRegistry, fetchPack } from '../utils/recipePacks'
 import ExportPackModal from '../components/packs/ExportPackModal'
 
@@ -138,6 +138,15 @@ export default function PacksPage() {
   const [onlinePacks, setOnlinePacks] = useState({})
   const [loadingRegistry, setLoadingRegistry] = useState(false)
   const [registryError, setRegistryError] = useState(null)
+  const [builtInPacks, setBuiltInPacks] = useState({})
+
+  useEffect(() => {
+    let cancelled = false
+    loadBuiltInPacks()
+      .then((packs) => { if (!cancelled) setBuiltInPacks(packs) })
+      .catch((err) => console.warn('PacksPage: failed to load built-in packs', err))
+    return () => { cancelled = true }
+  }, [])
 
   const loadRegistry = useCallback(async () => {
     setLoadingRegistry(true)
@@ -158,13 +167,19 @@ export default function PacksPage() {
   }, [loadRegistry])
 
   async function handleInstallBuiltIn(packMeta) {
-    const fullPack = BUILT_IN_PACKS[packMeta.id]
-    if (!fullPack) return
     setInstallingId(packMeta.id)
-    await new Promise(r => setTimeout(r, 300))
-    installPack(fullPack)
-    setInstallingId(null)
-    setToast(t('packs.installSuccess', { name: fullPack.name, count: fullPack.recipes.length }))
+    try {
+      const fullPack = builtInPacks[packMeta.id] || await loadBuiltInPack(packMeta.id)
+      if (!fullPack) return
+      await new Promise(r => setTimeout(r, 300))
+      installPack(fullPack)
+      setToast(t('packs.installSuccess', { name: fullPack.name, count: fullPack.recipes.length }))
+    } catch (err) {
+      console.warn('PacksPage: built-in install failed', err)
+      setToast(t('packs.downloadError'))
+    } finally {
+      setInstallingId(null)
+    }
   }
 
   async function handleInstallOnline(packMeta) {
@@ -218,7 +233,7 @@ export default function PacksPage() {
             {BUILT_IN_REGISTRY.map(packMeta => (
               <PackCard
                 key={packMeta.id}
-                pack={{ ...packMeta, ...BUILT_IN_PACKS[packMeta.id] }}
+                pack={{ ...packMeta, ...builtInPacks[packMeta.id] }}
                 onInstall={handleInstallBuiltIn}
                 installing={installingId === packMeta.id}
               />

@@ -54,16 +54,12 @@ import { recipeHasAvoidedAllergen } from './allergens.js'
  *   }
  */
 
-import { FREDHEIM_RECIPES_WITH_PICTURES_PACK, FREDHEIM_REVERSAL_PROTOCOL_PACK, FREDHEIM_FMD_5DAY_PACK } from './installedPacks'
+import { FREDHEIM_PACK_ID, REVERSAL_PACK_ID, FMD_PACK_ID } from './installedPacks'
 
-// Convenience reference to the canonical Fredheim recipes pack id — the
-// vast majority of starter plans will pull recipes from it.
-// The id ("fredheim-recepies-with-pictures") is misspelled on purpose: it is
-// stored in users' saved data (sourcePackId, installedPacks), so it must
-// never be "fixed". Rename the pack via its display name instead.
-const FREDHEIM_PACK_ID = FREDHEIM_RECIPES_WITH_PICTURES_PACK.id
-const REVERSAL_PACK_ID = FREDHEIM_REVERSAL_PROTOCOL_PACK.id
-const FMD_PACK_ID = FREDHEIM_FMD_5DAY_PACK.id
+// Convenience aliases — the ids themselves live in installedPacks.js.
+// The Fredheim Kitchen id ("fredheim-recepies-with-pictures") is misspelled
+// on purpose: it is stored in users' saved data (sourcePackId,
+// installedPacks), so it must never be "fixed".
 
 // The FMD sample week maps Day 1–5 of the protocol onto Monday–Friday;
 // Saturday/Sunday are intentionally left empty (the protocol is 5 days,
