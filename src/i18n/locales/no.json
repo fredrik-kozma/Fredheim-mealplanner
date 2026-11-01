@@ -759,7 +759,18 @@
       "riboflavin": "Riboflavin",
       "niacin": "Niacin",
       "choline": "Kolin"
-    }
+    },
+    "breakdown": "Hvor dette kommer fra",
+    "breakdownFor": "Hvor {{nutrient}} kommer fra",
+    "breakdownSubtitle": "Hvor dette kommer fra · {{recipe}} · {{mode}}",
+    "breakdownOthers": "Andre ({{names}})",
+    "breakdownNotCounted": "Ikke medregnet",
+    "breakdownHowTitle": "Slik er det regnet ut.",
+    "breakdownHow": "Verdien for hver koblet ingrediens (USDA-SR / Matvaretabellen per 100 g × mengde) summeres for oppskriften og vises for valgt visning. Prosentene avrundes slik at de blir 100 til sammen. Ukoblede eller umålte rader listes som ikke medregnet.",
+    "breakdownYieldNote": "Silet oppskrift — totalene er skalert med yield-faktor {{factor}} (masse/pulp er tatt bort).",
+    "breakdownTotal": "Totalt {{amount}} {{unit}}",
+    "breakdownLoading": "Laster fordeling…",
+    "breakdownTotalWithDv": "Totalt {{amount}} {{unit}} · {{dv}}% DV"
   },
   "conditions": {
     "all": "Alle merker",

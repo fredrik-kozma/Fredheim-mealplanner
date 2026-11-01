@@ -278,6 +278,278 @@ function applyStrainYield(recipe, db, { totals, warnings }, { saltLevel }) {
   return { totals: scaled, warnings: nextWarnings }
 }
 
+
+/**
+ * Reverse map: pack perServing key → engine totals key.
+ */
+export const ENGINE_FROM_PACK = Object.fromEntries([
+  ...Object.entries(PACK_FROM_MACRO).map(([eng, pack]) => [pack, eng]),
+  ...MICRO_FIELDS.map((k) => [k, k]),
+  ['cholesterol', 'cholesterol'],
+])
+
+/**
+ * Collect per-ingredient nutrient vectors (whole recipe, before yield).
+ * Same math as sumRecipeTotals, but keeps each row's contribution.
+ */
+export function collectRecipeContributions(recipe, db, opts = {}) {
+  const warnings = []
+  const contributions = []
+  const uncounted = []
+  const compositePer100 = opts.compositePer100 || null
+  const totals = emptyTotals()
+
+  for (const row of recipe.ingredients || []) {
+    const name = row?.name || row?.ingredient || '?'
+    const quantity = row?.quantity
+    const unit = row?.unit
+    const note = row?.note || ''
+    const id = row?.ingredient || null
+
+    if (!id) {
+      uncounted.push({ name, reason: 'unlinked' })
+      warnings.push(`row missing ingredient id (${name})`)
+      continue
+    }
+
+    const { grams, warning, note: gramNote } = rowGrams(row, db, opts)
+    if (warning) warnings.push(warning)
+
+    if (!grams) {
+      const reason = warning
+        ? (/no composition|no nutrients/.test(warning) ? 'unlinked' : 'no-amount')
+        : (gramNote && /unquantified|to taste/i.test(gramNote) ? 'to-taste' : 'no-amount')
+      uncounted.push({ name, ingredientId: id, reason, warning: warning || gramNote || null })
+      continue
+    }
+
+    const n = nutrientsPer100(row, db, compositePer100)
+    if (!n) {
+      warnings.push(`no nutrients for ${id}`)
+      uncounted.push({ name, ingredientId: id, reason: 'no-nutrients' })
+      continue
+    }
+
+    const factor = grams / 100
+    const nutrients = emptyTotals()
+    for (const k of Object.keys(totals)) {
+      if (typeof n[k] === 'number') {
+        nutrients[k] = n[k] * factor
+        totals[k] += nutrients[k]
+      }
+    }
+    if (gramNote && opts.collectNotes) warnings.push(`${id}: ${gramNote}`)
+
+    contributions.push({
+      ingredientId: id,
+      name,
+      quantity,
+      unit,
+      note,
+      grams,
+      nutrients,
+      row,
+    })
+  }
+
+  return { contributions, uncounted, totals, warnings }
+}
+
+/**
+ * Scale contributions to match applyStrainYield:
+ * - every nutrient except sodium × yieldFactor
+ * - sodium rebuilt like applyStrainYield (db.foods only; soluble kept full)
+ */
+function applyYieldToContributions(recipe, db, contributions, warnings, { saltLevel }) {
+  const factor = getYieldFactor(recipe)
+  const yieldFactor = (factor == null || Math.abs(factor - 1) < 1e-6) ? 1 : factor
+
+  // No strain: keep contribution vectors as collected (incl. composite sodium).
+  // Matches applyStrainYield early-return when factor is absent/1.
+  if (yieldFactor === 1) {
+    const totals = emptyTotals()
+    const cleaned = contributions.map((c) => {
+      const { row, ...rest } = c
+      for (const k of Object.keys(totals)) totals[k] += rest.nutrients[k] || 0
+      return rest
+    })
+    return { contributions: cleaned, totals, warnings, yieldFactor: 1 }
+  }
+
+  const scaled = contributions.map((c) => {
+    const nutrients = { ...c.nutrients }
+    for (const k of Object.keys(nutrients)) {
+      if (k === 'sodium') continue
+      nutrients[k] = (nutrients[k] || 0) * yieldFactor
+    }
+
+    // Sodium: mirror applyStrainYield (db.foods only; soluble kept full)
+    const id = c.ingredientId
+    const f = db.foods?.[id]
+    if (!f) {
+      nutrients.sodium = 0
+    } else {
+      const naPer100 = sodiumPer100(c.row, f)
+      const contrib = naPer100 * c.grams / 100
+      nutrients.sodium = FULLY_SOLUBLE_IDS.has(id) ? contrib : contrib * yieldFactor
+    }
+
+    const { row, ...rest } = c
+    return { ...rest, nutrients }
+  })
+
+  const totals = emptyTotals()
+  for (const c of scaled) {
+    for (const k of Object.keys(totals)) totals[k] += c.nutrients[k] || 0
+  }
+
+  const nextWarnings = [...warnings, 'strained yield ×' + (Math.round(yieldFactor * 1000) / 1000) + ' (pulp/solids discarded)']
+  return { contributions: scaled, totals, warnings: nextWarnings, yieldFactor }
+}
+
+
+export function estimateRecipeNutritionBreakdown(recipe, db, options = {}) {
+  const base = estimateRecipeNutrition(recipe, db, options)
+  if (!db?.foods) {
+    return {
+      ...base,
+      contributions: [],
+      uncounted: [],
+      yieldFactor: 1,
+      servings: Math.max(1, recipe?.servings || 1),
+    }
+  }
+
+  const saltLevel = options.saltLevel || base.saltLevel || 'low'
+  let compositePer100 = options.compositePer100 || null
+  if (!compositePer100 && options.recipeById && db.composites) {
+    compositePer100 = buildCompositePer100(options.recipeById, db, { saltLevel })
+  }
+
+  const collected = collectRecipeContributions(recipe, db, { saltLevel, compositePer100 })
+  const yielded = applyYieldToContributions(
+    recipe, db, collected.contributions, collected.warnings, { saltLevel },
+  )
+
+  return {
+    ...base,
+    // Prefer contribution-derived rounded totals only for verification helpers;
+    // public total/perServing stay exactly what estimateRecipeNutrition returned.
+    contributions: yielded.contributions,
+    uncounted: collected.uncounted,
+    yieldFactor: yielded.yieldFactor,
+    servings: Math.max(1, recipe.servings || 1),
+    _contributionTotals: yielded.totals,
+  }
+}
+
+/**
+ * Largest-remainder integer percents that sum to 100 (or 0 if empty).
+ */
+export function largestRemainderPercents(amounts) {
+  const total = amounts.reduce((s, a) => s + a, 0)
+  if (!(total > 0) || amounts.length === 0) return amounts.map(() => 0)
+  const raw = amounts.map((a) => (a / total) * 100)
+  const floored = raw.map((p) => Math.floor(p))
+  let rem = 100 - floored.reduce((s, p) => s + p, 0)
+  const order = raw
+    .map((p, i) => ({ i, frac: p - Math.floor(p) }))
+    .sort((a, b) => b.frac - a.frac)
+  for (const { i } of order) {
+    if (rem <= 0) break
+    floored[i] += 1
+    rem -= 1
+  }
+  return floored
+}
+
+/**
+ * UI-ready view for one pack nutrient key.
+ */
+export function viewNutrientBreakdown(breakdown, packKey, opts = {}) {
+  const topN = opts.topN ?? 5
+  const multiplier = opts.multiplier ?? 1
+  const engKey = ENGINE_FROM_PACK[packKey] || packKey
+  const servings = Math.max(1, breakdown.servings || 1)
+
+  const parts = (breakdown.contributions || [])
+    .map((c) => {
+      const rawWhole = c.nutrients?.[engKey] || 0
+      const amount = (rawWhole / servings) * multiplier
+      return {
+        ingredientId: c.ingredientId,
+        name: c.name,
+        note: c.note,
+        quantity: c.quantity,
+        unit: c.unit,
+        grams: c.grams,
+        gramsInView: (c.grams / servings) * multiplier,
+        amount,
+        rawWhole,
+      }
+    })
+    .filter((p) => p.amount > 0)
+    .sort((a, b) => b.amount - a.amount)
+
+  // Collapse long tails before rounding so "Others" keeps a visible share.
+  let buckets
+  if (parts.length > topN) {
+    const head = parts.slice(0, topN)
+    const tail = parts.slice(topN)
+    buckets = [
+      ...head,
+      {
+        ingredientId: null,
+        name: '__others__',
+        note: '',
+        quantity: null,
+        unit: null,
+        grams: 0,
+        gramsInView: 0,
+        amount: tail.reduce((s, p) => s + p.amount, 0),
+        rawWhole: tail.reduce((s, p) => s + p.rawWhole, 0),
+        _otherNames: tail.map((p) => p.name),
+      },
+    ]
+  } else {
+    buckets = parts
+  }
+
+  const liveWhole = breakdown.total?.[engKey]
+  const denom = (liveWhole != null && liveWhole > 0)
+    ? (liveWhole / servings) * multiplier
+    : buckets.reduce((s, p) => s + p.amount, 0)
+
+  const pcts = largestRemainderPercents(buckets.map((p) => p.amount))
+  const withPct = buckets.map((p, i) => ({
+    ...p,
+    amount: roundNutrient(p.amount),
+    pct: pcts[i],
+  }))
+
+  const othersBucket = withPct.find((p) => p.name === '__others__')
+  const top = withPct.filter((p) => p.name !== '__others__')
+  let others = null
+  if (othersBucket) {
+    others = {
+      names: othersBucket._otherNames || [],
+      amount: othersBucket.amount,
+      pct: othersBucket.pct,
+    }
+  }
+
+
+  return {
+    packKey,
+    engineKey: engKey,
+    totalAmount: roundNutrient(denom),
+    parts: top,
+    others,
+    uncounted: breakdown.uncounted || [],
+    yieldFactor: breakdown.yieldFactor ?? 1,
+  }
+}
+
 export function estimateRecipeNutrition(recipe, db, options = {}) {
   if (!db?.foods) {
     return {

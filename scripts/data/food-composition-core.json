@@ -2018,19 +2018,19 @@
     },
     "nutritional-yeast": {
       "v": [
-        360,
-        48,
-        4,
-        0.7,
-        36,
-        21,
-        0.5,
+        349,
+        47,
+        5,
+        1,
+        19,
+        20,
+        1,
         0,
-        50,
+        100,
         2000
       ],
       "density": 0.34,
-      "basis": "unfortified flakes, label (Engevita type)"
+      "basis": "Marigold Engevita B12 fortified flakes (label per 100 g)"
     },
     "oat-flour": {
       "v": [
@@ -2915,7 +2915,7 @@
         400,
         1.5,
         42,
-        3.5,
+        3.1,
         4,
         0,
         2,
@@ -2923,7 +2923,7 @@
         600,
         20
       ],
-      "basis": "vegan mayonnaise, reduced-fat type; varies"
+      "basis": "vegan mayonnaise, ~42 g fat from rapeseed oil (Matvaretabellen rapsolje 08.235 FA profile)"
     },
     "soy-milk": {
       "v": [

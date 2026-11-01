@@ -2899,12 +2899,17 @@
     "nutritional-yeast": {
       "micro": {
         "db": "label",
-        "id": null,
-        "name": "Nutritional yeast unfortified (Engevita-type)",
-        "note": "no SR Legacy food"
+        "id": "engevita-b12",
+        "name": "Marigold Engevita B12 Yeast Flakes (fortified)",
+        "note": "EU fortified nutritional yeast; B12 + B-complex + zinc from brand label"
       },
-      "compositionBasis": "unfortified flakes, label (Engevita type)",
-      "usda": null,
+      "compositionBasis": "Marigold Engevita B12 fortified flakes (label per 100 g)",
+      "usda": {
+        "fdcId": 2467967,
+        "name": "Wegmans Nutritional Yeast (fortified) — cross-check US branded FDC",
+        "note": "Alternate fortified product; primary values from Engevita B12 label",
+        "db": "USDA-Branded"
+      },
       "matvaretabellen": {
         "id": "10.214",
         "name": "Nutritional yeast",
@@ -2917,7 +2922,8 @@
           "sugars": 0,
           "sodium": 55,
           "potassium": 1900
-        }
+        },
+        "note": "Unfortified Matvaretabellen entry kept for reference; fortified label preferred"
       },
       "preferred": "label"
     },
@@ -4448,20 +4454,19 @@
     },
     "soy-mayonnaise": {
       "micro": {
-        "db": "USDA-SR",
-        "id": "171406",
-        "name": "Salad dressing, mayonnaise, imitation, soybean",
-        "note": "auto-matched; verify"
+        "db": "Matvaretabellen",
+        "id": "08.235",
+        "name": "Rapsolje (rapeseed oil) fatty-acid profile applied to vegan mayo",
+        "note": "Fredrik: rapeseed-oil based soy mayo. Fat split from Matvaretabellen rapsolje 08.235 scaled to 42 g fat/100 g"
       },
-      "compositionBasis": "vegan mayonnaise, reduced-fat type; varies",
-      "usda": {
-        "fdcId": 171406,
-        "name": "Salad dressing, mayonnaise, imitation, soybean",
-        "note": "auto-matched; verify",
-        "db": "USDA-SR"
+      "compositionBasis": "vegan mayonnaise ~42 g fat from rapeseed oil; macros kept as reduced-fat vegan mayo",
+      "usda": null,
+      "matvaretabellen": {
+        "id": "08.235",
+        "name": "Rapsolje",
+        "note": "FA profile source for omega-3/6/MUFA/PUFA/SFA and vitamin E"
       },
-      "matvaretabellen": null,
-      "preferred": "USDA-SR"
+      "preferred": "Matvaretabellen"
     },
     "soy-sauce": {
       "micro": {

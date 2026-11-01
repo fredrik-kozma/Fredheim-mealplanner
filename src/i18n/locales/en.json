@@ -759,7 +759,18 @@
       "riboflavin": "Riboflavin",
       "niacin": "Niacin",
       "choline": "Choline"
-    }
+    },
+    "breakdown": "Where this comes from",
+    "breakdownFor": "Where {{nutrient}} comes from",
+    "breakdownSubtitle": "Where this comes from · {{recipe}} · {{mode}}",
+    "breakdownOthers": "Others ({{names}})",
+    "breakdownNotCounted": "Not counted",
+    "breakdownHowTitle": "How it's calculated.",
+    "breakdownHow": "Each linked ingredient's value (USDA-SR / Matvaretabellen per 100 g × amount used) is summed for this recipe, then shown for the current view. Percentages are rounded so they add to 100. Unlinked or unmeasured rows are listed as not counted.",
+    "breakdownYieldNote": "Strained recipe — totals scaled by yield factor {{factor}} (pulp/solids discarded).",
+    "breakdownTotal": "Total {{amount}} {{unit}}",
+    "breakdownLoading": "Loading breakdown…",
+    "breakdownTotalWithDv": "Total {{amount}} {{unit}} · {{dv}}% DV"
   },
   "conditions": {
     "all": "All labels",

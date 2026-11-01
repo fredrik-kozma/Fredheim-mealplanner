@@ -1,47 +1,64 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { VISIBLE_NUTRITION_GROUPS, fmtNutrient, dvColour } from '../../utils/nutritionData'
 import { omegaRatio } from '../../utils/omegaBalance'
 import OmegaRatioRow from '../nutrition/OmegaRatioRow'
+import NutrientBreakdownSheet from './NutrientBreakdownSheet'
+import { loadNutritionDb } from '../../utils/loadNutritionDb'
+import {
+  estimateRecipeNutritionBreakdown,
+  viewNutrientBreakdown,
+} from '../../utils/nutritionEngine'
+
+function InfoIcon({ active }) {
+  return (
+    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+    </svg>
+  )
+}
 
 /**
- * NutritionPanel — renders the recipe's per-serving nutrition with a toggle
- * to switch between Per Serving / Per 100 g / Full recipe (× displayServings).
+ * NutritionPanel — per-serving nutrition with Per Serving / Per 100 g / Full recipe.
+ * Optional ⓘ opens a bottom sheet breaking a nutrient down by ingredient.
  *
  * Props:
- *   - recipe:   { nutrition?: { perServing: {...} }, servings: number,
- *                 servingWeightGrams?: number }
- *   - displayServings: number  (the total servings the user has scaled to)
- *
- *   - bare: true when a surrounding card already gives the title and frame
- *
- * Bails out (renders nothing) if the recipe has no nutrition data.
+ *   - recipe: salt-adjusted recipe whose nutrition.perServing is shown
+ *   - displayServings: scaled serving count for "full recipe"
+ *   - bare: omit outer card chrome when nested in CollapsibleSection
+ *   - breakdownRecipe: recipe used for live engine (swaps + salt applied)
+ *   - recipeById: for composite / sub-recipe expansion
+ *   - recipeTitle: shown in the sheet subtitle
  */
-export default function NutritionPanel({ recipe, displayServings, bare = false }) {
-  const { t } = useTranslation()
+export default function NutritionPanel({
+  recipe,
+  displayServings,
+  bare = false,
+  breakdownRecipe = null,
+  recipeById = null,
+  recipeTitle = '',
+  saltLevel = 'low',
+}) {
+  const { t, i18n } = useTranslation()
   const [mode, setMode] = useState('serving') // 'serving' | '100g' | 'full'
+  const [openKey, setOpenKey] = useState(null)
+  const [db, setDb] = useState(null)
+  const [breakdown, setBreakdown] = useState(null)
+  const [breakdownError, setBreakdownError] = useState(null)
 
   const perServing = recipe?.nutrition?.perServing
-  if (!perServing) return null
+  const currentLang = (i18n.language || 'en').slice(0, 2)
 
   const servingWeight = recipe.servingWeightGrams || null
-  // Total servings the user wants for this batch (scaled).
   const totalServings = displayServings || recipe.servings || 1
 
-  // Compute multiplier per mode
   let multiplier = 1
   if (mode === '100g') {
-    if (!servingWeight || servingWeight <= 0) {
-      // Can't compute per-100g without a serving weight; fall back to serving.
-      multiplier = 1
-    } else {
-      multiplier = 100 / servingWeight
-    }
+    if (servingWeight && servingWeight > 0) multiplier = 100 / servingWeight
   } else if (mode === 'full') {
     multiplier = totalServings
   }
 
-  // What unit label appears at the top of the right column
   let columnLabel = ''
   if (mode === 'serving') columnLabel = t('nutrition.perServing', { defaultValue: 'Per serving' })
   else if (mode === '100g') columnLabel = t('nutrition.per100g', { defaultValue: 'Per 100 g' })
@@ -49,9 +66,54 @@ export default function NutritionPanel({ recipe, displayServings, bare = false }
 
   const canShow100g = Boolean(servingWeight && servingWeight > 0)
 
+  // Lazy: only load DB / compute when user opens a nutrient sheet
+  useEffect(() => {
+    if (!openKey) return undefined
+    let alive = true
+    setBreakdownError(null)
+    loadNutritionDb()
+      .then((loaded) => {
+        if (!alive) return
+        setDb(loaded)
+        const source = breakdownRecipe || recipe
+        if (!source) return
+        const br = estimateRecipeNutritionBreakdown(source, loaded, {
+          saltLevel: saltLevel || 'low',
+          recipeById: recipeById || undefined,
+        })
+        setBreakdown(br)
+      })
+      .catch((e) => {
+        if (alive) setBreakdownError(e)
+      })
+    return () => { alive = false }
+  }, [openKey, breakdownRecipe, recipe, recipeById, saltLevel])
+
+  // Recompute when salt-adjusted breakdown recipe identity changes while open
+  const sheetView = useMemo(() => {
+    if (!openKey || !breakdown) return null
+    return viewNutrientBreakdown(breakdown, openKey, { topN: 5, multiplier })
+  }, [openKey, breakdown, multiplier])
+
+  const openField = useMemo(() => {
+    if (!openKey) return null
+    for (const g of VISIBLE_NUTRITION_GROUPS) {
+      const f = g.fields.find((x) => x.key === openKey)
+      if (f) return f
+    }
+    return null
+  }, [openKey])
+
+  const handleOpen = useCallback((key) => {
+    setOpenKey((prev) => (prev === key ? null : key))
+  }, [])
+
+  const handleClose = useCallback(() => setOpenKey(null), [])
+
+  if (!perServing) return null
+
   return (
     <section className={bare ? '' : 'card p-5 mt-6'}>
-      {/* Header with toggle */}
       <div className="flex items-center justify-between gap-2 flex-wrap mb-4">
         {!bare && (
           <h2 className="section-title flex items-center gap-2">
@@ -61,6 +123,7 @@ export default function NutritionPanel({ recipe, displayServings, bare = false }
         )}
         <div className="inline-flex bg-slate-100 rounded-small p-0.5 text-xs">
           <button
+            type="button"
             onClick={() => setMode('serving')}
             className={`tap-target px-2.5 py-1 rounded-small font-medium transition-colors ${
               mode === 'serving' ? 'bg-white shadow-card text-slate-800' : 'text-slate-500 hover:text-slate-700'
@@ -70,6 +133,7 @@ export default function NutritionPanel({ recipe, displayServings, bare = false }
           </button>
           {canShow100g && (
             <button
+              type="button"
               onClick={() => setMode('100g')}
               className={`tap-target px-2.5 py-1 rounded-small font-medium transition-colors ${
                 mode === '100g' ? 'bg-white shadow-card text-slate-800' : 'text-slate-500 hover:text-slate-700'
@@ -79,6 +143,7 @@ export default function NutritionPanel({ recipe, displayServings, bare = false }
             </button>
           )}
           <button
+            type="button"
             onClick={() => setMode('full')}
             className={`tap-target px-2.5 py-1 rounded-small font-medium transition-colors ${
               mode === 'full' ? 'bg-white shadow-card text-slate-800' : 'text-slate-500 hover:text-slate-700'
@@ -89,7 +154,6 @@ export default function NutritionPanel({ recipe, displayServings, bare = false }
         </div>
       </div>
 
-      {/* Sub-label showing current view + reference weight */}
       <div className="flex items-center justify-between mb-3 text-2xs text-slate-500">
         <span>{columnLabel}</span>
         {mode === 'serving' && servingWeight && (
@@ -103,12 +167,9 @@ export default function NutritionPanel({ recipe, displayServings, bare = false }
         )}
       </div>
 
-      {/* Nutrient groups */}
       <div className="space-y-5">
-        {VISIBLE_NUTRITION_GROUPS.map(group => {
-          // Skip groups where every value is null/0 (e.g. user-created recipes
-          // with empty nutrition)
-          const anyValue = group.fields.some(f => {
+        {VISIBLE_NUTRITION_GROUPS.map((group) => {
+          const anyValue = group.fields.some((f) => {
             const v = perServing[f.key]
             return v !== null && v !== undefined && v !== 0
           })
@@ -120,25 +181,44 @@ export default function NutritionPanel({ recipe, displayServings, bare = false }
                 {t(`nutrition.groups.${group.key}`, { defaultValue: group.label })}
               </h3>
               <div className="divide-y divide-slate-100">
-                {group.fields.map(field => {
+                {group.fields.map((field) => {
                   const rawValue = perServing[field.key]
                   if (rawValue === null || rawValue === undefined) return null
                   const scaled = rawValue * multiplier
                   const display = fmtNutrient(scaled)
-                  // Show %DV against per-serving reference (only meaningful per serving).
                   let pct = null
                   if (mode === 'serving' && field.dv) {
                     pct = Math.round((rawValue / field.dv) * 100)
                   } else if (mode === 'full' && field.dv) {
                     pct = Math.round((scaled / field.dv) * 100)
                   }
+                  const canBreak = typeof rawValue === 'number' && rawValue !== 0
                   return (
                     <div
                       key={field.key}
                       className={`flex items-center justify-between gap-3 py-1.5 ${field.indent ? 'pl-4' : ''}`}
                     >
-                      <span className="text-xs text-slate-700">
-                        {t(`nutrition.fields.${field.key}`, { defaultValue: field.label })}
+                      <span className="text-xs text-slate-700 flex items-center gap-1 min-w-0">
+                        <span className="truncate">
+                          {t(`nutrition.fields.${field.key}`, { defaultValue: field.label })}
+                        </span>
+                        {canBreak && (
+                          <button
+                            type="button"
+                            onClick={() => handleOpen(field.key)}
+                            className={`tap-target flex-shrink-0 transition-colors ${
+                              openKey === field.key ? 'text-primary-500' : 'text-slate-300 hover:text-primary-500'
+                            }`}
+                            title={t('nutrition.breakdown', { defaultValue: 'Where this comes from' })}
+                            aria-label={t('nutrition.breakdownFor', {
+                              nutrient: t(`nutrition.fields.${field.key}`, { defaultValue: field.label }),
+                              defaultValue: `Where ${field.label} comes from`,
+                            })}
+                            aria-expanded={openKey === field.key}
+                          >
+                            <InfoIcon active={openKey === field.key} />
+                          </button>
+                        )}
                       </span>
                       <div className="flex items-center gap-2 flex-shrink-0">
                         <span className="text-xs font-semibold text-slate-800 tabular-nums">
@@ -167,18 +247,38 @@ export default function NutritionPanel({ recipe, displayServings, bare = false }
         })}
       </div>
 
-      {/* Omega-6 : Omega-3 ratio — a quality marker for anti-inflammatory
-          eating. Lower is better (closer to 1:1 or below). Scale-invariant,
-          so it reads the same in every mode. Only shown when both fats are
-          present and omega-3 is non-zero. */}
       <OmegaRatioRow {...omegaRatio(perServing.omega6, perServing.omega3)} className="mt-4" />
 
-      {/* Footnote */}
       <p className="text-2xs text-slate-400 mt-4 leading-relaxed">
         {t('nutrition.footnote', {
           defaultValue: 'Values are estimates based on standard food composition data. % DV based on a 2000 kcal reference diet.',
         })}
       </p>
+
+      <NutrientBreakdownSheet
+        open={Boolean(openKey && sheetView)}
+        onClose={handleClose}
+        nutrientKey={openKey}
+        nutrientLabel={openField
+          ? t(`nutrition.fields.${openField.key}`, { defaultValue: openField.label })
+          : openKey}
+        unit={openField?.unit || ''}
+        view={sheetView}
+        recipeTitle={recipeTitle || recipe?.title || ''}
+        modeLabel={columnLabel}
+        dvPct={
+          openField?.dv && sheetView
+            ? Math.round((sheetView.totalAmount / openField.dv) * 100)
+            : null
+        }
+        currentLang={currentLang}
+      />
+      {breakdownError && openKey && (
+        <p className="text-2xs text-danger-600 mt-2">{String(breakdownError.message || breakdownError)}</p>
+      )}
+      {openKey && !sheetView && db && !breakdownError && (
+        <span className="sr-only">{t('nutrition.breakdownLoading', { defaultValue: 'Loading breakdown…' })}</span>
+      )}
     </section>
   )
 }

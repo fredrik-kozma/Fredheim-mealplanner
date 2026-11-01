@@ -33,9 +33,9 @@ export const MICRO = {
   'onions':             ONION,
   'red-onions':         ONION,
   'garlic':             [0.01, 0.25, 0.02, 0.23, 181, 1.7, 25, 153, 1.16, 0.3, 1.67, 14.2, 0, 31.2, 0, 0.08, 1.7, 0.2, 0.11, 0.7, 1.24, 3, 0, 23],
-  // Unfortified flakes (the composition table's basis): no B12.
-  // Lallemand Engevita-type label values, rounded.
-  'nutritional-yeast':  [0.5, 1.5, 0, 1.5, 30, 3, 140, 1000, 6, 0.4, 0.4, 20, 0, 0, 0, 0, 0, 8, 4, 35, 2.5, 1000, 0, 60],
+  // Fortified flakes — Marigold Engevita B12 label (UK/EU), per 100 g.
+  // B12 and B-complex from label; Zn 120 mg from label; other minerals retained.
+  'nutritional-yeast':  [0.5, 1.5, 0, 1.5, 30, 3, 140, 1000, 120, 0.4, 0.4, 20, 0, 0, 0, 0, 0, 41, 18, 420, 34, 5200, 44, 60],
   'black-pepper':       [0.74, 1, 0.15, 0.85, 443, 9.71, 171, 158, 1.19, 1.33, 12.75, 4.9, 27, 0, 0, 1.04, 164, 0.11, 0.18, 1.14, 0.29, 17, 0, 11],
   'chives':             [0.1, 0.27, 0.1, 0.17, 92, 1.6, 42, 58, 0.56, 0.16, 0.37, 0.9, 218, 58.1, 0, 0.21, 213, 0.08, 0.12, 0.65, 0.14, 105, 0, 5],
   'sunflower-seeds':    [18.53, 23.14, 0.06, 23.05, 78, 5.25, 325, 660, 5, 1.8, 1.95, 53, 3, 1.4, 0, 35.17, 0, 1.48, 0.36, 8.34, 1.35, 227, 0, 55],
@@ -105,7 +105,7 @@ export const MICRO = {
   'olives':             [10.4, 1.3, 0.1, 1.2, 52, 0.49, 11, 4, 0.04, 0.12, 0.02, 0.9, 20, 0, 0, 3.81, 1.4, 0.02, 0.01, 0.24, 0.03, 3, 0, 14],
   // Vegan mayonnaise, reduced fat (table: 42 g fat), rapeseed-oil based as
   // the Nordic brands: rapeseed split scaled to the fat less saturates.
-  'soy-mayonnaise':     [25.5, 11.5, 3.7, 7.8, 5, 0.1, 2, 10, 0.05, 0.01, 0.01, 0.5, 0, 0, 0, 7, 30, 0, 0, 0, 0, 0, 0, 2],
+  'soy-mayonnaise':     [25.2, 11.8, 3.3, 8.5, 5, 0.1, 2, 10, 0.05, 0.01, 0.01, 0.5, 0, 0, 0, 12, 30, 0, 0, 0, 0, 0, 0, 2],
 
   // Legumes (dry, cooked or canned drained, as the table)
   'black-beans-canned': [0.04, 0.17, 0.08, 0.09, 35, 1.9, 50, 110, 0.9, 0.17, 0.35, 1, 0, 0, 0, 0.6, 3, 0.12, 0.05, 0.4, 0.06, 70, 0, 26],

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
@@ -74,6 +74,7 @@ export default function RecipeDetail() {
   const backTarget = ['/planner', '/'].includes(location.state?.from) ? location.state.from : '/recipes'
   const recipe = useStore(s => s.recipes.find(r => r.id === id))
   const allRecipes = useStore(s => s.recipes)
+  const recipeById = useMemo(() => Object.fromEntries(allRecipes.map(r => [r.id, r])), [allRecipes])
   const deleteRecipe = useStore(s => s.deleteRecipe)
   const setLastOpenedRecipeId = useStore(s => s.setLastOpenedRecipeId)
 
@@ -770,7 +771,15 @@ export default function RecipeDetail() {
             title={`${t('nutrition.title', { defaultValue: 'Nutrition' })} · ${t('nutrition.perServing', { defaultValue: 'Per serving' }).toLowerCase()}`}
             summary={nutritionSummary}
           >
-            <NutritionPanel recipe={recipeAtSalt} displayServings={displayServings} bare />
+            <NutritionPanel
+              recipe={recipeAtSalt}
+              displayServings={displayServings}
+              bare
+              breakdownRecipe={displayRecipe}
+              saltLevel={saltLevel}
+              recipeById={recipeById}
+              recipeTitle={displayTitle}
+            />
             {standardSalt && sodiumAtLevel(recipe, 'low') != null && (
               <p className="mt-3 text-xs text-slate-500 leading-relaxed">
                 🧂 {t('salt.sodiumLine', {
