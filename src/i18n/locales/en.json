@@ -5,7 +5,10 @@
     "tomorrow": "Tomorrow",
     "emptyTitle": "Nothing planned for today",
     "emptyBody": "Let the app put a whole week together for you, or pick the meals yourself.",
-    "weekLink": "See the week plan"
+    "weekLink": "See the week plan",
+    "containsBlocked": "Contains {{name}} — you've blocked this",
+    "removeMeal": "Remove",
+    "changeInPlan": "Change in week plan"
   },
   "navShort": {
     "today": "Today",
@@ -472,7 +475,9 @@
     "allergensGroups": "Common allergen groups",
     "oatsGlutenNote": "Oats are listed separately. Some oat products may contain traces of gluten.",
     "perNut": "Individual nuts",
-    "containsHint": "Contains {{name}}"
+    "containsHint": "Contains {{name}}",
+    "nightshadesNote": "Tomato, potato (not sweet potato), peppers, chili, eggplant and paprika. Black pepper is not a nightshade.",
+    "legumesNote": "Beans, lentils, chickpeas, peas (including green peas and snow peas), soy, peanuts, hummus, carob and fenugreek. This hides most high-protein recipes."
   },
   "units": {
     "none": "— none —",
@@ -820,7 +825,9 @@
     "celery": "Celery",
     "coconut": "Coconut",
     "oats": "Oats",
-    "corn": "Corn"
+    "corn": "Corn",
+    "nightshades": "Nightshades",
+    "legumes": "Legumes"
   },
   "makeMyWeek": {
     "button": "Make my week",

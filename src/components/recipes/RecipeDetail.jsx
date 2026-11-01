@@ -23,7 +23,7 @@ import { ingredientsAtLevel, recipeAtLevel, hasStandardSalt, hasStandardAmount, 
 import { fmtNutrient } from '../../utils/nutritionData'
 import { omegaRatio, formatOmegaRatio } from '../../utils/omegaBalance'
 import { useCookingTicks } from '../../hooks/useCookingTicks'
-import { recipeIsBlocked, recipeBlockReasons, applyBlockedSubstitutions, blockedIsActive } from '../../data/ingredientBlocker'
+import { recipeIsBlocked, recipeBlockReasons, applyBlockedSubstitutions, applyIngredientDisplayAliases, blockedIsActive } from '../../data/ingredientBlocker'
 
 const ICON_BUTTON = 'btn-ghost btn-icon !rounded-full text-slate-500'
 
@@ -139,9 +139,15 @@ export default function RecipeDetail() {
   const lang = (i18n.language || 'en').slice(0, 2)
   const showBlockedWarning = blockedIsActive(blockedIngredients) && recipeIsBlocked(recipe, blockedIngredients)
   const blockReasons = showBlockedWarning ? recipeBlockReasons(recipe, blockedIngredients, t) : []
-  const displayRecipe = applyBlockedSubstitutions(recipe, blockedIngredients, lang)
+  const displayRecipe = applyIngredientDisplayAliases(
+    applyBlockedSubstitutions(recipe, blockedIngredients, lang),
+    lang,
+  )
   const writtenIngredients = (translation?.ingredients
-    ? applyBlockedSubstitutions({ ...recipe, ingredients: translation.ingredients }, blockedIngredients, lang).ingredients
+    ? applyIngredientDisplayAliases(
+      applyBlockedSubstitutions({ ...recipe, ingredients: translation.ingredients }, blockedIngredients, lang),
+      lang,
+    ).ingredients
     : displayRecipe.ingredients) || recipe.ingredients
   const displayIngredients = ingredientsAtLevel(writtenIngredients, saltLevel)
   const standardSalt = saltLevel === 'standard' && hasStandardSalt(recipe)

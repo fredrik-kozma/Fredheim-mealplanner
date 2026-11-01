@@ -141,7 +141,7 @@ export const STARTER_PLANS = [
     plan: {
       monday: {
         Breakfast: [m('ginger-pear-overnight-oats')],
-        Lunch: [m('orn-14'), mb('orn-17'), mb('roasted-red-pepper-hummus')],
+        Lunch: [m('tomato-bean-salad'), mb('orn-17'), mb('roasted-red-pepper-hummus')],
         Dinner: [m('fmd-d1-dinner'), m('orn-15')],
       },
       tuesday: {
@@ -245,7 +245,7 @@ export const STARTER_PLANS = [
       // stew; a salad only ever comes as the side next to it.
       monday: {
         Breakfast: [m('orn-49')],
-        Lunch: [m('orn-14'), mb('orn-39')],
+        Lunch: [m('tomato-bean-salad'), mb('orn-39')],
         Dinner: [m('sweet-yellow-pea-soup'), m('crunchy-carrot-salad')],
       },
       tuesday: {
@@ -256,7 +256,7 @@ export const STARTER_PLANS = [
       wednesday: {
         Breakfast: [m('orn-36')],
         Lunch: [m('orn-16'), mb('orn-39')],
-        Dinner: [m('orn-11')],
+        Dinner: [m('orn-62')],
       },
       thursday: {
         Breakfast: [m('fmd-d4-breakfast')],
@@ -322,7 +322,7 @@ export const STARTER_PLANS = [
     plan: {
       monday: {
         Breakfast: [m('orn-9'), m('orn-29')],
-        Lunch: [m('orn-11', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
+        Lunch: [m('orn-62', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
       },
       tuesday: {
         Breakfast: [m('orn-6'), m('orn-29')],
@@ -342,7 +342,7 @@ export const STARTER_PLANS = [
       },
       saturday: {
         Breakfast: [m('orn-27'), m('orn-29')],
-        Lunch: [m('orn-14', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
+        Lunch: [m('orn-16', 2), mb('orn-17'), m('orn-21'), m('orn-2')],
       },
       sunday: {
         Breakfast: [m('fmd-d3-breakfast'), m('orn-29')],

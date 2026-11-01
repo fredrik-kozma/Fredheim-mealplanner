@@ -36,7 +36,9 @@ export default function BlockedIngredientsSection() {
     return searchIngredients(index, q, lang, 8).filter((r) => !b.ids.includes(r.id))
   }, [q, lang, b.ids])
 
-  const oatsOn = b.groups.includes('oats')
+  const activeNotes = BLOCK_GROUPS.filter(
+    (g) => g.noteKey && b.groups.includes(g.id),
+  )
 
   return (
     <div>
@@ -140,11 +142,14 @@ export default function BlockedIngredientsSection() {
         </div>
       )}
 
-      {oatsOn && (
-        <p className="text-2xs text-slate-600 bg-slate-50 border border-slate-200 rounded-small px-3 py-2 mt-3 leading-relaxed">
-          {t('settings.oatsGlutenNote')}
+      {activeNotes.map((g) => (
+        <p
+          key={g.id}
+          className="text-2xs text-slate-600 bg-slate-50 border border-slate-200 rounded-small px-3 py-2 mt-3 leading-relaxed"
+        >
+          {t(g.noteKey)}
         </p>
-      )}
+      ))}
 
       {(b.groups.length > 0 || b.ids.length > 0) && (
         <>

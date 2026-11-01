@@ -7,6 +7,11 @@ import { formatOmegaRatio } from '../utils/omegaBalance'
 import { dayMeals, daySummary, nextDay, weekdayKey } from '../utils/todayPlan'
 import PageHeader from '../components/common/PageHeader'
 import EmptyState from '../components/common/EmptyState'
+import {
+  blockedIsActive,
+  recipeIsBlocked,
+  recipeBlockReasons,
+} from '../data/ingredientBlocker'
 
 const CLOCK_ICON = (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
@@ -26,7 +31,10 @@ function SlotLabel({ slot, className = '' }) {
   )
 }
 
-function MealCard({ slot, item, recipe, lang, onOpen }) {
+function MealCard({
+  slot, item, recipe, lang, onOpen,
+  warningText, removeLabel, changeLabel, onRemove, onChangeInPlan,
+}) {
   // A meal the user typed in has no recipe to open and no picture.
   if (!recipe) {
     return (
@@ -40,28 +48,47 @@ function MealCard({ slot, item, recipe, lang, onOpen }) {
   const title = recipe.translations?.[lang]?.title || recipe.title
   const time = totalTime(recipe)
   return (
-    <button
-      onClick={() => onOpen(item)}
-      className="group relative block w-full h-56 sm:h-64 rounded-card overflow-hidden shadow-card text-left bg-gradient-to-br from-primary-100 to-slate-200"
-    >
-      {recipe.imageUrl ? (
-        <img
-          src={recipe.imageUrl}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      ) : (
-        <span className="absolute inset-0 flex items-center justify-center text-4xl" aria-hidden>🍽</span>
-      )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-      <SlotLabel slot={slot} className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-700 px-2.5 py-1 rounded-full" />
-      <div className="absolute bottom-0 inset-x-0 p-4 text-white">
-        <h2 className="text-xl font-bold leading-tight line-clamp-2">{title}</h2>
-        {time && (
-          <p className="mt-1 text-sm text-white/90 flex items-center gap-1">{CLOCK_ICON}{time}</p>
+    <div className="relative">
+      <button
+        onClick={() => onOpen(item)}
+        className="group relative block w-full h-56 sm:h-64 rounded-card overflow-hidden shadow-card text-left bg-gradient-to-br from-primary-100 to-slate-200"
+      >
+        {recipe.imageUrl ? (
+          <img
+            src={recipe.imageUrl}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <span className="absolute inset-0 flex items-center justify-center text-4xl" aria-hidden>🍽</span>
         )}
-      </div>
-    </button>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+        <SlotLabel slot={slot} className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-700 px-2.5 py-1 rounded-full" />
+        <div className="absolute bottom-0 inset-x-0 p-4 text-white">
+          <h2 className="text-xl font-bold leading-tight line-clamp-2">{title}</h2>
+          {time && (
+            <p className="mt-1 text-sm text-white/90 flex items-center gap-1">{CLOCK_ICON}{time}</p>
+          )}
+        </div>
+      </button>
+      {warningText && (
+        <div className="mt-2 rounded-small border border-amber-200 bg-amber-50 px-3 py-2 text-2xs text-amber-950 leading-relaxed">
+          <p className="font-medium">{warningText}</p>
+          <div className="mt-1.5 flex flex-wrap gap-3">
+            {onRemove && (
+              <button type="button" onClick={onRemove} className="font-semibold underline underline-offset-2">
+                {removeLabel}
+              </button>
+            )}
+            {onChangeInPlan && (
+              <button type="button" onClick={onChangeInPlan} className="font-semibold underline underline-offset-2">
+                {changeLabel}
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -142,6 +169,8 @@ export default function TodayPage() {
   const mealSlots = useStore(s => s.mealSlots)
   const recipes = useStore(s => s.recipes)
   const familySize = useStore(s => s.familySize)
+  const blockedIngredients = useStore(s => s.blockedIngredients) || { groups: [], ids: [] }
+  const removeRecipeFromSlot = useStore(s => s.removeRecipeFromSlot)
   const lang = i18n.language?.slice(0, 2) || 'en'
 
   // An installed app can sit open overnight: look at the date again whenever
@@ -181,9 +210,30 @@ export default function TodayPage() {
         <>
           <DaySummary summary={summary} />
           <div className="grid gap-3 mt-4 xl:grid-cols-3">
-            {meals.map(({ slot, item, recipe }, i) => (
-              <MealCard key={i} slot={slot} item={item} recipe={recipe} lang={lang} onOpen={openMeal} />
-            ))}
+            {meals.map(({ slot, item, recipe }, i) => {
+              const blocked = recipe && blockedIsActive(blockedIngredients) && recipeIsBlocked(recipe, blockedIngredients)
+              const reasons = blocked ? recipeBlockReasons(recipe, blockedIngredients, t) : []
+              const warningText = reasons.length
+                ? t('today.containsBlocked', { name: reasons[0] })
+                : null
+              return (
+                <MealCard
+                  key={i}
+                  slot={slot}
+                  item={item}
+                  recipe={recipe}
+                  lang={lang}
+                  onOpen={openMeal}
+                  warningText={warningText}
+                  removeLabel={t('today.removeMeal')}
+                  changeLabel={t('today.changeInPlan')}
+                  onRemove={warningText && item.recipeId
+                    ? () => removeRecipeFromSlot(today, slot, item.recipeId)
+                    : undefined}
+                  onChangeInPlan={warningText ? () => navigate('/planner') : undefined}
+                />
+              )
+            })}
           </div>
         </>
       ) : (

@@ -5,7 +5,10 @@
     "tomorrow": "I morgen",
     "emptyTitle": "Ingenting planlagt i dag",
     "emptyBody": "La appen sette sammen en hel uke for deg, eller velg måltidene selv.",
-    "weekLink": "Se ukeplanen"
+    "weekLink": "Se ukeplanen",
+    "containsBlocked": "Inneholder {{name}} — du har blokkert dette",
+    "removeMeal": "Fjern",
+    "changeInPlan": "Endre i ukeplanen"
   },
   "navShort": {
     "today": "I dag",
@@ -472,7 +475,9 @@
     "allergensGroups": "Vanlige allergengrupper",
     "oatsGlutenNote": "Havre er listet separat. Noen havreprodukter kan inneholde spor av gluten.",
     "perNut": "Enkelte nøtter",
-    "containsHint": "Inneholder {{name}}"
+    "containsHint": "Inneholder {{name}}",
+    "nightshadesNote": "Tomat, potet (ikke søtpotet), paprika, chili, aubergine. Svart pepper er ikke med.",
+    "legumesNote": "Bønner, linser, kikerter, erter (også sukkererter), soya, peanøtter, hummus, johannesbrød og bukkehornkløver. Dette skjuler de fleste proteinrike oppskriftene."
   },
   "units": {
     "none": "— ingen —",
@@ -820,7 +825,9 @@
     "celery": "Selleri",
     "coconut": "Kokos",
     "oats": "Havre",
-    "corn": "Mais"
+    "corn": "Mais",
+    "nightshades": "Tomater og poteter",
+    "legumes": "Belgvekster"
   },
   "makeMyWeek": {
     "button": "Lag uken min",

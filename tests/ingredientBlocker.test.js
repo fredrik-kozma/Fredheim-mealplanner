@@ -9,8 +9,12 @@ import {
   recipeHasAvoidedAllergen,
   resolvePlantMilkSubstitute,
   planPlantMilkSubstitutions,
+  planSoySauceSubstitutions,
   applyBlockedSubstitutions,
+  applyIngredientDisplayAliases,
+  canSubstituteSoySauceForGluten,
   normalizeBlocked,
+  BLOCK_GROUPS,
 } from '../src/data/ingredientBlocker.js'
 
 describe('expandBlockedIds / composites', () => {
@@ -34,6 +38,24 @@ describe('expandBlockedIds / composites', () => {
     assert.ok(COMPOSITE_CONTAINS.hummus.includes('tahini'))
     assert.equal(COMPOSITE_CONTAINS['chickpeas-canned'], undefined)
   })
+
+  it('nightshades include tomato and potato, not sweet potato or black pepper', () => {
+    assert.ok(GROUP_IDS.nightshades.includes('tomatoes'))
+    assert.ok(GROUP_IDS.nightshades.includes('potatoes'))
+    assert.ok(GROUP_IDS.nightshades.includes('bell-peppers'))
+    assert.equal(GROUP_IDS.nightshades.includes('sweet-potatoes'), false)
+    assert.equal(GROUP_IDS.nightshades.includes('black-pepper'), false)
+    assert.ok(BLOCK_GROUPS.some((g) => g.id === 'nightshades'))
+  })
+
+  it('legumes include soy, peanuts, snow peas and carob', () => {
+    assert.ok(GROUP_IDS.legumes.includes('tofu'))
+    assert.ok(GROUP_IDS.legumes.includes('peanuts'))
+    assert.ok(GROUP_IDS.legumes.includes('snow-peas'))
+    assert.ok(GROUP_IDS.legumes.includes('carob-powder'))
+    assert.ok(GROUP_IDS.legumes.includes('tamari'))
+    assert.ok(BLOCK_GROUPS.some((g) => g.id === 'legumes'))
+  })
 })
 
 describe('traps', () => {
@@ -48,6 +70,12 @@ describe('traps', () => {
   }
   const oatRecipe = {
     ingredients: [{ ingredient: 'rolled-oats', name: 'Rolled oats' }],
+  }
+  const sweetPotato = {
+    ingredients: [{ ingredient: 'sweet-potatoes', name: 'Sweet potatoes' }],
+  }
+  const blackPepper = {
+    ingredients: [{ ingredient: 'black-pepper', name: 'Black pepper' }],
   }
 
   it('nutmeg is not a tree nut', () => {
@@ -76,6 +104,18 @@ describe('traps', () => {
       recipeIsBlocked(
         { ingredients: [{ ingredient: 'white-flour', name: 'White flour' }] },
         { groups: ['gluten'], ids: [] },
+      ),
+      true,
+    )
+  })
+
+  it('sweet potato and black pepper are not nightshades', () => {
+    assert.equal(recipeIsBlocked(sweetPotato, { groups: ['nightshades'], ids: [] }), false)
+    assert.equal(recipeIsBlocked(blackPepper, { groups: ['nightshades'], ids: [] }), false)
+    assert.equal(
+      recipeIsBlocked(
+        { ingredients: [{ ingredient: 'tomatoes', name: 'Tomatoes' }] },
+        { groups: ['nightshades'], ids: [] },
       ),
       true,
     )
@@ -118,6 +158,20 @@ describe('plant-milk substitution', () => {
     assert.equal(applied.ingredients[0].name, 'Oat milk')
   })
 
+  it('legumes block also substitutes plant-milk to oat milk', () => {
+    const blocked = { groups: ['legumes'], ids: [] }
+    assert.equal(recipeIsBlocked(muffins, blocked), false)
+    const plan = planPlantMilkSubstitutions(muffins, blocked)
+    assert.equal(plan.substitutions[0].toId, 'oat-milk')
+  })
+
+  it('legumes + oats falls through to almond milk', () => {
+    const blocked = { groups: ['legumes', 'oats'], ids: [] }
+    const plan = planPlantMilkSubstitutions(muffins, blocked)
+    assert.equal(plan.hide, false)
+    assert.equal(plan.substitutions[0].toId, 'almond-milk')
+  })
+
   it('plant-yogurt note soy is hard-blocked', () => {
     assert.equal(recipeIsBlocked(soyYogurt, { groups: ['soy'], ids: [] }), true)
   })
@@ -133,7 +187,6 @@ describe('plant-milk substitution', () => {
       groups: ['soy', 'oats', 'tree-nuts', 'coconut'],
       ids: [],
     }
-    // tree-nuts blocks almond+cashew milk; oats blocks oat; coconut blocks coconut; soy blocks soy-milk
     assert.equal(recipeIsBlocked(muffins, blocked), true)
   })
 })
@@ -141,6 +194,62 @@ describe('plant-milk substitution', () => {
 function PLANT_ORDER_FOR_TEST() {
   return ['oat-milk', 'almond-milk', 'coconut-milk', 'cashew-milk', 'soy-milk']
 }
+
+describe('soy sauce / tamari', () => {
+  const stirFry = {
+    title: 'Stir fry',
+    ingredients: [
+      { ingredient: 'soy-sauce', name: 'Soy sauce', quantity: 1, unit: 'tbsp' },
+      { ingredient: 'broccoli', name: 'Broccoli', quantity: 200, unit: 'g' },
+    ],
+  }
+  const withFlour = {
+    title: 'Gravy',
+    ingredients: [
+      { ingredient: 'soy-sauce', name: 'Soy sauce', quantity: 1, unit: 'tbsp' },
+      { ingredient: 'white-flour', name: 'White flour', quantity: 2, unit: 'tbsp' },
+    ],
+  }
+
+  it('display alias renames soy sauce and adds tamari note', () => {
+    const shown = applyIngredientDisplayAliases(stirFry, 'en')
+    assert.equal(shown.ingredients[0].name, 'Soy sauce / tamari')
+    assert.match(shown.ingredients[0].note, /gluten-free/i)
+    const no = applyIngredientDisplayAliases(stirFry, 'no')
+    assert.equal(no.ingredients[0].name, 'Soyasaus / tamari')
+  })
+
+  it('gluten block swaps soy sauce to tamari instead of hiding', () => {
+    const blocked = { groups: ['gluten'], ids: [] }
+    assert.equal(canSubstituteSoySauceForGluten(blocked), true)
+    assert.equal(recipeIsBlocked(stirFry, blocked), false)
+    const plan = planSoySauceSubstitutions(stirFry, blocked)
+    assert.equal(plan.substitutions[0].toId, 'tamari')
+    const applied = applyBlockedSubstitutions(stirFry, blocked, 'en')
+    assert.equal(applied.ingredients[0].ingredient, 'tamari')
+    assert.equal(applied.ingredients[0].name, 'Tamari')
+  })
+
+  it('gluten + flour still hides even with soy sauce present', () => {
+    assert.equal(recipeIsBlocked(withFlour, { groups: ['gluten'], ids: [] }), true)
+  })
+
+  it('soy or legumes block still hides soy-sauce recipes (tamari also soy/legume)', () => {
+    assert.equal(recipeIsBlocked(stirFry, { groups: ['soy'], ids: [] }), true)
+    assert.equal(recipeIsBlocked(stirFry, { groups: ['legumes'], ids: [] }), true)
+    assert.equal(canSubstituteSoySauceForGluten({ groups: ['gluten', 'soy'], ids: [] }), false)
+  })
+
+  it('after tamari swap, display alias does not re-label', () => {
+    const blocked = { groups: ['gluten'], ids: [] }
+    const applied = applyIngredientDisplayAliases(
+      applyBlockedSubstitutions(stirFry, blocked, 'en'),
+      'en',
+    )
+    assert.equal(applied.ingredients[0].ingredient, 'tamari')
+    assert.equal(applied.ingredients[0].name, 'Tamari')
+  })
+})
 
 describe('compat wrapper', () => {
   it('recipeHasAvoidedAllergen accepts array or object', () => {

@@ -71,7 +71,7 @@ test('standard amounts land in the doctor\'s ranges', () => {
 
 test('every savoury recipe with its own salt row offers the choice', () => {
   // The exceptions, each for a reason: see scripts/data/salt-level-proposals.md.
-  const LEFT_OUT = new Set(['fermented-red-cabbage', 'fr-69'])
+  const LEFT_OUT = new Set(['fermented-red-cabbage', 'fr-69', 'fr-70', 'orn-35'])
   for (const r of ALL) {
     if (!r.nutrition?.perServing || !(r.ingredients || []).some(row => ['salt', 'herb-salt', 'black-salt'].includes(row.ingredient))) continue
     const cls = saltClass(r)

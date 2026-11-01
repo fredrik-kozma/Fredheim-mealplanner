@@ -24,7 +24,13 @@ const ADAPTED_LABELS_LOST = { 'dal-stew': ['blood-pressure-friendly'] }
 // scripts/fix_porridge_liquid_and_salty_sides.mjs and
 // scripts/fix_onion_pie_salt.mjs: labels re-derived.
 const SALTY_SIDES = ['fr-104', 'fr-113', 'seasoned-baked-potatoes', 'fr-114', 'fr-38']
-const REPORTIONED = new Set([...Object.keys(PORTIONS), ...SODIUM_FROM_INGREDIENTS, ...SALTY_MAINS, ...SALTY_SIDES])
+const NUTRITION_SYNCED = [
+  'apple-oat-bake', 'fr-17', 'berry-sauce', 'chipotle-sauce', 'fr-49', 'feld-salad-with-pomegranate',
+  'gluten-free-oat-buns', 'kale-avocado', 'quinoa-salad-second', 'fr-134', 'fr-136', 'fr-150',
+  'tofu-form', 'orn-7', 'orn-11', 'orn-12', 'orn-14', 'orn-35', 'orn-41', 'orn-43',
+  'fmd-d1-dinner', 'fmd-d5-dinner', 'fr-101', 'noodle-wok', 'cheesy-cauliflower-sauce',
+]
+const REPORTIONED = new Set([...Object.keys(PORTIONS), ...SODIUM_FROM_INGREDIENTS, ...SALTY_MAINS, ...SALTY_SIDES, ...NUTRITION_SYNCED])
 
 test('every good-for label has a style and a name in en, no and sv', () => {
   for (const c of CONDITION_TAGS) {

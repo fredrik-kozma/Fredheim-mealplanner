@@ -293,3 +293,9 @@ Rye Sourdough Starter — How to Build One From Scratch
 | Warm Chia Pudding with Stewed Berries (`fmd-d3-breakfast`) | Breakfast | sweet | sweet: berries-mixed, cardamom-ground, cinnamon-ground |
 | Warm Stewed Apple with Walnuts & Flaxseed (`fmd-d4-breakfast`) | Breakfast | sweet | 30% of energy from sugars |
 | Overnight Oats with Almond Butter & Berries (`fmd-d5-breakfast`) | Breakfast | sweet | sweet: berries-mixed, cinnamon-ground |
+
+
+## Left out after Nov 2026 nutrition sync
+
+- **fr-70 Frittata** and **orn-35 Golden Corn Soup**: low-salt sodium is already ~800–875 mg/serving, so a standard bump cannot stay under the 900 mg main ceiling. No salt switch.
+

@@ -1,4 +1,4 @@
-import { applyBlockedSubstitutions } from '../data/ingredientBlocker.js'
+import { applyBlockedSubstitutions, applyIngredientDisplayAliases } from '../data/ingredientBlocker.js'
 /**
  * Generates an aggregated shopping list from a weekly plan + recipes.
  * Uses unitNormalizer for proper unit handling and ingredientMatcher for grouping.
@@ -78,6 +78,7 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
     if (blockedIngredients) {
       recipe = applyBlockedSubstitutions(recipe, blockedIngredients, lang)
     }
+    recipe = applyIngredientDisplayAliases(recipe, lang)
     // Per-slot override > household default
     const portionCount = servings ?? familySize
     const scaleFactor = portionCount / (recipe.servings || 4)
