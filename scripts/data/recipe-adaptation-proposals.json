@@ -591,16 +591,16 @@
           "potassium": 501
         },
         "labels": [
-          "weight-loss",
+          "batch-friendly",
           "blood-pressure-friendly",
           "diabetes-friendly",
-          "heart-healthy",
           "gluten-free",
-          "nut-free",
-          "soy-free",
-          "oil-free",
+          "heart-healthy",
           "no-added-sugar",
-          "batch-friendly"
+          "nut-free",
+          "oil-free",
+          "soy-free",
+          "weight-loss"
         ],
         "reasons": {
           "diabetes-friendly": "carbs 37.3 g, sugars 3.7 g, fibre 7.2 g, no oil",
@@ -4075,13 +4075,14 @@
           "potassium": 473
         },
         "labels": [
-          "weight-loss",
+          "batch-friendly",
           "blood-pressure-friendly",
           "diabetes-friendly",
           "heart-healthy",
-          "oil-free",
+          "kid-friendly",
           "no-added-sugar",
-          "batch-friendly"
+          "oil-free",
+          "weight-loss"
         ],
         "reasons": {
           "diabetes-friendly": "carbs 33.3 g, sugars 4.6 g, fibre 10 g, no oil",
@@ -6009,13 +6010,12 @@
           "potassium": 639
         },
         "labels": [
-          "weight-loss",
-          "blood-pressure-friendly",
+          "batch-friendly",
           "diabetes-friendly",
           "heart-healthy",
-          "oil-free",
           "no-added-sugar",
-          "batch-friendly"
+          "oil-free",
+          "weight-loss"
         ],
         "reasons": {
           "diabetes-friendly": "carbs 14.1 g, sugars 3.4 g, fibre 4 g, no oil",

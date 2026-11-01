@@ -3,7 +3,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
-import { checkPacks, applyBaseline, checkNoVinegar, loadPacks, VINEGAR_RE } from '../scripts/check-recipes.mjs'
+import { checkPacks, applyBaseline, checkNoVinegar, checkNoBlackPepper, checkNoChili, loadPacks, VINEGAR_RE, BLACK_PEPPER_TEXT_RE, CHILI_TEXT_RE } from '../scripts/check-recipes.mjs'
 
 const DICT = JSON.parse(readFileSync('src/data/ingredientDictionary.json', 'utf8'))
 
@@ -72,6 +72,58 @@ test('no app recipe contains vinegar, in the packs or the sample recipes', () =>
   assert.deepEqual(checkNoVinegar(loadPacks()).map((i) => i.key), [])
   assert.ok(!VINEGAR_RE.test(readFileSync('src/store/useStore.js', 'utf8')), 'useStore.js sample recipes')
 })
+
+test('black/white pepper wording is found; bell pepper is not', () => {
+  for (const name of ['black pepper', 'white pepper', 'svart pepper', 'hvit pepper', 'vit peppar', 'svartpeppar', 'kvernet pepper']) {
+    assert.ok(BLACK_PEPPER_TEXT_RE.test(name), name)
+  }
+  for (const name of ['bell pepper', 'roasted red pepper', 'paprika', 'smoked paprika']) {
+    assert.ok(!BLACK_PEPPER_TEXT_RE.test(name), name)
+  }
+})
+
+test('a black-pepper ingredient or wording fails checkNoBlackPepper', () => {
+  const r = good()
+  r.ingredients.push({ ingredient: 'black-pepper', quantity: 1, unit: 'tsp' })
+  assert.ok(checkNoBlackPepper([{ id: 'test-pack', recipes: [r] }]).some((i) => i.code === 'no-black-pepper'))
+  const w = good()
+  w.ingredients.push({ ingredient: 'white-pepper', quantity: 1, unit: 'tsp' })
+  assert.ok(checkNoBlackPepper([{ id: 'test-pack', recipes: [w] }]).some((i) => i.code === 'no-black-pepper'))
+  const t = good()
+  t.steps = ['Season with black pepper']
+  assert.ok(checkNoBlackPepper([{ id: 'test-pack', recipes: [t] }]).some((i) => i.code === 'no-black-pepper'))
+  const u = good()
+  u.steps = ['Add white pepper']
+  assert.ok(checkNoBlackPepper([{ id: 'test-pack', recipes: [u] }]).some((i) => i.code === 'no-black-pepper'))
+  assert.deepEqual(checkNoBlackPepper([{ id: 'test-pack', recipes: [good()] }]), [])
+})
+
+test('no pack recipe contains black or white pepper', () => {
+  assert.deepEqual(checkNoBlackPepper(loadPacks()).map((i) => i.key), [])
+})
+
+test('chili spice wording is found; paprika is not chili heat', () => {
+  for (const name of ['chili flakes', 'chilipulver', 'cayenne', 'kajennepepper', 'fersk chili', 'rød chili', 'hot sauce']) {
+    assert.ok(CHILI_TEXT_RE.test(name), name)
+  }
+  assert.ok(!CHILI_TEXT_RE.test('smoked paprika'), 'smoked paprika')
+  assert.ok(!CHILI_TEXT_RE.test('bell pepper'), 'bell pepper')
+})
+
+test('a chili ingredient or spice wording fails checkNoChili', () => {
+  const r = good()
+  r.ingredients.push({ ingredient: 'cayenne-pepper', quantity: 0.5, unit: 'tsp' })
+  assert.ok(checkNoChili([{ id: 'test-pack', recipes: [r] }]).some((i) => i.code === 'no-chili'))
+  const t = good()
+  t.steps = ['Add chili flakes']
+  assert.ok(checkNoChili([{ id: 'test-pack', recipes: [t] }]).some((i) => i.code === 'no-chili'))
+  assert.deepEqual(checkNoChili([{ id: 'test-pack', recipes: [good()] }]), [])
+})
+
+test('no pack recipe contains chili heat', () => {
+  assert.deepEqual(checkNoChili(loadPacks()).map((i) => i.key), [])
+})
+
 
 test('a descriptive word in the name is a non-standard name', () => {
   const r = good()

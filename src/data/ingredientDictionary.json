@@ -2111,6 +2111,31 @@
       }
     },
     {
+      "id": "allspice",
+      "aisle": "Oils & Condiments",
+      "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 1.9
+      },
+      "names": {
+        "en": "Allspice, ground",
+        "no": "Allehånde, malt",
+        "sv": "Kryddpeppar, malen"
+      },
+      "synonyms": {
+        "en": [
+          "pimento",
+          "ground allspice"
+        ],
+        "no": [
+          "krydderallehånde"
+        ],
+        "sv": [
+          "kryddpeppar"
+        ]
+      }
+    },
+    {
       "id": "almonds",
       "aisle": "Canned & Dried",
       "preferredUnit": "g",

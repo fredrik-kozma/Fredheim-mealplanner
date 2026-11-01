@@ -5087,6 +5087,21 @@
         }
       },
       "preferred": "USDA-SR"
+    },
+    "allspice": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171315",
+        "name": "Spices, allspice, ground"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171315,
+        "name": "Spices, allspice, ground",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
     }
   }
 }

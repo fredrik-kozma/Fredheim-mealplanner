@@ -49,6 +49,10 @@ export function classifyFlavour(r) {
   const sweet = idsOf.filter(id => SWEET_RE.test(id))
   const sav = idsOf.filter(id => SAVOURY_RE.test(id))
   const pct = `${Math.round(share * 100)}% of energy from sugars`
+  // Beetroot/aubergine spreads can be naturally sugary but are eaten savoury.
+  if (r.category === 'Spreads' && sav.length >= 2 && sav.length >= sweet.length) {
+    return { profile: 'savoury', why: `savoury: ${sav.slice(0, 4).join(', ')}` }
+  }
   if (share >= 0.2) return { profile: 'sweet', why: pct }
   if (sav.length >= 2 && sav.length >= sweet.length) return { profile: 'savoury', why: `savoury: ${sav.slice(0, 4).join(', ')}` }
   if (sweet.length) return { profile: 'sweet', why: `sweet: ${sweet.slice(0, 4).join(', ')}` }

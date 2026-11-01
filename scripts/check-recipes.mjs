@@ -50,6 +50,13 @@
  * Every pack, never baselined:
  *   no-vinegar              a vinegar anywhere in the recipe, in any language (lemon or lime juice
  *                           instead); the dictionary keeps its vinegar entries for users' own recipes
+ *   no-black-pepper         black/white pepper ingredient ids or pepper seasoning
+ *                           wording in steps/notes/descriptions (EN/NO/SV); bell OK;
+ *                           nutritionDb keeps pepper entries for users' own recipes
+ *   no-chili                chili/cayenne/hot-sauce ingredient ids or spice wording
+ *                           (flakes, powder, cayenne, chiliflak, fersk chili, etc.);
+ *                           paprika/bell OK; dish-name chili in titles allowed;
+ *                           nutritionDb keeps chili entries for users' own recipes
  *
  * Known leftovers are listed in scripts/data/check-recipes-baseline.json and are reported
  * as warnings; anything not in the baseline is an error and the exit code is 1.
@@ -296,6 +303,160 @@ export function checkNoVinegar(packs, { only = () => true } = {}) {
   return issues
 }
 
+// ---------------------------------------------------------------- no black pepper
+// Fredheim house rule: no black or white pepper in pack recipes (EN/NO/SV).
+// Bell pepper and paprika are fine. nutritionDb keeps pepper entries for
+// user recipes.
+export const BLACK_PEPPER_ID = 'black-pepper'
+export const WHITE_PEPPER_ID = 'white-pepper'
+export const PEPPER_SEASONING_IDS = new Set([BLACK_PEPPER_ID, WHITE_PEPPER_ID])
+export const BLACK_PEPPER_TEXT_RE = /black\s*pepper|white\s*pepper|svart\s*pepper|hvit\s*pepper|vit\s*peppar|svartpeppar|vitpeppar|kvernet\s*(?:svart\s*)?pepper/iu
+
+/** Pack recipes must not use black pepper as an ingredient or name it in text. */
+export function checkNoBlackPepper(packs, { only = () => true } = {}) {
+  const issues = []
+  for (const pack of packs) {
+    for (const recipe of pack.recipes || []) {
+      if (!only(recipe, pack)) continue
+      const add = (where, message) => issues.push({
+        pack: pack.id, recipe: recipe.id, title: recipe.title, lang: 'en', index: null,
+        code: 'no-black-pepper',
+        message,
+        key: [pack.id, recipe.id, 'en', 'no-black-pepper', where].join('|'),
+      })
+      const checkRows = (list, where) => {
+        for (const [i, row] of (list || []).entries()) {
+          if (PEPPER_SEASONING_IDS.has(row?.ingredient)) {
+            add(`${where}[${i}]`, `${where}: ${row.ingredient} ingredient (remove; Fredheim recipes are pepper-free)`)
+          }
+        }
+      }
+      checkRows(recipe.ingredients, 'ingredients')
+      checkRows(recipe.translations?.no?.ingredients, 'translations.no.ingredients')
+      checkRows(recipe.translations?.sv?.ingredients, 'translations.sv.ingredients')
+
+      const walk = (value, where) => {
+        if (typeof value === 'string') {
+          if (BLACK_PEPPER_TEXT_RE.test(value)) {
+            add(where, `${where}: "${value.slice(0, 80)}" (no black/white pepper in Fredheim recipes)`)
+          }
+        } else if (value && typeof value === 'object') {
+          if (Array.isArray(value)) value.forEach((v, i) => walk(v, `${where}[${i}]`))
+          else {
+            for (const [k, v] of Object.entries(value)) {
+              if (k === 'ingredients') continue
+              walk(v, where ? `${where}.${k}` : k)
+            }
+          }
+        }
+      }
+      walk({
+        steps: recipe.steps,
+        notes: recipe.notes,
+        description: recipe.description,
+        title: recipe.title,
+        translations: recipe.translations
+          ? {
+              no: {
+                steps: recipe.translations.no?.steps,
+                notes: recipe.translations.no?.notes,
+                description: recipe.translations.no?.description,
+                title: recipe.translations.no?.title,
+              },
+              sv: {
+                steps: recipe.translations.sv?.steps,
+                notes: recipe.translations.sv?.notes,
+                description: recipe.translations.sv?.description,
+                title: recipe.translations.sv?.title,
+              },
+            }
+          : undefined,
+      }, '')
+    }
+  }
+  return issues
+}
+
+// ---------------------------------------------------------------- no chili
+// Fredheim house rule: no chili heat in pack recipes (EN/NO/SV). Fresh chili,
+// chili flakes/powder, cayenne, jalapeño, sriracha, hot sauce, harissa, chipotle
+// are out. Smoked/sweet paprika and bell peppers are fine. Dish names like
+// "Chili sin carne" may keep the word chili; nutritionDb keeps chili entries
+// for users' own recipes.
+export const CHILI_INGREDIENT_IDS = new Set([
+  'chili', 'chilli', 'chili-fresh', 'fresh-chili', 'red-chili', 'green-chili',
+  'chili-flakes', 'chilli-flakes', 'chili-powder', 'chilli-powder',
+  'cayenne', 'cayenne-pepper', 'jalapeno', 'jalapeño',
+  'sriracha', 'chili-sauce', 'chilli-sauce', 'chili-garlic-sauce',
+  'harissa', 'chipotle', 'chipotle-powder', 'hot-sauce',
+])
+/** Spice forms only — not bare dish-name "chili" (e.g. Chili sin carne). */
+export const CHILI_TEXT_RE = /chili\s*flakes?|chilli\s*flakes?|chiliflakes?|chiliflak|chili\s*powder|chilli\s*powder|chilipulver|cayenne(?:\s*pepper)?|cayennepepper|cayennepeppar|kajennepepper|kajenn(?:pepper|peppar)?|jalape.?nos?|sriracha|harissa|chipotle|hot\s*sauces?|hotsauce|chili\s*sauces?|chilli\s*sauces?|fresh\s+chill?i|fersk\s+chill?i|färsk\s+chill?i|red\s+chill?i|rød\s+chili|röd\s+chili|green\s+chill?i|\bchilli\b/iu
+
+/** Pack recipes must not use chili heat as an ingredient or name spice forms in text. */
+export function checkNoChili(packs, { only = () => true } = {}) {
+  const issues = []
+  for (const pack of packs) {
+    for (const recipe of pack.recipes || []) {
+      if (!only(recipe, pack)) continue
+      const add = (where, message) => issues.push({
+        pack: pack.id, recipe: recipe.id, title: recipe.title, lang: 'en', index: null,
+        code: 'no-chili',
+        message,
+        key: [pack.id, recipe.id, 'en', 'no-chili', where].join('|'),
+      })
+      const checkRows = (list, where) => {
+        for (const [i, row] of (list || []).entries()) {
+          const id = row?.ingredient || ''
+          if (CHILI_INGREDIENT_IDS.has(id) || (/chili|chilli|cayenne|jalape|sriracha|harissa|chipotle|hot-sauce/i.test(id) && !/paprika|bell-pepper/i.test(id))) {
+            add(`${where}[${i}]`, `${where}: ${id} ingredient (remove; Fredheim recipes are chili-free)`)
+          }
+        }
+      }
+      checkRows(recipe.ingredients, 'ingredients')
+      checkRows(recipe.translations?.no?.ingredients, 'translations.no.ingredients')
+      checkRows(recipe.translations?.sv?.ingredients, 'translations.sv.ingredients')
+
+      const walk = (value, where) => {
+        if (typeof value === 'string') {
+          if (CHILI_TEXT_RE.test(value)) {
+            add(where, `${where}: "${value.slice(0, 80)}" (no chili heat in Fredheim recipes)`)
+          }
+        } else if (value && typeof value === 'object') {
+          if (Array.isArray(value)) value.forEach((v, i) => walk(v, `${where}[${i}]`))
+          else {
+            for (const [k, v] of Object.entries(value)) {
+              if (k === 'ingredients') continue
+              if (k === 'title') continue
+              walk(v, where ? `${where}.${k}` : k)
+            }
+          }
+        }
+      }
+      walk({
+        steps: recipe.steps,
+        notes: recipe.notes,
+        description: recipe.description,
+        translations: recipe.translations
+          ? {
+              no: {
+                steps: recipe.translations.no?.steps,
+                notes: recipe.translations.no?.notes,
+                description: recipe.translations.no?.description,
+              },
+              sv: {
+                steps: recipe.translations.sv?.steps,
+                notes: recipe.translations.sv?.notes,
+                description: recipe.translations.sv?.description,
+              },
+            }
+          : undefined,
+      }, '')
+    }
+  }
+  return issues
+}
+
 // ---------------------------------------------------------------- salt levels
 const SPOON_UNITS = new Set(['tsp', 'tbsp'])
 const FLAVOURS = new Set(['sweet', 'savoury'])
@@ -441,7 +602,7 @@ function main(argv) {
     if (recipeIds || packIds) process.exit(1) // a named recipe or pack that is not there is a mistake
   }
   const issues = checkPacks(packs, dictionary, { only })
-  const metaIssues = [...checkRecipeMeta(packs, { only }), ...checkSaltLevels(packs, { only }), ...checkNoVinegar(packs, { only })]
+  const metaIssues = [...checkRecipeMeta(packs, { only }), ...checkSaltLevels(packs, { only }), ...checkNoVinegar(packs, { only }), ...checkNoBlackPepper(packs, { only }), ...checkNoChili(packs, { only })]
 
   if (flag('--update-baseline')) {
     if (recipeIds || packIds || since !== null || changed) throw new Error('--update-baseline must run on all packs (no filters)')

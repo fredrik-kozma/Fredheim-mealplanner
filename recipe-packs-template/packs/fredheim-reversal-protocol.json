@@ -3,7 +3,7 @@
   "name": "Fredheim Reversal Protocol",
   "description": "Whole-food, plant-based recipes built around the Ornish protocol — clinically shown to help reverse heart disease and improve type 2 diabetes, high cholesterol, high blood pressure, and atherosclerosis. Zero added oil, zero cholesterol, zero added sugar, zero refined carbs. Every recipe is scored Ornish GREEN.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.71.5",
+  "version": "1.72.0",
   "tags": [
     "ornish",
     "heart-reversal",
@@ -15647,7 +15647,7 @@
         "Adjust and taste: Thin with water a tablespoon at a time. Leave it slightly looser than you want — the flax will tighten it in the fridge. Taste before adding any further salt; the recipe is already at the sodium ceiling.",
         "Rest: Chill 30 minutes. The garlic mellows, the smoked paprika blooms, and the sauce sets to dolloping thickness. Keeps 4 days refrigerated."
       ],
-      "notes": "Consistency: without beans the sauce relies entirely on cashews and flax for body, so blend longer than you think — a full 60 seconds on high. Under-blending is the main failure mode here; it reads gritty rather than creamy. The flax thickens noticeably during the chill, so err slightly loose before resting. Cashew lever: 80 g gives 10.0 g total fat per serving. Drop to 60 g (with 130 ml water) for 7.8 g, which is GREEN on fat — but the sauce becomes noticeably thinner and less rich. Saturated fat stays well under the 3 g ceiling either way. Substitutions: 30 g roasted red pepper in place of the tomato paste gives a sweeter, milder sauce; half a fresh chilli or ¼ tsp chilli flakes at the blending stage if you want heat. As with all fully plant-based recipes, B12 and vitamin D are structurally absent and must come from supplementation.",
+      "notes": "Consistency: without beans the sauce relies entirely on cashews and flax for body, so blend longer than you think — a full 60 seconds on high. Under-blending is the main failure mode here; it reads gritty rather than creamy. The flax thickens noticeably during the chill, so err slightly loose before resting. Cashew lever: 80 g gives 10.0 g total fat per serving. Drop to 60 g (with 130 ml water) for 7.8 g, which is GREEN on fat — but the sauce becomes noticeably thinner and less rich. Saturated fat stays well under the 3 g ceiling either way. Substitutions: 30 g roasted red pepper in place of the tomato paste gives a sweeter, milder sauce. As with all fully plant-based recipes, B12 and vitamin D are structurally absent and must come from supplementation.",
       "nutrition": {
         "perServing": {
           "calories": 147,
@@ -15669,21 +15669,21 @@
           "iron": 2,
           "magnesium": 75,
           "manganese": 0.46,
-          "selenium": 5,
+          "selenium": 5.3,
           "phosphorus": 149,
           "zinc": 1.4,
           "sodium": 298,
           "vitaminA": 18,
           "vitaminB6": 0.15,
           "vitaminB12": 0,
-          "vitaminC": 5,
+          "vitaminC": 4.6,
           "vitaminD": 0,
           "vitaminE": 0.59,
           "vitaminK": 8.1,
           "folate": 11,
           "thiamin": 0.14,
           "riboflavin": 0.04,
-          "niacin": 0.6,
+          "niacin": 0.58,
           "choline": 18
         },
         "sodiumStandard": 443
@@ -15772,7 +15772,7 @@
             "Juster og smak til: Spe med vann en spiseskje om gangen. La den være litt løsere enn du ønsker — linfrøet strammer den opp i kjøleskapet. Smak før du tilsetter mer salt; oppskriften ligger allerede på natriumtaket.",
             "La hvile: Sett kaldt i 30 minutter. Hvitløken mykner, den røkte paprikaen folder seg ut, og sausen setter seg til klattbar tykkelse. Holder seg 4 dager i kjøleskap."
           ],
-          "notes": "Konsistens: uten bønner er sausen helt avhengig av cashewnøtter og linfrø for fylde, så kjør lenger enn du tror — et helt minutt på høy hastighet. Underblending er hovedfeilen her; da smaker den grynete i stedet for kremet. Linfrøet tykner merkbart under kjølingen, så la den heller være litt løs før hvilen. Cashew-spaken: 80 g gir 10,0 g totalt fett per porsjon. Gå ned til 60 g (med 130 ml vann) for 7,8 g, som er GREEN på fett — men sausen blir merkbart tynnere og mindre fyldig. Mettet fett ligger godt under 3 g-taket uansett. Erstatninger: 30 g grillet paprika i stedet for tomatpuré gir en søtere, mildere saus; en halv fersk chili eller ¼ ts chiliflak i blenderen hvis du vil ha styrke. Som i alle helt plantebaserte oppskrifter mangler B12 og vitamin D strukturelt og må komme fra tilskudd.",
+          "notes": "Konsistens: uten bønner er sausen helt avhengig av cashewnøtter og linfrø for fylde, så kjør lenger enn du tror — et helt minutt på høy hastighet. Underblending er hovedfeilen her; da smaker den grynete i stedet for kremet. Linfrøet tykner merkbart under kjølingen, så la den heller være litt løs før hvilen. Cashew-spaken: 80 g gir 10,0 g totalt fett per porsjon. Gå ned til 60 g (med 130 ml vann) for 7,8 g, som er GREEN på fett — men sausen blir merkbart tynnere og mindre fyldig. Mettet fett ligger godt under 3 g-taket uansett. Erstatninger: 30 g grillet paprika i stedet for tomatpuré gir en søtere, mildere saus. Som i alle helt plantebaserte oppskrifter mangler B12 og vitamin D strukturelt og må komme fra tilskudd.",
           "portion": "~85 g saus"
         },
         "sv": {
@@ -15858,7 +15858,7 @@
             "Justera och smaka av: Späd med vatten en matsked i taget. Låt den vara lite lösare än du vill ha den — linfröet drar ihop den i kylen. Smaka innan du tillsätter mer salt; receptet ligger redan på natriumtaket.",
             "Låt vila: Ställ kallt i 30 minuter. Vitlöken mjuknar, den rökta paprikan vecklar ut sig, och såsen sätter sig till klickbar tjocklek. Håller 4 dagar i kylen."
           ],
-          "notes": "Konsistens: utan bönor är såsen helt beroende av cashewnötter och linfrö för fyllighet, så mixa längre än du tror — en hel minut på hög hastighet. Undermixning är huvudfelet här; då smakar den grynig i stället för krämig. Linfröet tjocknar märkbart under kylningen, så låt den hellre vara lite lös före vilan. Cashewspaken: 80 g ger 10,0 g totalt fett per portion. Gå ner till 60 g (med 130 ml vatten) för 7,8 g, vilket är GREEN på fett — men såsen blir märkbart tunnare och mindre fyllig. Mättat fett ligger gott under 3 g-taket oavsett. Ersättningar: 30 g grillad paprika i stället för tomatpuré ger en sötare, mildare sås; en halv färsk chili eller ¼ tsk chiliflingor i mixern om du vill ha hetta. Som i alla helt växtbaserade recept saknas B12 och D-vitamin strukturellt och måste komma från tillskott.",
+          "notes": "Konsistens: utan bönor är såsen helt beroende av cashewnötter och linfrö för fyllighet, så mixa längre än du tror — en hel minut på hög hastighet. Undermixning är huvudfelet här; då smakar den grynig i stället för krämig. Linfröet tjocknar märkbart under kylningen, så låt den hellre vara lite lös före vilan. Cashewspaken: 80 g ger 10,0 g totalt fett per portion. Gå ner till 60 g (med 130 ml vatten) för 7,8 g, vilket är GREEN på fett — men såsen blir märkbart tunnare och mindre fyllig. Mättat fett ligger gott under 3 g-taket oavsett. Ersättningar: 30 g grillad paprika i stället för tomatpuré ger en sötare, mildare sås. Som i alla helt växtbaserade recept saknas B12 och D-vitamin strukturellt och måste komma från tillskott.",
           "portion": "~85 g sås"
         }
       },

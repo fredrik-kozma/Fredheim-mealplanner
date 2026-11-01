@@ -803,6 +803,7 @@
           "kid-friendly"
         ],
         "proposed": [
+          "blood-pressure-friendly",
           "nut-free",
           "oil-free",
           "no-added-sugar",
@@ -1226,7 +1227,6 @@
           "batch-friendly"
         ],
         "proposed": [
-          "weight-loss",
           "blood-pressure-friendly",
           "gluten-free",
           "nut-free",
@@ -2090,7 +2090,6 @@
         "proposed": [
           "weight-loss",
           "blood-pressure-friendly",
-          "diabetes-friendly",
           "heart-healthy",
           "gluten-free",
           "nut-free",
@@ -2383,7 +2382,6 @@
         "proposed": [
           "weight-loss",
           "blood-pressure-friendly",
-          "diabetes-friendly",
           "heart-healthy",
           "gluten-free",
           "nut-free",
@@ -2966,8 +2964,12 @@
           "kid-friendly"
         ],
         "proposed": [
+          "weight-loss",
+          "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "soy-free",
+          "oil-free",
           "no-added-sugar",
           "batch-friendly",
           "kid-friendly"
@@ -3820,9 +3822,11 @@
         ],
         "proposed": [
           "weight-loss",
+          "diabetes-friendly",
           "gluten-free",
           "nut-free",
           "soy-free",
+          "oil-free",
           "no-added-sugar",
           "batch-friendly"
         ],
@@ -4821,7 +4825,9 @@
         ],
         "proposed": [
           "weight-loss",
+          "blood-pressure-friendly",
           "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "soy-free",
           "oil-free",
@@ -5110,7 +5116,6 @@
         "proposed": [
           "weight-loss",
           "blood-pressure-friendly",
-          "heart-healthy",
           "gluten-free",
           "nut-free",
           "soy-free",
@@ -5407,7 +5412,8 @@
         ],
         "proposed": [
           "nut-free",
-          "no-added-sugar"
+          "no-added-sugar",
+          "kid-friendly"
         ],
         "added": [],
         "removed": [],
@@ -6100,8 +6106,10 @@
           "no-added-sugar"
         ],
         "proposed": [
+          "heart-healthy",
           "oil-free",
-          "no-added-sugar"
+          "no-added-sugar",
+          "kid-friendly"
         ],
         "added": [],
         "removed": [],
@@ -6244,8 +6252,6 @@
           "kid-friendly"
         ],
         "proposed": [
-          "weight-loss",
-          "blood-pressure-friendly",
           "heart-healthy",
           "gluten-free",
           "nut-free",
@@ -6815,6 +6821,7 @@
           "batch-friendly"
         ],
         "proposed": [
+          "weight-loss",
           "gluten-free",
           "soy-free",
           "oil-free",
@@ -6963,7 +6970,8 @@
           "heart-healthy",
           "nut-free",
           "oil-free",
-          "no-added-sugar"
+          "no-added-sugar",
+          "kid-friendly"
         ],
         "added": [],
         "removed": [],
@@ -7254,6 +7262,8 @@
         ],
         "proposed": [
           "weight-loss",
+          "blood-pressure-friendly",
+          "heart-healthy",
           "gluten-free",
           "nut-free",
           "soy-free",
@@ -9649,7 +9659,6 @@
         "proposed": [
           "weight-loss",
           "blood-pressure-friendly",
-          "diabetes-friendly",
           "heart-healthy",
           "gluten-free",
           "nut-free",
@@ -10833,6 +10842,7 @@
           "kid-friendly"
         ],
         "proposed": [
+          "blood-pressure-friendly",
           "nut-free",
           "batch-friendly",
           "kid-friendly"
@@ -11256,7 +11266,9 @@
           "quick"
         ],
         "proposed": [
+          "weight-loss",
           "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "nut-free",
           "soy-free",
@@ -11541,7 +11553,6 @@
           "kid-friendly"
         ],
         "proposed": [
-          "weight-loss",
           "gluten-free",
           "nut-free",
           "soy-free",
@@ -12580,7 +12591,6 @@
           "quick"
         ],
         "proposed": [
-          "weight-loss",
           "diabetes-friendly",
           "heart-healthy",
           "gluten-free",
@@ -12874,6 +12884,7 @@
         "proposed": [
           "weight-loss",
           "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "nut-free",
           "soy-free",
@@ -14596,6 +14607,8 @@
         ],
         "proposed": [
           "weight-loss",
+          "blood-pressure-friendly",
+          "heart-healthy",
           "gluten-free",
           "nut-free",
           "oil-free",
@@ -15026,7 +15039,9 @@
           "nut-free"
         ],
         "proposed": [
-          "nut-free"
+          "nut-free",
+          "oil-free",
+          "kid-friendly"
         ],
         "added": [],
         "removed": [],
@@ -15309,7 +15324,8 @@
         ],
         "proposed": [
           "no-added-sugar",
-          "batch-friendly"
+          "batch-friendly",
+          "kid-friendly"
         ],
         "added": [],
         "removed": [],
@@ -15730,7 +15746,9 @@
         ],
         "proposed": [
           "weight-loss",
+          "blood-pressure-friendly",
           "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "soy-free",
           "oil-free",
@@ -17040,7 +17058,9 @@
         ],
         "proposed": [
           "weight-loss",
+          "blood-pressure-friendly",
           "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "soy-free",
           "oil-free",
@@ -17482,7 +17502,8 @@
           "soy-free",
           "oil-free",
           "no-added-sugar",
-          "batch-friendly"
+          "batch-friendly",
+          "kid-friendly"
         ],
         "added": [],
         "removed": [],
@@ -17926,6 +17947,7 @@
           "soy-free"
         ],
         "proposed": [
+          "blood-pressure-friendly",
           "gluten-free",
           "nut-free",
           "soy-free"
@@ -18219,6 +18241,7 @@
           "batch-friendly"
         ],
         "proposed": [
+          "weight-loss",
           "blood-pressure-friendly",
           "heart-healthy",
           "gluten-free",
@@ -18529,7 +18552,6 @@
           "batch-friendly"
         ],
         "proposed": [
-          "heart-healthy",
           "gluten-free",
           "soy-free",
           "oil-free",
@@ -19518,9 +19540,11 @@
           "batch-friendly"
         ],
         "proposed": [
+          "heart-healthy",
           "nut-free",
           "oil-free",
-          "batch-friendly"
+          "batch-friendly",
+          "kid-friendly"
         ],
         "added": [],
         "removed": [],
@@ -19938,7 +19962,8 @@
         ],
         "proposed": [
           "gluten-free",
-          "soy-free"
+          "soy-free",
+          "oil-free"
         ],
         "added": [],
         "removed": [],
@@ -20508,6 +20533,7 @@
           "kid-friendly"
         ],
         "proposed": [
+          "blood-pressure-friendly",
           "gluten-free",
           "nut-free",
           "soy-free",
@@ -21813,8 +21839,6 @@
         "proposed": [
           "weight-loss",
           "blood-pressure-friendly",
-          "diabetes-friendly",
-          "heart-healthy",
           "gluten-free",
           "nut-free",
           "soy-free",
@@ -24272,6 +24296,7 @@
         "proposed": [
           "weight-loss",
           "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "nut-free",
           "soy-free",
@@ -26021,10 +26046,10 @@
         "proposed": [
           "weight-loss",
           "blood-pressure-friendly",
-          "heart-healthy",
           "gluten-free",
           "oil-free",
-          "no-added-sugar"
+          "no-added-sugar",
+          "batch-friendly"
         ],
         "added": [],
         "removed": [],
@@ -26313,6 +26338,8 @@
         ],
         "proposed": [
           "weight-loss",
+          "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "nut-free",
           "soy-free",
@@ -27653,6 +27680,7 @@
         "proposed": [
           "weight-loss",
           "blood-pressure-friendly",
+          "diabetes-friendly",
           "heart-healthy",
           "gluten-free",
           "nut-free",
@@ -28105,7 +28133,6 @@
           "kid-friendly"
         ],
         "proposed": [
-          "weight-loss",
           "blood-pressure-friendly",
           "heart-healthy",
           "nut-free",
@@ -28706,9 +28733,6 @@
         ],
         "proposed": [
           "weight-loss",
-          "blood-pressure-friendly",
-          "diabetes-friendly",
-          "heart-healthy",
           "gluten-free",
           "nut-free",
           "oil-free",
@@ -28858,6 +28882,8 @@
         ],
         "proposed": [
           "weight-loss",
+          "blood-pressure-friendly",
+          "heart-healthy",
           "gluten-free",
           "nut-free",
           "oil-free",
@@ -29158,7 +29184,6 @@
         ],
         "proposed": [
           "weight-loss",
-          "diabetes-friendly",
           "heart-healthy",
           "gluten-free",
           "nut-free",
@@ -31405,6 +31430,7 @@
         "proposed": [
           "weight-loss",
           "blood-pressure-friendly",
+          "diabetes-friendly",
           "heart-healthy",
           "gluten-free",
           "nut-free",
@@ -31560,6 +31586,7 @@
         "proposed": [
           "weight-loss",
           "blood-pressure-friendly",
+          "diabetes-friendly",
           "heart-healthy",
           "gluten-free",
           "nut-free",
@@ -32165,7 +32192,6 @@
         "proposed": [
           "weight-loss",
           "diabetes-friendly",
-          "heart-healthy",
           "gluten-free",
           "soy-free",
           "oil-free",
@@ -33088,6 +33114,7 @@
           "kid-friendly"
         ],
         "proposed": [
+          "blood-pressure-friendly",
           "heart-healthy",
           "nut-free",
           "soy-free",
@@ -33387,6 +33414,8 @@
         "proposed": [
           "weight-loss",
           "blood-pressure-friendly",
+          "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "soy-free",
           "oil-free",
@@ -33835,6 +33864,10 @@
           "kid-friendly"
         ],
         "proposed": [
+          "weight-loss",
+          "blood-pressure-friendly",
+          "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "nut-free",
           "oil-free",
@@ -36729,6 +36762,7 @@
           "kid-friendly"
         ],
         "proposed": [
+          "weight-loss",
           "blood-pressure-friendly",
           "heart-healthy",
           "gluten-free",
@@ -37500,7 +37534,9 @@
         ],
         "proposed": [
           "weight-loss",
+          "blood-pressure-friendly",
           "diabetes-friendly",
+          "heart-healthy",
           "nut-free",
           "soy-free",
           "oil-free",
@@ -39310,7 +39346,10 @@
           "quick"
         ],
         "proposed": [
+          "weight-loss",
           "blood-pressure-friendly",
+          "diabetes-friendly",
+          "heart-healthy",
           "gluten-free",
           "oil-free",
           "no-added-sugar",

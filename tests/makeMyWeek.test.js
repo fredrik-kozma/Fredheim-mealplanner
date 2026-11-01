@@ -340,7 +340,7 @@ test('a language switch re-renders the tips, but not text the user edited', asyn
   const { default: useStore } = await import('../src/store/useStore.js')
   // The first example week with fruit notes on a few days (most days fill
   // up with dishes and bread alone).
-  const seed = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].find(s => Object.keys(makeMyWeek({ recipes: ALL, answers: EXAMPLE, seed: s }).fruit).length >= 2)
+  const seed = Array.from({ length: 50 }, (_, i) => i + 1).find(s => Object.keys(makeMyWeek({ recipes: ALL, answers: EXAMPLE, seed: s }).fruit).length >= 2)
   const week = makeMyWeek({ recipes: ALL, answers: EXAMPLE, seed: seed ?? 1 })
   const data = weekTipsData({ goal: EXAMPLE.goal, notices: week.notices, stats: week.stats, fruit: week.fruit })
   const titleOf = id => byId.get(id)?.title
