@@ -56,7 +56,7 @@ test('choline is not in visible keys (stays hidden)', () => {
 })
 
 test('sum of contributions equals estimateRecipeNutrition totals for all pack recipes and every engine nutrient', () => {
-  assert.equal(allRecipes.length, 297)
+  assert.equal(allRecipes.length, 302)
   const failures = []
   for (const r of allRecipes) {
     const est = estimateRecipeNutrition(r, db, { recipeById, saltLevel: 'low' })
@@ -117,4 +117,5 @@ test('standard salt level changes sodium contribution grams', () => {
   const std = estimateRecipeNutritionBreakdown(r, db, { recipeById, saltLevel: 'standard' })
   assert.ok(std.total.sodium >= low.total.sodium)
 })
+
 

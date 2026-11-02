@@ -3,7 +3,7 @@
   "name": "Fredheim Kitchen",
   "description": "Everyday Fredheim recipes, with photos.",
   "author": "Fredheim",
-  "version": "1.98.0",
+  "version": "1.101.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -59189,6 +59189,1307 @@
       },
       "createdAt": 1793564918778,
       "flavourProfile": "sweet"
+    },
+    {
+      "id": "fr-203",
+      "title": "Creamy lemon tahini dressing",
+      "category": "Sauce",
+      "servings": 8,
+      "portion": "~26 g (2�3 tbsp)",
+      "prepTime": 10,
+      "cookTime": 0,
+      "imageUrl": "/pack-images/fr-203.jpg",
+      "description": "Silky oil-free tahini dressing with lemon, garlic and a date for balance. Perfect for bowls, roasted vegetables and falafel.",
+      "tags": [
+        "fredheim",
+        "gluten-free",
+        "nut-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 52,
+      "servingWeightGrams": 26,
+      "ingredients": [
+        {
+          "quantity": 60,
+          "unit": "g",
+          "ingredient": "tahini",
+          "name": "Tahini"
+        },
+        {
+          "quantity": 3,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
+        },
+        {
+          "quantity": 1,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic",
+          "note": "small"
+        },
+        {
+          "quantity": 15,
+          "unit": "g",
+          "ingredient": "dates-dried",
+          "name": "Dried dates",
+          "note": "1–2 pitted dates; soak 5 min if hard"
+        },
+        {
+          "quantity": 80,
+          "unit": "ml",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "cold; as needed to loosen"
+        },
+        {
+          "quantity": 0.25,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.5
+        }
+      ],
+      "steps": [
+        "Blend tahini, lemon juice, garlic, the date, salt and most of the water until completely smooth.",
+        "Add water a spoon at a time until it is pourable but still coats a spoon.",
+        "Taste and adjust lemon and salt. Keeps 4 days refrigerated; loosen with a splash of water after chilling."
+      ],
+      "notes": "It thickens in the fridge — always loosen with water before serving. Ways to use it: grain bowls; roasted vegetables; falafel wraps; as a dip for raw carrot. Keeps 4 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Kremet sitron-tahinidressing",
+          "description": "Silkemyk oljefri tahinidressing med sitron, hvitløk og en dadle for balanse. Perfekt til bowler, ovnsbakte grønnsaker og falafel.",
+          "ingredients": [
+            {
+              "quantity": 60,
+              "unit": "g",
+              "ingredient": "tahini",
+              "name": "Tahini"
+            },
+            {
+              "quantity": 3,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk",
+              "note": "liten fedd"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "dates-dried",
+              "name": "Tørkede dadler",
+              "note": "1–2 dadler uten stein; bløtlegg 5 min hvis harde"
+            },
+            {
+              "quantity": 80,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "kaldt; etter behov for å løsne"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.5
+            }
+          ],
+          "steps": [
+            "Kjør tahini, sitronsaft, hvitløk, dadlen, salt og det meste av vannet til helt jevn.",
+            "Tilsett vann ss for ss til dressingen er hellbar, men fortsatt dekker en skje.",
+            "Smak til med sitron og salt. Holder 4 dager i kjøleskapet; løsne med en skvett vann etter avkjøling."
+          ],
+          "notes": "Den stivner i kjøleskapet — løsne alltid med vann før servering. Slik kan du bruke den: kornbowler; ovnsbakte grønnsaker; falafelwrap; som dip til rå gulrot. Holder 4 dager i kjøleskapet.",
+          "portion": "~26 g (2�3 ss)"
+        },
+        "sv": {
+          "title": "Krämig citron-tahinidressing",
+          "description": "Silkig oljefri tahinidressing med citron, vitlök och en dadel för balans. Perfekt till bowls, ugnsrostade grönsaker och falafel.",
+          "ingredients": [
+            {
+              "quantity": 60,
+              "unit": "g",
+              "ingredient": "tahini",
+              "name": "Tahini"
+            },
+            {
+              "quantity": 3,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök",
+              "note": "liten klyfta"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "dates-dried",
+              "name": "Torkade dadlar",
+              "note": "1–2 urkärnade dadlar; blötlägg 5 min om hårda"
+            },
+            {
+              "quantity": 80,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "kallt; efter behov för att späda"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.5
+            }
+          ],
+          "steps": [
+            "Mixa tahini, citronsaft, vitlök, dadeln, salt och det mesta av vattnet till helt slät.",
+            "Tillsätt vatten msk för msk tills dressingen är hällbar men fortfarande täcker en sked.",
+            "Smaka av med citron och salt. Håller 4 dagar i kylen; späd med en skvätt vatten efter kylning."
+          ],
+          "notes": "Den stelnar i kylen — späd alltid med vatten före servering. Så kan du använda den: spannmålsbowls; ugnsrostade grönsaker; falafelwrap; som dip till rå morot. Håller 4 dagar i kylen.",
+          "portion": "~26 g (2�3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 52,
+          "protein": 1.4,
+          "totalFat": 4.1,
+          "saturatedFat": 0.6,
+          "polyunsaturatedFat": 1.8,
+          "monounsaturatedFat": 1.5,
+          "omega3": 0.03,
+          "omega6": 1.7,
+          "cholesterol": 0,
+          "totalCarbs": 3.5,
+          "totalSugars": 1.4,
+          "addedSugar": 0,
+          "fiber": 0.9,
+          "calcium": 34,
+          "potassium": 51,
+          "copper": 0.13,
+          "iron": 0.7,
+          "magnesium": 8.4,
+          "manganese": 0.12,
+          "selenium": 2.7,
+          "phosphorus": 57,
+          "zinc": 0.36,
+          "sodium": 81,
+          "vitaminA": 0.28,
+          "vitaminB6": 0.02,
+          "vitaminB12": 0,
+          "vitaminC": 2.3,
+          "vitaminD": 0,
+          "vitaminE": 0.03,
+          "vitaminK": 0.06,
+          "folate": 8.8,
+          "thiamin": 0.09,
+          "riboflavin": 0.04,
+          "niacin": 0.44,
+          "choline": 2.4
+        },
+        "sodiumStandard": 154
+      },
+      "createdAt": 1793594242463
+    },
+    {
+      "id": "fr-204",
+      "title": "Fredheim Caesar dressing",
+      "category": "Sauce",
+      "servings": 10,
+      "portion": "~38 g (2–3 tbsp)",
+      "prepTime": 15,
+      "cookTime": 0,
+      "imageUrl": "/pack-images/fr-204.jpg",
+      "description": "Oil-free Caesar-style dressing of white beans and a little cashew, with lemon, capers, garlic, nutritional yeast and nori. No mustard.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "heart-healthy",
+        "gluten-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 51,
+      "servingWeightGrams": 38,
+      "ingredients": [
+        {
+          "quantity": 200,
+          "unit": "g",
+          "ingredient": "white-beans-canned",
+          "name": "White beans (cannellini), canned",
+          "note": "drained and rinsed"
+        },
+        {
+          "quantity": 40,
+          "unit": "g",
+          "ingredient": "cashews",
+          "name": "Cashews",
+          "note": "soaked 20 min in hot water, then drained"
+        },
+        {
+          "quantity": 3,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
+        },
+        {
+          "quantity": 15,
+          "unit": "g",
+          "ingredient": "capers",
+          "name": "Capers",
+          "note": "drained; no brine"
+        },
+        {
+          "quantity": 2,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
+        },
+        {
+          "quantity": 2,
+          "unit": "tbsp",
+          "ingredient": "nutritional-yeast",
+          "name": "Nutritional yeast"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "pcs",
+          "ingredient": "nori",
+          "name": "Nori sheets",
+          "note": "½ sheet, crumbled finely"
+        },
+        {
+          "quantity": 60,
+          "unit": "ml",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "cold; as needed"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.75
+        }
+      ],
+      "steps": [
+        "Soak the cashews in hot water for 20 minutes, then drain.",
+        "Blend white beans, cashews, lemon juice, capers, garlic, nutritional yeast, crumbled nori, salt and most of the water until very smooth and creamy.",
+        "Loosen with water until it coats leaves without clumping. Taste — it should be lemony and savoury. Keeps 4 days refrigerated."
+      ],
+      "notes": "Capers and nori replace anchovy; no mustard, no oil. Ways to use it: kale or romaine Caesar salad; wraps with greens and tomato; spooned over roasted chickpeas. Keeps 4 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Fredheim Caesar-dressing",
+          "description": "Oljefri Caesar-inspirert dressing av hvite bønner og litt cashew, med sitron, kapers, hvitløk, næringsgjær og nori. Uten sennep.",
+          "ingredients": [
+            {
+              "quantity": 200,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Hvite bønner (cannellini), hermetiske",
+              "note": "avrent og skylt"
+            },
+            {
+              "quantity": 40,
+              "unit": "g",
+              "ingredient": "cashews",
+              "name": "Cashewnøtter",
+              "note": "bløtlagt 20 min i varmt vann, deretter avrent"
+            },
+            {
+              "quantity": 3,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "capers",
+              "name": "Kapers",
+              "note": "avrent; uten lake"
+            },
+            {
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
+            },
+            {
+              "quantity": 2,
+              "unit": "ss",
+              "ingredient": "nutritional-yeast",
+              "name": "Næringsgjær"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "stk",
+              "ingredient": "nori",
+              "name": "Nori",
+              "note": "½ ark, smuldret fint"
+            },
+            {
+              "quantity": 60,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "kaldt; etter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Bløtlegg cashewnøttene i varmt vann i 20 minutter, hell deretter av.",
+            "Kjør hvite bønner, cashewnøtter, sitronsaft, kapers, hvitløk, næringsgjær, smuldret nori, salt og det meste av vannet til helt jevn og kremet.",
+            "Løsne med vann til den dekker bladene uten å klumpe. Smak til — den skal være sitronfrisk og fyldig. Holder 4 dager i kjøleskapet."
+          ],
+          "notes": "Kapers og nori erstatter ansjos; ingen sennep, ingen olje. Slik kan du bruke den: grønnkål- eller romanosalat; wrap med salat og tomat; over ovnsbakte kikerter. Holder 4 dager i kjøleskapet.",
+          "portion": "~38 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Fredheim Caesar-dressing",
+          "description": "Oljefri Caesar-inspirerad dressing av vita bönor och lite cashew, med citron, kapris, vitlök, näringsjäst och nori. Utan senap.",
+          "ingredients": [
+            {
+              "quantity": 200,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Vita bönor (cannellini) på burk",
+              "note": "avrunna och sköljda"
+            },
+            {
+              "quantity": 40,
+              "unit": "g",
+              "ingredient": "cashews",
+              "name": "Cashewnötter",
+              "note": "blötlagda 20 min i hett vatten, sedan avrunna"
+            },
+            {
+              "quantity": 3,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "capers",
+              "name": "Kapris",
+              "note": "avrunnen; utan lake"
+            },
+            {
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "ingredient": "nutritional-yeast",
+              "name": "Näringsjäst"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "pcs",
+              "ingredient": "nori",
+              "name": "Nori",
+              "note": "½ ark, smulad fint"
+            },
+            {
+              "quantity": 60,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "kallt; efter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Blötlägg cashewnötterna i hett vatten i 20 minuter, häll sedan av.",
+            "Mixa vita bönor, cashewnötter, citronsaft, kapris, vitlök, näringsjäst, smulad nori, salt och det mesta av vattnet till helt slät och krämig.",
+            "Späd med vatten tills den täcker bladen utan att klumpa. Smaka av — den ska vara citronfrisk och fyllig. Håller 4 dagar i kylen."
+          ],
+          "notes": "Kapris och nori ersätter ansjovis; ingen senap, ingen olja. Så kan du använda den: grönkåls- eller romansallad; wrap med sallad och tomat; över ugnsrostade kikärtor. Håller 4 dagar i kylen.",
+          "portion": "~38 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 51,
+          "protein": 2.8,
+          "totalFat": 1.9,
+          "saturatedFat": 0.3,
+          "polyunsaturatedFat": 0.36,
+          "monounsaturatedFat": 0.97,
+          "omega3": 0.02,
+          "omega6": 0.34,
+          "cholesterol": 0,
+          "totalCarbs": 6,
+          "totalSugars": 0.4,
+          "addedSugar": 0,
+          "fiber": 1.6,
+          "calcium": 19,
+          "potassium": 129,
+          "copper": 0.15,
+          "iron": 0.95,
+          "magnesium": 25,
+          "manganese": 0.17,
+          "selenium": 1.4,
+          "phosphorus": 55,
+          "zinc": 1.7,
+          "sodium": 184,
+          "vitaminA": 3,
+          "vitaminB6": 0.4,
+          "vitaminB12": 0.45,
+          "vitaminC": 2.3,
+          "vitaminD": 0,
+          "vitaminE": 0.18,
+          "vitaminK": 2.7,
+          "folate": 72,
+          "thiamin": 0.46,
+          "riboflavin": 0.2,
+          "niacin": 4.4,
+          "choline": 10
+        },
+        "sodiumStandard": 242
+      },
+      "createdAt": 1793594242465
+    },
+    {
+      "id": "fr-205",
+      "title": "Green goddess dressing",
+      "category": "Sauce",
+      "servings": 10,
+      "portion": "~41 g (2–3 tbsp)",
+      "prepTime": 15,
+      "cookTime": 0,
+      "imageUrl": "/pack-images/fr-205.jpg",
+      "description": "Bright oil-free green goddess of white beans, avocado, basil, parsley, chives, lemon and garlic. Herb-forward and scoopable.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "heart-healthy",
+        "gluten-free",
+        "nut-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 36,
+      "servingWeightGrams": 41,
+      "ingredients": [
+        {
+          "quantity": 180,
+          "unit": "g",
+          "ingredient": "white-beans-canned",
+          "name": "White beans (cannellini), canned",
+          "note": "drained and rinsed"
+        },
+        {
+          "quantity": 80,
+          "unit": "g",
+          "ingredient": "avocados",
+          "name": "Avocados",
+          "note": "ripe flesh only"
+        },
+        {
+          "quantity": 25,
+          "unit": "g",
+          "ingredient": "basil",
+          "name": "Basil",
+          "note": "fresh leaves"
+        },
+        {
+          "quantity": 20,
+          "unit": "g",
+          "ingredient": "parsley",
+          "name": "Parsley",
+          "note": "fresh"
+        },
+        {
+          "quantity": 15,
+          "unit": "g",
+          "ingredient": "chives",
+          "name": "Chives",
+          "note": "fresh"
+        },
+        {
+          "quantity": 2.5,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
+        },
+        {
+          "quantity": 1,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic",
+          "note": "small"
+        },
+        {
+          "quantity": 50,
+          "unit": "ml",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "cold; as needed"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.75
+        }
+      ],
+      "steps": [
+        "Blend white beans, avocado, basil, parsley, chives, lemon juice, garlic, salt and most of the water until bright green and smooth.",
+        "Loosen with water until spoonable. Taste and add lemon if you want it sharper.",
+        "Best the day it is made; press wrap onto the surface and keep 2 days refrigerated."
+      ],
+      "notes": "Avocado is optional creaminess on top of the beans — keep the herbs generous. Ways to use it: potato salad; grain salads; dip for raw vegetables; spooned over tomatoes. Best within 2 days.",
+      "translations": {
+        "no": {
+          "title": "Green goddess-dressing",
+          "description": "Frisk oljefri green goddess av hvite bønner, avokado, basilikum, persille, gressløk, sitron og hvitløk. Urtepreget og seig.",
+          "ingredients": [
+            {
+              "quantity": 180,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Hvite bønner (cannellini), hermetiske",
+              "note": "avrent og skylt"
+            },
+            {
+              "quantity": 80,
+              "unit": "g",
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "modent fruktkjøtt"
+            },
+            {
+              "quantity": 25,
+              "unit": "g",
+              "ingredient": "basil",
+              "name": "Basilikum",
+              "note": "ferske blader"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "parsley",
+              "name": "Persille",
+              "note": "fersk"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "chives",
+              "name": "Gressløk",
+              "note": "fersk"
+            },
+            {
+              "quantity": 2.5,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk",
+              "note": "liten fedd"
+            },
+            {
+              "quantity": 50,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "kaldt; etter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Kjør hvite bønner, avokado, basilikum, persille, gressløk, sitronsaft, hvitløk, salt og det meste av vannet til friskt grønt og jevnt.",
+            "Løsne med vann til den er seig. Smak til med mer sitron om du vil ha den skarpere.",
+            "Best samme dag; press plastfolie mot overflaten og oppbevar 2 dager i kjøleskapet."
+          ],
+          "notes": "Avokado er valgfri kremethet oppå bønnene — hold urtene rause. Slik kan du bruke den: potetsalat; kornsalater; dip til rå grønnsaker; over tomater. Best innen 2 dager.",
+          "portion": "~41 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Green goddess-dressing",
+          "description": "Frisk oljefri green goddess av vita bönor, avokado, basilika, persilja, gräslök, citron och vitlök. Örtig och skedbar.",
+          "ingredients": [
+            {
+              "quantity": 180,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Vita bönor (cannellini) på burk",
+              "note": "avrunna och sköljda"
+            },
+            {
+              "quantity": 80,
+              "unit": "g",
+              "ingredient": "avocados",
+              "name": "Avokado",
+              "note": "moget fruktkött"
+            },
+            {
+              "quantity": 25,
+              "unit": "g",
+              "ingredient": "basil",
+              "name": "Basilika",
+              "note": "färska blad"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "parsley",
+              "name": "Persilja",
+              "note": "färsk"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "chives",
+              "name": "Gräslök",
+              "note": "färsk"
+            },
+            {
+              "quantity": 2.5,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök",
+              "note": "liten klyfta"
+            },
+            {
+              "quantity": 50,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "kallt; efter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Mixa vita bönor, avokado, basilika, persilja, gräslök, citronsaft, vitlök, salt och det mesta av vattnet till klargrönt och slätt.",
+            "Späd med vatten tills den är skedbar. Smaka av med mer citron om du vill ha den skarpare.",
+            "Bäst samma dag; tryck plastfolie mot ytan och förvara 2 dagar i kylen."
+          ],
+          "notes": "Avokado är valfri krämighet ovanpå bönorna — håll örterna generösa. Så kan du använda den: potatissallad; spannmålssallader; dip till råa grönsaker; över tomater. Bäst inom 2 dagar.",
+          "portion": "~41 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 36,
+          "protein": 1.7,
+          "totalFat": 1.3,
+          "saturatedFat": 0.2,
+          "polyunsaturatedFat": 0.19,
+          "monounsaturatedFat": 0.8,
+          "omega3": 0.03,
+          "omega6": 0.15,
+          "cholesterol": 0,
+          "totalCarbs": 4.8,
+          "totalSugars": 0.3,
+          "addedSugar": 0,
+          "fiber": 1.7,
+          "calcium": 24,
+          "potassium": 130,
+          "copper": 0.08,
+          "iron": 0.82,
+          "magnesium": 15,
+          "manganese": 0.13,
+          "selenium": 0.31,
+          "phosphorus": 25,
+          "zinc": 0.32,
+          "sodium": 145,
+          "vitaminA": 19,
+          "vitaminB6": 0.05,
+          "vitaminB12": 0,
+          "vitaminC": 6.4,
+          "vitaminD": 0,
+          "vitaminE": 0.32,
+          "vitaminK": 49,
+          "folate": 26,
+          "thiamin": 0.03,
+          "riboflavin": 0.02,
+          "niacin": 0.23,
+          "choline": 7.9
+        },
+        "sodiumStandard": 203
+      },
+      "createdAt": 1793594242465
+    },
+    {
+      "id": "fr-206",
+      "title": "Sesame ginger orange dressing",
+      "category": "Sauce",
+      "servings": 6,
+      "portion": "~31 g (2�3 tbsp)",
+      "prepTime": 10,
+      "cookTime": 5,
+      "imageUrl": "/pack-images/fr-206.jpg",
+      "description": "Bright oil-free dressing of orange juice, soy sauce / tamari, fresh ginger, garlic and toasted sesame, loosened with a spoon of tahini.",
+      "tags": [
+        "fredheim",
+        "nut-free",
+        "oil-free",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 41,
+      "servingWeightGrams": 31,
+      "ingredients": [
+        {
+          "quantity": 80,
+          "unit": "ml",
+          "ingredient": "orange-juice",
+          "name": "Orange juice",
+          "note": "fresh if possible"
+        },
+        {
+          "quantity": 1.5,
+          "unit": "tbsp",
+          "ingredient": "soy-sauce",
+          "name": "Soy sauce"
+        },
+        {
+          "quantity": 15,
+          "unit": "g",
+          "ingredient": "ginger-fresh",
+          "name": "Fresh ginger",
+          "note": "peeled, finely grated"
+        },
+        {
+          "quantity": 1,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
+        },
+        {
+          "quantity": 15,
+          "unit": "g",
+          "ingredient": "sesame-seeds",
+          "name": "Sesame seeds",
+          "note": "toasted"
+        },
+        {
+          "quantity": 15,
+          "unit": "g",
+          "ingredient": "tahini",
+          "name": "Tahini",
+          "note": "for body"
+        },
+        {
+          "quantity": 2,
+          "unit": "tbsp",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "as needed"
+        }
+      ],
+      "steps": [
+        "Toast the sesame seeds in a dry pan until fragrant, then tip onto a cool plate.",
+        "Blend orange juice, soy sauce, ginger, garlic, tahini and most of the toasted sesame until smooth. Reserve a pinch of seeds for topping.",
+        "Loosen with water if needed. Taste — bright, gingery and lightly salty. Keeps 3 days refrigerated."
+      ],
+      "notes": "Orange juice means this is not no-added-sugar — that is honest. Ways to use it: Asian slaw; noodle bowls; baked tofu; steamed greens. Keeps 3 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Sesam-ingefær-appelsindressing",
+          "description": "Frisk oljefri dressing av appelsinjuice, soyasaus / tamari, fersk ingefær, hvitløk og ristet sesam, løsnet med en skje tahini.",
+          "ingredients": [
+            {
+              "quantity": 80,
+              "unit": "ml",
+              "ingredient": "orange-juice",
+              "name": "Appelsinjuice",
+              "note": "fersk om mulig"
+            },
+            {
+              "quantity": 1.5,
+              "unit": "ss",
+              "ingredient": "soy-sauce",
+              "name": "Soyasaus"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "ginger-fresh",
+              "name": "Fersk ingefær",
+              "note": "skrelt, finrevet"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "sesame-seeds",
+              "name": "Sesamfrø",
+              "note": "ristet"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "tahini",
+              "name": "Tahini",
+              "note": "for fylde"
+            },
+            {
+              "quantity": 2,
+              "unit": "ss",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "etter behov"
+            }
+          ],
+          "steps": [
+            "Rist sesamfrøene i en tørr panne til de lukter nøtteaktig, hell dem deretter over på en kald tallerken.",
+            "Kjør appelsinjuice, soyasaus, ingefær, hvitløk, tahini og det meste av den ristede sesamen til jevn. Ta vare på en klype frø til topping.",
+            "Løsne med vann om nødvendig. Smak til — frisk, ingefærpreget og lett salt. Holder 3 dager i kjøleskapet."
+          ],
+          "notes": "Appelsinjuice gjør at denne ikke er uten tilsatt sukker — det er ærlig. Slik kan du bruke den: asiatisk slaw; nudelbowler; bakt tofu; dampede grønnsaker. Holder 3 dager i kjøleskapet.",
+          "portion": "~31 g (2�3 ss)"
+        },
+        "sv": {
+          "title": "Sesam-ingefära-apelsinadressing",
+          "description": "Frisk oljefri dressing av apelsinjuice, sojasås / tamari, färsk ingefära, vitlök och rostade sesamfrön, spädd med en sked tahini.",
+          "ingredients": [
+            {
+              "quantity": 80,
+              "unit": "ml",
+              "ingredient": "orange-juice",
+              "name": "Apelsinjuice",
+              "note": "färsk om möjligt"
+            },
+            {
+              "quantity": 1.5,
+              "unit": "tbsp",
+              "ingredient": "soy-sauce",
+              "name": "Sojasås"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "ginger-fresh",
+              "name": "Färsk ingefära",
+              "note": "skalad, finriven"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "sesame-seeds",
+              "name": "Sesamfrön",
+              "note": "rostade"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "tahini",
+              "name": "Tahini",
+              "note": "för fyllighet"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "efter behov"
+            }
+          ],
+          "steps": [
+            "Rosta sesamfröna i en torr panna tills de doftar, häll sedan över på en kall tallrik.",
+            "Mixa apelsinjuice, sojasås, ingefära, vitlök, tahini och det mesta av den rostade sesamen till slät. Spara en nypa frön till topping.",
+            "Späd med vatten vid behov. Smaka av — frisk, ingefärsrik och lätt salt. Håller 3 dagar i kylen."
+          ],
+          "notes": "Apelsinjuice gör att denna inte är utan tillsatt socker — det är ärligt. Så kan du använda den: asiatisk slaw; nudelbowls; bakad tofu; ångade grönsaker. Håller 3 dagar i kylen.",
+          "portion": "~31 g (2�3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 41,
+          "protein": 1.4,
+          "totalFat": 2.7,
+          "saturatedFat": 0.4,
+          "polyunsaturatedFat": 1.2,
+          "monounsaturatedFat": 0.99,
+          "omega3": 0.02,
+          "omega6": 1.1,
+          "cholesterol": 0,
+          "totalCarbs": 3.4,
+          "totalSugars": 1.3,
+          "addedSugar": 1.2,
+          "fiber": 0.7,
+          "calcium": 40,
+          "potassium": 81,
+          "copper": 0.16,
+          "iron": 0.7,
+          "magnesium": 16,
+          "manganese": 0.13,
+          "selenium": 1.9,
+          "phosphorus": 43,
+          "zinc": 0.35,
+          "sodium": 230,
+          "vitaminA": 1.5,
+          "vitaminB6": 0.05,
+          "vitaminB12": 0,
+          "vitaminC": 7.3,
+          "vitaminD": 0,
+          "vitaminE": 0.03,
+          "vitaminK": 0.03,
+          "folate": 10,
+          "thiamin": 0.07,
+          "riboflavin": 0.03,
+          "niacin": 0.49,
+          "choline": 4.6
+        }
+      },
+      "createdAt": 1793594242465
+    },
+    {
+      "id": "fr-207",
+      "title": "Creamy dill and lemon dressing",
+      "category": "Sauce",
+      "servings": 10,
+      "portion": "~37 g (2–3 tbsp)",
+      "prepTime": 10,
+      "cookTime": 0,
+      "imageUrl": "/pack-images/fr-207.jpg",
+      "description": "Scandinavian oil-free dressing of white beans and unsweetened plant yogurt with lots of fresh dill, lemon, a date and chives.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "gluten-free",
+        "nut-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 27,
+      "servingWeightGrams": 37,
+      "ingredients": [
+        {
+          "quantity": 150,
+          "unit": "g",
+          "ingredient": "white-beans-canned",
+          "name": "White beans (cannellini), canned",
+          "note": "drained and rinsed"
+        },
+        {
+          "quantity": 120,
+          "unit": "g",
+          "ingredient": "plant-yogurt",
+          "name": "Plant-based yogurt",
+          "note": "plain, unsweetened"
+        },
+        {
+          "quantity": 20,
+          "unit": "g",
+          "ingredient": "dill",
+          "name": "Dill",
+          "note": "fresh; set a little aside for topping"
+        },
+        {
+          "quantity": 2,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
+        },
+        {
+          "quantity": 10,
+          "unit": "g",
+          "ingredient": "dates-dried",
+          "name": "Dried dates",
+          "note": "1 small pitted date"
+        },
+        {
+          "quantity": 10,
+          "unit": "g",
+          "ingredient": "chives",
+          "name": "Chives",
+          "note": "fresh, chopped"
+        },
+        {
+          "quantity": 30,
+          "unit": "ml",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "as needed"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.75
+        }
+      ],
+      "steps": [
+        "Blend white beans, plant yogurt, most of the dill, lemon juice, the date, chives, salt and a splash of water until smooth and pale green-flecked.",
+        "Taste — it should taste of dill and lemon first. Loosen only if needed.",
+        "Serve topped with the reserved dill. Keeps 3 days refrigerated."
+      ],
+      "notes": "Use plain unsweetened plant yogurt only. Ways to use it: boiled potatoes; beetroot salad; cucumber salad; warm lentils. Keeps 3 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Kremet dill- og sitrondressing",
+          "description": "Skandinavisk oljefri dressing av hvite bønner og usøtet planteyoghurt med masse fersk dill, sitron, en dadle og gressløk.",
+          "ingredients": [
+            {
+              "quantity": 150,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Hvite bønner (cannellini), hermetiske",
+              "note": "avrent og skylt"
+            },
+            {
+              "quantity": 120,
+              "unit": "g",
+              "ingredient": "plant-yogurt",
+              "name": "Plantebasert yoghurt",
+              "note": "naturell, usøtet"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "dill",
+              "name": "Dill",
+              "note": "fersk; sett litt til side til topping"
+            },
+            {
+              "quantity": 2,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "dates-dried",
+              "name": "Tørkede dadler",
+              "note": "1 liten dadle uten stein"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "chives",
+              "name": "Gressløk",
+              "note": "fersk, hakket"
+            },
+            {
+              "quantity": 30,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "etter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Kjør hvite bønner, planteyoghurt, det meste av dillen, sitronsaft, dadlen, gressløk, salt og en skvett vann til jevn med lysegrønne flekker.",
+            "Smak til — den skal smake dill og sitron først. Løsne bare om nødvendig.",
+            "Server med den avsatte dillen på toppen. Holder 3 dager i kjøleskapet."
+          ],
+          "notes": "Bruk bare naturell usøtet planteyoghurt. Slik kan du bruke den: kokte poteter; rødbetesalat; agurksalat; varme linser. Holder 3 dager i kjøleskapet.",
+          "portion": "~37 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Krämig dill- och citrondressing",
+          "description": "Skandinavisk oljefri dressing av vita bönor och osötad växtyoghurt med mycket färsk dill, citron, en dadel och gräslök.",
+          "ingredients": [
+            {
+              "quantity": 150,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Vita bönor (cannellini) på burk",
+              "note": "avrunna och sköljda"
+            },
+            {
+              "quantity": 120,
+              "unit": "g",
+              "ingredient": "plant-yogurt",
+              "name": "Växtbaserad yoghurt",
+              "note": "naturell, osötad"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "dill",
+              "name": "Dill",
+              "note": "färsk; spara lite till topping"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "dates-dried",
+              "name": "Torkade dadlar",
+              "note": "1 liten urkärnad dadel"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "chives",
+              "name": "Gräslök",
+              "note": "färsk, hackad"
+            },
+            {
+              "quantity": 30,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "efter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Mixa vita bönor, växtyoghurt, det mesta av dillen, citronsaft, dadeln, gräslök, salt och en skvätt vatten till slät med ljusgröna fläckar.",
+            "Smaka av — den ska smaka dill och citron först. Späd bara vid behov.",
+            "Servera toppad med den sparade dillen. Håller 3 dagar i kylen."
+          ],
+          "notes": "Använd bara naturell osötad växtyoghurt. Så kan du använda den: kokt potatis; rödbetssallad; gurksallad; varma linser. Håller 3 dagar i kylen.",
+          "portion": "~37 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 27,
+          "protein": 1.7,
+          "totalFat": 0.4,
+          "saturatedFat": 0.1,
+          "polyunsaturatedFat": 0.18,
+          "monounsaturatedFat": 0.09,
+          "omega3": 0.04,
+          "omega6": 0.14,
+          "cholesterol": 0,
+          "totalCarbs": 4.3,
+          "totalSugars": 1,
+          "addedSugar": 0,
+          "fiber": 1.1,
+          "calcium": 19,
+          "potassium": 94,
+          "copper": 0.06,
+          "iron": 0.66,
+          "magnesium": 12,
+          "manganese": 0.11,
+          "selenium": 0.33,
+          "phosphorus": 24,
+          "zinc": 0.24,
+          "sodium": 150,
+          "vitaminA": 9.9,
+          "vitaminB6": 0.03,
+          "vitaminB12": 0,
+          "vitaminC": 3.4,
+          "vitaminD": 0,
+          "vitaminE": 0.13,
+          "vitaminK": 2.8,
+          "folate": 17,
+          "thiamin": 0.02,
+          "riboflavin": 0.04,
+          "niacin": 0.1,
+          "choline": 6.4
+        },
+        "sodiumStandard": 208
+      },
+      "createdAt": 1793594242465
     }
   ],
   "updatedAt": "2026-11-01T13:21:29.319Z"
