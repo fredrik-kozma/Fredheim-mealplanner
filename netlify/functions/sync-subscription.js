@@ -1,10 +1,11 @@
-// POST /api/sync-subscription
+﻿// POST /api/sync-subscription
 // Called from the frontend after checkout completes (?checkout=success).
 // Looks up the Stripe subscription for this customer and syncs status to Supabase.
 // This is a reliable fallback in case the webhook is delayed or missed.
 
 const Stripe = require('stripe')
 const { createClient } = require('@supabase/supabase-js')
+const { shouldApplyStripeProfileUpdate } = require('./lib/revenuecatWebhookLogic.cjs')
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -26,7 +27,7 @@ exports.handler = async (event) => {
     // Get the Stripe customer ID from Supabase
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
-      .select('stripe_customer_id')
+      .select('stripe_customer_id, subscription_status, subscription_source, rc_expires_at, current_period_end')
       .eq('id', userId)
       .single()
 
@@ -69,7 +70,15 @@ exports.handler = async (event) => {
       current_period_end:  sub.current_period_end
         ? new Date(sub.current_period_end * 1000).toISOString()
         : null,
+      subscription_source: 'stripe',
       updated_at: new Date().toISOString(),
+    }
+
+    if (!shouldApplyStripeProfileUpdate(profile, update.subscription_status)) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ synced: false, reason: 'Active Google Play entitlement' }),
+      }
     }
 
     const { error: updateError } = await supabase
@@ -91,3 +100,5 @@ exports.handler = async (event) => {
     return { statusCode: 500, body: JSON.stringify({ error: err.message }) }
   }
 }
+
+

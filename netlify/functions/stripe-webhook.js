@@ -1,9 +1,10 @@
-// POST /api/stripe-webhook
+﻿// POST /api/stripe-webhook
 // Stripe calls this automatically after every subscription event.
 // We verify the signature and update the user's profile in Supabase.
 
 const Stripe = require('stripe')
 const { createClient } = require('@supabase/supabase-js')
+const { shouldApplyStripeProfileUpdate } = require('./lib/revenuecatWebhookLogic.cjs')
 
 function mapStatus(stripeStatus) {
   const map = {
@@ -26,7 +27,7 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' }
   }
 
-  // ── Initialise clients inside the handler so env vars are definitely loaded ─
+  // â”€â”€ Initialise clients inside the handler so env vars are definitely loaded â”€
   const stripeSecretKey = process.env.STRIPE_SECRET_KEY
   const webhookSecret   = process.env.STRIPE_WEBHOOK_SECRET
   const supabaseUrl     = process.env.VITE_SUPABASE_URL
@@ -47,7 +48,7 @@ exports.handler = async (event) => {
   const stripe   = Stripe(stripeSecretKey)
   const supabase = createClient(supabaseUrl, serviceRoleKey)
 
-  // ── Verify Stripe signature ────────────────────────────────────────────────
+  // â”€â”€ Verify Stripe signature â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let stripeEvent
   try {
     stripeEvent = stripe.webhooks.constructEvent(
@@ -61,7 +62,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: `Webhook Error: ${err.message}` }
   }
 
-  // ── Handle events ──────────────────────────────────────────────────────────
+  // â”€â”€ Handle events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   try {
     async function upsertProfile(subscription) {
       console.log('stripe-webhook: upsertProfile subscription.id:', subscription.id)
@@ -70,7 +71,7 @@ exports.handler = async (event) => {
 
       const uid = subscription.metadata?.supabase_uid
       if (!uid) {
-        console.warn('stripe-webhook: no supabase_uid in subscription metadata — skipping update')
+        console.warn('stripe-webhook: no supabase_uid in subscription metadata â€” skipping update')
         return
       }
 
@@ -80,7 +81,20 @@ exports.handler = async (event) => {
         current_period_end:  subscription.current_period_end
           ? new Date(subscription.current_period_end * 1000).toISOString()
           : null,
+        subscription_source: 'stripe',
         updated_at: new Date().toISOString(),
+      }
+
+      // Do not let a Stripe cancel/past_due wipe an active Google Play entitlement.
+      const { data: existing } = await supabase
+        .from('profiles')
+        .select('subscription_status, subscription_source, rc_expires_at, current_period_end')
+        .eq('id', uid)
+        .maybeSingle()
+
+      if (!shouldApplyStripeProfileUpdate(existing, update.subscription_status)) {
+        console.log('stripe-webhook: skip update â€” active Google Play entitlement for', uid)
+        return
       }
 
       console.log('stripe-webhook: updating profile', uid, update)
@@ -126,3 +140,5 @@ exports.handler = async (event) => {
 
   return { statusCode: 200, body: JSON.stringify({ received: true }) }
 }
+
+
