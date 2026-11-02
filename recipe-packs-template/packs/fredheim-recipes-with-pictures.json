@@ -3,7 +3,7 @@
   "name": "Fredheim Kitchen",
   "description": "Everyday Fredheim recipes, with photos.",
   "author": "Fredheim",
-  "version": "1.101.0",
+  "version": "1.105.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -60490,6 +60490,1160 @@
         "sodiumStandard": 208
       },
       "createdAt": 1793594242465
+    },
+    {
+      "id": "fr-208",
+      "title": "Subway-style sweet onion sauce",
+      "category": "Sauce",
+      "servings": 10,
+      "portion": "~54 g (2–3 tbsp)",
+      "prepTime": 10,
+      "cookTime": 20,
+      "imageUrl": "/pack-images/fr-208.jpg",
+      "description": "Oil-free recreation of Subway’s classic sweet onion sauce: soft onions, dates, lemon and poppy seeds — glossy, tangy and onion-forward (not teriyaki).",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "gluten-free",
+        "nut-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 37,
+      "servingWeightGrams": 54,
+      "ingredients": [
+        {
+          "quantity": 250,
+          "unit": "g",
+          "ingredient": "onions",
+          "name": "Onions",
+          "note": "finely chopped"
+        },
+        {
+          "quantity": 70,
+          "unit": "g",
+          "ingredient": "dates-dried",
+          "name": "Dried dates",
+          "note": "pitted; soak 10 min if hard, then drain"
+        },
+        {
+          "quantity": 3,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice",
+          "note": "~45 ml"
+        },
+        {
+          "quantity": 1.5,
+          "unit": "tsp",
+          "ingredient": "onion-powder",
+          "name": "Onion powder"
+        },
+        {
+          "quantity": 1,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
+        },
+        {
+          "quantity": 1,
+          "unit": "tbsp",
+          "ingredient": "cornstarch",
+          "name": "Cornstarch",
+          "note": "mixed with 2 tbsp cold water"
+        },
+        {
+          "quantity": 1,
+          "unit": "tsp",
+          "ingredient": "poppy-seeds",
+          "name": "Poppy seeds"
+        },
+        {
+          "quantity": 150,
+          "unit": "ml",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "for sautéing and thinning"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.75
+        }
+      ],
+      "steps": [
+        "Water-sauté the chopped onion in a splash of the water over medium heat for 12–15 minutes until very soft and sweet, adding water so nothing sticks. Cool slightly.",
+        "Blend the soft onion with dates, lemon juice, onion powder, garlic, salt and most of the remaining water until smooth and glossy.",
+        "Pour into a small pan. Stir in the cornstarch slurry and simmer 1–2 minutes until lightly thickened. Stir in the poppy seeds off the heat.",
+        "Taste — it should be sweet-onion first, then lemon. Loosen with water if needed. Keeps 5 days refrigerated."
+      ],
+      "notes": "This copies the in-store Sweet Onion (poppy seeds, onion-forward), not the bottled Sweet Onion Teriyaki. Ways to use it: tofu or chickpea veggie subs; wraps with lettuce and tomato; drizzle on roasted veg. Keeps 5 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Subway-inspirert søt løksaus",
+          "description": "Oljefri gjenskaping av Subways klassiske søte løksaus: myk løk, dadler, sitron og valmuefrø — blank, syrlig og løkpreget (ikke teriyaki).",
+          "ingredients": [
+            {
+              "quantity": 250,
+              "unit": "g",
+              "ingredient": "onions",
+              "name": "Løk",
+              "note": "finhakket"
+            },
+            {
+              "quantity": 70,
+              "unit": "g",
+              "ingredient": "dates-dried",
+              "name": "Tørkede dadler",
+              "note": "uten stein; bløtlegg 10 min hvis harde, hell av"
+            },
+            {
+              "quantity": 3,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft",
+              "note": "~45 ml"
+            },
+            {
+              "quantity": 1.5,
+              "unit": "ts",
+              "ingredient": "onion-powder",
+              "name": "Løkpulver"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
+            },
+            {
+              "quantity": 1,
+              "unit": "ss",
+              "ingredient": "cornstarch",
+              "name": "Maisstivelse",
+              "note": "rørt ut med 2 ss kaldt vann"
+            },
+            {
+              "quantity": 1,
+              "unit": "ts",
+              "ingredient": "poppy-seeds",
+              "name": "Valmuefrø"
+            },
+            {
+              "quantity": 150,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "til sautering og tynning"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Sauter den hakkede løken i en skvett av vannet på middels varme i 12–15 minutter til den er helt myk og søt; tilsett vann så det ikke svir. Avkjøl litt.",
+            "Kjør den myke løken med dadler, sitronsaft, løkpulver, hvitløk, salt og det meste av resten av vannet til jevn og blank.",
+            "Hell i en liten kjele. Rør inn maisslurryen og kok opp 1–2 minutter til den tykner lett. Rør inn valmuefrøene utenfor platen.",
+            "Smak til — først søt løk, deretter sitron. Løsne med vann om nødvendig. Holder 5 dager i kjøleskapet."
+          ],
+          "notes": "Dette følger den klassiske søte løksausen i butikken (valmuefrø, løkpreget), ikke flasken Sweet Onion Teriyaki. Slik kan du bruke den: tofu- eller kikertsubs; wrap med salat og tomat; over ovnsbakte grønnsaker. Holder 5 dager i kjøleskapet.",
+          "portion": "~54 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Subway-inspirerad söt löksås",
+          "description": "Oljefri återskapning av Subways klassiska söta löksås: mjuk lök, dadlar, citron och vallmofrön — blank, syrlig och lökig (inte teriyaki).",
+          "ingredients": [
+            {
+              "quantity": 250,
+              "unit": "g",
+              "ingredient": "onions",
+              "name": "Lök",
+              "note": "finhackad"
+            },
+            {
+              "quantity": 70,
+              "unit": "g",
+              "ingredient": "dates-dried",
+              "name": "Torkade dadlar",
+              "note": "utan kärnor; blötlägg 10 min om hårda, häll av"
+            },
+            {
+              "quantity": 3,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft",
+              "note": "~45 ml"
+            },
+            {
+              "quantity": 1.5,
+              "unit": "tsp",
+              "ingredient": "onion-powder",
+              "name": "Lökpulver"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
+            },
+            {
+              "quantity": 1,
+              "unit": "tbsp",
+              "ingredient": "cornstarch",
+              "name": "Majsstärkelse",
+              "note": "rörd med 2 msk kallt vatten"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "ingredient": "poppy-seeds",
+              "name": "Vallmofrön"
+            },
+            {
+              "quantity": 150,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "för sautering och spädning"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Sautera den hackade löken i en skvätt av vattnet på medelvärme i 12–15 minuter tills mycket mjuk och söt; tillsätt vatten så det inte bränns. Låt svalna lite.",
+            "Mixa den mjuka löken med dadlar, citronsaft, lökpulver, vitlök, salt och det mesta av övriga vattnet till slät och blank.",
+            "Häll i en liten kastrull. Rör i majsslurryn och sjud 1–2 minuter tills den tjocknar lätt. Rör i vallmofröna av plattan.",
+            "Smaka av — först söt lök, sedan citron. Späd med vatten vid behov. Håller 5 dagar i kylen."
+          ],
+          "notes": "Detta följer den klassiska söta löksåsen i butiken (vallmofrön, lökig), inte flaskan Sweet Onion Teriyaki. Så kan du använda den: tofu- eller kikärtssubs; wrap med sallad och tomat; över ugnsrostade grönsaker. Håller 5 dagar i kylen.",
+          "portion": "~54 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 37,
+          "protein": 0.6,
+          "totalFat": 0.2,
+          "saturatedFat": 0,
+          "polyunsaturatedFat": 0.09,
+          "monounsaturatedFat": 0.02,
+          "omega3": 0,
+          "omega6": 0.09,
+          "cholesterol": 0,
+          "totalCarbs": 9.1,
+          "totalSugars": 5.6,
+          "addedSugar": 0,
+          "fiber": 1.1,
+          "calcium": 15,
+          "potassium": 94,
+          "copper": 0.03,
+          "iron": 0.18,
+          "magnesium": 7.3,
+          "manganese": 0.08,
+          "selenium": 0.49,
+          "phosphorus": 16,
+          "zinc": 0.1,
+          "sodium": 118,
+          "vitaminA": 0.05,
+          "vitaminB6": 0.05,
+          "vitaminB12": 0,
+          "vitaminC": 3.8,
+          "vitaminD": 0,
+          "vitaminE": 0.02,
+          "vitaminK": 0.31,
+          "folate": 7.8,
+          "thiamin": 0.02,
+          "riboflavin": 0.01,
+          "niacin": 0.13,
+          "choline": 2.4
+        },
+        "sodiumStandard": 176
+      },
+      "createdAt": 1793595212451
+    },
+    {
+      "id": "fr-209",
+      "title": "Subway-style creamy ranch",
+      "category": "Sauce",
+      "servings": 10,
+      "portion": "~41 g (2–3 tbsp)",
+      "prepTime": 15,
+      "cookTime": 0,
+      "imageUrl": "/pack-images/fr-209.jpg",
+      "description": "Oil-free ranch-style sandwich sauce of white beans and unsweetened plant yogurt with dill, chives, parsley, garlic, onion powder and lemon.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "gluten-free",
+        "nut-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 29,
+      "servingWeightGrams": 41,
+      "ingredients": [
+        {
+          "quantity": 180,
+          "unit": "g",
+          "ingredient": "white-beans-canned",
+          "name": "White beans (cannellini), canned",
+          "note": "drained and rinsed"
+        },
+        {
+          "quantity": 120,
+          "unit": "g",
+          "ingredient": "plant-yogurt",
+          "name": "Plant-based yogurt",
+          "note": "plain, unsweetened"
+        },
+        {
+          "quantity": 10,
+          "unit": "g",
+          "ingredient": "dill",
+          "name": "Dill",
+          "note": "fresh"
+        },
+        {
+          "quantity": 10,
+          "unit": "g",
+          "ingredient": "chives",
+          "name": "Chives",
+          "note": "fresh"
+        },
+        {
+          "quantity": 8,
+          "unit": "g",
+          "ingredient": "parsley",
+          "name": "Parsley",
+          "note": "fresh"
+        },
+        {
+          "quantity": 1,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
+        },
+        {
+          "quantity": 1,
+          "unit": "tsp",
+          "ingredient": "onion-powder",
+          "name": "Onion powder"
+        },
+        {
+          "quantity": 2,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice",
+          "note": "~30 ml"
+        },
+        {
+          "quantity": 40,
+          "unit": "ml",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "as needed"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.75
+        }
+      ],
+      "steps": [
+        "Blend white beans, plant yogurt, dill, chives, parsley, garlic, onion powder, lemon juice, salt and most of the water until smooth and flecked with herbs.",
+        "Taste — herbal and tangy. Loosen with water until it spreads easily. Chill 20 minutes. Keeps 3 days refrigerated."
+      ],
+      "notes": "Dill, chives and onion powder carry the cool ranch profile (no sharp spice). Ways to use it: turkey-style tofu or chickpea wraps; lettuce-tomato-cucumber subs; as a dip for raw veg. Keeps 3 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Subway-inspirert kremet ranch",
+          "description": "Oljefri ranch-inspirert sandwichsaus av hvite bønner og usøtet planteyoghurt med dill, gressløk, persille, hvitløk, løkpulver og sitron.",
+          "ingredients": [
+            {
+              "quantity": 180,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Hvite bønner (cannellini), hermetiske",
+              "note": "avrent og skylt"
+            },
+            {
+              "quantity": 120,
+              "unit": "g",
+              "ingredient": "plant-yogurt",
+              "name": "Plantebasert yoghurt",
+              "note": "naturell, usøtet"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "dill",
+              "name": "Dill",
+              "note": "fersk"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "chives",
+              "name": "Gressløk",
+              "note": "fersk"
+            },
+            {
+              "quantity": 8,
+              "unit": "g",
+              "ingredient": "parsley",
+              "name": "Persille",
+              "note": "fersk"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
+            },
+            {
+              "quantity": 1,
+              "unit": "ts",
+              "ingredient": "onion-powder",
+              "name": "Løkpulver"
+            },
+            {
+              "quantity": 2,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft",
+              "note": "~30 ml"
+            },
+            {
+              "quantity": 40,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "etter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Kjør hvite bønner, planteyoghurt, dill, gressløk, persille, hvitløk, løkpulver, sitronsaft, salt og det meste av vannet til jevn med urteflekker.",
+            "Smak til — urtepreget og syrlig. Løsne med vann til den smøres lett. Avkjøl 20 minutter. Holder 3 dager i kjøleskapet."
+          ],
+          "notes": "Dill, gressløk og løkpulver gir den kjølige ranchpreget (uten skarp krydder). Slik kan du bruke den: tofu- eller kikertwraps; salat-tomat-agurk-subs; som dip til rå grønnsaker. Holder 3 dager i kjøleskapet.",
+          "portion": "~41 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Subway-inspirerad krämig ranch",
+          "description": "Oljefri ranch-inspirerad smörgåssås av vita bönor och osötad växtyoghurt med dill, gräslök, persilja, vitlök, lökpulver och citron.",
+          "ingredients": [
+            {
+              "quantity": 180,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Vita bönor (cannellini) på burk",
+              "note": "avrunna och sköljda"
+            },
+            {
+              "quantity": 120,
+              "unit": "g",
+              "ingredient": "plant-yogurt",
+              "name": "Växtbaserad yoghurt",
+              "note": "naturell, osötad"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "dill",
+              "name": "Dill",
+              "note": "färsk"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "chives",
+              "name": "Gräslök",
+              "note": "färsk"
+            },
+            {
+              "quantity": 8,
+              "unit": "g",
+              "ingredient": "parsley",
+              "name": "Persilja",
+              "note": "färsk"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "ingredient": "onion-powder",
+              "name": "Lökpulver"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft",
+              "note": "~30 ml"
+            },
+            {
+              "quantity": 40,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "efter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Mixa vita bönor, växtyoghurt, dill, gräslök, persilja, vitlök, lökpulver, citronsaft, salt och det mesta av vattnet till slät med örtfläckar.",
+            "Smaka av — örtig och syrlig. Späd med vatten tills den breds lätt. Kyl 20 minuter. Håller 3 dagar i kylen."
+          ],
+          "notes": "Dill, gräslök och lökpulver ger den svala ranchprofilen (utan skarp krydda). Så kan du använda den: tofu- eller kikärtswraps; sallad-tomat-gurka-subs; som dip till råa grönsaker. Håller 3 dagar i kylen.",
+          "portion": "~41 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 29,
+          "protein": 1.9,
+          "totalFat": 0.4,
+          "saturatedFat": 0.1,
+          "polyunsaturatedFat": 0.18,
+          "monounsaturatedFat": 0.08,
+          "omega3": 0.04,
+          "omega6": 0.15,
+          "cholesterol": 0,
+          "totalCarbs": 4.5,
+          "totalSugars": 0.4,
+          "addedSugar": 0,
+          "fiber": 1.2,
+          "calcium": 21,
+          "potassium": 99,
+          "copper": 0.06,
+          "iron": 0.74,
+          "magnesium": 13,
+          "manganese": 0.12,
+          "selenium": 0.41,
+          "phosphorus": 27,
+          "zinc": 0.28,
+          "sodium": 155,
+          "vitaminA": 9.4,
+          "vitaminB6": 0.03,
+          "vitaminB12": 0,
+          "vitaminC": 3.8,
+          "vitaminD": 0,
+          "vitaminE": 0.16,
+          "vitaminK": 16,
+          "folate": 19,
+          "thiamin": 0.03,
+          "riboflavin": 0.04,
+          "niacin": 0.08,
+          "choline": 7.6
+        },
+        "sodiumStandard": 213
+      },
+      "createdAt": 1793595212453
+    },
+    {
+      "id": "fr-210",
+      "title": "Subway-style garlic aioli",
+      "category": "Sauce",
+      "servings": 10,
+      "portion": "~37 g (2–3 tbsp)",
+      "prepTime": 15,
+      "cookTime": 0,
+      "imageUrl": "/pack-images/fr-210.jpg",
+      "description": "Oil-free Subway-style garlic aioli of white beans and a few cashews with plenty of garlic and lemon. Distinct from the classic fr-1 Aioli.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "gluten-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 48,
+      "servingWeightGrams": 37,
+      "ingredients": [
+        {
+          "quantity": 200,
+          "unit": "g",
+          "ingredient": "white-beans-canned",
+          "name": "White beans (cannellini), canned",
+          "note": "drained and rinsed"
+        },
+        {
+          "quantity": 40,
+          "unit": "g",
+          "ingredient": "cashews",
+          "name": "Cashews",
+          "note": "soaked 20 min in hot water, then drained"
+        },
+        {
+          "quantity": 4,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic",
+          "note": "raw; use 3 if you prefer milder"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "garlic-powder",
+          "name": "Garlic powder",
+          "note": "boosts the roasted-garlic echo"
+        },
+        {
+          "quantity": 3,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice",
+          "note": "~45 ml"
+        },
+        {
+          "quantity": 60,
+          "unit": "ml",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "cold; as needed"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.75
+        }
+      ],
+      "steps": [
+        "Soak the cashews in hot water for 20 minutes, then drain.",
+        "Blend white beans, cashews, garlic, garlic powder, lemon juice, salt and most of the water until very thick and smooth.",
+        "Taste — garlic should lead. Loosen only until it spreads. Firmer after chilling. Keeps 4 days refrigerated."
+      ],
+      "notes": "Different from fr-1 Aioli (which uses oil and mustard seeds). Ways to use it: club-style tofu or mushroom subs; potato wedges; tomato-lettuce sandwiches. Keeps 4 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Subway-inspirert hvitløksaioli",
+          "description": "Oljefri Subway-inspirert hvitløksaioli av hvite bønner og litt cashew med rikelig hvitløk og sitron. Skiller seg fra den klassiske fr-1 Aioli.",
+          "ingredients": [
+            {
+              "quantity": 200,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Hvite bønner (cannellini), hermetiske",
+              "note": "avrent og skylt"
+            },
+            {
+              "quantity": 40,
+              "unit": "g",
+              "ingredient": "cashews",
+              "name": "Cashewnøtter",
+              "note": "bløtlagt 20 min i varmt vann, deretter avrent"
+            },
+            {
+              "quantity": 4,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk",
+              "note": "rå; bruk 3 hvis du vil ha mildere"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "garlic-powder",
+              "name": "Hvitløkspulver",
+              "note": "forsterker hvitløkspreget"
+            },
+            {
+              "quantity": 3,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft",
+              "note": "~45 ml"
+            },
+            {
+              "quantity": 60,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "kaldt; etter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Bløtlegg cashewnøttene i varmt vann i 20 minutter, hell deretter av.",
+            "Kjør hvite bønner, cashewnøtter, hvitløk, hvitløkspulver, sitronsaft, salt og det meste av vannet til veldig tykk og jevn.",
+            "Smak til — hvitløk skal dominere. Løsne bare til den smøres. Fastner seg i kjøleskapet. Holder 4 dager."
+          ],
+          "notes": "Annerledes enn fr-1 Aioli (som bruker olje og sennepsfrø). Slik kan du bruke den: club-inspirerte tofu- eller soppsubs; potetbåter; tomat-salatsandwich. Holder 4 dager i kjøleskapet.",
+          "portion": "~37 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Subway-inspirerad vitlöksaioli",
+          "description": "Oljefri Subway-inspirerad vitlöksaioli av vita bönor och lite cashew med rikligt vitlök och citron. Skiljer sig från den klassiska fr-1 Aioli.",
+          "ingredients": [
+            {
+              "quantity": 200,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Vita bönor (cannellini) på burk",
+              "note": "avrunna och sköljda"
+            },
+            {
+              "quantity": 40,
+              "unit": "g",
+              "ingredient": "cashews",
+              "name": "Cashewnötter",
+              "note": "blötlagda 20 min i hett vatten, sedan avrunna"
+            },
+            {
+              "quantity": 4,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök",
+              "note": "rå; använd 3 om du vill ha mildare"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "garlic-powder",
+              "name": "Vitlökspulver",
+              "note": "förstärker vitlöksprofilen"
+            },
+            {
+              "quantity": 3,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft",
+              "note": "~45 ml"
+            },
+            {
+              "quantity": 60,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "kallt; efter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Blötlägg cashewnötterna i hett vatten i 20 minuter, häll sedan av.",
+            "Mixa vita bönor, cashewnötter, vitlök, vitlökspulver, citronsaft, salt och det mesta av vattnet till mycket tjock och slät.",
+            "Smaka av — vitlök ska leda. Späd bara tills den breds. Fastnar i kylen. Håller 4 dagar."
+          ],
+          "notes": "Annorlunda än fr-1 Aioli (som använder olja och senapsfrön). Så kan du använda den: club-inspirerade tofu- eller svampsubs; potatisklyftor; tomat-salladsmörgåsar. Håller 4 dagar i kylen.",
+          "portion": "~37 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 48,
+          "protein": 2.3,
+          "totalFat": 1.9,
+          "saturatedFat": 0.3,
+          "polyunsaturatedFat": 0.34,
+          "monounsaturatedFat": 0.96,
+          "omega3": 0.02,
+          "omega6": 0.33,
+          "cholesterol": 0,
+          "totalCarbs": 6.1,
+          "totalSugars": 0.4,
+          "addedSugar": 0,
+          "fiber": 1.3,
+          "calcium": 19,
+          "potassium": 109,
+          "copper": 0.14,
+          "iron": 0.9,
+          "magnesium": 23,
+          "manganese": 0.18,
+          "selenium": 1.3,
+          "phosphorus": 45,
+          "zinc": 0.49,
+          "sodium": 147,
+          "vitaminA": 0.05,
+          "vitaminB6": 0.06,
+          "vitaminB12": 0,
+          "vitaminC": 2.3,
+          "vitaminD": 0,
+          "vitaminE": 0.17,
+          "vitaminK": 1.9,
+          "folate": 16,
+          "thiamin": 0.04,
+          "riboflavin": 0.01,
+          "niacin": 0.08,
+          "choline": 9.7
+        },
+        "sodiumStandard": 205
+      },
+      "createdAt": 1793595212453
+    },
+    {
+      "id": "fr-211",
+      "title": "Subway-style smoky southwest sauce",
+      "category": "Sauce",
+      "servings": 10,
+      "portion": "~47 g (2–3 tbsp)",
+      "prepTime": 15,
+      "cookTime": 35,
+      "imageUrl": "/pack-images/fr-211.jpg",
+      "description": "Oil-free smoky southwest sandwich sauce of roasted red bell pepper, white beans, smoked paprika, cumin, garlic and lemon — smoke kept, heat skipped.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "gluten-free",
+        "nut-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 25,
+      "servingWeightGrams": 47,
+      "ingredients": [
+        {
+          "quantity": 250,
+          "unit": "g",
+          "ingredient": "bell-peppers",
+          "name": "Bell peppers",
+          "note": "red; roast whole, then peel and deseed"
+        },
+        {
+          "quantity": 120,
+          "unit": "g",
+          "ingredient": "white-beans-canned",
+          "name": "White beans (cannellini), canned",
+          "note": "drained and rinsed"
+        },
+        {
+          "quantity": 1.5,
+          "unit": "tsp",
+          "ingredient": "smoked-paprika",
+          "name": "Smoked paprika"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "cumin-ground",
+          "name": "Cumin, ground"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "oregano-dried",
+          "name": "Oregano, dried"
+        },
+        {
+          "quantity": 1,
+          "unit": "tsp",
+          "ingredient": "onion-powder",
+          "name": "Onion powder"
+        },
+        {
+          "quantity": 1,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
+        },
+        {
+          "quantity": 15,
+          "unit": "g",
+          "ingredient": "tomato-puree",
+          "name": "Tomato purée"
+        },
+        {
+          "quantity": 2,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice",
+          "note": "~30 ml"
+        },
+        {
+          "quantity": 40,
+          "unit": "ml",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "as needed"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.75
+        }
+      ],
+      "steps": [
+        "Roast the whole peppers at 220 °C for 30–35 minutes until blistered. Cool, peel and deseed.",
+        "Blend roasted peppers with white beans, smoked paprika, cumin, oregano, onion powder, garlic, tomato purée, lemon juice, salt and most of the water until creamy.",
+        "Taste — smoky and zesty. Loosen if needed. Keeps 4 days refrigerated."
+      ],
+      "notes": "Smoke from smoked paprika only. Ways to use it: southwest veggie subs with beans and greens; burrito-style wraps; as a dip for roasted sweet potato. Keeps 4 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Subway-inspirert røkt southwest-saus",
+          "description": "Oljefri røkt southwest-sandwichsaus av stekt rød paprika, hvite bønner, røkt paprika, spisskummen, hvitløk og sitron — røykpreg beholdt, sterkhet utelatt.",
+          "ingredients": [
+            {
+              "quantity": 250,
+              "unit": "g",
+              "ingredient": "bell-peppers",
+              "name": "Paprika",
+              "note": "rød; stek hele, skrell og fjern frø"
+            },
+            {
+              "quantity": 120,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Hvite bønner (cannellini), hermetiske",
+              "note": "avrent og skylt"
+            },
+            {
+              "quantity": 1.5,
+              "unit": "ts",
+              "ingredient": "smoked-paprika",
+              "name": "Røkt paprika"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "cumin-ground",
+              "name": "Spisskummen, malt"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "oregano-dried",
+              "name": "Oregano, tørket"
+            },
+            {
+              "quantity": 1,
+              "unit": "ts",
+              "ingredient": "onion-powder",
+              "name": "Løkpulver"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "tomato-puree",
+              "name": "Tomatpuré"
+            },
+            {
+              "quantity": 2,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft",
+              "note": "~30 ml"
+            },
+            {
+              "quantity": 40,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "etter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Stek paprikene hele på 220 °C i 30–35 minutter til skallet blister. Avkjøl, skrell og fjern frø.",
+            "Kjør stekt paprika med hvite bønner, røkt paprika, spisskummen, oregano, løkpulver, hvitløk, tomatpuré, sitronsaft, salt og det meste av vannet til kremet.",
+            "Smak til — røkt og friskt. Løsne om nødvendig. Holder 4 dager i kjøleskapet."
+          ],
+          "notes": "Røykpreg kun fra røkt paprika. Slik kan du bruke den: southwest-grønnsakssubs med bønner og salat; burrito-wraps; dip til ovnsbakt søtpotet. Holder 4 dager i kjøleskapet.",
+          "portion": "~47 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Subway-inspirerad rökt southwest-sås",
+          "description": "Oljefri rökt southwest-smörgåssås av rostade röda paprikor, vita bönor, rökt paprika, spiskummin, vitlök och citron — rökighet kvar, starkhet utelämnad.",
+          "ingredients": [
+            {
+              "quantity": 250,
+              "unit": "g",
+              "ingredient": "bell-peppers",
+              "name": "Paprika",
+              "note": "röd; rosta hela, skala och kärna ur"
+            },
+            {
+              "quantity": 120,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Vita bönor (cannellini) på burk",
+              "note": "avrunna och sköljda"
+            },
+            {
+              "quantity": 1.5,
+              "unit": "tsp",
+              "ingredient": "smoked-paprika",
+              "name": "Rökt paprika"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "cumin-ground",
+              "name": "Spiskummin, malen"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "oregano-dried",
+              "name": "Oregano, torkad"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "ingredient": "onion-powder",
+              "name": "Lökpulver"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "tomato-puree",
+              "name": "Tomatpuré"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft",
+              "note": "~30 ml"
+            },
+            {
+              "quantity": 40,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "efter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Rosta paprikorna hela i 220 °C i 30–35 minuter tills skalet blister. Kyl, skala och kärna ur.",
+            "Mixa rostade paprikor med vita bönor, rökt paprika, spiskummin, oregano, lökpulver, vitlök, tomatpuré, citronsaft, salt och det mesta av vattnet till krämig.",
+            "Smaka av — rökig och pigg. Späd vid behov. Håller 4 dagar i kylen."
+          ],
+          "notes": "Rökighet endast från rökt paprika. Så kan du använda den: southwest-grönsakssubs med bönor och sallad; burritowraps; dip till ugnsrostad sötpotatis. Håller 4 dagar i kylen.",
+          "portion": "~47 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 25,
+          "protein": 1.3,
+          "totalFat": 0.2,
+          "saturatedFat": 0,
+          "polyunsaturatedFat": 0.07,
+          "monounsaturatedFat": 0.03,
+          "omega3": 0.02,
+          "omega6": 0.05,
+          "cholesterol": 0,
+          "totalCarbs": 4.9,
+          "totalSugars": 1.4,
+          "addedSugar": 0,
+          "fiber": 1.4,
+          "calcium": 15,
+          "potassium": 127,
+          "copper": 0.05,
+          "iron": 0.69,
+          "magnesium": 11,
+          "manganese": 0.1,
+          "selenium": 0.35,
+          "phosphorus": 22,
+          "zinc": 0.25,
+          "sodium": 137,
+          "vitaminA": 49,
+          "vitaminB6": 0.1,
+          "vitaminB12": 0,
+          "vitaminC": 34,
+          "vitaminD": 0,
+          "vitaminE": 0.65,
+          "vitaminK": 2.3,
+          "folate": 21,
+          "thiamin": 0.03,
+          "riboflavin": 0.04,
+          "niacin": 0.35,
+          "choline": 6.6
+        },
+        "sodiumStandard": 195
+      },
+      "createdAt": 1793595212453
     }
   ],
   "updatedAt": "2026-11-01T13:21:29.319Z"

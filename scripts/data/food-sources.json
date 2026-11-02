@@ -5117,6 +5117,21 @@
       },
       "matvaretabellen": null,
       "preferred": "USDA-SR"
+    },
+    "poppy-seeds": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "171330",
+        "name": "Spices, poppy seed"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 171330,
+        "name": "Spices, poppy seed",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
     }
   }
 }

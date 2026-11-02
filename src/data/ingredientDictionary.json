@@ -993,6 +993,32 @@
       }
     },
     {
+      "id": "poppy-seeds",
+      "aisle": "Canned & Dried",
+      "preferredUnit": "tsp",
+      "spoonGrams": {
+        "gPerTsp": 2.8
+      },
+      "names": {
+        "en": "Poppy seeds",
+        "no": "Valmuefrø",
+        "sv": "Vallmofrön"
+      },
+      "synonyms": {
+        "en": [
+          "poppyseed",
+          "blue poppy seeds"
+        ],
+        "no": [
+          "valmuefrø"
+        ],
+        "sv": [
+          "vallmofrö",
+          "blåvallmo"
+        ]
+      }
+    },
+    {
       "id": "potatoes",
       "aisle": "Produce",
       "preferredUnit": "g",
