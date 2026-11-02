@@ -3,7 +3,7 @@
   "name": "Fredheim Kitchen",
   "description": "Everyday Fredheim recipes, with photos.",
   "author": "Fredheim",
-  "version": "1.89.0",
+  "version": "1.98.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -56075,7 +56075,7 @@
         "Blend the remaining seeds until fine first, then add the peas, garlic with lemon juice, lemon zest, mint and salt. Pulse, adding ice-cold water a little at a time, and keep some texture.",
         "Taste and adjust salt and lemon. Serve topped with the reserved seeds and a little lemon zest."
       ],
-      "notes": "Lemon zest gives freshness without extra sourness. Do not overcook the peas. Best the same day; press wrap onto the surface — keeps 2 days in the fridge. Great on crispbread or in a wrap with radishes.",
+      "notes": "Lemon zest gives freshness without extra sourness. Do not overcook the peas. Best the same day; press wrap onto the surface — keeps 2 days in the fridge. Great on crispbread or in a wrap with radishes. Ways to use it: on crispbread; in a wrap with radishes; as a dip for raw carrot and cucumber; dolloped on a grain bowl.",
       "translations": {
         "no": {
           "title": "Grønn ertepostei med ristede solsikkefrø",
@@ -56144,7 +56144,7 @@
             "Kjør først de resterende frøene fint i blenderen, tilsett deretter erter, hvitløk med sitronsaft, sitronskall, mynte og salt. Pulsér og tilsett iskaldt vann litt etter litt; behold litt tekstur.",
             "Smak til med salt og sitron. Server med de avsatte frøene og litt sitronskall på toppen."
           ],
-          "notes": "Sitronskal gir friskhet uten ekstra syrlighet. Ikke overkok ertene. Best samme dag; press plastfolie mot overflaten — holder 2 dager i kjøleskapet. God på knekkebrød eller i wrap med reddiker.",
+          "notes": "Sitronskal gir friskhet uten ekstra syrlighet. Ikke overkok ertene. Best samme dag; press plastfolie mot overflaten — holder 2 dager i kjøleskapet. God på knekkebrød eller i wrap med reddiker. Slik kan du bruke det: på knekkebrød; i wrap med reddiker; som dip til rå gulrot og agurk; som klick på en kornbolle.",
           "portion": "~96 g (2–3 ss)"
         },
         "sv": {
@@ -56214,7 +56214,7 @@
             "Mixa först de återstående fröna fint, tillsätt sedan ärtor, vitlök med citronsaft, citronskal, mynta och salt. Pulsera och tillsätt iskallt vatten lite i taget; behåll lite textur.",
             "Smaka av med salt och citron. Servera toppad med de sparade fröna och lite citronskal."
           ],
-          "notes": "Citronskal ger friskhet utan extra syrlighet. Överkoka inte ärtorna. Bäst samma dag; tryck plastfolie mot ytan — håller 2 dagar i kylen. Gott på knäckebröd eller i wrap med rädisor.",
+          "notes": "Citronskal ger friskhet utan extra syrlighet. Överkoka inte ärtorna. Bäst samma dag; tryck plastfolie mot ytan — håller 2 dagar i kylen. Gott på knäckebröd eller i wrap med rädisor. Så kan du använda den: på knäckebröd; i wrap med rädisor; som dip till rå morot och gurka; som klick på en spannmålsskål.",
           "portion": "~96 g (2–3 msk)"
         }
       },
@@ -56350,7 +56350,7 @@
         "Blend beetroot, remaining walnuts, garlic, lemon zest, lemon juice, most of the dill and salt until mostly smooth, adding a splash of water if needed.",
         "Taste and adjust lemon and salt. Serve topped with the reserved walnuts and dill."
       ],
-      "notes": "Vacuum-cooked beetroot from the fridge section is the quick route. Keeps 3 days refrigerated with wrap pressed onto the surface. Lovely on rye with cucumber.",
+      "notes": "Vacuum-cooked beetroot from the fridge section is the quick route. Keeps 3 days refrigerated with wrap pressed onto the surface. Lovely on rye with cucumber. Ways to use it: on rye with cucumber; in an open sandwich with dill; as a dip for raw veg; swirled into a warm grain bowl.",
       "translations": {
         "no": {
           "title": "Rødbete- og valnøttpålegg",
@@ -56418,7 +56418,7 @@
             "Kjør rødbeter, resterende valnøtter, hvitløk, sitronskall, sitronsaft, det meste av dillen og salt til nesten jevn masse; tilsett litt vann om nødvendig.",
             "Smak til med sitron og salt. Server med de avsatte valnøttene og dillen på toppen."
           ],
-          "notes": "Vakuumkokte rødbeter fra kjøledisken er den raske veien. Holder 3 dager i kjøleskapet med plastfolie presset mot overflaten. God på rugbrød med agurk.",
+          "notes": "Vakuumkokte rødbeter fra kjøledisken er den raske veien. Holder 3 dager i kjøleskapet med plastfolie presset mot overflaten. God på rugbrød med agurk. Slik kan du bruke det: på rugbrød med agurk; som åpen sandwich med dill; som dip til rå grønnsaker; rørt inn i en varm kornbolle.",
           "portion": "~90 g (2–3 ss)",
           "flavourProfile": "savoury"
         },
@@ -56488,7 +56488,7 @@
             "Mixa rödbetor, övriga valnötter, vitlök, citronskal, citronsaft, det mesta av dillen och salt till nästan slät massa; tillsätt lite vatten vid behov.",
             "Smaka av med citron och salt. Servera toppad med de sparade valnötterna och dillen."
           ],
-          "notes": "Vakuumkokta rödbetor från kyldisken är genvägen. Håller 3 dagar i kylen med plastfolie tryckt mot ytan. Gott på rågbröd med gurka.",
+          "notes": "Vakuumkokta rödbetor från kyldisken är genvägen. Håller 3 dagar i kylen med plastfolie tryckt mot ytan. Gott på rågbröd med gurka. Så kan du använda den: på rågbröd med gurka; som öppen smörgås med dill; som dip till råa grönsaker; rörd i en varm spannmålsskål.",
           "portion": "~90 g (2–3 msk)",
           "flavourProfile": "savoury"
         }
@@ -56629,7 +56629,7 @@
         "Blend the roasted carrots with the beans, tahini, smoked paprika, cumin, lemon juice, garlic and salt until creamy.",
         "Taste and adjust lemon, paprika and salt. Serve topped with parsley, a pinch of smoked paprika and a few whole beans."
       ],
-      "notes": "Roasting concentrates the carrot sweetness so you need less seasoning. Keeps 3–4 days refrigerated. Excellent in a wrap with greens.",
+      "notes": "Roasting concentrates the carrot sweetness so you need less seasoning. Keeps 3–4 days refrigerated. Excellent in a wrap with greens. Ways to use it: in a wrap with greens; on crispbread; as a sandwich spread with tomato; dolloped beside roasted roots.",
       "translations": {
         "no": {
           "title": "Røkt gulrot- og hvite bønnepålegg",
@@ -56700,7 +56700,7 @@
             "Kjør de stekte gulrøttene med bønner, tahini, røkt paprika, spisskummen, sitronsaft, hvitløk og salt til kremet konsistens.",
             "Smak til med sitron, paprika og salt. Server med persille, en klype røkt paprika og noen hele bønner på toppen."
           ],
-          "notes": "Steking konsentrerer gulrotsøtheten, så du trenger mindre krydder. Holder 3–4 dager i kjøleskapet. Flott i wrap med salat.",
+          "notes": "Steking konsentrerer gulrotsøtheten, så du trenger mindre krydder. Holder 3–4 dager i kjøleskapet. Flott i wrap med salat. Slik kan du bruke det: i wrap med salat; på knekkebrød; som sandwichpålegg med tomat; som klick ved siden av ovnsbakte røtter.",
           "portion": "~126 g (2–3 ss)"
         },
         "sv": {
@@ -56772,7 +56772,7 @@
             "Mixa de rostade morötterna med bönorna, tahini, rökt paprika, spiskummin, citronsaft, vitlök och salt till krämig konsistens.",
             "Smaka av med citron, paprika och salt. Servera toppad med persilja, en nypa rökt paprika och några hela bönor."
           ],
-          "notes": "Rostning koncentrerar morotssötman så du behöver mindre krydda. Håller 3–4 dagar i kylen. Utmärkt i wrap med sallad.",
+          "notes": "Rostning koncentrerar morotssötman så du behöver mindre krydda. Håller 3–4 dagar i kylen. Utmärkt i wrap med sallad. Så kan du använda den: i wrap med sallad; på knäckebröd; som smörgåspålägg med tomat; som klick bredvid ugnsrostade rotfrukter.",
           "portion": "~126 g (2–3 msk)"
         }
       },
@@ -56919,7 +56919,7 @@
         "Add the vegetables to the seeds with soy sauce, thyme, allspice, nutmeg, nutritional yeast and salt. Blend until thick and spreadable, adding water a spoon at a time.",
         "Taste and chill at least 30 minutes so the flavours settle. Serve cold on rye with cucumber and dill."
       ],
-      "notes": "Allspice and nutmeg give the classic leverpostei echo — keep them to a pinch. Firmer after chilling. Keeps 4 days refrigerated.",
+      "notes": "Allspice and nutmeg give the classic leverpostei echo — keep them to a pinch. Firmer after chilling. Keeps 4 days refrigerated. Ways to use it: cold on rye with cucumber and dill; in a lunchbox sandwich; as a toast topping with pickles; with crispbread.",
       "translations": {
         "no": {
           "title": "Plantebasert leverpostei med solsikkefrø",
@@ -56999,7 +56999,7 @@
             "Ha grønnsakene i blenderen med soyasaus, timian, allehånde, muskat, næringsgjær og salt. Kjør til tykk, smørbar konsistens; tilsett vann ss for ss.",
             "Smak til og avkjøl minst 30 minutter så smakene setter seg. Server kaldt på rugbrød med agurk og dill."
           ],
-          "notes": "Allehånde og muskat gir det klassiske leverposteipreg — hold det til en klype. Fastner seg i kjøleskapet. Holder 4 dager.",
+          "notes": "Allehånde og muskat gir det klassiske leverposteipreg — hold det til en klype. Fastner seg i kjøleskapet. Holder 4 dager. Slik kan du bruke den: kald på rugbrød med agurk og dill; i matpakkesandwich; på toast med sylteagurk; med knekkebrød.",
           "portion": "~97 g (2–3 ss)"
         },
         "sv": {
@@ -57080,7 +57080,7 @@
             "Lägg grönsakerna i mixern med sojasås, timjan, kryddpeppar, muskot, näringsjäst och salt. Mixa till tjock, bredbar konsistens; tillsätt vatten msk för msk.",
             "Smaka av och kyl minst 30 minuter så smakerna sätter sig. Servera kall på rågbröd med gurka och dill."
           ],
-          "notes": "Kryddpeppar och muskot ger det klassiska leverpastej-ekot — håll det till en nypa. Fastnar i kylen. Håller 4 dagar.",
+          "notes": "Kryddpeppar och muskot ger det klassiska leverpastej-ekot — håll det till en nypa. Fastnar i kylen. Håller 4 dagar. Så kan du använda den: kall på rågbröd med gurka och dill; i matlådesmörgås; på toast med inlagd gurka; med knäckebröd.",
           "portion": "~97 g (2–3 msk)"
         }
       },
@@ -57222,7 +57222,7 @@
         "Blend or mash with tahini, lemon juice, garlic, cumin and salt until creamy but not watery.",
         "Taste and adjust lemon and salt. Serve topped with parsley, pomegranate seeds and a pinch of smoked paprika."
       ],
-      "notes": "The char on the skin is the flavour — do not under-roast. Drain well or the spread turns watery. Keeps 3 days refrigerated.",
+      "notes": "The char on the skin is the flavour — do not under-roast. Drain well or the spread turns watery. Keeps 3 days refrigerated. Ways to use it: with warm flatbread; as a dip for raw veg; beside grilled mushrooms; spooned over a grain salad.",
       "translations": {
         "no": {
           "title": "Stekt auberginerøre",
@@ -57294,7 +57294,7 @@
             "Kjør eller mos med tahini, sitronsaft, hvitløk, spisskummen og salt til kremet, men ikke våt konsistens.",
             "Smak til med sitron og salt. Server med persille, granateplekjerner og en klype røkt paprika på toppen."
           ],
-          "notes": "Svidden på skallet er smaken — ikke understek. Hell godt av, ellers blir røren våt. Holder 3 dager i kjøleskapet.",
+          "notes": "Svidden på skallet er smaken — ikke understek. Hell godt av, ellers blir røren våt. Holder 3 dager i kjøleskapet. Slik kan du bruke den: med varmt flatbrød; som dip til rå grønnsaker; ved siden av grillede sopp; skjeet over en kornsalat.",
           "portion": "~159 g (2–3 ss)",
           "flavourProfile": "savoury"
         },
@@ -57368,7 +57368,7 @@
             "Mixa eller mosa med tahini, citronsaft, vitlök, spiskummin och salt till krämig men inte vattnig konsistens.",
             "Smaka av med citron och salt. Servera toppad med persilja, granatäpplekärnor och en nypa rökt paprika."
           ],
-          "notes": "Svedan på skalet är smaken — underrosta inte. Låt rinna av ordentligt, annars blir röran vattnig. Håller 3 dagar i kylen.",
+          "notes": "Svedan på skalet är smaken — underrosta inte. Låt rinna av ordentligt, annars blir röran vattnig. Håller 3 dagar i kylen. Så kan du använda den: med varmt tunnbröd; som dip till råa grönsaker; bredvid grillad svamp; skopad över en spannmålssallad.",
           "portion": "~159 g (2–3 msk)",
           "flavourProfile": "savoury"
         }
@@ -57504,7 +57504,7 @@
         "Blend lentils, soaked tomatoes, basil, garlic, lemon juice, smoked paprika and salt until thick and spreadable. Loosen with a spoon of soaking water only if needed.",
         "Taste and adjust lemon and salt. Serve warm or cold; lovely with crispbread."
       ],
-      "notes": "Buy dry-packed sun-dried tomatoes, never the ones in oil. The spread firms as it cools. Keeps 4 days refrigerated.",
+      "notes": "Buy dry-packed sun-dried tomatoes, never the ones in oil. The spread firms as it cools. Keeps 4 days refrigerated. Ways to use it: on crispbread; in a wrap with spinach; as a toast topping with fresh basil; stirred into warm pasta as a quick sauce.",
       "translations": {
         "no": {
           "title": "Linse- og soltørket tomatpålegg",
@@ -57570,7 +57570,7 @@
             "Kjør linser, bløtlagte tomater, basilikum, hvitløk, sitronsaft, røkt paprika og salt til tykk, smørbar konsistens. Løsne med en ss bløtevann bare om nødvendig.",
             "Smak til med sitron og salt. Server varm eller kald; god med knekkebrød."
           ],
-          "notes": "Kjøp tørre soltørkede tomater, aldri de i olje. Pålegget stivner når det avkjøles. Holder 4 dager i kjøleskapet.",
+          "notes": "Kjøp tørre soltørkede tomater, aldri de i olje. Pålegget stivner når det avkjøles. Holder 4 dager i kjøleskapet. Slik kan du bruke den: på knekkebrød; i wrap med spinat; på toast med fersk basilikum; rørt inn i varm pasta som rask saus.",
           "portion": "~78 g (2–3 ss)"
         },
         "sv": {
@@ -57637,7 +57637,7 @@
             "Mixa linser, blötlagda tomater, basilika, vitlök, citronsaft, rökt paprika och salt till tjock, bredbar konsistens. Späd med en msk blötläggningsvatten bara vid behov.",
             "Smaka av med citron och salt. Servera varm eller kall; gott med knäckebröd."
           ],
-          "notes": "Köp torra soltorkade tomater, aldrig dem i olja. Röran stelnar när den svalnar. Håller 4 dagar i kylen.",
+          "notes": "Köp torra soltorkade tomater, aldrig dem i olja. Röran stelnar när den svalnar. Håller 4 dagar i kylen. Så kan du använda den: på knäckebröd; i wrap med spenat; på toast med färsk basilika; rörd i varm pasta som snabb sås.",
           "portion": "~78 g (2–3 msk)"
         }
       },
@@ -57683,6 +57683,1512 @@
       },
       "createdAt": 1793557451745,
       "flavourProfile": "savoury"
+    },
+    {
+      "id": "fr-197",
+      "title": "Chocolate hazelnut spread",
+      "category": "Spreads",
+      "servings": 6,
+      "portion": "~103 g (2�3 tbsp)",
+      "prepTime": 15,
+      "cookTime": 20,
+      "imageUrl": "/pack-images/fr-197.jpg",
+      "description": "Oil-free cocoa spread of sweet potato and white beans, sweetened with dates and finished with a modest handful of toasted hazelnuts.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "heart-healthy",
+        "gluten-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 150,
+      "servingWeightGrams": 103,
+      "ingredients": [
+        {
+          "quantity": 220,
+          "unit": "g",
+          "ingredient": "sweet-potatoes",
+          "name": "Sweet potatoes",
+          "note": "peeled, cubed; steam or boil until soft"
+        },
+        {
+          "quantity": 210,
+          "unit": "g",
+          "ingredient": "white-beans-canned",
+          "name": "White beans (cannellini), canned",
+          "note": "drained and rinsed"
+        },
+        {
+          "quantity": 70,
+          "unit": "g",
+          "ingredient": "dates-dried",
+          "name": "Dried dates",
+          "note": "pitted; soak 10 min if hard, then drain"
+        },
+        {
+          "quantity": 30,
+          "unit": "g",
+          "ingredient": "hazelnuts",
+          "name": "Hazelnuts",
+          "note": "toasted; set 1 tbsp aside for topping"
+        },
+        {
+          "quantity": 20,
+          "unit": "g",
+          "ingredient": "cocoa-powder",
+          "name": "Cocoa powder",
+          "note": "unsweetened"
+        },
+        {
+          "quantity": 60,
+          "unit": "ml",
+          "ingredient": "plant-milk",
+          "name": "Plant milk",
+          "note": "unfortified; as needed"
+        },
+        {
+          "quantity": 1,
+          "unit": "tsp",
+          "ingredient": "vanilla-extract",
+          "name": "Vanilla extract"
+        },
+        {
+          "quantity": 0.25,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt"
+        }
+      ],
+      "steps": [
+        "Steam or boil the sweet potato until soft, 12–15 minutes. Drain well.",
+        "Toast the hazelnuts in a dry pan for 5–7 minutes. Set 1 tbsp aside for topping; tip the rest into a blender.",
+        "Blend sweet potato, white beans, dates, cocoa, vanilla, salt and most of the plant milk until very smooth. Loosen with the rest of the milk only if needed.",
+        "Taste and chill 30 minutes. Serve topped with the reserved hazelnuts. Keeps 4 days refrigerated."
+      ],
+      "notes": "Beans and sweet potato carry the creaminess so hazelnuts stay a flavour accent. Ways to use it: thin layer on kids' bread; swirled into porridge; apple-slice dip; on pancakes. Keeps 4 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Sjokolade- og hasselnøttpålegg",
+          "description": "Oljefritt kakaopålegg av søtpotet og hvite bønner, søtet med dadler og avsluttet med en håndfull ristede hasselnøtter.",
+          "ingredients": [
+            {
+              "quantity": 220,
+              "unit": "g",
+              "ingredient": "sweet-potatoes",
+              "name": "Søtpoteter",
+              "note": "skrelt, i terninger; damp eller kok til myke"
+            },
+            {
+              "quantity": 210,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Hvite bønner (cannellini), hermetiske",
+              "note": "avrent og skylt"
+            },
+            {
+              "quantity": 70,
+              "unit": "g",
+              "ingredient": "dates-dried",
+              "name": "Tørkede dadler",
+              "note": "uten stein; bløtlegg 10 min hvis harde, hell av"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "ingredient": "hazelnuts",
+              "name": "Hasselnøtter",
+              "note": "ristet; sett til side 1 ss til topping"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "cocoa-powder",
+              "name": "Kakao",
+              "note": "usøtet"
+            },
+            {
+              "quantity": 60,
+              "unit": "ml",
+              "ingredient": "plant-milk",
+              "name": "Plantemelk",
+              "note": "ufortifisert; etter behov"
+            },
+            {
+              "quantity": 1,
+              "unit": "ts",
+              "ingredient": "vanilla-extract",
+              "name": "Vaniljeekstrakt"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt"
+            }
+          ],
+          "steps": [
+            "Damp eller kok søtpoteten til den er myk, 12–15 minutter. Hell godt av.",
+            "Rist hasselnøttene i en tørr panne i 5–7 minutter. Sett til side 1 ss til topping; hell resten i en blender.",
+            "Kjør søtpotet, hvite bønner, dadler, kakao, vanilje, salt og det meste av plantemelken til helt jevn. Løsne med resten av melken bare om nødvendig.",
+            "Smak til og avkjøl 30 minutter. Server med de avsatte hasselnøttene. Holder 4 dager i kjøleskapet."
+          ],
+          "notes": "Bønner og søtpotet gir kremethet, så hasselnøttene blir smaksaksent. Slik kan du bruke det: tynt lag på barnebrød; rørt inn i grøt; dip til epleskiver; på pannekaker. Holder 4 dager i kjøleskapet.",
+          "portion": "~103 g (2�3 ss)"
+        },
+        "sv": {
+          "title": "Choklad- och hasselnötsröra",
+          "description": "Oljefri kakaoröra av sötpotatis och vita bönor, sötad med dadlar och avslutad med en handfull rostade hasselnötter.",
+          "ingredients": [
+            {
+              "quantity": 220,
+              "unit": "g",
+              "ingredient": "sweet-potatoes",
+              "name": "Sötpotatis",
+              "note": "skalad, tärnad; ånga eller koka tills mjuk"
+            },
+            {
+              "quantity": 210,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Vita bönor (cannellini) på burk",
+              "note": "avrunna och sköljda"
+            },
+            {
+              "quantity": 70,
+              "unit": "g",
+              "ingredient": "dates-dried",
+              "name": "Torkade dadlar",
+              "note": "utan kärnor; blötlägg 10 min om hårda, häll av"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "ingredient": "hazelnuts",
+              "name": "Hasselnötter",
+              "note": "rostade; spara 1 msk till topping"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "cocoa-powder",
+              "name": "Kakao",
+              "note": "osötad"
+            },
+            {
+              "quantity": 60,
+              "unit": "ml",
+              "ingredient": "plant-milk",
+              "name": "Växtmjölk",
+              "note": "ofortifierad; efter behov"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "ingredient": "vanilla-extract",
+              "name": "Vaniljextrakt"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt"
+            }
+          ],
+          "steps": [
+            "Ånga eller koka sötpotatisen tills mjuk, 12–15 minuter. Häll av ordentligt.",
+            "Rosta hasselnötterna i en torr panna i 5–7 minuter. Spara 1 msk till topping; häll resten i en blender.",
+            "Mixa sötpotatis, vita bönor, dadlar, kakao, vanilj, salt och det mesta av växtmjölken till helt slät. Späd med resten av mjölken bara vid behov.",
+            "Smaka av och kyl 30 minuter. Servera toppad med de sparade hasselnötterna. Håller 4 dagar i kylen."
+          ],
+          "notes": "Bönor och sötpotatis ger krämigheten, så hasselnötterna blir smakaccent. Så kan du använda den: tunt lager på barnens bröd; rörd i gröt; dip till äppelskivor; på pannkakor. Håller 4 dagar i kylen.",
+          "portion": "~103 g (2�3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 150,
+          "protein": 5.2,
+          "totalFat": 3.9,
+          "saturatedFat": 0.6,
+          "polyunsaturatedFat": 0.56,
+          "monounsaturatedFat": 2.5,
+          "omega3": 0.04,
+          "omega6": 0.49,
+          "cholesterol": 0,
+          "totalCarbs": 26.4,
+          "totalSugars": 9.8,
+          "addedSugar": 0,
+          "fiber": 5.7,
+          "calcium": 54,
+          "potassium": 421,
+          "copper": 0.39,
+          "iron": 2.2,
+          "magnesium": 59,
+          "manganese": 0.73,
+          "selenium": 2,
+          "phosphorus": 101,
+          "zinc": 0.92,
+          "sodium": 176,
+          "vitaminA": 260,
+          "vitaminB6": 0.17,
+          "vitaminB12": 0,
+          "vitaminC": 1.2,
+          "vitaminD": 0,
+          "vitaminE": 1.1,
+          "vitaminK": 3,
+          "folate": 39,
+          "thiamin": 0.11,
+          "riboflavin": 0.07,
+          "niacin": 0.61,
+          "choline": 22
+        }
+      },
+      "createdAt": 1793564918774,
+      "flavourProfile": "sweet"
+    },
+    {
+      "id": "fr-198",
+      "title": "Apple cinnamon spread",
+      "category": "Spreads",
+      "servings": 6,
+      "portion": "~92 g (2–3 tbsp)",
+      "prepTime": 10,
+      "cookTime": 15,
+      "imageUrl": "/pack-images/fr-198.jpg",
+      "description": "Oil-free apple-butter style spread of stewed apple with a little oat for body, cinnamon, and a small cashew accent.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "blood-pressure-friendly",
+        "diabetes-friendly",
+        "heart-healthy",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 89,
+      "servingWeightGrams": 92,
+      "ingredients": [
+        {
+          "quantity": 450,
+          "unit": "g",
+          "ingredient": "apples",
+          "name": "Apples",
+          "note": "peeled, diced"
+        },
+        {
+          "quantity": 40,
+          "unit": "g",
+          "ingredient": "rolled-oats",
+          "name": "Rolled oats",
+          "note": "blend soft with the apple"
+        },
+        {
+          "quantity": 25,
+          "unit": "g",
+          "ingredient": "cashews",
+          "name": "Cashews",
+          "note": "soaked 20 min in hot water, then drained — optional creaminess"
+        },
+        {
+          "quantity": 1.5,
+          "unit": "tsp",
+          "ingredient": "cinnamon-ground",
+          "name": "Cinnamon, ground"
+        },
+        {
+          "quantity": 2,
+          "unit": "tbsp",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "as needed while stewing"
+        },
+        {
+          "quantity": 0.25,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt"
+        }
+      ],
+      "steps": [
+        "Stew the diced apple with a splash of water over medium heat for 12–15 minutes until soft and most liquid has cooked off. Cool slightly.",
+        "Blend the stewed apple with the oats, drained cashews, cinnamon and salt until thick and smooth. Add a spoon of water only if needed.",
+        "Taste — it should taste of apple and cinnamon first. Chill; it firms as it cools. Keeps 4 days refrigerated."
+      ],
+      "notes": "Cook the apple down so the spread stays thick without lots of nuts. Ways to use it: on crispbread at breakfast; swirled into oatmeal; pancake filling; with sliced pear. Keeps 4 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Eple- og kanelpålegg",
+          "description": "Oljefritt eplesmør-inspirert pålegg av stuet eple med litt havre for tykkelse, kanel og en liten cashewaksent.",
+          "ingredients": [
+            {
+              "quantity": 450,
+              "unit": "g",
+              "ingredient": "apples",
+              "name": "Epler",
+              "note": "skrelt, i terninger"
+            },
+            {
+              "quantity": 40,
+              "unit": "g",
+              "ingredient": "rolled-oats",
+              "name": "Havregryn",
+              "note": "kjøres mykt med eplene"
+            },
+            {
+              "quantity": 25,
+              "unit": "g",
+              "ingredient": "cashews",
+              "name": "Cashewnøtter",
+              "note": "bløtlagt 20 min i varmt vann, deretter avrent — valgfri kremethet"
+            },
+            {
+              "quantity": 1.5,
+              "unit": "ts",
+              "ingredient": "cinnamon-ground",
+              "name": "Kanel, malt"
+            },
+            {
+              "quantity": 2,
+              "unit": "ss",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "etter behov under stuing"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt"
+            }
+          ],
+          "steps": [
+            "Kok epleterningene med en skvett vann på middels varme i 12–15 minutter til de er myke og det meste av væsken er kokt bort. Avkjøl litt.",
+            "Kjør de stuede eplene med havre, avrente cashewnøtter, kanel og salt til tykk og jevn. Tilsett en ss vann bare om nødvendig.",
+            "Smak til — det skal smake eple og kanel først. Avkjøl; det stivner når det avkjøles. Holder 4 dager i kjøleskapet."
+          ],
+          "notes": "Kok eplene godt inn så pålegget blir tykt uten mye nøtter. Slik kan du bruke det: på knekkebrød til frokost; rørt inn i havregrøt; pannekakefyll; med skiver av pære. Holder 4 dager i kjøleskapet.",
+          "portion": "~92 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Äppel- och kanelröra",
+          "description": "Oljefri äppelmos-inspirerad röra av stuvat äpple med lite havre för fyllighet, kanel och en liten cashewaccent.",
+          "ingredients": [
+            {
+              "quantity": 450,
+              "unit": "g",
+              "ingredient": "apples",
+              "name": "Äpplen",
+              "note": "skalade, tärnade"
+            },
+            {
+              "quantity": 40,
+              "unit": "g",
+              "ingredient": "rolled-oats",
+              "name": "Havregryn",
+              "note": "mixas mjuka med äpplena"
+            },
+            {
+              "quantity": 25,
+              "unit": "g",
+              "ingredient": "cashews",
+              "name": "Cashewnötter",
+              "note": "blötlagda 20 min i hett vatten, sedan avrunna — valfri krämighet"
+            },
+            {
+              "quantity": 1.5,
+              "unit": "tsp",
+              "ingredient": "cinnamon-ground",
+              "name": "Kanel, malen"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "efter behov under stuvning"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt"
+            }
+          ],
+          "steps": [
+            "Koka äppeltärningarna med en skvätt vatten på medelvärme i 12–15 minuter tills mjuka och det mesta av vätskan kokat bort. Låt svalna lite.",
+            "Mixa de stuvade äpplena med havre, avrunna cashewnötter, kanel och salt till tjock och slät. Tillsätt en msk vatten bara vid behov.",
+            "Smaka av — det ska smaka äpple och kanel först. Kyl; den stelnar när den svalnar. Håller 4 dagar i kylen."
+          ],
+          "notes": "Koka äpplena ordentligt så röran blir tjock utan mycket nötter. Så kan du använda den: på knäckebröd till frukost; rörd i havregröt; pannkaksfyllning; med skivor av päron. Håller 4 dagar i kylen.",
+          "portion": "~92 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 89,
+          "protein": 1.9,
+          "totalFat": 2.4,
+          "saturatedFat": 0.4,
+          "polyunsaturatedFat": 0.53,
+          "monounsaturatedFat": 1.1,
+          "omega3": 0.02,
+          "omega6": 0.52,
+          "cholesterol": 0,
+          "totalCarbs": 16.6,
+          "totalSugars": 8.1,
+          "addedSugar": 0,
+          "fiber": 3,
+          "calcium": 16,
+          "potassium": 135,
+          "copper": 0.16,
+          "iron": 0.74,
+          "magnesium": 28,
+          "manganese": 0.54,
+          "selenium": 2.8,
+          "phosphorus": 68,
+          "zinc": 0.55,
+          "sodium": 99,
+          "vitaminA": 2.3,
+          "vitaminB6": 0.06,
+          "vitaminB12": 0,
+          "vitaminC": 3.5,
+          "vitaminD": 0,
+          "vitaminE": 0.22,
+          "vitaminK": 3.4,
+          "folate": 7.1,
+          "thiamin": 0.08,
+          "riboflavin": 0.03,
+          "niacin": 0.18,
+          "choline": 7.8
+        }
+      },
+      "createdAt": 1793564918777,
+      "flavourProfile": "sweet"
+    },
+    {
+      "id": "fr-199",
+      "title": "Herb cream cheese",
+      "category": "Spreads",
+      "servings": 6,
+      "portion": "~80 g (2–3 tbsp)",
+      "prepTime": 15,
+      "cookTime": 0,
+      "imageUrl": "/pack-images/fr-199.jpg",
+      "description": "Light oil-free herb cream cheese of white beans and a little soaked cashew, with lemon, garlic, chives and dill.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "diabetes-friendly",
+        "heart-healthy",
+        "gluten-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 111,
+      "servingWeightGrams": 80,
+      "ingredients": [
+        {
+          "quantity": 300,
+          "unit": "g",
+          "ingredient": "white-beans-canned",
+          "name": "White beans (cannellini), canned",
+          "note": "drained and rinsed"
+        },
+        {
+          "quantity": 50,
+          "unit": "g",
+          "ingredient": "cashews",
+          "name": "Cashews",
+          "note": "soaked 20 min in hot water, then drained"
+        },
+        {
+          "quantity": 3,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
+        },
+        {
+          "quantity": 1,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic",
+          "note": "small"
+        },
+        {
+          "quantity": 15,
+          "unit": "g",
+          "ingredient": "chives",
+          "name": "Chives",
+          "note": "finely chopped; set a little aside for topping"
+        },
+        {
+          "quantity": 10,
+          "unit": "g",
+          "ingredient": "dill",
+          "name": "Dill",
+          "note": "fresh, chopped; set a little aside for topping"
+        },
+        {
+          "quantity": 2,
+          "unit": "tbsp",
+          "ingredient": "nutritional-yeast",
+          "name": "Nutritional yeast",
+          "note": "optional but recommended"
+        },
+        {
+          "quantity": 40,
+          "unit": "ml",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "cold; as needed"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.75
+        }
+      ],
+      "steps": [
+        "Soak the cashews in hot water for 20 minutes, then drain.",
+        "Blend white beans, cashews, lemon juice, garlic, nutritional yeast, salt and most of the water until thick and smooth. Add water a spoon at a time — keep it scoopable.",
+        "Pulse in most of the chives and dill so flecks stay visible.",
+        "Taste and adjust lemon and salt. Serve topped with the reserved herbs. Firmer after chilling. Keeps 4 days refrigerated."
+      ],
+      "notes": "White beans do the bulk; cashews are only for silkiness. Ways to use it: on bagels; cucumber on rye; a dollop on baked potatoes; in a wrap with tomato and greens. Keeps 4 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Urtekremost",
+          "description": "Lett oljefri urtekremost av hvite bønner og litt bløtlagt cashew, med sitron, hvitløk, gressløk og dill.",
+          "ingredients": [
+            {
+              "quantity": 300,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Hvite bønner (cannellini), hermetiske",
+              "note": "avrent og skylt"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "ingredient": "cashews",
+              "name": "Cashewnøtter",
+              "note": "bløtlagt 20 min i varmt vann, deretter avrent"
+            },
+            {
+              "quantity": 3,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk",
+              "note": "liten fedd"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "chives",
+              "name": "Gressløk",
+              "note": "finhakket; sett litt til side til topping"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "dill",
+              "name": "Dill",
+              "note": "fersk, hakket; sett litt til side til topping"
+            },
+            {
+              "quantity": 2,
+              "unit": "ss",
+              "ingredient": "nutritional-yeast",
+              "name": "Næringsgjær",
+              "note": "valgfritt, men anbefales"
+            },
+            {
+              "quantity": 40,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "kaldt; etter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Bløtlegg cashewnøttene i varmt vann i 20 minutter, hell deretter av.",
+            "Kjør hvite bønner, cashewnøtter, sitronsaft, hvitløk, næringsgjær, salt og det meste av vannet til tykk og jevn. Tilsett vann ss for ss — hold den seig.",
+            "Puls inn det meste av gressløk og dill så det synes grønne flekker.",
+            "Smak til med sitron og salt. Server med de avsatte urtene. Fastner seg i kjøleskapet. Holder 4 dager."
+          ],
+          "notes": "Hvite bønner er basen; cashew er bare for silkemykhet. Slik kan du bruke den: på bagels; agurk på rugbrød; en klick på bakte poteter; i wrap med tomat og salat. Holder 4 dager i kjøleskapet.",
+          "portion": "~80 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Örtcream cheese",
+          "description": "Lätt oljefri örtcream cheese av vita bönor och lite blötlagd cashew, med citron, vitlök, gräslök och dill.",
+          "ingredients": [
+            {
+              "quantity": 300,
+              "unit": "g",
+              "ingredient": "white-beans-canned",
+              "name": "Vita bönor (cannellini) på burk",
+              "note": "avrunna och sköljda"
+            },
+            {
+              "quantity": 50,
+              "unit": "g",
+              "ingredient": "cashews",
+              "name": "Cashewnötter",
+              "note": "blötlagda 20 min i hett vatten, sedan avrunna"
+            },
+            {
+              "quantity": 3,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
+            },
+            {
+              "quantity": 1,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök",
+              "note": "liten klyfta"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "chives",
+              "name": "Gräslök",
+              "note": "finhackad; spara lite till topping"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "dill",
+              "name": "Dill",
+              "note": "färsk, hackad; spara lite till topping"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "ingredient": "nutritional-yeast",
+              "name": "Näringsjäst",
+              "note": "valfritt men rekommenderas"
+            },
+            {
+              "quantity": 40,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "kallt; efter behov"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Blötlägg cashewnötterna i hett vatten i 20 minuter, häll sedan av.",
+            "Mixa vita bönor, cashewnötter, citronsaft, vitlök, näringsjäst, salt och det mesta av vattnet till tjock och slät. Tillsätt vatten msk för msk — håll den skedbar.",
+            "Pulsera i det mesta av gräslök och dill så gröna fläckar syns.",
+            "Smaka av med citron och salt. Servera toppad med de sparade örterna. Fastnar i kylen. Håller 4 dagar."
+          ],
+          "notes": "Vita bönor är basen; cashew är bara för silkeslenhet. Så kan du använda den: på bagels; gurka på rågbröd; en klick på bakad potatis; i wrap med tomat och sallad. Håller 4 dagar i kylen.",
+          "portion": "~80 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 111,
+          "protein": 6.2,
+          "totalFat": 4,
+          "saturatedFat": 0.7,
+          "polyunsaturatedFat": 0.75,
+          "monounsaturatedFat": 2,
+          "omega3": 0.04,
+          "omega6": 0.71,
+          "cholesterol": 0,
+          "totalCarbs": 13.6,
+          "totalSugars": 0.9,
+          "addedSugar": 0,
+          "fiber": 3.5,
+          "calcium": 48,
+          "potassium": 294,
+          "copper": 0.32,
+          "iron": 2.3,
+          "magnesium": 55,
+          "manganese": 0.39,
+          "selenium": 2.7,
+          "phosphorus": 116,
+          "zinc": 3.1,
+          "sodium": 273,
+          "vitaminA": 12,
+          "vitaminB6": 0.68,
+          "vitaminB12": 0.75,
+          "vitaminC": 6,
+          "vitaminD": 0,
+          "vitaminE": 0.39,
+          "vitaminK": 9.4,
+          "folate": 132,
+          "thiamin": 0.79,
+          "riboflavin": 0.34,
+          "niacin": 7.3,
+          "choline": 23
+        },
+        "sodiumStandard": 370
+      },
+      "createdAt": 1793564918777,
+      "flavourProfile": "savoury"
+    },
+    {
+      "id": "fr-200",
+      "title": "Smoky chickpea tuna",
+      "category": "Spreads",
+      "servings": 6,
+      "portion": "~85 g (2–3 tbsp)",
+      "prepTime": 15,
+      "cookTime": 0,
+      "imageUrl": "/pack-images/fr-200.jpg",
+      "description": "Oil-free mashed chickpeas bound with a spoon of tahini, brightened with lemon, capers, dill, nori and smoked paprika. No mayo.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "diabetes-friendly",
+        "heart-healthy",
+        "gluten-free",
+        "nut-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 118,
+      "servingWeightGrams": 85,
+      "ingredients": [
+        {
+          "quantity": 400,
+          "unit": "g",
+          "ingredient": "chickpeas-canned",
+          "name": "Chickpeas, canned",
+          "note": "drained and rinsed"
+        },
+        {
+          "quantity": 20,
+          "unit": "g",
+          "ingredient": "tahini",
+          "name": "Tahini",
+          "note": "about 1 tbsp; whole sesame paste"
+        },
+        {
+          "quantity": 20,
+          "unit": "g",
+          "ingredient": "capers",
+          "name": "Capers",
+          "note": "drained; chop roughly"
+        },
+        {
+          "quantity": 10,
+          "unit": "g",
+          "ingredient": "dill",
+          "name": "Dill",
+          "note": "fresh, chopped"
+        },
+        {
+          "quantity": 1,
+          "unit": "pcs",
+          "ingredient": "nori",
+          "name": "Nori sheets",
+          "note": "crumbled finely"
+        },
+        {
+          "quantity": 1,
+          "unit": "tsp",
+          "ingredient": "smoked-paprika",
+          "name": "Smoked paprika"
+        },
+        {
+          "quantity": 2.5,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
+        },
+        {
+          "quantity": 1,
+          "unit": "tbsp",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "as needed"
+        },
+        {
+          "quantity": 0.25,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.5
+        }
+      ],
+      "steps": [
+        "Drain and rinse the chickpeas. Mash in a bowl with a fork until chunky — leave some texture.",
+        "Stir in tahini, lemon juice, chopped capers, dill, crumbled nori, smoked paprika and salt. Loosen with a spoon of water only if dry.",
+        "Taste and adjust lemon, paprika and salt. Chill 15 minutes so the flavours settle.",
+        "Serve on rye, in a wrap or on crispbread. Keeps 3 days refrigerated."
+      ],
+      "notes": "No mayo — tahini binds without oil. Ways to use it: sandwiches; wraps with cucumber and lettuce; crispbread lunch; stuffed in a baked potato. Keeps 3 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Røkt kikertrøre à la tunfisk",
+          "description": "Oljefrie mosede kikerter bundet med en skje tahini, frisket opp med sitron, kapers, dill, nori og røkt paprika. Uten majones.",
+          "ingredients": [
+            {
+              "quantity": 400,
+              "unit": "g",
+              "ingredient": "chickpeas-canned",
+              "name": "Kikerter, hermetiske",
+              "note": "avrent og skylt"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "tahini",
+              "name": "Tahini",
+              "note": "ca. 1 ss; hel sesampasta"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "capers",
+              "name": "Kapers",
+              "note": "avrent; hakket grovt"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "dill",
+              "name": "Dill",
+              "note": "fersk, hakket"
+            },
+            {
+              "quantity": 1,
+              "unit": "stk",
+              "ingredient": "nori",
+              "name": "Nori",
+              "note": "smuldret fint"
+            },
+            {
+              "quantity": 1,
+              "unit": "ts",
+              "ingredient": "smoked-paprika",
+              "name": "Røkt paprika"
+            },
+            {
+              "quantity": 2.5,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
+            },
+            {
+              "quantity": 1,
+              "unit": "ss",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "etter behov"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.5
+            }
+          ],
+          "steps": [
+            "Hell av og skyll kikertene. Mos dem i en bolle med en gaffel til de er grove — la litt tekstur være igjen.",
+            "Rør inn tahini, sitronsaft, hakkede kapers, dill, smuldret nori, røkt paprika og salt. Løsne med en ss vann bare om det er tørt.",
+            "Smak til med sitron, paprika og salt. Avkjøl 15 minutter så smakene setter seg.",
+            "Server på rugbrød, i wrap eller på knekkebrød. Holder 3 dager i kjøleskapet."
+          ],
+          "notes": "Ingen majones — tahini binder uten olje. Slik kan du bruke den: på sandwich; i wrap med agurk og salat; knekkebrødlunsj; fylt i bakt potet. Holder 3 dager i kjøleskapet.",
+          "portion": "~85 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Rökt kikärtsröra à la tonfisk",
+          "description": "Oljefria mosade kikärtor bundna med en sked tahini, piggade upp med citron, kapris, dill, nori och rökt paprika. Utan majonnäs.",
+          "ingredients": [
+            {
+              "quantity": 400,
+              "unit": "g",
+              "ingredient": "chickpeas-canned",
+              "name": "Kikärtor på burk",
+              "note": "avrunna och sköljda"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "tahini",
+              "name": "Tahini",
+              "note": "ca 1 msk; hel sesampasta"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "capers",
+              "name": "Kapris",
+              "note": "avrunnen; hackad grovt"
+            },
+            {
+              "quantity": 10,
+              "unit": "g",
+              "ingredient": "dill",
+              "name": "Dill",
+              "note": "färsk, hackad"
+            },
+            {
+              "quantity": 1,
+              "unit": "pcs",
+              "ingredient": "nori",
+              "name": "Nori",
+              "note": "smulad fint"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "ingredient": "smoked-paprika",
+              "name": "Rökt paprika"
+            },
+            {
+              "quantity": 2.5,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
+            },
+            {
+              "quantity": 1,
+              "unit": "tbsp",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "efter behov"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.5
+            }
+          ],
+          "steps": [
+            "Häll av och skölj kikärtorna. Mosa dem i en skål med en gaffel tills grova — lämna lite textur kvar.",
+            "Rör i tahini, citronsaft, hackad kapris, dill, smulad nori, rökt paprika och salt. Späd med en msk vatten bara om det är torrt.",
+            "Smaka av med citron, paprika och salt. Kyl 15 minuter så smakerna sätter sig.",
+            "Servera på rågbröd, i wrap eller på knäckebröd. Håller 3 dagar i kylen."
+          ],
+          "notes": "Ingen majonnäs — tahini binder utan olja. Så kan du använda den: på smörgås; i wrap med gurka och sallad; knäckebrödslunch; fylld i bakad potatis. Håller 3 dagar i kylen.",
+          "portion": "~85 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 118,
+          "protein": 5.6,
+          "totalFat": 3.6,
+          "saturatedFat": 0.5,
+          "polyunsaturatedFat": 1.6,
+          "monounsaturatedFat": 1.1,
+          "omega3": 0.04,
+          "omega6": 1.6,
+          "cholesterol": 0,
+          "totalCarbs": 16.8,
+          "totalSugars": 0.9,
+          "addedSugar": 0,
+          "fiber": 5,
+          "calcium": 51,
+          "potassium": 148,
+          "copper": 0.21,
+          "iron": 1.5,
+          "magnesium": 27,
+          "manganese": 0.54,
+          "selenium": 3.2,
+          "phosphorus": 105,
+          "zinc": 0.77,
+          "sodium": 282,
+          "vitaminA": 27,
+          "vitaminB6": 0.12,
+          "vitaminB12": 0,
+          "vitaminC": 4.9,
+          "vitaminD": 0,
+          "vitaminE": 0.38,
+          "vitaminK": 5.2,
+          "folate": 56,
+          "thiamin": 0.07,
+          "riboflavin": 0.05,
+          "niacin": 0.41,
+          "choline": 22
+        },
+        "sodiumStandard": 379
+      },
+      "createdAt": 1793564918777,
+      "flavourProfile": "savoury"
+    },
+    {
+      "id": "fr-201",
+      "title": "Red pepper and almond spread",
+      "category": "Spreads",
+      "servings": 6,
+      "portion": "~101 g (2–3 tbsp)",
+      "prepTime": 15,
+      "cookTime": 35,
+      "imageUrl": "/pack-images/fr-201.jpg",
+      "description": "Romesco-style roasted red pepper spread with a modest almond accent, smoked paprika, garlic, lemon and tomato purée. Oil-free.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "diabetes-friendly",
+        "heart-healthy",
+        "gluten-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 71,
+      "servingWeightGrams": 101,
+      "ingredients": [
+        {
+          "quantity": 500,
+          "unit": "g",
+          "ingredient": "bell-peppers",
+          "name": "Bell peppers",
+          "note": "red; whole, for roasting"
+        },
+        {
+          "quantity": 45,
+          "unit": "g",
+          "ingredient": "almonds",
+          "name": "Almonds",
+          "note": "toasted; set 1 tbsp aside for topping"
+        },
+        {
+          "quantity": 2,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic"
+        },
+        {
+          "quantity": 1,
+          "unit": "tsp",
+          "ingredient": "smoked-paprika",
+          "name": "Smoked paprika"
+        },
+        {
+          "quantity": 2,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
+        },
+        {
+          "quantity": 15,
+          "unit": "g",
+          "ingredient": "tomato-puree",
+          "name": "Tomato purée"
+        },
+        {
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 0.75
+        }
+      ],
+      "steps": [
+        "Roast the whole peppers on a tray at 220 °C for 30–35 minutes, turning once, until the skins blister and char. Cool in a covered bowl, then peel, deseed and roughly chop.",
+        "Toast the almonds in a dry pan until golden. Set 1 tbsp aside for topping.",
+        "Blend roasted peppers, remaining almonds, garlic, smoked paprika, lemon juice, tomato purée and salt until mostly smooth but still a little textured.",
+        "Taste and adjust lemon and salt. Serve topped with the reserved almonds. Keeps 4 days refrigerated."
+      ],
+      "notes": "Peppers do the work; almonds stay an accent. Ways to use it: on toast; sauce for roasted vegetables; stirred into warm pasta; dip for raw carrot. Keeps 4 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Rød paprika- og mandelrøre",
+          "description": "Romesco-inspirert stekt rød paprikarøre med en modest mandelaksent, røkt paprika, hvitløk, sitron og tomatpuré. Oljefri.",
+          "ingredients": [
+            {
+              "quantity": 500,
+              "unit": "g",
+              "ingredient": "bell-peppers",
+              "name": "Paprika",
+              "note": "rød; hele, til steking"
+            },
+            {
+              "quantity": 45,
+              "unit": "g",
+              "ingredient": "almonds",
+              "name": "Mandler",
+              "note": "ristet; sett til side 1 ss til topping"
+            },
+            {
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Hvitløk"
+            },
+            {
+              "quantity": 1,
+              "unit": "ts",
+              "ingredient": "smoked-paprika",
+              "name": "Røkt paprika"
+            },
+            {
+              "quantity": 2,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "tomato-puree",
+              "name": "Tomatpuré"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Stek paprikene hele på et stekebrett på 220 °C i 30–35 minutter, snu én gang, til skallet blister og svir seg. Avkjøl i en bolle med lokk, skrell, fjern frø og hakk grovt.",
+            "Rist mandlene i en tørr panne til de er gyldne. Sett til side 1 ss til topping.",
+            "Kjør stekt paprika, resterende mandler, hvitløk, røkt paprika, sitronsaft, tomatpuré og salt til nesten jevn, men fortsatt litt grov.",
+            "Smak til med sitron og salt. Server med de avsatte mandlene. Holder 4 dager i kjøleskapet."
+          ],
+          "notes": "Paprika gjør jobben; mandler er aksent. Slik kan du bruke den: på toast; saus til ovnsbakte grønnsaker; rørt inn i varm pasta; dip til rå gulrot. Holder 4 dager i kjøleskapet.",
+          "portion": "~101 g (2–3 ss)"
+        },
+        "sv": {
+          "title": "Röd paprika- och mandelröra",
+          "description": "Romesco-inspirerad rostade röda paprikaröra med en måttlig mandelaccent, rökt paprika, vitlök, citron och tomatpuré. Oljefri.",
+          "ingredients": [
+            {
+              "quantity": 500,
+              "unit": "g",
+              "ingredient": "bell-peppers",
+              "name": "Paprika",
+              "note": "röd; hela, till rostning"
+            },
+            {
+              "quantity": 45,
+              "unit": "g",
+              "ingredient": "almonds",
+              "name": "Mandlar",
+              "note": "rostade; spara 1 msk till topping"
+            },
+            {
+              "quantity": 2,
+              "unit": "clove",
+              "ingredient": "garlic",
+              "name": "Vitlök"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsp",
+              "ingredient": "smoked-paprika",
+              "name": "Rökt paprika"
+            },
+            {
+              "quantity": 2,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
+            },
+            {
+              "quantity": 15,
+              "unit": "g",
+              "ingredient": "tomato-puree",
+              "name": "Tomatpuré"
+            },
+            {
+              "quantity": 0.5,
+              "unit": "tsp",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 0.75
+            }
+          ],
+          "steps": [
+            "Rosta paprikorna hela på en plåt i 220 °C i 30–35 minuter, vänd en gång, tills skalet blister och sveds. Kyl i en skål med lock, skala, kärna ur och hacka grovt.",
+            "Rosta mandlarna i en torr panna tills gyllene. Spara 1 msk till topping.",
+            "Mixa rostade paprikor, övriga mandlar, vitlök, rökt paprika, citronsaft, tomatpuré och salt till nästan slät men fortfarande lite grynig.",
+            "Smaka av med citron och salt. Servera toppad med de sparade mandlarna. Håller 4 dagar i kylen."
+          ],
+          "notes": "Paprika gör jobbet; mandlar är accent. Så kan du använda den: på toast; sås till ugnsrostade grönsaker; rörd i varm pasta; dip till rå morot. Håller 4 dagar i kylen.",
+          "portion": "~101 g (2–3 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 71,
+          "protein": 2.7,
+          "totalFat": 4.1,
+          "saturatedFat": 0.3,
+          "polyunsaturatedFat": 1,
+          "monounsaturatedFat": 2.4,
+          "omega3": 0.03,
+          "omega6": 0.99,
+          "cholesterol": 0,
+          "totalCarbs": 8.1,
+          "totalSugars": 4.3,
+          "addedSugar": 0,
+          "fiber": 2.9,
+          "calcium": 30,
+          "potassium": 275,
+          "copper": 0.11,
+          "iron": 0.82,
+          "magnesium": 33,
+          "manganese": 0.29,
+          "selenium": 0.74,
+          "phosphorus": 63,
+          "zinc": 0.49,
+          "sodium": 199,
+          "vitaminA": 142,
+          "vitaminB6": 0.28,
+          "vitaminB12": 0,
+          "vitaminC": 109,
+          "vitaminD": 0,
+          "vitaminE": 3.5,
+          "vitaminK": 4.7,
+          "folate": 43,
+          "thiamin": 0.06,
+          "riboflavin": 0.17,
+          "niacin": 1.2,
+          "choline": 11
+        },
+        "sodiumStandard": 296
+      },
+      "createdAt": 1793564918778,
+      "flavourProfile": "savoury"
+    },
+    {
+      "id": "fr-202",
+      "title": "Chia berry jam",
+      "category": "Jam",
+      "servings": 6,
+      "portion": "~64 g (2 tbsp)",
+      "prepTime": 10,
+      "cookTime": 0,
+      "imageUrl": "/pack-images/fr-202.jpg",
+      "description": "Quick no-cook berry jam thickened with chia and sweetened only with dates and a squeeze of lemon. No added sugar, oil-free.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "blood-pressure-friendly",
+        "heart-healthy",
+        "gluten-free",
+        "nut-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 69,
+      "servingWeightGrams": 64,
+      "ingredients": [
+        {
+          "quantity": 300,
+          "unit": "g",
+          "ingredient": "berries-mixed-frozen",
+          "name": "Mixed berries, frozen",
+          "note": "thawed; or use fresh"
+        },
+        {
+          "quantity": 30,
+          "unit": "g",
+          "ingredient": "chia-seeds",
+          "name": "Chia seeds"
+        },
+        {
+          "quantity": 40,
+          "unit": "g",
+          "ingredient": "dates-dried",
+          "name": "Dried dates",
+          "note": "pitted; soak 10 min if hard, then drain"
+        },
+        {
+          "quantity": 1,
+          "unit": "tbsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
+        }
+      ],
+      "steps": [
+        "Thaw the berries if frozen. Mash roughly with a fork or pulse briefly — leave some texture.",
+        "Blend or mash the dates with the lemon juice into a soft paste, then stir into the berries.",
+        "Stir in the chia seeds. Rest 15–20 minutes, stirring once, until thick and jammy.",
+        "Taste and add a splash more lemon if you like. Keeps 5 days refrigerated."
+      ],
+      "notes": "No sugar added — dates do the sweetening. Ways to use it: with peanut or sunflower spread on bread; on waffles; swirled into plant yogurt; on porridge. Keeps 5 days refrigerated.",
+      "translations": {
+        "no": {
+          "title": "Chia-bærsyltetøy",
+          "description": "Rask syltetøy uten koking, tyknet med chia og søtet bare med dadler og litt sitron. Uten tilsatt sukker, oljefri.",
+          "ingredients": [
+            {
+              "quantity": 300,
+              "unit": "g",
+              "ingredient": "berries-mixed-frozen",
+              "name": "Blandede bær, frosne",
+              "note": "tint; eller bruk ferske"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "ingredient": "chia-seeds",
+              "name": "Chiafrø"
+            },
+            {
+              "quantity": 40,
+              "unit": "g",
+              "ingredient": "dates-dried",
+              "name": "Tørkede dadler",
+              "note": "uten stein; bløtlegg 10 min hvis harde, hell av"
+            },
+            {
+              "quantity": 1,
+              "unit": "ss",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
+            }
+          ],
+          "steps": [
+            "Tine bærene hvis de er frosne. Mos dem grovt med en gaffel eller puls kort — la litt tekstur være igjen.",
+            "Kjør eller mos dadlene med sitronsaft til en myk paste, rør dem deretter inn i bærene.",
+            "Rør inn chiafrøene. La stå 15–20 minutter, rør én gang, til det er tykt og syltetøyaktig.",
+            "Smak til med litt mer sitron om du vil. Holder 5 dager i kjøleskapet."
+          ],
+          "notes": "Ingen tilsatt sukker — dadlene søter. Slik kan du bruke det: med peanøtt- eller solsikkesmør på brød; på vafler; rørt inn i planteyoghurt; på grøt. Holder 5 dager i kjøleskapet.",
+          "portion": "~64 g (2 ss)"
+        },
+        "sv": {
+          "title": "Chiabärsylt",
+          "description": "Snabb sylt utan kokning, tjocknad med chia och sötad bara med dadlar och lite citron. Utan tillsatt socker, oljefri.",
+          "ingredients": [
+            {
+              "quantity": 300,
+              "unit": "g",
+              "ingredient": "berries-mixed-frozen",
+              "name": "Blandade bär, frysta",
+              "note": "tinade; eller använd färska"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "ingredient": "chia-seeds",
+              "name": "Chiafrön"
+            },
+            {
+              "quantity": 40,
+              "unit": "g",
+              "ingredient": "dates-dried",
+              "name": "Torkade dadlar",
+              "note": "utan kärnor; blötlägg 10 min om hårda, häll av"
+            },
+            {
+              "quantity": 1,
+              "unit": "tbsp",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
+            }
+          ],
+          "steps": [
+            "Tina bären om de är frysta. Mosa dem grovt med en gaffel eller pulsera kort — lämna lite textur kvar.",
+            "Mixa eller mosa dadlarna med citronsaft till en mjuk pasta, rör sedan ner i bären.",
+            "Rör i chiafröna. Låt stå 15–20 minuter, rör en gång, tills tjock och syltlik.",
+            "Smaka av med lite mer citron om du vill. Håller 5 dagar i kylen."
+          ],
+          "notes": "Inget tillsatt socker — dadlarna sötar. Så kan du använda den: med jordnöts- eller solrossmör på bröd; på våfflor; rörd i växtyoghurt; på gröt. Håller 5 dagar i kylen.",
+          "portion": "~64 g (2 msk)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 69,
+          "protein": 1.5,
+          "totalFat": 1.8,
+          "saturatedFat": 0.2,
+          "polyunsaturatedFat": 1.2,
+          "monounsaturatedFat": 0.14,
+          "omega3": 0.92,
+          "omega6": 0.33,
+          "cholesterol": 0,
+          "totalCarbs": 13.3,
+          "totalSugars": 7.8,
+          "addedSugar": 0,
+          "fiber": 4.3,
+          "calcium": 42,
+          "potassium": 127,
+          "copper": 0.09,
+          "iron": 0.74,
+          "magnesium": 26,
+          "manganese": 0.33,
+          "selenium": 3.1,
+          "phosphorus": 56,
+          "zinc": 0.33,
+          "sodium": 1,
+          "vitaminA": 1.4,
+          "vitaminB6": 0.04,
+          "vitaminB12": 0,
+          "vitaminC": 11,
+          "vitaminD": 0,
+          "vitaminE": 0.29,
+          "vitaminK": 3.3,
+          "folate": 13,
+          "thiamin": 0.06,
+          "riboflavin": 0.04,
+          "niacin": 0.8,
+          "choline": 2.3
+        }
+      },
+      "createdAt": 1793564918778,
+      "flavourProfile": "sweet"
     }
   ],
   "updatedAt": "2026-11-01T13:21:29.319Z"

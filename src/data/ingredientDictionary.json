@@ -385,6 +385,34 @@
       }
     },
     {
+      "id": "cocoa-powder",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "spoonGrams": {
+        "gPerTsp": 2.5
+      },
+      "names": {
+        "en": "Cocoa powder",
+        "no": "Kakao",
+        "sv": "Kakao"
+      },
+      "synonyms": {
+        "en": [
+          "unsweetened cocoa",
+          "cacao powder",
+          "cocoa"
+        ],
+        "no": [
+          "kakaopulver",
+          "usøtet kakao"
+        ],
+        "sv": [
+          "kakaopulver",
+          "osötad kakao"
+        ]
+      }
+    },
+    {
       "id": "cucumber",
       "aisle": "Produce",
       "preferredUnit": "g",

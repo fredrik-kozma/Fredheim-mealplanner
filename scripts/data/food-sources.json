@@ -5102,6 +5102,21 @@
       },
       "matvaretabellen": null,
       "preferred": "USDA-SR"
+    },
+    "cocoa-powder": {
+      "micro": {
+        "db": "USDA-SR",
+        "id": "169593",
+        "name": "Cocoa, dry powder, unsweetened"
+      },
+      "compositionBasis": null,
+      "usda": {
+        "fdcId": 169593,
+        "name": "Cocoa, dry powder, unsweetened",
+        "db": "USDA-SR"
+      },
+      "matvaretabellen": null,
+      "preferred": "USDA-SR"
     }
   }
 }
