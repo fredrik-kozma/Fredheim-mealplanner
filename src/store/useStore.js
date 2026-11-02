@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { idbStorage, migrateFromLocalStorage } from './idbStorage'
-import { STARTER_PLANS, filterStarterPlanAgainstBlocks } from '../data/starterPlans'
+import { filterStarterPlanAgainstBlocks, getStarterPlan, sanitizeActiveStarterPlanId } from '../data/starterPlans'
 import { DEFAULT_SALT_LEVEL, SALT_LEVELS, normalizeSaltLevel } from '../utils/saltLevel'
 import { migrateAvoidedAllergens, normalizeBlocked, emptyBlockedIngredients } from '../data/ingredientBlocker'
 
@@ -772,9 +772,14 @@ const useStore = create(
         // current text against every language the plan ships. If it still
         // matches one of them untouched, it's stock and safe to swap; if
         // it matches none, the user has edited it and it's left alone.
-        const plan = s.activeStarterPlanId
-          ? STARTER_PLANS.find(p => p.id === s.activeStarterPlanId)
-          : null
+        // Drop a stale id (sample week removed in a later app version) so
+        // language switching never looks up a missing plan. The meals and
+        // notes already on the week stay as they are.
+        const stale = sanitizeActiveStarterPlanId(s.activeStarterPlanId)
+        if (stale.activeStarterPlanId !== s.activeStarterPlanId) {
+          patch.activeStarterPlanId = stale.activeStarterPlanId
+        }
+        const plan = getStarterPlan(stale.activeStarterPlanId)
         if (plan) {
           const currentText = normalizeWeekNotes(s.weekNotes).week
           const stockVariants = [
@@ -1518,8 +1523,17 @@ const useStore = create(
           recipes: (persisted.recipes || []).filter(r => !r.sourcePackId || r.userEdited),
         }
       },
-      version: 12,
+      version: 13,
       migrate: (persistedState, version) => {
+        // v13: Easy Start / diabetes sample weeks were removed; only FMD
+        // remains in STARTER_PLANS. Clear a stale activeStarterPlanId so
+        // language switching and week titles don't look up a missing plan.
+        // weekPlan / weekNotes / batchCook are left alone — they already
+        // hold the user's copy of whatever they had loaded.
+        if (version < 13) {
+          Object.assign(persistedState, sanitizeActiveStarterPlanId(persistedState.activeStarterPlanId))
+        }
+
         // v11: Make my week no longer plans a snack. Someone who had "3 meals
         // + snack" keeps planMeals 3; a Snack row they already have stays.
         if (version < 11) delete persistedState.planSnack

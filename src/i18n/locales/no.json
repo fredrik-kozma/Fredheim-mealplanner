@@ -462,7 +462,7 @@
     "tutorialDesc": "Se hva Fredheim kan gjøre for deg, og hvordan du planlegger en uke på ett minutt.",
     "showTutorial": "Ta omvisningen",
     "allergens": "Blokkerte ingredienser",
-    "allergensDesc": "Oppskrifter med disse ingrediensene skjules fra listen, søk, Lag uken min, I dag, velgeren og startplaner.",
+    "allergensDesc": "Oppskrifter med disse ingrediensene skjules fra listen, søk, Lag uken min, I dag, velgeren og ferdige uker.",
     "allergensClear": "Nullstill alle",
     "noHoneyHint": "«Lag uken min» utelater oppskrifter med honning.",
     "allergensWarning": "Oppdages automatisk fra ingrediensnavn. Sjekk alltid hele ingredienslisten selv — dette kan ikke ta høyde for merkeforskjeller eller «kan inneholde spor av».",
@@ -649,8 +649,8 @@
     "feature3": "Handleliste med automatiske mengder"
   },
   "starterPlans": {
-    "title": "Ferdige menyplaner",
-    "subtitle": "Trykk Installer for å hente en hel eksempeluke laget for et bestemt helsemål. Du kan tilpasse alt etterpå.",
+    "title": "Ferdige uker",
+    "subtitle": "Last inn den faste-imiterende planen — en fast 5-dagers protokoll. Du kan justere alt etterpå. Til vanlige uker: bruk Lag min uke.",
     "install": "Installer",
     "comingSoon": "Kommer snart",
     "mealCount_one": "{{count}} måltid · 7 dager",
@@ -660,7 +660,8 @@
     "condition": {
       "hypertension": "Høyt blodtrykk",
       "diabetes": "Diabetes type 2",
-      "autoimmune": "Autoimmun"
+      "autoimmune": "Autoimmun",
+      "fmd": "Faste-imiterende"
     }
   },
   "tutorial": {

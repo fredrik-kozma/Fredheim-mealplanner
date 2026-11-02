@@ -11,7 +11,7 @@ import {
 } from '@dnd-kit/core'
 import { useTranslation } from 'react-i18next'
 import useStore, { getPlanDayKeys, normalizeSlotItem } from '../../store/useStore'
-import { STARTER_PLANS } from '../../data/starterPlans'
+import { getStarterPlan } from '../../data/starterPlans'
 import { printWeekPlan } from '../../utils/printWeekPlan'
 import { printMenuBook } from '../../utils/printMenuBook'
 import ShareModal from '../share/ShareModal'
@@ -330,9 +330,7 @@ export default function WeeklyPlanner() {
     // set by an explicit save / load / upload, and stays null for a pristine
     // sample week — which then resolves its name live so the title follows
     // the UI language like the rest of its text.
-    const starter = activeStarterPlanId
-      ? STARTER_PLANS.find(p => p.id === activeStarterPlanId)
-      : null
+    const starter = getStarterPlan(activeStarterPlanId)
     const title =
       activeWeekName ||
       (starter && (starter.translations?.[currentLang]?.name || starter.name)) ||
@@ -432,7 +430,7 @@ export default function WeeklyPlanner() {
 
     if (entries.length === 0) return
 
-    const starter = activeStarterPlanId ? STARTER_PLANS.find(p => p.id === activeStarterPlanId) : null
+    const starter = getStarterPlan(activeStarterPlanId)
     const bookTitle =
       activeWeekName ||
       (starter && (starter.translations?.[currentLang]?.name || starter.name)) ||

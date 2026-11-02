@@ -462,7 +462,7 @@
     "tutorialDesc": "Se vad Fredheim kan göra för dig och hur du planerar en vecka på en minut.",
     "showTutorial": "Ta rundturen",
     "allergens": "Blockerade ingredienser",
-    "allergensDesc": "Recept med dessa ingredienser döljs från listan, sök, Skapa min vecka, Idag, väljaren och startplaner.",
+    "allergensDesc": "Recept med dessa ingredienser döljs från listan, sök, Skapa min vecka, Idag, väljaren och färdiga veckor.",
     "allergensClear": "Rensa alla",
     "noHoneyHint": "”Gör min vecka” utelämnar recept med honung.",
     "allergensWarning": "Upptäcks automatiskt från ingrediensnamn. Kontrollera alltid hela ingredienslistan själv — detta kan inte ta hänsyn till märkesskillnader eller ”kan innehålla spår av”.",
@@ -649,8 +649,8 @@
     "feature3": "Inköpslista med automatiska mängder"
   },
   "starterPlans": {
-    "title": "Färdiga menyplaner",
-    "subtitle": "Tryck Installera för att ladda en hel exempelvecka byggd för ett specifikt hälsomål. Du kan justera allt efteråt.",
+    "title": "Färdiga veckor",
+    "subtitle": "Ladda den fastehärmande planen — ett fast 5-dagarsprotokoll. Du kan justera allt efteråt. För vanliga veckor: använd Skapa min vecka.",
     "install": "Installera",
     "comingSoon": "Kommer snart",
     "mealCount_one": "{{count}} måltid · 7 dagar",
@@ -660,7 +660,8 @@
     "condition": {
       "hypertension": "Högt blodtryck",
       "diabetes": "Typ 2-diabetes",
-      "autoimmune": "Autoimmun"
+      "autoimmune": "Autoimmun",
+      "fmd": "Fastehärmande"
     }
   },
   "tutorial": {

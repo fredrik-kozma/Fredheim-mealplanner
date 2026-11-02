@@ -233,7 +233,7 @@
     "downloadStarterPlanHint": "Saves your current week as a JSON file you can send to your developer to ship as a starter plan for all users.",
     "downloadedStarterPlan": "Starter plan JSON downloaded",
     "loadTemplates": "Load week",
-    "sampleWeeks": "Sample weeks",
+    "sampleWeeks": "Ready-made weeks",
     "myTemplates": "My saved weeks",
     "noTemplates": "No templates saved yet.",
     "templateSaved": "Template saved",
@@ -462,7 +462,7 @@
     "tutorialDesc": "See what Fredheim can do for you and how to plan a week in a minute.",
     "showTutorial": "Take the tour",
     "allergens": "Blocked ingredients",
-    "allergensDesc": "Recipes with these ingredients are hidden from the list, search, Make my week, Today, the picker and starter plans.",
+    "allergensDesc": "Recipes with these ingredients are hidden from the list, search, Make my week, Today, the picker and ready-made weeks.",
     "allergensClear": "Clear all",
     "noHoneyHint": "Make my week leaves out recipes with honey.",
     "allergensWarning": "Detected automatically from ingredient names. Always check the full ingredient list yourself — this cannot account for brand differences or “may contain” cross-contamination.",
@@ -649,8 +649,8 @@
     "feature3": "Shopping list with automatic quantities"
   },
   "starterPlans": {
-    "title": "Starter meal plans",
-    "subtitle": "Tap install to load a full sample week designed for a specific health goal. You can tweak everything afterwards.",
+    "title": "Ready-made weeks",
+    "subtitle": "Load the Fasting Mimicking Plan — a fixed 5-day protocol. You can tweak everything afterwards. For everyday weeks, use Make my week.",
     "install": "Install",
     "comingSoon": "Coming soon",
     "mealCount_one": "{{count}} meal · 7 days",
@@ -660,7 +660,8 @@
     "condition": {
       "hypertension": "Hypertension",
       "diabetes": "Type 2 diabetes",
-      "autoimmune": "Autoimmune"
+      "autoimmune": "Autoimmune",
+      "fmd": "Fasting mimicking"
     }
   },
   "tutorial": {
