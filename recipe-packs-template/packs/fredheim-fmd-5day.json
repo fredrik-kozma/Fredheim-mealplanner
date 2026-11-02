@@ -3,7 +3,7 @@
   "name": "Fasting Mimicking Plan — 5-Day Plan",
   "description": "A clinically structured 5-day Fasting Mimicking Diet (FMD) based on the research of Valter Longo, PhD (USC). Three small, fully plant-based, oil-free, caffeine-free meals a day, with a vegetable broth sipped freely throughout. Designed to trigger autophagy, suppress IGF-1 and mobilise stem cells — with evidence for metabolic syndrome, pre-diabetes, cardiovascular risk, autoimmune and inflammatory conditions, and healthy ageing. ⚠ Contraindicated in pregnancy or breastfeeding, type 1 / insulin-dependent diabetes, BMI under 18.5, any eating-disorder history, and under-18s.",
   "author": "Fredheim Livsstilssenter",
-  "version": "1.24.4",
+  "version": "1.25.0",
   "tags": [
     "fmd",
     "fasting-mimicking",
@@ -51,49 +51,81 @@
       "mealTypes": [
         "component"
       ],
-      "kcal": 15,
+      "kcal": 8,
       "servingWeightGrams": 300,
       "nutrition": {
         "perServing": {
-          "calories": 15,
-          "protein": 0.5,
-          "totalFat": 0.1,
-          "saturatedFat": 0.01,
-          "polyunsaturatedFat": 0,
-          "monounsaturatedFat": 0,
-          "omega3": 0,
-          "omega6": 0.03,
-          "cholesterol": 0,
-          "totalCarbs": 3.3,
-          "totalSugars": 1.2,
+          "calories": 7.7,
+          "protein": 0.16,
+          "totalFat": 0.03,
+          "saturatedFat": 0,
+          "totalCarbs": 1.7,
+          "fiber": 0.13,
+          "totalSugars": 0.84,
           "addedSugar": 0,
-          "fiber": 0.8,
-          "calcium": 16,
-          "potassium": 102,
-          "copper": 0.03,
-          "iron": 0.2,
-          "magnesium": 5.3,
-          "manganese": 0.09,
-          "selenium": 0,
-          "phosphorus": 14,
-          "zinc": 0.1,
-          "sodium": 19,
-          "vitaminA": 106,
-          "vitaminB6": 0.06,
-          "vitaminB12": 0,
-          "vitaminC": 3,
+          "sodium": 14,
+          "potassium": 75,
+          "monounsaturatedFat": 0,
+          "polyunsaturatedFat": 0.01,
+          "omega3": 0,
+          "omega6": 0.01,
+          "calcium": 11,
+          "iron": 0.16,
+          "magnesium": 3.9,
+          "phosphorus": 10,
+          "zinc": 0.07,
+          "copper": 0.02,
+          "manganese": 0.07,
+          "selenium": 0.28,
+          "vitaminA": 40,
+          "vitaminC": 2.5,
           "vitaminD": 0,
-          "vitaminE": 0.13,
-          "vitaminK": 17,
-          "folate": 10,
-          "thiamin": 0.02,
-          "riboflavin": 0.02,
-          "niacin": 0.2,
-          "choline": 3
+          "vitaminE": 0.05,
+          "vitaminK": 6.5,
+          "thiamin": 0.01,
+          "riboflavin": 0.01,
+          "niacin": 0.15,
+          "vitaminB6": 0.05,
+          "folate": 7.1,
+          "vitaminB12": 0,
+          "choline": 2.4,
+          "cholesterol": 0
         },
-        "sodiumStandard": 135,
+        "sodiumStandard": 130,
         "yieldFactor": 0.75,
-        "yieldNote": "strained/reduced: edible liquid only; factor ≈ pack kcal ÷ full ingredient kcal"
+        "yieldNote": "daily vegetable broth, solids discarded",
+        "strain": {
+          "default": {
+            "fat": 0.28,
+            "protein": 0.25,
+            "fiber": 0.12,
+            "soluble": 0.55,
+            "starch": 0.4
+          },
+          "byIngredient": {
+            "salt": {
+              "soluble": 1,
+              "fat": 1,
+              "protein": 1,
+              "fiber": 1,
+              "starch": 1
+            },
+            "water": {
+              "fat": 1,
+              "protein": 1,
+              "fiber": 1,
+              "soluble": 1,
+              "starch": 1
+            },
+            "turmeric-ground": {
+              "fat": 0.4,
+              "protein": 0.3,
+              "fiber": 0.15,
+              "soluble": 0.6,
+              "starch": 0.4
+            }
+          }
+        }
       },
       "translations": {
         "no": {

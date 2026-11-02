@@ -11,6 +11,7 @@ import {
   roundNutrient,
   ENGINE_FROM_PACK,
 } from '../src/utils/nutritionEngine.js'
+import { hasStrainSpec, applyRetentionToNutrients } from '../src/utils/nutritionYield.js'
 import { VISIBLE_NUTRITION_GROUPS } from '../src/utils/nutritionData.js'
 import { applyBlockedSubstitutions } from '../src/data/ingredientBlocker.js'
 
@@ -42,13 +43,54 @@ test('classic-hummus calcium breakdown ranks tahini then chickpeas', () => {
   )
 })
 
-test('orn-8 oat milk applies yield factor to contributions', () => {
+test('orn-8 oat milk uses strain retention and breakdown agrees', () => {
   const r = recipeById['orn-8']
-  assert.ok(r?.nutrition?.yieldFactor < 1)
+  assert.ok(hasStrainSpec(r), 'orn-8 has strain spec')
+  const est = estimateRecipeNutrition(r, db, { recipeById })
   const br = estimateRecipeNutritionBreakdown(r, db, { recipeById })
-  assert.ok(Math.abs(br.yieldFactor - r.nutrition.yieldFactor) < 1e-6)
+  assert.ok(est.warnings.some((w) => /class retention/i.test(w)))
+  assert.equal(roundNutrient(br.contributions.reduce((s, c) => s + (c.nutrients.kcal || 0), 0)), est.total.kcal)
   const view = viewNutrientBreakdown(br, 'calories')
-  assert.ok(view.parts[0].pct >= 50)
+  assert.ok(view.parts[0].pct >= 40)
+})
+
+test('fr-212 coconut milk class retention lands near verified targets', () => {
+  const r = recipeById['fr-212']
+  assert.ok(hasStrainSpec(r))
+  const live = estimateRecipeNutrition(r, db, { recipeById })
+  const p = live.perServing
+  assert.ok(Math.abs(p.calories - 84) <= 3, `kcal ${p.calories}`)
+  assert.ok(Math.abs(p.totalFat - 5.2) <= 0.4, `fat ${p.totalFat}`)
+  assert.ok(Math.abs(p.saturatedFat - 4.6) <= 0.4, `sat ${p.saturatedFat}`)
+  assert.ok(Math.abs(p.totalSugars - 8.2) <= 1.0, `sugars ${p.totalSugars}`)
+  assert.ok(p.fiber <= 1.0, `fiber ${p.fiber} should stay low (pulp discarded)`)
+  assert.ok(Math.abs(p.sodium - 43) <= 8, `sodium ${p.sodium}`)
+  const br = estimateRecipeNutritionBreakdown(r, db, { recipeById })
+  for (const k of Object.keys(live.total)) {
+    const sum = br.contributions.reduce((s, c) => s + (c.nutrients[k] || 0), 0)
+    assert.equal(roundNutrient(sum), live.total[k], k)
+  }
+})
+
+test('applyRetentionToNutrients rebuilds carbs and kcal', () => {
+  const raw = { kcal: 100, protein: 2, fat: 10, satFat: 9, carbs: 20, sugars: 8, fiber: 5, added: 0, sodium: 10, potassium: 50 }
+  // starch = 20-8-5 = 7; after: sug 7.2, fib 0.5, starch 1.4 → carbs 9.1; kcal = 2*4 + 9.1*4 + 4*9 = 8+36.4+36 = 80.4
+  const { nutrients } = applyRetentionToNutrients(raw, { fat: 0.4, protein: 1, fiber: 0.1, soluble: 0.9, starch: 0.2 })
+  assert.ok(Math.abs(nutrients.sugars - 7.2) < 1e-9)
+  assert.ok(Math.abs(nutrients.fiber - 0.5) < 1e-9)
+  assert.ok(Math.abs(nutrients.carbs - 9.1) < 1e-9)
+  assert.ok(Math.abs(nutrients.fat - 4) < 1e-9)
+  assert.ok(Math.abs(nutrients.kcal - 80.4) < 1e-6)
+})
+
+test('legacy yieldFactor still works when strain is absent', () => {
+  const r = structuredClone(recipeById['orn-8'])
+  delete r.nutrition.strain
+  r.nutrition.yieldFactor = 0.5
+  const live = estimateRecipeNutrition(r, db, { recipeById })
+  // Full ingredient kcal roughly doubled vs 0.5 factor path — just assert warning + finite
+  assert.ok(live.warnings.some((w) => /yield/i.test(w)))
+  assert.ok(live.perServing.calories > 0)
 })
 
 test('choline is not in visible keys (stays hidden)', () => {
@@ -56,7 +98,7 @@ test('choline is not in visible keys (stays hidden)', () => {
 })
 
 test('sum of contributions equals estimateRecipeNutrition totals for all pack recipes and every engine nutrient', () => {
-  assert.equal(allRecipes.length, 306)
+  assert.equal(allRecipes.length, 307)
   const failures = []
   for (const r of allRecipes) {
     const est = estimateRecipeNutrition(r, db, { recipeById, saltLevel: 'low' })
@@ -67,7 +109,6 @@ test('sum of contributions equals estimateRecipeNutrition totals for all pack re
         failures.push(`${r.id}:${engKey} sum=${sum} total=${val}`)
       }
     }
-    // Every visible pack key must be present in ENGINE_FROM_PACK
     for (const pk of visibleKeys) {
       assert.ok(ENGINE_FROM_PACK[pk], `missing ENGINE_FROM_PACK for ${pk}`)
     }
@@ -75,8 +116,7 @@ test('sum of contributions equals estimateRecipeNutrition totals for all pack re
   assert.equal(failures.length, 0, failures.slice(0, 10).join('\n'))
 })
 
-test('blocked soy-sauce â†’ tamari attributes nutrition to tamari (food actually eaten)', () => {
-  // Find a recipe that uses soy-sauce
+test('blocked soy-sauce → tamari attributes nutrition to tamari (food actually eaten)', () => {
   const r = allRecipes.find((x) => (x.ingredients || []).some((i) => i.ingredient === 'soy-sauce'))
   assert.ok(r, 'need a soy-sauce recipe')
   const blocked = { groups: ['gluten'], ids: [] }
@@ -86,7 +126,6 @@ test('blocked soy-sauce â†’ tamari attributes nutrition to tamari (food act
   const br = estimateRecipeNutritionBreakdown(swapped, db, { recipeById, saltLevel: 'low' })
   const sodiumView = viewNutrientBreakdown(br, 'sodium')
   const ids = sodiumView.parts.map((p) => p.ingredientId)
-  // Should credit tamari, not soy-sauce, when swap applied
   if (ids.length) {
     assert.equal(ids.includes('soy-sauce'), false)
   }
@@ -99,7 +138,7 @@ test('unlinked ingredient appears under not counted', () => {
     servings: 2,
     ingredients: [
       { ingredient: 'chickpeas-canned', name: 'Chickpeas', quantity: 200, unit: 'g' },
-      { name: 'Mystery sprinkle', quantity: 1, unit: 'tbsp' }, // no id
+      { name: 'Mystery sprinkle', quantity: 1, unit: 'tbsp' },
     ],
   }
   const br = estimateRecipeNutritionBreakdown(recipe, db, { saltLevel: 'low' })
@@ -117,5 +156,3 @@ test('standard salt level changes sodium contribution grams', () => {
   const std = estimateRecipeNutritionBreakdown(r, db, { recipeById, saltLevel: 'standard' })
   assert.ok(std.total.sodium >= low.total.sodium)
 })
-
-

@@ -28881,14 +28881,13 @@
           "batch-friendly"
         ],
         "proposed": [
-          "weight-loss",
+          "batch-friendly",
           "blood-pressure-friendly",
-          "heart-healthy",
           "gluten-free",
+          "no-added-sugar",
           "nut-free",
           "oil-free",
-          "no-added-sugar",
-          "batch-friendly"
+          "weight-loss"
         ],
         "added": [],
         "removed": [],
@@ -30362,13 +30361,14 @@
           "batch-friendly"
         ],
         "proposed": [
-          "weight-loss",
+          "batch-friendly",
+          "blood-pressure-friendly",
           "gluten-free",
-          "nut-free",
-          "soy-free",
-          "oil-free",
           "no-added-sugar",
-          "batch-friendly"
+          "nut-free",
+          "oil-free",
+          "soy-free",
+          "weight-loss"
         ],
         "added": [],
         "removed": [],
@@ -33412,14 +33412,12 @@
           "no-added-sugar"
         ],
         "proposed": [
-          "weight-loss",
           "blood-pressure-friendly",
-          "diabetes-friendly",
-          "heart-healthy",
           "gluten-free",
-          "soy-free",
+          "no-added-sugar",
           "oil-free",
-          "no-added-sugar"
+          "soy-free",
+          "weight-loss"
         ],
         "added": [],
         "removed": [],

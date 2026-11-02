@@ -1,4 +1,4 @@
-import { test } from 'node:test'
+﻿import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -22,7 +22,7 @@ test('rowGrams: grams pass through', () => {
 })
 
 test('rowGrams: tbsp uses spoonGrams or density', () => {
-  // chia may have no spoon grams in offline db — oil has density
+  // chia may have no spoon grams in offline db â€” oil has density
   const oil = rowGrams({ ingredient: 'rapeseed-oil', quantity: 1, unit: 'tbsp' }, db)
   assert.ok(oil.grams > 10 && oil.grams < 20, `expected ~14 g, got ${oil.grams}`)
 })
@@ -105,9 +105,10 @@ test('strained yieldFactor brings oat milk kcal within 3% of pack', () => {
   const r = pack.recipes.find(x => x.id === 'orn-8')
     || JSON.parse(readFileSync(path.join(ROOT, 'recipe-packs-template/packs/fredheim-reversal-protocol.json'), 'utf8')).recipes.find(x => x.id === 'orn-8')
   assert.ok(r, 'orn-8')
-  assert.ok(r.nutrition?.yieldFactor > 0 && r.nutrition.yieldFactor < 1, 'yieldFactor stored')
+  assert.ok(r.nutrition?.strain || (r.nutrition?.yieldFactor > 0 && r.nutrition.yieldFactor < 1), 'strain or yieldFactor stored')
   const live = estimateRecipeNutrition(r, db, { saltLevel: 'low' })
   const packK = r.nutrition.perServing.calories
   const rel = Math.abs(live.perServing.calories - packK) / packK
   assert.ok(rel <= 0.03, `kcal live ${live.perServing.calories} vs pack ${packK} (${Math.round(rel*100)}%)`)
 })
+

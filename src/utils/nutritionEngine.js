@@ -7,7 +7,13 @@
  *
  * One source of truth: scripts can later import this same module for estimates.
  */
-import { getYieldFactor, FULLY_SOLUBLE_IDS } from './nutritionYield.js'
+import {
+  getYieldFactor,
+  FULLY_SOLUBLE_IDS,
+  hasStrainSpec,
+  retentionForIngredient,
+  applyRetentionToNutrients,
+} from './nutritionYield.js'
 
 /** @typedef {'low'|'standard'} SaltLevel */
 
@@ -252,7 +258,30 @@ export function totalsToPack(totals, servings) {
  * nutrition.yieldFactor so kcal matches the curated edible liquid. Salt-like
  * rows keep full sodium (they dissolve into the liquid); other sodium is scaled.
  */
-function applyStrainYield(recipe, db, { totals, warnings }, { saltLevel }) {
+function applyStrainYield(recipe, db, { totals, warnings }, { saltLevel, compositePer100 = null } = {}) {
+  // Preferred: per-ingredient nutrient-class retention
+  if (hasStrainSpec(recipe)) {
+    const scaled = emptyTotals()
+    for (const row of recipe.ingredients || []) {
+      const id = row?.ingredient
+      if (!id || (!db.foods?.[id] && !(compositePer100 && compositePer100[id]))) continue
+      const { grams } = rowGrams(row, db, { saltLevel })
+      if (!grams) continue
+      const n = nutrientsPer100(row, db, compositePer100)
+      if (!n) continue
+      const factor = grams / 100
+      const raw = emptyTotals()
+      for (const k of Object.keys(raw)) {
+        if (typeof n[k] === 'number') raw[k] = n[k] * factor
+      }
+      const retention = retentionForIngredient(recipe, id)
+      const { nutrients } = applyRetentionToNutrients(raw, retention)
+      for (const k of Object.keys(scaled)) scaled[k] += nutrients[k] || 0
+    }
+    const nextWarnings = [...warnings, 'strained class retention (pulp/solids discarded)']
+    return { totals: scaled, warnings: nextWarnings }
+  }
+
   const factor = getYieldFactor(recipe)
   if (factor == null || Math.abs(factor - 1) < 1e-6) return { totals, warnings }
   const scaled = { ...totals }
@@ -274,10 +303,9 @@ function applyStrainYield(recipe, db, { totals, warnings }, { saltLevel }) {
     else otherNa += contrib
   }
   scaled.sodium = solubleNa + otherNa * factor
-  const nextWarnings = [...warnings, `strained yield ×${Math.round(factor * 1000) / 1000} (pulp/solids discarded)`]
+  const nextWarnings = [...warnings, `strained yield ·${Math.round(factor * 1000) / 1000} (pulp/solids discarded)`]
   return { totals: scaled, warnings: nextWarnings }
 }
-
 
 /**
  * Reverse map: pack perServing key → engine totals key.
@@ -357,10 +385,25 @@ export function collectRecipeContributions(recipe, db, opts = {}) {
 
 /**
  * Scale contributions to match applyStrainYield:
- * - every nutrient except sodium × yieldFactor
- * - sodium rebuilt like applyStrainYield (db.foods only; soluble kept full)
+ * - nutrition.strain → per-ingredient class retention (preferred)
+ * - else yieldFactor on every nutrient except sodium (soluble Na kept full)
  */
 function applyYieldToContributions(recipe, db, contributions, warnings, { saltLevel }) {
+  if (hasStrainSpec(recipe)) {
+    const scaled = contributions.map((c) => {
+      const retention = retentionForIngredient(recipe, c.ingredientId)
+      const { nutrients } = applyRetentionToNutrients(c.nutrients, retention)
+      const { row, ...rest } = c
+      return { ...rest, nutrients }
+    })
+    const totals = emptyTotals()
+    for (const c of scaled) {
+      for (const k of Object.keys(totals)) totals[k] += c.nutrients[k] || 0
+    }
+    const nextWarnings = [...warnings, 'strained class retention (pulp/solids discarded)']
+    return { contributions: scaled, totals, warnings: nextWarnings, yieldFactor: 1 }
+  }
+
   const factor = getYieldFactor(recipe)
   const yieldFactor = (factor == null || Math.abs(factor - 1) < 1e-6) ? 1 : factor
 
@@ -403,9 +446,10 @@ function applyYieldToContributions(recipe, db, contributions, warnings, { saltLe
     for (const k of Object.keys(totals)) totals[k] += c.nutrients[k] || 0
   }
 
-  const nextWarnings = [...warnings, 'strained yield ×' + (Math.round(yieldFactor * 1000) / 1000) + ' (pulp/solids discarded)']
+  const nextWarnings = [...warnings, 'strained yield ·' + (Math.round(yieldFactor * 1000) / 1000) + ' (pulp/solids discarded)']
   return { contributions: scaled, totals, warnings: nextWarnings, yieldFactor }
 }
+
 
 
 export function estimateRecipeNutritionBreakdown(recipe, db, options = {}) {
@@ -569,7 +613,7 @@ export function estimateRecipeNutrition(recipe, db, options = {}) {
   }
 
   const summed = sumRecipeTotals(recipe, db, { saltLevel, compositePer100 })
-  const { totals, warnings } = applyStrainYield(recipe, db, summed, { saltLevel })
+  const { totals, warnings } = applyStrainYield(recipe, db, summed, { saltLevel, compositePer100 })
   const servings = Math.max(1, recipe.servings || 1)
   const perServing = totalsToPack(totals, servings)
 

@@ -3,7 +3,7 @@
   "name": "Fredheim Kitchen",
   "description": "Everyday Fredheim recipes, with photos.",
   "author": "Fredheim",
-  "version": "1.105.0",
+  "version": "1.112.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -61644,6 +61644,266 @@
         "sodiumStandard": 195
       },
       "createdAt": 1793595212453
+    },
+    {
+      "id": "fr-212",
+      "title": "Coconut milk from flakes (toasted, date-sweetened)",
+      "category": "Drink",
+      "servings": 4,
+      "portion": "1 glass (~240 ml)",
+      "prepTime": 10,
+      "cookTime": 3,
+      "imageUrl": "/pack-images/fr-212.jpg",
+      "description": "A drinkable coconut milk with real coconut flavour: half the flakes toasted for depth, dates for gentle sweetness, strained through cloth until silky.",
+      "tags": [
+        "fredheim",
+        "drink",
+        "gluten-free",
+        "nut-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar"
+      ],
+      "mealTypes": [
+        "component"
+      ],
+      "kcal": 84,
+      "servingWeightGrams": 245,
+      "ingredients": [
+        {
+          "quantity": 80,
+          "unit": "g",
+          "ingredient": "shredded-coconut",
+          "name": "Shredded coconut",
+          "note": "unsweetened coconut flakes, fine or medium; half will be dry-toasted"
+        },
+        {
+          "quantity": 1000,
+          "unit": "ml",
+          "ingredient": "water",
+          "name": "Water",
+          "note": "hot (~80 °C, not boiling)"
+        },
+        {
+          "quantity": 48,
+          "unit": "g",
+          "ingredient": "medjool-dates",
+          "name": "Medjool dates",
+          "note": "2 dates, pitted"
+        },
+        {
+          "quantity": 0.25,
+          "unit": "tsp",
+          "ingredient": "vanilla-powder",
+          "name": "Vanilla powder",
+          "note": "unsweetened, to taste"
+        },
+        {
+          "quantity": 0.07,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "note": "small pinch (~1/16 tsp)"
+        }
+      ],
+      "steps": [
+        "Dry-toast 40 g of the flakes in a hot dry pan, 2–3 minutes, shaking constantly until golden and fragrant. Tip out immediately so they don’t scorch.",
+        "Put toasted and untoasted flakes in a bowl with the dates. Pour over the hot water. Soak 20 minutes — this is where the fat and flavour loosen.",
+        "Blend everything on high for 90 seconds, until the mixture looks like thin cream.",
+        "Pour through a cloth set in a sieve. Gather the cloth and squeeze hard — keep squeezing after you think it’s done; the last press is the richest.",
+        "Stir in vanilla and salt. Chill at least 2 hours. Shake before pouring; it separates naturally since there’s no emulsifier."
+      ],
+      "notes": "The salt is doing more than seasoning — without it the drink tastes flat and watery. Do a second press: return the pulp to the blender with 300 ml hot water, blend, strain again for a lighter “second milk” good for porridge. Dry the leftover pulp in a low oven and use it as coconut flour in oatmeal. Substitutions: dates → 3 dried figs or 1 very ripe banana; vanilla → a pinch of cardamom, or a strip of lemon zest blended in and strained out.",
+      "translations": {
+        "no": {
+          "title": "Kokosmelk av flak (ristet, dadelsøtet)",
+          "description": "En drikkbar kokosmelk med ekte kokossmak: halvparten av flakene ristet for dybde, dadler for mild sødme, silt gjennom klede til silkeaktig.",
+          "ingredients": [
+            {
+              "quantity": 80,
+              "unit": "g",
+              "ingredient": "shredded-coconut",
+              "name": "Kokosmasse",
+              "note": "usøtede kokosflak, fine eller medium; halvparten tørrsteskes"
+            },
+            {
+              "quantity": 1000,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vann",
+              "note": "varmt (~80 °C, ikke kokende)"
+            },
+            {
+              "quantity": 48,
+              "unit": "g",
+              "ingredient": "medjool-dates",
+              "name": "Medjool-dadler",
+              "note": "2 dadler, uten stein"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "ts",
+              "ingredient": "vanilla-powder",
+              "name": "Vaniljepulver",
+              "note": "usøtet, etter smak"
+            },
+            {
+              "quantity": 0.07,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "en liten klype (~1/16 ts)"
+            }
+          ],
+          "steps": [
+            "Tørrstesk 40 g av flakene i en varm tørr panne i 2–3 minutter under stadig risting til de er gylne og dufter. Hell dem ut med en gang så de ikke svir.",
+            "Legg ristede og uristede flak i en bolle med dadlene. Hell over det varme vannet. Bløtlegg 20 minutter — her løsner fett og smak.",
+            "Kjør alt på høy hastighet i 90 sekunder, til blandingen ser ut som tynn fløte.",
+            "Hell gjennom et klede i et dørslag. Samle klede og klem hardt — fortsett å klemme etter at du tror du er ferdig; siste press er det rikeste.",
+            "Rør inn vanilje og salt. Avkjøl minst 2 timer. Rist før du heller; den skiller seg naturlig siden det ikke er emulgator."
+          ],
+          "notes": "Saltet gjør mer enn bare å smake til — uten det smaker drikken flat og vannaktig. Gjør et andre press: legg massen tilbake i blenderen med 300 ml varmt vann, kjør, sil igjen for en lettere «andre melk» som passer til grøt. Tørk resten av massen i lav ovn og bruk den som kokosmel i havregrøt. Erstatninger: dadler → 3 tørkede fiken eller 1 meget moden banan; vanilje → en klype kardemomme, eller en strimmel sitronskall som kjøres med og siles ut.",
+          "portion": "1 glass (~240 ml)"
+        },
+        "sv": {
+          "title": "Kokosmjölk av flingor (rostad, dadelsötad)",
+          "description": "En drickbar kokosmjölk med äkta kokossmak: hälften av flingorna rostade för djup, dadlar för mild sötma, silad genom duk till silkig.",
+          "ingredients": [
+            {
+              "quantity": 80,
+              "unit": "g",
+              "ingredient": "shredded-coconut",
+              "name": "Riven kokos",
+              "note": "osötade kokosflingor, fina eller medium; hälften torrrostas"
+            },
+            {
+              "quantity": 1000,
+              "unit": "ml",
+              "ingredient": "water",
+              "name": "Vatten",
+              "note": "hett (~80 °C, inte kokande)"
+            },
+            {
+              "quantity": 48,
+              "unit": "g",
+              "ingredient": "medjool-dates",
+              "name": "Medjooldadlar",
+              "note": "2 dadlar, urkärnade"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "tsk",
+              "ingredient": "vanilla-powder",
+              "name": "Vaniljpulver",
+              "note": "osötat, efter smak"
+            },
+            {
+              "quantity": 0.07,
+              "unit": "tsk",
+              "ingredient": "salt",
+              "name": "Salt",
+              "note": "en liten nypa (~1/16 tsk)"
+            }
+          ],
+          "steps": [
+            "Torrrosta 40 g av flingorna i en het torr panna i 2–3 minuter under ständig skakning tills de är gyllene och doftar. Tippa ut dem genast så de inte bränns.",
+            "Lägg rostade och orostade flingor i en skål med dadlarna. Häll över det heta vattnet. Blötlägg 20 minuter — här lossnar fett och smak.",
+            "Mixa allt på hög hastighet i 90 sekunder, tills blandningen ser ut som tunn grädde.",
+            "Häll genom en duk i ett durkslag. Samla duken och krama hårt — fortsätt krama efter att du tror du är klar; sista pressen är den rikaste.",
+            "Rör i vanilj och salt. Kyl minst 2 timmar. Skaka före servering; den skiljer sig naturligt eftersom det inte finns emulgator."
+          ],
+          "notes": "Saltet gör mer än att smaksätta — utan det smakar drycken flat och vattnig. Gör en andra press: lägg tillbaka massan i mixern med 300 ml hett vatten, mixa, sila igen för en lättare «andra mjölk» bra till gröt. Torka restmassan i låg ugn och använd den som kokosmjöl i havregrynsgröt. Ersättningar: dadlar → 3 torkade fikon eller 1 mycket mogen banan; vanilj → en nypa kardemumma, eller en remsa citronskal som mixas i och silas bort.",
+          "portion": "1 glas (~240 ml)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 84,
+          "protein": 0.55,
+          "totalFat": 5.2,
+          "saturatedFat": 4.6,
+          "totalCarbs": 8.8,
+          "fiber": 0.52,
+          "totalSugars": 8.1,
+          "addedSugar": 0,
+          "sodium": 43,
+          "potassium": 118,
+          "monounsaturatedFat": 0.22,
+          "polyunsaturatedFat": 0.06,
+          "omega3": 0,
+          "omega6": 0.06,
+          "calcium": 9.3,
+          "iron": 0.34,
+          "magnesium": 13,
+          "phosphorus": 22,
+          "zinc": 0.19,
+          "copper": 0.1,
+          "manganese": 0.23,
+          "selenium": 1.3,
+          "vitaminA": 0.42,
+          "vitaminC": 0.11,
+          "vitaminD": 0,
+          "vitaminE": 0.04,
+          "vitaminK": 0.19,
+          "thiamin": 0.01,
+          "riboflavin": 0.01,
+          "niacin": 0.23,
+          "vitaminB6": 0.05,
+          "folate": 2.3,
+          "vitaminB12": 0,
+          "choline": 2.5,
+          "cholesterol": 0
+        },
+        "yieldFactor": 0.5069,
+        "yieldNote": "cloth-strained coconut milk: ~40% coconut fat extraction; date sugars pass; fibre mostly in pulp",
+        "strain": {
+          "default": {
+            "fat": 0.5,
+            "protein": 0.5,
+            "fiber": 0.15,
+            "soluble": 0.9,
+            "starch": 0.5
+          },
+          "byIngredient": {
+            "shredded-coconut": {
+              "fat": 0.4,
+              "protein": 0.28,
+              "fiber": 0.12,
+              "soluble": 0.35,
+              "starch": 0.3
+            },
+            "medjool-dates": {
+              "fat": 0.5,
+              "protein": 0.75,
+              "fiber": 0.15,
+              "soluble": 0.95,
+              "starch": 0.9
+            },
+            "vanilla-powder": {
+              "fat": 0.5,
+              "protein": 0.5,
+              "fiber": 0.2,
+              "soluble": 1,
+              "starch": 0.5
+            },
+            "salt": {
+              "soluble": 1,
+              "fat": 1,
+              "protein": 1,
+              "fiber": 1,
+              "starch": 1
+            },
+            "water": {
+              "fat": 1,
+              "protein": 1,
+              "fiber": 1,
+              "soluble": 1,
+              "starch": 1
+            }
+          }
+        }
+      },
+      "createdAt": 1793600487424
     }
   ],
   "updatedAt": "2026-11-01T13:21:29.319Z"

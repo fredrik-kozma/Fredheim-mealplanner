@@ -81,7 +81,7 @@ export const SERVINGS = {
 
 // Recipes that are strained or reduced: the ingredient sum overstates what
 // is eaten, so a lower stored value is expected and kept.
-export const STRAINED = new Set(['orn-8', 'orn-12', 'orn-23', 'orn-43', 'fmd-broth'])
+export const STRAINED = new Set(['orn-8', 'orn-12', 'orn-23', 'orn-43', 'fmd-broth', 'fr-212'])
 export const NOT_EATEN = new Set(['orn-37'])
 // A stored 0 is treated as "never filled in" when the ingredients give at least this much.
 export const FALSE_ZERO_MIN = { protein: 1, totalFat: 1, saturatedFat: 0.5, fiber: 1, totalSugars: 1, sodium: 50, potassium: 50 }
