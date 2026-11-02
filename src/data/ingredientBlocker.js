@@ -25,6 +25,8 @@
  */
 
 import { ALLERGENS, ingredientHasAllergen } from './allergens.js'
+import dictionary from './ingredientDictionary.json'
+import { fold } from '../utils/ingredientSearch.js'
 
 /** UI groups shown as chips. */
 export const BLOCK_GROUPS = [
@@ -165,6 +167,34 @@ export const INGREDIENT_DISPLAY_ALIASES = {
       sv: 'Tamari är glutenfri',
     },
   },
+}
+
+
+const ENTRY_BY_ID = new Map((dictionary.entries || []).map((e) => [e.id, e]))
+
+/** Folded name/synonym/singular terms for one dictionary id (en/no/sv). */
+export function termsForBlockedId(id) {
+  const e = ENTRY_BY_ID.get(id)
+  const terms = new Set()
+  if (e) {
+    for (const lang of ['en', 'no', 'sv']) {
+      if (e.names?.[lang]) terms.add(fold(e.names[lang]))
+      if (e.singular?.[lang]) terms.add(fold(e.singular[lang]))
+      for (const syn of e.synonyms?.[lang] || []) if (syn) terms.add(fold(syn))
+    }
+  }
+  terms.add(fold(String(id || '').replace(/-/g, ' ')))
+  return [...terms].filter((t) => t && t.length >= 3)
+}
+
+/** Case/accent-insensitive contains match of free-text against a blocked id's terms. */
+export function textMatchesBlockedId(text, id) {
+  const folded = fold(text)
+  if (!folded) return false
+  for (const term of termsForBlockedId(id)) {
+    if (folded.includes(term) || term.includes(folded)) return true
+  }
+  return false
 }
 
 export function emptyBlockedIngredients() {
@@ -396,6 +426,17 @@ export function collectRecipeHits(recipe, blocked) {
   }
 
   const texts = allRowTexts(recipe)
+  // Explicit blocked ingredient ids: also match free-text names / aliases
+  // (e.g. blocking "mushrooms" catches a row named "shiitake" via synonyms).
+  for (const id of b.ids) {
+    if (hard.some((h) => h.id === id)) continue
+    if (SOY_SAUCE_IDS.has(id) && soySauceSwap) continue
+    if (PLANT_GENERIC.has(id)) continue
+    if (texts.some((t) => textMatchesBlockedId(t, id))) {
+      const label = ENTRY_BY_ID.get(id)?.names?.en || id
+      hard.push({ id, name: label, reason: 'name' })
+    }
+  }
   const regexGroups = []
   const activeRegexIds = new Set(b.groups)
   if (b.ids.some((id) => PER_NUT_IDS.includes(id) || (GROUP_IDS['tree-nuts'] || []).includes(id))) {

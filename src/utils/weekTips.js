@@ -42,6 +42,12 @@ export function noticeText(n, { t, titleOf, packName = id => id }, stats = null)
         goals: (n.goals || []).map(g => t(`makeMyWeek.goals.${g}`)).join(', '),
         kept: (n.kept || []).map(g => t(`makeMyWeek.goals.${g}`)).join(', '),
       })
+    case 'goalTilt':
+      return t('makeMyWeek.notice.goalTilt', {
+        goals: (n.goals || []).map(g => t(`makeMyWeek.goals.${g}`)).join(', '),
+        full: n.fullLabelCount,
+        pool: n.poolSize,
+      })
     case 'breakfastRelaxed':
       return t('makeMyWeek.notice.breakfastRelaxed', { kind: t(`makeMyWeek.breakfastKinds.${n.breakfast}`) })
     case 'favouritesUsed':

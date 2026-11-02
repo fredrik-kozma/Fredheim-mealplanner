@@ -12,6 +12,9 @@ import {
   recipeIsBlocked,
   recipeBlockReasons,
 } from '../data/ingredientBlocker'
+import NnrCoverage from '../components/nutrition/NnrCoverage'
+import PlannedContributorsSheet from '../components/nutrition/PlannedContributorsSheet'
+import { plannedDayTotals, plannedNutrientContributors } from '../utils/plannedNutrition'
 
 const CLOCK_ICON = (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
@@ -88,6 +91,7 @@ function MealCard({
           </div>
         </div>
       )}
+
     </div>
   )
 }
@@ -176,6 +180,8 @@ export default function TodayPage() {
   // An installed app can sit open overnight: look at the date again whenever
   // it comes back to the front, or "today" would still be yesterday.
   const [now, setNow] = useState(() => new Date())
+  const [showNutrients, setShowNutrients] = useState(false)
+  const [contribOpen, setContribOpen] = useState(null)
   useEffect(() => {
     function onVisible() { if (!document.hidden) setNow(new Date()) }
     document.addEventListener('visibilitychange', onVisible)
@@ -188,6 +194,11 @@ export default function TodayPage() {
   const meals = dayMeals(weekPlan, today, mealSlots, getRecipe)
   const tomorrow = dayMeals(weekPlan, weekdayKey(nextDay(now)), mealSlots, getRecipe)
   const summary = daySummary(weekPlan, today, getRecipe, familySize)
+  const recipeMap = useMemo(() => Object.fromEntries(recipes.map(r => [r.id, r])), [recipes])
+  const plannedDayTot = useMemo(
+    () => plannedDayTotals(weekPlan, today, recipeMap, familySize),
+    [weekPlan, today, recipeMap, familySize],
+  )
 
   const dateLabel = now.toLocaleDateString(
     { en: 'en-GB', no: 'nb-NO', sv: 'sv-SE' }[lang],
@@ -209,6 +220,29 @@ export default function TodayPage() {
       {meals.length > 0 ? (
         <>
           <DaySummary summary={summary} />
+          <div className="mt-3">
+            <button
+              type="button"
+              onClick={() => setShowNutrients(v => !v)}
+              className="text-sm font-semibold text-primary-700 underline underline-offset-2"
+            >
+              {showNutrients ? t('today.nutrientsHide') : t('today.nutrients')}
+            </button>
+            {showNutrients && (
+              <div className="card mt-2 p-3">
+                <NnrCoverage
+                  totals={plannedDayTot}
+                  emptyText={t('nutritionTracker.plannedEmpty')}
+                  onSelectNutrient={(row) => {
+                    const c = plannedNutrientContributors(weekPlan, today, row.key, {
+                      recipeMap, people: familySize, lang,
+                    })
+                    setContribOpen({ row, contributors: c })
+                  }}
+                />
+              </div>
+            )}
+          </div>
           <div className="grid gap-3 mt-4 xl:grid-cols-3">
             {meals.map(({ slot, item, recipe }, i) => {
               const blocked = recipe && blockedIsActive(blockedIngredients) && recipeIsBlocked(recipe, blockedIngredients)
@@ -266,6 +300,16 @@ export default function TodayPage() {
           </button>
         </div>
       )}
+      <PlannedContributorsSheet
+        open={!!contribOpen}
+        onClose={() => setContribOpen(null)}
+        nutrientKey={contribOpen?.row?.key}
+        nutrientLabel={contribOpen ? t(`nutrition.fields.${contribOpen.row.key}`, { defaultValue: contribOpen.row.key }) : ''}
+        unit={contribOpen?.row?.unit}
+        contributors={contribOpen?.contributors}
+        currentLang={lang}
+      />
+
     </div>
   )
 }

@@ -228,7 +228,7 @@ test('spoon kinds: seeds, powders, pastes, spices, herbs — not oils, nuts or v
 })
 
 test('the checker passes on the current packs (only baselined leftovers)', () => {
-  const out = execFileSync(process.execPath, ['scripts/check-recipes.mjs'], { encoding: 'utf8' })
+  const out = execFileSync(process.execPath, ['--import', './tests/support/json-loader.mjs', 'scripts/check-recipes.mjs'], { encoding: 'utf8' })
   assert.match(out, /OK: no new problems/)
 })
 
@@ -313,7 +313,7 @@ test('label-recipes: --write puts the computed labels on a recipe and nothing el
   const tags = withLabels(guessed.tags, a.proposed)
   assert.equal(tags[0], 'vegan', 'other tags kept first')
   assert.deepEqual(tags.filter((t) => LABELS.includes(t)), LABELS.filter((l) => r.tags.includes(l)))
-  const out = execFileSync(process.execPath, ['scripts/label-recipes.mjs', '--recipe', 'orn-39'], { encoding: 'utf8' })
+  const out = execFileSync(process.execPath, ['--import', './tests/support/json-loader.mjs', 'scripts/label-recipes.mjs', '--recipe', 'orn-39'], { encoding: 'utf8' })
   assert.match(out, /diabetes-friendly/)
   assert.match(out, /complete: check-recipes has nothing to add/)
 })

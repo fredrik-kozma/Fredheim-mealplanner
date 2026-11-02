@@ -8,7 +8,9 @@
     "weekLink": "Se veckoplanen",
     "containsBlocked": "Innehåller {{name}} — du har blockerat detta",
     "removeMeal": "Ta bort",
-    "changeInPlan": "Ändra i veckoplanen"
+    "changeInPlan": "Ändra i veckoplanen",
+    "nutrients": "Näringsämnen",
+    "nutrientsHide": "Dölj näringsämnen"
   },
   "navShort": {
     "today": "Idag",
@@ -771,7 +773,12 @@
     "breakdownYieldNote": "Silat recept — totalerna skalas med yield-faktor {{factor}} (massa/pulp borttagen).",
     "breakdownTotal": "Totalt {{amount}} {{unit}}",
     "breakdownLoading": "Laddar fördelning…",
-    "breakdownTotalWithDv": "Totalt {{amount}} {{unit}} · {{dv}}% DV"
+    "breakdownTotalWithDv": "Totalt {{amount}} {{unit}} · {{dv}}% DV",
+    "nnrNote": "Jämfört med Nordiska näringsrekommendationerna 2023 (vuxna, allmänt).",
+    "supplementNote": "Ofta lågt under en växtbaserad vecka — B12-tillskott (och vanligtvis vitamin D) rekommenderas typiskt; omega-3 från ALA-rika livsmedel eller algolja kan hjälpa. Detta är allmän vägledning, inte personlig medicinsk rådgivning.",
+    "capGood": "Under dagsgränsen",
+    "contributorsTitle": "Var {{nutrient}} kommer ifrån",
+    "plannedCoverage": "Planerad täckning"
   },
   "conditions": {
     "all": "Alla märkningar",
@@ -825,7 +832,11 @@
     "importPlannedHint": "Lägg in måltiderna som är planerade för den här dagen, med planens portioner per person. Du kan justera dem efteråt.",
     "importedMeals_one": "Lade till {{count}} måltid",
     "importedMeals_other": "Lade till {{count}} måltider",
-    "importNothingNew": "Redan inlagt"
+    "importNothingNew": "Redan inlagt",
+    "sourcePlanned": "Planerad",
+    "sourceLogged": "Loggad",
+    "plannedEmpty": "Inget planerat för den här dagen ännu.",
+    "plannedWeekEmpty": "Inga måltider i veckoplanen ännu."
   },
   "allergens": {
     "tree-nuts": "Nötter",
@@ -870,18 +881,20 @@
       "bloodPressure": "Blodtryck",
       "diabetes": "Typ 2-diabetes",
       "heart": "Hjärthälsa (reversering)",
-      "fmd": "Fastehärmande (FMD)"
+      "fmd": "Fastehärmande (FMD)",
+      "gut": "Tarmhälsa"
     },
     "goalHints": {
       "general": "Varierat, växtbaserat och snällt mot hjärtat",
       "weight": "Lättare måltider som ändå mättar",
-      "bloodPressure": "Lite salt, mycket kalium",
+      "bloodPressure": "Lite salt (ideal under 1500 mg natrium/dag), rikt på kalium",
       "diabetes": "Jämnt blodsocker och gott om fiber",
       "heart": "Recept i Ornish-stil för hjärta och kolesterol",
-      "fmd": "Laddar den färdiga 5-dagarsplanen"
+      "fmd": "Laddar den färdiga 5-dagarsplanen",
+      "gut": "Gott om fiber för matsmältningen"
     },
     "peopleHint": "Det här ställer också in hushållets storlek.",
-    "avoidHint": "Tryck på allt som gäller. Allergier sparas i dina inställningar.",
+    "avoidHint": "Tryck pÃ¥ allergier som gÃ¤ller, eller sÃ¶k efter specifika ingredienser. Valen sparas i dina instÃ¤llningar.",
     "noHoney": "Utan honung (strikt vegansk)",
     "timeHint": "På helgerna får det ta lite längre tid.",
     "times": {
@@ -949,7 +962,8 @@
       "portionsFittedDinner": "Portionerna är anpassade (½ till 2 var) så att varje middag hamnar nära ungefär {{target}} kcal. Inköpslistan handlar för det, och veckan skalas fortfarande med antalet personer.",
       "kcalOffTarget_one": "På 1 dag når rätterna som passar dina val inte riktigt inom 10 % av målet. Justera gärna en portion i planeraren.",
       "kcalOffTarget_other": "På {{count}} dagar når rätterna som passar dina val inte riktigt inom 10 % av målet. Justera gärna en portion i planeraren.",
-      "focusNutrients": "Gynnar recept med mer {{list}} — kalorifördelning och variation oförändrad."
+      "focusNutrients": "Gynnar recept med mer {{list}} — kalorifördelning och variation oförändrad.",
+      "goalTilt": "Recept som matchar alla måletiketter prioriteras ({{full}} av {{pool}}). Andra kan ändå användas när urvalet är litet — målen droppas inte."
     },
     "goalsHint": "Välj ett eller flera.",
     "breakfasts": {
@@ -1005,7 +1019,29 @@
       "vitaminC": "Vitamin C",
       "vitaminE": "Vitamin E",
       "selenium": "Selen"
-    }
+    },
+    "goalFit": {
+      "title": "Målträff",
+      "green": "På rätt spår",
+      "amber": "Nära",
+      "red": "Behöver justeras"
+    },
+    "goalFitTips": {
+      "sodium": "Genomsnittligt natrium är högt — välj mer saltsnåla rätter och skölj konservburkar.",
+      "potassium": "Sikta på mer kaliumrika livsmedel (grönsaker, baljväxter, frukt).",
+      "satFat": "Mättat fett är lite högt för det här målet.",
+      "satFatHeart": "För hjärthälsa: håll mättat fett under ca 7 % av energin.",
+      "addedSugar": "Tillsatt socker ligger över 10 % av energin (under 5 % är idealiskt).",
+      "fiberDensity": "Fiber per 1000 kcal är lågt — välj mer fiberrika rätter.",
+      "fiber": "Dagligt fiber är under målet — lägg till bönor, fullkorn eller grönsaker.",
+      "fiberGut": "Tarmmål: sikta på minst 30 g fiber per dag.",
+      "kcal": "Energin ligger utanför kalorimålet du satte.",
+      "sodiumBp": "Genomsnittligt natrium ligger över blodtrycksidealet (under 1500 mg/dag). Sikta åtminstone under 2000 mg — välj mer saltsnåla rätter och skölj konservburkar."
+    },
+    "medicalDisclaimer": "Allmän vägledning, inte personlig medicinsk rådgivning.",
+    "avoidIngredients": "Specifika ingredienser",
+    "avoidIngredientsHint": "SÃ¶k efter svamp, kokos, tofu med mera. Sparas i listan Ã¶ver blockerade ingredienser (samma som i InstÃ¤llningar).",
+    "removeAvoidIngredient": "Ta bort {{name}}"
   },
   "timer": {
     "title": "Timer",

@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import RecipePicker from '../planner/RecipePicker'
 import NutritionCoverage from './NutritionCoverage'
+import NnrCoverage from './NnrCoverage'
+import PlannedContributorsSheet from './PlannedContributorsSheet'
+import { plannedDayTotals, plannedWeekDailyAverage, plannedNutrientContributors } from '../../utils/plannedNutrition'
 import OmegaRatioRow from './OmegaRatioRow'
 import { sumNutrition, scaleNutrition } from '../../utils/nutritionData'
 import { dayOmega, weekOmega, logMeals, formatOmegaRatio } from '../../utils/omegaBalance'
@@ -111,6 +114,8 @@ export default function NutritionTracker() {
 
   const [selected, setSelected] = useState(() => new Date())
   const [view, setView] = useState('day') // 'day' | 'week'
+  const [source, setSource] = useState('planned') // 'planned' | 'logged'
+  const [contribOpen, setContribOpen] = useState(null)
   const [pickerOpen, setPickerOpen] = useState(false)
   const [importToast, setImportToast] = useState(null)
 
@@ -126,6 +131,14 @@ export default function NutritionTracker() {
 
   const dayEntries = nutritionLog[selKey] || []
   const dayTotals = useMemo(() => sumNutrition(dayEntries, recipeMap), [dayEntries, recipeMap])
+  const plannedDayTot = useMemo(
+    () => plannedDayTotals(weekPlan, weekdayKey(selected), recipeMap, familySize),
+    [weekPlan, selected, recipeMap, familySize],
+  )
+  const plannedWeekAvg = useMemo(
+    () => plannedWeekDailyAverage(weekPlan, recipeMap, familySize).avg,
+    [weekPlan, recipeMap, familySize],
+  )
 
   // ── What the week plan says about this date ────────────────────────────
   //
@@ -230,6 +243,24 @@ export default function NutritionTracker() {
         </button>
       </div>
 
+      {/* Planned | Logged */}
+      <div className="flex bg-slate-100 rounded-control p-1 mb-3">
+        <button
+          type="button"
+          onClick={() => setSource('planned')}
+          className={`tap-target flex-1 py-1.5 rounded-small font-medium transition-colors ${source === 'planned' ? 'bg-white shadow-card text-slate-800' : 'text-slate-500'}`}
+        >
+          {t('nutritionTracker.sourcePlanned')}
+        </button>
+        <button
+          type="button"
+          onClick={() => setSource('logged')}
+          className={`tap-target flex-1 py-1.5 rounded-small font-medium transition-colors ${source === 'logged' ? 'bg-white shadow-card text-slate-800' : 'text-slate-500'}`}
+        >
+          {t('nutritionTracker.sourceLogged')}
+        </button>
+      </div>
+
       {view === 'day' ? (
         <>
           {/* Logged meals for the day */}
@@ -282,7 +313,20 @@ export default function NutritionTracker() {
               <span className="text-lg">🥗</span>
               {t('nutritionTracker.dailyCoverage', { defaultValue: "Today's coverage" })}
             </h2>
-            <NutritionCoverage totals={dayTotals} />
+            {source === 'planned' ? (
+              <NnrCoverage
+                totals={plannedDayTot}
+                emptyText={t('nutritionTracker.plannedEmpty')}
+                onSelectNutrient={(row) => {
+                  const c = plannedNutrientContributors(weekPlan, weekdayKey(selected), row.key, {
+                    recipeMap, people: familySize, lang: currentLang,
+                  })
+                  setContribOpen({ row, contributors: c })
+                }}
+              />
+            ) : (
+              <NutritionCoverage totals={dayTotals} />
+            )}
             {!selectedOmega.empty && (
               <OmegaRatioRow
                 ratio={selectedOmega.ratio}
@@ -330,10 +374,17 @@ export default function NutritionTracker() {
               <span className="text-lg">📊</span>
               {t('nutritionTracker.weeklyCoverage', { defaultValue: 'Weekly average' })}
             </h2>
-            <NutritionCoverage
-              totals={weekAvgTotals}
-              label={t('nutritionTracker.weeklyAvgLabel', { defaultValue: 'Average per day across this week (Mon–Sun)' })}
-            />
+            {source === 'planned' ? (
+              <NnrCoverage
+                totals={plannedWeekAvg}
+                emptyText={t('nutritionTracker.plannedWeekEmpty')}
+              />
+            ) : (
+              <NutritionCoverage
+                totals={weekAvgTotals}
+                label={t('nutritionTracker.weeklyAvgLabel', { defaultValue: 'Average per day across this week (Mon–Sun)' })}
+              />
+            )}
             {weekOmegaDays.some(d => !d.empty) && (
               <>
                 <OmegaRatioRow
@@ -395,6 +446,16 @@ export default function NutritionTracker() {
           {importToast}
         </div>
       )}
-    </div>
+    
+      <PlannedContributorsSheet
+        open={!!contribOpen}
+        onClose={() => setContribOpen(null)}
+        nutrientKey={contribOpen?.row?.key}
+        nutrientLabel={contribOpen ? t(`nutrition.fields.${contribOpen.row.key}`, { defaultValue: contribOpen.row.key }) : ''}
+        unit={contribOpen?.row?.unit}
+        contributors={contribOpen?.contributors}
+        currentLang={currentLang}
+      />
+</div>
   )
 }

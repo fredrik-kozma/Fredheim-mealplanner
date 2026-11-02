@@ -833,9 +833,26 @@
         "sv": "Svamp"
       },
       "synonyms": {
-        "en": [],
-        "no": [],
-        "sv": []
+        "en": [
+          "mushroom",
+          "champignon",
+          "shiitake",
+          "button mushroom",
+          "portobello",
+          "portobello mushroom"
+        ],
+        "no": [
+          "champignon",
+          "shiitake",
+          "sopp",
+          "sjampinjong"
+        ],
+        "sv": [
+          "champinjon",
+          "shiitake",
+          "svamp",
+          "champignon"
+        ]
       }
     },
     {

@@ -60,17 +60,17 @@ for (const goal of ['general', 'weight', 'bloodPressure', 'diabetes', 'heart']) 
   }
 }
 
-test('the pool: installed Fredheim + Reversal only, goal tag required, allergens and honey out', () => {
+test('the pool: installed Fredheim + Reversal only, soft tilt (no hard goal tag), allergens and honey out', () => {
   const answers = { ...BASE, goal: 'diabetes', avoid: ['tree-nuts', 'soy'], noHoney: true }
   const pool = buildPool(ALL, answers)
   assert.ok(pool.length > 10)
   for (const r of pool) {
     assert.ok([FREDHEIM_PACK_ID, REVERSAL_PACK_ID].includes(r.sourcePackId), `${r.id}: from ${r.sourcePackId}`)
-    assert.ok(r.tags.includes('diabetes-friendly'), `${r.id}: not diabetes-friendly`)
     assert.ok(!recipeHasAvoidedAllergen(r, answers.avoid), `${r.id}: has an avoided allergen`)
     assert.ok(!recipeHasHoney(r), `${r.id}: has honey`)
   }
-  // General: no tag needed, still never FMD.
+  // Soft tilt: pool may include recipes without the diabetes label.
+  assert.ok(pool.some(r => !(r.tags || []).includes('diabetes-friendly')))
   const general = buildPool(ALL, BASE)
   assert.ok(general.every(r => r.sourcePackId !== FMD_PACK_ID))
   assert.ok(general.some(r => !(r.tags || []).includes('heart-healthy')))
@@ -97,7 +97,7 @@ test('every scenario keeps the hard rules', () => {
       const r = byId.get(it.recipeId)
       assert.ok(r, `${label}: unknown ${it.recipeId}`)
       assert.notEqual(r.sourcePackId, FMD_PACK_ID, `${label}: FMD recipe ${r.id}`)
-      if (tag) assert.ok(r.tags.includes(tag), `${label}: ${r.id} lacks ${tag}`)
+      // Soft tilt: goal labels preferred in score(), not required on every pick
       assert.equal(Boolean(it.excludeFromShopping), batched.has(it.recipeId), `${label}: ${r.id} batch flag`)
       // Servings: null (one portion each, follows the household) or a
       // whole number for the household. Extras (bread) may be half.
@@ -167,7 +167,7 @@ test('batch cooking: soup, bread and spread are covered on the days they are eat
   for (const b of week.batchCook) {
     const r = byId.get(b.recipeId)
     assert.ok(r.tags.includes('batch-friendly'), `${r.id} is not batch-friendly`)
-    assert.ok(r.tags.includes('diabetes-friendly'), `${r.id} is not diabetes-friendly`)
+    // Soft tilt: batch items preferred when labelled, but not hard-required.
     const eaten = all.filter(it => it.recipeId === b.recipeId)
     const planned = eaten.filter(it => !isExtra(week, it))
     assert.ok(planned.length >= 2 && planned.length <= 3, `${r.id}: eaten ${planned.length}×`)
@@ -179,13 +179,12 @@ test('batch cooking: soup, bread and spread are covered on the days they are eat
   assert.equal(week.portions, 2)
 })
 
-test('a health goal never falls back to untagged recipes', () => {
-  // Only a handful of tagged recipes left: the week runs short rather than
-  // filling up with untagged ones.
+test('a health goal soft-tilts when the labelled pool is small (still fills a week)', () => {
   const few = ALL.filter(r => r.sourcePackId !== REVERSAL_PACK_ID)
   const week = makeMyWeek({ recipes: few, answers: { ...BASE, goal: 'bloodPressure', avoid: ['tree-nuts', 'soy', 'gluten'] }, seed: 1 })
-  for (const it of items(week)) assert.ok(byId.get(it.recipeId).tags.includes('blood-pressure-friendly'), it.recipeId)
+  assert.ok(Object.keys(week.plan || {}).length >= 5 || week.kind === 'week')
   assert.ok(week.notices.some(n => n.key === 'packMissing' && n.packId === REVERSAL_PACK_ID), 'tells about the missing pack')
+  assert.ok(Array.isArray(week.goalFit))
 })
 
 test('same answers and seed give the same week; another seed shuffles', () => {
@@ -270,7 +269,7 @@ test('extras: bread carries the goal label, fruit is a small count', () => {
   for (const x of week.extras) {
     const r = byId.get(x.recipeId)
     assert.equal(r.category, 'Bread')
-    assert.ok(r.tags.includes('diabetes-friendly'), `${r.id}: extra bread without the goal label`)
+    // Soft tilt: extras prefer labelled bread when available.
   }
   for (const [day, n] of Object.entries(week.fruit)) assert.ok(DAY_KEYS.includes(day) && n >= 1 && n <= 3, `${day}: ${n} fruit`)
 })
@@ -375,16 +374,12 @@ test('"No honey" is a persisted setting and the starting answer', async () => {
 const planIds = week => items(week).filter(it => !isExtra(week, it)).map(it => it.recipeId)
 const breakfastIds = week => items(week).filter(it => it.slot === 'Breakfast' && !isExtra(week, it)).map(it => it.recipeId)
 
-test('goals are multiple choice: every chosen label, or the least important relaxed and said', () => {
+test('goals are multiple choice: soft tilt keeps every goal and may notice tilt', () => {
   const week = makeMyWeek({ recipes: ALL, answers: { ...BASE, goals: ['bloodPressure', 'weight'] }, seed: 2 })
-  const relaxed = week.notices.find(n => n.key === 'goalRelaxed')
-  const kept = relaxed ? relaxed.kept : ['bloodPressure', 'weight']
-  assert.deepEqual(week.goals, kept)
-  for (const it of items(week)) {
-    for (const g of kept) assert.ok(byId.get(it.recipeId).tags.includes(GOAL_TAG[g]), `${it.recipeId} lacks ${GOAL_TAG[g]}`)
-  }
-  // Too few main dishes carry both labels: weight loss (the least
-  // important) is dropped, blood pressure kept, and the week says so.
+  assert.deepEqual(week.goals, ['bloodPressure', 'weight'])
+  assert.ok(!week.notices.some(n => n.key === 'goalRelaxed'))
+  assert.ok(week.goalFit?.length === 2)
+  // Scarce dual labels: goals still kept (soft tilt), never dropped.
   const both = r => ['blood-pressure-friendly', 'weight-loss'].every(tag => r.tags?.includes(tag))
   let keep = 2
   const scarce = ALL.map(r => {
@@ -392,15 +387,17 @@ test('goals are multiple choice: every chosen label, or the least important rela
     return keep-- > 0 ? r : { ...r, tags: r.tags.filter(tag => tag !== 'weight-loss') }
   })
   const many = makeMyWeek({ recipes: scarce, answers: { ...BASE, goals: ['weight', 'bloodPressure'] }, seed: 2 })
-  const n = many.notices.find(x => x.key === 'goalRelaxed')
-  assert.ok(n, 'relaxed with a notice')
-  assert.deepEqual(n.goals, ['weight'], 'the least important goal goes')
-  assert.deepEqual(many.goals, ['bloodPressure'])
-  const scarceById = new Map(scarce.map(r => [r.id, r]))
-  for (const it of items(many)) assert.ok(scarceById.get(it.recipeId).tags.includes('blood-pressure-friendly'), it.recipeId)
-  // A single goal is never relaxed.
+  assert.deepEqual(many.goals, ['bloodPressure', 'weight'])
+  assert.ok(!many.notices.some(x => x.key === 'goalRelaxed'))
   const one = makeMyWeek({ recipes: ALL.filter(r => r.sourcePackId !== REVERSAL_PACK_ID), answers: { ...BASE, goals: ['bloodPressure'], avoid: ['tree-nuts', 'soy', 'gluten'] }, seed: 1 })
   assert.ok(!one.notices.some(x => x.key === 'goalRelaxed'))
+  assert.deepEqual(one.goals, ['bloodPressure'])
+})
+
+test('gut health goal is selectable and returns goalFit fibre check', () => {
+  const week = makeMyWeek({ recipes: ALL, answers: { ...BASE, goals: ['gut'], meals: 3 }, seed: 5, installedPackIds: Object.keys(BUILT_IN_PACKS) })
+  assert.deepEqual(week.goals, ['gut'])
+  assert.ok(week.goalFit?.some(g => g.goal === 'gut'))
 })
 
 test('an old single-goal answer works as a list of one', () => {

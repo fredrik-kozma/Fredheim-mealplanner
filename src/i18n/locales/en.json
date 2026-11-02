@@ -8,7 +8,9 @@
     "weekLink": "See the week plan",
     "containsBlocked": "Contains {{name}} — you've blocked this",
     "removeMeal": "Remove",
-    "changeInPlan": "Change in week plan"
+    "changeInPlan": "Change in week plan",
+    "nutrients": "Nutrients",
+    "nutrientsHide": "Hide nutrients"
   },
   "navShort": {
     "today": "Today",
@@ -771,7 +773,12 @@
     "breakdownYieldNote": "Strained recipe — totals scaled by yield factor {{factor}} (pulp/solids discarded).",
     "breakdownTotal": "Total {{amount}} {{unit}}",
     "breakdownLoading": "Loading breakdown…",
-    "breakdownTotalWithDv": "Total {{amount}} {{unit}} · {{dv}}% DV"
+    "breakdownTotalWithDv": "Total {{amount}} {{unit}} · {{dv}}% DV",
+    "nnrNote": "Compared with Nordic Nutrition Recommendations 2023 (adult general).",
+    "supplementNote": "Often low on a plant-based week — a B12 (and usually vitamin D) supplement is typically recommended; omega-3 from ALA-rich foods or algae oil can help. This is general guidance, not personal medical advice.",
+    "capGood": "Under the daily limit",
+    "contributorsTitle": "Where {{nutrient}} comes from",
+    "plannedCoverage": "Planned coverage"
   },
   "conditions": {
     "all": "All labels",
@@ -825,7 +832,11 @@
     "importPlannedHint": "Log the meals planned for this day, with the plan's portions per person. You can adjust them after.",
     "importedMeals_one": "Added {{count}} meal",
     "importedMeals_other": "Added {{count}} meals",
-    "importNothingNew": "Already logged"
+    "importNothingNew": "Already logged",
+    "sourcePlanned": "Planned",
+    "sourceLogged": "Logged",
+    "plannedEmpty": "Nothing planned for this day yet.",
+    "plannedWeekEmpty": "No meals in the week plan yet."
   },
   "allergens": {
     "tree-nuts": "Tree nuts",
@@ -870,18 +881,20 @@
       "bloodPressure": "Blood pressure",
       "diabetes": "Type 2 diabetes",
       "heart": "Heart health (Reversal)",
-      "fmd": "Fasting mimicking (FMD)"
+      "fmd": "Fasting mimicking (FMD)",
+      "gut": "Gut health"
     },
     "goalHints": {
       "general": "Varied, plant-based and kind to the heart",
       "weight": "Lighter meals that still fill you up",
-      "bloodPressure": "Low in salt, rich in potassium",
+      "bloodPressure": "Low salt (ideal under 1500 mg sodium/day), rich in potassium",
       "diabetes": "Steady blood sugar and plenty of fibre",
       "heart": "Ornish-style recipes for heart and cholesterol",
-      "fmd": "Loads the ready-made 5-day FMD plan"
+      "fmd": "Loads the ready-made 5-day FMD plan",
+      "gut": "Plenty of fibre for digestion"
     },
     "peopleHint": "This also sets your household size.",
-    "avoidHint": "Tap all that apply. Allergies are saved to your settings.",
+    "avoidHint": "Tap allergies that apply, or search for specific ingredients. Choices are saved to your settings.",
     "noHoney": "No honey (strict vegan)",
     "timeHint": "Weekends can take a little longer.",
     "times": {
@@ -949,7 +962,8 @@
       "portionsFittedDinner": "Portions are sized (½ to 2 each) so each dinner lands near about {{target}} kcal. The shopping list buys for that, and the week still scales with the number of people.",
       "kcalOffTarget_one": "On 1 day the dishes that fit your choices don’t quite reach within 10% of your target. Adjust a portion in the planner if you like.",
       "kcalOffTarget_other": "On {{count}} days the dishes that fit your choices don’t quite reach within 10% of your target. Adjust a portion in the planner if you like.",
-      "focusNutrients": "Favouring recipes higher in {{list}} — calorie split and variety unchanged."
+      "focusNutrients": "Favouring recipes higher in {{list}} — calorie split and variety unchanged.",
+      "goalTilt": "Recipes that match every goal label are preferred ({{full}} of {{pool}}). Others may still appear when the pool is small — goals are not dropped."
     },
     "goalsHint": "Pick one or more.",
     "breakfasts": {
@@ -1005,7 +1019,29 @@
       "vitaminC": "Vitamin C",
       "vitaminE": "Vitamin E",
       "selenium": "Selenium"
-    }
+    },
+    "goalFit": {
+      "title": "Goal fit",
+      "green": "On track",
+      "amber": "Close",
+      "red": "Needs attention"
+    },
+    "goalFitTips": {
+      "sodium": "Average sodium is high — favour lower-salt dishes and rinse canned foods.",
+      "potassium": "Aim for more potassium-rich foods (vegetables, legumes, fruit).",
+      "satFat": "Saturated fat is a bit high for this goal.",
+      "satFatHeart": "For heart health, keep saturated fat under about 7% of energy.",
+      "addedSugar": "Added sugar is above the 10% of energy guide (under 5% is ideal).",
+      "fiberDensity": "Fibre per 1000 kcal is low — choose higher-fibre mains and sides.",
+      "fiber": "Daily fibre is under the target — add beans, whole grains or vegetables.",
+      "fiberGut": "Gut goal: aim for at least 30 g fibre a day.",
+      "kcal": "Energy is off the calorie target you set.",
+      "sodiumBp": "Average sodium is above the blood-pressure ideal (under 1500 mg/day). Aim under 2000 mg at least — favour lower-salt dishes and rinse canned foods."
+    },
+    "medicalDisclaimer": "General guidance, not personal medical advice.",
+    "avoidIngredients": "Specific ingredients",
+    "avoidIngredientsHint": "Search mushrooms, coconut, tofu, and more. Saved to your blocked-ingredients list (same as Settings).",
+    "removeAvoidIngredient": "Remove {{name}}"
   },
   "timer": {
     "title": "Timer",

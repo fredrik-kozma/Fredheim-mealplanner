@@ -67,6 +67,9 @@ import {
   MMW_FOCUS_NUTRIENTS, FOCUS_MAX, FOCUS_DAILY_TARGET, FOCUS_ABBR,
   normalizeFocusNutrients, focusScoreBonus, focusWeekAverages, focusContributorChips,
 } from './mmwFocus.js'
+import {
+  goalTiltBonus, goalFit, weekDailyAverageFromPlan, HEALTH_GOAL_IDS,
+} from './healthGoals.js'
 export { MMW_FOCUS_NUTRIENTS, FOCUS_MAX, FOCUS_DAILY_TARGET, FOCUS_ABBR, normalizeFocusNutrients }
 import {
   FREDHEIM_PACK_ID,
@@ -81,7 +84,7 @@ export { FREDHEIM_PACK_ID, REVERSAL_PACK_ID, FMD_PACK_ID }
 export const MMW_PACK_IDS = [FREDHEIM_PACK_ID, REVERSAL_PACK_ID]
 export const FMD_STARTER_ID = 'fmd-5day-week-1'
 
-export const MMW_GOALS = ['general', 'weight', 'bloodPressure', 'diabetes', 'heart', 'fmd']
+export const MMW_GOALS = ['general', 'weight', 'bloodPressure', 'diabetes', 'heart', 'gut', 'fmd']
 export const MMW_TIMES = ['quick', 'medium', 'any']
 export const MMW_MEALS = [3, 2, 1]
 export const MMW_BREAKFASTS = ['both', 'savoury', 'sweet']
@@ -103,10 +106,11 @@ export const GOAL_TAG = {
   bloodPressure: 'blood-pressure-friendly',
   diabetes: 'diabetes-friendly',
   heart: 'heart-healthy',
+  gut: null, // fibre density soft-tilt; no pack label yet
 }
 // Most important first: with too few recipes for every chosen goal, the
 // last one here is dropped first. Medical goals outrank weight loss.
-export const GOAL_PRIORITY = ['bloodPressure', 'heart', 'diabetes', 'weight']
+export const GOAL_PRIORITY = ['bloodPressure', 'heart', 'diabetes', 'weight', 'gut']
 // 'general' and 'fmd' are a whole answer on their own, never combined.
 export const EXCLUSIVE_GOALS = ['general', 'fmd']
 
@@ -201,11 +205,16 @@ export function kcalTarget(goal, meals, kcal = null) {
   return 2000
 }
 
-export function defaultAnswers({ familySize, avoidedAllergens, avoidHoney, saltLevel, favourites, disliked, kcal, meals } = {}) {
+export function defaultAnswers({ familySize, avoidedAllergens, blockedIngredients, avoidHoney, saltLevel, favourites, disliked, kcal, meals } = {}) {
+  const blocked = blockedIngredients && typeof blockedIngredients === 'object'
+    ? blockedIngredients
+    : { groups: avoidedAllergens || [], ids: [] }
   return {
     goals: [],
     people: Math.min(8, Math.max(1, Number(familySize) || 2)),
-    avoid: [...(avoidedAllergens || [])],
+    avoid: [...(blocked.groups || avoidedAllergens || [])],
+    // Specific dictionary ingredient ids to avoid (synced with Settings blockedIngredients.ids).
+    blockedIds: [...(blocked.ids || [])],
     noHoney: Boolean(avoidHoney),
     time: 'medium',
     batch: false,
@@ -352,16 +361,14 @@ function mulberry32(a) {
 
 // ── Pool ─────────────────────────────────────────────────────────────────
 
-/** The recipes a generated week may use, given the answers: every chosen goal's label. */
+/** The recipes a generated week may use (allergens/honey/dislikes/packs). Goal labels soft-tilt in score(), not here. */
 export function buildPool(recipes, answers) {
-  const tags = answerGoals(answers).map(g => GOAL_TAG[g]).filter(Boolean)
   const disliked = new Set(answers.disliked || [])
   return (recipes || []).filter(r =>
     MMW_PACK_IDS.includes(r.sourcePackId) &&
     !disliked.has(r.id) &&
-    !recipeHasAvoidedAllergen(r, answers.avoid) &&
-    !(answers.noHoney && recipeHasHoney(r)) &&
-    tags.every(tag => tagsOf(r).includes(tag)))
+    !recipeHasAvoidedAllergen(r, { groups: answers.avoid || [], ids: answers.blockedIds || [] }) &&
+    !(answers.noHoney && recipeHasHoney(r)))
 }
 
 // Enough to fill a week without serving the same few dishes all the time:
@@ -377,20 +384,21 @@ function poolIsEnough(pool, a) {
 }
 
 /**
- * The pool for every chosen goal; with too few recipes, the least
- * important goal is dropped (one at a time) until it is enough. A single
- * goal is never dropped. Returns { pool, goals, relaxed }.
+ * Soft tilt: keep every chosen goal; pool is allergen-safe recipes only.
+ * Returns { pool, goals, relaxed: [] } (relaxed kept empty for API compat).
+ * When few recipes carry all goal labels, the week notice uses goalTilt.
  */
 export function poolForGoals(recipes, a) {
-  let goals = answerGoals(a)
-  const relaxed = []
-  let pool = buildPool(recipes, { ...a, goals })
-  while (goals.length > 1 && !poolIsEnough(pool, a)) {
-    relaxed.push(goals[goals.length - 1])
-    goals = goals.slice(0, -1)
-    pool = buildPool(recipes, { ...a, goals })
-  }
-  return { pool, goals, relaxed }
+  const goals = answerGoals(a)
+  const pool = buildPool(recipes, { ...a, goals })
+  return { pool, goals, relaxed: [] }
+}
+
+/** How many pool recipes carry every selected goal label (for notices). */
+export function poolFullLabelCount(pool, goals) {
+  const tags = goals.map(g => GOAL_TAG[g]).filter(Boolean)
+  if (!tags.length) return pool.length
+  return pool.filter(r => tags.every(tag => tagsOf(r).includes(tag))).length
 }
 
 // ── FMD ──────────────────────────────────────────────────────────────────
@@ -540,12 +548,14 @@ function buildAttempt(ctx, rng) {
     if (n) {
       if (kcal > 0) s -= Math.min(2, Math.abs(Number(n.calories) - kcal) / kcal)
       if (fibre > 0) s += 0.5 * Math.min(1, (Number(n.fiber) || 0) / fibre)
-      if (ctx.lowSodium) s -= 0.8 * Math.min(1.5, (Number(n.sodium) || 0) / 800)
+      if (ctx.lowSodium) s -= 1.0 * Math.min(1.6, (Number(n.sodium) || 0) / 500)
       // A light dinner: soups and stews first, the heaviest mains last.
       if (light) s += (r.category === 'Soup' ? 0.1 : 0) - Math.max(0, Number(n.calories) / light - 1)
       if (ctx.focus?.length) s += focusScoreBonus(n, ctx.focus)
+      if (ctx.goals?.length) s += goalTiltBonus(r, ctx.goals)
     } else {
       s -= 0.15
+      if (ctx.goals?.length) s += goalTiltBonus(r, ctx.goals)
     }
     return s
   }
@@ -1093,7 +1103,15 @@ function finish(week, ctx, { slots, installed, seed, baselineWeek = null }) {
   // A health goal with too few tagged mains: dinners lean on a soup or
   // stew with a side. Worth saying, so it doesn't look like a mistake.
   const mainRole = a.meals === 2 ? 'lunch' : 'dinner'
-  if (ctx.relaxedGoals.length) notices.push({ key: 'goalRelaxed', goals: ctx.relaxedGoals, kept: ctx.goals })
+  {
+    const tags = ctx.goals.map(g => GOAL_TAG[g]).filter(Boolean)
+    if (tags.length) {
+      const full = pool.filter(r => tags.every(tag => (r.tags || []).includes(tag))).length
+      if (full < pool.length) {
+        notices.push({ key: 'goalTilt', goals: ctx.goals, fullLabelCount: full, poolSize: pool.length })
+      }
+    }
+  }
   if (ctx.goals.length) {
     const soupDinners = week.days.filter(d =>
       d[mainRole].some(it => week.byId.get(it.id)?.category === 'Soup')).length
@@ -1181,6 +1199,14 @@ function finish(week, ctx, { slots, installed, seed, baselineWeek = null }) {
       chips: focusContributorChips(withPlan, { people, recipeById, focus: focusNutrients }),
     }
   }
+  const recipeByIdForFit = week.byId
+  const { avg: fitAvg } = weekDailyAverageFromPlan(plan, {
+    people: a.people,
+    recipeById: recipeByIdForFit,
+    fruitByDay: fruit,
+  })
+  const fit = goalFit(ctx.goals, fitAvg, { kcalTarget: a.kcal })
+
   return {
     kind: 'week',
     plan,
@@ -1190,6 +1216,7 @@ function finish(week, ctx, { slots, installed, seed, baselineWeek = null }) {
     stats,
     saltLevel: a.saltLevel,
     goals: ctx.goals,
+    goalFit: fit,
     focusNutrients,
     focus,
     // Different ingredients the week's shopping needs (water left out).

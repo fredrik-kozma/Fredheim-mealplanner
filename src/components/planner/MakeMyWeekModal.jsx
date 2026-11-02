@@ -11,11 +11,13 @@ import {
 } from '../../utils/makeMyWeek'
 import { SALT_LEVELS, LOW_SALT_GOALS } from '../../utils/saltLevel'
 import { noticeText as renderNotice, statsText as renderStats, weekTipsData, renderWeekTips } from '../../utils/weekTips'
+import GoalFitCard from './GoalFitCard'
+import MmwBlockedIngredientSearch from './MmwBlockedIngredientSearch'
 import { formatAmount } from '../../utils/formatQuantity'
 import { dayOmega, weekOmega, planDayMeals, formatOmegaRatio } from '../../utils/omegaBalance'
 import OmegaRatioRow from '../nutrition/OmegaRatioRow'
 
-const GOAL_ICONS = { general: '🥗', weight: '⚖️', bloodPressure: '💗', diabetes: '🩸', heart: '❤️', fmd: '🌙' }
+const GOAL_ICONS = { general: '🥗', weight: '⚖️', bloodPressure: '💗', diabetes: '🩸', heart: '❤️', gut: '🌾', fmd: '🌙' }
 const MEAL_ICONS = { 3: '🍳🥣🍲', 2: '🍳🥣', 1: '🍲' }
 const TIME_ICONS = { quick: '⚡', medium: '⏱️', any: '🧑‍🍳' }
 const BREAKFAST_ICONS = { both: '🍳🥣', savoury: '🍳', sweet: '🥣' }
@@ -31,7 +33,7 @@ const FOCUS_ICONS = {
 // when a week is used). A single `goal` (from before goals were multiple
 // choice) is read as a list of one.
 let lastAnswers = null
-const REMEMBERED = ['time', 'batch', 'meals', 'kcal', 'breakfast', 'preferFavourites', 'fewerIngredients', 'saltLevel', 'focusNutrients']
+const REMEMBERED = ['time', 'batch', 'meals', 'kcal', 'breakfast', 'preferFavourites', 'fewerIngredients', 'saltLevel', 'focusNutrients', 'avoid', 'blockedIds', 'noHoney']
 const MMW_STORAGE_KEY = 'fredheim-mmw-remembered'
 function remembered(last) {
   if (!last) return {}
@@ -125,6 +127,7 @@ export default function MakeMyWeekModal({ onClose }) {
   const installedPacks = useStore(s => s.installedPacks)
   const familySize = useStore(s => s.familySize)
   const avoidedAllergens = useStore(s => s.avoidedAllergens) || []
+  const blockedIngredients = useStore(s => s.blockedIngredients) || { groups: [], ids: [] }
   const avoidHoney = useStore(s => s.avoidHoney)
   const mealSlots = useStore(s => s.mealSlots)
   const weekPlan = useStore(s => s.weekPlan)
@@ -133,6 +136,7 @@ export default function MakeMyWeekModal({ onClose }) {
   const installPack = useStore(s => s.installPack)
   const setFamilySize = useStore(s => s.setFamilySize)
   const toggleAvoidedAllergen = useStore(s => s.toggleAvoidedAllergen)
+  const setBlockedIngredients = useStore(s => s.setBlockedIngredients)
   const setAvoidHoney = useStore(s => s.setAvoidHoney)
   const saltLevel = useStore(s => s.saltLevel)
   const setSaltLevel = useStore(s => s.setSaltLevel)
@@ -144,7 +148,7 @@ export default function MakeMyWeekModal({ onClose }) {
 
   const [answers, setAnswers] = useState(() => ({
     ...defaultAnswers({
-      familySize, avoidedAllergens, avoidHoney, saltLevel, favourites, disliked,
+      familySize, avoidedAllergens, blockedIngredients, avoidHoney, saltLevel, favourites, disliked,
       kcal: planKcalTarget, meals: planMeals,
     }),
     ...loadRemembered(),
@@ -230,9 +234,9 @@ export default function MakeMyWeekModal({ onClose }) {
     if (hasWeek && !confirm(t('makeMyWeek.replaceConfirm'))) return
     // The answers become settings: household size, allergies and honey.
     setFamilySize(answers.people)
-    for (const a of ALLERGENS) {
-      if (answers.avoid.includes(a.id) !== avoidedAllergens.includes(a.id)) toggleAvoidedAllergen(a.id)
-    }
+    // Persist allergy groups + specific ingredients to the global blocker so
+    // Settings, recipe hiding, shopping and Today warnings stay consistent.
+    setBlockedIngredients({ groups: answers.avoid || [], ids: answers.blockedIds || [] })
     setAvoidHoney(answers.noHoney)
     if (result.kind === 'week') {
       setSaltLevel(result.saltLevel)
@@ -454,6 +458,10 @@ export default function MakeMyWeekModal({ onClose }) {
                   {t('makeMyWeek.noHoney')}
                 </button>
               </div>
+              <MmwBlockedIngredientSearch
+                blockedIds={answers.blockedIds || []}
+                onChange={(ids) => set('blockedIds', ids)}
+              />
               <p className="text-2xs text-slate-500 mt-4 leading-relaxed">
                 {t('settings.allergensWarning')}
               </p>
@@ -648,6 +656,10 @@ export default function MakeMyWeekModal({ onClose }) {
               )}
 
               
+              {result.kind === 'week' && result.goalFit?.length > 0 && (
+                <GoalFitCard goalFit={result.goalFit} kcalTarget={answers.kcal || null} />
+              )}
+
               {result.kind === 'week' && result.focus?.nutrients?.length > 0 && (
                 <div className="rounded-control border border-primary-200 bg-primary-50/60 px-3 py-2.5 space-y-2.5">
                   <p className="text-xs font-semibold text-primary-800 uppercase tracking-wide">

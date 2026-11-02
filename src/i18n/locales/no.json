@@ -8,7 +8,9 @@
     "weekLink": "Se ukeplanen",
     "containsBlocked": "Inneholder {{name}} — du har blokkert dette",
     "removeMeal": "Fjern",
-    "changeInPlan": "Endre i ukeplanen"
+    "changeInPlan": "Endre i ukeplanen",
+    "nutrients": "Næringsstoffer",
+    "nutrientsHide": "Skjul næringsstoffer"
   },
   "navShort": {
     "today": "I dag",
@@ -771,7 +773,12 @@
     "breakdownYieldNote": "Silet oppskrift — totalene er skalert med yield-faktor {{factor}} (masse/pulp er tatt bort).",
     "breakdownTotal": "Totalt {{amount}} {{unit}}",
     "breakdownLoading": "Laster fordeling…",
-    "breakdownTotalWithDv": "Totalt {{amount}} {{unit}} · {{dv}}% DV"
+    "breakdownTotalWithDv": "Totalt {{amount}} {{unit}} · {{dv}}% DV",
+    "nnrNote": "Sammenlignet med Nordiske næringsstoffanbefalinger 2023 (voksne, generelt).",
+    "supplementNote": "Ofte lavt i en plantebasert uke — B12-tilskudd (og vanligvis vitamin D) anbefales typisk; omega-3 fra ALA-rike matvarer eller algeolje kan hjelpe. Dette er generell veiledning, ikke personlig medisinsk råd.",
+    "capGood": "Under dagsgrensen",
+    "contributorsTitle": "Hvor {{nutrient}} kommer fra",
+    "plannedCoverage": "Planlagt dekning"
   },
   "conditions": {
     "all": "Alle merker",
@@ -825,7 +832,11 @@
     "importPlannedHint": "Legg inn måltidene som er planlagt for denne dagen, med planens porsjoner per person. Du kan justere dem etterpå.",
     "importedMeals_one": "La til {{count}} måltid",
     "importedMeals_other": "La til {{count}} måltider",
-    "importNothingNew": "Allerede lagt inn"
+    "importNothingNew": "Allerede lagt inn",
+    "sourcePlanned": "Planlagt",
+    "sourceLogged": "Loggført",
+    "plannedEmpty": "Ingenting planlagt for denne dagen ennå.",
+    "plannedWeekEmpty": "Ingen måltider i ukeplanen ennå."
   },
   "allergens": {
     "tree-nuts": "Nøtter",
@@ -870,18 +881,20 @@
       "bloodPressure": "Blodtrykk",
       "diabetes": "Diabetes type 2",
       "heart": "Hjertehelse (reversering)",
-      "fmd": "Faste-imiterende (FMD)"
+      "fmd": "Faste-imiterende (FMD)",
+      "gut": "Tarmhelse"
     },
     "goalHints": {
       "general": "Variert, plantebasert og snill mot hjertet",
       "weight": "Lettere måltider som likevel metter",
-      "bloodPressure": "Lite salt, mye kalium",
+      "bloodPressure": "Lite salt (ideal under 1500 mg natrium/dag), rikt på kalium",
       "diabetes": "Jevnt blodsukker og rikelig med fiber",
       "heart": "Oppskrifter i Ornish-stil for hjerte og kolesterol",
-      "fmd": "Laster inn den ferdige 5-dagersplanen"
+      "fmd": "Laster inn den ferdige 5-dagersplanen",
+      "gut": "Godt med fiber for fordøyelsen"
     },
     "peopleHint": "Dette setter også husstandsstørrelsen din.",
-    "avoidHint": "Trykk på alt som gjelder. Allergier lagres i innstillingene dine.",
+    "avoidHint": "Trykk pÃ¥ allergier som gjelder, eller sÃ¸k etter spesifikke ingredienser. Valgene lagres i innstillingene dine.",
     "noHoney": "Uten honning (strengt vegansk)",
     "timeHint": "I helgene kan det ta litt lenger tid.",
     "times": {
@@ -949,7 +962,8 @@
       "portionsFittedDinner": "Porsjonene er tilpasset (½ til 2 hver) så hver middag havner nær omtrent {{target}} kcal. Handlelisten kjøper inn til det, og uken skaleres fortsatt med antall personer.",
       "kcalOffTarget_one": "På 1 dag når ikke rettene som passer valgene dine helt innenfor 10 % av målet. Juster gjerne en porsjon i planleggeren.",
       "kcalOffTarget_other": "På {{count}} dager når ikke rettene som passer valgene dine helt innenfor 10 % av målet. Juster gjerne en porsjon i planleggeren.",
-      "focusNutrients": "Favoriserer oppskrifter med mer {{list}} — kalorifordeling og variasjon er uendret."
+      "focusNutrients": "Favoriserer oppskrifter med mer {{list}} — kalorifordeling og variasjon er uendret.",
+      "goalTilt": "Oppskrifter som matcher alle måletiketter prioriteres ({{full}} av {{pool}}). Andre kan likevel brukes når utvalget er lite — målene droppes ikke."
     },
     "goalsHint": "Velg ett eller flere.",
     "breakfasts": {
@@ -1005,7 +1019,29 @@
       "vitaminC": "Vitamin C",
       "vitaminE": "Vitamin E",
       "selenium": "Selen"
-    }
+    },
+    "goalFit": {
+      "title": "Måltreff",
+      "green": "På sporet",
+      "amber": "Nær målet",
+      "red": "Trenger justering"
+    },
+    "goalFitTips": {
+      "sodium": "Gjennomsnittlig natrium er høyt — velg mer saltsvake retter og skyll hermetikk.",
+      "potassium": "Sikt mot mer kaliumrike matvarer (grønnsaker, belgvekster, frukt).",
+      "satFat": "Metttet fett er litt høyt for dette målet.",
+      "satFatHeart": "For hjertehelse: hold mettet fett under ca. 7 % av energien.",
+      "addedSugar": "Tilatt sukker er over 10 % av energien (under 5 % er ideelt).",
+      "fiberDensity": "Fiber per 1000 kcal er lavt — velg mer fiberrike retter.",
+      "fiber": "Daglig fiber er under målet — legg til bønner, fullkorn eller grønnsaker.",
+      "fiberGut": "Tarmmål: sikt mot minst 30 g fiber om dagen.",
+      "kcal": "Energi er utenfor kalorimålet du satte.",
+      "sodiumBp": "Gjennomsnittlig natrium er over blodtrykksidealet (under 1500 mg/dag). Sikt minst under 2000 mg — velg mer saltsvake retter og skyll hermetikk."
+    },
+    "medicalDisclaimer": "Generell veiledning, ikke personlig medisinsk råd.",
+    "avoidIngredients": "Spesifikke ingredienser",
+    "avoidIngredientsHint": "SÃ¸k etter sopp, kokos, tofu og mer. Lagres i listen over blokkerte ingredienser (samme som i Innstillinger).",
+    "removeAvoidIngredient": "Fjern {{name}}"
   },
   "timer": {
     "title": "Timer",
