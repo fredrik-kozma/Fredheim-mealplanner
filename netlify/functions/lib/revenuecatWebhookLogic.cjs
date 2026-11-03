@@ -10,6 +10,13 @@ function isAnonymousAppUserId(appUserId) {
   return appUserId.startsWith('$RCAnonymousID')
 }
 
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+
+function isValidUuidAppUserId(appUserId) {
+  return typeof appUserId === 'string' && UUID_RE.test(appUserId)
+}
+
 /**
  * RevenueCat dashboard "Authorization header" value may be sent as-is or as Bearer.
  */
@@ -102,6 +109,9 @@ function planProfileUpdateFromRevenueCatEvent(event, profile = null, now = new D
   const appUserId = event.app_user_id
   if (isAnonymousAppUserId(appUserId)) {
     return { skip: true, reason: 'anonymous_user' }
+  }
+  if (!isValidUuidAppUserId(appUserId)) {
+    return { skip: true, reason: 'invalid_user_id' }
   }
 
   const type = event.type
@@ -198,6 +208,7 @@ function planProfileUpdateFromRevenueCatEvent(event, profile = null, now = new D
 module.exports = {
   ACTIVE_STATUSES,
   isAnonymousAppUserId,
+  isValidUuidAppUserId,
   verifyWebhookAuth,
   msToIso,
   statusFromPeriodType,

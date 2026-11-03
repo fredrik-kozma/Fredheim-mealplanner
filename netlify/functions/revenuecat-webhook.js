@@ -5,6 +5,7 @@ const { createClient } = require('@supabase/supabase-js')
 const {
   verifyWebhookAuth,
   isAnonymousAppUserId,
+  isValidUuidAppUserId,
   planProfileUpdateFromRevenueCatEvent,
   shouldApplyPlayRevoke,
 } = require('./lib/revenuecatWebhookLogic.cjs')
@@ -53,6 +54,13 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       body: JSON.stringify({ received: true, skipped: 'anonymous_user' }),
+    }
+  }
+
+  if (!isValidUuidAppUserId(rcEvent.app_user_id)) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ received: true, skipped: 'invalid_user_id' }),
     }
   }
 

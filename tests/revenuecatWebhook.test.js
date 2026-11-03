@@ -12,6 +12,7 @@ const logic = require(join(
 
 const {
   isAnonymousAppUserId,
+  isValidUuidAppUserId,
   verifyWebhookAuth,
   msToIso,
   shouldApplyStripeProfileUpdate,
@@ -41,6 +42,24 @@ describe('revenuecat webhook auth + ids', () => {
     assert.equal(isAnonymousAppUserId('$RCAnonymousID:abc'), true)
     assert.equal(isAnonymousAppUserId(UID), false)
     assert.equal(isAnonymousAppUserId(null), true)
+  })
+
+  it('rejects non-uuid app_user_id', () => {
+    assert.equal(isValidUuidAppUserId('test'), false)
+    assert.equal(isValidUuidAppUserId(UID), true)
+    const plan = planProfileUpdateFromRevenueCatEvent(
+      {
+        type: 'INITIAL_PURCHASE',
+        app_user_id: 'test',
+        product_id: 'fredheim_premium:monthly',
+        period_type: 'NORMAL',
+        expiration_at_ms: Date.parse('2026-12-01T00:00:00.000Z'),
+      },
+      null,
+      NOW
+    )
+    assert.equal(plan.skip, true)
+    assert.equal(plan.reason, 'invalid_user_id')
   })
 
   it('converts expiration_at_ms', () => {
