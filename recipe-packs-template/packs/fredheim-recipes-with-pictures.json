@@ -3,7 +3,7 @@
   "name": "Fredheim Kitchen",
   "description": "Everyday Fredheim recipes, with photos.",
   "author": "Fredheim",
-  "version": "1.113.0",
+  "version": "1.114.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -61904,7 +61904,257 @@
         }
       },
       "createdAt": 1793600487424
+    },
+    {
+      "id": "fr-213",
+      "title": "Gluten-Free Porridge Buns",
+      "category": "Bread",
+      "servings": 8,
+      "portion": "1 bun (~134 g)",
+      "prepTime": 80,
+      "cookTime": 30,
+      "imageUrl": "/pack-images/fr-213.jpg",
+      "description": "Soft, seeded gluten-free buns from leftover oat porridge, oat flour and psyllium. One rise, oil-free, nut-free, sesame-free.",
+      "tags": [
+        "fredheim",
+        "sesame-free",
+        "diabetes-friendly",
+        "heart-healthy",
+        "gluten-free",
+        "nut-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly",
+        "kid-friendly"
+      ],
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "side"
+      ],
+      "kcal": 300,
+      "servingWeightGrams": 134,
+      "ingredients": [
+        {
+          "quantity": 650,
+          "unit": "g",
+          "ingredient": "oat-porridge-cooked",
+          "name": "Oat porridge, cooked",
+          "note": "leftover, cooked in water, unsalted"
+        },
+        {
+          "quantity": 350,
+          "unit": "g",
+          "ingredient": "rolled-oats",
+          "name": "Rolled oats",
+          "note": "certified gluten-free if needed; blend to flour"
+        },
+        {
+          "quantity": 32,
+          "unit": "g",
+          "ingredient": "psyllium-husk",
+          "name": "Psyllium husk",
+          "note": "powder; ~4 tbsp"
+        },
+        {
+          "quantity": 6,
+          "unit": "g",
+          "ingredient": "dry-yeast",
+          "name": "Dry yeast",
+          "note": "instant (~2 tsp)"
+        },
+        {
+          "quantity": 30,
+          "unit": "g",
+          "ingredient": "pumpkin-seeds",
+          "name": "Pumpkin seeds",
+          "note": "reserve some for topping"
+        },
+        {
+          "quantity": 1,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 1.5
+        }
+      ],
+      "steps": [
+        "Blend the rolled oats in a blender until fine flour.",
+        "Warm the leftover oat porridge gently until just lukewarm (about body temperature) and stir until smooth. Too hot will kill the yeast. (3 min)",
+        "In a large bowl, stir the yeast and salt into the porridge. Add the oat flour, psyllium husk powder and most of the pumpkin seeds, keeping some seeds for the top. Mix with a spoon, then your hands, until it forms one soft, sticky dough.",
+        "Leave the dough to rest so the psyllium can firm it up. (10 min)",
+        "Line one baking tray with parchment. With wet hands, roll the dough into 8 round buns and place them on the tray. Press the reserved pumpkin seeds on top.",
+        "Cover with a tea towel and let rise while the oven heats to 210 °C (fan 200 °C). The buns will puff a little, not double. (45 min)",
+        "Bake until golden and they sound hollow when tapped underneath. (30 min)",
+        "Cool on a wire rack before eating. Psyllium buns are gummy when warm and set as they cool. (30 min)"
+      ],
+      "notes": "Allergens: none of the top five. Gluten-free only if the oats are certified gluten-free. If your porridge was cooked with salt, halve the salt in this recipe. If the dough feels too stiff to shape, add a splash of water; if too sticky, add a little more oat flour. Oil-free, nut-free, sesame-free.",
+      "translations": {
+        "no": {
+          "title": "Glutenfrie grøtboller",
+          "description": "Myke, frøede glutenfrie boller av rest havregrøt, havremel og psyllium. Én heving, oljefrie, nøttefrie, sesamfrie.",
+          "ingredients": [
+            {
+              "quantity": 650,
+              "unit": "g",
+              "ingredient": "oat-porridge-cooked",
+              "name": "Havregrøt, kokt",
+              "note": "rest, kokt i vann, usaltet"
+            },
+            {
+              "quantity": 350,
+              "unit": "g",
+              "ingredient": "rolled-oats",
+              "name": "Havregryn",
+              "note": "sertifisert glutenfri ved behov; males til mel"
+            },
+            {
+              "quantity": 32,
+              "unit": "g",
+              "ingredient": "psyllium-husk",
+              "name": "Psylliumfrøskall",
+              "note": "pulver; ca. 4 ss"
+            },
+            {
+              "quantity": 6,
+              "unit": "g",
+              "ingredient": "dry-yeast",
+              "name": "Tørrgjær",
+              "note": "instant (~2 tsp)"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "ingredient": "pumpkin-seeds",
+              "name": "Gresskarkjerner",
+              "note": "sett noen til side til topping"
+            },
+            {
+              "quantity": 1,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 1.5
+            }
+          ],
+          "steps": [
+            "Kjør havregrynene i en blender til fint mel.",
+            "Varm restene av havregrøten forsiktig til den er lunken (omtrent kroppstemperatur) og rør til den er glatt. For varm grøt dreper gjæren. (3 min)",
+            "Rør gjær og salt inn i grøten i en stor bolle. Tilsett havremelet, psylliumfrøskallpulveret og det meste av gresskarkjernene; sett noen til side til topping. Bland med skje og deretter hendene til en myk, klebrig deig.",
+            "La deigen hvile så psylliumet kan stramme den. (10 min)",
+            "Bekled ett stekebrett med bakepapir. Med våte hender, form 8 runde boller og legg dem på brettet. Trykk de avsatte gresskarkjernene på toppen.",
+            "Dekk med et kjøkkenhåndkle og la heve mens ovnen varmes til 210 °C (varmluft 200 °C). Bollene hever litt, de dobler seg ikke. (45 min)",
+            "Stek til de er gyldne og høres hule ut når du banker under. (30 min)",
+            "Avkjøl på rist før du spiser. Psylliumboller er gummiaktige varme og setter seg når de avkjøles. (30 min)"
+          ],
+          "notes": "Allergener: ingen av de fem vanligste. Glutenfri bare hvis havren er sertifisert glutenfri. Hvis grøten din var kokt med salt, halvér saltet i denne oppskriften. Hvis deigen føles for stiv å forme, tilsett en skvett vann; hvis den er for klebrig, tilsett litt mer havremel. Oljefri, nøttefri, sesamfri.",
+          "portion": "1 bolle (~134 g)"
+        },
+        "sv": {
+          "title": "Glutenfria grötbullar",
+          "description": "Mjuka, fröade glutenfria bullar av överbliven havregröt, havremjöl och psyllium. En jäsning, oljefria, nötfria, sesamfria.",
+          "ingredients": [
+            {
+              "quantity": 650,
+              "unit": "g",
+              "ingredient": "oat-porridge-cooked",
+              "name": "Havregröt, kokt",
+              "note": "överbliven, kokt i vatten, osaltad"
+            },
+            {
+              "quantity": 350,
+              "unit": "g",
+              "ingredient": "rolled-oats",
+              "name": "Havregryn",
+              "note": "certifierat glutenfritt vid behov; mixas till mjöl"
+            },
+            {
+              "quantity": 32,
+              "unit": "g",
+              "ingredient": "psyllium-husk",
+              "name": "Psylliumfröskal",
+              "note": "pulver; ca. 4 msk"
+            },
+            {
+              "quantity": 6,
+              "unit": "g",
+              "ingredient": "dry-yeast",
+              "name": "Torrjäst",
+              "note": "instant (~2 tsp)"
+            },
+            {
+              "quantity": 30,
+              "unit": "g",
+              "ingredient": "pumpkin-seeds",
+              "name": "Pumpakärnor",
+              "note": "spara en del till topping"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsk",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 1.5
+            }
+          ],
+          "steps": [
+            "Mixa havregrynen i en blender till fint mjöl.",
+            "Värm den överblivna havregröten försiktigt tills den är ljummen (ungefär kroppstemperatur) och rör tills den är slät. För varm gröt dödar jästen. (3 min)",
+            "Rör ner jäst och salt i gröten i en stor skål. Tillsätt havremjölet, psylliumfröskalspulvret och merparten av pumpakärnorna; spara en del till topping. Blanda med sked och sedan händerna till en mjuk, klibbig deg.",
+            "Låt degen vila så att psylliumet kan strama åt den. (10 min)",
+            "Klä en plåt med bakplåtspapper. Forma 8 runda bullar med blöta händer och lägg dem på plåten. Tryck ner de sparade pumpakärnorna på toppen.",
+            "Täck med en handduk och låt jäsa medan ugnen värms till 210 °C (varmluft 200 °C). Bullarna jäser lite, de fördubblas inte. (45 min)",
+            "Grädda tills de är gyllene och låter ihåliga när du knackar under. (30 min)",
+            "Svalna på galler innan du äter. Psylliumbullar är gummiaktiga varma och sätter sig när de svalnar. (30 min)"
+          ],
+          "notes": "Allergener: inga av de fem vanligaste. Glutenfri bara om havren är certifierat glutenfri. Om gröten kokades med salt, halvera saltet i det här receptet. Om degen känns för styv att forma, tillsätt en skvätt vatten; om den är för klibbig, tillsätt lite mer havremjöl. Oljefri, nötfri, sesamfri.",
+          "portion": "1 bulle (~134 g)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 300,
+          "protein": 11,
+          "totalFat": 6.5,
+          "saturatedFat": 1.1,
+          "totalCarbs": 52,
+          "fiber": 11,
+          "totalSugars": 0.76,
+          "addedSugar": 0,
+          "sodium": 298,
+          "potassium": 296,
+          "monounsaturatedFat": 2.2,
+          "polyunsaturatedFat": 2.6,
+          "omega3": 0.08,
+          "omega6": 2.5,
+          "calcium": 42,
+          "iron": 3.8,
+          "magnesium": 149,
+          "phosphorus": 422,
+          "zinc": 3.2,
+          "copper": 0.5,
+          "manganese": 3.7,
+          "selenium": 21,
+          "vitaminA": 0.04,
+          "vitaminC": 0.07,
+          "vitaminD": 0,
+          "vitaminE": 0.38,
+          "vitaminK": 1.7,
+          "thiamin": 0.63,
+          "riboflavin": 0.14,
+          "niacin": 1.2,
+          "vitaminB6": 0.1,
+          "folate": 59,
+          "vitaminB12": 0,
+          "choline": 31,
+          "cholesterol": 0
+        },
+        "sodiumStandard": 443
+      },
+      "createdAt": 1793696110383,
+      "flavourProfile": "savoury"
     }
   ],
-  "updatedAt": "2026-11-01T13:21:29.319Z"
+  "updatedAt": "2026-11-03T08:55:10.385Z"
 }

@@ -4421,6 +4421,30 @@
         "no": [],
         "sv": []
       }
+    },
+    {
+      "id": "oat-porridge-cooked",
+      "aisle": "Bakery & Grains",
+      "preferredUnit": "g",
+      "names": {
+        "en": "Oat porridge, cooked",
+        "no": "Havregrøt, kokt",
+        "sv": "Havregröt, kokt"
+      },
+      "synonyms": {
+        "en": [
+          "leftover oat porridge",
+          "cooked oatmeal"
+        ],
+        "no": [
+          "rest av havregrøt",
+          "havregrøt"
+        ],
+        "sv": [
+          "överbliven havregröt",
+          "havregröt"
+        ]
+      }
     }
   ],
   "correction_note": "233rd entry asparagus-beans-frozen added after verification: asparagus beans (yardlong beans) are not edamame/soy, so they must not be merged (it would add a soy flag to fr-77)."

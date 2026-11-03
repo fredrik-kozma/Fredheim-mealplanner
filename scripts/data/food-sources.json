@@ -5132,6 +5132,21 @@
       },
       "matvaretabellen": null,
       "preferred": "USDA-SR"
+    },
+    "oat-porridge-cooked": {
+      "micro": {
+        "db": "derived",
+        "id": "rolled-oats-cooked-1-to-2-water",
+        "name": "Oat porridge cooked in water (derived 1:2 oats:water by weight from rolled-oats)",
+        "note": "Macros/micros = rolled-oats × 1/3 (unsalted water)"
+      },
+      "compositionBasis": "rolled-oats",
+      "preferred": "derived",
+      "usda": {
+        "db": "USDA-SR",
+        "fdcId": 173904,
+        "name": "derived from dry oats cooked in water"
+      }
     }
   }
 }

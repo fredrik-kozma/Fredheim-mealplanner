@@ -1,4 +1,4 @@
-﻿import { test } from 'node:test'
+import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -74,7 +74,7 @@ test('fr-212 coconut milk class retention lands near verified targets', () => {
 
 test('applyRetentionToNutrients rebuilds carbs and kcal', () => {
   const raw = { kcal: 100, protein: 2, fat: 10, satFat: 9, carbs: 20, sugars: 8, fiber: 5, added: 0, sodium: 10, potassium: 50 }
-  // starch = 20-8-5 = 7; after: sug 7.2, fib 0.5, starch 1.4 → carbs 9.1; kcal = 2*4 + 9.1*4 + 4*9 = 8+36.4+36 = 80.4
+  // starch = 20-8-5 = 7; after: sug 7.2, fib 0.5, starch 1.4 ? carbs 9.1; kcal = 2*4 + 9.1*4 + 4*9 = 8+36.4+36 = 80.4
   const { nutrients } = applyRetentionToNutrients(raw, { fat: 0.4, protein: 1, fiber: 0.1, soluble: 0.9, starch: 0.2 })
   assert.ok(Math.abs(nutrients.sugars - 7.2) < 1e-9)
   assert.ok(Math.abs(nutrients.fiber - 0.5) < 1e-9)
@@ -88,7 +88,7 @@ test('legacy yieldFactor still works when strain is absent', () => {
   delete r.nutrition.strain
   r.nutrition.yieldFactor = 0.5
   const live = estimateRecipeNutrition(r, db, { recipeById })
-  // Full ingredient kcal roughly doubled vs 0.5 factor path — just assert warning + finite
+  // Full ingredient kcal roughly doubled vs 0.5 factor path � just assert warning + finite
   assert.ok(live.warnings.some((w) => /yield/i.test(w)))
   assert.ok(live.perServing.calories > 0)
 })
@@ -98,7 +98,7 @@ test('choline is not in visible keys (stays hidden)', () => {
 })
 
 test('sum of contributions equals estimateRecipeNutrition totals for all pack recipes and every engine nutrient', () => {
-  assert.equal(allRecipes.length, 307)
+  assert.equal(allRecipes.length, 308)
   const failures = []
   for (const r of allRecipes) {
     const est = estimateRecipeNutrition(r, db, { recipeById, saltLevel: 'low' })
@@ -116,7 +116,7 @@ test('sum of contributions equals estimateRecipeNutrition totals for all pack re
   assert.equal(failures.length, 0, failures.slice(0, 10).join('\n'))
 })
 
-test('blocked soy-sauce → tamari attributes nutrition to tamari (food actually eaten)', () => {
+test('blocked soy-sauce ? tamari attributes nutrition to tamari (food actually eaten)', () => {
   const r = allRecipes.find((x) => (x.ingredients || []).some((i) => i.ingredient === 'soy-sauce'))
   assert.ok(r, 'need a soy-sauce recipe')
   const blocked = { groups: ['gluten'], ids: [] }
