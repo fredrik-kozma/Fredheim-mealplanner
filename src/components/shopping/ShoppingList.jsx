@@ -108,15 +108,18 @@ export default function ShoppingList() {
     Object.keys(dismissedShoppingSources).filter(k => currentSourceKeys.has(k)).length
 
   // Stable keys for pruning stale checked/dismissed entries once ids leave.
+  // JSON (not "|"-join): dictionary item ids contain "|" (e.g. "#garlic|mass__g").
   const currentIdsKey = useMemo(
-    () => [
+    () => JSON.stringify([
       ...rawGroups.flatMap(g => g.items.map(i => i.id)),
       ...customShoppingItems.map(i => i.id),
-    ].sort().join('|'),
+    ].sort()),
     [rawGroups, customShoppingItems]
   )
   const currentSourceKeysKey = useMemo(
-    () => rawGroups.flatMap(g => g.items.flatMap(i => (i.sources || []).map(s => srcKey(i.id, s.recipe)))).sort().join('|'),
+    () => JSON.stringify(
+      rawGroups.flatMap(g => g.items.flatMap(i => (i.sources || []).map(s => srcKey(i.id, s.recipe)))).sort()
+    ),
     [rawGroups]
   )
 
@@ -125,10 +128,10 @@ export default function ShoppingList() {
   // changing the weekplan leaves stale check marks behind and the
   // "X of Y checked" counter goes nonsensical (32 of 7, etc.).
   useEffect(() => {
-    const validIds = new Set(currentIdsKey ? currentIdsKey.split('|') : [])
+    const validIds = new Set(currentIdsKey ? JSON.parse(currentIdsKey) : [])
     pruneCheckedItems(validIds)
     pruneDismissedShoppingItems(validIds)
-    const validSrc = new Set(currentSourceKeysKey ? currentSourceKeysKey.split('|') : [])
+    const validSrc = new Set(currentSourceKeysKey ? JSON.parse(currentSourceKeysKey) : [])
     pruneDismissedShoppingSources(validSrc)
   }, [currentIdsKey, currentSourceKeysKey, pruneCheckedItems, pruneDismissedShoppingItems, pruneDismissedShoppingSources])
 
