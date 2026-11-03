@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { idbStorage, migrateFromLocalStorage } from './idbStorage'
+import { pruneIdMap } from '../utils/pruneIdMap'
 import { filterStarterPlanAgainstBlocks, getStarterPlan, sanitizeActiveStarterPlanId } from '../data/starterPlans'
 import { DEFAULT_SALT_LEVEL, SALT_LEVELS, normalizeSaltLevel } from '../utils/saltLevel'
 import { migrateAvoidedAllergens, normalizeBlocked, emptyBlockedIngredients } from '../data/ingredientBlocker'
@@ -1002,13 +1003,8 @@ const useStore = create(
       }),
       restoreDismissedShoppingItems: () => set({ dismissedShoppingItems: {} }),
       pruneDismissedShoppingItems: (validIds) => set((s) => {
-        let changed = false
-        const next = {}
-        for (const id of Object.keys(s.dismissedShoppingItems)) {
-          if (validIds.has(id)) next[id] = s.dismissedShoppingItems[id]
-          else changed = true
-        }
-        return changed ? { dismissedShoppingItems: next } : {}
+        const next = pruneIdMap(s.dismissedShoppingItems, validIds)
+        return next === s.dismissedShoppingItems ? {} : { dismissedShoppingItems: next }
       }),
 
       // ── Dismissed single-recipe contributions ──
@@ -1026,13 +1022,8 @@ const useStore = create(
       }),
       restoreDismissedShoppingSources: () => set({ dismissedShoppingSources: {} }),
       pruneDismissedShoppingSources: (validKeys) => set((s) => {
-        let changed = false
-        const next = {}
-        for (const k of Object.keys(s.dismissedShoppingSources)) {
-          if (validKeys.has(k)) next[k] = s.dismissedShoppingSources[k]
-          else changed = true
-        }
-        return changed ? { dismissedShoppingSources: next } : {}
+        const next = pruneIdMap(s.dismissedShoppingSources, validKeys)
+        return next === s.dismissedShoppingSources ? {} : { dismissedShoppingSources: next }
       }),
 
       /**
@@ -1044,13 +1035,8 @@ const useStore = create(
        * pruning, so we don't write to IndexedDB on every render.
        */
       pruneCheckedItems: (validIds) => set((s) => {
-        let changed = false
-        const next = {}
-        for (const id of Object.keys(s.checkedItems)) {
-          if (validIds.has(id)) next[id] = s.checkedItems[id]
-          else changed = true
-        }
-        return changed ? { checkedItems: next } : {}
+        const next = pruneIdMap(s.checkedItems, validIds)
+        return next === s.checkedItems ? {} : { checkedItems: next }
       }),
 
       // ── Saved Shopping Lists ──
