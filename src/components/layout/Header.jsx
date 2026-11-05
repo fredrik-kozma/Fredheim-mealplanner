@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../contexts/AuthContext'
 import { useSubscription } from '../../hooks/useSubscription'
@@ -8,7 +8,7 @@ import TimerButton from '../timer/TimerButton'
 
 export default function Header() {
   const navigate = useNavigate()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { user, signOut } = useAuth()
   const { isActive, isTrial, daysLeft, isAdmin } = useSubscription()
 
@@ -167,6 +167,23 @@ export default function Header() {
                       {t('subscription.manage')}
                     </button>
                   )}
+
+                  <Link
+                    to="/privacy"
+                    state={{ lang: (i18n.language || 'en').slice(0, 2) }}
+                    onClick={() => setShowUserMenu(false)}
+                    className="tap-target w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                  >
+                    {t('settings.privacyPolicy')}
+                  </Link>
+                  <Link
+                    to="/delete-account"
+                    state={{ lang: (i18n.language || 'en').slice(0, 2) }}
+                    onClick={() => setShowUserMenu(false)}
+                    className="tap-target w-full text-left px-3 py-2 text-sm text-danger-600 hover:bg-danger-50 transition-colors"
+                  >
+                    {t('settings.deleteAccount')}
+                  </Link>
 
                   {/* Sign out */}
                   <button

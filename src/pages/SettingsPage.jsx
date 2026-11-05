@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore from '../store/useStore'
 import { translateRecipe } from '../utils/translator'
@@ -222,6 +222,25 @@ function SubscriptionSection() {
   )
 }
 
+function PrivacyAccountSection() {
+  const { t, i18n } = useTranslation()
+  const lang = (i18n.language || 'en').slice(0, 2)
+
+  return (
+    <SectionCard title={t('settings.privacyAccount')}>
+      <p className="text-sm text-slate-500 mb-3">{t('settings.privacyAccountDesc')}</p>
+      <div className="flex flex-col gap-2">
+        <Link to="/privacy" state={{ lang }} className="btn-secondary w-full">
+          {t('settings.privacyPolicy')}
+        </Link>
+        <Link to="/delete-account" state={{ lang }} className="btn-danger w-full">
+          {t('settings.deleteAccount')}
+        </Link>
+      </div>
+    </SectionCard>
+  )
+}
+
 export default function SettingsPage() {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
@@ -414,6 +433,9 @@ export default function SettingsPage() {
       <div className="px-4 space-y-4">
         {/* Subscription */}
         <SubscriptionSection />
+
+        {/* Privacy policy and account deletion — public Play Console URLs. */}
+        <PrivacyAccountSection />
 
         {/* Language selector */}
         <SectionCard title={t('settings.language')}>
@@ -863,6 +885,14 @@ export default function SettingsPage() {
           />
           <p className="text-sm font-semibold text-slate-700">{t('app.name')}</p>
           <p className="text-xs text-slate-400 mt-1">{t('app.version')}</p>
+          <p className="text-xs text-slate-400 mt-3 flex flex-wrap justify-center gap-x-3 gap-y-1">
+            <Link to="/privacy" state={{ lang: (i18n.language || 'en').slice(0, 2) }} className="text-link">
+              {t('settings.privacyPolicy')}
+            </Link>
+            <Link to="/delete-account" state={{ lang: (i18n.language || 'en').slice(0, 2) }} className="text-link">
+              {t('settings.deleteAccount')}
+            </Link>
+          </p>
 
           {/* "In cooperation with" — both logos side by side */}
           <div className="mt-5 pt-4 border-t border-slate-100">
