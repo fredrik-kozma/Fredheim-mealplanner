@@ -13,6 +13,8 @@ import NutritionPage from './pages/NutritionPage'
 import RecipeForm from './components/recipes/RecipeForm'
 import RecipeDetail from './components/recipes/RecipeDetail'
 import ResetPasswordPage from './pages/ResetPasswordPage'
+import PrivacyPage from './pages/PrivacyPage'
+import DeleteAccountPage from './pages/DeleteAccountPage'
 import NotFoundPage from './pages/NotFoundPage'
 import useStore from './store/useStore'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
@@ -305,6 +307,11 @@ export default function App() {
         {/* Password reset lives OUTSIDE the SubscriptionGate so users with
             past-due / expired subscriptions can still recover their account. */}
         <Route path="/reset-password" element={<ResetPasswordPage />} />
+        {/* Public Play Console URLs. Outside the paywall so a lapsed
+            account can still open them, and so a reviewer is not asked
+            to sign in before reading the policy. */}
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/delete-account" element={<DeleteAccountPage />} />
         <Route path="/*" element={
           <SubscriptionProvider>
             <HydrationGate>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../contexts/AuthContext'
 import { useSubscription } from '../../hooks/useSubscription'
@@ -50,7 +51,7 @@ const STATUS_COPY = {
 }
 
 export default function UpgradeWall() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { user, signOut } = useAuth()
   const { status } = useSubscription()
   const [loading, setLoading] = useState(false)
@@ -150,6 +151,22 @@ export default function UpgradeWall() {
         >
           {t('auth.signOut')}
         </button>
+        <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-1">
+          <Link
+            to="/privacy"
+            state={{ lang: (i18n.language || 'en').slice(0, 2) }}
+            className="text-xs text-slate-400 hover:text-primary-600 underline"
+          >
+            {t('settings.privacyPolicy')}
+          </Link>
+          <Link
+            to="/delete-account"
+            state={{ lang: (i18n.language || 'en').slice(0, 2) }}
+            className="text-xs text-slate-500 hover:text-danger-600 underline"
+          >
+            {t('settings.deleteAccount')}
+          </Link>
+        </div>
       </div>
     </div>
   )

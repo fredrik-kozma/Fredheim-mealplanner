@@ -74,7 +74,7 @@ const NAV_ITEMS = [
 ]
 
 export default function Navigation() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
   const lastRecipesPath = useStore(s => s.lastRecipesPath)
@@ -330,6 +330,22 @@ export default function Navigation() {
               </button>
             </div>
           )}
+          <div className="mt-2 pt-2 border-t border-slate-100">
+            <NavLink
+              to="/privacy"
+              state={{ lang: (i18n.language || 'en').slice(0, 2) }}
+              className="tap-target block w-full text-left px-3 py-1.5 rounded-small text-xs text-slate-400 hover:bg-slate-50 hover:text-primary-600 transition-colors"
+            >
+              {t('settings.privacyPolicy')}
+            </NavLink>
+            <NavLink
+              to="/delete-account"
+              state={{ lang: (i18n.language || 'en').slice(0, 2) }}
+              className="tap-target block w-full text-left px-3 py-1.5 rounded-small text-xs text-slate-400 hover:bg-slate-50 hover:text-danger-600 transition-colors"
+            >
+              {t('settings.deleteAccount')}
+            </NavLink>
+          </div>
         </div>
       </nav>
 
