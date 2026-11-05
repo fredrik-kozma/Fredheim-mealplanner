@@ -3,7 +3,7 @@
   "name": "Fredheim Kitchen",
   "description": "Everyday Fredheim recipes, with photos.",
   "author": "Fredheim",
-  "version": "1.114.0",
+  "version": "1.115.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -62154,7 +62154,348 @@
       },
       "createdAt": 1793696110383,
       "flavourProfile": "savoury"
+    },
+    {
+      "id": "fr-214",
+      "title": "Simple Garden Vegetable Soup",
+      "category": "Soup",
+      "servings": 6,
+      "portion": "1 bowl (~340 g)",
+      "prepTime": 15,
+      "cookTime": 27,
+      "imageUrl": "/pack-images/fr-214.jpg",
+      "description": "Light, golden vegetable soup with mushrooms and peas, finished with parsley and a touch of lemon.",
+      "tags": [
+        "fredheim",
+        "weight-loss",
+        "blood-pressure-friendly",
+        "diabetes-friendly",
+        "heart-healthy",
+        "gluten-free",
+        "nut-free",
+        "soy-free",
+        "oil-free",
+        "no-added-sugar",
+        "batch-friendly"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "kcal": 81,
+      "servingWeightGrams": 340,
+      "ingredients": [
+        {
+          "quantity": 150,
+          "unit": "g",
+          "ingredient": "onions",
+          "name": "Onions",
+          "note": "diced"
+        },
+        {
+          "quantity": 250,
+          "unit": "g",
+          "ingredient": "mushrooms",
+          "name": "Mushrooms",
+          "note": "small, halved or sliced"
+        },
+        {
+          "quantity": 200,
+          "unit": "g",
+          "ingredient": "carrots",
+          "name": "Carrots",
+          "note": "finely chopped"
+        },
+        {
+          "quantity": 200,
+          "unit": "g",
+          "ingredient": "bell-peppers",
+          "name": "Bell peppers",
+          "note": "red, diced"
+        },
+        {
+          "quantity": 2,
+          "unit": "clove",
+          "ingredient": "garlic",
+          "name": "Garlic",
+          "note": "minced"
+        },
+        {
+          "quantity": 1,
+          "unit": "tsp",
+          "ingredient": "thyme-dried",
+          "name": "Thyme, dried"
+        },
+        {
+          "quantity": 1,
+          "unit": "l",
+          "ingredient": "vegetable-broth",
+          "name": "Vegetable broth",
+          "note": "low-sodium"
+        },
+        {
+          "quantity": 200,
+          "unit": "g",
+          "ingredient": "green-peas",
+          "name": "Green peas",
+          "note": "frozen"
+        },
+        {
+          "quantity": 20,
+          "unit": "g",
+          "ingredient": "parsley",
+          "name": "Parsley",
+          "note": "fresh, chopped"
+        },
+        {
+          "quantity": 2,
+          "unit": "tsp",
+          "ingredient": "lemon-juice",
+          "name": "Lemon juice"
+        },
+        {
+          "quantity": 0.25,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "name": "Salt",
+          "standardAmount": 1.25
+        }
+      ],
+      "steps": [
+        "Heat a large dry pot over medium-high heat. Add the onion with a splash of water and cook until soft and lightly golden, adding a little more water if it sticks. (5 min)",
+        "Add the mushrooms and cook until they release their liquid and start to brown. (5 min)",
+        "Add the carrots, bell pepper, garlic and thyme. Stir and cook briefly until fragrant. (2 min)",
+        "Pour in the vegetable broth. Bring to a boil, then simmer until the carrots are tender. (12 min)",
+        "Add the frozen peas and simmer until bright green and heated through. (3 min)",
+        "Take off the heat. Stir in the parsley, lemon juice and salt. Taste and adjust."
+      ],
+      "notes": "Allergens: none of the top five. Check the stock label for celery (an EU allergen) and for hidden sugar. Keeps 4 days in the fridge. Freezes well without the parsley.",
+      "translations": {
+        "no": {
+          "title": "Enkel hagesuppe",
+          "description": "Lett, gyllen suppe med sopp og erter, avsluttet med persille og en skvett sitron.",
+          "ingredients": [
+            {
+              "quantity": 150,
+              "unit": "g",
+              "ingredient": "onions",
+              "name": "Løk",
+              "note": "i terninger"
+            },
+            {
+              "quantity": 250,
+              "unit": "g",
+              "ingredient": "mushrooms",
+              "name": "Sopp",
+              "note": "små, delt i to eller skivet"
+            },
+            {
+              "quantity": 200,
+              "unit": "g",
+              "ingredient": "carrots",
+              "name": "Gulrøtter",
+              "note": "finhakket"
+            },
+            {
+              "quantity": 200,
+              "unit": "g",
+              "ingredient": "bell-peppers",
+              "name": "Paprika",
+              "note": "rød, i terninger"
+            },
+            {
+              "quantity": 2,
+              "unit": "fedd",
+              "ingredient": "garlic",
+              "name": "Hvitløk",
+              "note": "finhakket"
+            },
+            {
+              "quantity": 1,
+              "unit": "ts",
+              "ingredient": "thyme-dried",
+              "name": "Timian, tørket"
+            },
+            {
+              "quantity": 1,
+              "unit": "l",
+              "ingredient": "vegetable-broth",
+              "name": "Grønnsakskraft",
+              "note": "natriumredusert"
+            },
+            {
+              "quantity": 200,
+              "unit": "g",
+              "ingredient": "green-peas",
+              "name": "Grønne erter",
+              "note": "frosne"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "parsley",
+              "name": "Persille",
+              "note": "fersk, hakket"
+            },
+            {
+              "quantity": 2,
+              "unit": "ts",
+              "ingredient": "lemon-juice",
+              "name": "Sitronsaft"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "ts",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 1.25
+            }
+          ],
+          "steps": [
+            "Varm en stor, tørr gryte på middels sterk varme. Ha i løken med en skvett vann og la den bli myk og lett gyllen. Ha i litt mer vann hvis den setter seg. (5 min)",
+            "Ha i soppen og stek til den slipper væske og begynner å ta farge. (5 min)",
+            "Ha i gulrøtter, paprika, hvitløk og timian. Rør og la det steke kort til det dufter. (2 min)",
+            "Hell i grønnsakskraften. Kok opp, og la suppen småkoke til gulrøttene er møre. (12 min)",
+            "Ha i de frosne ertene og la det småkoke til de er klart grønne og gjennomvarme. (3 min)",
+            "Ta gryten av platen. Rør inn persille, sitronsaft og salt. Smak til."
+          ],
+          "notes": "Allergener: ingen av de fem vanligste. Sjekk kraften for selleri (et EU-allergen) og for skjult sukker. Holder 4 dager i kjøleskapet. Fryser godt uten persillen.",
+          "portion": "1 bolle (~340 g)"
+        },
+        "sv": {
+          "title": "Enkel grönsakssoppa",
+          "description": "Lätt, gyllene soppa med svamp och ärtor, avslutad med persilja och en skvätt citron.",
+          "ingredients": [
+            {
+              "quantity": 150,
+              "unit": "g",
+              "ingredient": "onions",
+              "name": "Lök",
+              "note": "tärnad"
+            },
+            {
+              "quantity": 250,
+              "unit": "g",
+              "ingredient": "mushrooms",
+              "name": "Svamp",
+              "note": "små, halverade eller skivade"
+            },
+            {
+              "quantity": 200,
+              "unit": "g",
+              "ingredient": "carrots",
+              "name": "Morötter",
+              "note": "finhackade"
+            },
+            {
+              "quantity": 200,
+              "unit": "g",
+              "ingredient": "bell-peppers",
+              "name": "Paprika",
+              "note": "röd, tärnad"
+            },
+            {
+              "quantity": 2,
+              "unit": "klyfta",
+              "ingredient": "garlic",
+              "name": "Vitlök",
+              "note": "finhackad"
+            },
+            {
+              "quantity": 1,
+              "unit": "tsk",
+              "ingredient": "thyme-dried",
+              "name": "Timjan, torkad"
+            },
+            {
+              "quantity": 1,
+              "unit": "l",
+              "ingredient": "vegetable-broth",
+              "name": "Grönsakskraft",
+              "note": "natriumreducerad"
+            },
+            {
+              "quantity": 200,
+              "unit": "g",
+              "ingredient": "green-peas",
+              "name": "Gröna ärtor",
+              "note": "frysta"
+            },
+            {
+              "quantity": 20,
+              "unit": "g",
+              "ingredient": "parsley",
+              "name": "Persilja",
+              "note": "färsk, hackad"
+            },
+            {
+              "quantity": 2,
+              "unit": "tsk",
+              "ingredient": "lemon-juice",
+              "name": "Citronsaft"
+            },
+            {
+              "quantity": 0.25,
+              "unit": "tsk",
+              "ingredient": "salt",
+              "name": "Salt",
+              "standardAmount": 1.25
+            }
+          ],
+          "steps": [
+            "Hetta upp en stor torr gryta på medelhög värme. Lägg i löken med en skvätt vatten och låt den bli mjuk och lätt gyllene. Häll i lite mer vatten om den fastnar. (5 min)",
+            "Lägg i svampen och stek tills den släpper vätska och börjar få färg. (5 min)",
+            "Lägg i morötter, paprika, vitlök och timjan. Rör om och stek kort tills det doftar. (2 min)",
+            "Häll i grönsakskraften. Koka upp och låt sjuda tills morötterna är mjuka. (12 min)",
+            "Lägg i de frysta ärtorna och låt sjuda tills de är klart gröna och genomvarma. (3 min)",
+            "Ta grytan av värmen. Rör ner persilja, citronsaft och salt. Smaka av."
+          ],
+          "notes": "Allergener: inga av de fem vanligaste. Kolla kraften för selleri (ett EU-allergen) och för dolt socker. Håller 4 dagar i kylen. Fryser bra utan persiljan.",
+          "portion": "1 skål (~340 g)"
+        }
+      },
+      "nutrition": {
+        "perServing": {
+          "calories": 81,
+          "protein": 4.5,
+          "totalFat": 0.7,
+          "saturatedFat": 0,
+          "totalCarbs": 16,
+          "fiber": 4.1,
+          "totalSugars": 7.4,
+          "addedSugar": 0,
+          "sodium": 300,
+          "potassium": 457,
+          "monounsaturatedFat": 0.03,
+          "polyunsaturatedFat": 0.29,
+          "omega3": 0.02,
+          "omega6": 0.27,
+          "calcium": 44,
+          "iron": 1.5,
+          "magnesium": 27,
+          "phosphorus": 102,
+          "zinc": 0.75,
+          "copper": 0.24,
+          "manganese": 0.3,
+          "selenium": 4.6,
+          "vitaminA": 413,
+          "vitaminC": 60,
+          "vitaminD": 0.08,
+          "vitaminE": 0.81,
+          "vitaminK": 72,
+          "thiamin": 0.19,
+          "riboflavin": 0.28,
+          "niacin": 3.1,
+          "vitaminB6": 0.3,
+          "folate": 60,
+          "vitaminB12": 0.02,
+          "choline": 25,
+          "cholesterol": 0
+        },
+        "sodiumStandard": 688
+      },
+      "createdAt": 1793900149198
     }
   ],
-  "updatedAt": "2026-11-03T08:55:10.385Z"
+  "updatedAt": "2026-11-05T17:35:49.201Z"
 }
