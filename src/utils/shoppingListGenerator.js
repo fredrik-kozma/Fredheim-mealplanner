@@ -104,6 +104,9 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
         // only when its name is exactly a standard name or synonym.
         ingredientId: resolveIngredientId(ing),
         recipeTitle,
+        // Physical weight for a spoon row the kitchen fraction would
+        // mis-state (0.5 g salt stored as 1/12 tsp). Scaled with the row.
+        ...(ing.weighGrams > 0 ? { weighGrams: ing.weighGrams * scaleFactor } : {}),
       })
     }
   }
@@ -177,15 +180,27 @@ export function generateShoppingList(weekPlan, recipes, familySize, lang = 'en',
       // Raw per-occurrence contributions (already scaled to the plan's
       // servings). Kept so the UI can show "which recipe, how much" and so
       // a saved list can be re-scaled to a different portion count.
-      const sources = group.items
-        .filter(it => it.quantity && it.quantity > 0)
-        .map(it => ({ recipe: it.recipeTitle, quantity: it.quantity, unit: it.unit, ...(it.note ? { note: it.note } : {}) }))
+      const measured = group.items.filter(it => it.quantity && it.quantity > 0)
+      const sources = measured
+        .map(it => ({
+          recipe: it.recipeTitle,
+          quantity: it.quantity,
+          unit: it.unit,
+          ...(it.note ? { note: it.note } : {}),
+          ...(it.weighGrams > 0 ? { weighGrams: it.weighGrams } : {}),
+        }))
+      // Only when every contribution opted in. A mix with an ordinary
+      // salt row keeps the spoon total, so other recipes stay as written.
+      const weighGrams = measured.length > 0 && measured.every(it => it.weighGrams > 0)
+        ? measured.reduce((sum, it) => sum + it.weighGrams, 0)
+        : undefined
 
       byCat[cat].push({
         id,
         quantity: qty,
         unit: formattedUnit,
         name: group.displayName,
+        ...(weighGrams > 0 ? { weighGrams } : {}),
         // Lets the list say "1 Sitron" and keep a spice in spoons when a
         // contribution is removed and the total is worked out again.
         ...(group.ingredientId ? { ingredientId: group.ingredientId } : {}),

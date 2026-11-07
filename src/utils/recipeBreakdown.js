@@ -18,6 +18,7 @@
 
 import { formatQuantity } from './formatQuantity.js'
 import { combineQuantities } from './ingredientMatcher.js'
+import { dictionaryEntry } from './ingredientDictionary.js'
 
 /**
  * @param sources [{ recipe, quantity, unit, note? }] — one entry per
@@ -28,7 +29,7 @@ import { combineQuantities } from './ingredientMatcher.js'
  *          distinct notes joined; '' when there is none (and always for
  *          lists saved before notes existed).
  */
-export function buildRecipeBreakdown(sources, lang = 'en') {
+export function buildRecipeBreakdown(sources, lang = 'en', ingredientId = null) {
   const byRecipe = {}
   for (const s of sources || []) {
     (byRecipe[s.recipe] = byRecipe[s.recipe] || []).push(s)
@@ -38,12 +39,18 @@ export function buildRecipeBreakdown(sources, lang = 'en') {
     // Summed directly when the recipe uses one unit, so the share stays in
     // the unit the recipe wrote; mixed units within one recipe go through
     // combineQuantities, since that is the case it exists for.
+    const weighGrams = arr.length > 0 && arr.every(s => s.weighGrams > 0)
+      ? arr.reduce((n, s) => n + s.weighGrams, 0)
+      : undefined
+    const opts = weighGrams > 0
+      ? { weighGrams, gramsPerTsp: dictionaryEntry(ingredientId)?.spoonGrams?.gPerTsp }
+      : {}
     const units = new Set(arr.map(s => s.unit || ''))
     if (units.size === 1) {
       const total = arr.reduce((n, s) => n + (s.quantity || 0), 0)
-      return { recipe, label: formatQuantity(total, arr[0].unit || '', lang), note }
+      return { recipe, label: formatQuantity(total, arr[0].unit || '', lang, opts), note }
     }
     const sum = combineQuantities(arr)
-    return { recipe, label: formatQuantity(sum.quantity, sum.unit, lang), note }
+    return { recipe, label: formatQuantity(sum.quantity, sum.unit, lang, opts), note }
   })
 }

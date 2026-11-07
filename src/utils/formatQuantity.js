@@ -96,6 +96,48 @@ function fractionAmount(quantity) {
   return glyph ? `${whole} ${glyph}` : String(whole)
 }
 
+// Grams the kitchen-fraction spoon label stands for, or null when this
+// amount is not shown as a spoon. The ¼ tsp floor is included, so a true
+// 1/12 tsp is reported as the ¼ tsp a reader would actually see.
+function spoonLabelGrams(quantity, unitKey, gramsPerTsp) {
+  if (!(gramsPerTsp > 0) || !(quantity > 0)) return null
+  let snappedTsp = null
+  if (unitKey === 'tsp' || unitKey === 'tbsp') {
+    const tsp = unitKey === 'tbsp' ? quantity * 3 : quantity
+    snappedTsp = fractionParts(tsp).value
+  } else if (unitKey === 'ml' && quantity < TINY_ML) {
+    snappedTsp = Math.max(0.25, Math.round((quantity / TINY_ML) * 4) / 4)
+  }
+  return snappedTsp == null ? null : snappedTsp * gramsPerTsp
+}
+
+// A weighed amount the spoon label would mis-state. Small enough to show
+// 0.033 g; the ordinary gram rule never goes below 0.5 g.
+function weighedGramLabel(grams, lang) {
+  const a = Math.abs(grams)
+  if (!(a > 0)) return null
+  let n
+  let digits
+  if (a >= 10) { n = Math.round(a); digits = 0 }
+  else if (a >= 1) { n = Math.round(a * 10) / 10; digits = 1 }
+  else if (a >= 0.1) { n = Math.round(a * 100) / 100; digits = 2 }
+  else { n = Math.round(a * 1000) / 1000; digits = 3 }
+  if (!(n > 0)) return null
+  let s = digits === 0 ? String(n) : n.toFixed(digits).replace(/0+$/, '').replace(/\.$/, '')
+  if (COMMA_DECIMAL_LANGS.has(lang)) s = s.replace('.', ',')
+  return `${s} g`
+}
+
+const SPOON_MISMATCH = 0.2
+
+function labelForWeighedAmount(quantity, unit, lang, options) {
+  const grams = options?.weighGrams
+  if (!(grams > 0) || Array.isArray(quantity) || typeof quantity === 'string') return null
+  const shown = spoonLabelGrams(quantity, normalizeUnit(unit), options.gramsPerTsp)
+  if (shown != null && Math.abs(shown - grams) / grams <= SPOON_MISMATCH) return null
+  return weighedGramLabel(grams, lang)
+}
+
 /*
  * Less than a teaspoon of anything is measured with a teaspoon, not read
  * off a jug: "1,5 ml" of turmeric becomes "¼ ts". Snapped to the quarter
@@ -172,6 +214,8 @@ export function formatQuantity(quantity, unit, lang = 'en', options = {}) {
       .join(' + ')
   }
   if (typeof quantity === 'string') return quantity
+  const weighed = labelForWeighedAmount(quantity, unit, lang, options)
+  if (weighed) return weighed
   const tiny = tinyVolumeAsSpoon(quantity, normalizeUnit(unit))
   if (tiny) return formatQuantity(tiny.quantity, tiny.unit, lang, options)
   const label = unitLabel(unit, lang, { plural: displayedAmount(quantity, unit, options) > 1 })

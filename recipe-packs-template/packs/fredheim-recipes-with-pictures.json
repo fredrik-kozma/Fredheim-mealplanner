@@ -3,7 +3,7 @@
   "name": "Fredheim Kitchen",
   "description": "Everyday Fredheim recipes, with photos.",
   "author": "Fredheim",
-  "version": "1.116.0",
+  "version": "1.117.0",
   "tags": [
     "fredheim",
     "with-photos"
@@ -62548,7 +62548,7 @@
           "unit": "tsp",
           "ingredient": "salt",
           "name": "Salt",
-          "note": "weigh 0.5 g"
+          "weighGrams": 0.5
         }
       ],
       "steps": [
@@ -62592,7 +62592,7 @@
               "unit": "ts",
               "ingredient": "salt",
               "name": "Salt",
-              "note": "vei 0,5 g"
+              "weighGrams": 0.5
             }
           ],
           "steps": [
@@ -62637,7 +62637,7 @@
               "unit": "tsk",
               "ingredient": "salt",
               "name": "Salt",
-              "note": "väg 0,5 g"
+              "weighGrams": 0.5
             }
           ],
           "steps": [
@@ -62696,5 +62696,5 @@
       "flavourProfile": "sweet"
     }
   ],
-  "updatedAt": "2026-11-07T08:15:02.325Z"
+  "updatedAt": "2026-11-07T08:26:08.134Z"
 }

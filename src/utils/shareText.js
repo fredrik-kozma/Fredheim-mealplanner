@@ -13,7 +13,7 @@
  * serves both: readable to anyone, importable by anyone who has the app.
  */
 
-import { formatQuantity } from './formatQuantity.js'
+import { formatMeasuredQuantity } from './scaleIngredient.js'
 import { ingredientLabel } from './ingredientDictionary.js'
 import { formatGramSpoonHint } from './gramSpoonHint.js'
 import { formatLiquidSpoonHint } from './liquidSpoonHint.js'
@@ -21,7 +21,10 @@ import { formatLiquidSpoonHint } from './liquidSpoonHint.js'
 function qty(ing, lang) {
   const hint = formatGramSpoonHint({ quantity: ing.quantity, unit: ing.unit, ingredientId: ing.ingredient, lang })
     || formatLiquidSpoonHint({ quantity: ing.quantity, unit: ing.unit, row: ing, lang })
-  return [formatQuantity(ing.quantity, ing.unit, lang), hint].filter(Boolean).join(' ')
+  return [formatMeasuredQuantity(ing.quantity, ing.unit, lang, {
+    ingredientId: ing.ingredient,
+    weighGrams: ing.weighGrams,
+  }), hint].filter(Boolean).join(' ')
 }
 
 /**

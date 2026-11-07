@@ -1,6 +1,6 @@
 import { normalizeUnit, CANONICAL_UNITS, convertToSystem } from './unitNormalizer.js'
 import { formatQuantity } from './formatQuantity.js'
-import { nameForAmount, prefersSpoons } from './ingredientDictionary.js'
+import { dictionaryEntry, nameForAmount, prefersSpoons } from './ingredientDictionary.js'
 import { formatGramSpoonHint } from './gramSpoonHint.js'
 import { formatLiquidSpoonHint } from './liquidSpoonHint.js'
 
@@ -29,7 +29,21 @@ import { formatLiquidSpoonHint } from './liquidSpoonHint.js'
  */
 export function formatScaledQuantity(opts) {
   const { quantity, unit } = scaleQuantity(opts)
-  return formatQuantity(quantity, unit, opts.lang || 'en')
+  return formatMeasuredQuantity(quantity, unit, opts.lang || 'en', opts)
+}
+
+/**
+ * Same as formatQuantity, plus an opted-in weighed amount.
+ * `weighGrams` is the physical weight of this scaled amount. When the
+ * spoon label would not match it (a 0.5 g salt row stored as 1/12 tsp
+ * otherwise reads as ¼ tsp), the weight is what the cook sees.
+ */
+export function formatMeasuredQuantity(quantity, unit, lang = 'en', { ingredientId, weighGrams, roundUpWhole } = {}) {
+  return formatQuantity(quantity, unit, lang, {
+    roundUpWhole,
+    weighGrams,
+    gramsPerTsp: dictionaryEntry(ingredientId)?.spoonGrams?.gPerTsp,
+  })
 }
 
 /**
@@ -43,9 +57,14 @@ export function formatScaledQuantity(opts) {
 export function formatScaledIngredient(row, opts) {
   const lang = opts.lang || 'en'
   const scaled = scaleQuantity({ ...opts, quantity: row.quantity, unit: row.unit, ingredient: row.ingredient })
+  const factor = opts.scalesLinearly === false ? 1 : (opts.toServings / (opts.fromServings || 4))
+  const weighGrams = row.weighGrams > 0 ? row.weighGrams * factor : undefined
   return {
     name: nameForAmount(row, lang, scaled.quantity, scaled.unit),
-    quantityLabel: formatQuantity(scaled.quantity, scaled.unit, lang),
+    quantityLabel: formatMeasuredQuantity(scaled.quantity, scaled.unit, lang, {
+      ingredientId: row.ingredient,
+      weighGrams,
+    }),
     spoonHint: formatGramSpoonHint({ ...scaled, ingredientId: row.ingredient, lang })
       || formatLiquidSpoonHint({ ...scaled, row, lang }),
   }

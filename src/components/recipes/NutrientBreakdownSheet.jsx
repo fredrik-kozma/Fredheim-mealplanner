@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { fmtNutrient } from '../../utils/nutritionData'
-import { formatQuantity } from '../../utils/formatQuantity'
+import { formatMeasuredQuantity } from '../../utils/scaleIngredient'
 
 /**
  * Bottom sheet: which ingredients contribute to one nutrient.
@@ -116,7 +116,10 @@ export default function NutrientBreakdownSheet({
                     <div className="text-sm font-semibold text-slate-800">{p.name}</div>
                     <div className="text-2xs text-slate-500 mt-0.5">
                       {p.quantity != null && p.unit
-                        ? formatQuantity(p.quantity, p.unit, currentLang)
+                        ? formatMeasuredQuantity(p.quantity, p.unit, currentLang, {
+                          ingredientId: p.ingredientId,
+                          weighGrams: p.weighGrams,
+                        })
                         : null}
                       {p.note ? <span className="text-slate-400"> · {p.note}</span> : null}
                     </div>

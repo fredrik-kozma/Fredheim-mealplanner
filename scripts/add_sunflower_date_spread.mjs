@@ -3,6 +3,8 @@
  * Four ingredients only: hulled sunflower seeds, pitted soft dates, water, salt.
  * Oven toast at 175 °C. Proposed formulation, not kitchen-tested.
  * Salt is 0.5 g exactly (dictionary unit tsp at 6 g/tsp).
+ * weighGrams is the amount the recipe and shopping list show, because
+ * 1/12 tsp would otherwise be drawn as ¼ tsp.
  * Base yield uses 80 ml water (~300.5 g → 15 × 20 g). Extra water up to
  * 110 ml total is a note, not a second row.
  */
@@ -34,21 +36,21 @@ const ingredientsEn = [
   { quantity: 120, unit: 'g', ingredient: 'sunflower-seeds', name: 'Sunflower seeds', note: 'raw, hulled, unsalted' },
   { quantity: 100, unit: 'g', ingredient: 'dates-dried', name: 'Dried dates', note: 'soft, weighed after the pits are removed' },
   { quantity: 80, unit: 'ml', ingredient: 'water', name: 'Water', note: 'start with this; up to 110 ml in total only if needed for a spreadable texture' },
-  { quantity: SALT_TSP, unit: 'tsp', ingredient: 'salt', name: 'Salt', note: 'weigh 0.5 g' },
+  { quantity: SALT_TSP, unit: 'tsp', ingredient: 'salt', name: 'Salt', weighGrams: 0.5 },
 ]
 
 const ingredientsNo = [
   { quantity: 120, unit: 'g', ingredient: 'sunflower-seeds', name: 'Solsikkefrø', note: 'rå, avskallede, usaltede' },
   { quantity: 100, unit: 'g', ingredient: 'dates-dried', name: 'Tørkede dadler', note: 'myke, veid etter at steinene er tatt ut' },
   { quantity: 80, unit: 'ml', ingredient: 'water', name: 'Vann', note: 'start med dette; opptil 110 ml totalt bare hvis det trengs for smørbar konsistens' },
-  { quantity: SALT_TSP, unit: 'ts', ingredient: 'salt', name: 'Salt', note: 'vei 0,5 g' },
+  { quantity: SALT_TSP, unit: 'ts', ingredient: 'salt', name: 'Salt', weighGrams: 0.5 },
 ]
 
 const ingredientsSv = [
   { quantity: 120, unit: 'g', ingredient: 'sunflower-seeds', name: 'Solrosfrön', note: 'råa, skalade, osaltade' },
   { quantity: 100, unit: 'g', ingredient: 'dates-dried', name: 'Torkade dadlar', note: 'mjuka, vägda efter att kärnorna tagits ur' },
   { quantity: 80, unit: 'ml', ingredient: 'water', name: 'Vatten', note: 'börja med detta; upp till 110 ml totalt bara om det behövs för bredbar konsistens' },
-  { quantity: SALT_TSP, unit: 'tsk', ingredient: 'salt', name: 'Salt', note: 'väg 0,5 g' },
+  { quantity: SALT_TSP, unit: 'tsk', ingredient: 'salt', name: 'Salt', weighGrams: 0.5 },
 ]
 
 for (const [lang, list] of [['en', ingredientsEn], ['no', ingredientsNo], ['sv', ingredientsSv]]) {

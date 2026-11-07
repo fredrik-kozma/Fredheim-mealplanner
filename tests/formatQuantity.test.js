@@ -24,6 +24,16 @@ test('a real amount never shows as 0', () => {
   assert.equal(formatQuantity(0.01, 'kg'), '0.1 kg')
 })
 
+test('a weighed amount replaces a spoon label that would multiply it', () => {
+  const salt = { weighGrams: 0.5, gramsPerTsp: 6 }
+  assert.equal(formatQuantity(0.5 / 6, 'tsp', 'en', salt), '0.5 g')
+  assert.equal(formatQuantity(0.5 / 6, 'ts', 'no', salt), '0,5 g')
+  assert.equal(formatQuantity(0.5 / 6, 'tsk', 'sv', salt), '0,5 g')
+  assert.equal(formatQuantity((0.5 / 6) / 15, 'tsp', 'en', { weighGrams: 0.5 / 15, gramsPerTsp: 6 }), '0.033 g')
+  assert.equal(formatQuantity(0.25, 'tsp', 'en', { weighGrams: 1.5, gramsPerTsp: 6 }), '¼ tsp')
+  assert.equal(formatQuantity(0.05, 'tsp', 'en', { gramsPerTsp: 6 }), '¼ tsp')
+})
+
 test('Norwegian and Swedish unit spellings and labels', () => {
   assert.equal(formatQuantity(0.67, 'fedd', 'no'), '⅔ fedd')
   assert.equal(formatQuantity(1.5, 'ss', 'no'), '1 ½ ss')

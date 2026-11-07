@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { generateShoppingList, totalOptionsFor } from '../../utils/shoppingListGenerator'
-import { formatQuantity } from '../../utils/formatQuantity'
+import { formatMeasuredQuantity } from '../../utils/scaleIngredient'
 import { nameForAmount } from '../../utils/ingredientDictionary'
 import { combineQuantities } from '../../utils/ingredientMatcher'
 import { buildRecipeBreakdown } from '../../utils/recipeBreakdown'
@@ -88,7 +88,13 @@ export default function ShoppingList() {
           if (sources.length === 0) return null // all contributions removed
           if (sources.length === allSources.length) return { ...i, sources }
           const c = combineQuantities(sources, totalOptionsFor(i.ingredientId))
-          return { ...i, sources, quantity: c.quantity, unit: c.unit || '' }
+          const weighGrams = sources.every(s => s.weighGrams > 0)
+            ? sources.reduce((n, s) => n + s.weighGrams, 0)
+            : undefined
+          const next = { ...i, sources, quantity: c.quantity, unit: c.unit || '' }
+          if (weighGrams > 0) next.weighGrams = weighGrams
+          else delete next.weighGrams
+          return next
         })
         .filter(Boolean),
     }))
@@ -190,7 +196,12 @@ export default function ShoppingList() {
   // Shared with the saved-list viewer so the two round identically —
   // see recipeBreakdown.js for why parts are not rounded up the way the
   // total above them is.
-  const recipeBreakdown = (item) => buildRecipeBreakdown(item.sources, currentLang)
+  const recipeBreakdown = (item) => buildRecipeBreakdown(item.sources, currentLang, item.ingredientId)
+  const amountLabel = (it) => formatMeasuredQuantity(it.quantity, it.unit, currentLang, {
+    ingredientId: it.ingredientId,
+    weighGrams: it.weighGrams,
+    roundUpWhole: true,
+  })
 
   function handleSaveList() {
     const name = listName.trim()
@@ -259,7 +270,7 @@ export default function ShoppingList() {
             : t(`aisles.${g.category}`, { defaultValue: g.category }),
           items: g.items.map(it => ({
             name: it.custom ? it.name : shownName(it),
-            label: it.custom ? (it.quantity || '') : formatQuantity(it.quantity, it.unit, currentLang, { roundUpWhole: true }),
+            label: it.custom ? (it.quantity || '') : amountLabel(it),
           })),
         })),
         url: null,
@@ -281,7 +292,7 @@ export default function ShoppingList() {
         category: t(`aisles.${category}`, { defaultValue: category }),
         items: items.filter(keep).map((it) => ({
           name: shownName(it),
-          quantityLabel: formatQuantity(it.quantity, it.unit, currentLang, { roundUpWhole: true }),
+          quantityLabel: amountLabel(it),
         })),
       }))
       .filter(g => g.items.length > 0)
@@ -520,7 +531,7 @@ export default function ShoppingList() {
                         </span>
                       </label>
                       <span className={`text-sm font-medium whitespace-nowrap ${isChecked ? 'text-slate-400 line-through' : 'text-slate-900'}`}>
-                        {formatQuantity(item.quantity, item.unit, currentLang, { roundUpWhole: true })}
+                        {amountLabel(item)}
                       </span>
 
                       {/* ⓘ breakdown — which recipes contributed how much */}
@@ -567,7 +578,7 @@ export default function ShoppingList() {
                                   ))}
                                   <div className="flex items-baseline justify-between gap-3 text-xs pt-1.5 mt-1 border-t border-slate-100">
                                     <span className="text-slate-500">{t('shopping.total', { defaultValue: 'Total' })}</span>
-                                    <span className="text-slate-900 font-semibold whitespace-nowrap">{formatQuantity(item.quantity, item.unit, currentLang, { roundUpWhole: true })}</span>
+                                    <span className="text-slate-900 font-semibold whitespace-nowrap">{amountLabel(item)}</span>
                                   </div>
                                 </div>
                                 <button

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import { formatQuantity } from '../../utils/formatQuantity'
+import { formatMeasuredQuantity } from '../../utils/scaleIngredient'
 import { combineQuantities } from '../../utils/ingredientMatcher'
 import { nameForAmount, resolveIngredientId } from '../../utils/ingredientDictionary'
 import { totalOptionsFor } from '../../utils/shoppingListGenerator'
@@ -83,20 +84,32 @@ export default function SavedShoppingLists({ onClose }) {
         if (item.custom) return { name: item.name, shownName: item.name, label: scaleAmountString(item.quantity, ratio) }
         // `name` stays the key ticked-off state is stored under;
         // `shownName` is what's read ("1 Sitron").
-        const shown = (quantity, unit) => ({
+        const shown = (quantity, unit, weighGrams) => ({
           name: item.name,
           shownName: nameForAmount(item, currentLang, quantity, unit, { roundUpWhole: true }),
-          label: formatQuantity(quantity, unit, currentLang, { roundUpWhole: true }),
+          label: formatMeasuredQuantity(quantity, unit, currentLang, {
+            ingredientId: item.ingredientId,
+            weighGrams,
+            roundUpWhole: true,
+          }),
         })
         if (Array.isArray(item.sources) && item.sources.length > 0) {
-          const scaled = item.sources.map(s => ({ ...s, quantity: (s.quantity || 0) * ratio }))
+          const scaled = item.sources.map(s => ({
+            ...s,
+            quantity: (s.quantity || 0) * ratio,
+            ...(s.weighGrams > 0 ? { weighGrams: s.weighGrams * ratio } : {}),
+          }))
+          const weighGrams = scaled.every(s => s.weighGrams > 0)
+            ? scaled.reduce((n, s) => n + s.weighGrams, 0)
+            : undefined
           // Lists saved before items carried their id find it by name.
-          const c = combineQuantities(scaled, totalOptionsFor(item.ingredientId || resolveIngredientId(item)))
+          const id = item.ingredientId || resolveIngredientId(item)
+          const c = combineQuantities(scaled, totalOptionsFor(id))
           // The per-recipe split comes back out alongside the total, so
           // the list can answer "which recipe is this for?" — built by
           // the same helper the live list's ⓘ popover uses, scaled first
           // so the split matches the portions on screen.
-          return { ...shown(c.quantity, c.unit), breakdown: buildRecipeBreakdown(scaled, currentLang) }
+          return { ...shown(c.quantity, c.unit, weighGrams), breakdown: buildRecipeBreakdown(scaled, currentLang, id) }
         }
         if (typeof item.quantity === 'number') return shown(item.quantity * ratio, item.unit)
         return shown(item.quantity, item.unit)
