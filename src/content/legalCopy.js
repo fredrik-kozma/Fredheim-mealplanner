@@ -34,7 +34,7 @@ export function legalText(pack, lang) {
 export const privacyCopy = {
   en: {
     title: 'Privacy policy',
-    updated: 'Last updated 5 November 2026',
+    updated: 'Last updated 8 November 2026',
     intro: 'This policy describes what Fredheim Meal Planner does with personal data. Fredheim Meal Planner is a plant-based meal planner: recipes, a weekly plan, a shopping list, and general nutrition figures for the meals you plan.',
     sections: [
       {
@@ -70,6 +70,7 @@ export const privacyCopy = {
         title: 'Health and nutrition',
         paragraphs: [
           'General guidance, not personal medical advice. Nutrition figures, filters, and meal suggestions are not a diagnosis, a prescription, or a diet prepared for you by a clinician. Questions about your own health belong with a qualified health professional.',
+          'An optional symptom journal — foods, portions, pain, bloating and similar notes — stays in this browser only. It is kept apart from the meal-plan backup, it is not sent to our servers, and it is not used for analytics. You can delete it in the journal. Deleting the account on this device removes it too.',
         ],
       },
       {
@@ -104,7 +105,7 @@ export const privacyCopy = {
   },
   no: {
     title: 'Personvernerklæring',
-    updated: 'Sist oppdatert 5. november 2026',
+    updated: 'Sist oppdatert 8. november 2026',
     intro: 'Denne erklæringen beskriver hva Fredheim Meal Planner gjør med personopplysninger. Fredheim Meal Planner er en plantebasert måltidsplanlegger: oppskrifter, en ukeplan, en handleliste og generelle næringstall for måltidene du planlegger.',
     sections: [
       {
@@ -140,6 +141,7 @@ export const privacyCopy = {
         title: 'Helse og ernæring',
         paragraphs: [
           'Næringstall, filtre og måltidsforslag er generell veiledning, ikke personlig medisinsk råd. De er ikke en diagnose, en resept eller en kostplan laget for deg av en kliniker. Spørsmål om din egen helse hører hjemme hos kvalifisert helsepersonell.',
+          'En valgfri symptomdagbok — mat, porsjoner, smerte, oppblåsthet og lignende notater — blir liggende bare i denne nettleseren. Den er ikke med i sikkerhetskopien av måltidsplanen, den sendes ikke til serverne våre, og den brukes ikke til analyse. Du kan slette den i dagboken. Sletter du kontoen på denne enheten, fjernes den også.',
         ],
       },
       {
@@ -174,7 +176,7 @@ export const privacyCopy = {
   },
   sv: {
     title: 'Integritetspolicy',
-    updated: 'Senast uppdaterad 5 november 2026',
+    updated: 'Senast uppdaterad 8 november 2026',
     intro: 'Den här policyn beskriver vad Fredheim Meal Planner gör med personuppgifter. Fredheim Meal Planner är en växtbaserad måltidsplanerare: recept, en veckoplan, en inköpslista och allmänna näringsvärden för måltiderna du planerar.',
     sections: [
       {
@@ -210,6 +212,7 @@ export const privacyCopy = {
         title: 'Hälsa och näring',
         paragraphs: [
           'Näringsvärden, filter och måltidsförslag är allmän vägledning, inte personlig medicinsk rådgivning. De är inte en diagnos, ett recept eller en kostplan gjord för dig av en kliniker. Frågor om din egen hälsa hör hemma hos kvalificerad vårdpersonal.',
+          'En valfri symptomdagbok — mat, portioner, smärta, uppblåsthet och liknande anteckningar — stannar bara i den här webbläsaren. Den ingår inte i säkerhetskopian av måltidsplanen, den skickas inte till våra servrar och den används inte för analys. Du kan radera den i dagboken. Om du raderar kontot på den här enheten tas den bort också.',
         ],
       },
       {
@@ -260,7 +263,7 @@ export const deletionCopy = {
     deleted: [
       'Your email address and login in Supabase Auth.',
       'Your subscription profile in Supabase: status, trial, Stripe customer id, and Google Play billing fields.',
-      'On this device: meal plans, recipes you added, shopping lists, and preferences kept in IndexedDB and local storage.',
+      'On this device: meal plans, recipes you added, shopping lists, preferences, and the optional symptom journal kept in IndexedDB and local storage.',
     ],
     keptTitle: 'What can remain',
     kept: [
@@ -306,7 +309,7 @@ export const deletionCopy = {
     deleted: [
       'E-postadressen din og innloggingen i Supabase Auth.',
       'Abonnementsprofilen din i Supabase: status, prøveperiode, Stripe-kunde-id og feltene for Google Play-betaling.',
-      'På denne enheten: måltidsplaner, oppskrifter du har lagt til, handlelister og preferanser som ligger i IndexedDB og lokal lagring.',
+      'På denne enheten: måltidsplaner, oppskrifter du har lagt til, handlelister, preferanser og den valgfrie symptomdagboken som ligger i IndexedDB og lokal lagring.',
     ],
     keptTitle: 'Det som kan bli igjen',
     kept: [
@@ -352,7 +355,7 @@ export const deletionCopy = {
     deleted: [
       'Din e-postadress och inloggning i Supabase Auth.',
       'Din abonnemangsprofil i Supabase: status, provperiod, Stripe-kund-id och fälten för Google Play-betalning.',
-      'På den här enheten: måltidsplaner, recept du har lagt till, inköpslistor och inställningar som finns i IndexedDB och lokal lagring.',
+      'På den här enheten: måltidsplaner, recept du har lagt till, inköpslistor, inställningar och den valfria symptomdagboken som finns i IndexedDB och lokal lagring.',
     ],
     keptTitle: 'Det som kan bli kvar',
     kept: [

@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import useStore, { DAYS } from '../../store/useStore'
 import { ALLERGENS } from '../../data/allergens'
@@ -11,6 +12,8 @@ import {
 } from '../../utils/makeMyWeek'
 import { SALT_LEVELS, LOW_SALT_GOALS } from '../../utils/saltLevel'
 import { noticeText as renderNotice, statsText as renderStats, weekTipsData, renderWeekTips } from '../../utils/weekTips'
+import { loadJournal } from '../../utils/fodmap/storage'
+import { productionPlanningDataset } from '../../utils/fodmap/planning'
 import GoalFitCard from './GoalFitCard'
 import MmwBlockedIngredientSearch from './MmwBlockedIngredientSearch'
 import { formatAmount } from '../../utils/formatQuantity'
@@ -164,6 +167,13 @@ export default function MakeMyWeekModal({ onClose }) {
   // Blood pressure, heart and diabetes: low salt without asking.
   const saltAuto = goals.some(g => LOW_SALT_GOALS.includes(g))
   const [step, setStep] = useState(0)
+  const [fodmapJournalOn, setFodmapJournalOn] = useState(false)
+  useEffect(() => {
+    let live = true
+    loadJournal().then(journal => { if (live) setFodmapJournalOn(Boolean(journal.enabled)) })
+    return () => { live = false }
+  }, [])
+  const fodmapMealsReady = productionPlanningDataset() != null
   const [seed, setSeed] = useState(() => Math.floor(Math.random() * 1e9))
 
   useEffect(() => {
@@ -404,6 +414,18 @@ export default function MakeMyWeekModal({ onClose }) {
                 )}
                 <p className="text-2xs text-slate-500 mt-2 leading-relaxed">💡 {t('salt.tip')}</p>
               </div>
+
+              {fodmapJournalOn && (
+                <div className="rounded-control border border-slate-200 bg-slate-50 px-3 py-3">
+                  <p className="text-sm font-semibold text-slate-800">{t('fodmap.mmwTitle')}</p>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    {fodmapMealsReady ? t('fodmap.mmwReady') : t('fodmap.mmwBody')}
+                  </p>
+                  <Link to="/fodmap" onClick={onClose} className="text-xs text-primary-700 underline mt-2 inline-block">
+                    {t('fodmap.mmwLink')}
+                  </Link>
+                </div>
+              )}
             </div>
           )}
 
