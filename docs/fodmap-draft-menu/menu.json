@@ -1,0 +1,2159 @@
+{
+  "schema": "fredheim-fodmap-menu-draft",
+  "schemaVersion": 2,
+  "status": "draft",
+  "clinical_review_status": "not_reviewed",
+  "low_fodmap_status": null,
+  "eligible_for_trial_menu": false,
+  "meal_fodmap_assessment": null,
+  "production_dataset": null,
+  "purpose": "A substantial original plant-based week to cook. Not an approved therapeutic menu. Not eligible for low-FODMAP Make my week.",
+  "built": "2026-11-08",
+  "energyTarget": {
+    "kcal": 2000,
+    "protein": 60,
+    "note": "2000 kcal and about 60 g protein are the app’s adult display figures, not a prescription. Day totals below include breakfast, the soy drink, lunch, dinner, the side and the snack."
+  },
+  "soyFreeWeek": "not_provided",
+  "references": {
+    "nnr": "Display figures already in src/utils/healthGoals.js from Nordic Nutrition Recommendations 2023: about 60 g protein at ~70 kg, fibre 30 g, calcium 950 mg, iron 9 mg for men and about 15 mg for women of reproductive age, vitamin B12 4 µg, vitamin D 10 µg, omega-3 ALA guide 2 g. Energy 2000 kcal is a conventional base, not an NNR prescription.",
+    "nutritionMethod": "estimateRecipe() on scripts/data/food-composition-core.json, divided by servings. Calcium, iron, vitamin B12, vitamin D and omega-3 ALA from scripts/lib/micronutrients.mjs on the same weights. A missing micronutrient row is listed and is not entered as zero. A stored 0 is a sourced zero for that row only.",
+    "fodmap": [
+      "https://www.monashfodmap.com/blog/talking-tofu/",
+      "https://www.monashfodmap.com/blog/including-legumes-on-low-fodmap-diet/",
+      "https://www.monashfodmap.com/blog/low-fodmap-shopping-list/",
+      "https://doi.org/10.1016/j.jpeds.2018.03.038",
+      "https://doi.org/10.1186/s40795-020-00374-3"
+    ],
+    "foodSafety": [
+      "https://www.nhs.uk/baby/weaning-and-feeding/childrens-food-safety-and-hygiene/",
+      "https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker",
+      "https://www.gov.uk/government/publications/how-to-chill-freeze-and-defrost-food-safely/how-to-chill-freeze-and-defrost-food-safely"
+    ]
+  },
+  "recipes": [
+    {
+      "id": "B1",
+      "title": "Lemon tofu and potato skillet",
+      "meal": "breakfast",
+      "flavour": "savoury",
+      "servings": 1,
+      "time": {
+        "prepMin": 15,
+        "cookMin": 25,
+        "tempC": null
+      },
+      "method": [
+        "Peel the potato and cut it into 1.5 cm dice.",
+        "Put the potato and the water in a wide pan, cover, and cook over a medium heat for about 12 minutes, until a cube is tender. Pour off the water you do not want in the bowl.",
+        "Crumble in the tofu. Add the oil, turmeric, cumin, ginger, chives and salt. Cook uncovered for about 8 minutes, stirring, until the tofu is hot and the edges colour.",
+        "Fold in the spinach and cook for 2 minutes. Take the pan off the heat and stir in the lemon juice."
+      ],
+      "yield": "The whole skillet is one serving. Cooked weight has not been measured.",
+      "tags": [
+        "soy",
+        "nut-free"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "potatoes",
+          "quantity": 280,
+          "unit": "g",
+          "note": "raw, peeled"
+        },
+        {
+          "ingredient": "tofu",
+          "quantity": 150,
+          "unit": "g",
+          "note": "firm, calcium-set, drained weight"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 15,
+          "unit": "g",
+          "note": "plain"
+        },
+        {
+          "ingredient": "spinach",
+          "quantity": 50,
+          "unit": "g",
+          "note": "raw leaves"
+        },
+        {
+          "ingredient": "chives",
+          "quantity": 12,
+          "unit": "g",
+          "note": "green leaves, not a bulb"
+        },
+        {
+          "ingredient": "ginger-fresh",
+          "quantity": 10,
+          "unit": "g",
+          "note": "peeled, grated"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "quantity": 15,
+          "unit": "ml",
+          "note": "fresh"
+        },
+        {
+          "ingredient": "turmeric-ground",
+          "quantity": 1,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "cumin-ground",
+          "quantity": 1,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.4,
+          "unit": "g",
+          "note": "low-salt amount"
+        },
+        {
+          "ingredient": "water",
+          "quantity": 80,
+          "unit": "g",
+          "note": "potable, for the potato"
+        }
+      ],
+      "standardSaltG": 1,
+      "evidence": "Firm tofu is the drained kind a Monash blog describes as low FODMAP at a standard serve, unlike silken tofu (https://www.monashfodmap.com/blog/talking-tofu/, retrieved 8 Nov 2026). The gram cut-off is in the app and is not copied. 150 g is a kitchen portion. Potato at 280 g raw is far above the 75 g staple serve on their shopping list (3 Feb 2025), so that potato portion is not claimed. Plain oil and potable water are not given a FODMAP number here, and they are not treated as foods that need their own laboratory assay before you can cook.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 569,
+        "protein": 27.5,
+        "fat": 26.4,
+        "satFat": 3.7,
+        "carbs": 58.3,
+        "fiber": 10.4,
+        "sugars": 4,
+        "added": 0,
+        "sodium": 230,
+        "potassium": 1870
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 569,
+        "protein": 27.5,
+        "fat": 26.4,
+        "satFat": 3.7,
+        "carbs": 58.3,
+        "fiber": 10.4,
+        "sugars": 4,
+        "added": 0,
+        "sodium": 463,
+        "potassium": 1870
+      },
+      "micros_per_serving": {
+        "calcium": 632.8,
+        "iron": 8.9,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.905
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 614,
+      "nutrition_problems": []
+    },
+    {
+      "id": "B2",
+      "title": "Chickpea, kale and tofu hash",
+      "meal": "breakfast",
+      "flavour": "savoury",
+      "servings": 1,
+      "time": {
+        "prepMin": 15,
+        "cookMin": 25,
+        "tempC": null
+      },
+      "method": [
+        "Dice the peeled potato. Cover it with the water and cook, covered, for about 12 minutes. Pour off the water.",
+        "Add the oil, cumin, paprika, chives and salt. Cook for 5 minutes.",
+        "Stir in the drained chickpeas, the crumbled tofu and the kale. Cook for 5 minutes, until the tofu is hot and the kale has wilted. Finish with the lemon juice."
+      ],
+      "yield": "The whole pan is one serving. Cooked weight has not been measured.",
+      "tags": [
+        "soy",
+        "nut-free"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "potatoes",
+          "quantity": 220,
+          "unit": "g",
+          "note": "raw, peeled"
+        },
+        {
+          "ingredient": "chickpeas-canned",
+          "quantity": 42,
+          "unit": "g",
+          "note": "drained, ordinary salt level of the table, not forced no-salt"
+        },
+        {
+          "ingredient": "tofu",
+          "quantity": 130,
+          "unit": "g",
+          "note": "firm, calcium-set, drained weight"
+        },
+        {
+          "ingredient": "kale",
+          "quantity": 50,
+          "unit": "g",
+          "note": "raw leaves, stems trimmed"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 12,
+          "unit": "g",
+          "note": "plain"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "quantity": 15,
+          "unit": "ml",
+          "note": "fresh"
+        },
+        {
+          "ingredient": "cumin-ground",
+          "quantity": 1,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "paprika-powder",
+          "quantity": 1,
+          "unit": "g",
+          "note": "sweet, not hot chili"
+        },
+        {
+          "ingredient": "chives",
+          "quantity": 8,
+          "unit": "g",
+          "note": "green leaves"
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.4,
+          "unit": "g",
+          "note": "low-salt amount"
+        },
+        {
+          "ingredient": "water",
+          "quantity": 50,
+          "unit": "g",
+          "note": "potable, for the potato"
+        }
+      ],
+      "standardSaltG": 1,
+      "evidence": "The chickpeas stay at 42 g drained, the ¼ cup figure named on the Monash legumes blog (https://www.monashfodmap.com/blog/including-legumes-on-low-fodmap-diet/, retrieved 8 Nov 2026). They are a flavour, not the protein. Firm tofu carries the protein and is a kitchen portion, not an app gram. Potato is above the 75 g staple serve and is not claimed. The canned chickpea sodium is the ordinary drained row in the nutrition table.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 533,
+        "protein": 27,
+        "fat": 23.3,
+        "satFat": 3.2,
+        "carbs": 57.3,
+        "fiber": 12,
+        "sugars": 4.6,
+        "added": 0,
+        "sodium": 207,
+        "potassium": 1553
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 533,
+        "protein": 27,
+        "fat": 23.3,
+        "satFat": 3.2,
+        "carbs": 57.3,
+        "fiber": 12,
+        "sugars": 4.6,
+        "added": 0,
+        "sodium": 440,
+        "potassium": 1553
+      },
+      "micros_per_serving": {
+        "calcium": 595.3,
+        "iron": 7.4,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.815
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 529,
+      "nutrition_problems": []
+    },
+    {
+      "id": "B3",
+      "title": "Cinnamon rice with orange",
+      "meal": "breakfast",
+      "flavour": "sweet",
+      "servings": 1,
+      "time": {
+        "prepMin": 5,
+        "cookMin": 40,
+        "tempC": null
+      },
+      "method": [
+        "Rinse the rice. Simmer it in the water, covered, on low heat for about 35–40 minutes, until the grains are tender and the water is absorbed. Add a splash more if the pan dries. Do not rinse the cooked rice.",
+        "Stir in the cinnamon. Top with the orange and the pumpkin seeds."
+      ],
+      "yield": "The pot of rice plus the fruit and seeds is one serving. Cooked rice weight has not been measured.",
+      "tags": [
+        "soy-free",
+        "nut-free"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "brown-rice",
+          "quantity": 90,
+          "unit": "g",
+          "note": "dry"
+        },
+        {
+          "ingredient": "water",
+          "quantity": 270,
+          "unit": "g",
+          "note": "potable, absorbed"
+        },
+        {
+          "ingredient": "oranges",
+          "quantity": 150,
+          "unit": "g",
+          "note": "raw, peeled segments"
+        },
+        {
+          "ingredient": "cinnamon-ground",
+          "quantity": 0.5,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "pumpkin-seeds",
+          "quantity": 10,
+          "unit": "g",
+          "note": "hulled, raw"
+        }
+      ],
+      "standardSaltG": null,
+      "evidence": "Chumpitazi and others, Journal of Pediatrics 2018 (doi:10.1016/j.jpeds.2018.03.038), reported no detected FODMAPs in the cooked brown and white rice samples they assayed. That is not an upper limit and not this brand. 90 g dry is a bowl, left uncertified. Orange composition in Liljebo and others, BMC Nutrition 2020 (doi:10.1186/s40795-020-00374-3), includes 0.03 g fructan per 100 g and is not a serving limit. Pumpkin seeds, 10 g, were not in that supplement and are unassessed.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 458,
+        "protein": 11.1,
+        "fat": 7.9,
+        "satFat": 1.4,
+        "carbs": 87.6,
+        "fiber": 7.7,
+        "sugars": 14.9,
+        "added": 0,
+        "sodium": 4,
+        "potassium": 580
+      },
+      "nutrients_per_serving_standard_salt": null,
+      "micros_per_serving": {
+        "calcium": 90.3,
+        "iron": 2.4,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.059
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 521,
+      "nutrition_problems": []
+    },
+    {
+      "id": "B4",
+      "title": "Strawberry oats with tofu",
+      "meal": "breakfast",
+      "flavour": "sweet",
+      "servings": 1,
+      "time": {
+        "prepMin": 8,
+        "cookMin": 12,
+        "tempC": null
+      },
+      "method": [
+        "Simmer the oats in the water for about 8–10 minutes, stirring, until creamy. Keep that liquid in the bowl. Stir in the cinnamon and top with the strawberries and sunflower seeds.",
+        "In a small pan, warm the tofu in the oil with the chives and a pinch of the salt for about 4 minutes, until hot. Eat it beside the oats, not stirred in unless you like it that way."
+      ],
+      "yield": "The bowl of oats and the small pan of tofu together are one serving. Cooked weights have not been measured.",
+      "tags": [
+        "soy",
+        "nut-free",
+        "oats-portion-pending"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "rolled-oats",
+          "quantity": 60,
+          "unit": "g",
+          "note": "dry, plain"
+        },
+        {
+          "ingredient": "water",
+          "quantity": 240,
+          "unit": "g",
+          "note": "potable, for the oats"
+        },
+        {
+          "ingredient": "strawberries",
+          "quantity": 120,
+          "unit": "g",
+          "note": "raw, hulled"
+        },
+        {
+          "ingredient": "cinnamon-ground",
+          "quantity": 0.5,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "sunflower-seeds",
+          "quantity": 10,
+          "unit": "g",
+          "note": "hulled"
+        },
+        {
+          "ingredient": "tofu",
+          "quantity": 120,
+          "unit": "g",
+          "note": "firm, calcium-set, drained weight"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 5,
+          "unit": "g",
+          "note": "plain, for the tofu"
+        },
+        {
+          "ingredient": "chives",
+          "quantity": 6,
+          "unit": "g",
+          "note": "green leaves"
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.2,
+          "unit": "g",
+          "note": "low-salt amount, on the tofu"
+        }
+      ],
+      "standardSaltG": 0.6,
+      "evidence": "60 g dry oats is a normal porridge, larger than a token sprinkle, and it is not an assessed low-FODMAP serve. Rolled oats were absent from the selected BMC 2020 supplement. Sunflower seeds, 10 g, are unassessed. Firm tofu beside the bowl is the protein; its gram boundary was not copied from the app. This breakfast is not a gluten-free claim.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 521,
+        "protein": 26.7,
+        "fat": 22.9,
+        "satFat": 3,
+        "carbs": 54.9,
+        "fiber": 11.5,
+        "sugars": 7.5,
+        "added": 0,
+        "sodium": 96,
+        "potassium": 701
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 521,
+        "protein": 26.7,
+        "fat": 22.9,
+        "satFat": 3,
+        "carbs": 54.9,
+        "fiber": 11.5,
+        "sugars": 7.5,
+        "added": 0,
+        "sodium": 251,
+        "potassium": 701
+      },
+      "micros_per_serving": {
+        "calcium": 490,
+        "iron": 7,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.734
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 562,
+      "nutrition_problems": []
+    },
+    {
+      "id": "D1",
+      "title": "Unsweetened soy drink",
+      "meal": "drink",
+      "flavour": "plain",
+      "servings": 1,
+      "time": {
+        "prepMin": 1,
+        "cookMin": 0,
+        "tempC": null
+      },
+      "method": [
+        "Pour 200 ml and drink it cold, or warm it in a pan without boiling.",
+        "Read the carton. These numbers are the app’s unsweetened soy-drink row, which is not a fortified label. If the carton lists added calcium, vitamin D or vitamin B12, use that label for those nutrients and do not add it on top of this row."
+      ],
+      "yield": "200 ml, one drink. No cooked weight.",
+      "tags": [
+        "soy",
+        "nut-free",
+        "unfortified-table-row"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "soy-milk",
+          "quantity": 200,
+          "unit": "ml",
+          "note": "unsweetened soy drink as in the nutrition table, not a named fortified brand"
+        }
+      ],
+      "standardSaltG": null,
+      "evidence": "The composition row is “unsweetened soy drink” (about 36 kcal and 3.2 g protein per 100 g; density 1.03). The micronutrient row used with it lists about 25 mg calcium per 100 g, vitamin B12 0 and vitamin D 0. That is this table, not a promise about every carton. A Monash shopping list (3 Feb 2025) mentions soy-protein drinks and says to check the ingredient list; it does not give a millilitre serve, and this row does not say whether the drink is made from soy protein or from whole beans. 200 ml is therefore included as food, with FODMAP eligibility left false.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 74,
+        "protein": 6.6,
+        "fat": 3.7,
+        "satFat": 0.6,
+        "carbs": 3.1,
+        "fiber": 1,
+        "sugars": 2.1,
+        "added": 0,
+        "sodium": 93,
+        "potassium": 268
+      },
+      "nutrients_per_serving_standard_salt": null,
+      "micros_per_serving": {
+        "calcium": 51.5,
+        "iron": 0.8,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.309
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 206,
+      "nutrition_problems": []
+    },
+    {
+      "id": "M1",
+      "title": "Ginger tofu, zucchini and rice",
+      "meal": "dinner",
+      "flavour": "savoury",
+      "servings": 2,
+      "time": {
+        "prepMin": 15,
+        "cookMin": 45,
+        "tempC": null
+      },
+      "method": [
+        "Rinse the rice and simmer it in its water, covered, for about 35–40 minutes, until tender. Keep the absorbed liquid in the rice.",
+        "Cut the zucchini into half-moons. Dice the tofu.",
+        "Warm the oil in a pan. Add the ginger, turmeric and tofu and cook for 6–8 minutes. Add the zucchini and chives and cook for another 6 minutes, until the zucchini is tender.",
+        "Stir in the lemon juice and salt. Serve half the rice with half the pan."
+      ],
+      "yield": "Divide the rice and the pan evenly into two servings. One is dinner, one is next-day lunch. Cooked weights have not been measured.",
+      "tags": [
+        "soy",
+        "nut-free",
+        "contains-rice"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "brown-rice",
+          "quantity": 200,
+          "unit": "g",
+          "note": "dry, for two servings"
+        },
+        {
+          "ingredient": "water",
+          "quantity": 600,
+          "unit": "g",
+          "note": "potable, for the rice"
+        },
+        {
+          "ingredient": "tofu",
+          "quantity": 300,
+          "unit": "g",
+          "note": "firm, calcium-set, drained, for two servings"
+        },
+        {
+          "ingredient": "zucchini",
+          "quantity": 200,
+          "unit": "g",
+          "note": "raw"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 30,
+          "unit": "g",
+          "note": "plain"
+        },
+        {
+          "ingredient": "ginger-fresh",
+          "quantity": 20,
+          "unit": "g",
+          "note": "peeled, grated"
+        },
+        {
+          "ingredient": "turmeric-ground",
+          "quantity": 2,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "chives",
+          "quantity": 20,
+          "unit": "g",
+          "note": "green leaves"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "quantity": 30,
+          "unit": "ml",
+          "note": "fresh"
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.8,
+          "unit": "g",
+          "note": "low-salt amount for two servings"
+        }
+      ],
+      "standardSaltG": 2,
+      "evidence": "Per person: 100 g dry brown rice and 150 g firm tofu. Rice follows the 2018 assay note on B3, without an upper limit copied from anywhere. Tofu is a kitchen portion. Zucchini, 100 g per person, has no serving classification in this packet. The plate is not a stacking assessment.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 722,
+        "protein": 28.9,
+        "fat": 29.2,
+        "satFat": 4.3,
+        "carbs": 86,
+        "fiber": 7.6,
+        "sugars": 4.7,
+        "added": 0,
+        "sodium": 184,
+        "potassium": 889
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 722,
+        "protein": 28.9,
+        "fat": 29.2,
+        "satFat": 4.3,
+        "carbs": 86,
+        "fiber": 7.6,
+        "sugars": 4.7,
+        "added": 0,
+        "sodium": 417,
+        "potassium": 889
+      },
+      "micros_per_serving": {
+        "calcium": 577.5,
+        "iron": 6.5,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.893
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 701,
+      "nutrition_problems": []
+    },
+    {
+      "id": "M2",
+      "title": "Rosemary potato, carrot and tofu tray",
+      "meal": "dinner",
+      "flavour": "savoury",
+      "servings": 2,
+      "time": {
+        "prepMin": 15,
+        "cookMin": 40,
+        "tempC": 200
+      },
+      "method": [
+        "Heat the oven to 200°C. Cut the peeled potatoes and the carrots into wedges.",
+        "Toss them with the oil, rosemary, paprika and salt. Spread on a tray and roast for 25 minutes.",
+        "Add the tofu in chunks and the chives. Roast for another 12–15 minutes, until the potatoes are soft and the tofu is hot.",
+        "Add the lemon juice and divide the tray in two."
+      ],
+      "yield": "The whole tray divided evenly into two servings. Cooked weight has not been measured.",
+      "tags": [
+        "soy",
+        "nut-free"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "potatoes",
+          "quantity": 500,
+          "unit": "g",
+          "note": "raw, peeled, for two servings"
+        },
+        {
+          "ingredient": "carrots",
+          "quantity": 150,
+          "unit": "g",
+          "note": "raw, peeled"
+        },
+        {
+          "ingredient": "tofu",
+          "quantity": 300,
+          "unit": "g",
+          "note": "firm, calcium-set, drained, for two servings"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 30,
+          "unit": "g",
+          "note": "plain"
+        },
+        {
+          "ingredient": "rosemary",
+          "quantity": 2,
+          "unit": "g",
+          "note": "leaves"
+        },
+        {
+          "ingredient": "paprika-powder",
+          "quantity": 2,
+          "unit": "g",
+          "note": "sweet, not hot chili"
+        },
+        {
+          "ingredient": "chives",
+          "quantity": 16,
+          "unit": "g",
+          "note": "green leaves"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "quantity": 30,
+          "unit": "ml",
+          "note": "fresh"
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.8,
+          "unit": "g",
+          "note": "low-salt amount for two servings"
+        }
+      ],
+      "standardSaltG": 2,
+      "evidence": "Per person: 250 g raw potato and 75 g raw carrot. Carrot matches the 75 g staple serve on the Monash blog shopping list (3 Feb 2025). Potato is well above that serve and is not claimed. Firm tofu, 150 g, is a kitchen portion. Rosemary has flavour here; it has no FODMAP note in this packet.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 553,
+        "protein": 25.7,
+        "fat": 26.2,
+        "satFat": 3.6,
+        "carbs": 56.1,
+        "fiber": 10.6,
+        "sugars": 6.9,
+        "added": 0,
+        "sodium": 238,
+        "potassium": 1641
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 553,
+        "protein": 25.7,
+        "fat": 26.2,
+        "satFat": 3.6,
+        "carbs": 56.1,
+        "fiber": 10.6,
+        "sugars": 6.9,
+        "added": 0,
+        "sodium": 471,
+        "potassium": 1641
+      },
+      "micros_per_serving": {
+        "calcium": 593.6,
+        "iron": 6.5,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.83
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 515,
+      "nutrition_problems": []
+    },
+    {
+      "id": "M3",
+      "title": "Polenta with chickpea, pepper and eggplant",
+      "meal": "dinner",
+      "flavour": "savoury",
+      "servings": 2,
+      "time": {
+        "prepMin": 15,
+        "cookMin": 30,
+        "tempC": null
+      },
+      "method": [
+        "Bring the polenta water to a simmer, whisk in the polenta, and cook, stirring often, for about 15–20 minutes, until thick. Stir in half the oil and half the salt.",
+        "Dice the eggplant, pepper and tomato. Cook them in the rest of the oil with the cumin and paprika, covered for 8 minutes, then uncovered for about 5, until the eggplant is soft.",
+        "Add the drained chickpeas, the diced tofu, the parsley and the rest of the salt. Warm for 4 minutes. Finish with the lemon juice.",
+        "Serve half the polenta with half the pan."
+      ],
+      "yield": "Polenta and pan divided evenly into two servings. Cooked weights have not been measured.",
+      "tags": [
+        "soy",
+        "nut-free"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "cornmeal-polenta",
+          "quantity": 150,
+          "unit": "g",
+          "note": "dry, for two servings"
+        },
+        {
+          "ingredient": "water",
+          "quantity": 700,
+          "unit": "g",
+          "note": "potable, for the polenta"
+        },
+        {
+          "ingredient": "chickpeas-canned",
+          "quantity": 84,
+          "unit": "g",
+          "note": "drained, for two servings"
+        },
+        {
+          "ingredient": "tofu",
+          "quantity": 280,
+          "unit": "g",
+          "note": "firm, calcium-set, drained, for two servings"
+        },
+        {
+          "ingredient": "eggplant",
+          "quantity": 150,
+          "unit": "g",
+          "note": "raw"
+        },
+        {
+          "ingredient": "bell-peppers",
+          "quantity": 140,
+          "unit": "g",
+          "note": "raw"
+        },
+        {
+          "ingredient": "tomatoes",
+          "quantity": 140,
+          "unit": "g",
+          "note": "raw"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 28,
+          "unit": "g",
+          "note": "plain"
+        },
+        {
+          "ingredient": "cumin-ground",
+          "quantity": 3,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "paprika-powder",
+          "quantity": 2,
+          "unit": "g",
+          "note": "sweet"
+        },
+        {
+          "ingredient": "parsley",
+          "quantity": 16,
+          "unit": "g",
+          "note": "leaves"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "quantity": 30,
+          "unit": "ml",
+          "note": "fresh"
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.8,
+          "unit": "g",
+          "note": "low-salt amount for two servings"
+        }
+      ],
+      "standardSaltG": 2,
+      "evidence": "Chickpeas stay at 42 g drained per person, the published ¼ cup figure. They do not carry the meal. Firm tofu does. Polenta has no FODMAP serve in this packet. Eggplant is 75 g per person and pepper 70 g, in line with the 75 g staple serve named for those vegetables on the 3 Feb 2025 shopping list. Fresh tomato is unassessed. This is a polenta plate, not another rice plate.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 699,
+        "protein": 29.2,
+        "fat": 28.6,
+        "satFat": 3.9,
+        "carbs": 86,
+        "fiber": 15.6,
+        "sugars": 9.6,
+        "added": 0,
+        "sodium": 288,
+        "potassium": 1121
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 699,
+        "protein": 29.2,
+        "fat": 28.6,
+        "satFat": 3.9,
+        "carbs": 86,
+        "fiber": 15.6,
+        "sugars": 9.6,
+        "added": 0,
+        "sodium": 521,
+        "potassium": 1121
+      },
+      "micros_per_serving": {
+        "calcium": 560.4,
+        "iron": 9.1,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.814
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 862,
+      "nutrition_problems": []
+    },
+    {
+      "id": "M4",
+      "title": "Lemon lentil, potato and tofu plate",
+      "meal": "dinner",
+      "flavour": "savoury",
+      "servings": 2,
+      "time": {
+        "prepMin": 20,
+        "cookMin": 35,
+        "tempC": null
+      },
+      "method": [
+        "Boil the dry lentils in plenty of unsalted water until just tender, then drain and throw away that water.",
+        "Dice the potatoes and carrots. Boil them in fresh water until tender, then drain.",
+        "Warm the tofu in half the oil for 4 minutes. Toss potatoes, carrots, lentils and tofu with the rest of the oil, the lemon juice, parsley, chives, cumin and salt."
+      ],
+      "yield": "The whole bowl divided evenly into two servings. Lentil weight in the list is dry. Cooked lentil weight has not been measured.",
+      "tags": [
+        "soy",
+        "nut-free",
+        "pulse-portion-pending"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "lentils-green-brown",
+          "quantity": 40,
+          "unit": "g",
+          "note": "dry; boiled and drained; cooking water discarded; for two servings"
+        },
+        {
+          "ingredient": "potatoes",
+          "quantity": 440,
+          "unit": "g",
+          "note": "raw, peeled, for two servings"
+        },
+        {
+          "ingredient": "carrots",
+          "quantity": 150,
+          "unit": "g",
+          "note": "raw, peeled"
+        },
+        {
+          "ingredient": "tofu",
+          "quantity": 280,
+          "unit": "g",
+          "note": "firm, calcium-set, drained, for two servings"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 24,
+          "unit": "g",
+          "note": "plain"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "quantity": 30,
+          "unit": "ml",
+          "note": "fresh"
+        },
+        {
+          "ingredient": "parsley",
+          "quantity": 20,
+          "unit": "g",
+          "note": "leaves"
+        },
+        {
+          "ingredient": "chives",
+          "quantity": 16,
+          "unit": "g",
+          "note": "green leaves"
+        },
+        {
+          "ingredient": "cumin-ground",
+          "quantity": 2,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.8,
+          "unit": "g",
+          "note": "low-salt amount for two servings"
+        }
+      ],
+      "standardSaltG": 2,
+      "evidence": "Lentils stay at 20 g dry per person, boiled and drained. Nutrition uses the dry row (about 352 kcal and 24.6 g protein per 100 g). BMC Nutrition 2020 reports 0.46 g GOS per 100 g boiled green lentils and no serving limit. A Monash blog mentions ½ cup tinned lentils without grams. This is not that product, and the amount was not increased to manufacture protein. Firm tofu is the protein. Potato is 220 g raw per person and is not claimed against the 75 g staple serve. Carrot is 75 g.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 565,
+        "protein": 29,
+        "fat": 22.8,
+        "satFat": 3.1,
+        "carbs": 63.6,
+        "fiber": 11.9,
+        "sugars": 7,
+        "added": 0,
+        "sodium": 243,
+        "potassium": 1675
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 565,
+        "protein": 29,
+        "fat": 22.8,
+        "satFat": 3.1,
+        "carbs": 63.6,
+        "fiber": 11.9,
+        "sugars": 7,
+        "added": 0,
+        "sodium": 476,
+        "potassium": 1675
+      },
+      "micros_per_serving": {
+        "calcium": 579.6,
+        "iron": 8.3,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.776
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 501,
+      "nutrition_problems": []
+    },
+    {
+      "id": "M5",
+      "title": "Polenta with tofu, peppers and zucchini",
+      "meal": "dinner",
+      "flavour": "savoury",
+      "servings": 2,
+      "time": {
+        "prepMin": 15,
+        "cookMin": 30,
+        "tempC": null
+      },
+      "method": [
+        "Simmer the polenta water, whisk in the polenta, and cook, stirring, for about 15–20 minutes. Stir in half the oil and half the salt.",
+        "Cook the pepper, zucchini and tomato in the rest of the oil with paprika, cumin and chives for about 12 minutes, until soft. Add the tofu and warm it for 4 minutes.",
+        "Finish with lemon juice and the rest of the salt. Divide polenta and vegetables. Put the pumpkin seeds on each plate."
+      ],
+      "yield": "Divided evenly into two servings, seeds included. Cooked weights have not been measured.",
+      "tags": [
+        "soy",
+        "nut-free",
+        "seed-portion-pending"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "cornmeal-polenta",
+          "quantity": 150,
+          "unit": "g",
+          "note": "dry, for two servings"
+        },
+        {
+          "ingredient": "water",
+          "quantity": 700,
+          "unit": "g",
+          "note": "potable, for the polenta"
+        },
+        {
+          "ingredient": "tofu",
+          "quantity": 300,
+          "unit": "g",
+          "note": "firm, calcium-set, drained, for two servings"
+        },
+        {
+          "ingredient": "bell-peppers",
+          "quantity": 140,
+          "unit": "g",
+          "note": "raw"
+        },
+        {
+          "ingredient": "zucchini",
+          "quantity": 180,
+          "unit": "g",
+          "note": "raw"
+        },
+        {
+          "ingredient": "tomatoes",
+          "quantity": 120,
+          "unit": "g",
+          "note": "raw"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 24,
+          "unit": "g",
+          "note": "plain"
+        },
+        {
+          "ingredient": "paprika-powder",
+          "quantity": 2,
+          "unit": "g",
+          "note": "sweet"
+        },
+        {
+          "ingredient": "cumin-ground",
+          "quantity": 2,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "chives",
+          "quantity": 16,
+          "unit": "g",
+          "note": "green leaves"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "quantity": 20,
+          "unit": "ml",
+          "note": "fresh"
+        },
+        {
+          "ingredient": "pumpkin-seeds",
+          "quantity": 20,
+          "unit": "g",
+          "note": "hulled, raw, for two servings"
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.8,
+          "unit": "g",
+          "note": "low-salt amount for two servings"
+        }
+      ],
+      "standardSaltG": 2,
+      "evidence": "Pepper is 70 g per person, inside the 75 g staple serve on the 3 Feb 2025 shopping list. Zucchini, tomato, polenta and 10 g pumpkin seeds have no serving classification here. Firm tofu, 150 g per person, is the protein so this plate is not a low-protein soy-free day. Seeds were not piled up to fake a protein target.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 682,
+        "protein": 30.7,
+        "fat": 31.1,
+        "satFat": 4.5,
+        "carbs": 75,
+        "fiber": 12,
+        "sugars": 8.6,
+        "added": 0,
+        "sodium": 189,
+        "potassium": 1166
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 682,
+        "protein": 30.7,
+        "fat": 31.1,
+        "satFat": 4.5,
+        "carbs": 75,
+        "fiber": 12,
+        "sugars": 8.6,
+        "added": 0,
+        "sodium": 421,
+        "potassium": 1166
+      },
+      "micros_per_serving": {
+        "calcium": 579.1,
+        "iron": 9.1,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.895
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 837,
+      "nutrition_problems": []
+    },
+    {
+      "id": "M6",
+      "title": "Spinach, potato and tofu",
+      "meal": "dinner",
+      "flavour": "savoury",
+      "servings": 2,
+      "time": {
+        "prepMin": 15,
+        "cookMin": 30,
+        "tempC": null
+      },
+      "method": [
+        "Dice the peeled potatoes. Boil them until tender, then drain.",
+        "Crumble the tofu into a wide pan with the oil, ginger, cumin and half the salt. Cook for 6 minutes.",
+        "Add the potatoes, spinach and chives. Stir until the spinach wilts and the potato is hot, about 4 minutes. Add the lemon juice and the rest of the salt. Divide in two."
+      ],
+      "yield": "The pan divided evenly into two servings. Cooked potato weight has not been measured. There is no rice in this dish.",
+      "tags": [
+        "soy",
+        "nut-free"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "potatoes",
+          "quantity": 500,
+          "unit": "g",
+          "note": "raw, peeled, for two servings"
+        },
+        {
+          "ingredient": "tofu",
+          "quantity": 300,
+          "unit": "g",
+          "note": "firm, calcium-set, drained, for two servings"
+        },
+        {
+          "ingredient": "spinach",
+          "quantity": 160,
+          "unit": "g",
+          "note": "raw leaves"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 24,
+          "unit": "g",
+          "note": "plain"
+        },
+        {
+          "ingredient": "ginger-fresh",
+          "quantity": 16,
+          "unit": "g",
+          "note": "peeled"
+        },
+        {
+          "ingredient": "cumin-ground",
+          "quantity": 2,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "chives",
+          "quantity": 16,
+          "unit": "g",
+          "note": "green leaves"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "quantity": 30,
+          "unit": "ml",
+          "note": "fresh"
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.8,
+          "unit": "g",
+          "note": "low-salt amount for two servings"
+        }
+      ],
+      "standardSaltG": 2,
+      "evidence": "A potato plate, so the week is not rice at every meal. Potato is 250 g raw per person and is not claimed against the 75 g staple serve. Spinach has no FODMAP serve in this packet. Firm tofu is 150 g per person, a kitchen portion.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 520,
+        "protein": 27.5,
+        "fat": 23.4,
+        "satFat": 3.3,
+        "carbs": 52.9,
+        "fiber": 10,
+        "sugars": 3.8,
+        "added": 0,
+        "sodium": 252,
+        "potassium": 1869
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 520,
+        "protein": 27.5,
+        "fat": 23.4,
+        "satFat": 3.3,
+        "carbs": 52.9,
+        "fiber": 10,
+        "sugars": 3.8,
+        "added": 0,
+        "sodium": 484,
+        "potassium": 1869
+      },
+      "micros_per_serving": {
+        "calcium": 653.2,
+        "iron": 8.9,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.915
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 524,
+      "nutrition_problems": []
+    },
+    {
+      "id": "M7",
+      "title": "Ginger cabbage and tofu with rice",
+      "meal": "dinner",
+      "flavour": "savoury",
+      "servings": 2,
+      "time": {
+        "prepMin": 15,
+        "cookMin": 45,
+        "tempC": null
+      },
+      "method": [
+        "Cook the rice in its water, covered, for about 35–40 minutes.",
+        "Shred the cabbage and slice the carrot. Warm the oil with the ginger and turmeric, add the tofu, and cook for 6 minutes.",
+        "Add the cabbage, carrot and chives. Cover and cook for about 8 minutes, until the cabbage is tender but still green. Stir in the lemon juice and salt.",
+        "Serve half the rice with half the pan."
+      ],
+      "yield": "Divided evenly into two servings. If Monday lunch is the second serving, cook this on Sunday evening so the rice is eaten within a day.",
+      "tags": [
+        "soy",
+        "nut-free",
+        "contains-rice"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "brown-rice",
+          "quantity": 180,
+          "unit": "g",
+          "note": "dry, for two servings"
+        },
+        {
+          "ingredient": "water",
+          "quantity": 540,
+          "unit": "g",
+          "note": "potable, for the rice"
+        },
+        {
+          "ingredient": "tofu",
+          "quantity": 280,
+          "unit": "g",
+          "note": "firm, calcium-set, drained, for two servings"
+        },
+        {
+          "ingredient": "cabbage",
+          "quantity": 160,
+          "unit": "g",
+          "note": "raw, shredded"
+        },
+        {
+          "ingredient": "carrots",
+          "quantity": 150,
+          "unit": "g",
+          "note": "raw, peeled"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 24,
+          "unit": "g",
+          "note": "plain"
+        },
+        {
+          "ingredient": "ginger-fresh",
+          "quantity": 20,
+          "unit": "g",
+          "note": "peeled"
+        },
+        {
+          "ingredient": "turmeric-ground",
+          "quantity": 2,
+          "unit": "g",
+          "note": ""
+        },
+        {
+          "ingredient": "chives",
+          "quantity": 16,
+          "unit": "g",
+          "note": "green leaves"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "quantity": 30,
+          "unit": "ml",
+          "note": "fresh"
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.8,
+          "unit": "g",
+          "note": "low-salt amount for two servings"
+        }
+      ],
+      "standardSaltG": 2,
+      "evidence": "Carrot is 75 g per person, the staple serve named on the 3 Feb 2025 shopping list. Cabbage on that list is grouped with leafy vegetables at 75 g; this draft uses 80 g per person, so the cabbage is not claimed. Rice is 90 g dry per person. Firm tofu is 140 g per person.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 679,
+        "protein": 27.3,
+        "fat": 25.1,
+        "satFat": 3.6,
+        "carbs": 86.9,
+        "fiber": 10.1,
+        "sugars": 8.1,
+        "added": 0,
+        "sodium": 241,
+        "potassium": 955
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 679,
+        "protein": 27.3,
+        "fat": 25.1,
+        "satFat": 3.6,
+        "carbs": 86.9,
+        "fiber": 10.1,
+        "sugars": 8.1,
+        "added": 0,
+        "sodium": 474,
+        "potassium": 955
+      },
+      "micros_per_serving": {
+        "calcium": 579.1,
+        "iron": 6.2,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.785
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 701,
+      "nutrition_problems": []
+    },
+    {
+      "id": "S1",
+      "title": "Lemon carrots",
+      "meal": "side",
+      "flavour": "savoury",
+      "servings": 1,
+      "time": {
+        "prepMin": 5,
+        "cookMin": 12,
+        "tempC": null
+      },
+      "method": [
+        "Slice the carrot. Simmer it in the water for about 8 minutes, until just tender. Drain.",
+        "Toss with the oil, lemon juice, chives and salt."
+      ],
+      "yield": "One plate. Cooked weight has not been measured. Counted in the day’s total.",
+      "tags": [
+        "soy-free",
+        "nut-free"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "carrots",
+          "quantity": 75,
+          "unit": "g",
+          "note": "raw, peeled"
+        },
+        {
+          "ingredient": "water",
+          "quantity": 80,
+          "unit": "g",
+          "note": "potable"
+        },
+        {
+          "ingredient": "olive-oil",
+          "quantity": 8,
+          "unit": "g",
+          "note": "plain"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "quantity": 8,
+          "unit": "ml",
+          "note": "fresh"
+        },
+        {
+          "ingredient": "chives",
+          "quantity": 4,
+          "unit": "g",
+          "note": "green leaves"
+        },
+        {
+          "ingredient": "salt",
+          "quantity": 0.2,
+          "unit": "g",
+          "note": "low-salt amount"
+        }
+      ],
+      "standardSaltG": 0.6,
+      "evidence": "75 g raw carrot matches the staple serve named for carrot on the Monash blog shopping list (3 Feb 2025). That is not a test of this side.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 104,
+        "protein": 0.8,
+        "fat": 8.2,
+        "satFat": 1.1,
+        "carbs": 7.9,
+        "fiber": 2.2,
+        "sugars": 3.8,
+        "added": 0,
+        "sodium": 130,
+        "potassium": 260
+      },
+      "nutrients_per_serving_standard_salt": {
+        "kcal": 104,
+        "protein": 0.8,
+        "fat": 8.2,
+        "satFat": 1.1,
+        "carbs": 7.9,
+        "fiber": 2.2,
+        "sugars": 3.8,
+        "added": 0,
+        "sodium": 285,
+        "potassium": 260
+      },
+      "micros_per_serving": {
+        "calcium": 29,
+        "iron": 0.3,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.065
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 175,
+      "nutrition_problems": []
+    },
+    {
+      "id": "N1",
+      "title": "Orange",
+      "meal": "snack",
+      "flavour": "sweet",
+      "servings": 1,
+      "time": {
+        "prepMin": 2,
+        "cookMin": 0,
+        "tempC": null
+      },
+      "method": [
+        "Peel and eat the orange."
+      ],
+      "yield": "One snack, counted in the day’s total.",
+      "tags": [
+        "soy-free",
+        "nut-free"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "oranges",
+          "quantity": 150,
+          "unit": "g",
+          "note": "raw, peeled"
+        }
+      ],
+      "standardSaltG": null,
+      "evidence": "BMC Nutrition 2020 gives an orange composition, including a small fructan figure, and no serving limit. 150 g peeled fruit is one snack, not a certified serve.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 71,
+        "protein": 1.4,
+        "fat": 0.2,
+        "satFat": 0,
+        "carbs": 17.7,
+        "fiber": 3.6,
+        "sugars": 14.1,
+        "added": 0,
+        "sodium": 0,
+        "potassium": 272
+      },
+      "nutrients_per_serving_standard_salt": null,
+      "micros_per_serving": {
+        "calcium": 60,
+        "iron": 0.2,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.011
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 150,
+      "nutrition_problems": []
+    },
+    {
+      "id": "N2",
+      "title": "Carrot and peanut butter",
+      "meal": "snack",
+      "flavour": "savoury",
+      "servings": 1,
+      "time": {
+        "prepMin": 5,
+        "cookMin": 0,
+        "tempC": null
+      },
+      "method": [
+        "Cut the carrot into sticks. Eat it with the peanut butter."
+      ],
+      "yield": "One snack. Used on one day only, not stacked through the week.",
+      "tags": [
+        "soy-free",
+        "contains-peanut"
+      ],
+      "ingredients": [
+        {
+          "ingredient": "carrots",
+          "quantity": 75,
+          "unit": "g",
+          "note": "raw, peeled"
+        },
+        {
+          "ingredient": "peanut-butter",
+          "quantity": 16,
+          "unit": "g",
+          "note": "peanuts only, smooth"
+        }
+      ],
+      "standardSaltG": null,
+      "evidence": "Carrot 75 g as on S1. Peanut butter has no serving limit in the sources used here. The 2018 US assay found some fructose and fructo-oligosaccharides in the peanut butter they tested; that is not a green-serve rating. 16 g is one smear, not a handful of nuts. Skip it if peanuts are excluded; that day then uses an orange instead, and the total drops by the difference.",
+      "eligible_for_trial_menu": false,
+      "eligible_for_make_my_week_fodmap_mode": false,
+      "low_fodmap_status": null,
+      "clinical_review_status": "not_reviewed",
+      "nutrients_per_serving_low_salt": {
+        "kcal": 125,
+        "protein": 4.7,
+        "fat": 8.2,
+        "satFat": 1.6,
+        "carbs": 10.4,
+        "fiber": 3.1,
+        "sugars": 5,
+        "added": 0,
+        "sodium": 84,
+        "potassium": 344
+      },
+      "nutrients_per_serving_standard_salt": null,
+      "micros_per_serving": {
+        "calcium": 32.6,
+        "iron": 0.5,
+        "vitaminB12": 0,
+        "vitaminD": 0,
+        "omega3": 0.005
+      },
+      "micros_missing_ids": [],
+      "input_weight_g_per_serving": 91,
+      "nutrition_problems": []
+    }
+  ],
+  "week": [
+    {
+      "day": "Monday",
+      "breakfast": "B1",
+      "drink": "D1",
+      "lunch": "M7",
+      "dinner": "M2",
+      "side": "S1",
+      "snack": "N1",
+      "lunchNote": "Second serving of Sunday’s rice dish. Cool the rice within an hour and eat it by Monday lunch, reheated once until steaming.",
+      "fullLow": {
+        "core": {
+          "kcal": 2050,
+          "protein": 89.3,
+          "fat": 89.8,
+          "satFat": 12.6,
+          "carbs": 230,
+          "fiber": 37.9,
+          "sugars": 39,
+          "added": 0,
+          "sodium": 932,
+          "potassium": 5266
+        },
+        "micros": {
+          "calcium": 1946,
+          "iron": 22.9,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.905
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      },
+      "fullStandard": {
+        "core": {
+          "kcal": 2050,
+          "protein": 89.3,
+          "fat": 89.8,
+          "satFat": 12.6,
+          "carbs": 230,
+          "fiber": 37.9,
+          "sugars": 39,
+          "added": 0,
+          "sodium": 1786,
+          "potassium": 5266
+        },
+        "micros": {
+          "calcium": 1946,
+          "iron": 22.9,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.905
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      }
+    },
+    {
+      "day": "Tuesday",
+      "breakfast": "B2",
+      "drink": "D1",
+      "lunch": "M2",
+      "dinner": "M1",
+      "side": "S1",
+      "snack": "N1",
+      "lunchNote": "Second serving of Monday’s potato tray. Eat it the next day.",
+      "fullLow": {
+        "core": {
+          "kcal": 2057,
+          "protein": 90.4,
+          "fat": 90.8,
+          "satFat": 12.8,
+          "carbs": 228.1,
+          "fiber": 37,
+          "sugars": 36.2,
+          "added": 0,
+          "sodium": 852,
+          "potassium": 4883
+        },
+        "micros": {
+          "calcium": 1906.9,
+          "iron": 21.7,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.923
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      },
+      "fullStandard": {
+        "core": {
+          "kcal": 2057,
+          "protein": 90.4,
+          "fat": 90.8,
+          "satFat": 12.8,
+          "carbs": 228.1,
+          "fiber": 37,
+          "sugars": 36.2,
+          "added": 0,
+          "sodium": 1706,
+          "potassium": 4883
+        },
+        "micros": {
+          "calcium": 1906.9,
+          "iron": 21.7,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.923
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      }
+    },
+    {
+      "day": "Wednesday",
+      "breakfast": "B3",
+      "drink": "D1",
+      "lunch": "M1",
+      "dinner": "M3",
+      "side": "S1",
+      "snack": "N1",
+      "lunchNote": "Second serving of Tuesday’s rice dish, within 24 hours.",
+      "fullLow": {
+        "core": {
+          "kcal": 2128,
+          "protein": 78,
+          "fat": 77.8,
+          "satFat": 11.3,
+          "carbs": 288.3,
+          "fiber": 37.7,
+          "sugars": 49.2,
+          "added": 0,
+          "sodium": 699,
+          "potassium": 3390
+        },
+        "micros": {
+          "calcium": 1368.7,
+          "iron": 19.3,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.151
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      },
+      "fullStandard": {
+        "core": {
+          "kcal": 2128,
+          "protein": 78,
+          "fat": 77.8,
+          "satFat": 11.3,
+          "carbs": 288.3,
+          "fiber": 37.7,
+          "sugars": 49.2,
+          "added": 0,
+          "sodium": 1320,
+          "potassium": 3390
+        },
+        "micros": {
+          "calcium": 1368.7,
+          "iron": 19.3,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.151
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      }
+    },
+    {
+      "day": "Thursday",
+      "breakfast": "B1",
+      "drink": "D1",
+      "lunch": "M3",
+      "dinner": "M4",
+      "side": "S1",
+      "snack": "N1",
+      "lunchNote": "Second serving of Wednesday’s polenta. Next day, not later in the week.",
+      "fullLow": {
+        "core": {
+          "kcal": 2082,
+          "protein": 94.5,
+          "fat": 89.9,
+          "satFat": 12.4,
+          "carbs": 236.6,
+          "fiber": 44.7,
+          "sugars": 40.6,
+          "added": 0,
+          "sodium": 984,
+          "potassium": 5466
+        },
+        "micros": {
+          "calcium": 1913.3,
+          "iron": 27.6,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.88
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      },
+      "fullStandard": {
+        "core": {
+          "kcal": 2082,
+          "protein": 94.5,
+          "fat": 89.9,
+          "satFat": 12.4,
+          "carbs": 236.6,
+          "fiber": 44.7,
+          "sugars": 40.6,
+          "added": 0,
+          "sodium": 1838,
+          "potassium": 5466
+        },
+        "micros": {
+          "calcium": 1913.3,
+          "iron": 27.6,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.88
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      }
+    },
+    {
+      "day": "Friday",
+      "breakfast": "B4",
+      "drink": "D1",
+      "lunch": "M4",
+      "dinner": "M5",
+      "side": "S1",
+      "snack": "N1",
+      "lunchNote": "Second serving of Thursday’s lentil plate.",
+      "fullLow": {
+        "core": {
+          "kcal": 2017,
+          "protein": 95.2,
+          "fat": 88.9,
+          "satFat": 12.3,
+          "carbs": 222.2,
+          "fiber": 42.2,
+          "sugars": 43.1,
+          "added": 0,
+          "sodium": 751,
+          "potassium": 4342
+        },
+        "micros": {
+          "calcium": 1789.2,
+          "iron": 25.7,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.79
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      },
+      "fullStandard": {
+        "core": {
+          "kcal": 2017,
+          "protein": 95.2,
+          "fat": 88.9,
+          "satFat": 12.3,
+          "carbs": 222.2,
+          "fiber": 42.2,
+          "sugars": 43.1,
+          "added": 0,
+          "sodium": 1526,
+          "potassium": 4342
+        },
+        "micros": {
+          "calcium": 1789.2,
+          "iron": 25.7,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.79
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      }
+    },
+    {
+      "day": "Saturday",
+      "breakfast": "B3",
+      "drink": "D1",
+      "lunch": "M5",
+      "dinner": "M6",
+      "side": "S1",
+      "snack": "N2",
+      "lunchNote": "Second serving of Friday’s polenta. Snack is the peanut one; use an orange instead if peanuts are out.",
+      "fullLow": {
+        "core": {
+          "kcal": 1963,
+          "protein": 81.4,
+          "fat": 82.5,
+          "satFat": 12.5,
+          "carbs": 236.9,
+          "fiber": 36,
+          "sugars": 38.2,
+          "added": 0,
+          "sodium": 752,
+          "potassium": 4487
+        },
+        "micros": {
+          "calcium": 1435.7,
+          "iron": 22,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.248
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      },
+      "fullStandard": {
+        "core": {
+          "kcal": 1963,
+          "protein": 81.4,
+          "fat": 82.5,
+          "satFat": 12.5,
+          "carbs": 236.9,
+          "fiber": 36,
+          "sugars": 38.2,
+          "added": 0,
+          "sodium": 1371,
+          "potassium": 4487
+        },
+        "micros": {
+          "calcium": 1435.7,
+          "iron": 22,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.248
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      }
+    },
+    {
+      "day": "Sunday",
+      "breakfast": "B2",
+      "drink": "D1",
+      "lunch": "M6",
+      "dinner": "M7",
+      "side": "S1",
+      "snack": "N1",
+      "lunchNote": "Second serving of Saturday’s potato dish. Cook Sunday’s rice in the evening if Monday lunch depends on it.",
+      "fullLow": {
+        "core": {
+          "kcal": 1981,
+          "protein": 90.6,
+          "fat": 83.9,
+          "satFat": 11.8,
+          "carbs": 225.8,
+          "fiber": 38.9,
+          "sugars": 36.5,
+          "added": 0,
+          "sodium": 923,
+          "potassium": 5177
+        },
+        "micros": {
+          "calcium": 1968.1,
+          "iron": 23.8,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.9
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      },
+      "fullStandard": {
+        "core": {
+          "kcal": 1981,
+          "protein": 90.6,
+          "fat": 83.9,
+          "satFat": 11.8,
+          "carbs": 225.8,
+          "fiber": 38.9,
+          "sugars": 36.5,
+          "added": 0,
+          "sodium": 1776,
+          "potassium": 5177
+        },
+        "micros": {
+          "calcium": 1968.1,
+          "iron": 23.8,
+          "vitaminB12": 0,
+          "vitaminD": 0,
+          "omega3": 2.9
+        },
+        "microsMissingIds": [],
+        "sawNonZero": {
+          "calcium": true,
+          "iron": true,
+          "vitaminB12": false,
+          "vitaminD": false,
+          "omega3": true
+        }
+      }
+    }
+  ]
+}
