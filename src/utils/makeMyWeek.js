@@ -77,6 +77,14 @@ import {
   FMD_PACK_ID,
   FREDHEIM_FMD_5DAY_PACK,
 } from '../data/installedPacks'
+import { PRODUCTION_DATASET } from './fodmap/productionDataset.js'
+import {
+  datasetUsableForPlanning,
+  applyFodmapPool,
+  portionCapMap,
+  householdServingsCap,
+  emptyFodmapWeek,
+} from './fodmap/planning.js'
 
 export { FREDHEIM_PACK_ID, REVERSAL_PACK_ID, FMD_PACK_ID }
 // The packs a generated week draws from. FMD recipes are deliberately not
@@ -364,11 +372,19 @@ function mulberry32(a) {
 /** The recipes a generated week may use (allergens/honey/dislikes/packs). Goal labels soft-tilt in score(), not here. */
 export function buildPool(recipes, answers) {
   const disliked = new Set(answers.disliked || [])
-  return (recipes || []).filter(r =>
+  const base = (recipes || []).filter(r =>
     MMW_PACK_IDS.includes(r.sourcePackId) &&
     !disliked.has(r.id) &&
     !recipeHasAvoidedAllergen(r, { groups: answers.avoid || [], ids: answers.blockedIds || [] }) &&
     !(answers.noHoney && recipeHasHoney(r)))
+  // Off unless a caller explicitly asks. An unvalidated list does not
+  // widen the pool back to every recipe: it yields nothing.
+  if (answers.fodmapMode !== 'assessed-portions') return base
+  if (answers.fodmapDatasetValidated !== true || !answers.fodmapDataset?.records) return []
+  return applyFodmapPool(base, answers.fodmapDataset, {
+    groups: answers.avoid || [],
+    ids: answers.blockedIds || [],
+  })
 }
 
 // Enough to fill a week without serving the same few dishes all the time:
@@ -435,8 +451,13 @@ function makeFmdWeek({ recipes, answers, installedPackIds }) {
  * @param {string[]} [args.installedPackIds]
  * @param {object}   [args.slotNames]      see resolveSlotNames()
  */
-export function makeMyWeek({ recipes, answers, seed = 1, installedPackIds, slotNames } = {}) {
+export function makeMyWeek({ recipes, answers, seed = 1, installedPackIds, slotNames, assessmentDataset } = {}) {
   const merged = { ...defaultAnswers(), ...answers }
+  // A remembered answer or a pasted file must not smuggle a portion list in.
+  delete merged.fodmapDataset
+  delete merged.fodmapDatasetValidated
+  delete merged.assessmentDataset
+  delete merged.trustedByApp
   const a = {
     ...merged,
     goals: answerGoals(merged),
@@ -446,10 +467,30 @@ export function makeMyWeek({ recipes, answers, seed = 1, installedPackIds, slotN
   }
   const installed = installedPackIds ||
     [...new Set((recipes || []).map(r => r.sourcePackId).filter(Boolean))]
-  if (a.goals.includes('fmd')) return makeFmdWeek({ recipes, answers: a, installedPackIds: installed })
+  if (a.goals.includes('fmd')) {
+    const week = makeFmdWeek({ recipes, answers: a, installedPackIds: installed })
+    if (a.fodmapMode === 'assessed-portions') {
+      week.notices = [...(week.notices || []), { key: 'fodmapNotAppliedToFmd' }]
+    }
+    return week
+  }
+
+  // The in-app list is empty. assessmentDataset is for tests and for a
+  // future list compiled into the app; the modal does not pass one.
+  const fodmapDataset = a.fodmapMode === 'assessed-portions'
+    ? datasetUsableForPlanning(assessmentDataset === undefined ? PRODUCTION_DATASET : assessmentDataset)
+    : null
+  if (a.fodmapMode === 'assessed-portions' && !fodmapDataset) {
+    return emptyFodmapWeek(a, 'fodmapUnavailable')
+  }
+  if (fodmapDataset) {
+    a.fodmapDataset = fodmapDataset
+    a.fodmapDatasetValidated = true
+  }
 
   const slots = { ...resolveSlotNames(), ...(slotNames || {}) }
   const { pool, goals, relaxed } = poolForGoals(recipes, a)
+  if (fodmapDataset && pool.length === 0) return emptyFodmapWeek(a, 'fodmapNoneAssessed')
   const favourites = new Set(a.preferFavourites ? a.favourites : [])
   const ctx = {
     a,
@@ -469,6 +510,9 @@ export function makeMyWeek({ recipes, answers, seed = 1, installedPackIds, slotN
     wantFavourites: Math.min(MIN_FAVOURITES, pool.filter(r => favourites.has(r.id)).length),
     keys: new Map(pool.map(r => [r.id, ingredientKeys(r)])),
     focus: a.focusNutrients,
+    fodmapCaps: fodmapDataset
+      ? portionCapMap(pool, fodmapDataset, { groups: a.avoid || [], ids: a.blockedIds || [] })
+      : null,
   }
 
   const pickBest = (c) => {
@@ -708,6 +752,9 @@ function buildAttempt(ctx, rng) {
 
   for (let day = 0; day < 7; day++) {
     if (!known[day]) continue
+    // Reviewed meals stay at one serving each. Growing, shrinking, extra
+    // bread and fruit would be a different meal, so they are not added.
+    if (ctx.fodmapCaps) continue
     if (ctx.fitted) { fitDay(day); continue }
     growPortions(day)
     if (dayKcal(day) < dayTarget * LOW && extraBread) addBread(day)
@@ -715,7 +762,8 @@ function buildAttempt(ctx, rng) {
     // beside a second meal too.
     while (dayKcal(day) + MAX_FRUIT * FRUIT.kcal < dayTarget * LOW && extraBread && addBread(day)) { /* next meal */ }
     const short = dayTarget * FILL_TO - dayKcal(day)
-    if (dayKcal(day) < dayTarget * LOW) {
+    // Fruit is not a reviewed portion. Strict mode does not add it.
+    if (!ctx.fodmapCaps && dayKcal(day) < dayTarget * LOW) {
       fruit[day] = Math.min(MAX_FRUIT, fruit[day] + Math.max(1, Math.round(short / FRUIT.kcal)))
     }
   }
@@ -737,7 +785,7 @@ function buildAttempt(ctx, rng) {
       growEarlierMeals(day)
       while (dayKcal(day) < dayTarget * (1 - TARGET_BAND) && extraBread && addBread(day)) growEarlierMeals(day)
     }
-    if (dayKcal(day) < dayTarget * (1 - TARGET_BAND)) {
+    if (!ctx.fodmapCaps && dayKcal(day) < dayTarget * (1 - TARGET_BAND)) {
       const short = dayTarget - dayKcal(day)
       fruit[day] = Math.min(MAX_FRUIT, fruit[day] + Math.max(1, Math.round(short / FRUIT.kcal)))
     }
@@ -749,6 +797,10 @@ function buildAttempt(ctx, rng) {
   // bread one serving (whole slices) at a time; spreads stay as they are. A
   // light dinner's dish stays at one portion, unless more still fits its share.
   function fitRange(it) {
+    if (ctx.fodmapCaps) {
+      const exact = householdServingsCap(ctx.fodmapCaps.get(it.id), people)
+      return [exact, exact, 0]
+    }
     const r = byId.get(it.id)
     const least = Math.max(1, Math.ceil(people * MIN_PORTIONS))
     const step = people % 2 === 0 ? people / 2 : 1
@@ -965,6 +1017,7 @@ function buildAttempt(ctx, rng) {
   }
 
   function maxServings(it) {
+    if (ctx.fodmapCaps) return householdServingsCap(ctx.fodmapCaps.get(it.id), people)
     const r = byId.get(it.id)
     // A Side category dish (patties at breakfast) stays one portion too;
     // the day is filled with bread beside it instead.
@@ -1126,6 +1179,7 @@ function finish(week, ctx, { slots, installed, seed, baselineWeek = null }) {
   if (week.relax.cap) notices.push({ key: 'relaxCap' })
   if (week.relax.empty) notices.push({ key: 'emptySlots', count: week.relax.empty })
   if (!pool.length) notices.push({ key: 'noRecipes' })
+  if (ctx.fodmapCaps) notices.push({ key: 'fodmapPortionFilter' })
 
   const known = week.dayStats.filter(s => s.known)
   const stats = known.length
@@ -1155,7 +1209,7 @@ function finish(week, ctx, { slots, installed, seed, baselineWeek = null }) {
   }
   if (extras.length) notices.push({ key: 'extraBread', bread: extras[0].recipeId })
   if (Object.keys(fruit).length) notices.push({ key: 'extraFruit' })
-  if (stats && stats.kcal < stats.kcalTarget * LOW) notices.push({ key: 'kcalLow', target: stats.kcalTarget })
+  if (!ctx.fodmapCaps && stats && stats.kcal < stats.kcalTarget * LOW) notices.push({ key: 'kcalLow', target: stats.kcalTarget })
   if (ctx.fitted && stats) {
     const off = known.filter(s => Math.abs(s.kcal - week.dayTarget) / week.dayTarget > TARGET_BAND).length
     if (off) notices.push({ key: 'kcalOffTarget', count: off })

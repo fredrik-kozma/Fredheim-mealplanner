@@ -530,6 +530,11 @@ export default function SettingsPage() {
           </div>
         </SectionCard>
 
+        <SectionCard title={t('fodmap.settingsTitle')}>
+          <p className="text-xs text-slate-600 leading-relaxed mb-3">{t('fodmap.settingsBody')}</p>
+          <Link to="/fodmap" className="btn-secondary btn-sm inline-flex">{t('fodmap.open')}</Link>
+        </SectionCard>
+
         {/* Salt level — which salt amount recipes and the shopping list use */}
         <SectionCard title={t('salt.title')}>
           <p className="text-xs text-slate-500 mb-3">{t('salt.desc')}</p>

@@ -1,0 +1,840 @@
+{
+  "schema_version": "1.0",
+  "audit_date_local": "2026-11-08 Europe/Madrid",
+  "purpose": "Finite recipe audit; internal handoff, not approved clinical content",
+  "default_policy": "Unknown is not low FODMAP; candidates cannot enter therapeutic weekly menus.",
+  "sources": [
+    {
+      "id": "BMC2020",
+      "url": "https://link.springer.com/article/10.1186/s40795-020-00374-3",
+      "authors": "Liljebo T, St\u00f6rsrud S, Andreasson A",
+      "title": "Presence of Fermentable Oligo-, Di-, Monosaccharides, and Polyols (FODMAPs) in commonly eaten foods",
+      "year": 2020,
+      "doi": "10.1186/s40795-020-00374-3",
+      "licence": "CC BY 4.0 article; CC0 data unless credit line states otherwise",
+      "attribution": "Adapted selected factual table values from Liljebo et al., BMC Nutrition 6:47 (2020), doi:10.1186/s40795-020-00374-3. Normalized keys; no clinical thresholds inferred.",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "supplement_url": "https://static-content.springer.com/esm/art%3A10.1186%2Fs40795-020-00374-3/MediaObjects/40795_2020_374_MOESM1_ESM.pdf",
+      "credit_review": "Read complete supplement: references identify upstream sources; no separate restrictive credit line found in supplement. Do not infer licence to unpublished full database or upstream proprietary collections."
+    }
+  ],
+  "ingredient_evidence": {
+    "rolled oats": {
+      "coverage": "not_found_in_selected_public_supplement",
+      "source_id": null,
+      "source_food": null,
+      "published_values_g_per_100g": null,
+      "limitations": "No applicable full subtype profile/serving classification established in this finite audit. Absence from selected tables is not absence of FODMAPs.",
+      "clinical_status": "unassessed"
+    },
+    "orange": {
+      "coverage": "partial_match",
+      "source_id": "BMC2020-S1",
+      "source_food": "Orange",
+      "published_values_g_per_100g": {
+        "fructose": 2.29,
+        "glucose": 3.28,
+        "excess_fructose": 0,
+        "fructan": 0.03,
+        "lactose": 0,
+        "GOS": 0,
+        "polyols_combined": 0,
+        "total_reported": 0.03
+      },
+      "limitations": "Table 1 cites refs 3/4 for fructose, ref 5 for fructan; ion chromatography shown. Variety/edible preparation unspecified. No low-FODMAP serving boundary supplied; fructan method represents selected oligomers, not necessarily all chain lengths.",
+      "clinical_status": "unassessed"
+    },
+    "pumpkin seeds": {
+      "coverage": "not_found_in_selected_public_supplement",
+      "source_id": null,
+      "source_food": null,
+      "published_values_g_per_100g": null,
+      "limitations": "No applicable full subtype profile/serving classification established in this finite audit. Absence from selected tables is not absence of FODMAPs.",
+      "clinical_status": "unassessed"
+    },
+    "water": {
+      "coverage": "not_found_in_selected_public_supplement",
+      "source_id": null,
+      "source_food": null,
+      "published_values_g_per_100g": null,
+      "limitations": "No composition measurement imported. Culinary vehicle; reviewer must confirm plain product identity. This audit does not assign numeric FODMAP zero from macronutrient assumptions.",
+      "clinical_status": "unassessed"
+    },
+    "potato": {
+      "coverage": "partial_match",
+      "source_id": "BMC2020-S1",
+      "source_food": "Potato",
+      "published_values_g_per_100g": {
+        "fructose": 0.4,
+        "glucose": 0.4,
+        "excess_fructose": 0,
+        "fructan": 0,
+        "lactose": 0,
+        "GOS": 0,
+        "polyols_combined": 0,
+        "total_reported": 0
+      },
+      "limitations": "Table 1 lists Potato; source reference 2 Swedish National Food Agency; GC shown. Raw/cooked/peeled state not specified. Zero cells are reported database assignments, not proof every subtype was independently assayed or absent at every serving. Do not transfer to cooked recipe or unlimited servings.",
+      "clinical_status": "unassessed"
+    },
+    "firm tofu": {
+      "coverage": "not_found_in_selected_public_supplement",
+      "source_id": null,
+      "source_food": null,
+      "published_values_g_per_100g": null,
+      "limitations": "No applicable full subtype profile/serving classification established in this finite audit. Absence from selected tables is not absence of FODMAPs.",
+      "clinical_status": "unassessed"
+    },
+    "olive oil": {
+      "coverage": "not_found_in_selected_public_supplement",
+      "source_id": null,
+      "source_food": null,
+      "published_values_g_per_100g": null,
+      "limitations": "No composition measurement imported. Culinary vehicle; reviewer must confirm plain product identity. This audit does not assign numeric FODMAP zero from macronutrient assumptions.",
+      "clinical_status": "unassessed"
+    },
+    "white rice": {
+      "coverage": "not_found_in_selected_public_supplement",
+      "source_id": null,
+      "source_food": null,
+      "published_values_g_per_100g": null,
+      "limitations": "No applicable full subtype profile/serving classification established in this finite audit. Absence from selected tables is not absence of FODMAPs.",
+      "clinical_status": "unassessed"
+    },
+    "cucumber": {
+      "coverage": "partial_match",
+      "source_id": "BMC2020-S1",
+      "source_food": "Cucumber",
+      "published_values_g_per_100g": {
+        "fructose": 0.8,
+        "glucose": 2.33,
+        "excess_fructose": 0,
+        "fructan": 0,
+        "lactose": 0,
+        "GOS": 0,
+        "polyols_combined": 0,
+        "total_reported": 0
+      },
+      "limitations": "Table 1: GC; reference 2 accompanies fructose; glucose provenance not individually explicit. Variety, peel and preparation not specified; zero cells are compiled assignments, not separately verified measurements.",
+      "clinical_status": "unassessed"
+    },
+    "tempeh": {
+      "coverage": "not_found_in_selected_public_supplement",
+      "source_id": null,
+      "source_food": null,
+      "published_values_g_per_100g": null,
+      "limitations": "No applicable full subtype profile/serving classification established in this finite audit. Absence from selected tables is not absence of FODMAPs.",
+      "clinical_status": "unassessed"
+    },
+    "quinoa": {
+      "coverage": "not_found_in_selected_public_supplement",
+      "source_id": null,
+      "source_food": null,
+      "published_values_g_per_100g": null,
+      "limitations": "No applicable full subtype profile/serving classification established in this finite audit. Absence from selected tables is not absence of FODMAPs.",
+      "clinical_status": "unassessed"
+    },
+    "green lentils": {
+      "coverage": "single_subtype_only",
+      "source_id": "BMC2020-S5",
+      "source_food": "Lentils green boiled",
+      "published_values_g_per_100g": {
+        "GOS": 0.46
+      },
+      "limitations": "Table 5: HPLC with ELSD, ref 8. Draining/cultivar not specified; no other subtype profile or threshold published in this table. Cannot extrapolate to canned lentils or classify the 40 g draft serving.",
+      "clinical_status": "unassessed"
+    },
+    "peanut butter": {
+      "coverage": "not_found_in_selected_public_supplement",
+      "source_id": null,
+      "source_food": null,
+      "published_values_g_per_100g": null,
+      "limitations": "No applicable full subtype profile/serving classification established in this finite audit. Absence from selected tables is not absence of FODMAPs.",
+      "clinical_status": "unassessed"
+    },
+    "polenta": {
+      "coverage": "not_found_in_selected_public_supplement",
+      "source_id": null,
+      "source_food": null,
+      "published_values_g_per_100g": null,
+      "limitations": "No applicable full subtype profile/serving classification established in this finite audit. Absence from selected tables is not absence of FODMAPs.",
+      "clinical_status": "unassessed"
+    }
+  },
+  "recipes": [
+    {
+      "id": "B01",
+      "title": "Warm oat and orange bowl",
+      "meal_type": "breakfast",
+      "authorship": "Original culinary draft generated for Fredheim feasibility audit; not copied from clinical recipes.",
+      "servings": 1,
+      "ingredients": [
+        {
+          "ingredient": "rolled oats",
+          "grams_per_serving": 45,
+          "form": "dry, plain",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "rolled oats",
+          "brand": null
+        },
+        {
+          "ingredient": "orange",
+          "grams_per_serving": 100,
+          "form": "raw peeled edible segments",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "orange",
+          "brand": null
+        },
+        {
+          "ingredient": "pumpkin seeds",
+          "grams_per_serving": 12,
+          "form": "plain hulled raw",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "pumpkin seeds",
+          "brand": null
+        },
+        {
+          "ingredient": "water",
+          "grams_per_serving": 200,
+          "form": "potable",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "water",
+          "brand": null
+        }
+      ],
+      "method": "Simmer oats with water until tender; fold in chopped orange and top with seeds. Retain all cooking liquid.",
+      "yield": {
+        "portions": 1,
+        "definition": "Entire prepared recipe is one serving; all edible solids retained except specified draining.",
+        "finished_weight_g": null,
+        "note": "Finished weight must be measured in kitchen trial; evaporation/drainage prevents claiming input sum as cooked yield."
+      },
+      "clinical_review_status": "not_reviewed",
+      "low_fodmap_status": null,
+      "eligible_for_trial_menu": false,
+      "meal_fodmap_assessment": null,
+      "nutrients_per_serving": null,
+      "allergens_present": [],
+      "allergy_safety_verified": false,
+      "evidence_matches": [
+        "orange"
+      ],
+      "missing_evidence": [
+        "rolled oats",
+        "pumpkin seeds",
+        "water"
+      ],
+      "review_requirements": [
+        "Resolve ingredient identity/form and lawful analytical evidence",
+        "Assess fixed serving and complete meal combination",
+        "Measure finished yield and test cooking instructions",
+        "Calculate nutrition using appropriate validated nutrient data",
+        "Review allergy/brand/cross-contact and exclusion substitutions"
+      ]
+    },
+    {
+      "id": "B02",
+      "title": "Potato and tofu breakfast skillet",
+      "meal_type": "breakfast",
+      "authorship": "Original culinary draft generated for Fredheim feasibility audit; not copied from clinical recipes.",
+      "servings": 1,
+      "ingredients": [
+        {
+          "ingredient": "potato",
+          "grams_per_serving": 180,
+          "form": "raw peeled edible weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "potato",
+          "brand": null
+        },
+        {
+          "ingredient": "firm tofu",
+          "grams_per_serving": 120,
+          "form": "plain calcium-set, drained weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "firm tofu",
+          "brand": null
+        },
+        {
+          "ingredient": "olive oil",
+          "grams_per_serving": 8,
+          "form": "plain unflavoured",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "olive oil",
+          "brand": null
+        },
+        {
+          "ingredient": "water",
+          "grams_per_serving": 60,
+          "form": "potable",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "water",
+          "brand": null
+        }
+      ],
+      "method": "Dice potato; cook covered with water until tender. Add oil and crumbled tofu; heat through. Retain solids and divide evenly.",
+      "yield": {
+        "portions": 1,
+        "definition": "Entire prepared recipe is one serving; all edible solids retained except specified draining.",
+        "finished_weight_g": null,
+        "note": "Finished weight must be measured in kitchen trial; evaporation/drainage prevents claiming input sum as cooked yield."
+      },
+      "clinical_review_status": "not_reviewed",
+      "low_fodmap_status": null,
+      "eligible_for_trial_menu": false,
+      "meal_fodmap_assessment": null,
+      "nutrients_per_serving": null,
+      "allergens_present": [
+        "soy"
+      ],
+      "allergy_safety_verified": false,
+      "evidence_matches": [
+        "potato"
+      ],
+      "missing_evidence": [
+        "firm tofu",
+        "olive oil",
+        "water"
+      ],
+      "review_requirements": [
+        "Resolve ingredient identity/form and lawful analytical evidence",
+        "Assess fixed serving and complete meal combination",
+        "Measure finished yield and test cooking instructions",
+        "Calculate nutrition using appropriate validated nutrient data",
+        "Review allergy/brand/cross-contact and exclusion substitutions"
+      ]
+    },
+    {
+      "id": "M01",
+      "title": "Rice tofu cucumber plate",
+      "meal_type": "main",
+      "authorship": "Original culinary draft generated for Fredheim feasibility audit; not copied from clinical recipes.",
+      "servings": 1,
+      "ingredients": [
+        {
+          "ingredient": "white rice",
+          "grams_per_serving": 65,
+          "form": "dry plain",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "white rice",
+          "brand": null
+        },
+        {
+          "ingredient": "firm tofu",
+          "grams_per_serving": 150,
+          "form": "plain calcium-set, drained weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "firm tofu",
+          "brand": null
+        },
+        {
+          "ingredient": "cucumber",
+          "grams_per_serving": 80,
+          "form": "raw washed edible weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "cucumber",
+          "brand": null
+        },
+        {
+          "ingredient": "olive oil",
+          "grams_per_serving": 10,
+          "form": "plain unflavoured",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "olive oil",
+          "brand": null
+        },
+        {
+          "ingredient": "water",
+          "grams_per_serving": 150,
+          "form": "potable",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "water",
+          "brand": null
+        }
+      ],
+      "method": "Cook rice by absorption using water, adding only extra water if needed. Pan-warm tofu in oil; serve with sliced cucumber.",
+      "yield": {
+        "portions": 1,
+        "definition": "Entire prepared recipe is one serving; all edible solids retained except specified draining.",
+        "finished_weight_g": null,
+        "note": "Finished weight must be measured in kitchen trial; evaporation/drainage prevents claiming input sum as cooked yield."
+      },
+      "clinical_review_status": "not_reviewed",
+      "low_fodmap_status": null,
+      "eligible_for_trial_menu": false,
+      "meal_fodmap_assessment": null,
+      "nutrients_per_serving": null,
+      "allergens_present": [
+        "soy"
+      ],
+      "allergy_safety_verified": false,
+      "evidence_matches": [
+        "cucumber"
+      ],
+      "missing_evidence": [
+        "white rice",
+        "firm tofu",
+        "olive oil",
+        "water"
+      ],
+      "review_requirements": [
+        "Resolve ingredient identity/form and lawful analytical evidence",
+        "Assess fixed serving and complete meal combination",
+        "Measure finished yield and test cooking instructions",
+        "Calculate nutrition using appropriate validated nutrient data",
+        "Review allergy/brand/cross-contact and exclusion substitutions"
+      ]
+    },
+    {
+      "id": "M02",
+      "title": "Tempeh potato tray plate",
+      "meal_type": "main",
+      "authorship": "Original culinary draft generated for Fredheim feasibility audit; not copied from clinical recipes.",
+      "servings": 1,
+      "ingredients": [
+        {
+          "ingredient": "potato",
+          "grams_per_serving": 250,
+          "form": "raw peeled edible weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "potato",
+          "brand": null
+        },
+        {
+          "ingredient": "tempeh",
+          "grams_per_serving": 120,
+          "form": "plain soy tempeh, unseasoned as packaged",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "tempeh",
+          "brand": null
+        },
+        {
+          "ingredient": "olive oil",
+          "grams_per_serving": 12,
+          "form": "plain unflavoured",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "olive oil",
+          "brand": null
+        },
+        {
+          "ingredient": "cucumber",
+          "grams_per_serving": 70,
+          "form": "raw washed edible weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "cucumber",
+          "brand": null
+        }
+      ],
+      "method": "Cut potato into thin wedges, toss with oil and roast at 200 C until tender. Add sliced tempeh and cook through according to packaging; serve cucumber alongside.",
+      "yield": {
+        "portions": 1,
+        "definition": "Entire prepared recipe is one serving; all edible solids retained except specified draining.",
+        "finished_weight_g": null,
+        "note": "Finished weight must be measured in kitchen trial; evaporation/drainage prevents claiming input sum as cooked yield."
+      },
+      "clinical_review_status": "not_reviewed",
+      "low_fodmap_status": null,
+      "eligible_for_trial_menu": false,
+      "meal_fodmap_assessment": null,
+      "nutrients_per_serving": null,
+      "allergens_present": [
+        "soy"
+      ],
+      "allergy_safety_verified": false,
+      "evidence_matches": [
+        "potato",
+        "cucumber"
+      ],
+      "missing_evidence": [
+        "tempeh",
+        "olive oil"
+      ],
+      "review_requirements": [
+        "Resolve ingredient identity/form and lawful analytical evidence",
+        "Assess fixed serving and complete meal combination",
+        "Measure finished yield and test cooking instructions",
+        "Calculate nutrition using appropriate validated nutrient data",
+        "Review allergy/brand/cross-contact and exclusion substitutions"
+      ]
+    },
+    {
+      "id": "M03",
+      "title": "Quinoa tofu orange bowl",
+      "meal_type": "main",
+      "authorship": "Original culinary draft generated for Fredheim feasibility audit; not copied from clinical recipes.",
+      "servings": 1,
+      "ingredients": [
+        {
+          "ingredient": "quinoa",
+          "grams_per_serving": 65,
+          "form": "dry plain",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "quinoa",
+          "brand": null
+        },
+        {
+          "ingredient": "firm tofu",
+          "grams_per_serving": 150,
+          "form": "plain calcium-set, drained weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "firm tofu",
+          "brand": null
+        },
+        {
+          "ingredient": "orange",
+          "grams_per_serving": 80,
+          "form": "raw peeled edible segments",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "orange",
+          "brand": null
+        },
+        {
+          "ingredient": "olive oil",
+          "grams_per_serving": 10,
+          "form": "plain unflavoured",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "olive oil",
+          "brand": null
+        },
+        {
+          "ingredient": "water",
+          "grams_per_serving": 170,
+          "form": "potable",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "water",
+          "brand": null
+        }
+      ],
+      "method": "Rinse quinoa and cook in measured water until tender, retaining cooked grain. Warm diced tofu in oil. Combine with orange segments.",
+      "yield": {
+        "portions": 1,
+        "definition": "Entire prepared recipe is one serving; all edible solids retained except specified draining.",
+        "finished_weight_g": null,
+        "note": "Finished weight must be measured in kitchen trial; evaporation/drainage prevents claiming input sum as cooked yield."
+      },
+      "clinical_review_status": "not_reviewed",
+      "low_fodmap_status": null,
+      "eligible_for_trial_menu": false,
+      "meal_fodmap_assessment": null,
+      "nutrients_per_serving": null,
+      "allergens_present": [
+        "soy"
+      ],
+      "allergy_safety_verified": false,
+      "evidence_matches": [
+        "orange"
+      ],
+      "missing_evidence": [
+        "quinoa",
+        "firm tofu",
+        "olive oil",
+        "water"
+      ],
+      "review_requirements": [
+        "Resolve ingredient identity/form and lawful analytical evidence",
+        "Assess fixed serving and complete meal combination",
+        "Measure finished yield and test cooking instructions",
+        "Calculate nutrition using appropriate validated nutrient data",
+        "Review allergy/brand/cross-contact and exclusion substitutions"
+      ]
+    },
+    {
+      "id": "M04",
+      "title": "Lentil potato warm salad",
+      "meal_type": "main",
+      "authorship": "Original culinary draft generated for Fredheim feasibility audit; not copied from clinical recipes.",
+      "servings": 1,
+      "ingredients": [
+        {
+          "ingredient": "green lentils",
+          "grams_per_serving": 40,
+          "form": "boiled in water, drained edible weight, not canned",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "green lentils",
+          "brand": null
+        },
+        {
+          "ingredient": "potato",
+          "grams_per_serving": 250,
+          "form": "raw peeled edible weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "potato",
+          "brand": null
+        },
+        {
+          "ingredient": "pumpkin seeds",
+          "grams_per_serving": 20,
+          "form": "plain hulled raw",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "pumpkin seeds",
+          "brand": null
+        },
+        {
+          "ingredient": "cucumber",
+          "grams_per_serving": 80,
+          "form": "raw washed edible weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "cucumber",
+          "brand": null
+        },
+        {
+          "ingredient": "olive oil",
+          "grams_per_serving": 12,
+          "form": "plain unflavoured",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "olive oil",
+          "brand": null
+        }
+      ],
+      "method": "Boil diced potato until tender and drain. Combine with separately boiled and drained lentils, diced cucumber, seeds and oil. Lentil amount is a culinary draft, not a validated low-FODMAP portion.",
+      "yield": {
+        "portions": 1,
+        "definition": "Entire prepared recipe is one serving; all edible solids retained except specified draining.",
+        "finished_weight_g": null,
+        "note": "Finished weight must be measured in kitchen trial; evaporation/drainage prevents claiming input sum as cooked yield."
+      },
+      "clinical_review_status": "not_reviewed",
+      "low_fodmap_status": null,
+      "eligible_for_trial_menu": false,
+      "meal_fodmap_assessment": null,
+      "nutrients_per_serving": null,
+      "allergens_present": [],
+      "allergy_safety_verified": false,
+      "evidence_matches": [
+        "green lentils",
+        "potato",
+        "cucumber"
+      ],
+      "missing_evidence": [
+        "pumpkin seeds",
+        "olive oil"
+      ],
+      "review_requirements": [
+        "Resolve ingredient identity/form and lawful analytical evidence",
+        "Assess fixed serving and complete meal combination",
+        "Measure finished yield and test cooking instructions",
+        "Calculate nutrition using appropriate validated nutrient data",
+        "Review allergy/brand/cross-contact and exclusion substitutions"
+      ]
+    },
+    {
+      "id": "M05",
+      "title": "Rice peanut tofu bowl",
+      "meal_type": "main",
+      "authorship": "Original culinary draft generated for Fredheim feasibility audit; not copied from clinical recipes.",
+      "servings": 1,
+      "ingredients": [
+        {
+          "ingredient": "white rice",
+          "grams_per_serving": 60,
+          "form": "dry plain",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "white rice",
+          "brand": null
+        },
+        {
+          "ingredient": "firm tofu",
+          "grams_per_serving": 120,
+          "form": "plain calcium-set, drained weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "firm tofu",
+          "brand": null
+        },
+        {
+          "ingredient": "peanut butter",
+          "grams_per_serving": 20,
+          "form": "smooth, peanuts only",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "peanut butter",
+          "brand": null
+        },
+        {
+          "ingredient": "cucumber",
+          "grams_per_serving": 80,
+          "form": "raw washed edible weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "cucumber",
+          "brand": null
+        },
+        {
+          "ingredient": "water",
+          "grams_per_serving": 180,
+          "form": "potable",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "water",
+          "brand": null
+        }
+      ],
+      "method": "Cook rice in 140 g water; warm tofu separately. Mix peanut butter with remaining 40 g hot water and coat tofu; serve with cucumber.",
+      "yield": {
+        "portions": 1,
+        "definition": "Entire prepared recipe is one serving; all edible solids retained except specified draining.",
+        "finished_weight_g": null,
+        "note": "Finished weight must be measured in kitchen trial; evaporation/drainage prevents claiming input sum as cooked yield."
+      },
+      "clinical_review_status": "not_reviewed",
+      "low_fodmap_status": null,
+      "eligible_for_trial_menu": false,
+      "meal_fodmap_assessment": null,
+      "nutrients_per_serving": null,
+      "allergens_present": [
+        "soy",
+        "peanut"
+      ],
+      "allergy_safety_verified": false,
+      "evidence_matches": [
+        "cucumber"
+      ],
+      "missing_evidence": [
+        "white rice",
+        "firm tofu",
+        "peanut butter",
+        "water"
+      ],
+      "review_requirements": [
+        "Resolve ingredient identity/form and lawful analytical evidence",
+        "Assess fixed serving and complete meal combination",
+        "Measure finished yield and test cooking instructions",
+        "Calculate nutrition using appropriate validated nutrient data",
+        "Review allergy/brand/cross-contact and exclusion substitutions"
+      ]
+    },
+    {
+      "id": "M06",
+      "title": "Polenta tempeh plate",
+      "meal_type": "main",
+      "authorship": "Original culinary draft generated for Fredheim feasibility audit; not copied from clinical recipes.",
+      "servings": 1,
+      "ingredients": [
+        {
+          "ingredient": "polenta",
+          "grams_per_serving": 65,
+          "form": "dry plain maize meal",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "polenta",
+          "brand": null
+        },
+        {
+          "ingredient": "tempeh",
+          "grams_per_serving": 120,
+          "form": "plain soy tempeh, unseasoned as packaged",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "tempeh",
+          "brand": null
+        },
+        {
+          "ingredient": "cucumber",
+          "grams_per_serving": 80,
+          "form": "raw washed edible weight",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "cucumber",
+          "brand": null
+        },
+        {
+          "ingredient": "olive oil",
+          "grams_per_serving": 10,
+          "form": "plain unflavoured",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "olive oil",
+          "brand": null
+        },
+        {
+          "ingredient": "water",
+          "grams_per_serving": 260,
+          "form": "potable",
+          "fodmap_classification": null,
+          "fodmap_grams_per_serving": null,
+          "evidence_id": "water",
+          "brand": null
+        }
+      ],
+      "method": "Cook polenta in water according to package timing. Heat sliced tempeh thoroughly in oil according to packaging; serve with cucumber.",
+      "yield": {
+        "portions": 1,
+        "definition": "Entire prepared recipe is one serving; all edible solids retained except specified draining.",
+        "finished_weight_g": null,
+        "note": "Finished weight must be measured in kitchen trial; evaporation/drainage prevents claiming input sum as cooked yield."
+      },
+      "clinical_review_status": "not_reviewed",
+      "low_fodmap_status": null,
+      "eligible_for_trial_menu": false,
+      "meal_fodmap_assessment": null,
+      "nutrients_per_serving": null,
+      "allergens_present": [
+        "soy"
+      ],
+      "allergy_safety_verified": false,
+      "evidence_matches": [
+        "cucumber"
+      ],
+      "missing_evidence": [
+        "polenta",
+        "tempeh",
+        "olive oil",
+        "water"
+      ],
+      "review_requirements": [
+        "Resolve ingredient identity/form and lawful analytical evidence",
+        "Assess fixed serving and complete meal combination",
+        "Measure finished yield and test cooking instructions",
+        "Calculate nutrition using appropriate validated nutrient data",
+        "Review allergy/brand/cross-contact and exclusion substitutions"
+      ]
+    }
+  ],
+  "reintroduction": {
+    "status": "requirements_only_pending_clinical_review",
+    "auto_doses_enabled": false,
+    "dose_schedule": null,
+    "requirements": [
+      "Use one clinically selected challenge food and subgroup initially",
+      "Start when symptoms controlled; retain appropriate trial background",
+      "Progress over approximately three days only if tolerated, according to individualized reviewed portions",
+      "Stop for unpleasant symptoms; recover for 2\u20133 days or until settled before next challenge",
+      "Record actual portion, preparation, timing, symptoms and contextual factors",
+      "Observed tolerance is not food composition or guaranteed meal tolerance",
+      "Never challenge known/suspected food allergy through this workflow"
+    ],
+    "public_context_urls": [
+      "https://www.monashfodmap.com/blog/reintroduction-using-diary-function/",
+      "https://www.monashfodmap.com/blog/practical-tips-fodmap-reintroduction/"
+    ],
+    "rights": "Linked external context only; no copied dose table, recipe collection, image or proprietary dataset."
+  }
+}
