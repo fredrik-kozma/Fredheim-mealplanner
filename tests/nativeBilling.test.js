@@ -95,3 +95,44 @@ describe('Android app needs no account', () => {
     }
   })
 })
+
+// ── 1.0.3: trial offer selection, error reasons, safe-area ───────────────────
+import { pickTrialOption, describeBillingError } from '../src/lib/revenueCatHelpers.js'
+
+describe('Google Play trial offer and errors (1.0.3)', () => {
+  const base = { id: 'monthly', isBasePlan: true, freePhase: null }
+  const trial = { id: 'monthly:trial14', isBasePlan: false, freePhase: { billingPeriod: { unit: 'DAY', value: 14 } } }
+
+  it('buys the trial14 offer explicitly when Google Play offers it', () => {
+    assert.equal(pickTrialOption({ product: { subscriptionOptions: [base, trial] } }), trial)
+    assert.equal(pickTrialOption({ product: { subscriptionOptions: [base] } }), null)
+    assert.equal(pickTrialOption(null), null)
+  })
+
+  it('maps RevenueCat errors to a reason instead of failing silently', () => {
+    assert.equal(describeBillingError({ code: 23, message: 'None of the products registered in the RevenueCat dashboard could be fetched' }).kind, 'storeProducts')
+    assert.equal(describeBillingError({ code: '10', message: 'Error performing request' }).kind, 'network')
+    assert.equal(describeBillingError({ code: '3', message: 'x' }).kind, 'notAllowed')
+    assert.equal(describeBillingError(new Error('boom')).kind, 'unknown')
+  })
+
+  it('paywall never leaves a permanently disabled subscribe button', () => {
+    const src = read('src/components/subscription/NativePaywall.jsx')
+    assert.ok(!src.includes('!ready || !pkg'), 'button must not be disabled just because the package is missing')
+    assert.ok(src.includes('nativeRetry'))
+    assert.ok(src.includes('OFFER_TIMEOUT_MS'))
+    for (const lang of ['en', 'no', 'sv']) {
+      const sub = JSON.parse(read(`src/i18n/locales/${lang}.json`)).subscription
+      for (const k of ['nativeLoading', 'nativeRetry']) assert.ok(sub[k], `${lang} ${k}`)
+      for (const k of ['storeProducts', 'network', 'notAllowed', 'store', 'unknown']) assert.ok(sub.nativeError[k], `${lang} nativeError.${k}`)
+    }
+  })
+
+  it('keeps the app below the Android status bar', () => {
+    const html = read('index.html')
+    assert.ok(html.includes("isNativePlatform()") && html.includes("'width=device-width, initial-scale=1.0'"))
+    const cfg = JSON.parse(read('capacitor.config.json'))
+    assert.equal(cfg.plugins.SystemBars.insetsHandling, 'css')
+    assert.ok(read('src/App.jsx').includes('sticky top-0 z-30 safe-area-top'))
+  })
+})

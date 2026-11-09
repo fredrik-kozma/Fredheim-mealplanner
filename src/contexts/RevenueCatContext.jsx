@@ -17,6 +17,7 @@ const NO_RC = {
   hasPremium: false,
   premium: premiumDetails(null),
   refresh: async () => false,
+  retryInit: () => {},
   setPremiumFromInfo: () => {},
 }
 
@@ -49,7 +50,8 @@ export function RevenueCatProvider({ children }) {
     return customerHasPremium(next)
   }, [available, ready, applyInfo])
 
-  // Configure once.
+  // Configure once (and again on demand if the first attempt failed).
+  const [initAttempt, setInitAttempt] = useState(0)
   useEffect(() => {
     if (!available) return undefined
     let cancelled = false
@@ -58,7 +60,12 @@ export function RevenueCatProvider({ children }) {
       if (!cancelled) { setReady(!!ok); setFailed(!ok) }
     })()
     return () => { cancelled = true }
-  }, [available])
+  }, [available, initAttempt])
+
+  const retryInit = useCallback(() => {
+    setFailed(false)
+    setInitAttempt((n) => n + 1)
+  }, [])
 
   // Live updates: trial converting, renewal, expiry, refunds.
   useEffect(() => {
@@ -107,6 +114,7 @@ export function RevenueCatProvider({ children }) {
       hasPremium: customerHasPremium(info),
       premium: premiumDetails(info),
       refresh,
+      retryInit,
       setPremiumFromInfo: applyInfo,
     }}>
       {children}

@@ -674,7 +674,16 @@
     "nativeEndsOn": "Premium ends on {{date}}.",
     "nativeAccountTitle": "Account (optional)",
     "nativeAccountOptional": "You do not need an account to use the app or subscribe. Sign in only if you also use Fredheim on the website and want your subscription there too.",
-    "nativeSignInToSync": "Sign in to sync with the website"
+    "nativeSignInToSync": "Sign in to sync with the website",
+    "nativeLoading": "Loading subscription…",
+    "nativeRetry": "Try again",
+    "nativeError": {
+      "storeProducts": "Google Play didn't return the subscription for this phone yet. Make sure the app was installed from Google Play with the Google account that was invited to test, then try again.",
+      "network": "Couldn't reach Google Play. Check your internet connection and try again.",
+      "notAllowed": "Purchases aren't allowed on this Google account or device (check Google Play payment settings or parental controls).",
+      "store": "Google Play had a problem with the subscription. Please try again in a moment.",
+      "unknown": "Couldn't load the subscription from Google Play. Please try again."
+    }
   },
   "starterPlans": {
     "title": "Ready-made weeks",

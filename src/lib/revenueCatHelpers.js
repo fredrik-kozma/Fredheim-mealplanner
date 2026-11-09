@@ -76,6 +76,43 @@ export function packageFreeTrialDays(pkg) {
   return null
 }
 
+export const PLAY_TRIAL_OFFER_ID = 'trial14'
+export const PLAY_BASE_PLAN_ID = 'monthly'
+
+/**
+ * The Play subscription option for the 14-day free trial (base plan
+ * `monthly`, offer `trial14`), if Google Play offers it to this account.
+ * Google only returns offers the account is eligible for, so after a used
+ * trial this is null and the base plan is bought instead.
+ */
+export function pickTrialOption(pkg) {
+  const options = pkg?.product?.subscriptionOptions
+  if (!Array.isArray(options) || options.length === 0) return null
+  const byId = options.find((o) => o?.id === `${PLAY_BASE_PLAN_ID}:${PLAY_TRIAL_OFFER_ID}`)
+  if (byId) return byId
+  const tagged = options.find((o) => !o?.isBasePlan && o?.freePhase)
+  return tagged || null
+}
+
+/**
+ * Turns a RevenueCat / Google Play error into a short reason code for the
+ * paywall. The raw message is shown small underneath for support.
+ */
+export function describeBillingError(err) {
+  if (!err) return { kind: 'unknown', detail: '' }
+  const code = String(err.code ?? err.errorCode ?? '')
+  const msg = String(err.message || err.underlyingErrorMessage || err || '')
+  const detail = [code && `code ${code}`, msg].filter(Boolean).join(': ').slice(0, 300)
+  // 23 CONFIGURATION_ERROR: products not returned by Google Play
+  // (not a tester, product not yet propagated, or app not from Play).
+  if (code === '23' || /could be fetched|configuration/i.test(msg)) return { kind: 'storeProducts', detail }
+  // 10 NETWORK_ERROR, 2 STORE_PROBLEM, 3 PURCHASE_NOT_ALLOWED, 5 PRODUCT_NOT_AVAILABLE
+  if (code === '10' || /network|internet|offline|timed? ?out/i.test(msg)) return { kind: 'network', detail }
+  if (code === '3') return { kind: 'notAllowed', detail }
+  if (code === '5' || code === '2') return { kind: 'store', detail }
+  return { kind: 'unknown', detail }
+}
+
 export function isPurchaseCancelled(err) {
   if (!err) return false
   if (err.userCancelled === true) return true

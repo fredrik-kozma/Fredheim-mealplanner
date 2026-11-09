@@ -1,4 +1,10 @@
 @tailwind base;
+
+/* Android app only: see .safe-area-top. */
+html.native-app {
+  --app-inset-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -66,6 +72,18 @@
   }
   .btn-icon {
     @apply w-11 h-11 flex-shrink-0 p-0;
+  }
+
+  /* Top chrome (trial banner + header) clears the status bar. In the
+     Android app Capacitor normally keeps the web view below the status bar
+     (index.html drops viewport-fit=cover there) and injects
+     --safe-area-inset-top: 0px; if the web view is ever drawn edge-to-edge
+     the variable carries the real inset instead. On the website this is 0. */
+  .safe-area-top {
+    padding-top: var(--app-inset-top, 0px);
+  }
+  html.native-app .safe-area-top {
+    background-color: #fff;
   }
 
   /* The bottom tab bar clears the phone's home indicator and, sideways, its

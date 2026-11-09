@@ -10,6 +10,23 @@
          safer default. -->
     <link rel="apple-touch-icon" href="/fredheim-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- Android app (Capacitor 8, edge-to-edge): drop viewport-fit=cover so
+         Capacitor's SystemBars keeps the whole web view inside the status bar
+         and navigation bar. Without this the top banner and header were drawn
+         under the status bar and could not be tapped. The website (and the
+         iOS home-screen app) keep viewport-fit=cover. -->
+    <script>
+      (function () {
+        try {
+          var C = window.Capacitor
+          if (C && typeof C.isNativePlatform === 'function' && C.isNativePlatform()) {
+            var m = document.querySelector('meta[name=viewport]')
+            if (m) m.setAttribute('content', 'width=device-width, initial-scale=1.0')
+            document.documentElement.className += ' native-app'
+          }
+        } catch (e) { /* not fatal */ }
+      })()
+    </script>
     <meta name="theme-color" content="#22B24C" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />

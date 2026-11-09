@@ -254,7 +254,7 @@ function AppShell() {
       <main className="flex-1 min-w-0 flex flex-col lg:ml-60 min-h-dvh">
         {/* Banner and header stick together. Each used to be sticky top-0
             on its own, so on scroll the header slid up over the banner. */}
-        <div className="sticky top-0 z-30">
+        <div className="sticky top-0 z-30 safe-area-top">
           {/* CTA banner for anonymous visitors (auto-hidden if signed in) */}
           <PreviewBanner />
           <Header />

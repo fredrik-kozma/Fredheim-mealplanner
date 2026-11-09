@@ -56,4 +56,4 @@ the keystore or the properties file. Upload certificate SHA-256 starts
 `2C:53:65:11` and ends `8B:AC`.
 
 Version history: 1 = 1.0.0, 2 = 1.0.1 (server address fix), 3 = 1.0.2
-(no login needed; Google Play trial).
+(no login needed; Google Play trial), 4 = 1.0.3 (status-bar fix; subscribe button retries and buys the trial14 offer).

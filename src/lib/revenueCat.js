@@ -1,4 +1,5 @@
 import { isNativeAndroid } from '../utils/nativePlatform'
+import { pickTrialOption } from './revenueCatHelpers'
 
 export {
   RC_ENTITLEMENT_ID,
@@ -10,6 +11,8 @@ export {
   pickMonthlyPackage,
   packageFreeTrialDays,
   isPurchaseCancelled,
+  pickTrialOption,
+  describeBillingError,
 } from './revenueCatHelpers'
 
 // Public Android SDK key (goog_…). Safe to ship in the app; set it in
@@ -94,19 +97,37 @@ export async function rcAddCustomerInfoListener(fn) {
   }
 }
 
+/**
+ * Offerings from RevenueCat + Google Play. Throws (instead of returning
+ * null) so the paywall can show why the subscription could not be loaded
+ * and offer a retry, rather than leaving a dead button.
+ */
 export async function rcGetOfferings() {
-  if (!configured) return null
+  if (!configured) {
+    const ok = await initRevenueCat()
+    if (!ok) throw new Error('RevenueCat is not configured')
+  }
+  const Purchases = await loadPurchases()
   try {
-    const Purchases = await loadPurchases()
     return await Purchases.getOfferings()
   } catch (err) {
     console.warn('[revenueCat] getOfferings failed', err)
-    return null
+    throw err
   }
 }
 
+/**
+ * Buy the monthly subscription. When Google Play offers the 14-day free
+ * trial (offer `trial14` on base plan `monthly`) to this Google account,
+ * that option is bought explicitly; otherwise (e.g. the account already
+ * used its trial) the package's default option is used.
+ */
 export async function rcPurchasePackage(aPackage) {
   const Purchases = await loadPurchases()
+  const option = pickTrialOption(aPackage)
+  if (option) {
+    return Purchases.purchaseSubscriptionOption({ subscriptionOption: option })
+  }
   return Purchases.purchasePackage({ aPackage })
 }
 

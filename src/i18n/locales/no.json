@@ -674,7 +674,16 @@
     "nativeEndsOn": "Premium slutter {{date}}.",
     "nativeAccountTitle": "Konto (valgfritt)",
     "nativeAccountOptional": "Du trenger ingen konto for å bruke appen eller abonnere. Logg inn bare hvis du også bruker Fredheim på nettsiden og vil ha abonnementet der også.",
-    "nativeSignInToSync": "Logg inn for å synkronisere med nettsiden"
+    "nativeSignInToSync": "Logg inn for å synkronisere med nettsiden",
+    "nativeLoading": "Henter abonnementet…",
+    "nativeRetry": "Prøv igjen",
+    "nativeError": {
+      "storeProducts": "Google Play sendte ikke abonnementet til denne telefonen ennå. Sjekk at appen er installert fra Google Play med Google-kontoen som ble invitert til testen, og prøv igjen.",
+      "network": "Fikk ikke kontakt med Google Play. Sjekk nettforbindelsen og prøv igjen.",
+      "notAllowed": "Kjøp er ikke tillatt på denne Google-kontoen eller enheten (sjekk betalingsinnstillinger eller foreldrekontroll i Google Play).",
+      "store": "Google Play hadde et problem med abonnementet. Prøv igjen om litt.",
+      "unknown": "Kunne ikke hente abonnementet fra Google Play. Prøv igjen."
+    }
   },
   "starterPlans": {
     "title": "Ferdige uker",
