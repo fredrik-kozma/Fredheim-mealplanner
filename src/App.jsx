@@ -33,6 +33,14 @@ import InstallBanner from './components/pwa/InstallBanner'
 import WhatsNewModal from './components/whatsnew/WhatsNewModal'
 import TimerRunner from './components/timer/TimerRunner'
 import TimerAlarm from './components/timer/TimerAlarm'
+import { RevenueCatProvider } from './contexts/RevenueCatContext'
+import NativePaywallModal from './components/subscription/NativePaywallModal'
+import { useAndroidBackButton } from './hooks/useAndroidBackButton'
+import { isNativePlatform } from './utils/nativePlatform'
+
+// Android app: no account is needed; Premium and its free trial come from
+// Google Play. Constant for the life of the page.
+const IS_NATIVE = isNativePlatform()
 
 // Loaded only when it opens: most visits never show it.
 const IntroTour = lazy(() => import('./components/onboarding/IntroTour'))
@@ -82,8 +90,10 @@ function SubscriptionGate({ children }) {
   // Hard wall only for genuinely lapsed accounts (past_due, canceled, expired).
   // Anyone else — anonymous, trialing, active — sees the app with the soft
   // paywall (blurred recipes etc.).
+  // The Android app never hard-walls: a lapsed account just sees the same
+  // free version as anyone else, with Google Play's paywall on locked items.
   const hardWallStatuses = ['past_due', 'canceled', 'expired']
-  if (!stillLoading && user && !isActive && hardWallStatuses.includes(status)) {
+  if (!IS_NATIVE && !stillLoading && user && !isActive && hardWallStatuses.includes(status)) {
     return <UpgradeWall />
   }
 
@@ -91,6 +101,7 @@ function SubscriptionGate({ children }) {
 }
 
 function AppShell() {
+  useAndroidBackButton()
   const location = useLocation()
 
   // Handle ?checkout=success — Stripe redirects here after payment.
@@ -160,6 +171,7 @@ function AppShell() {
   const setHasSeenIntroTour = useStore(s => s.setHasSeenIntroTour)
   const [showTour, setShowTour] = useState(false)
   const [showTrialSignup, setShowTrialSignup] = useState(false)
+  const [showNativePaywall, setShowNativePaywall] = useState(false)
 
   // Not over a shared menu someone has just opened from a link: that page
   // is what they came for. The tour waits until they move on.
@@ -186,11 +198,14 @@ function AppShell() {
 
   // The tour's last button: plan a week if they can, or start the trial
   // that lets them.
-  const tourCta = canAccess ? 'makeWeek' : !user ? 'trial' : 'explore'
+  const tourCta = canAccess ? 'makeWeek' : (IS_NATIVE || !user) ? 'trial' : 'explore'
   function handleTourCta() {
     closeTour()
     if (tourCta === 'makeWeek') navigate('/planner', { state: { openMakeMyWeek: true } })
-    else if (tourCta === 'trial') setShowTrialSignup(true)
+    else if (tourCta === 'trial') {
+      if (IS_NATIVE) setShowNativePaywall(true)
+      else setShowTrialSignup(true)
+    }
   }
 
   function handleChooseLanguage(code) {
@@ -283,6 +298,10 @@ function AppShell() {
         <AuthModal initialTab="signup" onClose={() => setShowTrialSignup(false)} />
       )}
 
+      {showNativePaywall && (
+        <NativePaywallModal onClose={() => setShowNativePaywall(false)} />
+      )}
+
       {/* What's-new announcements — small modal that pops up once per
           unseen entry in src/data/whatsNew.js, after the tutorial has
           been acknowledged so the two never stack on top of each other. */}
@@ -303,6 +322,7 @@ function AppShell() {
 export default function App() {
   return (
     <AuthProvider>
+      <RevenueCatProvider>
       <Routes>
         {/* Password reset lives OUTSIDE the SubscriptionGate so users with
             past-due / expired subscriptions can still recover their account. */}
@@ -322,6 +342,7 @@ export default function App() {
           </SubscriptionProvider>
         } />
       </Routes>
+      </RevenueCatProvider>
     </AuthProvider>
   )
 }

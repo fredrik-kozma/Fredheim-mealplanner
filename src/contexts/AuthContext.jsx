@@ -1,5 +1,10 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
+import { isNativePlatform } from '../utils/nativePlatform'
+
+// The Android app is served from https://localhost inside a WebView, which
+// an emailed link cannot open; reset links go to the website instead.
+const WEBSITE_ORIGIN = 'https://fredheim-meal.netlify.app'
 
 const AuthContext = createContext(null)
 
@@ -63,7 +68,7 @@ export function AuthProvider({ children }) {
   // updatePassword() below.
   async function resetPassword(email) {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/reset-password`,
+      redirectTo: `${isNativePlatform() ? WEBSITE_ORIGIN : window.location.origin}/reset-password`,
     })
     if (error) throw error
   }

@@ -1,0 +1,17 @@
+{
+  "appId": "no.fredheim.app",
+  "appName": "Fredheim",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "backgroundColor": "#ffffff"
+    }
+  }
+}

@@ -4,6 +4,9 @@ import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../contexts/AuthContext'
 import { useSubscription } from '../../hooks/useSubscription'
 import AuthModal from '../auth/AuthModal'
+import NativePaywallModal from '../subscription/NativePaywallModal'
+import { isNativePlatform } from '../../utils/nativePlatform'
+import { PLAY_SUBSCRIPTIONS_URL } from '../../lib/revenueCatHelpers'
 import TimerButton from '../timer/TimerButton'
 
 export default function Header() {
@@ -15,6 +18,9 @@ export default function Header() {
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [showUserMenu, setShowUserMenu] = useState(false)
   const [authTab, setAuthTab] = useState('signin')
+  // Android app: Google Play billing, and the account is optional (Settings).
+  const isNative = isNativePlatform()
+  const [showNativePaywall, setShowNativePaywall] = useState(false)
 
   function openSignIn() {
     setAuthTab('signin')
@@ -37,6 +43,10 @@ export default function Header() {
 
   async function handleManageSubscription() {
     setShowUserMenu(false)
+    if (isNative) {
+      window.open(PLAY_SUBSCRIPTIONS_URL, '_blank', 'noopener')
+      return
+    }
     if (!user) return
     try {
       const res = await fetch('/.netlify/functions/create-portal-session', {
@@ -53,6 +63,10 @@ export default function Header() {
 
   async function handleCheckout() {
     setShowUserMenu(false)
+    if (isNative) {
+      setShowNativePaywall(true)
+      return
+    }
     if (!user) return
     try {
       const res = await fetch('/.netlify/functions/create-checkout-session', {
@@ -196,7 +210,7 @@ export default function Header() {
               </>
             )}
           </div>
-        ) : (
+        ) : isNative ? null : (
           <div className="flex items-center gap-2 flex-shrink-0">
             <button
               onClick={openSignIn}
@@ -213,6 +227,10 @@ export default function Header() {
           </div>
         )}
       </header>
+
+      {showNativePaywall && (
+        <NativePaywallModal onClose={() => setShowNativePaywall(false)} />
+      )}
 
       {showAuthModal && (
         <AuthModal

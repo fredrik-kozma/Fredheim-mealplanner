@@ -2,6 +2,11 @@ import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../contexts/AuthContext'
+import { isNativePlatform } from '../../utils/nativePlatform'
+
+// Android app: an account is optional and only syncs with the website;
+// the free trial there comes from Google Play, not from signing up.
+const IS_NATIVE = isNativePlatform()
 
 // Supabase never times out on its own; a hung request left the button
 // spinning forever.
@@ -122,7 +127,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
             {tab === 'signup'
-              ? t('auth.trialTagline')
+              ? (IS_NATIVE ? t('auth.nativeSyncTagline') : t('auth.trialTagline'))
               : tab === 'forgot'
               ? t('auth.forgotPasswordTagline', { defaultValue: 'Reset your password' })
               : t('auth.welcomeBack')}
@@ -234,7 +239,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
             {loading
               ? '…'
               : tab === 'signup'
-              ? t('auth.startTrial')
+              ? (IS_NATIVE ? t('auth.signUp') : t('auth.startTrial'))
               : tab === 'forgot'
               ? t('auth.sendResetLink', { defaultValue: 'Send reset link' })
               : t('auth.signIn')}
@@ -242,7 +247,7 @@ export default function AuthModal({ onClose, initialTab = 'signin' }) {
 
           {tab === 'signup' && (
             <p className="text-2xs text-slate-400 text-center leading-relaxed">
-              {t('auth.trialNote')}
+              {IS_NATIVE ? t('auth.nativeSyncNote') : t('auth.trialNote')}
             </p>
           )}
 

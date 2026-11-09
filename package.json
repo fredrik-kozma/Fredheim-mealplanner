@@ -7,17 +7,23 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --import ./tests/support/json-loader.mjs --test tests/formatQuantity.test.js tests/gramSpoonHint.test.js tests/liquidSpoonHint.test.js tests/ingredientCategorizer.test.js tests/ingredientDictionary.test.js tests/ingredientPolish.test.js tests/checkRecipes.test.js tests/recipeLabels.test.js tests/starterPlans.test.js tests/makeMyWeek.test.js tests/mmwBlockedIngredients.test.js tests/healthGoals.test.js tests/plannedNutrition.test.js tests/saltLevel.test.js tests/introTour.test.js tests/omegaBalance.test.js tests/cookingTicks.test.js tests/todayPlan.test.js tests/shoppingCheckedPersist.test.js tests/nutritionData.test.js tests/nutritionEngine.test.js tests/nutritionBreakdown.test.js tests/ingredientPickerSearch.test.js tests/ingredientBlocker.test.js tests/formNutrition.test.js tests/revenuecatWebhook.test.js tests/accountDeletion.test.js tests/sunflowerDateSpread.test.js",
+    "test": "node --import ./tests/support/json-loader.mjs --test tests/formatQuantity.test.js tests/gramSpoonHint.test.js tests/liquidSpoonHint.test.js tests/ingredientCategorizer.test.js tests/ingredientDictionary.test.js tests/ingredientPolish.test.js tests/checkRecipes.test.js tests/recipeLabels.test.js tests/starterPlans.test.js tests/makeMyWeek.test.js tests/mmwBlockedIngredients.test.js tests/healthGoals.test.js tests/plannedNutrition.test.js tests/saltLevel.test.js tests/introTour.test.js tests/omegaBalance.test.js tests/cookingTicks.test.js tests/todayPlan.test.js tests/shoppingCheckedPersist.test.js tests/nutritionData.test.js tests/nutritionEngine.test.js tests/nutritionBreakdown.test.js tests/ingredientPickerSearch.test.js tests/ingredientBlocker.test.js tests/formNutrition.test.js tests/revenuecatWebhook.test.js tests/accountDeletion.test.js tests/sunflowerDateSpread.test.js tests/nativeBilling.test.js",
     "check-recipes": "node --import ./tests/support/json-loader.mjs scripts/check-recipes.mjs && node --import ./tests/support/json-loader.mjs scripts/check-nutrient-db.mjs",
     "label-recipes": "node scripts/label-recipes.mjs",
     "check-nutrient-db": "node scripts/check-nutrient-db.mjs",
     "build-nutrition-db": "node scripts/build-nutrition-db.mjs",
-    "check-live-vs-pack": "node --import ./tests/support/json-loader.mjs scripts/check-live-vs-pack.mjs"
+    "check-live-vs-pack": "node --import ./tests/support/json-loader.mjs scripts/check-live-vs-pack.mjs",
+    "build:android": "vite build --mode android",
+    "android:sync": "npm run build:android && npx cap sync android",
+    "android:bundle": "npm run android:sync && cd android && ./gradlew bundleRelease"
   },
   "dependencies": {
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.0",
     "@dnd-kit/core": "^6.1.0",
     "@dnd-kit/sortable": "^8.0.0",
     "@dnd-kit/utilities": "^3.2.2",
+    "@revenuecat/purchases-capacitor": "^14.1.0",
     "@supabase/supabase-js": "^2.45.4",
     "i18next": "^26.0.5",
     "i18next-browser-languagedetector": "^8.2.1",
@@ -30,6 +36,8 @@
     "zustand": "^5.0.0"
   },
   "devDependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/cli": "^8.6.0",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
