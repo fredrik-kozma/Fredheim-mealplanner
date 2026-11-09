@@ -34,7 +34,7 @@ export function legalText(pack, lang) {
 export const privacyCopy = {
   en: {
     title: 'Privacy policy',
-    updated: 'Last updated 5 November 2026',
+    updated: 'Last updated 9 November 2026',
     intro: 'This policy describes what Fredheim Meal Planner does with personal data. Fredheim Meal Planner is a plant-based meal planner: recipes, a weekly plan, a shopping list, and general nutrition figures for the meals you plan.',
     sections: [
       {
@@ -47,9 +47,9 @@ export const privacyCopy = {
       {
         title: 'Account and subscription data',
         paragraphs: [
-          'If you create an account we store your email address and the login record. The password is stored only as a hash by the authentication service. We also store subscription status (for example trial, active, past due, or canceled), when a trial ends, a billing customer id, and whether the subscription was last updated from Stripe or from Google Play.',
+          'The Android app can be used without creating an account. We collect an email address only if you choose to sign in to sync with the website. If you do, we store that email address and the login record. The password is stored only as a hash by the authentication service. For an account we also store subscription status (for example trial, active, past due, or canceled), when a trial ends, a billing customer id, and whether the subscription was last updated from Stripe or from Google Play.',
           'That account record is stored in Supabase. We do not store your card number.',
-          'Subscription billing is handled by Stripe on the web and by Google Play Billing on Android. On Android, purchase status reaches the app through RevenueCat, which updates the subscription record in Supabase. Stripe and Google receive payment details under their own terms.',
+          'Subscription billing is handled by Stripe on the website. On Android, Google Play subscriptions are processed by Google Play and RevenueCat under a random anonymous app user ID. RevenueCat keeps purchase history and subscription status for that ID. It is linked to the Supabase account only when you sign in. Stripe and Google receive payment details under their own terms.',
         ],
       },
       {
@@ -82,7 +82,7 @@ export const privacyCopy = {
         title: 'How long we keep data',
         paragraphs: [
           'We keep the account and the subscription profile for as long as the account exists. When you delete the account, we delete the login and the profile from Supabase. That happens as soon as the deletion succeeds.',
-          'Meal plans and preferences stay on a device until you delete the account on that device, clear the app’s data, or remove the site data in the browser. They are not copied into the account, so another phone keeps its own copy until you clear it there.',
+          'Meal plans and preferences stay on the device until you uninstall the app, clear the app’s data, or remove the site data in the browser. If you created an account, deleting it on that device also removes them there. They are not copied into the account, so another phone keeps its own copy until you clear it there.',
           'Stripe and Google may keep billing records for as long as tax, accounting, and fraud-prevention rules require. In Norway, accounting records are generally kept for 5 years. Those are payment records, not your meal plans. We do not keep a copy of your card number.',
         ],
       },
@@ -104,7 +104,7 @@ export const privacyCopy = {
   },
   no: {
     title: 'Personvernerklæring',
-    updated: 'Sist oppdatert 5. november 2026',
+    updated: 'Sist oppdatert 9. november 2026',
     intro: 'Denne erklæringen beskriver hva Fredheim Meal Planner gjør med personopplysninger. Fredheim Meal Planner er en plantebasert måltidsplanlegger: oppskrifter, en ukeplan, en handleliste og generelle næringstall for måltidene du planlegger.',
     sections: [
       {
@@ -117,9 +117,9 @@ export const privacyCopy = {
       {
         title: 'Konto og abonnement',
         paragraphs: [
-          'Hvis du oppretter en konto, lagrer vi e-postadressen din og innloggingsoppføringen. Passordet lagres bare som en hash hos innloggingstjenesten. Vi lagrer også abonnementsstatus (for eksempel prøveperiode, aktiv, forfalt eller avsluttet), når en prøveperiode slutter, en kunde-id for betaling, og om abonnementet sist ble oppdatert fra Stripe eller fra Google Play.',
+          'Android-appen kan brukes uten å opprette en konto. Vi samler inn en e-postadresse bare hvis du velger å logge inn for å synkronisere med nettstedet. Gjør du det, lagrer vi den e-postadressen og innloggingsoppføringen. Passordet lagres bare som en hash hos innloggingstjenesten. For en konto lagrer vi også abonnementsstatus (for eksempel prøveperiode, aktiv, forfalt eller avsluttet), når en prøveperiode slutter, en kunde-id for betaling, og om abonnementet sist ble oppdatert fra Stripe eller fra Google Play.',
           'Den kontooppføringen lagres i Supabase. Vi lagrer ikke kortnummeret ditt.',
-          'Abonnementsbetaling håndteres av Stripe på nettet og av Google Play Billing på Android. På Android når kjøpsstatus appen via RevenueCat, som oppdaterer abonnementsoppføringen i Supabase. Stripe og Google mottar betalingsopplysninger etter sine egne vilkår.',
+          'Abonnementsbetaling på nettstedet håndteres av Stripe. På Android behandles Google Play-abonnementer av Google Play og RevenueCat under en tilfeldig anonym appbruker-ID. RevenueCat oppbevarer kjøpshistorikk og abonnementsstatus for den ID-en. Den knyttes til Supabase-kontoen bare når du logger inn. Stripe og Google mottar betalingsopplysninger etter sine egne vilkår.',
         ],
       },
       {
@@ -152,7 +152,7 @@ export const privacyCopy = {
         title: 'Hvor lenge vi beholder opplysninger',
         paragraphs: [
           'Vi beholder kontoen og abonnementsprofilen så lenge kontoen finnes. Når du sletter kontoen, sletter vi innloggingen og profilen fra Supabase. Det skjer så snart slettingen er gjennomført.',
-          'Måltidsplaner og preferanser blir liggende på en enhet til du sletter kontoen på den enheten, tømmer appens data eller fjerner nettstedets data i nettleseren. De kopieres ikke inn i kontoen, så en annen telefon beholder sin egen kopi til du tømmer den der.',
+          'Måltidsplaner og preferanser blir liggende på enheten til du avinstallerer appen, tømmer appens data eller fjerner nettstedets data i nettleseren. Har du opprettet en konto, fjerner sletting av kontoen på den enheten dem der også. De kopieres ikke inn i kontoen, så en annen telefon beholder sin egen kopi til du tømmer den der.',
           'Stripe og Google kan beholde betalingsoppføringer så lenge regler om skatt, regnskap og svindelforebygging krever det. I Norge oppbevares regnskapsmateriale som hovedregel i 5 år. Det er betalingsoppføringer, ikke måltidsplanene dine. Vi beholder ikke en kopi av kortnummeret ditt.',
         ],
       },
@@ -174,7 +174,7 @@ export const privacyCopy = {
   },
   sv: {
     title: 'Integritetspolicy',
-    updated: 'Senast uppdaterad 5 november 2026',
+    updated: 'Senast uppdaterad 9 november 2026',
     intro: 'Den här policyn beskriver vad Fredheim Meal Planner gör med personuppgifter. Fredheim Meal Planner är en växtbaserad måltidsplanerare: recept, en veckoplan, en inköpslista och allmänna näringsvärden för måltiderna du planerar.',
     sections: [
       {
@@ -187,9 +187,9 @@ export const privacyCopy = {
       {
         title: 'Konto och abonnemang',
         paragraphs: [
-          'Om du skapar ett konto lagrar vi din e-postadress och inloggningsposten. Lösenordet lagras bara som ett hashvärde hos inloggningstjänsten. Vi lagrar också abonnemangsstatus (till exempel provperiod, aktiv, förfallen eller avslutad), när en provperiod slutar, ett kund-id för betalning och om abonnemanget senast uppdaterades från Stripe eller från Google Play.',
+          'Android-appen kan användas utan att skapa ett konto. Vi samlar in en e-postadress bara om du väljer att logga in för att synka med webbplatsen. Gör du det lagrar vi den e-postadressen och inloggningsposten. Lösenordet lagras bara som ett hashvärde hos inloggningstjänsten. För ett konto lagrar vi också abonnemangsstatus (till exempel provperiod, aktiv, förfallen eller avslutad), när en provperiod slutar, ett kund-id för betalning och om abonnemanget senast uppdaterades från Stripe eller från Google Play.',
           'Den kontoposten lagras i Supabase. Vi lagrar inte ditt kortnummer.',
-          'Abonnemangsbetalning hanteras av Stripe på webben och av Google Play Billing på Android. På Android når köpstatus appen via RevenueCat, som uppdaterar abonnemangsposten i Supabase. Stripe och Google tar emot betalningsuppgifter enligt sina egna villkor.',
+          'Abonnemangsbetalning på webbplatsen hanteras av Stripe. På Android behandlas Google Play-abonnemang av Google Play och RevenueCat under ett slumpmässigt anonymt appanvändar-ID. RevenueCat sparar köphistorik och abonnemangsstatus för det ID:t. Det kopplas till Supabase-kontot bara när du loggar in. Stripe och Google tar emot betalningsuppgifter enligt sina egna villkor.',
         ],
       },
       {
@@ -222,7 +222,7 @@ export const privacyCopy = {
         title: 'Hur länge vi sparar uppgifter',
         paragraphs: [
           'Vi sparar kontot och abonnemangsprofilen så länge kontot finns. När du raderar kontot raderar vi inloggningen och profilen från Supabase. Det sker så snart raderingen har gått igenom.',
-          'Måltidsplaner och inställningar stannar på en enhet tills du raderar kontot på den enheten, rensar appens data eller tar bort webbplatsens data i webbläsaren. De kopieras inte in i kontot, så en annan telefon behåller sin egen kopia tills du rensar den där.',
+          'Måltidsplaner och inställningar stannar på enheten tills du avinstallerar appen, rensar appens data eller tar bort webbplatsens data i webbläsaren. Om du har skapat ett konto tar radering av kontot på den enheten också bort dem där. De kopieras inte in i kontot, så en annan telefon behåller sin egen kopia tills du rensar den där.',
           'Stripe och Google kan spara betalningsposter så länge regler om skatt, bokföring och bedrägeriskydd kräver det. I Norge sparas bokföring i regel i 5 år. Det är betalningsposter, inte dina måltidsplaner. Vi sparar ingen kopia av ditt kortnummer.',
         ],
       },
@@ -248,7 +248,8 @@ export const deletionCopy = {
   en: {
     title: 'Delete your account',
     updated: 'Fredheim Meal Planner',
-    intro: 'You can delete your Fredheim Meal Planner account and the personal data stored with it. You do not need a current subscription, and you do not have to open the installed app. This page is enough.',
+    intro: 'This page is for people who created a Fredheim Meal Planner account. You can delete that account and the personal data stored with it. You do not need a current subscription, and you do not have to open the installed app.',
+    noAccount: 'If you never created an account, there is nothing to delete here. Uninstall the app or clear its data to remove meal plans and other data stored on the device. Manage a Google Play subscription in Google Play.',
     stepsTitle: 'How to delete your account',
     steps: [
       'Open this page: https://fredheim-meal.netlify.app/delete-account. In the app, the same page is under Settings, and in the account menu.',
@@ -294,7 +295,8 @@ export const deletionCopy = {
   no: {
     title: 'Slett kontoen din',
     updated: 'Fredheim Meal Planner',
-    intro: 'Du kan slette Fredheim Meal Planner-kontoen din og personopplysningene som er lagret med den. Du trenger ikke et aktivt abonnement, og du trenger ikke å åpne den installerte appen. Denne siden er nok.',
+    intro: 'Denne siden gjelder deg som har opprettet en Fredheim Meal Planner-konto. Du kan slette den kontoen og personopplysningene som er lagret med den. Du trenger ikke et aktivt abonnement, og du trenger ikke å åpne den installerte appen.',
+    noAccount: 'Hvis du aldri har opprettet en konto, er det ingenting å slette her. Avinstaller appen eller tøm appdataene for å fjerne måltidsplaner og andre data som er lagret på enheten. Administrer et Google Play-abonnement i Google Play.',
     stepsTitle: 'Slik sletter du kontoen',
     steps: [
       'Åpne denne siden: https://fredheim-meal.netlify.app/delete-account. I appen ligger den samme siden under Innstillinger, og i kontomenyen.',
@@ -340,7 +342,8 @@ export const deletionCopy = {
   sv: {
     title: 'Radera ditt konto',
     updated: 'Fredheim Meal Planner',
-    intro: 'Du kan radera ditt Fredheim Meal Planner-konto och personuppgifterna som hör till det. Du behöver inget aktivt abonnemang, och du behöver inte öppna den installerade appen. Den här sidan räcker.',
+    intro: 'Den här sidan gäller dig som har skapat ett Fredheim Meal Planner-konto. Du kan radera det kontot och personuppgifterna som hör till det. Du behöver inget aktivt abonnemang, och du behöver inte öppna den installerade appen.',
+    noAccount: 'Om du aldrig har skapat ett konto finns det inget att radera här. Avinstallera appen eller rensa dess data för att ta bort måltidsplaner och andra uppgifter som lagras på enheten. Hantera ett Google Play-abonnemang i Google Play.',
     stepsTitle: 'Så raderar du kontot',
     steps: [
       'Öppna den här sidan: https://fredheim-meal.netlify.app/delete-account. I appen finns samma sida under Inställningar, och i kontomenyn.',

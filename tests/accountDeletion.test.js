@@ -133,6 +133,10 @@ describe('public legal copy', () => {
       SELLER.email,
       SELLER.deleteUrl,
       'Subscription billing is handled by Stripe',
+      'without creating an account',
+      'anonymous app user ID',
+      'only when you sign in',
+      'purchase history and subscription status',
     ]
     for (const phrase of required) assert.ok(text.includes(phrase), phrase)
   })
@@ -156,9 +160,14 @@ describe('public legal copy', () => {
       SELLER.email,
       SELLER.deleteUrl,
       'does not cancel a Google Play subscription',
+      'people who created a Fredheim Meal Planner account',
     ]) {
       assert.ok(text.includes(phrase), phrase)
     }
+    assert.match(deletionCopy.en.noAccount, /clear its data/)
+    assert.match(deletionCopy.en.noAccount, /Manage a Google Play subscription in Google Play/)
+    assert.match(deletionCopy.no.noAccount, /tøm appdataene/)
+    assert.match(deletionCopy.sv.noAccount, /rensa dess data/)
     assert.equal(deletionCopy.en.steps.length, 4)
   })
 })
