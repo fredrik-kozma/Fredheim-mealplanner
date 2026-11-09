@@ -615,6 +615,7 @@
     "startTrial": "Starta gratis provperiod",
     "locked": "Låst",
     "freePreview": "Gratis förhandsvisning",
+    "freeBadge": "Gratis",
     "lockedRecipeHint": "Starta din gratis provperiod för att låsa upp detta recept",
     "fourteenDayTrial": "14 dagars gratis provperiod",
     "alreadyHaveAccount": "Har du redan ett konto? Logga in",
@@ -626,6 +627,12 @@
     "shoppingLockedDesc": "Din veckoplan blir automatiskt en inköpslista. Starta din gratis provperiod för att låsa upp.",
     "nutritionLockedTitle": "Följ din näring",
     "nutritionLockedDesc": "Logga vad du äter och se hur din vecka balanseras. Starta din gratisperiod för att använda näringsspåraren."
+  },
+  "trialOffer": {
+    "offer": "Prova gratis i 14 dagar",
+    "price": "120 NOK/månad",
+    "cancel": "Avsluta när som helst i Google Play",
+    "explore": "Utforska gratis recept"
   },
   "subscription": {
     "title": "Konto och prenumeration",

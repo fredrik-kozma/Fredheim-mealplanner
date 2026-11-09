@@ -120,3 +120,21 @@ export function isPurchaseCancelled(err) {
   const msg = err.message || String(err)
   return /cancel/i.test(msg)
 }
+
+/**
+ * Reject with a RevenueCat-style NETWORK_ERROR (code 10) if `promise` has
+ * not settled within `ms`. Used around every native RevenueCat step so a
+ * hung bridge call can never leave the paywall on "Loading…" forever.
+ */
+export function withTimeout(promise, ms, label = 'Google Play') {
+  let timer
+  return Promise.race([
+    Promise.resolve(promise).finally(() => clearTimeout(timer)),
+    new Promise((_, reject) => {
+      timer = setTimeout(
+        () => reject(Object.assign(new Error(`Timed out waiting for ${label}`), { code: '10' })),
+        ms,
+      )
+    }),
+  ])
+}

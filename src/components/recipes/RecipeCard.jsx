@@ -99,10 +99,10 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
             </div>
           )}
 
-          {/* ✨ Free preview badge — the 2 teaser recipes */}
+          {/* Free starter-set badge, in place of the lock. */}
           {isLocked && isFreePreview && (
             <div className="absolute top-2 left-2 bg-success-500 text-white text-2xs font-bold px-2 py-1 rounded-full shadow-card">
-              ✨ {t('preview.freePreview')}
+              {t('preview.freeBadge')}
             </div>
           )}
 
@@ -119,6 +119,14 @@ export default function RecipeCard({ recipe, compact = false, nutrientBadge = nu
       {!recipe.imageUrl && (
         <div className="absolute top-2 right-2">
           <FavoriteStar recipeId={recipe.id} />
+        </div>
+      )}
+
+      {!recipe.imageUrl && isLocked && isFreePreview && (
+        <div className="mb-1.5">
+          <span className="inline-flex badge bg-success-500 text-white text-2xs font-bold">
+            {t('preview.freeBadge')}
+          </span>
         </div>
       )}
 

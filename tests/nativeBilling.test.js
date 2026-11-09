@@ -136,3 +136,36 @@ describe('Google Play trial offer and errors (1.0.3)', () => {
     assert.ok(read('src/App.jsx').includes('sticky top-0 z-30 safe-area-top'))
   })
 })
+
+describe('RevenueCat loading never hangs (1.0.3 "Loading subscription…" bug)', async () => {
+  const { withTimeout } = await import('../src/lib/revenueCatHelpers.js')
+
+  it('never returns or awaits the Capacitor plugin proxy (its `then` hangs)', () => {
+    const src = read('src/lib/revenueCat.js')
+    assert.match(src, /const \{ Purchases \} = await loadPurchases\(\)/)
+    assert.doesNotMatch(src, /return PurchasesMod\b|PurchasesMod = mod\.Purchases/)
+    assert.doesNotMatch(src, /const Purchases = await loadPurchases\(\)/)
+  })
+
+  it('shows why awaiting a proxy with a `then` trap never settles', async () => {
+    const proxy = new Proxy({}, { get: () => () => new Promise(() => {}) })
+    const hung = (async () => proxy)()
+    await assert.rejects(withTimeout(hung, 30, 'proxy'), (e) => e.code === '10')
+    const ok = (async () => ({ Purchases: proxy }))()
+    const mod = await withTimeout(ok, 30)
+    assert.equal(typeof mod.Purchases.configure, 'function')
+  })
+
+  it('times out configure and the paywall has a watchdog', () => {
+    const lib = read('src/lib/revenueCat.js')
+    assert.match(lib, /withTimeout\([\s\S]*Purchases\.configure[\s\S]*RC_CONFIGURE_TIMEOUT_MS/)
+    const pw = read('src/components/subscription/NativePaywall.jsx')
+    assert.match(pw, /WATCHDOG_MS/)
+    assert.match(pw, /const waiting = !stalled &&/)
+  })
+
+  it('withTimeout passes through results and errors', async () => {
+    assert.equal(await withTimeout(Promise.resolve(5), 50), 5)
+    await assert.rejects(withTimeout(Promise.reject(Object.assign(new Error('x'), { code: '23' })), 50), (e) => e.code === '23')
+  })
+})

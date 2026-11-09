@@ -28,9 +28,10 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         // Bump both for every Play upload. 1 = 1.0.0, 2 = 1.0.1 (server fix),
-        // 3 = 1.0.2 (no login needed; Google Play trial).
-        versionCode 4
-        versionName "1.0.3"
+        // 3 = 1.0.2 (no login needed; Google Play trial),
+        // 4 = 1.0.3 (status bar; subscribe retries the trial14 offer).
+        versionCode 5
+        versionName "1.0.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.

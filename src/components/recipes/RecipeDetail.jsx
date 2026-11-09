@@ -78,8 +78,8 @@ export default function RecipeDetail() {
   const deleteRecipe = useStore(s => s.deleteRecipe)
   const setLastOpenedRecipeId = useStore(s => s.setLastOpenedRecipeId)
 
-  // Paywall: locked users can't see the full recipe unless it's a
-  // designated free-preview recipe.
+  // Paywall: locked users can't see the full recipe unless it's in the
+  // free starter set (src/data/freeRecipes.js).
   const { isLocked, isPreviewRecipe } = useAccess()
   const showPaywall = isLocked && !isPreviewRecipe(id)
 

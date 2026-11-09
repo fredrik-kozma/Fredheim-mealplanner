@@ -615,6 +615,7 @@
     "startTrial": "Start free trial",
     "locked": "Locked",
     "freePreview": "Free preview",
+    "freeBadge": "Free",
     "lockedRecipeHint": "Start your free trial to unlock this recipe",
     "fourteenDayTrial": "14-day free trial",
     "alreadyHaveAccount": "Already have an account? Sign in",
@@ -626,6 +627,12 @@
     "shoppingLockedDesc": "Your weekly plan automatically becomes a shopping list. Start your free trial to unlock.",
     "nutritionLockedTitle": "Track your nutrition",
     "nutritionLockedDesc": "Log what you eat and see how your week balances out. Start your free trial to use the nutrition tracker."
+  },
+  "trialOffer": {
+    "offer": "Try free for 14 days",
+    "price": "120 NOK/month",
+    "cancel": "Cancel any time in Google Play",
+    "explore": "Explore free recipes"
   },
   "subscription": {
     "title": "Account & Subscription",

@@ -4,6 +4,7 @@ import {
   initRevenueCat,
   isRevenueCatAvailable,
   rcLogIn,
+  rcLastInitError,
   rcGetCustomerInfo,
   rcAddCustomerInfoListener,
   customerHasPremium,
@@ -14,6 +15,8 @@ const NO_RC = {
   available: false,
   ready: false,
   failed: false,
+  initError: null,
+  customerChecked: false,
   hasPremium: false,
   premium: premiumDetails(null),
   refresh: async () => false,
@@ -37,6 +40,8 @@ export function RevenueCatProvider({ children }) {
   const available = isRevenueCatAvailable()
   const [ready, setReady] = useState(false)
   const [failed, setFailed] = useState(false)
+  const [initError, setInitError] = useState(null)
+  const [customerChecked, setCustomerChecked] = useState(false)
   const [info, setInfo] = useState(null)
 
   const applyInfo = useCallback((next) => {
@@ -57,13 +62,18 @@ export function RevenueCatProvider({ children }) {
     let cancelled = false
     ;(async () => {
       const ok = await initRevenueCat()
-      if (!cancelled) { setReady(!!ok); setFailed(!ok) }
+      if (!cancelled) {
+        setReady(!!ok)
+        setFailed(!ok)
+        setInitError(ok ? null : (rcLastInitError() || new Error('RevenueCat configure failed')))
+      }
     })()
     return () => { cancelled = true }
   }, [available, initAttempt])
 
   const retryInit = useCallback(() => {
     setFailed(false)
+    setInitError(null)
     setInitAttempt((n) => n + 1)
   }, [])
 
@@ -86,7 +96,10 @@ export function RevenueCatProvider({ children }) {
     let cancelled = false
     ;(async () => {
       const next = user?.id ? (await rcLogIn(user.id)) || (await rcGetCustomerInfo()) : await rcGetCustomerInfo()
-      if (!cancelled) applyInfo(next)
+      if (!cancelled) {
+        applyInfo(next)
+        setCustomerChecked(true)
+      }
     })()
     return () => { cancelled = true }
   }, [available, ready, user?.id, applyInfo])
@@ -111,6 +124,8 @@ export function RevenueCatProvider({ children }) {
       available,
       ready,
       failed,
+      initError,
+      customerChecked,
       hasPremium: customerHasPremium(info),
       premium: premiumDetails(info),
       refresh,

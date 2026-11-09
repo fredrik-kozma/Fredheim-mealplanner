@@ -11,20 +11,14 @@ import {
   customerHasPremium,
   isPurchaseCancelled,
   describeBillingError,
+  withTimeout,
 } from '../../lib/revenueCat'
 
 // If Google Play has not answered by then, stop the spinner and offer a retry.
 const OFFER_TIMEOUT_MS = 15000
-
-function withTimeout(promise, ms) {
-  let timer
-  return Promise.race([
-    promise.finally(() => clearTimeout(timer)),
-    new Promise((_, reject) => {
-      timer = setTimeout(() => reject(Object.assign(new Error('Timed out waiting for Google Play'), { code: '10' })), ms)
-    }),
-  ])
-}
+// Last-resort watchdog: whatever is still pending (starting RevenueCat or
+// loading the offer), the button never stays on "Loading…" longer than this.
+const WATCHDOG_MS = OFFER_TIMEOUT_MS + 5000
 
 /**
  * Google Play paywall (RevenueCat), Android app only. No Fredheim account
@@ -38,13 +32,14 @@ function withTimeout(promise, ms) {
  */
 export default function NativePaywall({ compact = false, onAccessGranted }) {
   const { t } = useTranslation()
-  const { available, ready, failed, hasPremium, setPremiumFromInfo, retryInit } = useRevenueCat()
+  const { available, ready, failed, initError, hasPremium, setPremiumFromInfo, retryInit } = useRevenueCat()
   const [pkg, setPkg] = useState(null)
   const [loadingOffer, setLoadingOffer] = useState(false)
   const [offerError, setOfferError] = useState(null) // { kind, detail }
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState(null)
   const [notice, setNotice] = useState(null)
+  const [stalled, setStalled] = useState(false)
   const mounted = useRef(true)
 
   useEffect(() => {
@@ -55,6 +50,7 @@ export default function NativePaywall({ compact = false, onAccessGranted }) {
   const loadOffer = useCallback(async () => {
     setLoadingOffer(true)
     setOfferError(null)
+    setStalled(false)
     try {
       const offerings = await withTimeout(rcGetOfferings(), OFFER_TIMEOUT_MS)
       const next = pickMonthlyPackage(offerings)
@@ -75,23 +71,43 @@ export default function NativePaywall({ compact = false, onAccessGranted }) {
     loadOffer()
   }, [available, ready, loadOffer])
 
-  // Configuration failed outright: show that as an offer error too.
+  // Configuration failed (or timed out): show why, with its code.
   useEffect(() => {
     if (available && failed && !pkg) {
-      setOfferError((prev) => prev || { kind: 'unknown', detail: 'RevenueCat configure failed' })
+      setOfferError((prev) => prev || (initError
+        ? describeBillingError(initError)
+        : { kind: 'unknown', detail: 'RevenueCat configure failed' }))
     }
-  }, [available, failed, pkg])
+  }, [available, failed, initError, pkg])
+
+  const pending = available && !hasPremium && !pkg && ((!ready && !failed) || loadingOffer)
+
+  // Watchdog: if anything is still pending after WATCHDOG_MS, stop waiting
+  // and turn the button into "Try again" with a visible error code.
+  useEffect(() => {
+    if (!pending || stalled) return undefined
+    const timer = setTimeout(() => {
+      if (!mounted.current) return
+      setStalled(true)
+      setOfferError((prev) => prev || {
+        kind: 'network',
+        detail: `code 10: ${ready ? 'Google Play' : 'RevenueCat'} did not answer within ${Math.round(WATCHDOG_MS / 1000)} s`,
+      })
+    }, WATCHDOG_MS)
+    return () => clearTimeout(timer)
+  }, [pending, stalled, ready])
 
   if (!available) return null
 
   const priceLabel = pkg?.product?.priceString || t('subscription.nativePriceFallback')
   const trialDays = packageFreeTrialDays(pkg)
   const starting = !ready && !failed
-  const waiting = starting || (loadingOffer && !pkg)
+  const waiting = !stalled && (starting || (loadingOffer && !pkg))
 
   async function handleRetry() {
     setError(null)
     setNotice(null)
+    setStalled(false)
     if (!ready) {
       setOfferError(null)
       retryInit()

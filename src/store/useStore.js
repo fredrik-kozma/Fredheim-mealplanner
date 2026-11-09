@@ -1465,6 +1465,9 @@ const useStore = create(
         // Back dropped you out of your own favourites list — the one
         // filter that didn't survive the trip every other one did.
         favoritesOnly: false,
+        // The Gratis / Free starter set. Same persistence as the other
+        // chips, so "explore free recipes" is still on when the list opens.
+        freeOnly: false,
       },
       setRecipesView: (partial) => set((s) => ({
         recipesView: { ...s.recipesView, ...partial },
@@ -1472,7 +1475,7 @@ const useStore = create(
       resetRecipesView: () => set(() => ({
         recipesView: {
           category: 'All', pack: 'All', conditions: [], search: '',
-          sortBy: 'newest', favoritesOnly: false,
+          sortBy: 'newest', favoritesOnly: false, freeOnly: false,
         },
       })),
     }),

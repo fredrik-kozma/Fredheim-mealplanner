@@ -615,6 +615,7 @@
     "startTrial": "Start gratis prøveperiode",
     "locked": "Låst",
     "freePreview": "Gratis forhåndsvisning",
+    "freeBadge": "Gratis",
     "lockedRecipeHint": "Start gratis prøveperiode for å låse opp denne oppskriften",
     "fourteenDayTrial": "14 dagers gratis prøveperiode",
     "alreadyHaveAccount": "Har du allerede en konto? Logg inn",
@@ -626,6 +627,12 @@
     "shoppingLockedDesc": "Ukeplanen din blir automatisk en handleliste. Start gratis prøveperiode for å låse opp.",
     "nutritionLockedTitle": "Følg ernæringen din",
     "nutritionLockedDesc": "Logg hva du spiser og se hvordan uken balanserer seg ut. Start gratisperioden for å bruke ernæringssporeren."
+  },
+  "trialOffer": {
+    "offer": "Prøv gratis i 14 dager",
+    "price": "120 NOK/måned",
+    "cancel": "Avslutt når som helst i Google Play",
+    "explore": "Utforsk gratis oppskrifter"
   },
   "subscription": {
     "title": "Konto og abonnement",
