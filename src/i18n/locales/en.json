@@ -606,7 +606,9 @@
     "trialNote": "No card needed. You only pay if you choose to subscribe after the 14 days.",
     "serviceError": "We couldn’t reach the server just now. Please check your connection and try again in a moment.",
     "tooManyAttempts": "Too many attempts. Please wait a few minutes and try again.",
-    "emailInUse": "There is already an account with this email. Try signing in instead."
+    "emailInUse": "There is already an account with this email. Try signing in instead.",
+    "nativeSyncTagline": "Optional — for using Fredheim on the website too",
+    "nativeSyncNote": "Not needed for the app. Your free trial and subscription in the app go through Google Play."
   },
   "preview": {
     "bannerText": "Try Fredheim Meal Planner free for 14 days",
@@ -652,7 +654,27 @@
     "canceledDesc": "Resubscribe any time to access your recipes and meal plans.",
     "feature1": "Unlimited recipes & meal planning",
     "feature2": "Recipe packs — new collections every season",
-    "feature3": "Shopping list with automatic quantities"
+    "feature3": "Shopping list with automatic quantities",
+    "nativeTitle": "Premium",
+    "nativePremiumTitle": "Fredheim Premium",
+    "nativePremiumDesc": "All recipes, the week planner, shopping list and nutrition. No account needed — Google Play handles the trial and payment.",
+    "nativeFreeVersion": "Free version",
+    "nativePriceFallback": "120 NOK / month",
+    "nativeTrialNote": "Free for 14 days, then the monthly price. Google Play charges nothing until the trial ends, and you can cancel any time in Google Play.",
+    "nativeTrialNoteDays_one": "Free for {{count}} day, then the monthly price. Google Play charges nothing until the trial ends, and you can cancel any time in Google Play.",
+    "nativeTrialNoteDays_other": "Free for {{count}} days, then the monthly price. Google Play charges nothing until the trial ends, and you can cancel any time in Google Play.",
+    "nativeTrialNoteDays": "Free for {{count}} days, then the monthly price. Google Play charges nothing until the trial ends, and you can cancel any time in Google Play.",
+    "nativeStartTrial": "Start free trial",
+    "nativeSubscribe": "Subscribe",
+    "nativeRestore": "Restore purchases",
+    "nativeManagePlay": "Manage subscription on Google Play",
+    "nativeRestoreNone": "No previous purchases found for this Google account.",
+    "nativeOfferUnavailable": "The subscription could not be loaded from Google Play right now. Check your connection and try again.",
+    "nativeTrialEnds": "Free trial ends {{date}}. Cancel before then in Google Play if you do not want to continue.",
+    "nativeEndsOn": "Premium ends on {{date}}.",
+    "nativeAccountTitle": "Account (optional)",
+    "nativeAccountOptional": "You do not need an account to use the app or subscribe. Sign in only if you also use Fredheim on the website and want your subscription there too.",
+    "nativeSignInToSync": "Sign in to sync with the website"
   },
   "starterPlans": {
     "title": "Ready-made weeks",

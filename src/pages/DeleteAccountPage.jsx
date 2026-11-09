@@ -117,6 +117,7 @@ export default function DeleteAccountPage() {
       ) : (
         <>
           <p className="text-sm text-slate-600 mt-4 leading-relaxed">{copy.intro}</p>
+          <p className="text-sm text-slate-600 mt-3 leading-relaxed">{copy.noAccount}</p>
 
           <section className="mt-6">
             <h2 className="section-title">{copy.stepsTitle}</h2>

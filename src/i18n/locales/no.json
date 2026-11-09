@@ -606,7 +606,9 @@
     "trialNote": "Du trenger ikke kort. Du betaler bare hvis du velger å abonnere etter de 14 dagene.",
     "serviceError": "Vi får ikke kontakt med serveren akkurat nå. Sjekk tilkoblingen og prøv igjen om litt.",
     "tooManyAttempts": "For mange forsøk. Vent noen minutter og prøv igjen.",
-    "emailInUse": "Det finnes allerede en konto med denne e-postadressen. Prøv å logge inn i stedet."
+    "emailInUse": "Det finnes allerede en konto med denne e-postadressen. Prøv å logge inn i stedet.",
+    "nativeSyncTagline": "Valgfritt — for å bruke Fredheim på nettsiden også",
+    "nativeSyncNote": "Ikke nødvendig i appen. Prøveperioden og abonnementet i appen går gjennom Google Play."
   },
   "preview": {
     "bannerText": "Prøv Fredheim Menyplanlegger gratis i 14 dager",
@@ -652,7 +654,27 @@
     "canceledDesc": "Abonner igjen når som helst for å få tilgang til oppskrifter og ukeplaner.",
     "feature1": "Ubegrenset antall oppskrifter og menyplanlegging",
     "feature2": "Oppskriftspakker — nye samlinger hver sesong",
-    "feature3": "Handleliste med automatiske mengder"
+    "feature3": "Handleliste med automatiske mengder",
+    "nativeTitle": "Premium",
+    "nativePremiumTitle": "Fredheim Premium",
+    "nativePremiumDesc": "Alle oppskrifter, ukeplanleggeren, handlelisten og næringsinnhold. Ingen konto trengs — Google Play tar seg av prøveperioden og betalingen.",
+    "nativeFreeVersion": "Gratisversjon",
+    "nativePriceFallback": "120 NOK / måned",
+    "nativeTrialNote": "Gratis i 14 dager, deretter månedsprisen. Google Play trekker ingenting før prøveperioden er over, og du kan avslutte når som helst i Google Play.",
+    "nativeTrialNoteDays_one": "Gratis i {{count}} dag, deretter månedsprisen. Google Play trekker ingenting før prøveperioden er over, og du kan avslutte når som helst i Google Play.",
+    "nativeTrialNoteDays_other": "Gratis i {{count}} dager, deretter månedsprisen. Google Play trekker ingenting før prøveperioden er over, og du kan avslutte når som helst i Google Play.",
+    "nativeTrialNoteDays": "Gratis i {{count}} dager, deretter månedsprisen. Google Play trekker ingenting før prøveperioden er over, og du kan avslutte når som helst i Google Play.",
+    "nativeStartTrial": "Start gratis prøveperiode",
+    "nativeSubscribe": "Abonner",
+    "nativeRestore": "Gjenopprett kjøp",
+    "nativeManagePlay": "Administrer abonnement i Google Play",
+    "nativeRestoreNone": "Fant ingen tidligere kjøp for denne Google-kontoen.",
+    "nativeOfferUnavailable": "Kunne ikke hente abonnementet fra Google Play akkurat nå. Sjekk nettforbindelsen og prøv igjen.",
+    "nativeTrialEnds": "Prøveperioden slutter {{date}}. Avslutt i Google Play før det hvis du ikke vil fortsette.",
+    "nativeEndsOn": "Premium slutter {{date}}.",
+    "nativeAccountTitle": "Konto (valgfritt)",
+    "nativeAccountOptional": "Du trenger ingen konto for å bruke appen eller abonnere. Logg inn bare hvis du også bruker Fredheim på nettsiden og vil ha abonnementet der også.",
+    "nativeSignInToSync": "Logg inn for å synkronisere med nettsiden"
   },
   "starterPlans": {
     "title": "Ferdige uker",

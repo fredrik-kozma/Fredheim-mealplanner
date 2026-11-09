@@ -5,6 +5,9 @@ import useStore from '../../store/useStore'
 import { useAuth } from '../../contexts/AuthContext'
 import { useSubscription } from '../../hooks/useSubscription'
 import AuthModal from '../auth/AuthModal'
+import NativePaywallModal from '../subscription/NativePaywallModal'
+import { isNativePlatform } from '../../utils/nativePlatform'
+import { PLAY_SUBSCRIPTIONS_URL } from '../../lib/revenueCatHelpers'
 import TimerButton from '../timer/TimerButton'
 
 const NAV_ITEMS = [
@@ -83,6 +86,9 @@ export default function Navigation() {
   const { isActive, isTrial, isAdmin, daysLeft } = useSubscription()
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [authTab, setAuthTab] = useState('signin')
+  // Android app: Google Play billing, and the account is optional.
+  const isNative = isNativePlatform()
+  const [showNativePaywall, setShowNativePaywall] = useState(false)
 
   const initials = user?.email ? user.email.slice(0, 2).toUpperCase() : '?'
 
@@ -91,6 +97,10 @@ export default function Navigation() {
   }
 
   async function handlePortal() {
+    if (isNative) {
+      window.open(PLAY_SUBSCRIPTIONS_URL, '_blank', 'noopener')
+      return
+    }
     if (!user) return
     try {
       const res = await fetch('/.netlify/functions/create-portal-session', {
@@ -104,6 +114,10 @@ export default function Navigation() {
   }
 
   async function handleCheckout() {
+    if (isNative) {
+      setShowNativePaywall(true)
+      return
+    }
     if (!user) return
     try {
       const res = await fetch('/.netlify/functions/create-checkout-session', {
@@ -314,6 +328,14 @@ export default function Navigation() {
                 {t('settings.contactSupport', { defaultValue: 'Support' })}
               </a>
             </div>
+          ) : isNative ? (
+            // Android app: no account needed. Premium comes from Google Play;
+            // the optional sign-in lives in Settings.
+            !isActive && (
+              <button onClick={() => setShowNativePaywall(true)} className="btn-primary w-full">
+                {t('auth.startTrial')}
+              </button>
+            )
           ) : (
             <div className="space-y-2">
               <button
@@ -348,6 +370,10 @@ export default function Navigation() {
           </div>
         </div>
       </nav>
+
+      {showNativePaywall && (
+        <NativePaywallModal onClose={() => setShowNativePaywall(false)} />
+      )}
 
       {showAuthModal && (
         <AuthModal

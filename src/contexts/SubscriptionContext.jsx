@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { supabase } from '../lib/supabase'
 import { useAuth, IS_DEV_AUTOLOGIN } from './AuthContext'
+import { useRevenueCat } from './RevenueCatContext'
 
 const ADMIN_EMAILS = (import.meta.env.VITE_ADMIN_EMAILS || '')
   .split(',')
@@ -43,6 +44,9 @@ function writeCache(userId, profile) {
  */
 export function SubscriptionProvider({ children }) {
   const { user } = useAuth()
+  // Android app only: Premium bought through Google Play (RevenueCat).
+  // Always inactive on the website.
+  const { hasPremium: rcPremium, premium: rcDetails } = useRevenueCat()
 
   // Optimistic initial state from sessionStorage so we don't flash on reload.
   const cached = user ? readCache(user.id) : null
@@ -123,6 +127,18 @@ export function SubscriptionProvider({ children }) {
     } else {
       status = profile.subscription_status || 'expired'
     }
+  }
+
+  // Google Play entitlement (Android app). Works with or without a signed-in
+  // account; the RevenueCat webhook copies it to the profile only for
+  // signed-in users.
+  if (rcPremium && !isAdmin && !(isActive && !isTrial)) {
+    isActive = true
+    isTrial = !!rcDetails?.isTrial
+    status = isTrial ? 'trialing' : 'active'
+    daysLeft = isTrial ? rcDetails.daysLeft : 0
+    trialEndsAt = isTrial ? rcDetails.expiresAt : trialEndsAt
+    periodEndsAt = !isTrial ? rcDetails.expiresAt : periodEndsAt
   }
 
   const value = {

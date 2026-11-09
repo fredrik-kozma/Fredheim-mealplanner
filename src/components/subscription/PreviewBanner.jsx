@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useAccess } from '../../hooks/useAccess'
 import AuthModal from '../auth/AuthModal'
+import NativePaywallModal from './NativePaywallModal'
+import { isNativePlatform } from '../../utils/nativePlatform'
 
 const DISMISS_KEY = 'fredheim_preview_banner_dismissed'
 
@@ -13,7 +15,10 @@ const DISMISS_KEY = 'fredheim_preview_banner_dismissed'
  */
 export default function PreviewBanner() {
   const { t } = useTranslation()
-  const { isAnonymous } = useAccess()
+  const { isAnonymous, canAccess } = useAccess()
+  // Android app: shown to anyone without Premium (no account involved), and
+  // the button opens Google Play's free trial instead of a sign-up form.
+  const isNative = isNativePlatform()
   const [dismissed, setDismissed] = useState(false)
   const [showAuth, setShowAuth] = useState(false)
 
@@ -21,7 +26,8 @@ export default function PreviewBanner() {
     setDismissed(sessionStorage.getItem(DISMISS_KEY) === '1')
   }, [])
 
-  if (!isAnonymous || dismissed) return null
+  if (dismissed) return null
+  if (isNative ? canAccess : !isAnonymous) return null
 
   function handleDismiss() {
     sessionStorage.setItem(DISMISS_KEY, '1')
@@ -53,8 +59,9 @@ export default function PreviewBanner() {
         </div>
       </div>
 
-      {showAuth && (
-        <AuthModal initialTab="signup" onClose={() => setShowAuth(false)} />
+      {showAuth && (isNative
+        ? <NativePaywallModal onClose={() => setShowAuth(false)} />
+        : <AuthModal initialTab="signup" onClose={() => setShowAuth(false)} />
       )}
     </>
   )

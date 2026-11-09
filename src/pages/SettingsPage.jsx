@@ -13,6 +13,9 @@ import BlockedIngredientsSection from '../components/settings/BlockedIngredients
 import { buildBackup, downloadBackup, validateBackup, mergeRecipes } from '../utils/dataBackup'
 import { SALT_LEVELS } from '../utils/saltLevel'
 import PageHeader from '../components/common/PageHeader'
+import NativePaywall from '../components/subscription/NativePaywall'
+import { useRevenueCat } from '../contexts/RevenueCatContext'
+import { isNativePlatform } from '../utils/nativePlatform'
 
 function SectionCard({ title, children }) {
   return (
@@ -218,6 +221,82 @@ function SubscriptionSection() {
           onClose={() => setShowAuth(false)}
         />
       )}
+    </>
+  )
+}
+
+/**
+ * Android app version of the subscription card. Premium and its free trial
+ * are bought and managed in Google Play; no account is needed. Signing in
+ * is optional and only links the purchase to the website account.
+ */
+function NativeSubscriptionSection() {
+  const { t } = useTranslation()
+  const { user, signOut } = useAuth()
+  const { premium } = useRevenueCat()
+  const { isActive, isAdmin, status, daysLeft } = useSubscription()
+  const [showAuth, setShowAuth] = useState(false)
+
+  const expires = premium?.expiresAt
+    ? premium.expiresAt.toLocaleDateString(undefined, { dateStyle: 'medium' })
+    : null
+  let badge
+  if (isAdmin) badge = { text: t('subscription.adminAccess'), color: 'text-primary-700 bg-primary-50 border-primary-200' }
+  else if (premium?.active && premium.isTrial) badge = { text: t('subscription.trialDaysLeft', { count: premium.daysLeft }), color: 'text-warning-700 bg-warning-50 border-warning-200' }
+  else if (premium?.active) badge = { text: t('subscription.activeStatus'), color: 'text-success-700 bg-success-50 border-success-200' }
+  else if (isActive && status === 'trialing') badge = { text: t('subscription.trialDaysLeft', { count: daysLeft }), color: 'text-warning-700 bg-warning-50 border-warning-200' }
+  else if (isActive) badge = { text: t('subscription.activeStatus'), color: 'text-success-700 bg-success-50 border-success-200' }
+  else badge = { text: t('subscription.nativeFreeVersion'), color: 'text-slate-600 bg-slate-50 border-slate-200' }
+
+  return (
+    <>
+      <SectionCard title={t('subscription.nativeTitle')}>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between gap-3">
+            <span className="text-sm text-slate-600">{t('subscription.nativePremiumTitle')}</span>
+            <span className={`text-xs font-semibold border rounded-full px-2.5 py-1 ${badge.color}`}>
+              {badge.text}
+            </span>
+          </div>
+
+          {premium?.active && expires && (
+            <p className="text-xs text-slate-500">
+              {premium.isTrial
+                ? t('subscription.nativeTrialEnds', { date: expires })
+                : premium.willRenew
+                ? t('subscription.renewsOn', { date: expires })
+                : t('subscription.nativeEndsOn', { date: expires })}
+            </p>
+          )}
+
+          {!isAdmin && <NativePaywall />}
+
+          {/* Optional account — never required in the app. */}
+          <div className="pt-3 border-t border-slate-100 space-y-2">
+            <p className="text-xs font-semibold text-slate-700">{t('subscription.nativeAccountTitle')}</p>
+            {user ? (
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-sm text-slate-600 truncate">{user.email}</span>
+                <button
+                  onClick={() => { signOut().catch(() => {}) }}
+                  className="tap-target text-xs text-slate-400 hover:text-danger-500 transition-colors flex-shrink-0"
+                >
+                  {t('auth.signOut')}
+                </button>
+              </div>
+            ) : (
+              <>
+                <p className="text-xs text-slate-500">{t('subscription.nativeAccountOptional')}</p>
+                <button onClick={() => setShowAuth(true)} className="btn-secondary btn-sm w-full">
+                  {t('subscription.nativeSignInToSync')}
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      </SectionCard>
+
+      {showAuth && <AuthModal initialTab="signin" onClose={() => setShowAuth(false)} />}
     </>
   )
 }
@@ -431,8 +510,8 @@ export default function SettingsPage() {
       <PageHeader title={t('settings.title')} />
 
       <div className="px-4 space-y-4">
-        {/* Subscription */}
-        <SubscriptionSection />
+        {/* Subscription — Google Play in the Android app, Stripe on the web */}
+        {isNativePlatform() ? <NativeSubscriptionSection /> : <SubscriptionSection />}
 
         {/* Privacy policy and account deletion — public Play Console URLs. */}
         <PrivacyAccountSection />

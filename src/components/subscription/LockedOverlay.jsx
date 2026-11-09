@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../contexts/AuthContext'
 import AuthModal from '../auth/AuthModal'
+import NativePaywall from './NativePaywall'
+import { isNativePlatform } from '../../utils/nativePlatform'
 
 /**
  * Full-area overlay used to gate a page section (planner, shopping, locked
@@ -18,6 +20,8 @@ export default function LockedOverlay({ title, description, icon = '🔒', compa
   const { user } = useAuth()
   const [showAuth, setShowAuth] = useState(false)
   const [authTab, setAuthTab] = useState('signup')
+  // Android app: Google Play's subscription with its free trial, no account.
+  const isNative = isNativePlatform()
 
   async function handleSubscribe() {
     if (!user) {
@@ -61,6 +65,9 @@ export default function LockedOverlay({ title, description, icon = '🔒', compa
             </p>
           )}
 
+          {isNative ? (
+            <NativePaywall compact />
+          ) : (<>
           {/* Price chip */}
           <div className="inline-flex items-baseline gap-1 bg-primary-50 border border-primary-100 rounded-control px-3 py-1.5 mb-4">
             <span className="text-lg font-bold text-primary-700">120</span>
@@ -87,6 +94,7 @@ export default function LockedOverlay({ title, description, icon = '🔒', compa
               {t('preview.alreadyHaveAccount')}
             </button>
           )}
+          </>)}
         </div>
       </div>
 
