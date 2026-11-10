@@ -422,6 +422,7 @@ export default function RecipeList() {
           {categories.map(cat => (
             <button
               key={cat}
+              type="button"
               onClick={() => setActiveCategory(cat)}
               className={activeCategory === cat ? 'chip-active' : 'chip'}
             >

@@ -2,6 +2,9 @@ import { createContext, useContext, useEffect, useState, useCallback } from 'rea
 import { supabase } from '../lib/supabase'
 import { useAuth, IS_DEV_AUTOLOGIN } from './AuthContext'
 import { useRevenueCat } from './RevenueCatContext'
+import { useDeviceTrial } from './DeviceTrialContext'
+import { isNativeAndroid } from '../utils/nativePlatform'
+import { resolveAccess } from '../lib/deviceTrial'
 
 const ADMIN_EMAILS = (import.meta.env.VITE_ADMIN_EMAILS || '')
   .split(',')
@@ -47,6 +50,8 @@ export function SubscriptionProvider({ children }) {
   // Android app only: Premium bought through Google Play (RevenueCat).
   // Always inactive on the website.
   const { hasPremium: rcPremium, premium: rcDetails } = useRevenueCat()
+  const deviceTrial = useDeviceTrial()
+  const nativeAndroid = isNativeAndroid()
 
   // Optimistic initial state from sessionStorage so we don't flash on reload.
   const cached = user ? readCache(user.id) : null
@@ -101,7 +106,7 @@ export function SubscriptionProvider({ children }) {
   if (isAdmin) {
     isActive = true
     status = 'admin'
-  } else if (profile) {
+  } else if (!nativeAndroid && profile) {
     trialEndsAt = profile.trial_ends_at ? new Date(profile.trial_ends_at) : null
     periodEndsAt = profile.current_period_end
       ? new Date(profile.current_period_end)
@@ -129,16 +134,39 @@ export function SubscriptionProvider({ children }) {
     }
   }
 
-  // Google Play entitlement (Android app). Works with or without a signed-in
-  // account; the RevenueCat webhook copies it to the profile only for
-  // signed-in users.
-  if (rcPremium && !isAdmin && !(isActive && !isTrial)) {
-    isActive = true
-    isTrial = !!rcDetails?.isTrial
-    status = isTrial ? 'trialing' : 'active'
-    daysLeft = isTrial ? rcDetails.daysLeft : 0
-    trialEndsAt = isTrial ? rcDetails.expiresAt : trialEndsAt
-    periodEndsAt = !isTrial ? rcDetails.expiresAt : periodEndsAt
+  // Android: Play entitlement, or the in-app device trial. A Fredheim
+  // account trial does not grant access here (resolved above only on web).
+  const access = resolveAccess({
+    platform: nativeAndroid ? 'android' : 'web',
+    isAdmin,
+    profileActive: isActive,
+    rcPremium: !!rcPremium,
+    deviceTrialGrants: !!deviceTrial.grantsAccess,
+  })
+  if (!isAdmin && nativeAndroid) {
+    if (rcPremium) {
+      isActive = true
+      isTrial = !!rcDetails?.isTrial
+      status = isTrial ? 'trialing' : 'active'
+      daysLeft = isTrial ? rcDetails.daysLeft : 0
+      trialEndsAt = isTrial ? rcDetails.expiresAt : trialEndsAt
+      periodEndsAt = !isTrial ? rcDetails.expiresAt : periodEndsAt
+    } else if (deviceTrial.grantsAccess) {
+      isActive = true
+      isTrial = true
+      status = 'trialing'
+      daysLeft = deviceTrial.daysLeft
+      trialEndsAt = deviceTrial.endsAt ? new Date(deviceTrial.endsAt) : null
+      periodEndsAt = null
+    } else {
+      isActive = false
+      isTrial = false
+      status = deviceTrial.expired ? 'expired' : 'none'
+      daysLeft = 0
+      trialEndsAt = null
+    }
+  } else if (!isAdmin) {
+    isActive = access.active
   }
 
   const value = {
@@ -151,6 +179,7 @@ export function SubscriptionProvider({ children }) {
     trialEndsAt,
     periodEndsAt,
     daysLeft,
+    showDeviceTrialBanner: nativeAndroid && !rcPremium && !!deviceTrial.showBanner,
     refetch: fetchProfile,
   }
 

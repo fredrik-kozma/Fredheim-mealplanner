@@ -657,7 +657,7 @@
     "feature3": "Shopping list with automatic quantities",
     "nativeTitle": "Premium",
     "nativePremiumTitle": "Fredheim Premium",
-    "nativePremiumDesc": "All recipes, the week planner, shopping list and nutrition. No account needed — Google Play handles the trial and payment.",
+    "nativePremiumDesc": "All recipes, the week planner, shopping list and nutrition. The first 14 days on this device are free. After that, Google Play bills monthly.",
     "nativeFreeVersion": "Free version",
     "nativePriceFallback": "120 NOK / month",
     "nativeTrialNote": "Free for 14 days, then the monthly price. Google Play charges nothing until the trial ends, and you can cancel any time in Google Play.",
@@ -666,6 +666,11 @@
     "nativeTrialNoteDays": "Free for {{count}} days, then the monthly price. Google Play charges nothing until the trial ends, and you can cancel any time in Google Play.",
     "nativeStartTrial": "Start free trial",
     "nativeSubscribe": "Subscribe",
+    "nativeMonthlyNote": "120 NOK per month, billed by Google Play. Cancel any time.",
+    "deviceTrialBanner_one": "{{count}} day left in your free trial",
+    "deviceTrialBanner_other": "{{count}} days left in your free trial",
+    "deviceTrialBanner": "{{count}} days left in your free trial",
+    "deviceTrialUntil": "Full access until {{date}}.",
     "nativeRestore": "Restore purchases",
     "nativeManagePlay": "Manage subscription on Google Play",
     "nativeRestoreNone": "No previous purchases found for this Google account.",
@@ -673,8 +678,17 @@
     "nativeTrialEnds": "Free trial ends {{date}}. Cancel before then in Google Play if you do not want to continue.",
     "nativeEndsOn": "Premium ends on {{date}}.",
     "nativeAccountTitle": "Account (optional)",
-    "nativeAccountOptional": "You do not need an account to use the app or subscribe. Sign in only if you also use Fredheim on the website and want your subscription there too.",
-    "nativeSignInToSync": "Sign in to sync with the website"
+    "nativeAccountOptional": "You do not need an account to use the app. The Google Play subscription stays with this device, not the Fredheim account. Sign in only if you also use the website.",
+    "nativeSignInToSync": "Sign in to sync with the website",
+    "nativeLoading": "Loading subscription…",
+    "nativeRetry": "Try again",
+    "nativeError": {
+      "storeProducts": "Google Play didn't return the subscription for this phone yet. Make sure the app was installed from Google Play with the Google account that was invited to test, then try again.",
+      "network": "Couldn't reach Google Play. Check your internet connection and try again.",
+      "notAllowed": "Purchases aren't allowed on this Google account or device (check Google Play payment settings or parental controls).",
+      "store": "Google Play had a problem with the subscription. Please try again in a moment.",
+      "unknown": "Couldn't load the subscription from Google Play. Please try again."
+    }
   },
   "starterPlans": {
     "title": "Ready-made weeks",

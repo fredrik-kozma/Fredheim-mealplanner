@@ -657,7 +657,7 @@
     "feature3": "Inköpslista med automatiska mängder",
     "nativeTitle": "Premium",
     "nativePremiumTitle": "Fredheim Premium",
-    "nativePremiumDesc": "Alla recept, veckoplaneraren, inköpslistan och näringsinnehåll. Inget konto behövs — Google Play sköter provperioden och betalningen.",
+    "nativePremiumDesc": "Alla recept, veckoplaneraren, inköpslistan och näringsinnehåll. De första 14 dagarna på den här enheten är gratis. Därefter dras månadspriset i Google Play.",
     "nativeFreeVersion": "Gratisversion",
     "nativePriceFallback": "120 NOK / månad",
     "nativeTrialNote": "Gratis i 14 dagar, sedan månadspriset. Google Play drar ingenting innan provperioden är slut, och du kan avsluta när som helst i Google Play.",
@@ -666,6 +666,11 @@
     "nativeTrialNoteDays": "Gratis i {{count}} dagar, sedan månadspriset. Google Play drar ingenting innan provperioden är slut, och du kan avsluta när som helst i Google Play.",
     "nativeStartTrial": "Starta gratis provperiod",
     "nativeSubscribe": "Prenumerera",
+    "nativeMonthlyNote": "120 NOK per månad, dras av Google Play. Avsluta när som helst.",
+    "deviceTrialBanner_one": "{{count}} dag kvar av gratisperioden",
+    "deviceTrialBanner_other": "{{count}} dagar kvar av gratisperioden",
+    "deviceTrialBanner": "{{count}} dagar kvar av gratisperioden",
+    "deviceTrialUntil": "Full tillgång till {{date}}.",
     "nativeRestore": "Återställ köp",
     "nativeManagePlay": "Hantera prenumeration i Google Play",
     "nativeRestoreNone": "Inga tidigare köp hittades för det här Google-kontot.",
@@ -673,8 +678,17 @@
     "nativeTrialEnds": "Provperioden slutar {{date}}. Avsluta i Google Play före dess om du inte vill fortsätta.",
     "nativeEndsOn": "Premium slutar {{date}}.",
     "nativeAccountTitle": "Konto (valfritt)",
-    "nativeAccountOptional": "Du behöver inget konto för att använda appen eller prenumerera. Logga bara in om du också använder Fredheim på webbplatsen och vill ha prenumerationen där också.",
-    "nativeSignInToSync": "Logga in för att synka med webbplatsen"
+    "nativeAccountOptional": "Du behöver inget konto för att använda appen. Google Play-prenumerationen följer den här enheten, inte Fredheim-kontot. Logga bara in om du också använder webbplatsen.",
+    "nativeSignInToSync": "Logga in för att synka med webbplatsen",
+    "nativeLoading": "Hämtar prenumerationen…",
+    "nativeRetry": "Försök igen",
+    "nativeError": {
+      "storeProducts": "Google Play har inte skickat prenumerationen till den här telefonen ännu. Kontrollera att appen är installerad från Google Play med det Google-konto som bjöds in till testet och försök igen.",
+      "network": "Kunde inte nå Google Play. Kontrollera internetanslutningen och försök igen.",
+      "notAllowed": "Köp är inte tillåtna på det här Google-kontot eller den här enheten (kontrollera betalningsinställningar eller föräldrakontroll i Google Play).",
+      "store": "Google Play hade ett problem med prenumerationen. Försök igen om en stund.",
+      "unknown": "Kunde inte hämta prenumerationen från Google Play. Försök igen."
+    }
   },
   "starterPlans": {
     "title": "Färdiga veckor",

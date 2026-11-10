@@ -34,12 +34,14 @@ import WhatsNewModal from './components/whatsnew/WhatsNewModal'
 import TimerRunner from './components/timer/TimerRunner'
 import TimerAlarm from './components/timer/TimerAlarm'
 import { RevenueCatProvider } from './contexts/RevenueCatContext'
+import { DeviceTrialProvider } from './contexts/DeviceTrialContext'
 import NativePaywallModal from './components/subscription/NativePaywallModal'
+import DeviceTrialBanner from './components/subscription/DeviceTrialBanner'
 import { useAndroidBackButton } from './hooks/useAndroidBackButton'
 import { isNativePlatform } from './utils/nativePlatform'
 
-// Android app: no account is needed; Premium and its free trial come from
-// Google Play. Constant for the life of the page.
+// Android app: no account is needed. The first 14 days are an in-app device
+// trial; after that, Premium is a Google Play subscription.
 const IS_NATIVE = isNativePlatform()
 
 // Loaded only when it opens: most visits never show it.
@@ -254,9 +256,10 @@ function AppShell() {
       <main className="flex-1 min-w-0 flex flex-col lg:ml-60 min-h-dvh">
         {/* Banner and header stick together. Each used to be sticky top-0
             on its own, so on scroll the header slid up over the banner. */}
-        <div className="sticky top-0 z-30">
+        <div className="sticky top-0 z-30 safe-area-top">
           {/* CTA banner for anonymous visitors (auto-hidden if signed in) */}
           <PreviewBanner />
+          <DeviceTrialBanner />
           <Header />
         </div>
         <div className="flex-1 flex flex-col overflow-hidden">
@@ -323,6 +326,7 @@ export default function App() {
   return (
     <AuthProvider>
       <RevenueCatProvider>
+      <DeviceTrialProvider>
       <Routes>
         {/* Password reset lives OUTSIDE the SubscriptionGate so users with
             past-due / expired subscriptions can still recover their account. */}
@@ -342,6 +346,7 @@ export default function App() {
           </SubscriptionProvider>
         } />
       </Routes>
+      </DeviceTrialProvider>
       </RevenueCatProvider>
     </AuthProvider>
   )

@@ -5,6 +5,18 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import ErrorBoundary from './components/ErrorBoundary'
 import './index.css'
+import { isNativePlatform } from './utils/nativePlatform'
+
+// Android app: mark <html> so CSS can apply the status-bar inset, and make
+// sure the viewport is not edge-to-edge (index.html does this first; this is
+// the fallback if the Capacitor bridge was not ready that early).
+if (isNativePlatform()) {
+  document.documentElement.classList.add('native-app')
+  const vp = document.querySelector('meta[name=viewport]')
+  if (vp && /viewport-fit=cover/.test(vp.getAttribute('content') || '')) {
+    vp.setAttribute('content', 'width=device-width, initial-scale=1.0')
+  }
+}
 
 // ── Service worker: auto-reload when a new version is published ───────────────
 // vite-plugin-pwa registers the SW with `registerType: 'autoUpdate'` and we set

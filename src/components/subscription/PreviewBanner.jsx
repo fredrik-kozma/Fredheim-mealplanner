@@ -27,7 +27,9 @@ export default function PreviewBanner() {
   }, [])
 
   if (dismissed) return null
-  if (isNative ? canAccess : !isAnonymous) return null
+  // Android uses the device trial, not this "start a trial" prompt.
+  if (isNative) return null
+  if (!isAnonymous) return null
 
   function handleDismiss() {
     sessionStorage.setItem(DISMISS_KEY, '1')

@@ -13,6 +13,9 @@ import useStore from '../store/useStore'
  *                       (first Breakfast + first Dinner, picked dynamically
  *                        so it works no matter which packs are installed)
  * - isPreviewRecipe() → check if a given recipe id is in the preview set
+ *
+ * On Android, canAccess is the device trial or a Play entitlement, so the
+ * two preview recipes only matter on the website.
  */
 export function useAccess() {
   const { user } = useAuth()

@@ -71,10 +71,13 @@ describe('Google Play entitlement (RevenueCat)', () => {
 })
 
 describe('Android app needs no account', () => {
-  it('configures RevenueCat anonymously (no appUserID)', () => {
+  it('configures RevenueCat with the hashed device id and aliases an old anonymous id', () => {
     const src = read('src/lib/revenueCat.js')
-    assert.match(src, /Purchases\.configure\(\{ apiKey: API_KEY \}\)/)
-    assert.doesNotMatch(src, /configure\(\{[^}]*appUserID/)
+    assert.match(src, /appUserID/)
+    assert.match(src, /Purchases\.configure\(config\)/)
+    assert.match(src, /\$RCAnonymousID:/)
+    assert.match(src, /Purchases\.logIn\(\{ appUserID \}\)/)
+    assert.doesNotMatch(src, /logOut/)
   })
 
   it('never logs RevenueCat out automatically (would drop an anonymous purchase)', () => {
@@ -93,5 +96,81 @@ describe('Android app needs no account', () => {
       assert.ok(keys.length > 0)
       for (const l of langs) for (const k of keys) assert.ok(l[group][k], `${group}.${k}`)
     }
+  })
+})
+
+// ── 1.0.3: trial offer selection, error reasons, safe-area ───────────────────
+import { pickBasePlanOption, describeBillingError } from '../src/lib/revenueCatHelpers.js'
+
+describe('Google Play trial offer and errors (1.0.3)', () => {
+  const base = { id: 'monthly', basePlanId: 'monthly', offerId: null, isBasePlan: true, freePhase: null }
+  const trial = { id: 'monthly:trial14', basePlanId: 'monthly', offerId: 'trial14', isBasePlan: false, freePhase: { billingPeriod: { unit: 'DAY', value: 14 } } }
+
+  it('buys the monthly base plan and skips the trial14 offer', () => {
+    assert.equal(pickBasePlanOption({ product: { subscriptionOptions: [base, trial] } }), base)
+    assert.equal(pickBasePlanOption({ product: { subscriptionOptions: [trial] } }), null)
+    assert.equal(pickBasePlanOption({ product: { subscriptionOptions: [], defaultOption: base } }), base)
+    assert.equal(pickBasePlanOption({ product: { defaultOption: trial } }), null)
+    assert.equal(pickBasePlanOption(null), null)
+  })
+
+  it('maps RevenueCat errors to a reason instead of failing silently', () => {
+    assert.equal(describeBillingError({ code: 23, message: 'None of the products registered in the RevenueCat dashboard could be fetched' }).kind, 'storeProducts')
+    assert.equal(describeBillingError({ code: '10', message: 'Error performing request' }).kind, 'network')
+    assert.equal(describeBillingError({ code: '3', message: 'x' }).kind, 'notAllowed')
+    assert.equal(describeBillingError(new Error('boom')).kind, 'unknown')
+  })
+
+  it('paywall never leaves a permanently disabled subscribe button', () => {
+    const src = read('src/components/subscription/NativePaywall.jsx')
+    assert.ok(!src.includes('!ready || !pkg'), 'button must not be disabled just because the package is missing')
+    assert.ok(src.includes('nativeRetry'))
+    assert.ok(src.includes('OFFER_TIMEOUT_MS'))
+    for (const lang of ['en', 'no', 'sv']) {
+      const sub = JSON.parse(read(`src/i18n/locales/${lang}.json`)).subscription
+      for (const k of ['nativeLoading', 'nativeRetry']) assert.ok(sub[k], `${lang} ${k}`)
+      for (const k of ['storeProducts', 'network', 'notAllowed', 'store', 'unknown']) assert.ok(sub.nativeError[k], `${lang} nativeError.${k}`)
+    }
+  })
+
+  it('keeps the app below the Android status bar', () => {
+    const html = read('index.html')
+    assert.ok(html.includes("isNativePlatform()") && html.includes("'width=device-width, initial-scale=1.0'"))
+    const cfg = JSON.parse(read('capacitor.config.json'))
+    assert.equal(cfg.plugins.SystemBars.insetsHandling, 'css')
+    assert.ok(read('src/App.jsx').includes('sticky top-0 z-30 safe-area-top'))
+  })
+})
+
+describe('RevenueCat loading never hangs (1.0.3 "Loading subscription…" bug)', async () => {
+  const { withTimeout } = await import('../src/lib/revenueCatHelpers.js')
+
+  it('never returns or awaits the Capacitor plugin proxy (its `then` hangs)', () => {
+    const src = read('src/lib/revenueCat.js')
+    assert.match(src, /const \{ Purchases \} = await loadPurchases\(\)/)
+    assert.doesNotMatch(src, /return PurchasesMod\b|PurchasesMod = mod\.Purchases/)
+    assert.doesNotMatch(src, /const Purchases = await loadPurchases\(\)/)
+  })
+
+  it('shows why awaiting a proxy with a `then` trap never settles', async () => {
+    const proxy = new Proxy({}, { get: () => () => new Promise(() => {}) })
+    const hung = (async () => proxy)()
+    await assert.rejects(withTimeout(hung, 30, 'proxy'), (e) => e.code === '10')
+    const ok = (async () => ({ Purchases: proxy }))()
+    const mod = await withTimeout(ok, 30)
+    assert.equal(typeof mod.Purchases.configure, 'function')
+  })
+
+  it('times out configure and the paywall has a watchdog', () => {
+    const lib = read('src/lib/revenueCat.js')
+    assert.match(lib, /withTimeout\([\s\S]*Purchases\.configure[\s\S]*RC_CONFIGURE_TIMEOUT_MS/)
+    const pw = read('src/components/subscription/NativePaywall.jsx')
+    assert.match(pw, /WATCHDOG_MS/)
+    assert.match(pw, /const waiting = !stalled &&/)
+  })
+
+  it('withTimeout passes through results and errors', async () => {
+    assert.equal(await withTimeout(Promise.resolve(5), 50), 5)
+    await assert.rejects(withTimeout(Promise.reject(Object.assign(new Error('x'), { code: '23' })), 50), (e) => e.code === '23')
   })
 })

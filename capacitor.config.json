@@ -12,6 +12,10 @@
     "SplashScreen": {
       "launchAutoHide": true,
       "backgroundColor": "#ffffff"
+    },
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "contain"
     }
   }
 }
