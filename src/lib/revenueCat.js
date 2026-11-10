@@ -1,5 +1,5 @@
 import { isNativeAndroid } from '../utils/nativePlatform'
-import { pickTrialOption, withTimeout } from './revenueCatHelpers'
+import { pickBasePlanOption, withTimeout } from './revenueCatHelpers'
 
 export {
   RC_ENTITLEMENT_ID,
@@ -11,7 +11,7 @@ export {
   pickMonthlyPackage,
   packageFreeTrialDays,
   isPurchaseCancelled,
-  pickTrialOption,
+  pickBasePlanOption,
   describeBillingError,
   withTimeout,
 } from './revenueCatHelpers'
@@ -52,12 +52,19 @@ export function rcLastInitError() {
 }
 
 /**
- * Configure WITHOUT an appUserID: RevenueCat makes an anonymous id that
- * lives on the device, and Google Play ties the purchase to the person's
- * Google account. No Fredheim account is needed to buy or restore.
+ * Configure with the hashed ANDROID_ID as appUserID so the RevenueCat
+ * customer (and a Play purchase) survives uninstall/reinstall.
+ *
+ * 1.0.x builds configured with no appUserID, so the SDK has a cached
+ * anonymous id (`$RCAnonymousID:…`). configure() keeps that cached user and
+ * ignores appUserID. logIn(hashedId) then aliases the anonymous customer
+ * onto the device id and transfers an active entitlement (RevenueCat alias).
+ * An already-identified customer is left as-is: logIn would switch users
+ * rather than merge. Restore purchases still recovers a Play purchase.
+ *
  * Always settles within RC_CONFIGURE_TIMEOUT_MS.
  */
-export async function initRevenueCat() {
+export async function initRevenueCat(appUserID) {
   if (!isRevenueCatAvailable()) return false
   if (configured) return true
   if (configuring) return configuring
@@ -65,7 +72,14 @@ export async function initRevenueCat() {
     try {
       await withTimeout((async () => {
         const { Purchases } = await loadPurchases()
-        await Purchases.configure({ apiKey: API_KEY })
+        const config = appUserID ? { apiKey: API_KEY, appUserID } : { apiKey: API_KEY }
+        await Purchases.configure(config)
+        if (appUserID && Purchases.getAppUserID) {
+          const { appUserID: current } = await Purchases.getAppUserID()
+          if (typeof current === 'string' && current.startsWith('$RCAnonymousID:')) {
+            await Purchases.logIn({ appUserID })
+          }
+        }
       })(), RC_CONFIGURE_TIMEOUT_MS, 'RevenueCat to start')
       configured = true
       lastInitError = null
@@ -145,14 +159,13 @@ export async function rcGetOfferings() {
 }
 
 /**
- * Buy the monthly subscription. When Google Play offers the 14-day free
- * trial (offer `trial14` on base plan `monthly`) to this Google account,
- * that option is bought explicitly; otherwise (e.g. the account already
- * used its trial) the package's default option is used.
+ * Buy the monthly base plan. The option with basePlanId `monthly` and no
+ * offer id (no free phase) is purchased explicitly. The package purchase is
+ * only the fallback when Play did not return that option.
  */
 export async function rcPurchasePackage(aPackage) {
   const { Purchases } = await loadPurchases()
-  const option = pickTrialOption(aPackage)
+  const option = pickBasePlanOption(aPackage)
   if (option) {
     return Purchases.purchaseSubscriptionOption({ subscriptionOption: option })
   }

@@ -71,10 +71,13 @@ describe('Google Play entitlement (RevenueCat)', () => {
 })
 
 describe('Android app needs no account', () => {
-  it('configures RevenueCat anonymously (no appUserID)', () => {
+  it('configures RevenueCat with the hashed device id and aliases an old anonymous id', () => {
     const src = read('src/lib/revenueCat.js')
-    assert.match(src, /Purchases\.configure\(\{ apiKey: API_KEY \}\)/)
-    assert.doesNotMatch(src, /configure\(\{[^}]*appUserID/)
+    assert.match(src, /appUserID/)
+    assert.match(src, /Purchases\.configure\(config\)/)
+    assert.match(src, /\$RCAnonymousID:/)
+    assert.match(src, /Purchases\.logIn\(\{ appUserID \}\)/)
+    assert.doesNotMatch(src, /logOut/)
   })
 
   it('never logs RevenueCat out automatically (would drop an anonymous purchase)', () => {
@@ -97,16 +100,18 @@ describe('Android app needs no account', () => {
 })
 
 // ── 1.0.3: trial offer selection, error reasons, safe-area ───────────────────
-import { pickTrialOption, describeBillingError } from '../src/lib/revenueCatHelpers.js'
+import { pickBasePlanOption, describeBillingError } from '../src/lib/revenueCatHelpers.js'
 
 describe('Google Play trial offer and errors (1.0.3)', () => {
-  const base = { id: 'monthly', isBasePlan: true, freePhase: null }
-  const trial = { id: 'monthly:trial14', isBasePlan: false, freePhase: { billingPeriod: { unit: 'DAY', value: 14 } } }
+  const base = { id: 'monthly', basePlanId: 'monthly', offerId: null, isBasePlan: true, freePhase: null }
+  const trial = { id: 'monthly:trial14', basePlanId: 'monthly', offerId: 'trial14', isBasePlan: false, freePhase: { billingPeriod: { unit: 'DAY', value: 14 } } }
 
-  it('buys the trial14 offer explicitly when Google Play offers it', () => {
-    assert.equal(pickTrialOption({ product: { subscriptionOptions: [base, trial] } }), trial)
-    assert.equal(pickTrialOption({ product: { subscriptionOptions: [base] } }), null)
-    assert.equal(pickTrialOption(null), null)
+  it('buys the monthly base plan and skips the trial14 offer', () => {
+    assert.equal(pickBasePlanOption({ product: { subscriptionOptions: [base, trial] } }), base)
+    assert.equal(pickBasePlanOption({ product: { subscriptionOptions: [trial] } }), null)
+    assert.equal(pickBasePlanOption({ product: { subscriptionOptions: [], defaultOption: base } }), base)
+    assert.equal(pickBasePlanOption({ product: { defaultOption: trial } }), null)
+    assert.equal(pickBasePlanOption(null), null)
   })
 
   it('maps RevenueCat errors to a reason instead of failing silently', () => {

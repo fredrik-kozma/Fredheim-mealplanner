@@ -80,18 +80,25 @@ export const PLAY_TRIAL_OFFER_ID = 'trial14'
 export const PLAY_BASE_PLAN_ID = 'monthly'
 
 /**
- * The Play subscription option for the 14-day free trial (base plan
- * `monthly`, offer `trial14`), if Google Play offers it to this account.
- * Google only returns offers the account is eligible for, so after a used
- * trial this is null and the base plan is bought instead.
+ * The paid monthly base plan (`fredheim_premium` base plan `monthly`) with
+ * no Play offer and no free phase. The 14 days already happened in the app,
+ * so the purchase must not select `trial14`.
+ * Returns null when that option is missing; the caller then buys the package.
  */
-export function pickTrialOption(pkg) {
-  const options = pkg?.product?.subscriptionOptions
-  if (!Array.isArray(options) || options.length === 0) return null
-  const byId = options.find((o) => o?.id === `${PLAY_BASE_PLAN_ID}:${PLAY_TRIAL_OFFER_ID}`)
-  if (byId) return byId
-  const tagged = options.find((o) => !o?.isBasePlan && o?.freePhase)
-  return tagged || null
+export function pickBasePlanOption(pkg) {
+  const product = pkg?.product
+  if (!product) return null
+  const options = Array.isArray(product.subscriptionOptions) ? product.subscriptionOptions : []
+  const plainMonthly = (o) => {
+    if (!o || o.freePhase) return false
+    if (o.offerId) return false
+    if (o.basePlanId === PLAY_BASE_PLAN_ID) return true
+    if (o.id === PLAY_BASE_PLAN_ID) return true
+    return false
+  }
+  const fromList = options.find(plainMonthly)
+  if (fromList) return fromList
+  return plainMonthly(product.defaultOption) ? product.defaultOption : null
 }
 
 /**

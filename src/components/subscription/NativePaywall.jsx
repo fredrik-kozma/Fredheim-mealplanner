@@ -5,7 +5,6 @@ import {
   PLAY_SUBSCRIPTIONS_URL,
   rcGetOfferings,
   pickMonthlyPackage,
-  packageFreeTrialDays,
   rcPurchasePackage,
   rcRestorePurchases,
   customerHasPremium,
@@ -22,9 +21,8 @@ const WATCHDOG_MS = OFFER_TIMEOUT_MS + 5000
 
 /**
  * Google Play paywall (RevenueCat), Android app only. No Fredheim account
- * is needed: Google Play shows its own sheet with the 14-day free trial and
- * the price, charges nothing until the trial ends, and handles cancelling.
- * Renders nothing on the website.
+ * is needed. The free 14 days already ran in the app, so this buys the
+ * monthly base plan (no Play trial offer). Renders nothing on the website.
  *
  * The main button is never left dead: while the subscription loads it shows
  * a spinner label, and if loading fails it explains why and turns into
@@ -100,7 +98,6 @@ export default function NativePaywall({ compact = false, onAccessGranted }) {
   if (!available) return null
 
   const priceLabel = pkg?.product?.priceString || t('subscription.nativePriceFallback')
-  const trialDays = packageFreeTrialDays(pkg)
   const starting = !ready && !failed
   const waiting = !stalled && (starting || (loadingOffer && !pkg))
 
@@ -161,7 +158,7 @@ export default function NativePaywall({ compact = false, onAccessGranted }) {
   if (busy) mainLabel = '…'
   else if (waiting) mainLabel = t('subscription.nativeLoading')
   else if (!pkg) mainLabel = t('subscription.nativeRetry')
-  else mainLabel = trialDays ? t('subscription.nativeStartTrial') : t('subscription.nativeSubscribe')
+  else mainLabel = t('subscription.nativeSubscribe')
 
   return (
     <div className={compact ? 'space-y-3' : 'space-y-4'}>
@@ -173,9 +170,7 @@ export default function NativePaywall({ compact = false, onAccessGranted }) {
             </span>
           </div>
           <p className="text-xs text-slate-500">
-            {trialDays
-              ? t('subscription.nativeTrialNoteDays', { count: trialDays })
-              : t('subscription.nativeTrialNote')}
+            {t('subscription.nativeMonthlyNote')}
           </p>
         </>
       )}

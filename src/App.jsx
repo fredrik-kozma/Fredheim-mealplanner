@@ -33,15 +33,15 @@ import InstallBanner from './components/pwa/InstallBanner'
 import WhatsNewModal from './components/whatsnew/WhatsNewModal'
 import TimerRunner from './components/timer/TimerRunner'
 import TimerAlarm from './components/timer/TimerAlarm'
-import { RevenueCatProvider, useRevenueCat } from './contexts/RevenueCatContext'
+import { RevenueCatProvider } from './contexts/RevenueCatContext'
+import { DeviceTrialProvider } from './contexts/DeviceTrialContext'
 import NativePaywallModal from './components/subscription/NativePaywallModal'
-import FirstLaunchTrialSheet from './components/subscription/FirstLaunchTrialSheet'
+import DeviceTrialBanner from './components/subscription/DeviceTrialBanner'
 import { useAndroidBackButton } from './hooks/useAndroidBackButton'
-import { isNativePlatform, isNativeAndroid } from './utils/nativePlatform'
-import { hasSeenTrialOffer, markTrialOfferSeen, shouldShowTrialOffer, isTrialOfferPending } from './lib/trialOffer'
+import { isNativePlatform } from './utils/nativePlatform'
 
-// Android app: no account is needed; Premium and its free trial come from
-// Google Play. Constant for the life of the page.
+// Android app: no account is needed. The first 14 days are an in-app device
+// trial; after that, Premium is a Google Play subscription.
 const IS_NATIVE = isNativePlatform()
 
 // Loaded only when it opens: most visits never show it.
@@ -165,14 +165,6 @@ function AppShell() {
   // it too: it is as much a reason to start the trial as a how-to.
   const navigate = useNavigate()
   const { canAccess } = useAccess()
-  const setRecipesView = useStore(s => s.setRecipesView)
-  const {
-    available: rcAvailable,
-    ready: rcReady,
-    failed: rcFailed,
-    customerChecked: rcChecked,
-    hasPremium: rcPremium,
-  } = useRevenueCat()
   const hasChosenLanguage = useStore(s => s.hasChosenLanguage)
   const setHasChosenLanguage = useStore(s => s.setHasChosenLanguage)
   const setStoreLanguage = useStore(s => s.setLanguage)
@@ -182,55 +174,13 @@ function AppShell() {
   const [showTour, setShowTour] = useState(false)
   const [showTrialSignup, setShowTrialSignup] = useState(false)
   const [showNativePaywall, setShowNativePaywall] = useState(false)
-  const [trialDismissed, setTrialDismissed] = useState(false)
-  // If Play never answers, stop blocking the tour and show the sheet anyway.
-  const [rcWaitExpired, setRcWaitExpired] = useState(false)
-
-  // First-launch trial sheet (Android only). Held until we know they are
-  // not already Premium, and it holds the intro tour until it closes.
-  let trialSeen = false
-  try { trialSeen = hasSeenTrialOffer(globalThis.localStorage) } catch { trialSeen = false }
-  const rcKnown = rcAvailable ? (rcFailed || (rcReady && rcChecked)) : true
-  useEffect(() => {
-    if (rcKnown) return undefined
-    const id = setTimeout(() => setRcWaitExpired(true), 15000)
-    return () => clearTimeout(id)
-  }, [rcKnown])
-  const trialArgs = {
-    native: isNativeAndroid() && rcAvailable,
-    seen: trialDismissed || trialSeen,
-    hasPremium: rcPremium || canAccess,
-    rcKnown: rcKnown || rcWaitExpired,
-    languageChosen: hasChosenLanguage,
-    blocked: location.pathname.startsWith('/s/'),
-  }
-  const showTrialOffer = shouldShowTrialOffer(trialArgs)
-  const trialOfferPending = isTrialOfferPending(trialArgs)
-
-  function dismissTrialOffer() {
-    try { markTrialOfferSeen(globalThis.localStorage) } catch { /* private mode */ }
-    setTrialDismissed(true)
-  }
-
-  function exploreFreeRecipes() {
-    dismissTrialOffer()
-    setRecipesView({
-      freeOnly: true,
-      category: 'All',
-      pack: 'All',
-      conditions: [],
-      search: '',
-      favoritesOnly: false,
-    })
-    navigate('/recipes')
-  }
 
   // Not over a shared menu someone has just opened from a link: that page
-  // is what they came for. The tour also waits for the trial sheet.
+  // is what they came for. The tour waits until they move on.
   const autoTour = shouldAutoShowTour({
     hasChosenLanguage,
     hasSeenIntroTour,
-    otherModalOpen: location.pathname.startsWith('/s/') || showTrialOffer || trialOfferPending,
+    otherModalOpen: location.pathname.startsWith('/s/'),
   })
   useEffect(() => {
     if (autoTour) setShowTour(true)
@@ -309,6 +259,7 @@ function AppShell() {
         <div className="sticky top-0 z-30 safe-area-top">
           {/* CTA banner for anonymous visitors (auto-hidden if signed in) */}
           <PreviewBanner />
+          <DeviceTrialBanner />
           <Header />
         </div>
         <div className="flex-1 flex flex-col overflow-hidden">
@@ -354,21 +305,13 @@ function AppShell() {
         <NativePaywallModal onClose={() => setShowNativePaywall(false)} />
       )}
 
-      <FirstLaunchTrialSheet
-        eligible={showTrialOffer}
-        hidden={rcPremium || canAccess}
-        onDismiss={dismissTrialOffer}
-        onExplore={exploreFreeRecipes}
-        onPurchased={dismissTrialOffer}
-      />
-
       {/* What's-new announcements — small modal that pops up once per
           unseen entry in src/data/whatsNew.js, after the tutorial has
           been acknowledged so the two never stack on top of each other. */}
       {/* `tutorialOpen` means "another first-run modal is up" — the
           language question and the intro tour count, or announcements
           would stack on top of them the instant a new user arrives. */}
-      <WhatsNewModal tutorialOpen={showTour || autoTour || !hasChosenLanguage || showTrialOffer || trialOfferPending} />
+      <WhatsNewModal tutorialOpen={showTour || autoTour || !hasChosenLanguage} />
 
       {/* PWA install prompt — appears after a short delay on devices
           where installing is possible and the user hasn't already
@@ -383,6 +326,7 @@ export default function App() {
   return (
     <AuthProvider>
       <RevenueCatProvider>
+      <DeviceTrialProvider>
       <Routes>
         {/* Password reset lives OUTSIDE the SubscriptionGate so users with
             past-due / expired subscriptions can still recover their account. */}
@@ -402,6 +346,7 @@ export default function App() {
           </SubscriptionProvider>
         } />
       </Routes>
+      </DeviceTrialProvider>
       </RevenueCatProvider>
     </AuthProvider>
   )

@@ -1,15 +1,14 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react'
-import { useAuth } from './AuthContext'
 import {
   initRevenueCat,
   isRevenueCatAvailable,
-  rcLogIn,
   rcLastInitError,
   rcGetCustomerInfo,
   rcAddCustomerInfoListener,
   customerHasPremium,
   premiumDetails,
 } from '../lib/revenueCat'
+import { getHashedAndroidId } from '../lib/deviceId'
 
 const NO_RC = {
   available: false,
@@ -29,14 +28,12 @@ const RevenueCatContext = createContext(NO_RC)
 /**
  * Google Play Premium via RevenueCat — Android app only.
  *
- * RevenueCat runs with an anonymous app user id, so Premium (and Google's
- * free trial) works with no Fredheim account. If the person chooses to sign
- * in, the device is linked to that account id so the purchase also shows
- * on the website; signing out does not unlink it (the Google account still
- * owns the purchase, and "Restore purchases" recovers it anywhere).
+ * The app user id is the hashed ANDROID_ID, not a Fredheim account, so a
+ * Play purchase survives reinstall. Signing in does not call logIn with the
+ * Supabase user id: that would switch the customer off the device id.
+ * "Restore purchases" still recovers a purchase tied to the Google account.
  */
 export function RevenueCatProvider({ children }) {
-  const { user } = useAuth()
   const available = isRevenueCatAvailable()
   const [ready, setReady] = useState(false)
   const [failed, setFailed] = useState(false)
@@ -61,7 +58,11 @@ export function RevenueCatProvider({ children }) {
     if (!available) return undefined
     let cancelled = false
     ;(async () => {
-      const ok = await initRevenueCat()
+      let appUserID = null
+      try { appUserID = await getHashedAndroidId() } catch (err) {
+        console.warn('[revenueCat] device id unavailable', err)
+      }
+      const ok = await initRevenueCat(appUserID)
       if (!cancelled) {
         setReady(!!ok)
         setFailed(!ok)
@@ -90,19 +91,19 @@ export function RevenueCatProvider({ children }) {
     return () => { cancelled = true; remove?.() }
   }, [available, ready, applyInfo])
 
-  // Current entitlement; link to the Fredheim account only when signed in.
+  // Current entitlement. Not tied to the Fredheim account (see file comment).
   useEffect(() => {
     if (!available || !ready) return undefined
     let cancelled = false
     ;(async () => {
-      const next = user?.id ? (await rcLogIn(user.id)) || (await rcGetCustomerInfo()) : await rcGetCustomerInfo()
+      const next = await rcGetCustomerInfo()
       if (!cancelled) {
         applyInfo(next)
         setCustomerChecked(true)
       }
     })()
     return () => { cancelled = true }
-  }, [available, ready, user?.id, applyInfo])
+  }, [available, ready, applyInfo])
 
   // Re-check when the app comes back to the foreground (e.g. after the
   // person managed the subscription in Google Play).

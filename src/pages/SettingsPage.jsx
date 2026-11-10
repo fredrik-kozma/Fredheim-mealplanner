@@ -234,7 +234,7 @@ function NativeSubscriptionSection() {
   const { t } = useTranslation()
   const { user, signOut } = useAuth()
   const { premium } = useRevenueCat()
-  const { isActive, isAdmin, status, daysLeft } = useSubscription()
+  const { isActive, isAdmin, status, daysLeft, isTrial, trialEndsAt } = useSubscription()
   const [showAuth, setShowAuth] = useState(false)
 
   const expires = premium?.expiresAt
@@ -258,6 +258,14 @@ function NativeSubscriptionSection() {
               {badge.text}
             </span>
           </div>
+
+          {isTrial && !premium?.active && trialEndsAt && (
+            <p className="text-xs text-slate-500">
+              {t('subscription.deviceTrialUntil', {
+                date: trialEndsAt.toLocaleDateString(undefined, { dateStyle: 'medium' }),
+              })}
+            </p>
+          )}
 
           {premium?.active && expires && (
             <p className="text-xs text-slate-500">

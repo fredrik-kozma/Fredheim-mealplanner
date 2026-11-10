@@ -9,7 +9,6 @@ import { CONDITION_TAGS } from '../../data/conditionTags'
 import { VISIBLE_NUTRITION_GROUPS, fmtNutrient } from '../../utils/nutritionData'
 import { recipeHasAvoidedAllergen } from '../../data/allergens'
 import { blockedIsActive } from '../../data/ingredientBlocker'
-import { isFreeRecipe } from '../../data/freeRecipes'
 import { buildSearchEntry, matchSearchEntry } from '../../utils/recipeSearch'
 
 // Nutrients offered in the "Most …" sort — the ones you'd want more of.
@@ -81,7 +80,6 @@ export default function RecipeList() {
   // `?? false` rather than a migration: anyone with a persisted view from
   // before this was a stored filter simply has the key missing.
   const favoritesOnly = view.favoritesOnly ?? false
-  const freeOnly = view.freeOnly ?? false
 
   // When sorting by a nutrient, sortBy is "nutrient:<key>". Otherwise it's one
   // of newest/oldest/name.
@@ -98,7 +96,6 @@ export default function RecipeList() {
   // filter still appears to work) but cannot be serialised, so it silently
   // vanishes the moment the store is persisted.
   const setFavoritesOnly = (v) => setRecipesView({ favoritesOnly: Boolean(v) })
-  const setFreeOnly = (v) => setRecipesView({ freeOnly: Boolean(v) })
   // Toggle one condition in/out of the AND-filter set. Reads the current
   // conditions from the store (not the render closure) so two quick taps
   // before a re-render don't clobber each other.
@@ -122,8 +119,7 @@ export default function RecipeList() {
     // Now that it survives navigation, it also has to be something
     // "Clear filters" can get you out of — otherwise a persisted
     // favourites-only view looks like half your recipes have vanished.
-    favoritesOnly ||
-    freeOnly
+    favoritesOnly
 
   const currentLang = i18n.language?.slice(0, 2) || 'en'
   const titleOf = (r) => r.translations?.[currentLang]?.title || r.title
@@ -183,7 +179,6 @@ export default function RecipeList() {
 
   const matchesFilters = recipes
     .filter(r => !favoritesOnly || favSet.has(r.id))
-    .filter(r => !freeOnly || isFreeRecipe(r.id))
     .filter(r => activeCategory === 'All' || r.category === activeCategory)
     // AND across selected conditions: recipe must carry every chosen tag.
     .filter(r => activeConditions.every(c => (r.tags || []).includes(c)))
@@ -424,14 +419,6 @@ export default function RecipeList() {
           className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none"
           style={{ scrollbarWidth: 'none' }}
         >
-          <button
-            type="button"
-            onClick={() => setFreeOnly(!freeOnly)}
-            aria-pressed={freeOnly}
-            className={freeOnly ? 'chip-active' : 'chip'}
-          >
-            {t('preview.freeBadge')}
-          </button>
           {categories.map(cat => (
             <button
               key={cat}
