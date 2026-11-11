@@ -33,7 +33,7 @@ export const PHOTO_VEIL = 0.45
  * list fits the space under the name.
  */
 export const CARD_TYPE = {
-  nameMaxPt: 17,
+  nameMaxPt: 21,
   nameMinPt: 9,
   allergenMaxPt: 18,
   allergenMinPt: 7.5,

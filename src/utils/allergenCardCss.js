@@ -2,12 +2,14 @@ import {
   CARD_W, CARD_H, GAP_X, GAP_Y, GRID_W, GRID_H, MARGIN_X, MARGIN_TOP,
   FOOTER_GAP, PAGE_W, PAGE_H, ROWS, PHOTO_VEIL, CARD_TYPE,
 } from './allergenCardModel.js'
+import { ALLERGEN_FONT_FACE_CSS, CARD_TEXT_FONT, CARD_TITLE_FONT } from './allergenCardFonts.js'
 
 const disclaimerTop = MARGIN_TOP + GRID_H + FOOTER_GAP
 
 /** Shared by the on-screen sheet and the print window, so they cannot drift. */
 export const ALLERGEN_CARD_CSS = `
-.allergen-print-area { font-family: Inter, system-ui, sans-serif; }
+${ALLERGEN_FONT_FACE_CSS}
+.allergen-print-area { font-family: ${CARD_TEXT_FONT}; }
 .allergen-page {
   width: ${PAGE_W}mm;
   height: ${PAGE_H}mm;
@@ -30,8 +32,9 @@ export const ALLERGEN_CARD_CSS = `
   justify-content: space-between;
   gap: 4mm;
   color: #1B7A3A;
+  font-family: ${CARD_TEXT_FONT};
   font-size: 8pt;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0.01em;
 }
 .allergen-page-head span { display: inline-flex; align-items: center; gap: 1.5mm; }
@@ -138,10 +141,11 @@ export const ALLERGEN_CARD_CSS = `
 }
 .allergen-name {
   flex: none;
+  font-family: ${CARD_TITLE_FONT};
   font-size: ${CARD_TYPE.nameMaxPt}pt;
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   color: #0b3f24;
   text-shadow: 0 0 0.35mm #fff, 0 0 0.9mm rgba(255,255,255,0.95);
   display: -webkit-box;
@@ -157,10 +161,11 @@ export const ALLERGEN_CARD_CSS = `
   justify-content: flex-start;
   gap: 0.12mm;
   overflow: hidden;
+  font-family: ${CARD_TEXT_FONT};
   font-size: ${CARD_TYPE.allergenMaxPt}pt;
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
   color: #0b3f24;
   text-shadow: 0 0 0.35mm #fff, 0 0 0.9mm rgba(255,255,255,0.95);
 }
@@ -182,7 +187,9 @@ export const ALLERGEN_CARD_CSS = `
   right: 12mm;
   top: ${disclaimerTop}mm;
   margin: 0;
+  font-family: ${CARD_TEXT_FONT};
   font-size: 7pt;
+  font-weight: 600;
   line-height: 1.3;
   color: #3d5246;
   text-align: center;
