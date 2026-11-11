@@ -1313,6 +1313,8 @@
     "printFailed": "Utskriften startet ikke. Prøv igjen, eller del PDF-en.",
     "printHint": "I utskriftsdialogen: velg marger «Ingen», så hvert kort blir 7,4 × 4,0 cm.",
     "none": "Ingen av de 14 hovedallergenene",
+    "gluten": "Gluten",
+    "glutenTrace": "Spor av gluten",
     "disclaimer": "Personalet må kontrollere kortene mot varene som faktisk brukes. Forslagene er utledet fra ingredienslisten. Spor, merkevare og svoveldioksid eller sulfitter over 10 mg/kg eller 10 mg/l kan avvike.",
     "groupsHelp": "Kryss av for det retten inneholder. Kornslag og nøtter skal navngis.",
     "reviewHeading": "Kontroller før utskrift",

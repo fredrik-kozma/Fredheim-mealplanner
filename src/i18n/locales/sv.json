@@ -1313,6 +1313,8 @@
     "printFailed": "Utskriften startade inte. Försök igen, eller dela PDF:en.",
     "printHint": "I utskriftsdialogen: välj marginaler «Inga», så varje kort blir 7,4 × 4,0 cm.",
     "none": "Inget av de 14 huvudallergenen",
+    "gluten": "Gluten",
+    "glutenTrace": "Spår av gluten",
     "disclaimer": "Personalen måste kontrollera korten mot varorna som faktiskt används. Förslagen är härledda från ingredienslistan. Spår, varumärke och svaveldioxid eller sulfit över 10 mg/kg eller 10 mg/l kan avvika.",
     "groupsHelp": "Kryssa i det rätten innehåller. Spannmål och nötter ska namnges.",
     "reviewHeading": "Kontrollera före utskrift",

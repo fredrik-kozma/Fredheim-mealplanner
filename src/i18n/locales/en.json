@@ -1313,6 +1313,8 @@
     "printFailed": "Printing did not start. Try again, or share the PDF.",
     "printHint": "In the print dialog, set Margins to None so each card stays 7.4 × 4.0 cm.",
     "none": "None of the 14 major allergens",
+    "gluten": "Gluten",
+    "glutenTrace": "Traces of gluten",
     "disclaimer": "Staff must check every card against the products actually used. Suggestions come from the ingredient list. Traces, brands and sulphur dioxide or sulphites above 10 mg/kg or 10 mg/L can differ.",
     "groupsHelp": "Tick what the dish contains. Name the cereal and the nut.",
     "reviewHeading": "Check before printing",

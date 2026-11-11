@@ -6,11 +6,12 @@
  * gluten, so the cards declare oats even when a row says gluten-free.
  *
  * Where a product might or might not contain an allergen, the card declares
- * it: bouillon and nutritional yeast as wheat, curry blends as mustard,
- * herb salt as celery, miso as barley, dried fruit and brined vegetables
- * as sulphites, baking powder as wheat, unnamed plant milk as soy and oats,
- * a gluten-free flour mix as lupin and almond. Staff can remove that line
- * on the card if the jar they use is free of it. An ingredient id with no
+ * it. Flour, bread and soy sauce are definite gluten. Oats, and ingredients
+ * that may only carry traces (nutritional yeast, bouillon, baking powder,
+ * miso, a gluten-free flour mix, unspecified crispbread or starter, herb
+ * and spice mixes), are a trace. A definite cereal on the same recipe
+ * replaces the trace line with "Gluten". Staff can remove a line on the
+ * card if the jar they use is free of it. An ingredient id with no
  * decision at all is reported as unmapped. Coconut, buckwheat, nutmeg,
  * eggplant and poppy seeds are decided safe.
  */
@@ -37,9 +38,10 @@ export const INGREDIENT_RULES = {
   'spelt-flour': { hits: ['cereal:spelt'] },
   // Inka / Caro, the examples in the recipes, are barley and rye.
   'barley-coffee': { hits: ['cereal:barley', 'cereal:rye'] },
-  // Unspecified grain: wheat. A note that names rye, oats, or spelt replaces this.
-  'sourdough-starter': { hits: ['cereal:wheat'] },
-  crispbread: { hits: ['cereal:wheat'] },
+  // Unspecified grain may only be a trace. A note that names rye, wheat,
+  // barley, spelt or khorasan replaces this with that cereal.
+  'sourdough-starter': { hits: ['gluten:trace'] },
+  crispbread: { hits: ['gluten:trace'] },
 
   'soy-sauce': { hits: ['soy', 'cereal:wheat'] },
   'soy-sauce-low-sodium': { hits: ['soy', 'cereal:wheat'] },
@@ -49,7 +51,7 @@ export const INGREDIENT_RULES = {
   'soy-milk': { hits: ['soy'] },
   'soy-mayonnaise': { hits: ['soy'] },
   'edamame-frozen': { hits: ['soy'] },
-  'miso-paste': { hits: ['soy', 'cereal:barley'] },
+  'miso-paste': { hits: ['soy', 'gluten:trace'] },
   // Unnamed plant milk/yogurt: both common bases. A note that names one replaces these.
   'plant-milk': { hits: ['soy', 'cereal:oats'] },
   'plant-yogurt': { hits: ['soy', 'cereal:oats'] },
@@ -80,7 +82,7 @@ export const INGREDIENT_RULES = {
 
   // The house daily broth contains celery, and cubes almost always do.
   'vegetable-broth': { hits: ['celery'] },
-  'vegetable-bouillon': { hits: ['celery', 'cereal:wheat'] },
+  'vegetable-bouillon': { hits: ['celery', 'gluten:trace'] },
 
   'dried-apricots': { hits: ['sulphites'] },
   'dried-cranberries': { hits: ['sulphites'] },
@@ -97,14 +99,14 @@ export const INGREDIENT_RULES = {
   'rice-vinegar': { hits: ['sulphites'] },
   ketchup: { hits: ['sulphites'] },
 
-  'nutritional-yeast': { hits: ['cereal:wheat'] },
-  'baking-powder': { hits: ['cereal:wheat'] },
-  // Mixes on the market often contain lupin or almond. Staff can untick either.
-  'gluten-free-flour-mix': { hits: ['lupin', 'nut:almond'] },
-  'curry-powder': { hits: ['mustard'] },
-  'garam-masala': { hits: ['mustard'] },
-  'tandoori-masala': { hits: ['mustard'] },
-  'herb-salt': { hits: ['celery'] },
+  'nutritional-yeast': { hits: ['gluten:trace'] },
+  'baking-powder': { hits: ['gluten:trace'] },
+  // Mixes on the market often contain lupin or almond, and may carry gluten traces.
+  'gluten-free-flour-mix': { hits: ['lupin', 'nut:almond', 'gluten:trace'] },
+  'curry-powder': { hits: ['mustard', 'gluten:trace'] },
+  'garam-masala': { hits: ['mustard', 'gluten:trace'] },
+  'tandoori-masala': { hits: ['mustard', 'gluten:trace'] },
+  'herb-salt': { hits: ['celery', 'gluten:trace'] },
   'hot-sauce': { hits: ['cereal:wheat'] },
 }
 
@@ -263,25 +265,31 @@ export function allergensFromFreeText(text) {
     hits.push('sulphites')
   }
   if (/(^|[^a-zæøåäö])(olives|oliven)(?![a-zæøåäö])/.test(t)) hits.push('sulphites')
-  if (/nutritional yeast|næringsgjær|naringsgjær|näringsjäst|baking powder|bakepulver|bakpulver|hot sauce|chilisaus|chilisås|bouillon|buljong/.test(t)) {
-    hits.push('cereal:wheat')
+  if (/nutritional yeast|næringsgjær|naringsgjær|näringsjäst|baking powder|bakepulver|bakpulver|bouillon|buljong/.test(t)) {
+    hits.push('gluten:trace')
   }
+  if (/hot sauce|chilisaus|chilisås/.test(t)) hits.push('cereal:wheat')
   if (/bouillon|buljong|vegetable broth|grønnsaksbuljong|grönsaksbuljong/.test(t)) hits.push('celery')
-  if (/curry|garam masala|tandoori/.test(t)) hits.push('mustard')
-  if (/herb salt|urtesalt|örtsalt|kryddersalt|kryddsalt/.test(t)) hits.push('celery')
-  if (/miso/.test(t)) hits.push('cereal:barley')
+  if (/curry|garam masala|tandoori/.test(t)) hits.push('mustard', 'gluten:trace')
+  if (/herb salt|urtesalt|örtsalt|kryddersalt|kryddsalt/.test(t)) hits.push('celery', 'gluten:trace')
+  if (/miso/.test(t)) hits.push('gluten:trace')
 
   hits.push(...cerealsInText(t))
   const soySauce = /soy sauce|soyasaus|sojasås|shoyu/.test(t)
   if (soySauce && !WHEAT_FREE.test(t)) hits.push('cereal:wheat')
-  if (!hits.some((hit) => hit.startsWith('cereal:')) && !GF_FLOUR.test(t) && hasFlour(t)) {
+  const labelledGlutenFree = /gluten[\s-]?free|glutenfri/.test(t)
+  if (!hits.some((hit) => hit.startsWith('cereal:')) && !GF_FLOUR.test(t) && hasFlour(t) && !labelledGlutenFree) {
     hits.push('cereal:wheat')
+  }
+  if (/gluten[\s-]?free flour mix|glutenfritt melmiks|glutenfri mjölmix/.test(t)) {
+    hits.push('gluten:trace', 'lupin', 'nut:almond')
   }
   if (/(^|[^a-zæøåäö])(bread|brød|bröd)/.test(t) && !/crispbread|knekkebrød|knäckebröd/.test(t)) {
     if (!hits.includes('cereal:wheat')) hits.push('cereal:wheat')
   }
-  if (/crispbread|knekkebrød|knäckebröd/.test(t) && !hits.some((hit) => hit.startsWith('cereal:'))) {
-    hits.push('cereal:wheat')
+  if (/crispbread|knekkebrød|knäckebröd|sourdough starter|surdeigsstarter|surdegsgrund/.test(t)
+    && !hits.some((hit) => hit.startsWith('cereal:') && hit !== 'cereal:oats')) {
+    if (!hits.includes('gluten:trace') && !hits.includes('cereal:oats')) hits.push('gluten:trace')
   }
 
   return { hits: [...new Set(hits)], reviews: [] }
@@ -336,7 +344,9 @@ function applyRow(row, into) {
     }
     if (id === 'sourdough-starter' || id === 'crispbread') {
       const grains = cerealsInText(row.text)
-      if (grains.length) hits = [...grains]
+      const definite = grains.some((hit) => hit !== 'cereal:oats')
+      if (definite) hits = [...grains]
+      else if (grains.includes('cereal:oats')) hits = ['cereal:oats']
     }
     if (id === 'bread') hits.push(...cerealsInText(row.text))
   }

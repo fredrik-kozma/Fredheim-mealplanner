@@ -5,11 +5,15 @@
  * 1169/2011. Mattilsynet lists the same 14 (kornslag som inneholder gluten,
  * skalldyr, egg, fisk, peanøtter, soyabønner, melk, nøtter, selleri, sennep,
  * sesamfrø, svoveldioksid og sulfitter, lupin, bløtdyr) and requires the
- * specific cereal or nut to be named — "gluten" or "nøtter" alone is not
- * enough. Swedish names follow the Swedish text of the same annex
+ * specific cereal or nut to be named. On the kitchen cards the owner asked
+ * for a shorter gluten line: "Gluten" when wheat, rye, barley, spelt or
+ * khorasan is definite, and "traces of gluten" when the only source is oats
+ * or an ingredient that may only carry traces. Nuts are still named.
+ * Swedish names follow the Swedish text of the same annex
  * (Livsmedelsverket). Display strings live in the i18n catalogues.
  *
  * Hit codes:
+ *   gluten:trace
  *   cereal:wheat|rye|barley|oats|spelt|khorasan
  *   nut:almond|hazelnut|walnut|cashew|pecan|brazil|pistachio|macadamia
  *   crustaceans, eggs, fish, peanuts, soy, milk, celery, mustard, sesame,
@@ -26,7 +30,10 @@ export const NUT_CODES = [
 export const SIMPLE_BEFORE_NUTS = ['crustaceans', 'eggs', 'fish', 'peanuts', 'soy', 'milk']
 export const SIMPLE_AFTER_NUTS = ['celery', 'mustard', 'sesame', 'sulphites', 'lupin', 'molluscs']
 
+export const DEFINITE_CEREALS = ['wheat', 'rye', 'barley', 'spelt', 'khorasan']
+
 export const HIT_ORDER = [
+  'gluten:trace',
   ...CEREAL_CODES.map((id) => `cereal:${id}`),
   ...SIMPLE_BEFORE_NUTS,
   ...NUT_CODES.map((id) => `nut:${id}`),
@@ -49,22 +56,21 @@ export function sanitizeHits(hits) {
 }
 
 /**
- * Lines for one card. Cereals share a line, nuts share a line, so the
- * specific grain or nut is still named (Mattilsynet requires that).
+ * Lines for one card. A definite gluten cereal (wheat, rye, barley, spelt,
+ * khorasan) is just "Gluten". Oats, or a trace-only source, is "traces of
+ * gluten" — and a definite cereal hides that second line. Nuts still name
+ * the nut.
  *
  * `labels` is built from i18n:
- *   { cereal, nuts, cereals: {wheat…}, nutNames: {almond…}, crustaceans, … }
+ *   { gluten, glutenTrace, nuts, nutNames: {almond…}, crustaceans, … }
  */
 export function formatAllergenLines(hits, labels) {
   const set = new Set(hits || [])
   const lines = []
-  const cereals = CEREAL_CODES.filter((id) => set.has(`cereal:${id}`))
-  if (cereals.length) {
-    lines.push({
-      icon: 'cereal',
-      text: `${labels.cereal}: ${cereals.map((id) => labels.cereals[id]).join(', ')}`,
-    })
-  }
+  const definite = DEFINITE_CEREALS.some((id) => set.has(`cereal:${id}`))
+  const trace = set.has('cereal:oats') || set.has('gluten:trace')
+  if (definite) lines.push({ icon: 'cereal', text: labels.gluten })
+  else if (trace) lines.push({ icon: 'cereal', text: labels.glutenTrace })
   for (const code of SIMPLE_BEFORE_NUTS) {
     if (set.has(code)) lines.push({ icon: code, text: labels[code] })
   }

@@ -178,7 +178,6 @@ function drawPage(ctx, page, meta, images, logo) {
     const nameLineH = ptPx(namePt) * 1.05
 
     const items = []
-    if (card.none) items.push({ text: card.noneText })
     for (const line of card.lines || []) items.push({ text: line.text })
 
     const listTop = textTop + nameLines.length * nameLineH + px(0.8)

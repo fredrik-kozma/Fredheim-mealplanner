@@ -62,6 +62,8 @@ const LABELS = {
   lupin: 'Lupin',
   molluscs: 'Molluscs',
   none: 'None of the 14 major allergens',
+  gluten: 'Gluten',
+  glutenTrace: 'Traces of gluten',
   review: (key, name) => `${key}:${name}`,
 }
 
@@ -178,13 +180,18 @@ describe('detectRecipeAllergens', () => {
     assert.ok(detectRecipeAllergens(recipe([row('vegetable-broth', 'Vegetable broth')])).hits.includes('celery'))
     const miso = detectRecipeAllergens(recipe([row('miso-paste', 'Miso', 'white, shiro')]))
     assert.ok(miso.hits.includes('soy'))
-    assert.ok(miso.hits.includes('cereal:barley'))
-    assert.deepEqual(detectRecipeAllergens(recipe([row('curry-powder', 'Curry powder')])).hits, ['mustard'])
-    assert.deepEqual(detectRecipeAllergens(recipe([row('herb-salt', 'Herb salt')])).hits, ['celery'])
-    assert.deepEqual(detectRecipeAllergens(recipe([row('nutritional-yeast', 'Nutritional yeast')])).hits, ['cereal:wheat'])
-    assert.deepEqual(detectRecipeAllergens(recipe([row('baking-powder', 'Baking powder')])).hits, ['cereal:wheat'])
-    assert.ok(detectRecipeAllergens(recipe([row('gluten-free-flour-mix', 'Gluten-free flour mix')])).hits.includes('lupin'))
-    assert.deepEqual(detectRecipeAllergens(recipe([row('sourdough-starter', 'Sourdough starter')])).hits, ['cereal:wheat'])
+    assert.ok(miso.hits.includes('gluten:trace'))
+    assert.ok(!miso.hits.includes('cereal:barley'))
+    assert.ok(detectRecipeAllergens(recipe([row('curry-powder', 'Curry powder')])).hits.includes('mustard'))
+    assert.ok(detectRecipeAllergens(recipe([row('curry-powder', 'Curry powder')])).hits.includes('gluten:trace'))
+    assert.ok(detectRecipeAllergens(recipe([row('herb-salt', 'Herb salt')])).hits.includes('celery'))
+    assert.ok(detectRecipeAllergens(recipe([row('herb-salt', 'Herb salt')])).hits.includes('gluten:trace'))
+    assert.deepEqual(detectRecipeAllergens(recipe([row('nutritional-yeast', 'Nutritional yeast')])).hits, ['gluten:trace'])
+    assert.deepEqual(detectRecipeAllergens(recipe([row('baking-powder', 'Baking powder')])).hits, ['gluten:trace'])
+    const mix = detectRecipeAllergens(recipe([row('gluten-free-flour-mix', 'Gluten-free flour mix')]))
+    assert.ok(mix.hits.includes('lupin'))
+    assert.ok(mix.hits.includes('gluten:trace'))
+    assert.deepEqual(detectRecipeAllergens(recipe([row('sourdough-starter', 'Sourdough starter')])).hits, ['gluten:trace'])
   })
 
   it('uses free text when the row has no dictionary id', () => {
@@ -229,7 +236,8 @@ describe('free-text traps', () => {
     assert.deepEqual(allergensFromFreeText('gluten-free oat flour').reviews, [])
     assert.ok(allergensFromFreeText('lupin flour').hits.includes('lupin'))
     assert.ok(allergensFromFreeText('curry powder').hits.includes('mustard'))
-    assert.ok(allergensFromFreeText('nutritional yeast').hits.includes('cereal:wheat'))
+    assert.ok(allergensFromFreeText('nutritional yeast').hits.includes('gluten:trace'))
+    assert.ok(!allergensFromFreeText('nutritional yeast').hits.includes('cereal:wheat'))
     assert.ok(allergensFromFreeText('sun-dried tomatoes').hits.includes('sulphites'))
     assert.deepEqual(allergensFromFreeText('olive oil').hits, [])
     assert.ok(allergensFromFreeText('spelt flour').hits.includes('cereal:spelt'))
@@ -238,21 +246,27 @@ describe('free-text traps', () => {
 })
 
 describe('card wording', () => {
-  it('groups cereals and nuts and keeps annex order', () => {
-    const lines = formatAllergenLines([
-      'sesame', 'nut:almond', 'cereal:oats', 'cereal:wheat', 'soy', 'nut:cashew',
+  it('writes Gluten for a definite cereal and traces when that is the only gluten', () => {
+    const both = formatAllergenLines([
+      'sesame', 'nut:almond', 'cereal:oats', 'cereal:wheat', 'soy', 'nut:cashew', 'gluten:trace',
     ], LABELS)
-    assert.deepEqual(lines.map((line) => line.text), [
-      'Cereals containing gluten: wheat, oats',
+    assert.deepEqual(both.map((line) => line.text), [
+      'Gluten',
       'Soybeans',
       'Nuts: almond, cashew',
       'Sesame seeds',
     ])
+    assert.deepEqual(formatAllergenLines(['cereal:oats'], LABELS).map((line) => line.text), ['Traces of gluten'])
+    assert.deepEqual(
+      formatAllergenLines(['gluten:trace', 'celery'], LABELS).map((line) => line.text),
+      ['Traces of gluten', 'Celery'],
+    )
+    assert.deepEqual(formatAllergenLines(['cereal:rye'], LABELS).map((line) => line.text), ['Gluten'])
     assert.equal(CEREAL_CODES[0], 'wheat')
     assert.equal(NUT_CODES[0], 'almond')
   })
 
-  it('says none of the 14 only when there is nothing to flag', () => {
+  it('leaves the card blank when nothing was found', () => {
     const empty = cardStatements({ hits: [], reviews: [], unmapped: [] }, LABELS, 'en')
     assert.equal(empty.none, true)
     assert.equal(empty.lines.length, 0)

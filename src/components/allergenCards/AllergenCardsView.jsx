@@ -41,6 +41,8 @@ function titleOf(recipe, lang) {
 
 function buildLabels(t) {
   return {
+    gluten: t('allergenCards.gluten'),
+    glutenTrace: t('allergenCards.glutenTrace'),
     cereal: t('allergenCards.cereal'),
     nuts: t('allergenCards.nuts'),
     cereals: Object.fromEntries(CEREAL_CODES.map((id) => [id, t(`allergenCards.cereals.${id}`)])),
@@ -101,7 +103,7 @@ function fitCardFace(root) {
   linesEl.style.fontSize = `${Math.max(allergenPt, CARD_TYPE.allergenMinPt)}pt`
 }
 
-function CardFace({ title, imageUrl, lines, notes, none, noneText }) {
+function CardFace({ title, imageUrl, lines, notes }) {
   const faceRef = useRef(null)
   const lineKey = lines.map((line) => line.text).join('\n')
   const noteKey = notes.join('\n')
@@ -117,7 +119,7 @@ function CardFace({ title, imageUrl, lines, notes, none, noneText }) {
     const ready = document.fonts?.ready
     if (ready) ready.then(run)
     return () => { cancelled = true }
-  }, [title, lineKey, noteKey, none, noneText])
+  }, [title, lineKey, noteKey])
 
   return (
     <span className="allergen-face" ref={faceRef}>
@@ -129,12 +131,6 @@ function CardFace({ title, imageUrl, lines, notes, none, noneText }) {
       <span className="allergen-copy">
         <span className="allergen-name">{title}</span>
         <span className="allergen-lines">
-          {none && (
-            <span className="allergen-line allergen-none">
-              <span className="allergen-dot" aria-hidden="true">•</span>
-              <span>{noneText}</span>
-            </span>
-          )}
           {lines.map((line) => (
             <span className="allergen-line" key={line.text}>
               <span className="allergen-dot" aria-hidden="true">•</span>
@@ -240,9 +236,7 @@ function PickerDialog({ mode, recipes, cardLang, labels, onSheet, onClose, onCho
           {filtered.map((recipe) => {
             const detected = detectRecipeAllergens(recipe)
             const statement = cardStatements(detected, labels, cardLang)
-            const summary = statement.none
-              ? labels.none
-              : [...statement.lines.map((line) => line.text), ...statement.notes].join(' · ')
+            const summary = [...statement.lines.map((line) => line.text), ...statement.notes].join(' · ')
             const title = titleOf(recipe, cardLang)
             return (
               <li key={recipe.id}>
@@ -318,7 +312,10 @@ function EditorDialog({ recipe, detected, activeHits, cardLang, labels, onToggle
   const groups = [
     {
       title: t('allergenCards.cerealGroup'),
-      items: CEREAL_CODES.map((id) => ({ code: `cereal:${id}`, label: labels.cereals[id] })),
+      items: [
+        { code: 'gluten:trace', label: labels.glutenTrace },
+        ...CEREAL_CODES.map((id) => ({ code: `cereal:${id}`, label: labels.cereals[id] })),
+      ],
     },
     {
       title: t('allergenCards.otherGroup'),
@@ -341,7 +338,6 @@ function EditorDialog({ recipe, detected, activeHits, cardLang, labels, onToggle
             </h2>
             <p className="text-xs text-slate-500 mt-1">
               {overridden ? t('allergenCards.corrected') : t('allergenCards.suggestion')}
-              {statement.none ? ` · ${labels.none}` : ''}
             </p>
           </div>
           <button type="button" className="btn-ghost btn-sm" onClick={onClose}>{t('allergenCards.close')}</button>
