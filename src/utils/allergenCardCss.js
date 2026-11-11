@@ -1,6 +1,6 @@
 import {
   CARD_W, CARD_H, GAP_X, GAP_Y, GRID_W, GRID_H, MARGIN_X, MARGIN_TOP,
-  FOOTER_GAP, PAGE_W, PAGE_H, ROWS,
+  FOOTER_GAP, PAGE_W, PAGE_H, ROWS, PHOTO_VEIL, CARD_TYPE,
 } from './allergenCardModel.js'
 
 const disclaimerTop = MARGIN_TOP + GRID_H + FOOTER_GAP
@@ -14,7 +14,7 @@ export const ALLERGEN_CARD_CSS = `
   position: relative;
   background: #fff;
   overflow: hidden;
-  color: #143028;
+  color: #10261c;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
   color-adjust: exact;
@@ -64,18 +64,18 @@ export const ALLERGEN_CARD_CSS = `
   width: ${CARD_W}mm;
   height: ${CARD_H}mm;
   margin: 0;
-  padding: 1.7mm 1.8mm 1.4mm;
-  border: 0.35mm solid #1B7A3A;
+  padding: 0;
+  border: 0.4mm solid #1B7A3A;
   border-radius: 2.2mm;
   background: #fff;
-  color: #143028;
+  color: #10261c;
   font-family: inherit;
   text-align: left;
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
-  gap: 0.9mm;
+  flex-direction: row;
+  align-items: stretch;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
 }
@@ -88,76 +88,114 @@ export const ALLERGEN_CARD_CSS = `
   justify-content: center;
   cursor: pointer;
 }
-.allergen-plus { font-size: 16pt; font-weight: 500; line-height: 1; }
-.allergen-top { display: flex; gap: 1.6mm; min-height: 14mm; align-items: flex-start; }
-.allergen-photo {
-  width: 14mm;
-  height: 14mm;
-  border-radius: 1.5mm;
+.allergen-plus { font-size: 18pt; font-weight: 600; line-height: 1; }
+.allergen-face {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+.allergen-bg, .allergen-bg-empty {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  flex: none;
-  background: #e7f6ec;
+  display: block;
 }
-.allergen-photo-empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: #1B7A3A;
-  font-size: 8pt;
+.allergen-bg-empty {
+  background: #cfe8d8;
 }
-.allergen-name {
-  font-size: 8pt;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  padding-right: 6mm;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.allergen-veil {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, ${PHOTO_VEIL});
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 .allergen-logo {
   position: absolute;
-  top: 1.3mm;
-  right: 1.3mm;
-  width: 5mm;
-  height: 5mm;
+  top: 1mm;
+  right: 1mm;
+  z-index: 2;
+  width: 3.4mm;
+  height: 3.4mm;
   border-radius: 50%;
   object-fit: cover;
+  opacity: 0.8;
 }
-.allergen-lines {
+.allergen-copy {
+  position: absolute;
+  z-index: 1;
+  inset: 1.15mm 1.2mm 1.15mm 1.3mm;
   display: flex;
   flex-direction: column;
-  gap: 0.3mm;
+  gap: 0.55mm;
+  min-height: 0;
+  padding: 1mm 1.3mm 0.9mm;
+  border-radius: 1.5mm;
+  background: rgba(255, 255, 255, 0.62);
+  box-sizing: border-box;
   overflow: hidden;
-  font-size: 6.15pt;
-  line-height: 1.2;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
-.allergen-line { display: flex; gap: 0.8mm; align-items: flex-start; }
-.allergen-ico {
-  width: 3.3mm;
-  height: 3.3mm;
+.allergen-name {
   flex: none;
-  color: #1B7A3A;
-  background: #e7f6ec;
-  border-radius: 0.8mm;
-  padding: 0.25mm;
+  font-size: ${CARD_TYPE.nameMaxPt}pt;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #0b3f24;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.allergen-lines {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.12mm;
+  overflow: hidden;
+  font-size: ${CARD_TYPE.allergenMaxPt}pt;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #0b3f24;
+}
+.allergen-line {
+  display: flex;
+  gap: 0.22em;
+  align-items: flex-start;
+}
+.allergen-line > span:last-child { min-width: 0; }
+.allergen-ico {
+  width: 1.02em;
+  height: 1.02em;
+  flex: none;
+  margin-top: 0.02em;
+  color: #0b3f24;
+  background: rgba(11, 63, 36, 0.1);
+  border-radius: 0.2em;
+  padding: 0.05em;
   box-sizing: border-box;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
 }
 .allergen-none {
   display: flex;
-  gap: 0.8mm;
+  gap: 0.22em;
   align-items: flex-start;
-  color: #1B7A3A;
-  font-weight: 650;
-  font-size: 6.6pt;
-  line-height: 1.25;
+  color: #0b3f24;
+  font-weight: 800;
+  line-height: 1.05;
 }
-.allergen-review { color: #8a5a00; }
-.allergen-review .allergen-ico { color: #8a5a00; background: #fff4df; }
+.allergen-review { color: #6b3400; font-weight: 750; }
+.allergen-review .allergen-ico { color: #6b3400; background: rgba(107, 52, 0, 0.12); }
 .allergen-disclaimer {
   position: absolute;
   left: 12mm;

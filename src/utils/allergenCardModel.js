@@ -20,6 +20,24 @@ export const MARGIN_TOP = 12
 export const FOOTER_GAP = 4
 export const DISCLAIMER_H = 10
 
+/**
+ * The photo covers the card. This much white is laid over it so the picture
+ * stays a soft backdrop and dark green type keeps its contrast in print.
+ */
+export const PHOTO_VEIL = 0.78
+
+/**
+ * Type sizes in points. The name starts at the max and shrinks only until it
+ * fits on two lines. Allergen lines start at the max and shrink until the
+ * list fits the space under the name.
+ */
+export const CARD_TYPE = {
+  nameMaxPt: 17,
+  nameMinPt: 9,
+  allergenMaxPt: 18,
+  allergenMinPt: 7.5,
+}
+
 export const LAYOUT = {
   cols: COLS,
   rows: ROWS,

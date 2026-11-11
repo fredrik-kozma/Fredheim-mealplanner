@@ -23,6 +23,8 @@ import {
   removeSlot,
   printablePages,
   PER_PAGE,
+  CARD_TYPE,
+  PHOTO_VEIL,
 } from '../src/utils/allergenCardModel.js'
 import { jpegPagesToPdf } from '../src/utils/allergenCardPdf.js'
 
@@ -268,6 +270,10 @@ describe('A4 sheet', () => {
     assert.equal(LAYOUT.rows, 6)
     assert.ok(LAYOUT.cardW >= 70 && LAYOUT.cardW <= 90)
     assert.ok(LAYOUT.cardH >= 38 && LAYOUT.cardH <= 48)
+    assert.ok(PHOTO_VEIL >= 0.7 && PHOTO_VEIL <= 0.82)
+    assert.ok(CARD_TYPE.nameMaxPt > CARD_TYPE.nameMinPt)
+    assert.ok(CARD_TYPE.allergenMaxPt >= 16)
+    assert.ok(CARD_TYPE.allergenMinPt >= 7)
     assert.ok(LAYOUT.marginX * 2 + LAYOUT.gridW <= LAYOUT.pageW)
   })
 

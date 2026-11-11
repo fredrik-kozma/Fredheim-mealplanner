@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useRef, useState } from 'react'
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import PageHeader from '../common/PageHeader'
@@ -11,6 +11,7 @@ import {
   setSlot,
   removeSlot,
   PER_PAGE,
+  CARD_TYPE,
 } from '../../utils/allergenCardModel.js'
 import {
   CEREAL_CODES,
@@ -66,38 +67,90 @@ function sameHits(a, b) {
   return sanitizeHits(a).join('|') === sanitizeHits(b).join('|')
 }
 
+/**
+ * Largest name size that still fits on two lines, then the largest allergen
+ * size that fills the space underneath. Inline sizes travel with the DOM
+ * into the print window, so the sheet and the printout match.
+ */
+function fitCardFace(root) {
+  const nameEl = root.querySelector('.allergen-name')
+  const linesEl = root.querySelector('.allergen-lines')
+  if (!nameEl || !linesEl || linesEl.clientHeight < 8) return
+
+  nameEl.style.display = 'block'
+  nameEl.style.webkitLineClamp = 'unset'
+  nameEl.style.overflow = 'visible'
+  let namePt = CARD_TYPE.nameMaxPt
+  while (namePt > CARD_TYPE.nameMinPt) {
+    nameEl.style.fontSize = `${namePt}pt`
+    const lineHeight = parseFloat(getComputedStyle(nameEl).lineHeight) || namePt * 1.35
+    if (nameEl.scrollHeight <= lineHeight * 2.08 + 1) break
+    namePt -= 0.5
+  }
+  nameEl.style.fontSize = `${namePt}pt`
+  nameEl.style.display = '-webkit-box'
+  nameEl.style.webkitBoxOrient = 'vertical'
+  nameEl.style.webkitLineClamp = '2'
+  nameEl.style.overflow = 'hidden'
+
+  let allergenPt = CARD_TYPE.allergenMaxPt
+  while (allergenPt > CARD_TYPE.allergenMinPt) {
+    linesEl.style.fontSize = `${allergenPt}pt`
+    if (linesEl.scrollHeight <= linesEl.clientHeight + 1) break
+    allergenPt -= 0.4
+  }
+  linesEl.style.fontSize = `${Math.max(allergenPt, CARD_TYPE.allergenMinPt)}pt`
+}
+
 function CardFace({ title, imageUrl, lines, notes, none, noneText }) {
-  const initial = (title || '?').slice(0, 1).toUpperCase()
+  const faceRef = useRef(null)
+  const lineKey = lines.map((line) => line.text).join('\n')
+  const noteKey = notes.join('\n')
+
+  useLayoutEffect(() => {
+    const root = faceRef.current
+    if (!root) return undefined
+    let cancelled = false
+    const run = () => {
+      if (!cancelled && faceRef.current) fitCardFace(faceRef.current)
+    }
+    run()
+    const ready = document.fonts?.ready
+    if (ready) ready.then(run)
+    return () => { cancelled = true }
+  }, [title, lineKey, noteKey, none, noneText])
+
   return (
-    <>
-      <span className="allergen-top">
-        {imageUrl
-          ? <img className="allergen-photo" src={imageUrl} alt="" />
-          : <span className="allergen-photo allergen-photo-empty">{initial}</span>}
-        <span className="allergen-name">{title}</span>
-      </span>
+    <span className="allergen-face" ref={faceRef}>
+      {imageUrl
+        ? <img className="allergen-bg" src={imageUrl} alt="" />
+        : <span className="allergen-bg-empty" aria-hidden="true" />}
+      <span className="allergen-veil" aria-hidden="true" />
       <img className="allergen-logo" src="/fredheim-logo.png" alt="" />
-      <span className="allergen-lines">
-        {none && (
-          <span className="allergen-none">
-            <AllergenGlyph name="check" className="allergen-ico" />
-            <span>{noneText}</span>
-          </span>
-        )}
-        {lines.map((line) => (
-          <span className="allergen-line" key={line.text}>
-            <AllergenGlyph name={line.icon} className="allergen-ico" />
-            <span>{line.text}</span>
-          </span>
-        ))}
-        {notes.map((note) => (
-          <span className="allergen-line allergen-review" key={note}>
-            <AllergenGlyph name="alert" className="allergen-ico" />
-            <span>{note}</span>
-          </span>
-        ))}
+      <span className="allergen-copy">
+        <span className="allergen-name">{title}</span>
+        <span className="allergen-lines">
+          {none && (
+            <span className="allergen-none">
+              <AllergenGlyph name="check" className="allergen-ico" />
+              <span>{noneText}</span>
+            </span>
+          )}
+          {lines.map((line) => (
+            <span className="allergen-line" key={line.text}>
+              <AllergenGlyph name={line.icon} className="allergen-ico" />
+              <span>{line.text}</span>
+            </span>
+          ))}
+          {notes.map((note) => (
+            <span className="allergen-line allergen-review" key={note}>
+              <AllergenGlyph name="alert" className="allergen-ico" />
+              <span>{note}</span>
+            </span>
+          ))}
+        </span>
       </span>
-    </>
+    </span>
   )
 }
 

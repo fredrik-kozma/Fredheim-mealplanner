@@ -1,5 +1,5 @@
-/** Small glyphs that print with the card. Text carries the legal name. */
-const PATHS = {
+/** Bold glyphs that stay readable next to large type. Text carries the legal name. */
+export const GLYPH_PATHS = {
   cereal: 'M12 3c1 3 3 4 5 5-2 1-3 3-3 5 2-1 4-1 6 1-3 1-5 3-6 6-1-3-3-5-6-6 2-2 4-2 6-1 0-2-1-4-3-5-2-1-4-2-5-5 2 0 4 0 6 0z',
   crustaceans: 'M4 13c2-4 5-6 8-6s6 2 8 6c-2 1-4 1-6 0 0 3-1 5-2 6-1-1-2-3-2-6-2 1-4 1-6 0zm3-2h2m6 0h2',
   eggs: 'M12 4c4 2 6 6 6 10a6 6 0 0 1-12 0c0-4 2-8 6-10z',
@@ -20,8 +20,8 @@ const PATHS = {
 
 export default function AllergenGlyph({ name, className }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d={PATHS[name] || PATHS.alert} />
+    <svg className={className} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d={GLYPH_PATHS[name] || GLYPH_PATHS.alert} />
     </svg>
   )
 }

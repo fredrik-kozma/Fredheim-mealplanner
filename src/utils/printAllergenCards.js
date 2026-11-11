@@ -2,8 +2,9 @@ import { PRINT_WINDOW_CSS } from './allergenCardCss.js'
 import { jpegPagesToPdf } from './allergenCardPdf.js'
 import {
   CARD_W, CARD_H, GAP_X, GAP_Y, MARGIN_X, MARGIN_TOP, COLS, ROWS,
-  PAGE_W, PAGE_H, FOOTER_GAP, GRID_H,
+  PAGE_W, PAGE_H, FOOTER_GAP, GRID_H, PHOTO_VEIL, CARD_TYPE,
 } from './allergenCardModel.js'
+import { GLYPH_PATHS } from '../components/allergenCards/AllergenGlyph.jsx'
 import { shareFileOrDownload } from './shareSheet.js'
 
 function absolutize(html) {
@@ -30,7 +31,7 @@ export function openAllergenPrintWindow(rootEl, title) {
 <head>
 <meta charset="utf-8" />
 <title>${safeTitle}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" />
 <style>${PRINT_WINDOW_CSS}</style>
 </head>
 <body>
@@ -96,6 +97,26 @@ function loadImage(src) {
   })
 }
 
+function ptPx(pt) {
+  return (pt * DPI) / 72
+}
+
+function drawGlyph(ctx, name, x, y, size, color, background) {
+  ctx.save()
+  ctx.fillStyle = background
+  roundRect(ctx, x, y, size, size, size * 0.22)
+  ctx.fill()
+  const path = new Path2D(GLYPH_PATHS[name] || GLYPH_PATHS.alert)
+  ctx.translate(x + size * 0.12, y + size * 0.12)
+  ctx.scale((size * 0.76) / 24, (size * 0.76) / 24)
+  ctx.strokeStyle = color
+  ctx.lineWidth = 2.4
+  ctx.lineCap = 'round'
+  ctx.lineJoin = 'round'
+  ctx.stroke(path)
+  ctx.restore()
+}
+
 function drawPage(ctx, page, meta, images, logo) {
   const width = px(PAGE_W)
   const height = px(PAGE_H)
@@ -135,55 +156,92 @@ function drawPage(ctx, page, meta, images, logo) {
     ctx.stroke()
     ctx.clip()
 
-    const photo = px(14)
-    const pad = px(1.7)
-    if (images.get(card.imageUrl)) {
-      ctx.save()
-      roundRect(ctx, x + pad, y + pad, photo, photo, px(1.5))
-      ctx.clip()
-      ctx.drawImage(images.get(card.imageUrl), x + pad, y + pad, photo, photo)
-      ctx.restore()
-    } else {
-      ctx.fillStyle = '#e7f6ec'
-      roundRect(ctx, x + pad, y + pad, photo, photo, px(1.5))
-      ctx.fill()
-      ctx.fillStyle = '#1B7A3A'
-      ctx.font = `700 ${px(3.2)}px Inter, sans-serif`
-      ctx.textBaseline = 'middle'
-      const letter = (card.title || '?').slice(0, 1).toUpperCase()
-      ctx.fillText(letter, x + pad + photo / 2 - ctx.measureText(letter).width / 2, y + pad + photo / 2)
+    ctx.fillStyle = '#cfe8d8'
+    ctx.fillRect(x, y, w, h)
+    const photo = images.get(card.imageUrl)
+    if (photo) {
+      const scale = Math.max(w / photo.width, h / photo.height)
+      const dw = photo.width * scale
+      const dh = photo.height * scale
+      ctx.drawImage(photo, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh)
     }
-    if (logo) ctx.drawImage(logo, x + w - px(6.4), y + px(1.3), px(5), px(5))
+    ctx.fillStyle = `rgba(255,255,255,${PHOTO_VEIL})`
+    ctx.fillRect(x, y, w, h)
+    const panelX = x + px(1.15)
+    const panelY = y + px(1.15)
+    const panelW = w - px(2.35)
+    const panelH = h - px(2.3)
+    ctx.fillStyle = 'rgba(255,255,255,0.62)'
+    roundRect(ctx, panelX, panelY, panelW, panelH, px(1.5))
+    ctx.fill()
+    if (logo) {
+      const logoSize = px(3.4)
+      ctx.save()
+      ctx.globalAlpha = 0.8
+      ctx.drawImage(logo, x + w - px(1) - logoSize, y + px(1), logoSize, logoSize)
+      ctx.restore()
+    }
 
-    ctx.fillStyle = '#143028'
-    ctx.font = `700 ${px(2.9)}px Inter, sans-serif`
+    const textX = panelX + px(1.3)
+    const textW = panelW - px(2.6)
+    const textTop = panelY + px(1)
+    const textBottom = panelY + panelH - px(0.9)
+    let namePt = CARD_TYPE.nameMaxPt
+    let nameLines = []
+    while (namePt >= CARD_TYPE.nameMinPt) {
+      ctx.font = `800 ${ptPx(namePt)}px Inter, sans-serif`
+      nameLines = wrapLines(ctx, card.title, textW)
+      if (nameLines.length <= 2) break
+      namePt -= 0.5
+    }
+    nameLines = nameLines.slice(0, 2)
+    ctx.fillStyle = '#0b3f24'
     ctx.textBaseline = 'top'
-    const nameX = x + pad + photo + px(1.6)
-    const nameW = w - (nameX - x) - px(7)
-    const nameLines = wrapLines(ctx, card.title, nameW).slice(0, 3)
+    ctx.font = `800 ${ptPx(namePt)}px Inter, sans-serif`
+    const nameLineH = ptPx(namePt) * 1.05
     nameLines.forEach((line, lineIndex) => {
-      ctx.fillText(line, nameX, y + pad + lineIndex * px(3.4))
+      ctx.fillText(line, textX, textTop + lineIndex * nameLineH)
     })
 
-    ctx.font = `500 ${px(2.25)}px Inter, sans-serif`
-    let textY = y + pad + photo + px(1.2)
-    const maxY = y + h - px(1.3)
-    const writeLine = (color, text) => {
-      if (textY > maxY) return
-      ctx.fillStyle = color
-      const lines = wrapLines(ctx, text, w - pad * 2 - px(4))
-      for (const line of lines) {
-        if (textY > maxY) return
-        ctx.fillRect(x + pad, textY + px(0.4), px(2.2), px(2.2))
-        ctx.fillStyle = color
-        ctx.fillText(line, x + pad + px(3.2), textY)
-        textY += px(2.8)
-        ctx.fillStyle = color
+    const items = []
+    if (card.none) items.push({ icon: 'check', text: card.noneText, color: '#0b3f24', bg: 'rgba(11,63,36,0.1)' })
+    for (const line of card.lines || []) items.push({ icon: line.icon, text: line.text, color: '#0b3f24', bg: 'rgba(11,63,36,0.1)' })
+    for (const note of card.notes || []) items.push({ icon: 'alert', text: note, color: '#6b3400', bg: 'rgba(107,52,0,0.12)' })
+
+    const listTop = textTop + nameLines.length * nameLineH + px(0.8)
+    const listH = textBottom - listTop
+    let allergenPt = CARD_TYPE.allergenMaxPt
+    const layoutItems = (pt) => {
+      ctx.font = `800 ${ptPx(pt)}px Inter, sans-serif`
+      const iconSize = ptPx(pt) * 1.05
+      const row = []
+      let used = 0
+      for (const item of items) {
+        const wrapped = wrapLines(ctx, item.text, Math.max(8, textW - iconSize - ptPx(pt) * 0.28))
+        const block = Math.max(iconSize, wrapped.length * ptPx(pt) * 1.08)
+        row.push({ ...item, wrapped, iconSize, block })
+        used += block + px(0.2)
       }
+      return { row, used }
     }
-    if (card.none) writeLine('#1B7A3A', card.noneText)
-    for (const line of card.lines || []) writeLine('#143028', line.text)
-    for (const note of card.notes || []) writeLine('#8a5a00', note)
+    let laidOut = layoutItems(allergenPt)
+    while (laidOut.used > listH + 1 && allergenPt > CARD_TYPE.allergenMinPt) {
+      allergenPt = Math.max(CARD_TYPE.allergenMinPt, +(allergenPt - 0.4).toFixed(2))
+      laidOut = layoutItems(allergenPt)
+      if (allergenPt <= CARD_TYPE.allergenMinPt) break
+    }
+    let textY = listTop
+    for (const item of laidOut.row) {
+      if (textY > textBottom) break
+      drawGlyph(ctx, item.icon, textX, textY, item.iconSize, item.color, item.bg)
+      ctx.fillStyle = item.color
+      ctx.font = `800 ${ptPx(allergenPt)}px Inter, sans-serif`
+      ctx.textBaseline = 'top'
+      item.wrapped.forEach((line, lineIndex) => {
+        ctx.fillText(line, textX + item.iconSize + ptPx(allergenPt) * 0.28, textY + lineIndex * ptPx(allergenPt) * 1.08)
+      })
+      textY += item.block + px(0.2)
+    }
     ctx.restore()
   })
 
