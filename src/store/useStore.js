@@ -849,6 +849,29 @@ const useStore = create(
       avoidHoney: false,
       setAvoidHoney: (v) => set({ avoidHoney: Boolean(v) }),
 
+      // Kitchen allergen cards. Off until someone turns them on in Settings,
+      // so the rest of the app stays the same. Overrides and the sheet are
+      // local to this device.
+      allergenCardsEnabled: false,
+      setAllergenCardsEnabled: (v) => set({ allergenCardsEnabled: Boolean(v) }),
+      allergenCardOverrides: {},
+      setAllergenCardOverride: (recipeId, hits) => set((s) => {
+        if (!recipeId) return {}
+        return {
+          allergenCardOverrides: {
+            ...(s.allergenCardOverrides || {}),
+            [recipeId]: { hits: Array.isArray(hits) ? hits : [] },
+          },
+        }
+      }),
+      clearAllergenCardOverride: (recipeId) => set((s) => {
+        const next = { ...(s.allergenCardOverrides || {}) }
+        delete next[recipeId]
+        return { allergenCardOverrides: next }
+      }),
+      allergenCardSlots: [],
+      setAllergenCardSlots: (next) => set({ allergenCardSlots: Array.isArray(next) ? next : [] }),
+
       // Make my week's calorie target (kcal a day per person, or null for
       // none) and meals a day (3, 2 or 1): the answers it starts from next
       // time. Out-of-range values are no target.

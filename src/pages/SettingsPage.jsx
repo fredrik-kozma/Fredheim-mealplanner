@@ -10,6 +10,7 @@ import EditableNumber from '../components/common/EditableNumber'
 import useInstallPWA from '../hooks/useInstallPWA'
 import IOSInstallInstructions from '../components/pwa/IOSInstallInstructions'
 import BlockedIngredientsSection from '../components/settings/BlockedIngredientsSection'
+import AllergenCardsSetting from '../components/settings/AllergenCardsSetting'
 import { buildBackup, downloadBackup, validateBackup, mergeRecipes } from '../utils/dataBackup'
 import { SALT_LEVELS } from '../utils/saltLevel'
 import PageHeader from '../components/common/PageHeader'
@@ -608,6 +609,8 @@ export default function SettingsPage() {
             <span className="text-2xs text-slate-500">{t('settings.noHoneyHint')}</span>
           </div>
         </SectionCard>
+
+        <AllergenCardsSetting />
 
         {/* Salt level — which salt amount recipes and the shopping list use */}
         <SectionCard title={t('salt.title')}>
