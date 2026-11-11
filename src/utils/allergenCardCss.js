@@ -136,18 +136,6 @@ export const ALLERGEN_CARD_CSS = `
   background: transparent;
   overflow: hidden;
 }
-.allergen-panel {
-  max-height: 100%;
-  box-sizing: border-box;
-  padding: 0.85mm 1.15mm 0.75mm;
-  border-radius: 1.4mm;
-  background: rgba(255, 255, 255, 0.58);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  overflow: hidden;
-  print-color-adjust: exact;
-  -webkit-print-color-adjust: exact;
-}
 .allergen-name {
   flex: none;
   font-size: ${CARD_TYPE.nameMaxPt}pt;
@@ -162,6 +150,8 @@ export const ALLERGEN_CARD_CSS = `
   overflow: hidden;
 }
 .allergen-lines {
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -174,35 +164,18 @@ export const ALLERGEN_CARD_CSS = `
   color: #0b3f24;
   text-shadow: 0 0 0.35mm #fff, 0 0 0.9mm rgba(255,255,255,0.95);
 }
+.allergen-dot {
+  flex: none;
+  width: 0.7em;
+  line-height: 1.05;
+}
 .allergen-line {
   display: flex;
   gap: 0.22em;
   align-items: flex-start;
 }
 .allergen-line > span:last-child { min-width: 0; }
-.allergen-ico {
-  width: 1.02em;
-  height: 1.02em;
-  flex: none;
-  margin-top: 0.02em;
-  color: #0b3f24;
-  background: rgba(11, 63, 36, 0.1);
-  border-radius: 0.2em;
-  padding: 0.05em;
-  box-sizing: border-box;
-  print-color-adjust: exact;
-  -webkit-print-color-adjust: exact;
-}
-.allergen-none {
-  display: flex;
-  gap: 0.22em;
-  align-items: flex-start;
-  color: #0b3f24;
-  font-weight: 800;
-  line-height: 1.05;
-}
-.allergen-review { color: #6b3400; font-weight: 750; }
-.allergen-review .allergen-ico { color: #6b3400; background: rgba(107, 52, 0, 0.12); }
+.allergen-none { font-weight: 800; }
 .allergen-disclaimer {
   position: absolute;
   left: 12mm;
@@ -222,12 +195,6 @@ export const ALLERGEN_CARD_CSS = `
   .allergen-card:hover, .allergen-empty:hover { box-shadow: 0 2px 8px rgba(20, 80, 40, 0.16); }
 }
 @media print {
-  .allergen-panel {
-    /* Blur does not print. The same white panel is the fallback. */
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    background: rgba(255, 255, 255, 0.58);
-  }
   .allergen-screen-only { display: none !important; }
   .allergen-page {
     box-shadow: none !important;

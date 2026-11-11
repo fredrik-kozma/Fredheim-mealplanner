@@ -81,7 +81,7 @@ describe('dictionary classification', () => {
 })
 
 describe('detectRecipeAllergens', () => {
-  it('declares oats unless the row says gluten-free', () => {
+  it('declares oats even when the row says gluten-free', () => {
     const plain = detectRecipeAllergens(recipe([row('rolled-oats', 'Rolled oats')]))
     assert.deepEqual(plain.hits, ['cereal:oats'])
     assert.equal(plain.reviews.length, 0)
@@ -89,8 +89,8 @@ describe('detectRecipeAllergens', () => {
     const gf = detectRecipeAllergens(recipe([
       row('oat-flour', 'Oat flour', 'gluten-free'),
     ]))
-    assert.deepEqual(gf.hits, [])
-    assert.ok(gf.reviews.some((review) => review.key === 'gfClaim'))
+    assert.deepEqual(gf.hits, ['cereal:oats'])
+    assert.equal(gf.reviews.length, 0)
   })
 
   it('treats soy sauce as soy and wheat, and tamari as soy only', () => {
@@ -151,40 +151,40 @@ describe('detectRecipeAllergens', () => {
     assert.equal(starter.reviews.length, 0)
   })
 
-  it('clears gluten-free breadcrumbs and keeps a confirmation flag', () => {
+  it('keeps wheat on breadcrumbs even when the note says gluten-free', () => {
     const found = detectRecipeAllergens(recipe([
       row('bread-crumbs', 'Breadcrumbs', 'gluten free'),
     ]))
-    assert.deepEqual(found.hits, [])
-    assert.equal(found.reviews[0].key, 'gfClaim')
+    assert.deepEqual(found.hits, ['cereal:wheat'])
+    assert.equal(found.reviews.length, 0)
   })
 
-  it('reads soy out of a plant-yogurt note and flags an unnamed plant milk', () => {
+  it('reads soy out of a plant-yogurt note and declares soy and oats for unnamed plant milk', () => {
     const soy = detectRecipeAllergens(recipe([row('plant-yogurt', 'Plant-based yogurt', 'soy')]))
     assert.deepEqual(soy.hits, ['soy'])
     assert.equal(soy.reviews.length, 0)
 
     const plain = detectRecipeAllergens(recipe([row('plant-milk', 'Plant milk', 'unsweetened')]))
-    assert.deepEqual(plain.hits, [])
-    assert.equal(plain.reviews[0].key, 'plantBase')
+    assert.ok(plain.hits.includes('soy'))
+    assert.ok(plain.hits.includes('cereal:oats'))
+    assert.equal(plain.reviews.length, 0)
   })
 
-  it('flags sulphites on dried fruit instead of declaring them', () => {
-    const found = detectRecipeAllergens(recipe([row('dried-apricots', 'Dried apricots')]))
-    assert.deepEqual(found.hits, [])
-    assert.equal(found.reviews[0].key, 'sulphites')
-    assert.equal(found.reviews[0].names.en, 'Dried apricots')
-  })
+  it('declares sulphites, mustard, barley and wheat where the product varies', () => {
+    const fruit = detectRecipeAllergens(recipe([row('dried-apricots', 'Dried apricots')]))
+    assert.deepEqual(fruit.hits, ['sulphites'])
+    assert.equal(fruit.reviews.length, 0)
 
-  it('declares celery for broth and leaves miso, curry and yeast as checks', () => {
     assert.ok(detectRecipeAllergens(recipe([row('vegetable-broth', 'Vegetable broth')])).hits.includes('celery'))
     const miso = detectRecipeAllergens(recipe([row('miso-paste', 'Miso', 'white, shiro')]))
     assert.ok(miso.hits.includes('soy'))
-    assert.ok(miso.reviews.some((review) => review.key === 'miso'))
-    assert.equal(detectRecipeAllergens(recipe([row('curry-powder', 'Curry powder')])).reviews[0].key, 'mustard')
-    const yeast = detectRecipeAllergens(recipe([row('nutritional-yeast', 'Nutritional yeast')]))
-    assert.deepEqual(yeast.hits, [])
-    assert.equal(yeast.reviews[0].key, 'gluten')
+    assert.ok(miso.hits.includes('cereal:barley'))
+    assert.deepEqual(detectRecipeAllergens(recipe([row('curry-powder', 'Curry powder')])).hits, ['mustard'])
+    assert.deepEqual(detectRecipeAllergens(recipe([row('herb-salt', 'Herb salt')])).hits, ['celery'])
+    assert.deepEqual(detectRecipeAllergens(recipe([row('nutritional-yeast', 'Nutritional yeast')])).hits, ['cereal:wheat'])
+    assert.deepEqual(detectRecipeAllergens(recipe([row('baking-powder', 'Baking powder')])).hits, ['cereal:wheat'])
+    assert.ok(detectRecipeAllergens(recipe([row('gluten-free-flour-mix', 'Gluten-free flour mix')])).hits.includes('lupin'))
+    assert.deepEqual(detectRecipeAllergens(recipe([row('sourdough-starter', 'Sourdough starter')])).hits, ['cereal:wheat'])
   })
 
   it('uses free text when the row has no dictionary id', () => {
@@ -225,9 +225,13 @@ describe('free-text traps', () => {
     assert.deepEqual(allergensFromFreeText('coconut milk').hits, [])
     assert.deepEqual(allergensFromFreeText('havremjölk').hits, ['cereal:oats'])
     assert.ok(!allergensFromFreeText('havremjölk').hits.includes('milk'))
-    assert.deepEqual(allergensFromFreeText('gluten-free oat flour').hits, [])
-    assert.ok(allergensFromFreeText('gluten-free oat flour').reviews.includes('gfClaim'))
+    assert.ok(allergensFromFreeText('gluten-free oat flour').hits.includes('cereal:oats'))
+    assert.deepEqual(allergensFromFreeText('gluten-free oat flour').reviews, [])
     assert.ok(allergensFromFreeText('lupin flour').hits.includes('lupin'))
+    assert.ok(allergensFromFreeText('curry powder').hits.includes('mustard'))
+    assert.ok(allergensFromFreeText('nutritional yeast').hits.includes('cereal:wheat'))
+    assert.ok(allergensFromFreeText('sun-dried tomatoes').hits.includes('sulphites'))
+    assert.deepEqual(allergensFromFreeText('olive oil').hits, [])
     assert.ok(allergensFromFreeText('spelt flour').hits.includes('cereal:spelt'))
     assert.ok(allergensFromFreeText('blue mussels').hits.includes('molluscs'))
   })
@@ -253,13 +257,13 @@ describe('card wording', () => {
     assert.equal(empty.none, true)
     assert.equal(empty.lines.length, 0)
 
-    const flagged = cardStatements({
-      hits: [],
-      reviews: [{ key: 'sulphites', names: { en: 'Raisins' } }],
+    const declared = cardStatements({
+      hits: ['sulphites'],
+      reviews: [],
       unmapped: [],
     }, LABELS, 'en')
-    assert.equal(flagged.none, false)
-    assert.deepEqual(flagged.notes, ['sulphites:Raisins'])
+    assert.equal(declared.none, false)
+    assert.deepEqual(declared.lines.map((line) => line.text), ['Sulphur dioxide and sulphites'])
   })
 })
 

@@ -4,7 +4,6 @@ import {
   CARD_W, CARD_H, GAP_X, GAP_Y, MARGIN_X, MARGIN_TOP, COLS, ROWS,
   PAGE_W, PAGE_H, FOOTER_GAP, GRID_H, PHOTO_VEIL, CARD_TYPE,
 } from './allergenCardModel.js'
-import { GLYPH_PATHS } from '../components/allergenCards/AllergenGlyph.jsx'
 import { shareFileOrDownload } from './shareSheet.js'
 
 function absolutize(html) {
@@ -101,22 +100,6 @@ function ptPx(pt) {
   return (pt * DPI) / 72
 }
 
-function drawGlyph(ctx, name, x, y, size, color, background) {
-  ctx.save()
-  ctx.fillStyle = background
-  roundRect(ctx, x, y, size, size, size * 0.22)
-  ctx.fill()
-  const path = new Path2D(GLYPH_PATHS[name] || GLYPH_PATHS.alert)
-  ctx.translate(x + size * 0.12, y + size * 0.12)
-  ctx.scale((size * 0.76) / 24, (size * 0.76) / 24)
-  ctx.strokeStyle = color
-  ctx.lineWidth = 2.4
-  ctx.lineCap = 'round'
-  ctx.lineJoin = 'round'
-  ctx.stroke(path)
-  ctx.restore()
-}
-
 function drawPage(ctx, page, meta, images, logo) {
   const width = px(PAGE_W)
   const height = px(PAGE_H)
@@ -195,22 +178,21 @@ function drawPage(ctx, page, meta, images, logo) {
     const nameLineH = ptPx(namePt) * 1.05
 
     const items = []
-    if (card.none) items.push({ icon: 'check', text: card.noneText, color: '#0b3f24', bg: 'rgba(11,63,36,0.1)' })
-    for (const line of card.lines || []) items.push({ icon: line.icon, text: line.text, color: '#0b3f24', bg: 'rgba(11,63,36,0.1)' })
-    for (const note of card.notes || []) items.push({ icon: 'alert', text: note, color: '#6b3400', bg: 'rgba(107,52,0,0.12)' })
+    if (card.none) items.push({ text: card.noneText })
+    for (const line of card.lines || []) items.push({ text: line.text })
 
     const listTop = textTop + nameLines.length * nameLineH + px(0.8)
     const listH = textBottom - listTop
     let allergenPt = CARD_TYPE.allergenMaxPt
     const layoutItems = (pt) => {
       ctx.font = `800 ${ptPx(pt)}px Inter, sans-serif`
-      const iconSize = ptPx(pt) * 1.05
+      const bulletW = ptPx(pt) * 0.85
       const row = []
       let used = 0
       for (const item of items) {
-        const wrapped = wrapLines(ctx, item.text, Math.max(8, textW - iconSize - ptPx(pt) * 0.28))
-        const block = Math.max(iconSize, wrapped.length * ptPx(pt) * 1.08)
-        row.push({ ...item, wrapped, iconSize, block })
+        const wrapped = wrapLines(ctx, item.text, Math.max(8, textW - bulletW))
+        const block = wrapped.length * ptPx(pt) * 1.08
+        row.push({ ...item, wrapped, block })
         used += block + px(0.2)
       }
       return { row, used }
@@ -221,25 +203,30 @@ function drawPage(ctx, page, meta, images, logo) {
       laidOut = layoutItems(allergenPt)
       if (allergenPt <= CARD_TYPE.allergenMinPt) break
     }
-    const panelUsed = Math.min(panelH, (textTop - panelY) + nameLines.length * nameLineH + px(0.8) + laidOut.used + px(0.7))
-    ctx.fillStyle = 'rgba(255,255,255,0.58)'
-    roundRect(ctx, panelX, panelY, panelW, panelUsed, px(1.4))
-    ctx.fill()
     ctx.fillStyle = '#0b3f24'
     ctx.textBaseline = 'top'
     ctx.font = `800 ${ptPx(namePt)}px Inter, sans-serif`
+    ctx.lineWidth = Math.max(1, ptPx(namePt) * 0.16)
+    ctx.strokeStyle = 'rgba(255,255,255,0.95)'
+    ctx.lineJoin = 'round'
     nameLines.forEach((line, lineIndex) => {
-      ctx.fillText(line, textX, textTop + lineIndex * nameLineH)
+      const ly = textTop + lineIndex * nameLineH
+      ctx.strokeText(line, textX, ly)
+      ctx.fillText(line, textX, ly)
     })
     let textY = listTop
     for (const item of laidOut.row) {
       if (textY > textBottom) break
-      drawGlyph(ctx, item.icon, textX, textY, item.iconSize, item.color, item.bg)
-      ctx.fillStyle = item.color
+      ctx.fillStyle = '#0b3f24'
       ctx.font = `800 ${ptPx(allergenPt)}px Inter, sans-serif`
+      ctx.lineWidth = Math.max(1, ptPx(allergenPt) * 0.14)
+      ctx.strokeStyle = 'rgba(255,255,255,0.95)'
       ctx.textBaseline = 'top'
       item.wrapped.forEach((line, lineIndex) => {
-        ctx.fillText(line, textX + item.iconSize + ptPx(allergenPt) * 0.28, textY + lineIndex * ptPx(allergenPt) * 1.08)
+        const ly = textY + lineIndex * ptPx(allergenPt) * 1.08
+        const prefix = lineIndex === 0 ? '•  ' : ''
+        ctx.strokeText(prefix + line, textX, ly)
+        ctx.fillText(prefix + line, textX, ly)
       })
       textY += item.block + px(0.2)
     }

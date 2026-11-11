@@ -3,18 +3,16 @@
  *
  * This is separate from the "avoid these foods" filter. That filter treats
  * ordinary oats as gluten-free. Annex II lists oats as a cereal containing
- * gluten unless the product is gluten-free, so the cards do the opposite:
- * oats are declared, and a gluten-free note on that row suppresses them
- * and leaves a "confirm the claim" flag.
+ * gluten, so the cards declare oats even when a row says gluten-free.
  *
- * Unsure rows become a review (shown on the card) rather than a silent
- * omission. An ingredient id with no decision at all is reported as
- * unmapped. Coconut, buckwheat, nutmeg, eggplant and poppy seeds are
- * decided safe — they are the usual false positives, not Annex II foods.
- *
- * Sulphites are only a hard hit when the ingredient is expected to exceed
- * 10 mg/kg or 10 mg/L (wine vinegar, balsamic). Dried fruit, olives and
- * capers are flagged for a check because unsulphured products exist.
+ * Where a product might or might not contain an allergen, the card declares
+ * it: bouillon and nutritional yeast as wheat, curry blends as mustard,
+ * herb salt as celery, miso as barley, dried fruit and brined vegetables
+ * as sulphites, baking powder as wheat, unnamed plant milk as soy and oats,
+ * a gluten-free flour mix as lupin and almond. Staff can remove that line
+ * on the card if the jar they use is free of it. An ingredient id with no
+ * decision at all is reported as unmapped. Coconut, buckwheat, nutmeg,
+ * eggplant and poppy seeds are decided safe.
  */
 
 import dictionary from './ingredientDictionary.json'
@@ -39,8 +37,9 @@ export const INGREDIENT_RULES = {
   'spelt-flour': { hits: ['cereal:spelt'] },
   // Inka / Caro, the examples in the recipes, are barley and rye.
   'barley-coffee': { hits: ['cereal:barley', 'cereal:rye'] },
-  'sourdough-starter': { reviews: ['sourdough'] },
-  crispbread: { reviews: ['crispbread'] },
+  // Unspecified grain: wheat. A note that names rye, oats, or spelt replaces this.
+  'sourdough-starter': { hits: ['cereal:wheat'] },
+  crispbread: { hits: ['cereal:wheat'] },
 
   'soy-sauce': { hits: ['soy', 'cereal:wheat'] },
   'soy-sauce-low-sodium': { hits: ['soy', 'cereal:wheat'] },
@@ -50,9 +49,10 @@ export const INGREDIENT_RULES = {
   'soy-milk': { hits: ['soy'] },
   'soy-mayonnaise': { hits: ['soy'] },
   'edamame-frozen': { hits: ['soy'] },
-  'miso-paste': { hits: ['soy'], reviews: ['miso'] },
-  'plant-milk': { reviews: ['plantBase'] },
-  'plant-yogurt': { reviews: ['plantBase'] },
+  'miso-paste': { hits: ['soy', 'cereal:barley'] },
+  // Unnamed plant milk/yogurt: both common bases. A note that names one replaces these.
+  'plant-milk': { hits: ['soy', 'cereal:oats'] },
+  'plant-yogurt': { hits: ['soy', 'cereal:oats'] },
 
   'sesame-seeds': { hits: ['sesame'] },
   'sesame-oil': { hits: ['sesame'] },
@@ -80,31 +80,32 @@ export const INGREDIENT_RULES = {
 
   // The house daily broth contains celery, and cubes almost always do.
   'vegetable-broth': { hits: ['celery'] },
-  'vegetable-bouillon': { hits: ['celery'], reviews: ['gluten'] },
+  'vegetable-bouillon': { hits: ['celery', 'cereal:wheat'] },
 
-  'dried-apricots': { reviews: ['sulphites'] },
-  'dried-cranberries': { reviews: ['sulphites'] },
-  'dried-figs': { reviews: ['sulphites'] },
-  prunes: { reviews: ['sulphites'] },
-  raisins: { reviews: ['sulphites'] },
-  'sun-dried-tomatoes': { reviews: ['sulphites'] },
-  olives: { reviews: ['sulphites'] },
-  'olive-brine': { reviews: ['sulphites'] },
-  capers: { reviews: ['sulphites'] },
+  'dried-apricots': { hits: ['sulphites'] },
+  'dried-cranberries': { hits: ['sulphites'] },
+  'dried-figs': { hits: ['sulphites'] },
+  prunes: { hits: ['sulphites'] },
+  raisins: { hits: ['sulphites'] },
+  'sun-dried-tomatoes': { hits: ['sulphites'] },
+  olives: { hits: ['sulphites'] },
+  'olive-brine': { hits: ['sulphites'] },
+  capers: { hits: ['sulphites'] },
   'balsamic-vinegar': { hits: ['sulphites'] },
   'white-wine-vinegar': { hits: ['sulphites'] },
-  'apple-cider-vinegar': { reviews: ['sulphites'] },
-  'rice-vinegar': { reviews: ['sulphites'] },
-  ketchup: { reviews: ['sulphites'] },
+  'apple-cider-vinegar': { hits: ['sulphites'] },
+  'rice-vinegar': { hits: ['sulphites'] },
+  ketchup: { hits: ['sulphites'] },
 
-  'nutritional-yeast': { reviews: ['gluten'] },
-  'baking-powder': { reviews: ['bakingPowder'] },
-  'gluten-free-flour-mix': { reviews: ['flourMix'] },
-  'curry-powder': { reviews: ['mustard'] },
-  'garam-masala': { reviews: ['mustard'] },
-  'tandoori-masala': { reviews: ['mustard'] },
-  'herb-salt': { reviews: ['celery'] },
-  'hot-sauce': { reviews: ['hotSauce'] },
+  'nutritional-yeast': { hits: ['cereal:wheat'] },
+  'baking-powder': { hits: ['cereal:wheat'] },
+  // Mixes on the market often contain lupin or almond. Staff can untick either.
+  'gluten-free-flour-mix': { hits: ['lupin', 'nut:almond'] },
+  'curry-powder': { hits: ['mustard'] },
+  'garam-masala': { hits: ['mustard'] },
+  'tandoori-masala': { hits: ['mustard'] },
+  'herb-salt': { hits: ['celery'] },
+  'hot-sauce': { hits: ['cereal:wheat'] },
 }
 
 export const SAFE_IDS = new Set([
@@ -142,9 +143,7 @@ export const SAFE_IDS = new Set([
   'strawberries-frozen', 'sweetcorn-frozen', 'orange-juice', 'pineapple-juice', 'water',
 ])
 
-const GF = /gluten[\s-]?free|glutenfri/i
 const WHEAT_FREE = /wheat[\s-]?free|hvetefri|vetefri/i
-const CEREAL_REVIEWS = new Set(['crispbread', 'sourdough', 'gluten', 'miso', 'bakingPowder'])
 
 const NAME_TO_ID = new Map()
 for (const entry of dictionary.entries || []) {
@@ -174,7 +173,6 @@ function lookupId(names) {
 /** Cereals named in free text. Buckwheat is removed before "wheat"/"hvete" is tested. */
 export function cerealsInText(text) {
   const t = String(text || '').toLowerCase().replace(/buckwheat|bokhvete|bovete/g, ' ')
-  if (GF.test(t)) return []
   const hits = []
   if (/spelt|dinkel/.test(t)) hits.push('cereal:spelt')
   if (/khorasan|kamut|korasan/.test(t)) hits.push('cereal:khorasan')
@@ -219,8 +217,6 @@ export function allergensFromFreeText(text) {
   const t = raw.toLowerCase()
   if (!t.trim()) return { hits: [], reviews: [] }
   const hits = []
-  const reviews = []
-  const gf = GF.test(t)
 
   if (/peanut|peanøtt|peanott|jordnøtt|jordnott|jordnöt|groundnut/.test(t)) hits.push('peanuts')
 
@@ -263,26 +259,32 @@ export function allergensFromFreeText(text) {
   if (/lupin/.test(t)) hits.push('lupin')
   if (/sulphite|sulfite|sulfit|svoveldioksid|svaveldioxid|\be22[0-8]\b/.test(t)) hits.push('sulphites')
   if (/(^|[^a-zæøåäö])(wine|vin)(?![a-zæøåäö])/.test(t) && !/vinegar|eddik|vinäger/.test(t)) hits.push('sulphites')
-  if (/dried apricot|tørket aprikos|torkad aprikos|raisin|sultana|rosin/.test(t)) reviews.push('sulphites')
+  if (/dried apricot|tørket aprikos|torkad aprikos|raisin|sultana|rosin|sun-dried tomato|soltørk|soltork|dried fig|tørket fiken|torkad fikon|prune|sviske|cranberr|ketchup|ketsjup|caper|kapers|kapris/.test(t)) {
+    hits.push('sulphites')
+  }
+  if (/(^|[^a-zæøåäö])(olives|oliven)(?![a-zæøåäö])/.test(t)) hits.push('sulphites')
+  if (/nutritional yeast|næringsgjær|naringsgjær|näringsjäst|baking powder|bakepulver|bakpulver|hot sauce|chilisaus|chilisås|bouillon|buljong/.test(t)) {
+    hits.push('cereal:wheat')
+  }
+  if (/bouillon|buljong|vegetable broth|grønnsaksbuljong|grönsaksbuljong/.test(t)) hits.push('celery')
+  if (/curry|garam masala|tandoori/.test(t)) hits.push('mustard')
+  if (/herb salt|urtesalt|örtsalt|kryddersalt|kryddsalt/.test(t)) hits.push('celery')
+  if (/miso/.test(t)) hits.push('cereal:barley')
 
-  if (!gf) {
-    hits.push(...cerealsInText(t))
-    const soySauce = /soy sauce|soyasaus|sojasås|shoyu/.test(t)
-    if (soySauce && !WHEAT_FREE.test(t)) hits.push('cereal:wheat')
-    if (!hits.some((hit) => hit.startsWith('cereal:')) && !GF_FLOUR.test(t) && hasFlour(t)) {
-      hits.push('cereal:wheat')
-    }
-    if (/(^|[^a-zæøåäö])(bread|brød|bröd)/.test(t) && !/crispbread|knekkebrød|knäckebröd/.test(t)) {
-      if (!hits.includes('cereal:wheat')) hits.push('cereal:wheat')
-    }
-    if (/crispbread|knekkebrød|knäckebröd/.test(t) && !hits.some((hit) => hit.startsWith('cereal:'))) {
-      reviews.push('crispbread')
-    }
-  } else if (/oat|havre|wheat|hvete|rye|rug|råg|barley|bygg|spelt|flour|mel|brød|bread/.test(t)) {
-    reviews.push('gfClaim')
+  hits.push(...cerealsInText(t))
+  const soySauce = /soy sauce|soyasaus|sojasås|shoyu/.test(t)
+  if (soySauce && !WHEAT_FREE.test(t)) hits.push('cereal:wheat')
+  if (!hits.some((hit) => hit.startsWith('cereal:')) && !GF_FLOUR.test(t) && hasFlour(t)) {
+    hits.push('cereal:wheat')
+  }
+  if (/(^|[^a-zæøåäö])(bread|brød|bröd)/.test(t) && !/crispbread|knekkebrød|knäckebröd/.test(t)) {
+    if (!hits.includes('cereal:wheat')) hits.push('cereal:wheat')
+  }
+  if (/crispbread|knekkebrød|knäckebröd/.test(t) && !hits.some((hit) => hit.startsWith('cereal:'))) {
+    hits.push('cereal:wheat')
   }
 
-  return { hits: [...new Set(hits)], reviews: [...new Set(reviews)] }
+  return { hits: [...new Set(hits)], reviews: [] }
 }
 
 function collectRows(recipe) {
@@ -328,37 +330,18 @@ function applyRow(row, into) {
     reviews = free.reviews
   } else {
     hits = [...(rule.hits || [])]
-    reviews = [...(rule.reviews || [])]
-    if (reviews.includes('plantBase')) {
+    if (id === 'plant-milk' || id === 'plant-yogurt') {
       const plant = plantBaseHits(row.text)
-      if (plant) {
-        reviews = reviews.filter((key) => key !== 'plantBase')
-        hits.push(...plant)
-      }
+      if (plant) hits = [...plant]
     }
-    if (reviews.includes('sourdough')) {
+    if (id === 'sourdough-starter' || id === 'crispbread') {
       const grains = cerealsInText(row.text)
-      if (grains.length) {
-        reviews = reviews.filter((key) => key !== 'sourdough')
-        hits.push(...grains)
-      }
-    }
-    if (id === 'crispbread') {
-      const grains = cerealsInText(row.text)
-      if (grains.length) {
-        reviews = reviews.filter((key) => key !== 'crispbread')
-        hits.push(...grains)
-      }
+      if (grains.length) hits = [...grains]
     }
     if (id === 'bread') hits.push(...cerealsInText(row.text))
   }
 
-  if (GF.test(row.text)) {
-    const hadCereal = hits.some((hit) => hit.startsWith('cereal:')) || reviews.some((key) => CEREAL_REVIEWS.has(key))
-    hits = hits.filter((hit) => !hit.startsWith('cereal:'))
-    reviews = reviews.filter((key) => !CEREAL_REVIEWS.has(key))
-    if (hadCereal && !reviews.includes('gfClaim')) reviews.push('gfClaim')
-  } else if (WHEAT_FREE.test(row.text)) {
+  if (WHEAT_FREE.test(row.text)) {
     hits = hits.filter((hit) => hit !== 'cereal:wheat')
   }
 
