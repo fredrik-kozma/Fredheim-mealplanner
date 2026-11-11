@@ -171,9 +171,6 @@ function drawPage(ctx, page, meta, images, logo) {
     const panelY = y + px(1.15)
     const panelW = w - px(2.35)
     const panelH = h - px(2.3)
-    ctx.fillStyle = 'rgba(255,255,255,0.62)'
-    roundRect(ctx, panelX, panelY, panelW, panelH, px(1.5))
-    ctx.fill()
     if (logo) {
       const logoSize = px(3.4)
       ctx.save()
@@ -195,13 +192,7 @@ function drawPage(ctx, page, meta, images, logo) {
       namePt -= 0.5
     }
     nameLines = nameLines.slice(0, 2)
-    ctx.fillStyle = '#0b3f24'
-    ctx.textBaseline = 'top'
-    ctx.font = `800 ${ptPx(namePt)}px Inter, sans-serif`
     const nameLineH = ptPx(namePt) * 1.05
-    nameLines.forEach((line, lineIndex) => {
-      ctx.fillText(line, textX, textTop + lineIndex * nameLineH)
-    })
 
     const items = []
     if (card.none) items.push({ icon: 'check', text: card.noneText, color: '#0b3f24', bg: 'rgba(11,63,36,0.1)' })
@@ -230,6 +221,16 @@ function drawPage(ctx, page, meta, images, logo) {
       laidOut = layoutItems(allergenPt)
       if (allergenPt <= CARD_TYPE.allergenMinPt) break
     }
+    const panelUsed = Math.min(panelH, (textTop - panelY) + nameLines.length * nameLineH + px(0.8) + laidOut.used + px(0.7))
+    ctx.fillStyle = 'rgba(255,255,255,0.58)'
+    roundRect(ctx, panelX, panelY, panelW, panelUsed, px(1.4))
+    ctx.fill()
+    ctx.fillStyle = '#0b3f24'
+    ctx.textBaseline = 'top'
+    ctx.font = `800 ${ptPx(namePt)}px Inter, sans-serif`
+    nameLines.forEach((line, lineIndex) => {
+      ctx.fillText(line, textX, textTop + lineIndex * nameLineH)
+    })
     let textY = listTop
     for (const item of laidOut.row) {
       if (textY > textBottom) break

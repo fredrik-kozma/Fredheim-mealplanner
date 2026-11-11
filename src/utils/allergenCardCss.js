@@ -131,12 +131,19 @@ export const ALLERGEN_CARD_CSS = `
   inset: 1.15mm 1.2mm 1.15mm 1.3mm;
   display: flex;
   flex-direction: column;
-  gap: 0.55mm;
+  justify-content: flex-start;
   min-height: 0;
-  padding: 1mm 1.3mm 0.9mm;
-  border-radius: 1.5mm;
-  background: rgba(255, 255, 255, 0.62);
+  background: transparent;
+  overflow: hidden;
+}
+.allergen-panel {
+  max-height: 100%;
   box-sizing: border-box;
+  padding: 0.85mm 1.15mm 0.75mm;
+  border-radius: 1.4mm;
+  background: rgba(255, 255, 255, 0.58);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   overflow: hidden;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
@@ -148,14 +155,13 @@ export const ALLERGEN_CARD_CSS = `
   line-height: 1.02;
   letter-spacing: -0.03em;
   color: #0b3f24;
+  text-shadow: 0 0 0.35mm #fff, 0 0 0.9mm rgba(255,255,255,0.95);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 .allergen-lines {
-  flex: 1;
-  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -166,6 +172,7 @@ export const ALLERGEN_CARD_CSS = `
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: #0b3f24;
+  text-shadow: 0 0 0.35mm #fff, 0 0 0.9mm rgba(255,255,255,0.95);
 }
 .allergen-line {
   display: flex;
@@ -215,6 +222,12 @@ export const ALLERGEN_CARD_CSS = `
   .allergen-card:hover, .allergen-empty:hover { box-shadow: 0 2px 8px rgba(20, 80, 40, 0.16); }
 }
 @media print {
+  .allergen-panel {
+    /* Blur does not print. The same white panel is the fallback. */
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.58);
+  }
   .allergen-screen-only { display: none !important; }
   .allergen-page {
     box-shadow: none !important;

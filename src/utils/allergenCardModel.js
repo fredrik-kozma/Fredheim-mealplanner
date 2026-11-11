@@ -21,10 +21,11 @@ export const FOOTER_GAP = 4
 export const DISCLAIMER_H = 10
 
 /**
- * The photo covers the card. This much white is laid over it so the picture
- * stays a soft backdrop and dark green type keeps its contrast in print.
+ * White laid over the whole photo. Kept near half so the food stays visible.
+ * Legibility comes from the frosted panel behind the words, not from washing
+ * the picture out.
  */
-export const PHOTO_VEIL = 0.78
+export const PHOTO_VEIL = 0.45
 
 /**
  * Type sizes in points. The name starts at the max and shrinks only until it
