@@ -7,6 +7,7 @@ import TodayPage from './pages/TodayPage'
 import PlannerPage from './pages/PlannerPage'
 import ShoppingPage from './pages/ShoppingPage'
 import SettingsPage from './pages/SettingsPage'
+import AllergenCardsPage from './pages/AllergenCardsPage'
 import PacksPage from './pages/PacksPage'
 import SharedImportPage from './pages/SharedImportPage'
 import NutritionPage from './pages/NutritionPage'
@@ -273,6 +274,7 @@ function AppShell() {
             <Route path="/nutrition" element={<NutritionPage />} />
             <Route path="/shopping" element={<ShoppingPage />} />
             <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/allergen-cards" element={<AllergenCardsPage />} />
             <Route path="/packs" element={<PacksPage />} />
             {/* A shared menu or recipe. The code is the content — see
                 shareCodec.js — so this route needs no server of its own. */}
