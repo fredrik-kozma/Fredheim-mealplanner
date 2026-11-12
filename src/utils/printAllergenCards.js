@@ -5,10 +5,16 @@ import {
   PAGE_W, PAGE_H, FOOTER_GAP, GRID_H, PHOTO_VEIL, CARD_TYPE,
 } from './allergenCardModel.js'
 import { shareFileOrDownload } from './shareSheet.js'
+import { CARD_TEXT_FONT, CARD_TITLE_FONT, ensureAllergenFonts } from './allergenCardFonts.js'
 
 function absolutize(html) {
   const origin = window.location.origin
   return html.replace(/(\ssrc=["'])(\/[^"']*)/g, `$1${origin}$2`)
+}
+
+function absolutizeCss(css) {
+  const origin = window.location.origin
+  return css.replace(/url\((['"]?)(\/[^)'"]+)/g, `url($1${origin}$2`)
 }
 
 /** Desktop: the same sheet the user is looking at, in the print dialog. */
@@ -30,16 +36,25 @@ export function openAllergenPrintWindow(rootEl, title) {
 <head>
 <meta charset="utf-8" />
 <title>${safeTitle}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" />
-<style>${PRINT_WINDOW_CSS}</style>
+<style>${absolutizeCss(PRINT_WINDOW_CSS)}</style>
 </head>
 <body>
 ${absolutize(clone.innerHTML)}
 <script>
   window.addEventListener('load', function () {
     var go = function () { window.focus(); window.print(); };
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(go, 200); });
-    else setTimeout(go, 400);
+    var fonts = document.fonts;
+    if (fonts && fonts.load) {
+      Promise.all([
+        fonts.load('700 16px "Playfair Display", Georgia, serif', 'Ciorbă æøå'),
+        fonts.load('600 16px Figtree, system-ui, sans-serif', 'Ciorbă æøå'),
+        fonts.ready
+      ]).then(function () { setTimeout(go, 50); });
+    } else if (fonts && fonts.ready) {
+      fonts.ready.then(function () { setTimeout(go, 200); });
+    } else {
+      setTimeout(go, 400);
+    }
   });
 </script>
 </body>
@@ -106,7 +121,7 @@ function drawPage(ctx, page, meta, images, logo) {
   ctx.fillStyle = '#ffffff'
   ctx.fillRect(0, 0, width, height)
   ctx.fillStyle = '#1B7A3A'
-  ctx.font = `600 ${px(3.1)}px Inter, sans-serif`
+  ctx.font = `600 ${px(3.1)}px ${CARD_TEXT_FONT}`
   ctx.textBaseline = 'middle'
   if (logo) ctx.drawImage(logo, px(12), px(3.6), px(5), px(5))
   ctx.fillText(meta.headerLeft, px(18.5), px(6.2))
@@ -169,13 +184,13 @@ function drawPage(ctx, page, meta, images, logo) {
     let namePt = CARD_TYPE.nameMaxPt
     let nameLines = []
     while (namePt >= CARD_TYPE.nameMinPt) {
-      ctx.font = `800 ${ptPx(namePt)}px Inter, sans-serif`
+      ctx.font = `700 ${ptPx(namePt)}px ${CARD_TITLE_FONT}`
       nameLines = wrapLines(ctx, card.title, textW)
       if (nameLines.length <= 2) break
       namePt -= 0.5
     }
     nameLines = nameLines.slice(0, 2)
-    const nameLineH = ptPx(namePt) * 1.05
+    const nameLineH = ptPx(namePt) * 1.08
 
     const items = []
     for (const line of card.lines || []) items.push({ text: line.text })
@@ -184,7 +199,7 @@ function drawPage(ctx, page, meta, images, logo) {
     const listH = textBottom - listTop
     let allergenPt = CARD_TYPE.allergenMaxPt
     const layoutItems = (pt) => {
-      ctx.font = `800 ${ptPx(pt)}px Inter, sans-serif`
+      ctx.font = `600 ${ptPx(pt)}px ${CARD_TEXT_FONT}`
       const bulletW = ptPx(pt) * 0.85
       const row = []
       let used = 0
@@ -204,7 +219,7 @@ function drawPage(ctx, page, meta, images, logo) {
     }
     ctx.fillStyle = '#0b3f24'
     ctx.textBaseline = 'top'
-    ctx.font = `800 ${ptPx(namePt)}px Inter, sans-serif`
+    ctx.font = `700 ${ptPx(namePt)}px ${CARD_TITLE_FONT}`
     ctx.lineWidth = Math.max(1, ptPx(namePt) * 0.16)
     ctx.strokeStyle = 'rgba(255,255,255,0.95)'
     ctx.lineJoin = 'round'
@@ -217,7 +232,7 @@ function drawPage(ctx, page, meta, images, logo) {
     for (const item of laidOut.row) {
       if (textY > textBottom) break
       ctx.fillStyle = '#0b3f24'
-      ctx.font = `800 ${ptPx(allergenPt)}px Inter, sans-serif`
+      ctx.font = `600 ${ptPx(allergenPt)}px ${CARD_TEXT_FONT}`
       ctx.lineWidth = Math.max(1, ptPx(allergenPt) * 0.14)
       ctx.strokeStyle = 'rgba(255,255,255,0.95)'
       ctx.textBaseline = 'top'
@@ -233,7 +248,7 @@ function drawPage(ctx, page, meta, images, logo) {
   })
 
   ctx.fillStyle = '#3d5246'
-  ctx.font = `500 ${px(2.45)}px Inter, sans-serif`
+  ctx.font = `600 ${px(2.45)}px ${CARD_TEXT_FONT}`
   ctx.textAlign = 'center'
   ctx.textBaseline = 'top'
   const disclaimerTop = MARGIN_TOP + GRID_H + FOOTER_GAP
@@ -249,7 +264,7 @@ function drawPage(ctx, page, meta, images, logo) {
  * WebView often ignores window.print, so the PDF goes to the share sheet.
  */
 export async function renderAllergenPdf(pages, meta) {
-  await document.fonts?.ready
+  await ensureAllergenFonts()
   const logo = await loadImage('/fredheim-logo.png')
   const srcs = new Set()
   for (const page of pages) {

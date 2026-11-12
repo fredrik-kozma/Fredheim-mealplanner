@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import useStore from '../../store/useStore'
 import PageHeader from '../common/PageHeader'
 import { ALLERGEN_CARD_CSS } from '../../utils/allergenCardCss.js'
+import { ensureAllergenFonts } from '../../utils/allergenCardFonts.js'
 import {
   pagesOf,
   printablePages,
@@ -115,9 +116,9 @@ function CardFace({ title, imageUrl, lines, notes }) {
     const run = () => {
       if (!cancelled && faceRef.current) fitCardFace(faceRef.current)
     }
-    run()
-    const ready = document.fonts?.ready
-    if (ready) ready.then(run)
+    ensureAllergenFonts().then(() => {
+      if (!cancelled) run()
+    })
     return () => { cancelled = true }
   }, [title, lineKey, noteKey])
 
